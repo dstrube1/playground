@@ -1,0 +1,12 @@
+﻿<Properties StartupItem="RestrictionOperators/RestrictionOperators.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="RestrictionOperators/Program.cs">
+    <Files>
+      <File FileName="RestrictionOperators/Program.cs" Line="15" Column="18" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -1,0 +1,6 @@
+C:\workspace\playground\C#\CrawlingLogFileMover\CrawlingLogFileMover\bin\Debug\CrawlingLogFileMover.exe.config
+C:\workspace\playground\C#\CrawlingLogFileMover\CrawlingLogFileMover\bin\Debug\CrawlingLogFileMover.exe
+C:\workspace\playground\C#\CrawlingLogFileMover\CrawlingLogFileMover\bin\Debug\CrawlingLogFileMover.pdb
+C:\workspace\playground\C#\CrawlingLogFileMover\CrawlingLogFileMover\obj\Debug\CrawlingLogFileMover.csprojResolveAssemblyReference.cache
+C:\workspace\playground\C#\CrawlingLogFileMover\CrawlingLogFileMover\obj\Debug\CrawlingLogFileMover.exe
+C:\workspace\playground\C#\CrawlingLogFileMover\CrawlingLogFileMover\obj\Debug\CrawlingLogFileMover.pdb

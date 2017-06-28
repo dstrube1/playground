@@ -1,0 +1,5 @@
+/Users/dstrubex/Projects/Assignment7/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/dstrubex/Projects/Assignment7/bin/Debug/Assignment7.exe.mdb
+/Users/dstrubex/Projects/Assignment7/bin/Debug/Assignment7.exe
+/Users/dstrubex/Projects/Assignment7/obj/x86/Debug/Assignment7.exe
+/Users/dstrubex/Projects/Assignment7/obj/x86/Debug/Assignment7.exe.mdb

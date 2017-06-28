@@ -1,0 +1,22 @@
+<Configuration>
+  <RecentFilesTracker>
+    <RecentFilesTracker>
+      <TrackedFile location="C:\Documents and Settings\hema.balaji\My Documents\Visual Studio Projects\rot13\Class1.cs" offset="283" line="6" column="0" />
+    </RecentFilesTracker>
+  </RecentFilesTracker>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean />
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Qualified:@">
+      <Item value="IndexOf" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Console">
+      <Item value="Write" priority="0" />
+      <Item value="ReadLine" priority="1" />
+      <Item value="WriteLine" priority="1" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

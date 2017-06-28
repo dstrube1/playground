@@ -1,0 +1,13 @@
+<Configuration>
+  <RecentFilesTracker>
+    <RecentFilesTracker>
+      <TrackedFile location="C:\Documents and Settings\hema.balaji\My Documents\Visual Studio Projects\test\Class1.cs" offset="0" line="-1" column="-1" />
+    </RecentFilesTracker>
+  </RecentFilesTracker>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean />
+  </SettingsComponent>
+  <CompletionStatisticsManager />
+</Configuration>

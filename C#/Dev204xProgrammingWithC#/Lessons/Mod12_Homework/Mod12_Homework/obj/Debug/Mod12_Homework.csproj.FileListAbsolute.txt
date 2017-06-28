@@ -1,0 +1,13 @@
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod12_Homework\Mod12_Homework\bin\Debug\Mod12_Homework.exe.config
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod12_Homework\Mod12_Homework\bin\Debug\Mod12_Homework.exe
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod12_Homework\Mod12_Homework\bin\Debug\Mod12_Homework.pdb
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod12_Homework\Mod12_Homework\obj\Debug\MainWindow.baml
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod12_Homework\Mod12_Homework\obj\Debug\MainWindow.g.cs
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod12_Homework\Mod12_Homework\obj\Debug\App.g.cs
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod12_Homework\Mod12_Homework\obj\Debug\Mod12_Homework_MarkupCompile.cache
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod12_Homework\Mod12_Homework\obj\Debug\Mod12_Homework.g.resources
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod12_Homework\Mod12_Homework\obj\Debug\Mod12_Homework.Properties.Resources.resources
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod12_Homework\Mod12_Homework\obj\Debug\Mod12_Homework.csproj.GenerateResource.Cache
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod12_Homework\Mod12_Homework\obj\Debug\Mod12_Homework.exe
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod12_Homework\Mod12_Homework\obj\Debug\Mod12_Homework.pdb
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod12_Homework\Mod12_Homework\obj\Debug\Mod12_Homework.csprojResolveAssemblyReference.cache

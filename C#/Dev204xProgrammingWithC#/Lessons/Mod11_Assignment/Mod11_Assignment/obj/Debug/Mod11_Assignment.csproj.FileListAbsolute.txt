@@ -1,0 +1,13 @@
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod11_Assignment\Mod11_Assignment\bin\Debug\Mod11_Assignment.exe.config
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod11_Assignment\Mod11_Assignment\bin\Debug\Mod11_Assignment.exe
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod11_Assignment\Mod11_Assignment\bin\Debug\Mod11_Assignment.pdb
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod11_Assignment\Mod11_Assignment\obj\Debug\Mod11_Assignment.csprojResolveAssemblyReference.cache
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod11_Assignment\Mod11_Assignment\obj\Debug\MainWindow.baml
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod11_Assignment\Mod11_Assignment\obj\Debug\MainWindow.g.cs
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod11_Assignment\Mod11_Assignment\obj\Debug\App.g.cs
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod11_Assignment\Mod11_Assignment\obj\Debug\Mod11_Assignment_MarkupCompile.cache
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod11_Assignment\Mod11_Assignment\obj\Debug\Mod11_Assignment.g.resources
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod11_Assignment\Mod11_Assignment\obj\Debug\Mod11_Assignment.Properties.Resources.resources
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod11_Assignment\Mod11_Assignment\obj\Debug\Mod11_Assignment.csproj.GenerateResource.Cache
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod11_Assignment\Mod11_Assignment\obj\Debug\Mod11_Assignment.exe
+C:\Users\gerryo\Documents\EdX Project\Demo Files\Mod11_Assignment\Mod11_Assignment\obj\Debug\Mod11_Assignment.pdb

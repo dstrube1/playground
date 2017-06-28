@@ -1,0 +1,59 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer>
+      <setting name="UsedSolutionBuilderID">0</setting>
+    </integer>
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="EFDataModelEntities" priority="1" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="d:Miscellaneous Files/f:EFMembershipProvider.cs" caret="365" scrollPosition="0|0" />
+      <File id="d:Miscellaneous Files/f:Web.config" caret="5860" scrollPosition="0|0" />
+      <File id="d:Miscellaneous Files/f:Default.aspx" caret="6073" scrollPosition="0|0" />
+      <File id="51AAFE18-253D-47BF-8738-362148CBAD61/f:Web.config" caret="5496" scrollPosition="0|0" />
+      <File id="4C3B32AB-0B0C-4055-8FD9-6AD5E187EC69/d:Security/f:EFMembershipProvider.cs" caret="12488" scrollPosition="0|0" />
+      <File id="d:Miscellaneous Files/f:EFMembershipProvider.cs" caret="321" scrollPosition="0|0" />
+      <File id="51AAFE18-253D-47BF-8738-362148CBAD61/d:__RESHARPER__DummyWebPages_/f:Default.aspx" caret="328" scrollPosition="0|0" />
+      <File id="32A4129F-D24C-4BFD-B0F0-5105DDEFBF4B/f:CreateUserTable.sql" caret="0" scrollPosition="0|0" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="51AAFE18-253D-47BF-8738-362148CBAD61/f:Web.config" caret="2765" scrollPosition="0|0" />
+      <File id="51AAFE18-253D-47BF-8738-362148CBAD61/f:Web.config" caret="23" scrollPosition="0|0" />
+      <File id="51AAFE18-253D-47BF-8738-362148CBAD61/f:Web.config" caret="8846" scrollPosition="0|102" />
+      <File id="51AAFE18-253D-47BF-8738-362148CBAD61/f:Web.config" caret="8250" scrollPosition="0|87" />
+      <File id="51AAFE18-253D-47BF-8738-362148CBAD61/f:Web.config" caret="2386" scrollPosition="131|0" />
+      <File id="51AAFE18-253D-47BF-8738-362148CBAD61/f:Web.config" caret="3528" scrollPosition="0|15" />
+      <File id="51AAFE18-253D-47BF-8738-362148CBAD61/f:Web.config" caret="6167" scrollPosition="0|39" />
+      <File id="51AAFE18-253D-47BF-8738-362148CBAD61/f:Web.config" caret="5666" scrollPosition="0|42" />
+      <File id="51AAFE18-253D-47BF-8738-362148CBAD61/d:__RESHARPER__DummyWebPages_/f:Default.aspx" caret="541" scrollPosition="99|0" />
+      <File id="51AAFE18-253D-47BF-8738-362148CBAD61/d:__RESHARPER__DummyWebPages_/f:Default.aspx" caret="1010" scrollPosition="0|0" />
+      <File id="d:Miscellaneous Files/f:EFMembershipProvider.cs" caret="404" scrollPosition="0|0" />
+      <File id="4C3B32AB-0B0C-4055-8FD9-6AD5E187EC69/d:Security/f:EFMembershipProvider.cs" caret="47675" scrollPosition="0|995" />
+      <File id="4C3B32AB-0B0C-4055-8FD9-6AD5E187EC69/d:Security/f:EFMembershipProvider.cs" caret="335" scrollPosition="0|0" />
+      <File id="4C3B32AB-0B0C-4055-8FD9-6AD5E187EC69/d:Security/f:EFMembershipProvider.cs" caret="516" scrollPosition="0|0" />
+      <File id="4C3B32AB-0B0C-4055-8FD9-6AD5E187EC69/d:Security/f:EFMembershipProvider.cs" caret="12541" scrollPosition="0|121" />
+      <File id="51AAFE18-253D-47BF-8738-362148CBAD61/d:__RESHARPER__DummyWebPages_/f:Default.aspx" caret="380" scrollPosition="0|0" />
+      <File id="32A4129F-D24C-4BFD-B0F0-5105DDEFBF4B/f:CreateUserTable.sql" caret="0" scrollPosition="0|0" />
+      <File id="32A4129F-D24C-4BFD-B0F0-5105DDEFBF4B/f:CreateUserTable.sql" caret="1568" scrollPosition="0|0" />
+    </RecentEdits>
+  </RecentFiles>
+  <UnitTestRunner>
+    <CustomStartDirectory>
+    </CustomStartDirectory>
+    <UseShadowCopy>True</UseShadowCopy>
+    <UseCustomFolder>False</UseCustomFolder>
+    <EnableUnitTesting>True</EnableUnitTesting>
+    <Providers />
+  </UnitTestRunner>
+</Configuration>

@@ -1,0 +1,2 @@
+/Users/dstrubex/Projects/LINQ - Ordering Operators/C#/OrderingOperators/obj/x86/Debug/.NETFramework,Version=v4.0,Profile=Client.AssemblyAttribute.cs
+/Users/dstrubex/Projects/LINQ - Ordering Operators/C#/OrderingOperators/obj/x86/Debug/OrderingOperators.exe

@@ -1,0 +1,6 @@
+C:\workspace\playground\C#\test\test\bin\Debug\test.exe
+C:\workspace\playground\C#\test\test\bin\Debug\test.pdb
+C:\workspace\playground\C#\test\test\obj\x86\Debug\test.exe
+C:\workspace\playground\C#\test\test\obj\x86\Debug\test.pdb
+C:\workspace\playground\C#\test\test\obj\x86\Debug\test.csproj.ResolveComReference.cache
+C:\workspace\playground\C#\test\test\obj\x86\Debug\test.csprojResolveAssemblyReference.cache

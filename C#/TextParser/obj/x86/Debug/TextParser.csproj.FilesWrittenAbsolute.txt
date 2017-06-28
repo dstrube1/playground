@@ -1,0 +1,10 @@
+/Users/dstrubex/Projects/TextParser/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/dstrubex/Projects/TextParser/bin/Debug/TextParser.exe.mdb
+/Users/dstrubex/Projects/TextParser/bin/Debug/TextParser.exe
+/Users/dstrubex/Projects/TextParser/obj/x86/Debug/TextParser.exe
+/Users/dstrubex/Projects/TextParser/obj/x86/Debug/TextParser.exe.mdb
+/Users/dstrubex/Projects/c#/TextParser/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/dstrubex/Projects/c#/TextParser/obj/x86/Debug/TextParser.exe
+/Users/dstrubex/Projects/c#/TextParser/obj/x86/Debug/TextParser.exe.mdb
+/Users/dstrubex/Projects/c#/TextParser/bin/Debug/TextParser.exe.mdb
+/Users/dstrubex/Projects/c#/TextParser/bin/Debug/TextParser.exe

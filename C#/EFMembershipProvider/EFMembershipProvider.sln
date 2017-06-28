@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFMembershipProviderWebApplication", "EFMembershipProviderWebApplication\EFMembershipProviderWebApplication.csproj", "{51AAFE18-253D-47BF-8738-362148CBAD61}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseScripts", "DatabaseScripts", "{32A4129F-D24C-4BFD-B0F0-5105DDEFBF4B}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseScripts\CreateUserTable.sql = DatabaseScripts\CreateUserTable.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSoft.EFMembershipProvider.DataLayer", "Libraries\SmartSoft.EFMembershipProvider.DataLayer\SmartSoft.EFMembershipProvider.DataLayer.csproj", "{DF9DEEFD-80DD-4105-8F1F-F2C11701D4C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSoft.EFMembershipProvider.Web", "Libraries\SmartSoft.EFMembershipProvider.Web\SmartSoft.EFMembershipProvider.Web.csproj", "{4C3B32AB-0B0C-4055-8FD9-6AD5E187EC69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51AAFE18-253D-47BF-8738-362148CBAD61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51AAFE18-253D-47BF-8738-362148CBAD61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51AAFE18-253D-47BF-8738-362148CBAD61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51AAFE18-253D-47BF-8738-362148CBAD61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF9DEEFD-80DD-4105-8F1F-F2C11701D4C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF9DEEFD-80DD-4105-8F1F-F2C11701D4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF9DEEFD-80DD-4105-8F1F-F2C11701D4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF9DEEFD-80DD-4105-8F1F-F2C11701D4C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C3B32AB-0B0C-4055-8FD9-6AD5E187EC69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C3B32AB-0B0C-4055-8FD9-6AD5E187EC69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C3B32AB-0B0C-4055-8FD9-6AD5E187EC69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C3B32AB-0B0C-4055-8FD9-6AD5E187EC69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

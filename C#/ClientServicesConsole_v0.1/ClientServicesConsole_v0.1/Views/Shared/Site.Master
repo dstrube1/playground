@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html>
+<html lang="en">
+    <head runat="server">
+        <meta charset="utf-8" />
+        <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+        <link href="<%: Url.Content("~/favicon.ico") %>" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        <%: Styles.Render("~/Content/themes/base/css", "~/Content/css") %>
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </head>
+    <body>
+    <!-- if we want to see this stuff again, just create  a new MVC project and look at the defaults there -->
+        <header>
+            <div class="content-wrapper">
+                <div class="float-right">
+                    <section id="login">
+                        <% Html.RenderPartial("LoginUserControl"); %>
+                    </section>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            <asp:ContentPlaceHolder ID="FeaturedContent" runat="server" />
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+
+        <%: Scripts.Render("~/bundles/jquery") %>
+        <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />
+    </body>
+</html>

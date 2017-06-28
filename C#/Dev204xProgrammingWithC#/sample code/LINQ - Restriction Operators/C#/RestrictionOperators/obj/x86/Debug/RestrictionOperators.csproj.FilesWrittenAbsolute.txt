@@ -1,0 +1,6 @@
+/Users/dstrubex/Projects/LINQ - Restriction Operators/C#/RestrictionOperators/obj/x86/Debug/.NETFramework,Version=v4.0,Profile=Client.AssemblyAttribute.cs
+/Users/dstrubex/Projects/LINQ - Restriction Operators/C#/RestrictionOperators/obj/x86/Debug/RestrictionOperators.exe
+/Users/dstrubex/Projects/LINQ - Restriction Operators/C#/RestrictionOperators/bin/Debug/Customers.xml
+/Users/dstrubex/Projects/LINQ - Restriction Operators/C#/RestrictionOperators/bin/Debug/RestrictionOperators.exe.mdb
+/Users/dstrubex/Projects/LINQ - Restriction Operators/C#/RestrictionOperators/bin/Debug/RestrictionOperators.exe
+/Users/dstrubex/Projects/LINQ - Restriction Operators/C#/RestrictionOperators/obj/x86/Debug/RestrictionOperators.exe.mdb
