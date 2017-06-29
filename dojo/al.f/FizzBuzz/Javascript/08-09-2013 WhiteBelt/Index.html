@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>FizzBuzz</title>
+		<script type="text/javascript" src="resources/NumberConverter.js"></script>
+	</head>
+	<body>
+		<div>
+			<ul id="output">
+			</ul>
+		</div>
+	</body>
+	<script>
+		var numberConverter = new Namespace.AlexanderFisher.FizzBuzz.NumberConverter();
+		var output = document.getElementById("output");
+
+		for (var i = 1; i <= 100; i++)
+		{
+			var text = document.createTextNode(numberConverter.IntToString(i));
+			var item = document.createElement("li");
+			item.appendChild(text);
+			output.appendChild(item);
+		}
+	</script>
+</html>

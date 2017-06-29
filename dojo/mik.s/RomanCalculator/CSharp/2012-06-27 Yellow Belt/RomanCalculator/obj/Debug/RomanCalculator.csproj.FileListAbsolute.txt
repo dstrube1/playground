@@ -1,0 +1,7 @@
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\bin\Debug\RomanCalculator.dll
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\bin\Debug\RomanCalculator.pdb
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\bin\Debug\RomanCalculator.Interfaces.dll
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\bin\Debug\RomanCalculator.Interfaces.pdb
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\obj\Debug\RomanCalculator.csprojResolveAssemblyReference.cache
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\obj\Debug\RomanCalculator.dll
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\obj\Debug\RomanCalculator.pdb

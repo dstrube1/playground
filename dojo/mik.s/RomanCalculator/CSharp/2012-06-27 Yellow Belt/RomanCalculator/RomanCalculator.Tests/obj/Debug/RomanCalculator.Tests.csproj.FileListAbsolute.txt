@@ -1,0 +1,11 @@
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\RomanCalculator.Tests\bin\Debug\RomanCalculator.Tests.dll
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\RomanCalculator.Tests\bin\Debug\RomanCalculator.Tests.pdb
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\RomanCalculator.Tests\bin\Debug\nunit.framework.dll
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\RomanCalculator.Tests\bin\Debug\RomanCalculator.dll
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\RomanCalculator.Tests\bin\Debug\RomanCalculator.Interfaces.dll
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\RomanCalculator.Tests\bin\Debug\RomanCalculator.Interfaces.pdb
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\RomanCalculator.Tests\bin\Debug\RomanCalculator.pdb
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\RomanCalculator.Tests\bin\Debug\nunit.framework.xml
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\RomanCalculator.Tests\obj\Debug\RomanCalculator.Tests.csprojResolveAssemblyReference.cache
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\RomanCalculator.Tests\obj\Debug\RomanCalculator.Tests.dll
+C:\repo\dojo\mike.simpson\RomanCalculator\CSharp\2012-06-27 Yellow Belt\RomanCalculator\RomanCalculator.Tests\obj\Debug\RomanCalculator.Tests.pdb

@@ -1,0 +1,9 @@
+C:\workspace\playground\C#\FizzBuzz\FizzBuzz\bin\Debug\FizzBuzz.exe.config
+C:\workspace\playground\C#\FizzBuzz\FizzBuzz\bin\Debug\FizzBuzz.exe
+C:\workspace\playground\C#\FizzBuzz\FizzBuzz\bin\Debug\FizzBuzz.pdb
+C:\workspace\playground\C#\FizzBuzz\FizzBuzz\obj\Debug\FizzBuzz.csprojResolveAssemblyReference.cache
+C:\workspace\playground\C#\FizzBuzz\FizzBuzz\obj\Debug\FizzBuzz.Form1.resources
+C:\workspace\playground\C#\FizzBuzz\FizzBuzz\obj\Debug\FizzBuzz.Properties.Resources.resources
+C:\workspace\playground\C#\FizzBuzz\FizzBuzz\obj\Debug\FizzBuzz.csproj.GenerateResource.Cache
+C:\workspace\playground\C#\FizzBuzz\FizzBuzz\obj\Debug\FizzBuzz.exe
+C:\workspace\playground\C#\FizzBuzz\FizzBuzz\obj\Debug\FizzBuzz.pdb

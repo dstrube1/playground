@@ -1,0 +1,8 @@
+c:\users\thorne.melcher\documents\visual studio 2012\Projects\Bowling\Bowling\bin\Debug\Bowling.exe.config
+c:\users\thorne.melcher\documents\visual studio 2012\Projects\Bowling\Bowling\bin\Debug\Bowling.exe
+c:\users\thorne.melcher\documents\visual studio 2012\Projects\Bowling\Bowling\bin\Debug\Bowling.pdb
+c:\users\thorne.melcher\documents\visual studio 2012\Projects\Bowling\Bowling\obj\Debug\Bowling.csprojResolveAssemblyReference.cache
+c:\users\thorne.melcher\documents\visual studio 2012\Projects\Bowling\Bowling\obj\Debug\Bowling.exe
+c:\users\thorne.melcher\documents\visual studio 2012\Projects\Bowling\Bowling\obj\Debug\Bowling.pdb
+c:\users\thorne.melcher\documents\visual studio 2012\Projects\Bowling\Bowling\bin\Debug\nunit.framework.dll
+c:\users\thorne.melcher\documents\visual studio 2012\Projects\Bowling\Bowling\bin\Debug\nunit.framework.xml

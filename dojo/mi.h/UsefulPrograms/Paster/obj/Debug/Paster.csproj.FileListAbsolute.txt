@@ -1,0 +1,13 @@
+C:\Michael.Hwang.Dojo\Paster\bin\Debug\Paster.exe.config
+C:\Michael.Hwang.Dojo\Paster\bin\Debug\Paster.exe
+C:\Michael.Hwang.Dojo\Paster\bin\Debug\Paster.pdb
+C:\Michael.Hwang.Dojo\Paster\obj\Debug\Paster.csprojResolveAssemblyReference.cache
+C:\Michael.Hwang.Dojo\Paster\obj\Debug\MainWindow.baml
+C:\Michael.Hwang.Dojo\Paster\obj\Debug\MainWindow.g.cs
+C:\Michael.Hwang.Dojo\Paster\obj\Debug\App.g.cs
+C:\Michael.Hwang.Dojo\Paster\obj\Debug\Paster_MarkupCompile.cache
+C:\Michael.Hwang.Dojo\Paster\obj\Debug\Paster.g.resources
+C:\Michael.Hwang.Dojo\Paster\obj\Debug\Paster.Properties.Resources.resources
+C:\Michael.Hwang.Dojo\Paster\obj\Debug\Paster.csproj.GenerateResource.Cache
+C:\Michael.Hwang.Dojo\Paster\obj\Debug\Paster.exe
+C:\Michael.Hwang.Dojo\Paster\obj\Debug\Paster.pdb
