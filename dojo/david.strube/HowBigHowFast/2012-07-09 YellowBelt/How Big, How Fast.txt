@@ -51,3 +51,10 @@ My binary search algorithm takes about 4.5mS to search a 10,000 entry array, and
 Unix passwords are stored using a one-way hash function: the original string is converted to the ‘encrypted’ password string, which cannot be converted back to the original string. One way to attack the password file is to generate all possible cleartext passwords, applying the password hash to each in turn and checking to see if the result matches the password you’re trying to crack. If the hashes match, then the string you used to generate the hash is the original password (or at least, it’s as good as the original password as far as logging in is concerned). In our particular system, passwords can be up to 16 characters long, and there are 96 possible characters at each position. If it takes 1mS to generate the password hash, is this a viable approach to attacking a password?
 
 96^16 possible passwords which is close to 100^16 = 10^32. Since we check 10^3 passwords per second we need 10^29 seconds which is 10^21 years. This is not a viable approach for anyone wanting a password cracked within their lifetime of approximately 10^2 years without considerable parallel processing or cryogenics. 
+
+96^16 = 52040292466647269602037015248896
+60 * 60 * 24 * 365.25 = 31557600 seconds per year
+
+
+http://codekata.pragprog.com/2007/01/kata_three_how_.html
+http://www.ghacks.net/2012/04/07/how-secure-is-your-password/
