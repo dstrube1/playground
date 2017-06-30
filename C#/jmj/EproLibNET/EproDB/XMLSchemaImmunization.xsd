@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="jmjexport" targetNamespace="http://tempuri.org/jmjexport.xsd" elementFormDefault="qualified"
+	attributeFormDefault="qualified" xmlns="http://tempuri.org/PatientData.xsd" xmlns:mstns="http://tempuri.org/jmjexport.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="jmjexport">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Patient">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="id" type="xs:string" minOccurs="0" />
+							<xs:element name="last_name" type="xs:string" minOccurs="0" />
+							<xs:element name="first_name" type="xs:string" minOccurs="0" />
+							<xs:element name="middle_name" type="xs:string" minOccurs="0" />
+							<xs:element name="date_of_birth" type="xs:dateTime" minOccurs="0" />
+							<xs:element name="sex" type="xs:string" minOccurs="0" />
+							<xs:element name="treatment">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="treatmenttype" type="xs:string" />
+										<xs:element name="adminsteredby">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="id" type="xs:string" />
+													<xs:element name="name" type="xs:string" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="vaccinecode" type="xs:integer" />
+										<xs:element name="vaccinename" type="xs:string" />
+										<xs:element name="admindate" type="xs:dateTime" />
+										<xs:element name="doseamount" type="xs:decimal" />
+										<xs:element name="doseunit" type="xs:string" />
+										<xs:element name="lotnumber" type="xs:long" />
+										<xs:element name="manufacturer" type="xs:string" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

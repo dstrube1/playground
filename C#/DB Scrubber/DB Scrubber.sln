@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB Scrubber", "DB Scrubber\DB Scrubber.csproj", "{7A644766-F508-493C-BA16-6B3641762372}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{7A644766-F508-493C-BA16-6B3641762372}.Debug.ActiveCfg = Debug|.NET
+		{7A644766-F508-493C-BA16-6B3641762372}.Debug.Build.0 = Debug|.NET
+		{7A644766-F508-493C-BA16-6B3641762372}.Release.ActiveCfg = Release|.NET
+		{7A644766-F508-493C-BA16-6B3641762372}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

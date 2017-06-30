@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityManager", "SecurityManager.csproj", "{58A34CCE-E0F4-4921-BB99-FAE0985E1086}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {DAA93D76-D50F-49B2-BF48-865036C92B03}
+		SccProjectUniqueName1 = SecurityManager.csproj
+		SccLocalPath1 = .
+		CanCheckoutShared = false
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{58A34CCE-E0F4-4921-BB99-FAE0985E1086}.Debug.ActiveCfg = Debug|.NET
+		{58A34CCE-E0F4-4921-BB99-FAE0985E1086}.Debug.Build.0 = Debug|.NET
+		{58A34CCE-E0F4-4921-BB99-FAE0985E1086}.Release.ActiveCfg = Release|.NET
+		{58A34CCE-E0F4-4921-BB99-FAE0985E1086}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

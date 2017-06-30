@@ -1,0 +1,139 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EproLibNET", "EproLibNET\EproLibNET.csproj", "{1CD48DE0-7B7C-4B49-8399-418B4F8E09D2}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPImageViewerApp", "EPImageViewerApp\EPImageViewerApp.csproj", "{7B4C8F8D-0BD8-409B-9B4C-87E72F6F324E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPImageControl", "EPImageControl\EPImageControl.csproj", "{38542212-CEFC-4119-899A-34D9DBD0A2A1}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPImageViewer", "EPImageViewer\EPImageViewer.csproj", "{90823E4E-1F34-41DB-A48A-C9FCF393FF02}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Purge", "Purge\Purge.csproj", "{E907A309-03C5-4451-A12E-71848120DA9E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTPAccess", "FTPAccess\FTPAccess.csproj", "{6B069B41-A177-4973-965E-03CACB0B4526}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttachmentManagement", "AttachmentManagement\AttachmentManagement.csproj", "{4B60A632-5877-4FCE-A3AA-D4F0DB0B0C3D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressBars", "ProgressBars\ProgressBars.csproj", "{EF2F3437-7E67-4CC3-B16D-0191C1D64E4F}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EproDB", "EproDB\EproDB.csproj", "{1A27B9A8-6E24-4863-B0DB-25CFC03A4895}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPImageUtil", "EPImageUtil\EPImageUtil.csproj", "{3040D652-6935-4BB9-948B-BA0B964F06AC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 11
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {B99BBB66-2BC9-40B0-9DF6-0D8383F92876}
+		SccProjectUniqueName1 = EproLibNET\\EproLibNET.csproj
+		SccLocalPath1 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection1 = EproLibNET\\
+		SccProjectUniqueName2 = EPImageViewerApp\\EPImageViewerApp.csproj
+		SccLocalPath2 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection2 = EPImageViewerApp\\
+		SccProjectUniqueName3 = EPImageControl\\EPImageControl.csproj
+		SccProjectName3 = \u0022$/EproLibNET.root/EproLibNET/EPImageControl\u0022,\u0020WYIAAAAA
+		SccLocalPath3 = EPImageControl
+		CanCheckoutShared = false
+		SccProjectUniqueName4 = EPImageViewer\\EPImageViewer.csproj
+		SccProjectName4 = \u0022$/EproLibNET.root/EproLibNET/EPImageViewer\u0022,\u0020YYIAAAAA
+		SccLocalPath4 = EPImageViewer
+		CanCheckoutShared = false
+		SccProjectUniqueName5 = Purge\\Purge.csproj
+		SccLocalPath5 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection5 = Purge\\
+		SccProjectUniqueName6 = FTPAccess\\FTPAccess.csproj
+		SccLocalPath6 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection6 = FTPAccess\\
+		SccProjectUniqueName7 = ProgressBars\\ProgressBars.csproj
+		SccLocalPath7 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection7 = ProgressBars\\
+		SccProjectUniqueName8 = AttachmentManagement\\AttachmentManagement.csproj
+		SccLocalPath8 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection8 = AttachmentManagement\\
+		SccProjectUniqueName9 = EproDB\\EproDB.csproj
+		SccLocalPath9 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection9 = EproDB\\
+		SccProjectUniqueName10 = EPImageUtil\\EPImageUtil.csproj
+		SccLocalPath10 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection10 = EPImageUtil\\
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{1CD48DE0-7B7C-4B49-8399-418B4F8E09D2}.Debug.ActiveCfg = Debug|.NET
+		{1CD48DE0-7B7C-4B49-8399-418B4F8E09D2}.Debug.Build.0 = Debug|.NET
+		{1CD48DE0-7B7C-4B49-8399-418B4F8E09D2}.Release.ActiveCfg = Release|.NET
+		{1CD48DE0-7B7C-4B49-8399-418B4F8E09D2}.Release.Build.0 = Release|.NET
+		{7B4C8F8D-0BD8-409B-9B4C-87E72F6F324E}.Debug.ActiveCfg = Debug|.NET
+		{7B4C8F8D-0BD8-409B-9B4C-87E72F6F324E}.Debug.Build.0 = Debug|.NET
+		{7B4C8F8D-0BD8-409B-9B4C-87E72F6F324E}.Release.ActiveCfg = Release|.NET
+		{7B4C8F8D-0BD8-409B-9B4C-87E72F6F324E}.Release.Build.0 = Release|.NET
+		{38542212-CEFC-4119-899A-34D9DBD0A2A1}.Debug.ActiveCfg = Debug|.NET
+		{38542212-CEFC-4119-899A-34D9DBD0A2A1}.Debug.Build.0 = Debug|.NET
+		{38542212-CEFC-4119-899A-34D9DBD0A2A1}.Release.ActiveCfg = Release|.NET
+		{38542212-CEFC-4119-899A-34D9DBD0A2A1}.Release.Build.0 = Release|.NET
+		{90823E4E-1F34-41DB-A48A-C9FCF393FF02}.Debug.ActiveCfg = Debug|.NET
+		{90823E4E-1F34-41DB-A48A-C9FCF393FF02}.Debug.Build.0 = Debug|.NET
+		{90823E4E-1F34-41DB-A48A-C9FCF393FF02}.Release.ActiveCfg = Release|.NET
+		{90823E4E-1F34-41DB-A48A-C9FCF393FF02}.Release.Build.0 = Release|.NET
+		{E907A309-03C5-4451-A12E-71848120DA9E}.Debug.ActiveCfg = Debug|.NET
+		{E907A309-03C5-4451-A12E-71848120DA9E}.Debug.Build.0 = Debug|.NET
+		{E907A309-03C5-4451-A12E-71848120DA9E}.Release.ActiveCfg = Release|.NET
+		{E907A309-03C5-4451-A12E-71848120DA9E}.Release.Build.0 = Release|.NET
+		{6B069B41-A177-4973-965E-03CACB0B4526}.Debug.ActiveCfg = Debug|.NET
+		{6B069B41-A177-4973-965E-03CACB0B4526}.Debug.Build.0 = Debug|.NET
+		{6B069B41-A177-4973-965E-03CACB0B4526}.Release.ActiveCfg = Release|.NET
+		{6B069B41-A177-4973-965E-03CACB0B4526}.Release.Build.0 = Release|.NET
+		{4B60A632-5877-4FCE-A3AA-D4F0DB0B0C3D}.Debug.ActiveCfg = Debug|.NET
+		{4B60A632-5877-4FCE-A3AA-D4F0DB0B0C3D}.Debug.Build.0 = Debug|.NET
+		{4B60A632-5877-4FCE-A3AA-D4F0DB0B0C3D}.Release.ActiveCfg = Release|.NET
+		{4B60A632-5877-4FCE-A3AA-D4F0DB0B0C3D}.Release.Build.0 = Release|.NET
+		{EF2F3437-7E67-4CC3-B16D-0191C1D64E4F}.Debug.ActiveCfg = Debug|.NET
+		{EF2F3437-7E67-4CC3-B16D-0191C1D64E4F}.Debug.Build.0 = Debug|.NET
+		{EF2F3437-7E67-4CC3-B16D-0191C1D64E4F}.Release.ActiveCfg = Release|.NET
+		{EF2F3437-7E67-4CC3-B16D-0191C1D64E4F}.Release.Build.0 = Release|.NET
+		{1A27B9A8-6E24-4863-B0DB-25CFC03A4895}.Debug.ActiveCfg = Debug|.NET
+		{1A27B9A8-6E24-4863-B0DB-25CFC03A4895}.Debug.Build.0 = Debug|.NET
+		{1A27B9A8-6E24-4863-B0DB-25CFC03A4895}.Release.ActiveCfg = Release|.NET
+		{1A27B9A8-6E24-4863-B0DB-25CFC03A4895}.Release.Build.0 = Release|.NET
+		{3040D652-6935-4BB9-948B-BA0B964F06AC}.Debug.ActiveCfg = Debug|.NET
+		{3040D652-6935-4BB9-948B-BA0B964F06AC}.Debug.Build.0 = Debug|.NET
+		{3040D652-6935-4BB9-948B-BA0B964F06AC}.Release.ActiveCfg = Release|.NET
+		{3040D652-6935-4BB9-948B-BA0B964F06AC}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

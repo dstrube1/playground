@@ -1,0 +1,90 @@
+Starting...
+Made it past columns assignment
+Hotfix	Status	Status_Date	script_name	min_mod_level	max_mod_level	
+92	Beta	12/6/2005 3:28:02 PM	Hotfix 92 sp_rebuild_constraints error	126	126	
+91	Beta	12/7/2005 2:35:02 PM	Hotfix 91 Patient Search	118	126	
+90	Production	11/22/2005 2:42:07 PM	Hotfix 90 Remove License Service Records from o_server_component	120	126	
+89	Testing	11/2/2005 1:56:31 PM	Hotfix 89 Client Auto Install	126	126	
+88	Production	10/14/2005 3:50:15 PM	Hotfix 88 Portrait Display	110	126	
+87	Beta	10/10/2005 10:31:03 AM	Hotfix 87 Supervisor Updates and Closed Encounter Room Menus	126	126	
+86	Production	10/5/2005 3:03:05 PM	Hotfix 86 Disappearing Folder Selection Records	121	126	
+85	Beta	10/12/2005 10:17:47 AM	Hotfix 85 Modified Prescription Ordered-By	126	126	
+84	Beta	9/28/2005 2:39:32 PM	Hotfix 84 Sort Order of Daily Lab Screen	123	126	
+83	Production	9/22/2005 4:17:57 PM	Hotfix 83 Chart Alert Delete	100	126	
+82	Production	9/19/2005 5:03:25 PM	Hotfix 82 Modified Med Repair Utility	110	126	
+81	Beta	9/19/2005 1:59:21 PM	Hotfix 81 Quotes in Comment Titles	110	126	
+80	Beta	9/15/2005 11:55:56 PM	Hotfix 80 Change Encounter Type	121	126	
+79	Testing	8/31/2005 3:31:09 PM	Hotfix 79 WORD Doc Attachment Component	126	126	
+78	Beta	9/20/2005 11:15:27 AM	Hotfix 78 Divide by Zero Growth Charts	110	126	
+77	Production	9/20/2005 11:14:56 AM	Hotfix 77 Med Repair Utility	126	126	
+76	Production	9/20/2005 11:14:43 AM	Hotfix 76 Chart Alert Overflow	110	126	
+75	Production	9/20/2005 11:14:30 AM	Hotfix 75 Lab-Test Treatment Billing	126	126	
+74	Production	9/20/2005 11:14:14 AM	Hotfix 74 New Drugs	126	126	
+73	Production	7/21/2005 3:21:35 PM	Hotfix 73 Prescription Drug Modified Description	119	126	
+72	Production	9/20/2005 11:02:24 AM	Hotfix 72 Extraneous Todo Items	110	126	
+71	Production	7/29/2005 3:04:17 PM	Hotfix 71 Bill Flag Behavior	126	126	
+70	Production	7/15/2005 4:51:27 PM	Hotfix 70 Blank Encounters after Scanning (pre 126)	110	125	
+69	Production	7/26/2005 1:02:03 PM	Hotfix 69 Blank Encounters after Scanning	126	126	
+68	Beta	7/26/2005 1:00:56 PM	Hotfix 68 Maintenance Frequent Enhancements	111	126	
+67	Production	6/27/2005 12:23:02 PM	Hotfix 67 1st Charge Billing	126	126	
+66	Production	6/27/2005 12:24:21 PM	Hotfix 66 No Services Bar Fix	119	126	
+65	Production	6/24/2005 11:08:52 AM	Hotfix 65 Migration Enhancements	126	126	
+64	Production	6/2/2005 4:16:31 PM	Hotfix 64 Wait Service	121	126	
+63	Production	6/27/2005 12:25:10 PM	Hotfix 63 User Short List	112	126	
+62	Production	5/25/2005 4:22:44 PM	Hotfix 62 Checkout Tab Count	100	126	
+61	Beta	6/27/2005 12:25:21 PM	dbo.c_External_Observation_Result	126	126	
+61	Beta	6/27/2005 12:25:21 PM	Hotfix 61 Welch Allyn Vitals Monitor	126	126	
+60	Production	6/27/2005 12:25:58 PM	Hotfix 60 Modified Treatment Description	119	126	
+59	Production	6/27/2005 12:27:19 PM	Hotfix 59 Barton Schmidt	100	126	
+58	Production	5/11/2005 11:38:37 AM	Hotfix 58 Treatment Billing	100	126	
+57	Production	4/26/2005 1:21:36 PM	Hotfix 57 Cancel Treatment	120	126	
+56	Production	6/27/2005 12:27:40 PM	Hotfix 56 In Office Todo Items	123	126	
+55	Production	6/27/2005 12:27:49 PM	Hotfix 55 Workplan Performance	100	114	
+54	Production	4/26/2005 1:21:28 PM	Hotfix 54 Prescription Left Margin	120	126	
+53	Production	3/25/2005 2:54:47 PM	Hotfix 53 completed todo items performance	120	125	
+52	Production	3/25/2005 2:54:55 PM	Hotfix 52 jmjrpt_patient_referrals performance	120	125	
+51	Production	3/25/2005 2:55:02 PM	Hotfix 51 Patient Search Performance	118	125	
+50	Production	3/15/2005 2:44:20 PM	Hotfix 50 Observation Loop Detection	125	125	
+49	Production	3/25/2005 2:55:16 PM	Hotfix 49 Preserve Rediagnosis Location	110	125	
+48	Production	3/1/2005 3:01:02 PM	Hotfix 48 Error Upgrading Mod Level	120	123	
+47	Production	3/25/2005 2:55:23 PM	Hotfix 47 Mismatch Columns Error	125	125	
+46	Production	3/25/2005 3:00:12 PM	Hotfix 46 Last Weight Missing	109	125	
+45	Production	2/18/2005 7:04:27 PM	Hotfix 45 Progress Notes Display	120	125	
+44	Production	3/25/2005 3:00:30 PM	Hotfix 44 General Performance	123	123	
+43	Production	3/25/2005 3:12:56 PM	Hotfix 43 Fix User_ID Case	121	123	
+42	Production	1/24/2005 12:05:14 PM	Hotfix 42 Fix treatment_id Utility	110	123	
+41	Production	1/21/2005 1:48:45 PM	Hotfix 41 Service Error Handling	120	123	
+40	Production	3/25/2005 3:13:21 PM	Hotfix 40 Workplan Nesting Level Exceeded	121	123	
+39	Production	1/25/2005 1:46:42 PM	Hotfix 39 Repair Dup Results	120	122	
+38	Production	1/6/2005 2:29:13 PM	Hotfix 38 Workplan Performance Pre 120	100	119	
+37	Production	1/4/2005 12:33:25 PM	Hotfix 37 Removing Patient Context	110	125	
+36	Production	1/3/2005 5:11:46 PM	Hotfix 36 Attach Portraits	118	122	
+35	Production	1/3/2005 5:11:39 PM	Hotfix 35 RTF Print Footer	120	123	
+34	Production	1/3/2005 5:11:31 PM	Hotfix 34 Default Patient Attachment Path	100	122	
+33	Production	1/6/2005 9:35:04 AM	Hotfix 33 Deleting PFSH Items	120	123	
+32	Production	12/23/2004 9:13:55 AM	Hotfix 32 Workflow Performance	120	122	
+31	Production	12/23/2004 9:03:36 AM	Hotfix 31 Outstanding Treatments	122	123	
+31	Production	12/23/2004 9:03:36 AM	Hotfix 31 Outstanding Treatments	122	123	
+30	Production	3/25/2005 3:13:44 PM	Hotfix 30 Better Audit Trail	122	122	
+29	Production	1/25/2005 1:44:57 PM	Hotfix 29 Close Treatment Error	120	122	
+28	Production	3/25/2005 3:23:40 PM	Hotfix 28 Labs Reviewed	122	122	
+27	Production	12/8/2004 11:17:06 AM	Hotfix 27 dbo.sp_get_billable_provider	120	122	
+26	Production	3/25/2005 3:23:52 PM	Hotfix 26 Followup Specialty	120	122	
+25	Production	3/25/2005 3:24:01 PM	Hotfix 25 Folder Auto Selection	122	122	
+24	Production	11/15/2004 4:38:53 PM	Hotfix 24 Todo List Items	120	120	
+23	Production	11/15/2004 2:24:57 PM	Hotfix 23 Copy Treatment List	121	121	
+22	Production	3/25/2005 3:24:12 PM	Hotfix 22 Wait Service Function	120	121	
+22	Production	3/25/2005 3:24:12 PM	Hotfix 22 Wait Service Function	120	121	
+21	Production	3/25/2005 3:24:32 PM	Hotfix 21 New Services	121	121	
+20	Production	3/25/2005 3:34:32 PM	Hotfix 20 Workplan Nesting Level Exceeded	114	120	
+20	Production	3/25/2005 3:34:32 PM	Hotfix 20 Workplan Nesting Level Exceeded	114	120	
+19	Production	3/25/2005 3:34:48 PM	Hotfix 19 dbo.sp_remove_attachment	114	120	
+18	Production	3/25/2005 3:34:59 PM	Hotfix 18 dbo.sp_Order_Workplan	116	120	
+17	Cancelled			116		
+16	Production	1/25/2005 1:43:11 PM	HotFix_0016 sp_maintenance_frequent again	118	119	
+15	Production	10/25/2004 9:12:03 AM	HotFix_0015 Fix user_id case	114	120	
+9	Production	3/25/2005 3:35:49 PM	HotFix_0009 Workplan Auto Perform	114	119	
+9	Production	3/25/2005 3:35:49 PM	HotFix_0009 Workplan Auto Perform	114	119	
+6	Production	3/25/2005 3:36:10 PM	HotFix_0006 Null CIC Signature	110	119	
+1	Production	1/25/2005 1:42:46 PM	HotFix_0001	109	111	
+Success!

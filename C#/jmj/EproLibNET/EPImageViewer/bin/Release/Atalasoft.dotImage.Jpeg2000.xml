@@ -1,0 +1,955 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<doc>
+    <assembly>
+        <name>Atalasoft.dotImage.Jpeg2000</name>
+    </assembly>
+    <members>
+        <member name="N:Atalasoft.Imaging.Codec.Jpeg2000">
+            <summary>The namespace including all JPEG2000 codec classes, and JP2
+specific metadata.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ByteOrder">
+            <summary>Byte order for input/output of image data.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ByteOrder.MachineNative">
+            <summary>machine native order. default</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ByteOrder.EndianBig">
+            <summary>big endian</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ByteOrder.EndianLittle">
+            <summary>little endian</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2CacheOption">
+            <summary>Decompression internal read cache usage.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2CacheOption.NoInternalCache">
+            <summary>not use internal cache.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2CacheOption.UseInternalCache">
+            <summary>compressed data should be stored in internal cache.
+default.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2CoderOptions">
+            <summary>Coder option bit masks. Flagged.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2CoderOptions.AllPassTerminate">
+            <summary>only for decompression</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Colorspace">
+            <summary>External colorspaces - for input/output of image data</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2CompressionMode">
+            <summary>Two compression modes are supported: using compression rates
+(CompressionSize) and quality (only when the 9-7 filter is
+used)</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2CompressionMode.Size">
+            <summary>The maximum file size for lossy compression can be set. For
+rate 1:n, size = width * height * channels * bits_per_channel / 8 /
+n</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2CompressionMode.Quality">
+            <summary>Compression to a particular quality is possible only when
+using 9-7 filter. A compression quality may be specified between 1
+(low) and 100 (high). The size of reaulting Jpeg2000 file will
+depend of the image content.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2FileFormat">
+            <summary>Available JPEG2000 codestreams</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2FileFormat.Jpx">
+            <summary>JPEG2000 Part2 format file: *.jpf.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2FileFormat.Jp2">
+            <summary>JPEG2000 Part1 format file: *.jp2.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2FileFormat.Codestream">
+            <summary>JPEG2000 codestream: *.jpc, *.j2c, *.j2k.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2PacketMarkers">
+            <summary>Error recovery markers in bit stream. Flagged</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2PacketMarkers.Eph">
+            <summary>End of packet header</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2PacketMarkers.Sop">
+            <summary>Start of packet marker</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2PacketMarkers.None">
+            <summary>No packet markers</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Precision">
+            <summary>Wavelet Precision</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Precision.Force32Bit">
+            <summary>Force to use 32 bits.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Precision.Automatic">
+            <summary>Automatically use either 16 or 32 bit representation for
+wavelet coeff's. Default.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ProgressionOrder">
+            <summary>For a given tile, the packets contain data from a specific
+component, a specific resolution, and a specific precinct. The
+order in which these packets are interleaved is called the
+progression order. The interleaving of the packets can progress
+along four axes: layer (L), component (C), resolution (R) and
+precinct (P).</summary>
+            <remarks>The setting Lrcp is most useful when used with several
+layers. Pcrl should be used with precinct.</remarks>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ProgressionOrder.Cprl">
+            <summary>CPRL Color/channel progressive</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ProgressionOrder.Pcrl">
+            <summary>PCRL Position progressive</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ProgressionOrder.Rpcl">
+            <summary>RPCL Resolution then position progressive</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ProgressionOrder.Rlcp">
+            <summary>RLCP Resolution then quality progressive</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ProgressionOrder.Lrcp">
+            <summary>LRCP Quality progressive</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2QualityStyle">
+            <summary>Quality styles are used to set the quality mode to be used
+during lossy compression. The quality may be optimized for PSNR or
+for visual quality. The visual quality may be optimized for viewing
+from small, medium and large distance.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2QualityStyle.VisualXXLarge">
+            <summary>Quality optimized for large viewing distance, large images,
+zoomed out views.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2QualityStyle.VisualXLarge">
+            <summary>Quality optimized for large viewing distance, large images,
+zoomed out views.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2QualityStyle.VisualLarge">
+            <summary>Quality optimized for large viewing distance, large images,
+zoomed out views.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2QualityStyle.VisualMedium">
+            <summary>Quality optimized for medium viewing distance.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2QualityStyle.VisualSmall">
+            <summary>Quality optimized for small viewing distance, small images,
+zoomed in views, OCR.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2QualityStyle.VisualXSmall">
+            <summary>Quality optimized for small viewing distance, small images,
+zoomed in views, OCR.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2QualityStyle.VisualXXSmall">
+            <summary>Quality optimized for small viewing distance, small images,
+zoomed in views, OCR.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2QualityStyle.Psnr">
+            <summary>Quality optimized for Psnr.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2QuantizationStyle">
+            <summary>The quantization steps can either be derived from a base
+quantization step, Derived, or calculated for each image
+sub-band, Expounded.</summary>
+            <remarks>Expounded style is recommended when using the
+irreversible filter.</remarks>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2QuantizationStyle.Expounded">
+            <summary>calculated for each image sub-band</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2QuantizationStyle.Derived">
+            <summary>derived from a bases quantization step</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ResolutionTypes.Capture">
+            <summary>For scan resolution</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2SpeedMode">
+            <summary>Values for setting the encoding speed.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2SpeedMode.Accurate">
+            <summary>Encoding speed mode.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2SpeedMode.Fast">
+            <summary>Encoding speed mode. Fast but lower quality. Default.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2WaveletFilter">
+            <summary>Wavelet filtering method.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2WaveletFilter.NineSeven">
+            <summary>Irreversible filter</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jpeg2000.Jp2WaveletFilter.FiveThree">
+            <summary>Reversible filter</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.JpxStandardFeatures">
+            <summary>Standard Reader Requirement Features</summary>
+            <remarks>The Jpx file format contains a box, the Reader Requirements
+box, specifying the features contained within the file. Many of
+these features, including the colorspace and existence of IP data,
+are set automatically by the library during compression. The
+following additional features are not automatically detected by the
+library and the JP2CompressSetFeature function may be called to add
+these features to the Reader Requirement box of a Jpx format file.
+The function JP2_Decompress_ContainsFeature can be used to check */
+whether one of these features is found in a file. Details of
+additional */ features, including the colorspace and existence of
+IP data, can be */ obtained using Get Property from
+Jp2Decoder</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2CieLabParams">
+            <summary>Extended parameters for the CIE L*a*b* color specification
+boxes</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2CieLabParams._ctor">
+            <summary>Constructor</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Decoder">
+            <summary>The class derives from
+
+ImageDecoder and decodes JPEG2000 images.</summary>
+            <remarks>To add the ability to decode JP2 images, simply add an
+instance of the Jp2Decoder to the
+Decoders
+collection in the
+
+RegisteredDecoders class. See the below example.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Decoder._ctor">
+            <summary>Creates a new instance of a Jp2Decoder.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Decoder.GetImageInfo(System.IO.Stream)">
+            <summary>Returns information about a JPEG2000 image such as width,
+height, and bit depth.</summary>
+            <returns>Jp2ImageInfo (derived class from ImageInfo)</returns>
+            <remarks>The returned ImageInfo must be cast to a
+
+Jp2ImageInfo to access
+
+FileFormat and
+
+IpData properties.</remarks>
+            <param name="stream">JPEG2000 stream</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Decoder.IsValidFormat(System.IO.Stream)">
+            <summary>Returns true if the specified Stream is a
+JPEG2000 image.</summary>
+            <returns>Returns true if the image is detected to be
+JPEG2000, otherwise returns false.</returns>
+            <param name="stream">The input stream.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Decoder.Read(System.IO.Stream,Atalasoft.Imaging.ProgressEventHandler)">
+            <summary>Decodes a JPEG2000 image from a stream and returns an
+AtalaImage with the decoded image data.</summary>
+            <returns>Returns an AtalaImage containing the decoded
+JPEG2000 image.</returns>
+            <param name="stream">The stream to read.</param>
+            <param name="progress">A progress Delegate. Pass in null
+(Nothing in VB) to ignore progress events.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Decoder.ByteOrder">
+            <summary>Gets or sets the byte order of the decoded data from one of
+little endian, big endian, or machine automatic.</summary>
+            <remarks>Default value is Jp2ByteOrder.MachineNative.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Decoder.CacheOption">
+            <summary>Gets or sets a value specifying whether the compress data
+should be stored in an internal cache.</summary>
+            <remarks>    The default value is
+    Jp2CacheOption.UseInternalCache.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Decoder.EnableProgressiveDecompression">
+            <summary>Gets or sets a value enabling the ability to progressively
+decode the image.</summary>
+            <remarks>The default value is false. This setting when true
+causes the Decoder to raise the
+
+ProgressiveImage event. That event can be handled to display
+the image at intervals defined in the
+
+ProgressiveDecodeSteps property. Enabling progressive decoding
+does reduce performance, and is best suited for very large images,
+or streaming images over a network stream.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Decoder.Precision">
+            <summary>Gets or sets a value indicating the precision of the wavelet
+coefficients.</summary>
+            <remarks>Default value is Jp2Precision.Automatic. For
+improved efficiency, the library automatically, depending on the
+image depth, uses either 16 or 32 bit representation for wavelet
+coefficients. The use of 32 bit values may slightly improve image
+quality and the expense of speed and memory requirements.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Decoder.ProgressiveDecodeSteps">
+            <summary>Gets or sets the number of progressive decompression
+steps.</summary>
+            <remarks>    The default value is 16. Depending on
+    
+    ProgressionOrder in the
+    
+    EncoderOptions property of the encoded source image,
+    progressive output images will update either linearly (for
+    PCRL, CPRL) or exponentially (otherwise).
+    ProgressiveDecodeSteps must be greater than 0. Be aware that
+    the number of useful steps is related to the image dimensions
+    and component size. Large numbers of steps add little benefit
+    to smaller images.
+    See
+    
+    EnableProgressiveDecompression for enabling progressive
+    reading.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Decoder.ScaleDown">
+            <summary>Gets or sets a factor that is used to scale downwards the
+image as it's decoded.</summary>
+            <remarks>The default value is 1. Values must be a power of
+two. For example, a value of 2 will reduce the image data by 1/2. A
+value of 8 reduces by 1/8. Valid values are 1, 2, 4, 8, 16, 32,
+etc...</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Decoder.ProgressiveImage">
+            <summary>Fired for each intermediate step when decoding an image
+progressively.</summary>
+            <remarks>See
+
+EnableProgressiveDecompression to enable progressive
+reading.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder">
+            <summary>The class derived from
+
+ImageEncoder that encodes JPEG2000 images.</summary>
+            <remarks>    To encode JPEG2000 images, invoke the
+    
+    Save method of the Jp2Encoder or create an instance of a
+    Jp2Encoder, and pass it into one of the save
+    methods in an
+    AtalaImage,
+    Workspace,
+    or
+    
+    WorkspaceViewer object.
+    To specify compression, set the
+    
+    Compression property to a value between 0.0 and
+    100.0.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder._ctor">
+            <summary>Creates a new instance of a
+Jp2Encoder.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder._ctor">
+            <summary>Creates a new instance of a
+Jp2Encoder.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder._ctor(System.Double)">
+            <summary>Creates a new instance of a Jp2Encoder
+specifying the compression rate.</summary>
+            <param name="compression">Compression rates ranging 0 (maximum compression) to 100
+(lossless). Do not use 0 for maximum compression.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.GetEncoderOptions(System.Int32,System.Int32)">
+            <summary>Returns the encoder options for a specific tile and
+component.</summary>
+            <returns>The</returns>
+            <remarks>Override this method to set encoder options for a specific
+tile and component. This method by default will use the
+
+EncoderOptions as specified in this Jp2Encoder
+class. Normally, this method does not need to be overriden.</remarks>
+            <param name="tileLocation">index of tile counting from left-top</param>
+            <param name="channel">index of color component</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.Save(System.IO.Stream,Atalasoft.Imaging.AtalaImage,Atalasoft.Imaging.ProgressEventHandler)">
+            <summary>Encodes an AtalaImage into the specified
+stream as a JPEG2000 image.</summary>
+            <remarks>This method is invoked when using save methods in an
+AtalaImage,
+Workspace,
+or
+
+WorkspaceViewer object. In the professional edition, an ICC
+color profile is stored with the image if the
+ColorProfile object of the
+AtalaImage object is set.</remarks>
+            <param name="stream">The stream to encode to.</param>
+            <param name="image">The image to encode.</param>
+            <param name="progress">A progress Delegate. Pass in null
+(Nothing in VB) to ignore progress events</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.Compression">
+            <summary>Gets or sets the compressed size of the image as a percentage
+of an uncompressed image.</summary>
+            <remarks>    This property sets the maximum file size for lossy
+    compression. In general the final size will be exactly the
+    requested size or a few bytes lower. Compression may also be
+    set to a percentage of quality (greater than 0 and less than or
+    equal to 100). If Compression is set to 99, the image will be
+    visually lossless. If the Compression is set to 100, the image
+    will be numerically lossless.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.EncoderOptions">
+            <summary>Gets or sets encoder specific options that will be used by
+default for the entire image.</summary>
+            <remarks>If the
+
+GetEncoderOptions is not overridden to supply specific encoder
+options for tiles or components, then this property will be used
+for encoder options for the entire encoded image.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.EnhancedRegions">
+            <summary>Gets a collection of Enhanced Regions that can be set at a
+higher quality level than the rest of the image during
+compression.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.FileFormat">
+            <summary>Gets or sets the file format to generate (JP2, JPEG2000
+codestream, or JPX).</summary>
+            <remarks>    Default is Jp2. The JP2 and JPX format allow additional
+    information, including resolution and meta-data, to be saved.
+    The use of plain codestream is not recommended. The JPX file
+    format is required to store CMYK and CIE Lab images as well as
+    using unrestricted ICC profile.
+    The codestream format requires the professional
+    edition.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.IPData">
+            <summary>Gets or sets intellectual property rights data to be encoded
+with the image.The IP Data string.</summary>
+            <remarks>Note that the IP data is not checked or parsed by the
+library. See ISO/IEC CD15444-1, Information technology -
+JPEG2000 image coding system, for more information.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.IptcTags">
+            <summary>Gets or sets IPTC data that will be stored in the encoded
+image.A collection of IptcTags.</summary>
+            <remarks>IptcCollection is a collection of
+IptcTags defined in the
+Atalasoft.Imaging.MetaData namespace. Further details of
+the IPTC format may be found at
+www.iptc.org. IPTC data is stored
+in a UUID data block with a reserved IPTC UUID.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.Precision">
+            <summary>Gets or sets a value indicating the precision of the wavelet
+coefficients.</summary>
+            <remarks>Default value is Jp2Precision.Automatic. For
+improved efficiency, the library automatically, depending on the
+image depth, uses either 16 or 32 bit representation for wavelet
+coefficients. The use of 32 bit values may slightly improve image
+quality and the expense of speed and memory requirements.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.QualityStyle">
+            <summary>Gets or sets a value indicating the quality mode during lossy
+compression.</summary>
+            <remarks>Default value is PSNR. For normal images (1:1 pixel
+display, up to 20 inches viewing distance) VisualSmall or
+PSNR is recommended. For technical and medical images,
+PSNR is recommended.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.ResolutionParams">
+            <summary>Set property for storing information of resolution. Refer to
+definition of Jp2ResolutionParams.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.SpeedMode">
+            <summary>Gets or sets the speed mode (Fast or Accurate) to use during
+lossy compression.</summary>
+            <remarks>Default value is Fast. Fast provides high
+speed compression but may create images with a lower quality.
+Accurate produces optimal quality but slower speed.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.TileSize">
+            <summary>Gets or sets the size in pixels of each individual
+tile.</summary>
+            <remarks>    An image can be split into smaller tiles, with each tile
+    independently compressed. The basic tile size can be set using
+    this property. Depending on the tile size specified by this
+    property, tiling will be performed automatically inside
+    library.
+    To encode the image with just one tile, specify (0, 0) or
+    Size.Empty for TileSize.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.UuidBoxes">
+            <summary>Gets or sets UuidBox metadata to be stored in the encoded
+image.A collection of UuidBox objects.</summary>
+            <remarks>This property holds UUIDs with associated data in a JPEG2000
+format file. See ISO/IEC CD15444-1, Information technology -
+JPEG2000 image coding system, for more information.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.UuidInfoBoxes">
+            <summary>Gets or sets UuidInfoBox metadata to be stored in the encoded
+image.A collection of UuidInfoBox objects.</summary>
+            <remarks>This property associates a URL with a list of UUIDs. The URL
+points to information describing the usage and format of the listed
+UUIDs. See ISO/IEC CD15444-1, Information technology - JPEG2000
+image coding system, for more information.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.WriteTileLengthMarker">
+            <summary>Gets or sets a value indicating if a tile length marker is
+written to the encoded image.</summary>
+            <remarks>Default value is false. The efficiency of decoding
+regions in a tiled image may be improved by the usage of tile
+length markers. Tile length markers contain the position of each
+tile in the JPEG2000 code stream, enabling faster access to tiled
+image.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2Encoder.XmlBoxes">
+            <summary>Gets or sets XML metadata to be stored with the image.</summary>
+            <remarks>In Jp2 format file, note that the XML data is not checked for
+XML compliance or parsed by the library. Adobe XMP data can be
+stored in this box. See ISO/IEC CD15444-1, Information
+technology - JPEG2000 image coding system, for more
+information.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EncoderOptions">
+            <summary>This class specifies encoder options that can be applied to
+the entire image, a specific tile, or a specific component.</summary>
+            <remarks>    See the
+    
+    EncoderOptions property in the
+    
+    Jp2Encoder to set these options for the entire encoded
+    image. To specify different options for different tiles or
+    components, override the
+    
+    GetEncoderOptions method in the Jp2Encoder
+    class.
+    QualityLayer, ProgressionOrder, and
+    PacketMarkers are the options which can be set for
+    each tile. WaveletFilterMethod,
+    WaveletLevels, QuantizationStyle,
+    codeBlockSize, and coderOptions are the
+    options which can be set for each component in a given
+    tile.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EncoderOptions._ctor">
+            <summary>Creates a new instance of
+Jp2EncoderOptions.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EncoderOptions.CodeBlockSize">
+            <summary>Gets or sets the size of the blocks of coded data.</summary>
+            <remarks>    The default value is 64 x 64. Smaller code blocks can aid
+    the decoding of regions of an image and error resilience. A
+    code block may contain no more than 4096 samples, i.e.
+    Size.Width × Size.Height &lt;= 4096.
+    The code block can be set independently for each
+    component in each tile.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EncoderOptions.CoderOptions">
+            <summary>Gets or sets the coder options for faster compression /
+decompression.</summary>
+            <remarks>    The default value is
+    Jp2CoderOptions.Predictable. These options may be
+    combined to create error resilient JPEG2000 streams or for
+    special codec (e.g. hardware coder) for a faster compression /
+    decompression. These options will increase the file size
+    slightly when generating a code stream with the same image
+    quality. We recommend usage of
+    Jp2CoderOptions.Predictable if fault tolerance is
+    important.
+    The coder options can be set independently for each
+    component in each tile.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EncoderOptions.PacketMarkers">
+            <summary>Gets or sets a value that creates special markers at the
+beginning and/or at the end of each block of a coded area.</summary>
+            <remarks>    Default value is Jp2PacketMarkers.Sop |
+    Jp2PacketMarkers.Eph. These markers improve error
+    resilience and improve the speed of decoding a region of an
+    image.
+    Packet markets can be set independently for each
+    component in each tile.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EncoderOptions.ProgressionOrder">
+            <summary>Gets or sets the organization of the coded data.</summary>
+            <remarks>    Default value is LRCP. The setting LRCP
+    (quality) is most useful when used with several layers.
+    PCRL (position) should be used with precincts.
+    This value can be independently set for each tile.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EncoderOptions.QualityLayers">
+            <summary>Gets or sets the number of quality layers in the code stream
+for use with progressive decoding.</summary>
+            <remarks>    Supports from 1 to 31 quality layers. A higher number of
+    quality layers results in a finer progressive quality
+    improvement. The number of layers can be set for each
+    individual tile.
+    This value can be independently set for each tile.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EncoderOptions.QuantizationStyle">
+            <summary>Gets or sets the quantization steps.</summary>
+            <remarks>    The default value is
+    Jp2QuantizationStyle.Expound. Note that this property
+    may only be set when the irreversible filter
+    (Jp2WaveletFilter.WaveletNineSeven) is used. The
+    quantization steps can either be derived from a bases
+    quantization step (Jp2QuantizationStyle.Derived) or
+    calculated for each image sub-band
+    (Jp2QuantizationStyle.Expound). Expound style is
+    recommended.
+    Quantization style can be independently set for each
+    component in each tile.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EncoderOptions.WaveletFilterMethod">
+            <summary>Gets or sets a value selecting reversible
+(WaveletFiveThree) or irreversible
+(WaveletNineFive) wavelet filters.</summary>
+            <remarks>    Default value is WaveletFiveThree.
+    The wavelet filter can be set independently for each
+    component in each tile.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EncoderOptions.WaveletLevels">
+            <summary>Gets or sets the number of wavelet transformation
+levels.</summary>
+            <remarks>    Default value is 5. Valid values are in the range 0 (no
+    wavelet analysis) to 16. The memory requirements and
+    compression time increase with the number of transformation
+    levels. A reasonable number of transformation levels are in the
+    range of 4 to 6.
+    Wavelet levels can be set independently for each
+    component in each tile.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegion">
+            <summary>Region of interest in the JPEG2000 standard</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegion._ctor">
+            <summary>Create an instance of R.O.I.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegion.Rectangle">
+            <summary>ROI shall be compressed in a higher quality than the rest of
+image.</summary>
+            <remarks>Maximum of 16 ROI may be defined.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegionCollection">
+            <summary>Regions of interest which shall be compressed at a different
+quality than the rest of the image. Summary description for
+Jp2RoiCollection.</summary>
+            <remarks>This property sets a collection of Jp2RegionOfInterest
+objects which shall be compressed at a different quality than the
+rest of image. A maximum of 16 regions of interest may be defined.
+A detailed discussion of Jp2RegionOfInterest class is described in
+A.1.3.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegionCollection._ctor">
+            <summary>Create instance</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegionCollection.Add(Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegion)">
+            <summary>Adds a Jp2EnhanceRegion to the
+collection.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegionCollection.CopyTo(Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegion[],System.Int32)">
+            <summary>Copies the collection into an array.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegionCollection.IndexOf(Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegion)">
+            <summary>Returns the index in the collection that contains the given
+Jp2EnhanceRegion.</summary>
+            <returns>Returns -1 if the object doesn't exist in the
+collection.</returns>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegionCollection.Remove(Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegion)">
+            <summary>Remove the given Jp2EnhanceRegion from the
+collection.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegionCollection.EnhancementLevel">
+            <summary>Gets or sets the a value controlling the level of enhanced
+quality for the enhanced regions.</summary>
+            <remarks>The enhancement factor must be an integer between 0 and 10,
+where 0 implies no quality enhancement and 10 implies maximal
+quality enhancement. The quality enhancement factor applies to all
+regions of interest. If this property is not set then the maximum
+quality enhancement will be used by default.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2EnhancedRegionCollection.Item(System.Int32)">
+            <summary>Returns the Jp2EnhancedRegion from the
+collection at the specified index. Enumerable.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ImageInfo">
+            <summary>This class derives from ImageInfo, and
+contains information about the JPEG2000 image such as width,
+height, and colordepth.</summary>
+            <remarks>To obtain information specific to JPEG2000 such as FileType
+and , the returned ImageInfo class must be cast to
+a
+
+Jp2ImageInfo object.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ImageInfo._ctor(Atalasoft.Imaging.Codec.ImageInfo,System.String,Atalasoft.Imaging.Codec.Jpeg2000.Jp2FileFormat)">
+            <summary>Creates a new instance of Jp2ImageInfo.</summary>
+            <param name="imageInfo">The base ImageInfo class to apply properties from.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ImageInfo.FileFormat">
+            <summary>Gets the JPEG2000 codestream of the source image data.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ImageInfo.IPData">
+            <summary>Gets the Intellectual Property Rights Information (IPData)
+stored in the source data stream.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2IptcParser">
+            <summary>This class parses IPTC data from an image stream, adds
+JPEG2000 to the supported image formats for IPTC parsing.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2IptcParser._ctor">
+            <summary>Creates a new instance of Jp2IptcParser.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.Jp2IptcParser.ParseFromImage">
+            <summary>Returns a collection of IPTC data from the specified image
+stream.The image stream</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2License">
+            <summary>Class that allows assembly tied embedded component
+licensing.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.Jp2License.AssemblyLicense">
+            <summary>Gets or sets the assembly tied license to unlock this
+component for special licensing.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ProgressReadParams">
+            <summary>Summary description for Jp2ProgressReadParams.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.Jp2ResolutionParams">
+            <summary>Resolution structure for DPI information. Note that
+resolution information may only be stored in Jp2 file format
+images. Plain codestream format images can not store resolution
+information. The image resolution is calculated by: [DPM] = ( xNum
+/ xDenom ) * 10 ^ xExp</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.ProgressiveImageEventArgs">
+            <summary>This class contains information when a
+
+ProgressiveImage event is fired.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.ProgressiveImageEventArgs._ctor">
+            <summary>Creates a new instance of
+ProgressiveImageEventArgs.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.ProgressiveImageEventArgs._ctor">
+            <summary>Creates a new instance of
+ProgressiveImageEventArgs.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.ProgressiveImageEventArgs._ctor(Atalasoft.Imaging.AtalaImage)">
+            <summary>Creates a new instance of
+ProgressiveImageEventArgs.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.ProgressiveImageEventArgs.BytesRead">
+            <summary>The number of bytes read from the source stream</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.ProgressiveImageEventArgs.Cancel">
+            <summary>Gets or sets a value indicating if the decoding should be
+cancelled.</summary>
+            <remarks>This value should be set to true in the event
+handler to stop loading the image.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.ProgressiveImageEventArgs.CurrentStep">
+            <summary>Gets or sets the current step of progressive
+decompression.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.UuidBox">
+            <summary>A UUID box contains vendor specific data other than that data
+defined within International Standard. There may be multiple UUID
+boxes within the file</summary>
+            <remarks>    The existence of any UUID boxes is optional for conforming
+    files. Also, any UUID box shall not contain any information
+    necessary for decoding the image to the extent that is defined
+    within International Standard, and the interpretation of the
+    data in any UUID box shall not change the visual appearance of
+    the image. All readers may ignore any UUID box. 
+    
+----------------------------------Field Name   Size (bits)   Value----------------------------------UUID          128          variesDATA          varies       varies----------------------------------
+    
+    See ISO/IEC CD15444-1, Information technology -
+    JPEG2000 image coding system, for more information.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidBox._ctor">
+            <summary>Creates a new instance of UuidBox.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidBox._ctor">
+            <summary>Creates a new instance of UuidBox.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidBox._ctor(Atalasoft.Imaging.AtalaInt128,System.Byte[])">
+            <summary>Creates a new instance of UuidBox.</summary>
+            <param name="uuid">128 bit uuid</param>
+            <param name="data">uuid data</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.UuidBox.Data">
+            <summary>Gets or sets vendor specific data.</summary>
+            <remarks>The format of this data is indicated by the value of the UUID
+field.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.UuidBox.Uuid">
+            <summary>Gets or sets the UUID value associated with this UUID
+Box.</summary>
+            <remarks>This field contains 1 16-byte UUID as specified by ISO/IEC
+11578:1996. The value of this UUID specifies the format of the
+vendor specific data stored in the DATA field and the
+interpretation of that data.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.UuidBoxCollection">
+            <summary>This class contains a collection of UuidBox
+objects.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidBoxCollection._ctor">
+            <summary>Constructor</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidBoxCollection.Add(Atalasoft.Imaging.Codec.Jpeg2000.UuidBox)">
+            <summary>Adds 'source' to the end of the CollectionBase.</summary>
+            <param name="source">given object of UuidBox</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidBoxCollection.Contains(Atalasoft.Imaging.Codec.Jpeg2000.UuidBox)">
+            <summary>Determines whether the CollectionBase contains
+'source'.</summary>
+            <returns>boolean</returns>
+            <param name="source">given object of UuidBox</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidBoxCollection.CopyTo(Atalasoft.Imaging.Codec.Jpeg2000.UuidBox[],System.Int32)">
+            <summary>Copies the entire CollectionBase to 'dest', starting at
+'index' of the target array.</summary>
+            <param name="dest">target array of UuidBox</param>
+            <param name="index">index of target array</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidBoxCollection.IndexOf(Atalasoft.Imaging.Codec.Jpeg2000.UuidBox)">
+            <summary>Searches for 'source' and returns the zero-based index of the
+first occurrence within the entire CollectionBase.</summary>
+            <returns>the zero-based index of the first occurrence</returns>
+            <param name="source">given object of UuidBox</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidBoxCollection.Insert(System.Int32,Atalasoft.Imaging.Codec.Jpeg2000.UuidBox)">
+            <summary>Inserts 'source' into the CollectionBase at 'index'.</summary>
+            <param name="index">specified index</param>
+            <param name="source">given object of UuidBox</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidBoxCollection.Remove(Atalasoft.Imaging.Codec.Jpeg2000.UuidBox)">
+            <summary>Removes the first occurrence of 'source' from the
+CollectionBase.</summary>
+            <param name="source">given object of UuidBox</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.UuidBoxCollection.Item(System.Int32)">
+            <summary>Indexer</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.UuidBoxParser">
+            <summary>This class parses UUID information from JPEG2000
+images.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidBoxParser._ctor">
+            <summary>Creates an instance of a UuidBoxParser.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidBoxParser.ParseFromImage(System.IO.Stream)">
+            <summary>Returns metadata containing UUID Box information within a JP2
+image stream.</summary>
+            <returns>Collection of UUID boxes</returns>
+            <param name="stream">Jp2 stream</param>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBox">
+            <summary>This class contains a UUID Info Box, as defined in the
+JPEG2000 specification.</summary>
+            <remarks>See ISO/IEC CD15444-1, Information technology - JPEG2000
+image coding system, for more information.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBox._ctor">
+            <summary>Creates a new instance of a
+UuidInfoBox.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBox._ctor">
+            <summary>Creates a new instance of a
+UuidInfoBox.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBox.ListBox">
+            <summary>Gets a collection of UUID's.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBox.UrlBox">
+            <summary>Gets a UrlBox, associated with the UUID List.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBoxCollection">
+            <summary>This class holds a collection of
+
+UuidInfoBox objects</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBoxCollection._ctor">
+            <summary>Creates a new instance of
+UuidInfoBoxCollection.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBoxCollection.Add(Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBox)">
+            <summary>Adds 'source' to the end of the CollectionBase.</summary>
+            <param name="source">given object of UuidInfoBox</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBoxCollection.Contains(Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBox)">
+            <summary>Determines whether the CollectionBase contains
+'source'.</summary>
+            <returns>boolean</returns>
+            <param name="source">given object of UuidInfoBox</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBoxCollection.CopyTo(Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBox[],System.Int32)">
+            <summary>Copies the entire CollectionBase to 'dest', starting at
+'index' of the target array.</summary>
+            <param name="dest">target array of UuidInfoBox</param>
+            <param name="index">index of target array</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBoxCollection.IndexOf(Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBox)">
+            <summary>Searches for 'source' and returns the zero-based index of the
+first occurrence within the entire CollectionBase.</summary>
+            <returns>the zero-based index of the first occurrence</returns>
+            <param name="source">given object of UuidInfoBox</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBoxCollection.Insert(System.Int32,Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBox)">
+            <summary>Inserts 'source' into the CollectionBase at 'index'.</summary>
+            <param name="index">specified index</param>
+            <param name="source">given object of UuidInfoBox</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBoxCollection.Remove(Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBox)">
+            <summary>Removes the first occurrence of 'source' from the
+CollectionBase.</summary>
+            <param name="source">given object of UuidInfoBox</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBoxCollection.Item(System.Int32)">
+            <summary>Indexer</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBoxParser">
+            <summary>This class will parse a JPEG2000 image stream for
+UuidInfoBoxes</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBoxParser._ctor">
+            <summary>Creates a new instance of
+UuidInfoBoxParser.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidInfoBoxParser.ParseFromImage(System.IO.Stream)">
+            <summary>Get meta-data containing UUID Info Box information within JP2
+file format. !</summary>
+            <returns>Collection of UUID Info boxes</returns>
+            <param name="stream">Jp2 stream</param>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jpeg2000.UuidUrlBox">
+            <summary>This class contains URL UUID information.</summary>
+            <remarks>See ISO/IEC CD15444-1, Information technology - JPEG2000
+image coding system, for more information.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidUrlBox._ctor">
+            <summary>Creates an instance of UuidUrlBox.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidUrlBox._ctor">
+            <summary>Creates an instance of UuidUrlBox.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jpeg2000.UuidUrlBox._ctor(System.String)">
+            <summary>Creates an instance of UuidUrlBox specifying
+a Url.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.UuidUrlBox.Flag">
+            <summary>ReadOnly. This field is reserved for other use.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.UuidUrlBox.Url">
+            <summary>Gets or sets the URL of additional information associated
+with the UUID's.</summary>
+            <remarks>This field specifies the URL of the additional information
+associated with the UUID's contained in the UUID List Box within
+the same UUID Info Box.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jpeg2000.UuidUrlBox.Vers">
+            <summary>ReadOnly property. Version number of the format of this
+box.</summary>
+        </member>
+        <member name="M:__Delegates.ProgressiveImageEventHandler(System.Object,Atalasoft.Imaging.Codec.Jpeg2000.ProgressiveImageEventArgs)">
+            <summary>Delegate that handles Progressive Reading.</summary>
+        </member>
+    </members>
+</doc>
+

@@ -1,0 +1,9 @@
+SCC = This is a Source Code Control file
+
+[SecurityManager.csproj]
+SCC_Aux_Path = "\\Techserv\Devel\VSS"
+SCC_Project_Name = "$/EproLibBase.root/SecurityManager/SecurityManager.root/SecurityManager", CTEBAAAA
+
+[SecurityManager.sln]
+SCC_Aux_Path = "\\Techserv\Devel\VSS"
+SCC_Project_Name = "$/EproLibBase.root/SecurityManager/SecurityManager.root/SecurityManager", CTEBAAAA

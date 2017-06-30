@@ -1,0 +1,114 @@
+CongLeadID	CapitolAddress	HomeCityStateZip	CapitolPhone	CapitolFax
+CongLeadID	DistrictAddress	DistrictCityStateZip	DistrictPhone	DistrictFax
+1904	321 State Capitol  	Atlanta GA 30334	(404) 656-5109	(404) 657-9727
+1904	 22 Marsh Point Drive	Savannah, GA 31406	(912) 354-4626
+1905	313 - A Legislative Office Building  	Atlanta GA 30334	(404) 463-7784	(404) 656-6579
+1905	 1406 E. 35th Street Savannah, GA 31404-2918	(912) 231-0600
+1906	121 - I State Capitol  	Atlanta GA 30334	(404) 656-0070	(404) 657-1806
+1906	 P.O. Box 497 Hinesville, GA 31310	(912) 876-5125
+1907	234 State Capitol  	Atlanta GA 30334	(404) 656-5038	(404) 657-7094
+1907	 P. O. Box 486 Reidsville, GA 30453	(912) 557-3811
+1908	314 - B Legislative Office Building  	Atlanta GA 30334	(404) 463-1378	(404) 463-1385
+1908	6381 East Windsor Lane	Norcross, GA 30093	(770) 938-9667
+1909	319 - B Legislative Office Building  	Atlanta GA 30334	(404) 656- 511	 (404) 657-079
+1909	2451 Cumberland Parkway Suite 3501	Atlanta, GA 30339	(770) 438-2368
+1910	121 - J State Capitol  	Atlanta GA 30334	(404) 656-0053	(404) 657-1806
+1910	 P.O. Box 335 Homerville, GA 31634	(912) 487-2280
+1911	321 - A Legislative Office Building  	Atlanta GA 30334	(404) 656-0082	(404) 657-3248
+1911	 110 Beacon Hill Valdosta, GA 31602	Fax (229) 241-
+1912	453 State Capitol  	Atlanta GA 30334	(404) 656-0095	(404) 656-6581
+1912	 2312 Waterscape Trail	Snellville, GA 30078	(404) 656-0095
+1913	121 - G State Capitol  	Atlanta GA 30334	(404) 656-0078	(404) 651-6767
+1913	 4153 Flatshoals Parkway Suite 102	Decatur, GA 30034	(404) 241-7712
+1914	320 - A Legislative Office Builiding  	Atlanta GA 30334	(404) 463-8056	(404) 463-1386
+1914	 3554 Bulloch Rd. Ochlocknee, GA 31773	(229) 683-3420
+1915	121 B State Capitol  	Atlanta GA 30334	(404) 656-0037	(404) 657-9887
+1915	 P.O. Box 72065 Albany, GA 31700-2065	(229) 439-7504
+1916	121 - A State Capitol  	Atlanta GA 30334	(404) 656-7580	(404) 651-6767
+1916	 P.O. Box 1238 Cordele, GA 31010	(229) 273-4531
+1917	421 - D State Capitol  	Atlanta GA 30334	(404) 656-0065	(404) 651-6768
+1917	 P.O. Box 928 Americus, GA 31709	(229) 924-2924
+1918	420 - B State Capitol  	Atlanta GA 30334	(404) 656-0074	(404) 657-9728
+1918	 P. O. Box 1292 Columbus, GA 31902	(706) 687-3899
+1919	303 - B Legislative Office Building  	Atlanta GA 30334	(404) 463-3931	(404) 463-4513
+1919	 P. O. Box 363	Midland, GA 31820	(706) 323-2761
+1920	303 - A  Legislative Office Building  	Atlanta GA 30334	(404) 656-0071	(404) 656-6484
+1920		Conyers, GA 	(770) 914-4000
+1921	320 - B Legislative Office Building  	Atlanta GA 30334	(404) 463-8056	(404) 463-1386
+1921	 P.O. Box 1356 Perry, GA 31069	(478) 988-1206
+1922	327 - A Legislative Office Building  	Atlanta GA 30334	(404) 656-0089	(912) 526-8730
+1922	148 Williams Avenue	Lyons, GA 30436	(912) 526-7444
+1923	420 - A    State Capitol  	Atlanta GA 30334	(404) 656-5080	(404) 657-9728
+1923	 302 Louisiana Avenue, W.	Soperton, GA 30457	(912) 529-3212
+1924	121 - E State Capitol  	Atlanta GA 30334	(404) 656-5085	(404) 651-6767
+1924	 4667 Jefferson Township Place	Marietta, GA 30066	(770) 552-4240
+1925	304 - A Legislative Office Building  	Atlanta GA 30334	(404) 463-1363	(404) 463-1381
+1925	 P.O. Box 912 Augusta, GA 30909	(706) 722-7062
+1926	121 - D State Capitol  	Atlanta GA 30334	(404) 656-0045	(404) 651-6767
+1926	 716 Westminster Court	Augusta, GA 30909	(706) 736-1397
+1927	319 - A Legislative Office Building  	Atlanta GA 30334	(404) 657-0406	(404) 657-0797
+1927	476 B-1 Flowing Wells Road	Martinez, GA 30907	(706) 860-3952
+1928	421 - E State Capitol  	Atlanta GA 30334	(404) 656-0044	(404) 651-6768
+1928	 321 North Wayne Milledgeville, GA 31061	(478) 445-1385
+1929	421 - A State Capitol  	Atlanta GA 30334	(404) 656-5035	(404) 651-6768
+1929	 P.O. Box 5742 Macon, GA 31208	(478) 750-0220
+1930	302 - A Legislative Office Building  	Atlanta GA 30334	(404) 463-8055	(404) 657-3217
+1930	 3977 Meriweather Woods	Alpharetta, GA 30022	
+1931	302 - B Legislative Office Building  	Atlanta GA 30334	(404) 656-6446	(404) 657-3217
+1931	 P.O. Box 504 Sharpsburg, GA 30277	(770) 502-7990
+1932	109  State Capitol  	Atlanta GA 30334	(404) 651-7738	(404) 651-5795
+1932	307 Church Street	LaGrange, GA 30240	(706) 812-1224
+1933	324 - B Legislative Office Building  	Atlanta GA 30334	(404) 656-0036	(404) 657-0459
+1933	301 Bradley Street Carrollton, GA 30117	(770) 214-8210
+1934	421 - F State Capitol  	Atlanta GA 30334	(404) 656-5121	(404) 651-6768
+1934	 P.O. Box 606 Rockmart, GA 30153	(770) 684-7851
+1935	121 - C State Capitol  	Atlanta GA 30334	(404) 656-0150	(404) 651-6767
+1935	166 Anderson Street	Marietta, GA 30060	(770) 424-1500
+1936	121 - F State Capitol  	Atlanta GA 30334	(404) 656-0083	(404) 651-6767
+1936	 5264 Seamus Way Powder Springs, GA 30127	(770) 427-2600
+1937	325 - A Legislative Office Building  	Atlanta GA 30334	(404)  656-509	 (404)  463-77
+1937	5240 Joan of Arc Place College Park, GA 30349	770-909-0268 (
+1938	322 - B Legislative Office Building  	Atlanta GA 30334	(404) 463-1379	(404) 463-1387
+1938	 1755 Loch Lomond Trail	Atlanta, GA 30331	(404) 346-7548
+1939	321 - B Legislative Office Building  	Atlanta GA 30334	(404) 463-8054	(404) 657-3248
+1939	 P.O. Box 7850 Atlanta, GA 30357	
+1940	323 - A Legislative Office Building  	Atlanta GA 30334	(404) 463-1318	(404) 463-1388
+1940	49 Atlanta Street Marietta, GA 30060	(770) 422-1776
+1941	325 - B Legislative Office Building  	Atlanta GA 30334	(404) 463-8053	(404) 463-7783
+1941	 201 Joseph P. Lowery Blvd., N.W.	Atlanta, GA 30314-3422	(404) 577-5609
+1942	305 - B Legislative Office Building  	Atlanta GA 30334	(404)656-5091<	(404) 657-7266
+1942	 P.O. Box 42967 Atlanta, GA 30311	(404) 753-3163
+1943	322 - A Legislative Office Building  	Atlanta GA 30334	(404) 463-1374	(404) 463-1387
+1943	 2250 Chrysler Terrace, N.E.	Atlanta, GA 30345	(404) 636-3704
+1944	323 - B Legislative Office Building  	Atlanta GA 30334	(404) 463-1316	(404) 299-1027
+1944	 2643 Sterling Acres Drive	Tucker, GA 30084	(404) 243-5127
+1945	314 - A Legislative Office Building  	Atlanta GA 30334	(404) 463-1376	(404) 463-1385
+1945	 P.O. Box 1231 Decatur, GA 30031	(404) 853-8206
+1946	121 - H State Capitol  	Atlanta GA 30334	(404) 651-7741	(404) 651-6767
+1946	 P.O. Box 360350 Decatur, GA 30036-0350	(770) 593-3999
+1947	420 - C State Capitol  	Atlanta GA 30334	(404) 656-7586	(404) 657-9728
+1947	 2735 Edgewater Court	Jonesboro, GA 30236	(404) 366-5311
+1948	313 - B Legislative Office Building  	Atlanta GA 30334	(404) 463-1368	(404) 656-6579
+1948	 P.O. Box 1685 Loganville, GA 30052	(770) 466-1507
+1949	324 - A Legislative Office Buiding  	Atlanta GA 30334	404-463-1366</	 404-657-0459<
+1949	 P.O. Box 5187 Athens, GA 30604	(706) 543-0188
+1950	304 - B  Legislative Office Building  	Atlanta GA 30334	(404) 463-1361	(404) 463-1381
+1950	 P.O. Box 534 Comer, GA 30629	(706) 783-2405
+1951	109 State Capitol  	Atlanta GA 30334	(404) 651-7738	(404) 651-5795
+1951	4231 Pleasant Hill Road, Suite B	Duluth, GA 30096	(770) 497-0084
+1952	421 - C State Capitol  	Atlanta GA 30334	(404) 656-6578	(404) 651-6768
+1952	 4143 Ashford Way Gainesville, GA 30507	(770) 297-0409
+1953	421 - B State Capitol  	Atlanta GA 30334	(404) 656-0094	(404) 657-7853
+1953	 P.O. Box 2246 Cleveland, GA 30528	(706) 219-2419
+1954	236 State Capitol  	Atlanta GA 30334	(404) 656-0048	(404) 463-4220
+1954	 P.O. Box 4400 Canton, GA 30114	(770) 517-5229
+1955	109 State Capitol  	Atlanta GA 30334	(404) 651-7738	(706) 295-2456
+1955	 P.O. Box 1963 Rome, GA 30162-1963	(706) 295-9000
+1956	301 - A Legislative Office Building  	Atlanta GA 30334	(404) 656-0057	(404) 463-4161
+1956	519 Cove Road	Chickamauga, GA 30707	706-639-0499</
+1957	301 - B Legislative Office Building  	Atlanta GA 30334	(404) 656-6436	(404) 463-4161
+1957	 184 Haig Mill Rd.	Dalton, GA 30721	(706) 259-3921
+1958	420 - D State Capitol  	Atlanta GA 30334	(404) 656-0075	(404) 657-9728
+1958	 3813 Chalmers Court	Clarkston, GA 30021	
+1959	327-B Legislative Office Building  	Atlanta GA 30334	(404) 656-0040	(404) 463-7785
+1959	 P.O. Box 1522 Roswell, GA 30077	(770) 587-9384

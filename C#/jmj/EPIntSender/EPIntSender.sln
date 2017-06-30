@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPIntSenderLib", "EPIntSenderLib\EPIntSenderLib.csproj", "{E534404F-8E72-464F-AC4A-2287A35F7CD1}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPIntSenderSvc", "EPIntgSenderSvc\EPIntSenderSvc.csproj", "{18F4606F-FE59-424F-AC1A-6275D100A35B}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {E7935929-7421-4502-9CE9-2970C4683DDD}
+		SccProjectUniqueName1 = EPIntSenderLib\\EPIntSenderLib.csproj
+		SccProjectName1 = \u0022$/EPIntSender.root/EPIntSender/EPIntSenderLib\u0022,\u0020XIQAAAAA
+		SccLocalPath1 = EPIntSenderLib
+		CanCheckoutShared = false
+		SccProjectUniqueName2 = EPIntgSenderSvc\\EPIntSenderSvc.csproj
+		SccProjectName2 = \u0022$/EPIntSender.root/EPIntSender/EPIntSenderSvc\u0022,\u0020NIQAAAAA
+		SccLocalPath2 = EPIntgSenderSvc
+		CanCheckoutShared = false
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{E534404F-8E72-464F-AC4A-2287A35F7CD1}.Debug.ActiveCfg = Debug|.NET
+		{E534404F-8E72-464F-AC4A-2287A35F7CD1}.Debug.Build.0 = Debug|.NET
+		{E534404F-8E72-464F-AC4A-2287A35F7CD1}.Release.ActiveCfg = Release|.NET
+		{E534404F-8E72-464F-AC4A-2287A35F7CD1}.Release.Build.0 = Release|.NET
+		{18F4606F-FE59-424F-AC1A-6275D100A35B}.Debug.ActiveCfg = Debug|.NET
+		{18F4606F-FE59-424F-AC1A-6275D100A35B}.Debug.Build.0 = Debug|.NET
+		{18F4606F-FE59-424F-AC1A-6275D100A35B}.Release.ActiveCfg = Release|.NET
+		{18F4606F-FE59-424F-AC1A-6275D100A35B}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

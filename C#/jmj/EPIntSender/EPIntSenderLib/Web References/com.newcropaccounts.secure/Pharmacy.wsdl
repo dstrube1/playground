@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s1="http://secure.newcropaccounts.com/interfaceV5" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://secure.newcropaccounts.com/interfaceV5:NCStandard" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="https://secure.newcropaccounts.com/V5/webservices" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="https://secure.newcropaccounts.com/V5/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://secure.newcropaccounts.com/V5/webservices">
+      <s:import namespace="http://secure.newcropaccounts.com/interfaceV5" />
+      <s:element name="PharmacySearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:Credentials" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountRequest" type="tns:AccountRequest" />
+            <s:element minOccurs="0" maxOccurs="1" name="postalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phoneNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="streetName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pharmacyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Credentials">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PartnerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AccountRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AccountId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SiteId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PharmacySearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PharmacySearchResult" type="tns:PharmacyDetailResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PharmacyDetailResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="result" type="tns:Result" />
+          <s:element minOccurs="0" maxOccurs="1" name="pharmacyDetailArray" type="tns:ArrayOfPharmacyDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:StatusType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="XmlResponse" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RowCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Timing" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="StatusType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="OK" />
+          <s:enumeration value="Fail" />
+          <s:enumeration value="NotFound" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfPharmacyDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PharmacyDetail" nillable="true" type="tns:PharmacyDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PharmacyDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ncpdpID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pharmacyType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="touchDate" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRenewalRequests">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:Credentials" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountRequest" type="tns:AccountRequest" />
+            <s:element minOccurs="0" maxOccurs="1" name="locationID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="licensedPrescriberID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRenewalRequestsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRenewalRequestsResult" type="tns:RenewalDetailResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RenewalDetailResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="result" type="tns:Result" />
+          <s:element minOccurs="0" maxOccurs="1" name="renewal" type="s1:NCRenewal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendToPharmacy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:Credentials" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountRequest" type="tns:AccountRequest" />
+            <s:element minOccurs="0" maxOccurs="1" name="xmlIn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendToPharmacyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendToPharmacyResult" type="tns:PrescriptionDetailResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PrescriptionDetailResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="result" type="tns:Result" />
+          <s:element minOccurs="0" maxOccurs="1" name="prescriptionDetail" type="tns:PrescriptionDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PrescriptionDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusTimestamp" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendRenewalToPharmacy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:Credentials" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountRequest" type="tns:AccountRequest" />
+            <s:element minOccurs="0" maxOccurs="1" name="xmlIn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendRenewalToPharmacyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendRenewalToPharmacyResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://secure.newcropaccounts.com/interfaceV5">
+      <s:import namespace="http://secure.newcropaccounts.com/interfaceV5:NCStandard" />
+      <s:complexType name="NCRenewal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:CredentialsType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Account" type="s1:AccountType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s1:LocationType" />
+          <s:element minOccurs="0" maxOccurs="1" name="LicensedPrescriber" type="s1:LicensedPrescriberType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Staff" type="s1:StaffType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Patient" type="s1:PatientType" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrescriptionRenewalRequest" type="s1:PrescriptionRenewalRequestType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CredentialsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="partnerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="productName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="productVersion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AccountType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="accountName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountAddress" type="s1:AddressType" />
+          <s:element minOccurs="0" maxOccurs="1" name="accountPrimaryPhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="accountPrimaryFaxNumber" type="s:string" />
+        </s:sequence>
+        <s:attribute name="ID" type="s:string" />
+      </s:complexType>
+      <s:complexType name="AddressType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="zip4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LocationType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="locationName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="locationShortName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationAddress" type="s1:AddressType" />
+          <s:element minOccurs="0" maxOccurs="1" name="primaryPhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="primaryFaxNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pharmacyContactNumber" type="s:string" />
+        </s:sequence>
+        <s:attribute name="ID" type="s:string" />
+      </s:complexType>
+      <s:complexType name="LicensedPrescriberType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LicensedPrescriberName" type="s1:PersonNameType" />
+          <s:element minOccurs="0" maxOccurs="1" name="dea" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="prescriberStatus" type="s2:PrescriberStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="upin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="licenseState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="licenseNumber" type="s:string" />
+        </s:sequence>
+        <s:attribute name="ID" type="s:string" />
+      </s:complexType>
+      <s:complexType name="PersonNameType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="last" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="first" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="middle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="prefix" type="s2:PersonNamePrefix" />
+          <s:element minOccurs="0" maxOccurs="1" name="suffix" type="s2:PersonNameSuffix" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StaffType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="StaffName" type="s1:PersonNameType" />
+          <s:element minOccurs="0" maxOccurs="1" name="license" type="s:string" />
+        </s:sequence>
+        <s:attribute name="ID" type="s:string" />
+      </s:complexType>
+      <s:complexType name="PatientType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PatientName" type="s1:PersonNameType" />
+          <s:element minOccurs="0" maxOccurs="1" name="medicalRecordNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="socialSecurityNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="memo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PatientAddress" type="s1:AddressOptionalType" />
+          <s:element minOccurs="0" maxOccurs="1" name="PatientContact" type="s1:ContactType" />
+          <s:element minOccurs="0" maxOccurs="1" name="PatientCharacteristics" type="s1:PatientCharacteristicsType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PatientAllergies" type="s1:PatientAllergyType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PatientHealthplans" type="s1:PatientHealthplanType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PatientDiagnosis" type="s1:PatientDiagnosisType" />
+          <s:element minOccurs="0" maxOccurs="1" name="PatientDiagnosisSearch" type="s:string" />
+        </s:sequence>
+        <s:attribute name="ID" type="s:string" />
+      </s:complexType>
+      <s:complexType name="AddressOptionalType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="zip4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ContactType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="homeTelephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="workTelephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cellularTelephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pagerTelephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="backOfficeTelephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="backOfficeFax" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PatientCharacteristicsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="dob" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gender" type="s2:GenderType" />
+          <s:element minOccurs="0" maxOccurs="1" name="height" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="heightUnits" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="weight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="weightUnits" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="language" type="s2:LanguageType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PatientAllergyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="allergyID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="allergyTypeID" type="s2:DrugDatabaseType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PatientHealthplanType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="healthplanID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="healthplanTypeID" type="s2:HealthplanType" />
+          <s:element minOccurs="0" maxOccurs="1" name="group" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PatientDiagnosisType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="diagnosisID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="diagnosisType" type="s2:DiagnosisType" />
+          <s:element minOccurs="0" maxOccurs="1" name="onsetDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="diagnosisName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PrescriptionRenewalRequestType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="pharmacyIdentifier" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="drugNDC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="drug" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispenseNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dosage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lastFillDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="writtenDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="daysSupply" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="substitution" type="s2:DrugSubstitutionType" />
+          <s:element minOccurs="0" maxOccurs="1" name="refills" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pharmacistMessage" type="s:string" />
+        </s:sequence>
+        <s:attribute name="ID" type="s:string" />
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://secure.newcropaccounts.com/interfaceV5:NCStandard">
+      <s:simpleType name="PersonNamePrefix">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ms." />
+          <s:enumeration value="Ms" />
+          <s:enumeration value="Miss" />
+          <s:enumeration value="Mr." />
+          <s:enumeration value="Mr" />
+          <s:enumeration value="Mrs." />
+          <s:enumeration value="Mrs" />
+          <s:enumeration value="Dr." />
+          <s:enumeration value="Dr" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PersonNameSuffix">
+        <s:restriction base="s:string">
+          <s:enumeration value="DDS" />
+          <s:enumeration value="DO" />
+          <s:enumeration value="Jr" />
+          <s:enumeration value="LVN" />
+          <s:enumeration value="MD" />
+          <s:enumeration value="NP" />
+          <s:enumeration value="PA" />
+          <s:enumeration value="RN" />
+          <s:enumeration value="Sr" />
+          <s:enumeration value="II" />
+          <s:enumeration value="III" />
+          <s:enumeration value="PhD" />
+          <s:enumeration value="PharmD" />
+          <s:enumeration value="RPh" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PrescriberStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Active" />
+          <s:enumeration value="Inactive" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="GenderType">
+        <s:restriction base="s:string">
+          <s:enumeration value="M" />
+          <s:enumeration value="F" />
+          <s:enumeration value="U" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="LanguageType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Arabic" />
+          <s:enumeration value="Chinese" />
+          <s:enumeration value="Chinese (Simplified)" />
+          <s:enumeration value="Creole" />
+          <s:enumeration value="English" />
+          <s:enumeration value="French" />
+          <s:enumeration value="German" />
+          <s:enumeration value="Greek" />
+          <s:enumeration value="Italian" />
+          <s:enumeration value="Japanese" />
+          <s:enumeration value="Korean" />
+          <s:enumeration value="Polish" />
+          <s:enumeration value="Portuguese" />
+          <s:enumeration value="Russian" />
+          <s:enumeration value="Spanish" />
+          <s:enumeration value="Tagalog" />
+          <s:enumeration value="Turkish" />
+          <s:enumeration value="Vietnamese" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DrugDatabaseType">
+        <s:restriction base="s:string">
+          <s:enumeration value="FDA" />
+          <s:enumeration value="FDB" />
+          <s:enumeration value="RXNORM" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="HealthplanType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Summary" />
+          <s:enumeration value="Detail" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DiagnosisType">
+        <s:restriction base="s:string">
+          <s:enumeration value="ICD9" />
+          <s:enumeration value="ICD9CM" />
+          <s:enumeration value="ICD10" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DrugSubstitutionType">
+        <s:restriction base="s:string">
+          <s:enumeration value="DispenseAsWritten" />
+          <s:enumeration value="SubstitutionAllowed" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PharmacySearchSoapIn">
+    <wsdl:part name="parameters" element="tns:PharmacySearch" />
+  </wsdl:message>
+  <wsdl:message name="PharmacySearchSoapOut">
+    <wsdl:part name="parameters" element="tns:PharmacySearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRenewalRequestsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRenewalRequests" />
+  </wsdl:message>
+  <wsdl:message name="GetRenewalRequestsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRenewalRequestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendToPharmacySoapIn">
+    <wsdl:part name="parameters" element="tns:SendToPharmacy" />
+  </wsdl:message>
+  <wsdl:message name="SendToPharmacySoapOut">
+    <wsdl:part name="parameters" element="tns:SendToPharmacyResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendRenewalToPharmacySoapIn">
+    <wsdl:part name="parameters" element="tns:SendRenewalToPharmacy" />
+  </wsdl:message>
+  <wsdl:message name="SendRenewalToPharmacySoapOut">
+    <wsdl:part name="parameters" element="tns:SendRenewalToPharmacyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PharmacySoap">
+    <wsdl:operation name="PharmacySearch">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Searches for available pharmacies based on the search criteria provided via method parameters.</documentation>
+      <wsdl:input message="tns:PharmacySearchSoapIn" />
+      <wsdl:output message="tns:PharmacySearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRenewalRequests">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Returns any outstanding pharmacy renewal requests.</documentation>
+      <wsdl:input message="tns:GetRenewalRequestsSoapIn" />
+      <wsdl:output message="tns:GetRenewalRequestsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendToPharmacy">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Sends a prescription to an electronically connected pharmacy.</documentation>
+      <wsdl:input message="tns:SendToPharmacySoapIn" />
+      <wsdl:output message="tns:SendToPharmacySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendRenewalToPharmacy">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Sends a renewal to an electronically connected pharmacy.</documentation>
+      <wsdl:input message="tns:SendRenewalToPharmacySoapIn" />
+      <wsdl:output message="tns:SendRenewalToPharmacySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="PharmacyHttpPost" />
+  <wsdl:binding name="PharmacySoap" type="tns:PharmacySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="PharmacySearch">
+      <soap:operation soapAction="https://secure.newcropaccounts.com/V5/webservices/PharmacySearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRenewalRequests">
+      <soap:operation soapAction="https://secure.newcropaccounts.com/V5/webservices/GetRenewalRequests" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendToPharmacy">
+      <soap:operation soapAction="https://secure.newcropaccounts.com/V5/webservices/SendToPharmacy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendRenewalToPharmacy">
+      <soap:operation soapAction="https://secure.newcropaccounts.com/V5/webservices/SendRenewalToPharmacy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PharmacyHttpPost" type="tns:PharmacyHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="Pharmacy">
+    <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">A web service that performs pharmacy related functions.</documentation>
+    <wsdl:port name="PharmacySoap" binding="tns:PharmacySoap">
+      <soap:address location="https://secure.newcropaccounts.com/v5/WebServices/Pharmacy.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PharmacyHttpPost" binding="tns:PharmacyHttpPost">
+      <http:address location="https://secure.newcropaccounts.com/v5/WebServices/Pharmacy.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

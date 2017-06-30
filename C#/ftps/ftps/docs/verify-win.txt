@@ -1,0 +1,120 @@
+sslftp-0.13-client-win  <URL: http://bsdftpd-ssl.sc.ru/ >
+
+              Locations of trusted CA certificates and CRLs
+                for Windows port of SSLftp-0.13 FTP client
+
+Author: Nick Leuta <skynick@stu.lipetsk.ru>
+12 October, 2002
+
+This document is an adaptation of verify.txt file from BSDftpd-ssl v0.5.2
+distribution. Original text was based on SSL_CTX_load_verify_locations(3)
+man page from OpenSSL 0.9.6 distribution.
+
+CONTENTS
+========
+1. About certificate verification procedure
+2. OpenSSL's defaults
+3. Notes
+4. Warnings
+
+1. About certificate verification procedure
+-------------------------------------------
+Peer verification during TLS/SSL handshaking may be a complex procedure. This
+document is linked only with verifying that the certificate is issued and is
+not revoked by a trusted Certificate Authority (CA) by checking the certificate
+signature against list of trusted CA roots and the certificate serial number
+against CA's certificate revocation list (CRL).
+
+The certificate is checked starting with the deepest nesting level (the root CA
+certificate) and worked upward to the peer's certificate. At each level
+signatures, issuer attributes and serial number are checked. So it's required
+that trusted CA root certificate would be available to side doing verification.
+CRL is optional, but is important for verification procedure and will be used
+if present.
+
+The list of trusted CA roots may be customized to any application according to
+specific goals they are solving.
+
+2. OpenSSL's defaults
+---------------------
+OpenSSL allows to store list of CA certificates in a single file (this will be
+named CAfile) or in a variety of files placed in one directory (this will be
+named CApath).
+
+The default locations of trusted CA certificates compiled into OpenSSL library
+are cert.pem file (CAfile) and certs/ subdirectory (CApath) in OpenSSL
+directory. The default locations may be overridden in applications.
+
+Windows port of SSLftp-0.13 FTP client (ftps) has support only for CAfile with
+no default value. So it's required to set correspondent command-line option or
+environment variable to allow verification of server certificate.
+
+OpenSSL allows to store CRLs like CA certificates: in a single file (this will
+be named CRLfile) or in a variety of files placed in one directory (this will
+be named CRLpath), but does not have default values for CRL locations. Windows
+port of SSLftp-0.13 FTP client supports only CRLfile.
+
+3. Notes
+--------
+If CAfile is not NULL, it points to a file of CA certificates in PEM
+format. The file can contain several CA certificates identified by
+
+ -----BEGIN CERTIFICATE-----
+ ... (CA certificate in base64 encoding) ...
+ -----END CERTIFICATE-----
+
+sequences. Before, between, and after the certificates text is allowed
+which can be used e.g. for descriptions of the certificates.
+
+If CApath is not NULL, it points to a directory containing CA certificates
+in PEM format. The files each contain one CA certificate. The files are
+looked up by the CA subject name hash value, which must hence be available.
+If more than one CA certificate with the same name hash value exist, the
+extension must be different (e.g. 9d66eef0.0, 9d66eef0.1 etc). The search
+is performed in the ordering of the extension number, regardless of other
+properties of the certificates.
+
+If CRLfile is not NULL, it points to a file of CRLs in PEM format. Like CAfile
+this file can contain several CRLs identified by
+
+ -----BEGIN X509 CRL-----
+ ... (CRL in base64 encoding) ...
+ -----END X509 CRL-----
+
+sequences and before, between, and after the CRLs text is also allowed.
+
+If CRLpath is not NULL, it (like CApath) points to a directory containing CRLs
+in PEM format. The files each contain one CRL. The files are looked up by the
+CRL issuer name hash value, which must hence be available. If more than one CRL
+with the same name hash value exist, the extension must be different (e.g.
+9d66eef0.r0, 9d66eef0.r1 etc). The search is performed in the ordering of the
+extension number.
+
+When looking up CA certificates, the OpenSSL library will first search the
+certificates in CAfile, then those in CApath. Certificate matching is done
+based on the subject name, the key identifier (if present), and the serial
+number as taken from the certificate to be verified. If these data do not
+match, the next certificate will be tried. If a first certificate matching
+the parameters is found, the verification process will be performed; no other
+certificates for the same parameters will be searched in case of failure.
+
+CRLs are looking up in the similar order, but CRL matching is done based on the
+issuer name. If a first CRL for this issuer is found, the verification process
+will be performed and no other CRLs will be searched in case of failure.
+
+At UNIX file systems symlinks are reqular files, which allows having more than
+one reference to one file. At Windows file systems (FAT/FAT32, NTFS) there are
+no such substances, so despite the fact that OpenSSL at Windows supports
+CApath and CRLpath, Windows port of ftps supports only CAfile and CRLfile.
+
+4. Warnings
+-----------
+If several CA certificates matching the name, key identifier, and serial
+number condition are available, only the first one will be examined. This
+may lead to unexpected results if the same CA certificate is available
+with different expiration dates. If a "certificate expired" verification
+error occurs, no other certificate will be searched. Make sure to have no
+expired certificates mixed with valid ones.
+
+The similar is true for CRLs, so make sure to have no more than one CRL from
+one issuer.

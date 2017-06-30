@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="GRITSData" targetNamespace="http://tempuri.org/GRITSData.xsd" elementFormDefault="qualified"
+	attributeFormDefault="qualified" xmlns="http://tempuri.org/GRITSData.xsd" xmlns:mstns="http://tempuri.org/GRITSData.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="GRITSData" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="CLIENT">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CPR_ID" type="xs:string" minOccurs="0" />
+							<xs:element name="FIRSTNAME" type="xs:string" minOccurs="0" />
+							<xs:element name="LASTNAME" type="xs:string" minOccurs="0" />
+							<xs:element name="BIRTHDATE" type="xs:date" minOccurs="0" />
+							<xs:element name="ELIGIBILITY" type="xs:string" minOccurs="0" />
+							<xs:element name="SEX" type="xs:string" minOccurs="0" />
+							<xs:element name="SSN" type="xs:string" minOccurs="0" />
+							<xs:element name="PHONE" type="xs:string" minOccurs="0" />
+							<xs:element name="ADDRESS" type="xs:string" minOccurs="0" />
+							<xs:element name="CITY" type="xs:string" minOccurs="0" />
+							<xs:element name="STATE" type="xs:string" minOccurs="0" />
+							<xs:element name="ZIP" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ENCOUNTER">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CPR_ID" type="xs:string" minOccurs="0" />
+							<xs:element name="ENCOUNTER_ID" type="xs:int" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="VACCINE">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CPR_ID" type="xs:string" minOccurs="0" />
+							<xs:element name="ENCOUNTER_ID" type="xs:int" minOccurs="0" />
+							<xs:element name="TREATMENT_ID" type="xs:int" minOccurs="0" />
+							<xs:element name="VACCINE_DATE" type="xs:date" minOccurs="0" />
+							<xs:element name="CPT_CODE" type="xs:string" minOccurs="0" />
+							<xs:element name="PROVIDER" type="xs:string" minOccurs="0" />
+							<xs:element name="CLINIC" type="xs:string" minOccurs="0" />
+							<xs:element name="LOTNUMBER" type="xs:string" minOccurs="0" />
+							<xs:element name="COMMON_NAME" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+		<xs:key name="GRITSDataKey1">
+			<xs:selector xpath=".//mstns:CLIENT" />
+			<xs:field xpath="mstns:CPR_ID" />
+		</xs:key>
+		<xs:key name="GRITSDataKey2">
+			<xs:selector xpath=".//mstns:ENCOUNTER" />
+			<xs:field xpath="mstns:CPR_ID" />
+			<xs:field xpath="mstns:ENCOUNTER_ID" />
+		</xs:key>
+		<xs:key name="GRITSDataKey3">
+			<xs:selector xpath=".//mstns:VACCINE" />
+			<xs:field xpath="mstns:CPR_ID" />
+			<xs:field xpath="mstns:ENCOUNTER_ID" />
+			<xs:field xpath="mstns:TREATMENT_ID" />
+		</xs:key>
+		<xs:keyref name="CLIENTENCOUNTER" refer="GRITSDataKey1" msdata:AcceptRejectRule="Cascade" msdata:DeleteRule="Cascade"
+			msdata:UpdateRule="Cascade">
+			<xs:selector xpath=".//mstns:ENCOUNTER" />
+			<xs:field xpath="mstns:CPR_ID" />
+		</xs:keyref>
+		<xs:keyref name="ENCOUNTERVACCINE" refer="GRITSDataKey2" msdata:AcceptRejectRule="Cascade"
+			msdata:DeleteRule="Cascade" msdata:UpdateRule="Cascade">
+			<xs:selector xpath=".//mstns:VACCINE" />
+			<xs:field xpath="mstns:CPR_ID" />
+			<xs:field xpath="mstns:ENCOUNTER_ID" />
+		</xs:keyref>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<doc>
+    <assembly>
+        <name>Atalasoft.dotImage.Jbig2</name>
+    </assembly>
+    <members>
+        <member name="N:Atalasoft.Imaging.Codec.Jbig2">
+            <summary>The namespace including all JBIG2 codec classes</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jbig2.Jb2EncodingMode">
+            <summary>Property to set the mode to be used during encoding.</summary>
+            <remarks>Lossy encoding is only possible with symbol dictionary and
+symbol matching. Default is Lossless.</remarks>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jbig2.Jb2EncodingMode.Lossy">
+            <summary>Lossy encoding</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jbig2.Jb2EncodingMode.Lossless">
+            <summary>Lossless encoding</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jbig2.Jb2ExportFormat">
+            <summary>Compressed file format for exported documents.</summary>
+            <remarks>StreamForPDF is only supported when exporting single page
+documents. Both Jb2 and Pdf can be used when exporting multi-page
+documents. Refer to the PDF documentation from Adobe for full
+details on embedding a JBIG2 image in a PDF document.</remarks>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jbig2.Jb2ExportFormat.StreamForPdf">
+            <summary>JBIG2 stream suitable for embedding in a PDF file.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jbig2.Jb2ExportFormat.Pdf">
+            <summary>JBIG2 embedded in a PDF file.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jbig2.Jb2ExportFormat.Jb2">
+            <summary>JBIG2 file format as described in ISO.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jbig2.Jb2GenericBitmapCoder">
+            <summary>Type to specify the bitmap coder to be used during
+compression.</summary>
+            <remarks>The default is Arithmetic.</remarks>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jbig2.Jb2GenericBitmapCoder.Arithmetic">
+            <summary>Efficient arithmetic coder</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jbig2.Jb2GenericBitmapCoder.Mmr">
+            <summary>Simple, fast run-length based coder</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jbig2.Jb2GenericTemplate">
+            <summary>Context template to use when coding generic region using
+arithmetic coder.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jbig2.Jb2SymbolDictionary">
+            <summary>Context template to use when coding dictionary symbols using
+arithmetic coder.</summary>
+            <remarks>Property to specify whether symbol dictionary and symbol
+matching should be used during compression symbol dictionary usage
+may slow down compression but offers higher compression rates and
+is essential for lossy encoding. Default is Use.</remarks>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jbig2.Jb2SymbolDictionary.Use">
+            <summary>Use symbol dictionary with symbol matching.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jbig2.Jb2SymbolDictionary.NotUse">
+            <summary>Do not use symbol dictionary with symbol matching.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jbig2.Jb2SymbolTemplate">
+            <summary>Template to use when encoding dictionary symbols using
+arithmetic coder.</summary>
+            <remarks>Default is ThreeLine13Pixel.</remarks>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jbig2.Jb2SymbolTemplate.ThreeLine13Pixel">
+            <summary>3 line, 13 pixel context.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Jbig2.Jb2SymbolTemplate.ThreeLine16Pixel">
+            <summary>3 line, 16 pixel context.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jbig2.Jb2Decoder">
+            <summary>The class derives from
+
+MultiFramedImageDecoder and decodes JBIG2 images. Jb2Decoder
+may access to an existing JBIG2 file or JBIG2 embedded stream
+(StreamForPdf, refer to Jb2ExportFileFormat).</summary>
+            <remarks>To add the ability to decode JBIG2 images, simply add an
+instance of the Jb2Decoder to the
+Decoders
+collection in the
+
+RegisteredDecoders class. See the below example.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Decoder._ctor">
+            <summary>Creates a new instance of a Jb2Decoder.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Decoder.GetFrameCount(System.IO.Stream)">
+            <summary>Returns the number of frames in the image</summary>
+            <returns>The number of pages in the JBIG2 stream.</returns>
+            <param name="stream">JBIG2 stream.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Decoder.GetImageInfo">
+            <summary>Returns information about a JBIG2 image such as width,
+height, and resolution.</summary>
+            <returns>Returns ImageInfo</returns>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Decoder.GetImageInfo(System.IO.Stream)">
+            <summary>Returns information about a JBIG2 image such as width,
+height, and resolution.</summary>
+            <returns>Returns ImageInfo of the first page of the given
+image.</returns>
+            <param name="stream">JBIG2 stream.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Decoder.GetImageInfo(System.IO.Stream,System.Int32)">
+            <summary>Returns information about a JBIG2 image such as width,
+height, and resolution.</summary>
+            <returns>Returns ImageInfo of the given page.</returns>
+            <param name="stream">JBIG2 stream</param>
+            <param name="frameIndex">zero based page index of multi-paged JBIG2 stream.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Decoder.IsValidFormat(System.IO.Stream)">
+            <summary>Returns true if the specified Stream is a
+JBIG2 image.</summary>
+            <returns>Returns true if the image is detected to be
+JBIG2, otherwise returns false.</returns>
+            <param name="stream">The input stream.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Decoder.Read">
+            <summary>Override methods from the
+MultiFramedImageDecoder class.</summary>
+            <returns>Returns AtalaImage containing the decoded
+JBIG2 stream.</returns>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Decoder.Read(System.IO.Stream,System.Int32,Atalasoft.Imaging.ProgressEventHandler)">
+            <summary>Decodes a JBIG2 image from a stream and returns an
+AtalaImage with the decoded image data.</summary>
+            <returns>Returns an AtalaImage containing the decoded
+JBIG2 image.</returns>
+            <remarks>Overrides an abstract method in
+MultiFramedImageDecoder.</remarks>
+            <param name="stream">The stream to read.</param>
+            <param name="frameIndex">The zero based frame index.</param>
+            <param name="progress">A progress Delegate. Pass in null
+(Nothing in VB, 0 in C++) to ignore progress
+events.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Decoder.Read(System.IO.Stream,Atalasoft.Imaging.ProgressEventHandler)">
+            <summary>Decodes a JBIG2 image from a stream and returns an
+AtalaImage with the decoded image data.</summary>
+            <returns>Returns an AtalaImage containing the decoded
+JBIG2 image.</returns>
+            <remarks>Overrides an abstract method in ImageDecoder.</remarks>
+            <param name="stream">The stream to read.</param>
+            <param name="progress">A progress Delegate. Pass in null
+(Nothing in VB, 0 in C++) to ignore progress
+events.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Decoder.ReadRegion(System.IO.Stream,System.Drawing.Rectangle,System.Int32,Atalasoft.Imaging.ProgressEventHandler)">
+            <summary>Decodes a specified region of a JBIG2 image given a source
+Stream.</summary>
+            <returns>Returns an AtalaImage containing the decoded
+JBIG2 image.</returns>
+            <remarks>If rectangle region is not set, then the full region will be
+decoded.</remarks>
+            <param name="stream">The stream to read.</param>
+            <param name="region">A rectangular region of the image to decode.</param>
+            <param name="frameIndex">The zero based frame index to load from a multi-page JBIG2
+file.</param>
+            <param name="progress">A progress Delegate. Pass in null
+(Nothing in VB, 0 in C++) to ignore progress
+events.</param>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder">
+            <summary>This class, derived from
+
+MultiFramedImageEncoder, compresses a bi-tonal (black and
+white) image using JBIG2 compression.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder._ctor">
+            <summary>Creates a new instance of a Jb2Encoder.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder._ctor">
+            <summary>Creates a new instance of a Jb2Encoder.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder._ctor(Atalasoft.Imaging.Codec.Jbig2.Jb2EncodingMode)">
+            <summary>Creates a new instance of a Jb2Encoder.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder.Save">
+            <summary>Overrided the MultiFramedImageEncoder
+class.</summary>
+            <returns>Return the number of bytes encoded.</returns>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder.Save(System.IO.Stream,Atalasoft.Imaging.AtalaImage,Atalasoft.Imaging.ProgressEventHandler)">
+            <summary>Compresses a single AtalaImage as a JBIG2
+encoded file.</summary>
+            <returns>Returns the number of bytes encoded.</returns>
+            <remarks>To append to an existing image, set
+
+Append to true.</remarks>
+            <param name="stream">The input stream.</param>
+            <param name="image">AtalaImage to be written as JBIG2, PDF or embedded stream to
+PDF.</param>
+            <param name="progress">A progress Delegate. Pass in null
+(Nothing in VB, 0 in C++) to ignore progress
+events.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder.Save(System.IO.Stream,Atalasoft.Imaging.ImageCollection,Atalasoft.Imaging.ProgressEventHandler)">
+            <summary>Compresses an ImageCollection as a JBIG2
+encoded file.</summary>
+            <returns>Returns the number of bytes encoded.</returns>
+            <remarks>To append to an existing image, set
+
+Append to true and save using the Save overload that takes an
+AtalaImage.</remarks>
+            <param name="stream">The input stream.</param>
+            <param name="images">AtalaImage to be written as JBIG2, PDF or embedded stream to
+PDF.</param>
+            <param name="progress">A progress Delegate. Pass in null
+(Nothing in VB, 0 in C++) to ignore progress
+events.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder.Append">
+            <summary>Get or sets a value indicating if the image should be
+appended to the end of an existing file.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder.BitmapCoder">
+            <summary>Gets or sets the bitmap coder to be used during
+compression.</summary>
+            <remarks>Arithmetic is slower than Mmr but offers higher compression.
+Default is Arithmetic.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder.EncodingMode">
+            <summary>Gets or sets a value indicating if the encoded image will be
+lossless or lossy.</summary>
+            <remarks>Lossy encoding is only possible with symbol dictionary and
+symbol matching. Default is lossless.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder.ExportFormat">
+            <summary>Gets or sets a value indicating the file format for
+compressed data (JBIG2, PDF, or PDF Stream).</summary>
+            <remarks>StreamForPDF is only supported when exporting single page
+documents. Both Jb2 and Pdf can be used when exporting multi-page
+document. Refer to the PDF documentation from Adobe for full
+details on embedding a JBIG2 image in a PDF document. Default is
+Jb2.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder.GenericTemplate">
+            <summary>Gets or sets the context template to use when coding generic
+region using arithmetic coder.</summary>
+            <remarks>Default is ThreeLine16Pixels</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder.SymbolDictionary">
+            <summary>Gets or sets the context template to use when coding
+dictionary symbols using arithmetic coder.</summary>
+            <remarks>Default is Use.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Jbig2.Jb2Encoder.SymbolTemplate">
+            <summary>Gets or sets the template to use when coding dictionary
+symbols using arithmetic coder.</summary>
+            <remarks>Default is 3 line, 16 pixel context.</remarks>
+        </member>
+    </members>
+</doc>
+

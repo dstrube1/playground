@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<SvcConfig>
+	<Connection>
+		<Server>wwwserver</Server>
+		<Database>integration</Database>
+		<IntegratedSecurity>Y</IntegratedSecurity>
+	</Connection>
+	<Settings>
+		<InstanceId>sumathi</InstanceId>
+	</Settings>
+</SvcConfig>

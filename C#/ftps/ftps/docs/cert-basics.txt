@@ -1,0 +1,245 @@
+BSDftpd-ssl project  <URL: http://bsdftpd-ssl.sc.ru/ >
+
+                            X.509 certificate basics
+
+Author: Nick Leuta <skynick@stu.lipetsk.ru>
+8 October, 2002
+
+Copyright (c) 2002 Nick Leuta. All Rights Reserved.
+
+Permission is granted to copy, distribute and/or modify this document under the
+terms of the full copyright statement that is included in this document.
+
+CONTENTS
+========
+1. Introduction
+2. What is the X.509 Certificate?
+3. Usage of X.509 certificates in TLS/SSL secure protocol
+4. References
+Full copyright statement
+
+1. Introduction
+---------------
+This document contains a generic information about X.509 certificates.
+
+ITU-T Recommendation X.509 defines a framework for public-key certificates and
+attribute certificates. The well-known application of the X.509 certificates
+today is the TLS/SSL security protocol that provides privacy and authentication
+for network traffic. TLS 1.0 (Transport Layer Security Version 1.0) protocol
+itself is based on the SSL 3.0 (Secure Socket Layer Version 3.0) Protocol
+Specification as published by Netscape Communications Corporation. TLS/SSL is
+now widely adopted in many Internet applications, such as web, e-mail and LDAP
+software.
+
+Certificates present a simple user interface on top of a complex distribution
+and update infrastructure for authentication credentials. X.509 certificates
+are starting to become the basis for much electronic commerce and for
+electronic collaboration using web resources. 
+
+2. What is the X.509 Certificate?
+---------------------------------
+A public key certificate is a digitally signed statement from one entity
+(which is known as Certification Authority (CA)), vouches that the public key
+of another entity, together with some other information, is bound to the named
+entity.
+
+The following key terms are used in this document:
+Entity 
+  An entity is a person, organization, program, computer, business, bank, or
+  something else you are trusting to some degree.
+Cryptographic system, cryptosystem
+  A collection of transformations from plain text into ciphertext and vice
+  versa, the particular transformation(s) to be used being selected by keys.
+  The transformations are normally defined by a mathematical algorithm.
+Public Key Cryptography
+  The study and application of asymmetric encryption systems, which use one key
+  for encryption and another for decryption. A corresponding pair of such keys
+  constitutes a key pair. Also called Asymmetric Cryptography.
+Public-key
+  In a public key cryptosystem that key of a user's key pair which is publicly
+  known.
+Private key
+  In a public key cryptosystem that key of a user's key pair which is known
+  only by that user. That is, it's supposed to be kept secret; it's so
+  recommended to set up relevant permissions to objects (usually files) which
+  contain private keys and (as additional security layer) encrypt private keys
+  (in OpenSSL it's realized as pass phrase protection).
+Digitally Signed 
+  If some data is digitally signed it has been stored with the "identity" of an
+  entity, and a signature that proves that entity knows about the data. The
+  data is rendered unforgeable by signing with the entity's private key. 
+Identity 
+  A known way of addressing an entity. In some systems the identity is the
+  public key, in others it can be anything from a Unix UID to an Email address
+  or X.500 Distinguished Name (DN).
+Signature 
+  A signature is computed over some data using the private key of an entity. 
+Authority
+  An entity, responsible for the issuance of certificates.
+Certification Authority (CA)
+  An authority trusted by one or more users to create and assign public-key
+  certificates. Optionally the certification authority may create the users'
+  keys.
+Trust
+  Generally, an entity can be said to "trust" a second entity when it (the
+  first entity) makes the assumption that the second entity will behave exactly
+  as the first entity expects. This trust may apply only for some specific
+  function. The key role of trust is to describe the relationship between an
+  authenticating entity and a authority; an entity shall be certain that it can
+  trust the authority to create only valid and reliable certificates.
+Certificate user
+  An entity that needs to know, with certainty, the public key of another
+  entity.
+Certificate-using system
+  An implementation of the functions those are used by a certificate-user.
+
+Once signed, certificates can be stored in directory servers, transmitted via
+non-secure message exchanges, or distributed via any other means that make
+certificates easily accessible to message system users, without regard for the
+security of the transmission medium.
+
+Basically, public key cryptography requires access to user's public keys.
+Certificates were invented as a solution to the public key distribution problem.
+Certification Authority (CA) can act as a Trusted Third Party. CAs are entities
+that are trusted to sign (issue) certificates for other entities. It is assumed
+that CAs will only create valid and reliable certificates as they are bound by
+legal agreements.
+
+The X.509 standard defines what information can go into a certificate, and
+describes how to write it down (the data format). All X.509 certificates have
+the following data, in addition to the signature: 
+Version 
+  This identifies which version of the X.509 standard applies to this
+  certificate, which affects what information can be specified in it.
+Serial Number 
+  An integer value, unique within the issuing authority, which is unambiguously
+  associated with a certificate issued by that CA.
+Signature Algorithm Identifier 
+  This identifies the algorithm used by the CA to sign the certificate. 
+Issuer Name 
+  The X.500 name of the entity that signed the certificate. This is normally a
+  CA. Using this certificate implies trusting the entity that signed this
+  certificate. (Note that in some cases, such as root or top-level CA
+  certificates, the issuer signs its own certificate.) 
+Validity Period 
+  Each certificate is valid only for a limited amount of time. This period is
+  described by a start date and time and an end date and time, and can be as
+  short as a few seconds or almost as long as a century. The validity period
+  chosen depends on a number of factors, such as the strength of the private
+  key used to sign the certificate or the amount one is willing to pay for a
+  certificate. This is the expected period that entities can rely on the public
+  value, if the associated private key has not been compromised. 
+Subject Name 
+  The name of the entity whose public key the certificate identifies. This name
+  uses the X.500 standard, so it is intended to be unique across the Internet.
+  This is the Distinguished Name (DN) of the entity, for example, 
+    C=AU, O=Internet Widgits Pty Ltd, OU=Test Department, CN=Some Person
+  (These refer to the subject's Common Name, Organizational Unit, Organization,
+  and Country.) 
+Subject Public Key Information 
+  This is the public key of the entity being named, together with an algorithm
+  identifier that specifies which public key crypto system this key belongs to
+  and any associated key parameters.
+
+X.509 Version 1 has been available since 1988, is widely deployed, and is the
+most generic. X.509 Version 2 introduced the concept of subject and issuer
+unique identifiers to handle the possibility of reuse of subject and/or issuer
+names over time. Most certificate profile documents strongly recommend that
+names not be reused, and that certificates should not make use of unique
+identifiers. Version 2 certificates are not widely used. X.509 Version 3 is the
+most recent (1996) and supports the notion of extensions, whereby anyone can
+define an extension and include it in the certificate. Some common extensions
+in use today are: KeyUsage (limits the use of the keys to particular purposes
+such as "signing-only") and AlternativeNames (allows other identities to also
+be associated with this public key, e.g. DNS names, Email addresses, IP
+addresses). Extensions can be marked critical to indicate that the extension
+should be checked and enforced/used.
+
+All the data in a certificate is encoded using two related standards called
+ASN.1/DER. Abstract Syntax Notation 1 describes data. The Definite Encoding
+Rules describe a single way to store and transfer that data. 
+
+When a certificate is issued, it is expected to be in use for its entire
+validity period. However, various circumstances may cause a certificate to
+become invalid prior to the expiration of the validity period. Under such
+circumstances, the CA needs to revoke the certificate. X.509 defines one method
+of certificate revocation: a Certificate Revocation List (CRL). The CRL is a
+signed data structure indicating a set of certificates that are no longer
+considered valid by the certificate issuer.
+
+This method involves each CA periodically (on a regular periodic basis, e.g.
+hourly, daily, or weekly) issuing the CRL. When a certificate-using system uses
+the certificate (e.g., for verifying a remote user's digital signature), that
+system not only checks the certificate signature and validity but also acquires
+the CRL and checks that the certificate serial number is not on that CRL.
+
+An advantage of this revocation method is that CRLs may be distributed by
+exactly the same means as certificates themselves, namely, via untrusted
+communications and server systems. One limitation of the CRL revocation method
+is that the time granularity of revocation is limited to the CRL issue period.
+
+There are many public Certification Authorities, such as VeriSign, Thawte,
+Entrust, and so on. You can also run your own Certification Authority using
+some commercial or free software.
+
+3. Usage of X.509 certificates in TLS/SSL secure protocol
+---------------------------------------------------------
+TLS/SSL protocol implements authentication and encryption of TCP/IP
+communications using a combination of public key and symmetric cryptographic
+algorithms. TLS/SSL not only encrypts network data streams, but also ensure
+that they have not been tampered with along the way.
+
+When TLS/SSL is used to provide security, authentication of the server and
+optionally the client can be performed using X.509 public key certificates.
+Certificates are used to exchange a public key for use in establishing an
+encrypted connection and can be verified against a known trusted Root
+Certificate and a Certificate Revocation List (CRL) to indicate its
+authenticity and validity. The contents of the certificate can then be used to
+determine the identity of the remote service or the client.
+
+Traditional authentication of the server (and optionally the client) is
+performed by exchanging X.509 certificate chains that are verified by the
+receiver. The generic information about certificate verification and about its
+realization in OpenSSL and BSDftpd-ssl may be obtained from verify.txt file.
+
+To allow the X.509 certificate to be used to authenticate and (in some cases
+automatically) login the user to their account or resources, it is required to
+specify a mapping from the client certificate to a User ID. More detailed
+information about certificate-based user authentication may be obtained from
+x509_auth.txt file.
+
+4. References
+-------------
+1. ITU-T Recommendation X.509 (1997 E): Information Technology - Open Systems
+   Interconnection - The Directory: Authentication Framework, June 1997.
+2. ANSI X9.55-1995, Public Key Cryptography For The Financial Services
+   Industry: Extensions To Public Key Certificates And Certificate Revocation
+   Lists, 8 December, 1995.
+3. RFC 1422: Privacy Enhancement for Internet Electronic Mail: Part II:
+   Certificate-Based Key Management. S. Kent. February 1993.
+4. RFC 2246: The TLS Protocol Version 1.0. T. Dierks, C. Allen. January 1999.
+5. RFC 3280: Internet X.509 Public Key Infrastructure Certificate and
+   Certificate Revocation List (CRL) Profile. R. Housley, W. Polk, W. Ford,
+   D. Solo. April 2002.
+6. Kermit Security Reference: http://www.columbia.edu/kermit/security.html
+   30 July, 2002.
+7. Building a Secure RedHat Apache Server HOWTO. Richard Sigle. 2 June, 2001.
+   http://www.tldp.org/HOWTO/SSL-RedHat-HOWTO.html
+
+Full copyright statement
+------------------------
+
+Copyright (c) 2002 Nick Leuta. All Rights Reserved.
+
+This document and translations of it may be copied and furnished to others, and
+derivative works may be prepared, copied, published and distributed, in whole
+or in part, without restriction of any kind, provided that the above copyright
+notice and this paragraph are included on all such copies and derivative works.
+References to this document are allowed in works of any kind without any
+restrictions.
+
+This document and the information contained herein is provided on an "AS IS"
+basis and AUTHOR DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT
+NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT
+INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR
+A PARTICULAR PURPOSE.

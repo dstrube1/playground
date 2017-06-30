@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JMJSecurityManager", "JMJSecurityManager.csproj", "{7FC89928-8C27-4E62-ADCC-D598B101623E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {C6B27559-C17D-4EAC-89E7-9304B3B310CE}
+		SccProjectUniqueName1 = JMJSecurityManager.csproj
+		SccLocalPath1 = .
+		CanCheckoutShared = false
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{7FC89928-8C27-4E62-ADCC-D598B101623E}.Debug.ActiveCfg = Debug|.NET
+		{7FC89928-8C27-4E62-ADCC-D598B101623E}.Debug.Build.0 = Debug|.NET
+		{7FC89928-8C27-4E62-ADCC-D598B101623E}.Release.ActiveCfg = Release|.NET
+		{7FC89928-8C27-4E62-ADCC-D598B101623E}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<SvcConfig>
+	<Connection>
+		<Server>wwwserver</Server>
+		<Database>Integration</Database>
+		<User>Integration</User>
+		<Password>un9u355ab1epa55w0rd</Password>
+		<IntegratedSecurity>N</IntegratedSecurity>
+		<Seconds>2</Seconds>
+	</Connection>
+</SvcConfig>

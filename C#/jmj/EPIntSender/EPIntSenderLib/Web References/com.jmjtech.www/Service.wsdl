@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="PutMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JMJMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PutMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CredentialsHeader" type="tns:CredentialsHeader" />
+      <s:complexType name="CredentialsHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetMessageBag">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddresseeID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocumentType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageBagResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessageBagResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Complete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MessageID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompleteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="IPAddr">
+        <s:complexType />
+      </s:element>
+      <s:element name="IPAddrResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IPAddrResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PutMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:PutMessage" />
+  </wsdl:message>
+  <wsdl:message name="PutMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:PutMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="PutMessageCredentialsHeader">
+    <wsdl:part name="CredentialsHeader" element="tns:CredentialsHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageBagSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessageBag" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageBagSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessageBagResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageBagCredentialsHeader">
+    <wsdl:part name="CredentialsHeader" element="tns:CredentialsHeader" />
+  </wsdl:message>
+  <wsdl:message name="CompleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Complete" />
+  </wsdl:message>
+  <wsdl:message name="CompleteSoapOut">
+    <wsdl:part name="parameters" element="tns:CompleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompleteCredentialsHeader">
+    <wsdl:part name="CredentialsHeader" element="tns:CredentialsHeader" />
+  </wsdl:message>
+  <wsdl:message name="IPAddrSoapIn">
+    <wsdl:part name="parameters" element="tns:IPAddr" />
+  </wsdl:message>
+  <wsdl:message name="IPAddrSoapOut">
+    <wsdl:part name="parameters" element="tns:IPAddrResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="PutMessage">
+      <wsdl:input message="tns:PutMessageSoapIn" />
+      <wsdl:output message="tns:PutMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageBag">
+      <wsdl:input message="tns:GetMessageBagSoapIn" />
+      <wsdl:output message="tns:GetMessageBagSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Complete">
+      <wsdl:input message="tns:CompleteSoapIn" />
+      <wsdl:output message="tns:CompleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IPAddr">
+      <wsdl:input message="tns:IPAddrSoapIn" />
+      <wsdl:output message="tns:IPAddrSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PutMessage">
+      <soap:operation soapAction="http://tempuri.org/PutMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:PutMessageCredentialsHeader" part="CredentialsHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageBag">
+      <soap:operation soapAction="http://tempuri.org/GetMessageBag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMessageBagCredentialsHeader" part="CredentialsHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Complete">
+      <soap:operation soapAction="http://tempuri.org/Complete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CompleteCredentialsHeader" part="CredentialsHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IPAddr">
+      <soap:operation soapAction="http://tempuri.org/IPAddr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+    <wsdl:operation name="PutMessage">
+      <soap12:operation soapAction="http://tempuri.org/PutMessage" style="document" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <wsdl:input>
+        <soap12:body use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+        <soap12:header message="tns:PutMessageCredentialsHeader" part="CredentialsHeader" use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageBag">
+      <soap12:operation soapAction="http://tempuri.org/GetMessageBag" style="document" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <wsdl:input>
+        <soap12:body use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+        <soap12:header message="tns:GetMessageBagCredentialsHeader" part="CredentialsHeader" use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Complete">
+      <soap12:operation soapAction="http://tempuri.org/Complete" style="document" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <wsdl:input>
+        <soap12:body use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+        <soap12:header message="tns:CompleteCredentialsHeader" part="CredentialsHeader" use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IPAddr">
+      <soap12:operation soapAction="http://tempuri.org/IPAddr" style="document" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <wsdl:input>
+        <soap12:body use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="https://www.jmjtech.com/EPIEGateway/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="https://www.jmjtech.com/EPIEGateway/Service.asmx" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

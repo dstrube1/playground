@@ -1,0 +1,9 @@
+SCC = This is a Source Code Control file
+
+[EpIE Message Monitor Daemon.sln]
+SCC_Aux_Path = "\\Techserv\Devel\VSS"
+SCC_Project_Name = "$/EPIntSender.root/EPIntSender/EPIntDaemonLib/EpIE Message Monitor Daemon.root/EpIE Message Monitor Daemon", XASAAAAA
+
+[EpIE Message Monitor Daemon.csproj]
+SCC_Aux_Path = "\\Techserv\Devel\VSS"
+SCC_Project_Name = "$/EPIntSender.root/EPIntSender/EPIntDaemonLib/EpIE Message Monitor Daemon.root/EpIE Message Monitor Daemon", XASAAAAA

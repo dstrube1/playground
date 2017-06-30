@@ -1,0 +1,2725 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<doc>
+    <assembly>
+        <name>Atalasoft.dotImage.WinControls</name>
+    </assembly>
+    <members>
+        <member name="N:Atalasoft.Imaging.WinControls">
+            <summary>The Atalasoft.Imaging.WinControls
+      namespace contains all graphical User
+      Interface elements of dotImage that can be used in WinForms
+      applications including image viewing, thumbnail viewing,
+      printing, and dialog controls.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.AntialiasDisplayMode">
+            <summary>Specifies the antialis display mode that can be set to the
+   
+ImageViewer and
+
+WorkspaceViewer controls.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.AntialiasDisplayMode.None">
+            <summary>Do not antialias (fastest performance)</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.AntialiasDisplayMode.ScaleToGray">
+            <summary>Only antialias 1-bit document images for zoom levels less
+then 1.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.AntialiasDisplayMode.ReductionOnly">
+            <summary>Antialias all pixel formats when zoom level is less then
+1.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.AntialiasDisplayMode.Full">
+            <summary>Antialias all images for all zoom levels.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.AutoZoomMode">
+            <summary>Specifies the automatic zoom setting of the image displayed
+in the
+
+Viewport control.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.AutoZoomMode.None">
+            <summary>Does not change the zoom of the image based on image
+size.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.AutoZoomMode.BestFit">
+            <summary>Fits the image by sizing the width or height to best fit the
+control.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.AutoZoomMode.BestFitShrinkOnly">
+            <summary>Fits the image by sizing the width or height to best fit the
+control only if the image needs to be reduced in size.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.AutoZoomMode.FitToWidth">
+            <summary>Image is zoomed to fit the width.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.AutoZoomMode.FitToHeight">
+            <summary>Image is zoomed to fit the height.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.CompositePrintLayout">
+            <summary>Specifies the layout used in the ImageCompositePrintDocument
+when printing.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.CompositePrintLayout.FullPage">
+            <summary>Image will fill the entire page to the extent of the minimum
+margins.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.CompositePrintLayout.Inch80x100">
+            <summary>A single image printed per page at 8" x 10" portrait, or 10"
+x 8" landscape.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.CompositePrintLayout.Cm20x25">
+            <summary>A single image printed per page at 20cm x 25cm portrait, or
+25cm x 20cm landscape.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.CompositePrintLayout.Inch50x70">
+            <summary>Two images printed per page at 7" x 5" portrait, or 5" x 7"
+landscape.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.CompositePrintLayout.Cm13x18">
+            <summary>Two images printed per page at 18cm x 13cm portrait, or 13cm
+x 18cm landscape.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.CompositePrintLayout.Inch40x60">
+            <summary>Two images printed per page at 6" x 4" portrait, or 4" x 6"
+landscape.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.CompositePrintLayout.Cm10x15">
+            <summary>Two images printed per page at 15cm x 10cm portrait, or 10cm
+x 13cm landscape.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.CompositePrintLayout.Inch40x60BestFit">
+            <summary>Three images printed per page at 4" x 6", with the third
+image rotated to fit.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.CompositePrintLayout.Cm10x15BestFit">
+            <summary>Three images printed per page at 10cm x 15cm, with the third
+image rotated to fit.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.CompositePrintLayout.Inch35x50">
+            <summary>Four images printed per page at 3.5" x 5" portrait, or 5" x
+3.5" landscape.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.CompositePrintLayout.Cm9x13">
+            <summary>Four images printed per page at 9cm x 13cm portrait, or 13cm
+x 9cm landscape.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.CompositePrintLayout.Wallet">
+            <summary>Nine wallet sized images printed per page (2.5" x
+3.125").</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.CompositePrintLayout.ContactSheet">
+            <summary>Thirty-five images printed per page (1.4" x 1.12").</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.MouseToolType">
+            <summary>Specifies the Mouse Tool Type to use in the
+
+Viewport control.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.MouseToolType.None">
+            <summary>Specify no special mouse behavior.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.MouseToolType.Selection">
+            <summary>Mouse will be set to crosshairs and can be used to drag and
+modify a Selection rectangle onto the
+image.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.MouseToolType.Pan">
+            <summary>Dragging the mouse will Pan the image.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.MouseToolType.Magnifier">
+            <summary>Display a magnifying glass when holding the mouse button
+down.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.MouseToolType.Zoom">
+            <summary>Clicking on the image will zoom in with the left mouse button
+and zoom out with the right mouse button.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.MouseToolType.ZoomIn">
+            <summary>Clicking will zoom in.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.MouseToolType.ZoomOut">
+            <summary>Clicking will zoom out.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.MouseToolType.ZoomArea">
+            <summary>Zoom in on a specified area defined by dragging a rectangle
+onto the image.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.PrintScaleMode">
+            <summary>Specifies the type of scaling used when printing an image
+with ImagePrintDocument.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.PrintScaleMode.None">
+            <summary>No scaling is done, other than to match the image resolution
+with the printer resolution.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.PrintScaleMode.FitToMargins">
+            <summary>The image is resized to fit within the page margins.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.PrintScaleMode.FitToEdges">
+            <summary>The image is resized to fill the page. However, most printers
+will not print beyond their minimum margins.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ResolutionScaleMode">
+            <summary>Specified the behavior options when displaying images with
+different X and Y resolutions as defined in the
+
+ResulutionScaleMode property of the
+
+Viewport control.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ResolutionScaleMode.None">
+            <summary>Do not adjust the aspect ratio of the image based on the X
+and Y resolution.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ResolutionScaleMode.Fax">
+            <summary>Adjust the aspect ratio of the display image based on the X
+and Y resolution only if the image is a 1-bit Black and White FAX
+image.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ResolutionScaleMode.All">
+            <summary>Always adjust the aspect ratio of the display image based on
+the X and Y resolution.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ScrollBarDirection">
+            <summary>Specifies the horizontal or vertical scrollbar.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ScrollBarDirection.Horizontal">
+            <summary>The horizontal scrollbar.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ScrollBarDirection.Vertical">
+            <summary>The vertical scrollbar.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ScrollBarVisibility">
+            <summary>Specifies how the scroll bars are shown in the
+
+Scrollport and inherited control.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ScrollBarVisibility.Dynamic">
+            <summary>Automatically show or hide the horizontal and vertical
+scrollbars as the control or image resizes.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ScrollBarVisibility.None">
+            <summary>Never show scrollbars.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ScrollBarVisibility.Always">
+            <summary>Always show scrollbars.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ThumbLoadMethod">
+            <summary>Determines the method used to load thumbnails in
+
+FolderThumbnailView.</summary>
+            <remarks>If WhenVisible is used, the viewer will only load
+thumbnails when scrolling after the scrollbar thumb or button has
+been released.</remarks>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ThumbLoadMethod.EntireFolder">
+            <summary>Loads all thumbnails in the folder.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ThumbLoadMethod.WhenVisible">
+            <summary>Loads the thumbnails only when they become visible in the
+viewer. This option is suggested when the folder contains a large
+number of images.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ThumbViewAttribute">
+            <summary>Specifies values for the DisplayText and SortBy
+properties.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ThumbViewAttribute.None">
+            <summary>    DisplayText: No text is
+    displayed.
+    SortBy: No sorting is performed.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ThumbViewAttribute.FileName">
+            <summary>    DisplayText: The filename is
+    displayed.
+    SortBy: As files are added, they are
+    sorted by their filenames.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ThumbViewAttribute.DateModified">
+            <summary>    DisplayText: The last date the file was
+    modified is displayed.
+    SortBy: The files are sorted by their
+    last modified date.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ThumbViewAttribute.Size">
+            <summary>    DisplayText: The file size is
+    displayed.
+    SortBy: The files are sorted by their
+    file size.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ThumbViewAttribute.Type">
+            <summary>    DisplayText: The type of file is
+    displayed.
+    SortBy: The files
+    are sorted by their type.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.WinControls.ThumbViewAttribute.DisplayName">
+            <summary>    DisplayText: The display text is
+    shown.
+    SortBy: The thumbnails are sorted by
+    their display name.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.BitmapViewer">
+            <summary>A scrollable viewport control for displaying a GDI+
+Image or Bitmap.</summary>
+            <remarks>    The BitmapViewer can be used to view
+    GDI+ Metafiles in a scrollable, zoomable viewport while taking
+    advantage of the full functionality of the viewport such as the
+    mouse tools and magnifier.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.BitmapViewer._ctor">
+            <summary>Initializes a new instance of BitmapViewer.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.BitmapViewer._ctor">
+            <summary>Initializes a new instance of BitmapViewer.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.BitmapViewer._ctor(System.Drawing.Image)">
+            <summary>Initializes a new instance of BitmapViewer specifying the
+System.Drawing.Bitmap it contains.</summary>
+            <param name="image">The System.Drawing.Bitmap that this
+BitmapViewer displays.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.BitmapViewer.Image">
+            <summary>Gets or sets the GDI+ Bitmap or Image accociated with this
+control.</summary>
+            <returns>The GDI+ Bitmap or Image accociated with this control.</returns>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.EllipseRubberband">
+            <summary>A elliptical rubber-band that can be positioned with the
+mouse on a viewport control.</summary>
+            <remarks>    This object is used to select an elliptical region in an
+    image for cropping, zooming, and applying a command on a
+    rectangular region as well as drawing ellipses onto an
+    image.
+    Can be used as a component in the toolbox or instantiated
+    directly.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.EllipseRubberband._ctor">
+            <remarks>Initializes a new instance of EllipseRubberBand specifying
+the parent viewport.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.EllipseRubberband._ctor">
+            <summary>Creates a new instance of EllipseRubberband.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.EllipseRubberband._ctor(Atalasoft.Imaging.WinControls.Viewport)">
+            <summary>Creates a new instance of EllipseRubberband specifying the
+parent Viewport.</summary>
+            <param name="parent">The parent Viewport for this object.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.EllipseRubberband.GetRegion">
+            <summary>Returns the elliptical region occupied by this
+rubber-band.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.EllipseRubberband.Fill">
+            <summary>Gets or sets a Fill that is used to fill the
+inside of the ellipse.</summary>
+            <returns>A Fill that is used to fill the inside of
+the ellipse.</returns>
+            <remarks>When this value is null, the ellipse is unfilled.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.FolderThumbnailView">
+            <summary>A thumbnail list control designed to display thumbnails of
+images from a directory.</summary>
+            <remarks>    The FolderThumbnailView control inherits
+    from the 
+    ThumbnailView control and displays a list of thumbnail
+    images obtained from a directory of images by setting the
+    
+    ImageFolder property. The control will load and resample
+    each image that passes the filter criterea defined in the
+    
+    ExtensionFilter property to the maximum width or height
+    specified in
+    
+    ThumbnailSize, while keeping the original aspect
+    ratio.
+    The
+    FolderThumbnailView is generally used a an
+    image navigation utility, allowing all images located in a file
+    system or network drive to be viewed as thumbnail images. When
+    the thumbnail item is clicked, the associated page can be
+    displayed in the associated 
+    ImageViewer or 
+    WorkspaceViewer control. The
+    
+    SelectedIndexChanged,
+    
+    ThumbnailActivate, or
+    
+    ThumbnailClicked event can be handled to respond to the
+    thumbnail select or click.
+    This control automatically watches
+    the file system for any changes such as adding, deleting, or
+    renaming images. It updates the control appropriately. By
+    default, all images are loaded Asynchronously thread pooling if
+    
+    Asynchronous is true. Therefore more than one images can be
+    loading at once.
+    A custom background image can be
+    displayed for each thumbnail by setting the
+    
+    BackgroundThumb property. Each thumbnail image will then be
+    overlayed onto this image. Setting the
+    BackgroundThumb property
+    can enhance the visual style of the thumbnail view
+    control.
+    For viewing thumbnails from an
+    AtalaImage, such as viewing all pages in a multipage TIFF, the
+    
+    ThumbnailView control may be a better choice.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.FolderThumbnailView._ctor">
+            <summary>Initializes a new instance of
+FolderThumbnailView.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.FolderThumbnailView.Cancel">
+            <summary>Cancels any pending thumbnails from being processed and/or
+loaded.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.FolderThumbnailView.Clear">
+            <summary>Remove all images from the
+FolderThumbnailView control.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.FolderThumbnailView.GetFolderImageCount(System.String)">
+            <summary>Returns the number of images in the specified path that pass
+the file extension filter.</summary>
+            <returns>The number of images in the specified path that pass the file
+extension filter.</returns>
+            <remarks>Use this method to determine the number of images in a folder
+prior to setting the
+
+ImageFolder to load it.</remarks>
+            <param name="path">The path to query.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.FolderThumbnailView.Refresh">
+            <summary>Causes the FolderThumbnailView to reload all
+images in the current ImageFolder.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.FolderThumbnailView.ExtensionFilter">
+            <summary>Gets or sets the a string representing the file extensions
+that will be recognized as thumbnails in the
+
+FolderThumbnailView control.</summary>
+            <remarks>    Each extension should contain a wildcard "*" and be
+    separated by a ";". For example, the default
+    ExtensionFilter is:
+    "*.png;*.tif;*.jpg;*.pcx;*.psd;*.tga;*.wbmp;*.wmf;*.emf;*.pcd;*.gif;"</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.FolderThumbnailView.ImageFolder">
+            <summary>Gets or sets the path of the images that are loaded into the
+
+FolderThumbnailView control.</summary>
+            <remarks>If thumbnails are still being loaded from a different folder
+when setting this property, those thumbnails will stop loading and
+the items cleared from the control.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.FolderThumbnailView.NumFolderImages">
+            <summary>Returns the number of images in the current folder defined in
+the
+
+ImageFolder property.</summary>
+            <remarks>See
+
+GetFolderImageCount to determine the number of images in a
+folder before setting the
+
+ImageFolder property.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.FolderThumbnailView.ThumbnailSize">
+            <summary>Gets or sets the size of the thumbnails in pixels.</summary>
+            <remarks>Each thumbnail will be resized to fit the width or height of
+the ThumbnailSize (whichever is greater). The
+maximum thumbnail size is 255 x 255 pixels.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.FolderThumbnailView.FolderLoadCancelled">
+            <summary>Occurs when a folder load is cancelled.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.FolderThumbnailView.FolderLoadCompleted">
+            <summary>Occurs after a folder load completes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.FolderThumbnailView.FolderLoadProgress">
+            <summary>Occurs after each thumbnail is loaded during a folder
+load.</summary>
+            <remarks>This event can be used to increment a progress status
+indicator.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.FolderThumbnailView.FolderLoadStarted">
+            <summary>Occurs when thumbnails are about to be loaded from a
+folder.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ImageCompositePrintDocument">
+            <summary>Allows multiple images to be printed per page at typical
+metric and english photo sizes.</summary>
+            <remarks>    This component requires the PrintImage event to be
+    handled (or OnPrintImage method overrided). In the event
+    handler, pass an AtalaImage into the
+    PrintCompositeEventArgs to be printed. Set the
+    HasMorePages property to
+    true when there are more images to print.
+    Mimumum page margins will be used
+    when calculating the image position. You may override the
+    position and size of the printed image by changing the
+    ImageBounds property of the
+    PrintCompositeEventArgs. The image will always
+    be rotated to fit.
+    A caption can be printed beneath each
+    image by setting the Caption property of
+    PrintCompositeEventArgs.
+    By default, images will be cropped to
+    fit the aspect ratio of the printed size. However setting the
+    CropImageToFit property to false will instead scale the image
+    to fit the image bounds, keeping the original aspect ratio of
+    the image.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImageCompositePrintDocument._ctor">
+            <summary>Instantiates a new instance of the
+
+ImageCompositePrintDocument class.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImageCompositePrintDocument._ctor">
+            <summary>Instantiates a new instance of the
+
+ImageCompositePrintDocument class.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImageCompositePrintDocument._ctor(Atalasoft.Imaging.WinControls.CompositePrintLayout)">
+            <summary>Instantiates a new instance of the
+
+ImageCompositePrintDocument class specifying the page
+layout.</summary>
+            <param name="layout">The printed image composite layout.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImageCompositePrintDocument.CaptionAlignment">
+            <summary>Gets or sets the horizontal alignment of the caption
+text.</summary>
+            <remarks>Default is the value Near for left alignment.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImageCompositePrintDocument.CaptionColor">
+            <summary>Gets or sets the color of the caption text.</summary>
+            <remarks>The default value is black.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImageCompositePrintDocument.CaptionFont">
+            <summary>Gets or sets the font properties of the caption text.</summary>
+            <remarks>Default value is 8-pt Arial.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImageCompositePrintDocument.CropImageToFit">
+            <summary>Gets or sets a value indicating if the image is cropped or
+resized to fit the aspect ratio of the photo print.</summary>
+            <remarks>Default value is true.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImageCompositePrintDocument.Layout">
+            <summary>Gets or sets the composite photo print layout that will be
+printed on each page.</summary>
+            <remarks>Default is FullPage. Metric and English units can be
+specified by choosing the appropriate enumeration.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ImageCompositePrintDocument.AfterPrintImage">
+            <summary>Occurs after a specific image is printed during the printing
+process.</summary>
+            <remarks>Use this event to dispose of images when they are no longer
+needed, or for any other cleanup required.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ImageCompositePrintDocument.PrintImage">
+            <summary>Occurs before an image is printed during the printing
+process.</summary>
+            <remarks>This event must be handled or nothing will be printed. Set
+the
+
+PrintCompositeEventArgs members to specify the image to print,
+the caption of the image, and to indicate if there are any more
+images to print.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ImagePrintDocument">
+            <summary>Derives from
+System.Drawing.Printing.PrintDocument and allows
+Atalasoft.Imaging.AtalaImage objects to be printed
+directly to a printer.</summary>
+            <remarks>    The .NET Framework contains the
+    PrintDialog,
+    PrintPreviewDialog,
+    PrintPreviewControl, and
+    PageSetupDialog giving you fine control over
+    printer settings and showing a preview of the output. Each of
+    these uses a PrintDocument. The
+    ImagePrintDocument extends the
+    PrintDocument so that you can take advantage
+    of this functionality when printing images in Atalasoft
+    dotImage. See Printing Images
+    for more information.
+    Multiple images can be printed by setting the
+    
+    Images array property, or by handling the
+    
+    GetImage event and setting the HasMorePages
+    property of the PrintPageEventArgs to
+    true.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImagePrintDocument._ctor">
+            <summary>Initializes a new instance of ImagePrintDocument.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImagePrintDocument._ctor">
+            <summary>Initializes a new instance of ImagePrintDocument.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImagePrintDocument._ctor(Atalasoft.Imaging.AtalaImage)">
+            <summary>Initializes a new instance of ImagePrintDocument specifying
+an image to print.</summary>
+            <param name="image">The AtalaImage to print on a single sheet.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImagePrintDocument._ctor(Atalasoft.Imaging.AtalaImage[])">
+            <summary>Initializes a new instance of ImagePrintDocument specifying
+an array of images to print on multiple pages.</summary>
+            <param name="images">The array of AtalaImage's to print on multiple sheets.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImagePrintDocument._ctor(System.Boolean,System.Boolean,Atalasoft.Imaging.AtalaImage)">
+            <summary>Initializes a new instance of ImagePrintDocument specifying
+the image to print and the center and fit to page settings.</summary>
+            <param name="center">Indicates if the image is centered on the page.</param>
+            <param name="fitToPage">Indicates if the image is resized to fit the page.</param>
+            <param name="image">The AtalaImage to print on a single sheet.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImagePrintDocument._ctor(System.Boolean,System.Boolean,Atalasoft.Imaging.AtalaImage[])">
+            <summary>Initializes a new instance of ImagePrintDocument specifying
+an array of images to print and the center and fit to page
+settings.</summary>
+            <param name="center">Indicates if the image is centered on the page.</param>
+            <param name="fitToPage">Indicates if the image is resized to fit the page.</param>
+            <param name="images">The array of AtalaImage's to print on multiple sheets.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImagePrintDocument._ctor(System.Boolean,System.Boolean,Atalasoft.Imaging.ImageCollection)">
+            <summary>Initializes a new instance of ImagePrintDocument specifying
+the ImageCollection to print and the center and fit to page
+settings.</summary>
+            <param name="center">Indicates if the image is centered on the page.</param>
+            <param name="fitToPage">Indicates if the image is resized to fit the page.</param>
+            <param name="images">An ImageCollection to print on multiple sheets.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImagePrintDocument._ctor(System.Boolean,Atalasoft.Imaging.WinControls.PrintScaleMode,Atalasoft.Imaging.AtalaImage)">
+            <summary>Initializes a new instance of ImagePrintDocument specifying
+the ImageCollection to print and the center and scalemode
+settings.</summary>
+            <param name="center">Indicates if the image is centered on the page.</param>
+            <param name="scaleMode">Specifies how the image is scaled to fit the page (if at
+all).</param>
+            <param name="image">The AtalaImage to print on a single sheet.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImagePrintDocument._ctor(System.Boolean,Atalasoft.Imaging.WinControls.PrintScaleMode,Atalasoft.Imaging.AtalaImage[])">
+            <summary>Initializes a new instance of ImagePrintDocument specifying
+an array of images to print and the center and scale mode
+settings.</summary>
+            <param name="center">Indicates if the image is centered on the page.</param>
+            <param name="scaleMode">Specifies how the image is scaled to fit the page (if at
+all).</param>
+            <param name="images">The array of AtalaImage's to print on multiple sheets.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImagePrintDocument._ctor(System.Boolean,Atalasoft.Imaging.WinControls.PrintScaleMode,Atalasoft.Imaging.ImageCollection)">
+            <summary>Initializes a new instance of ImagePrintDocument specifying
+the ImageCollection to print and the center and fit to page
+settings.</summary>
+            <param name="center">Indicates if the image is centered on the page.</param>
+            <param name="scaleMode">Specifies how the image is scaled to fit the page (if at
+all).</param>
+            <param name="images">An ImageCollection to print on multiple sheets.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImagePrintDocument._ctor(Atalasoft.Imaging.ImageCollection)">
+            <summary>Initializes a new instance of ImagePrintDocument specifying
+the image to print.</summary>
+            <param name="images">An ImageCollection to print on multiple sheets.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImagePrintDocument.SetImagesFromImageCollection(Atalasoft.Imaging.ImageCollection)">
+            <summary>Sets the Images in this
+ImagePrintDocument to an
+ImageCollection in a Workspace or
+WorkspaceViewer.</summary>
+            <param name="images">The ImageCollection from a
+Workspace or
+WorkspaceViewer.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImagePrintDocument.Center">
+            <summary>Gets or sets a value indicating if the image is centered onto
+the page.</summary>
+            <returns>A value indicating if the image is centered onto the
+page.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImagePrintDocument.FitToPage">
+            <summary>A value indicating if the image is stretched to fit the
+page.</summary>
+            <returns>Gets or sets a value indicating if the image is stretched to
+fit the page.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImagePrintDocument.Image">
+            <summary>Gets or sets the AtalaImage to print.</summary>
+            <returns>The AtalaImage to print.</returns>
+            <remarks>If printing multiple images, this is the first image in the
+array.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImagePrintDocument.Images">
+            <summary>Gets or sets the images to print.</summary>
+            <returns>The images to print.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImagePrintDocument.ScaleMode">
+            <summary>Gets or sets the scale mode used when printing an
+image.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ImagePrintDocument.AfterPrintPage">
+            <summary>Occurs after image is prepared to print.</summary>
+            <remarks>    Handle this event to print custom information onto the
+    page which will be placed on top of the image. For example,
+    this can be used to place a watermark on the page.
+    See PrintPage to customize the page
+    settings for each page.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ImagePrintDocument.GetImage">
+            <summary>Occurs when the print job requires the next image to
+print.</summary>
+            <remarks>Handle this event to pass in one image at a time rather than
+loading all of the images at once.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ImagePrintDocument.PrintImage">
+            <summary>Occurs just before the image is printed.</summary>
+            <remarks>Handle this event when modifying the destination and source
+rectangle areas used in the printing.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ImageViewer">
+            <summary>A scrollable viewport for AtalaImages.</summary>
+            <remarks>When using this control, it is the responsibility of the
+developer to set a new image when the image changes. See the
+
+WorkspaceViewer control to automatically control this
+behavior.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImageViewer._ctor">
+            <summary>Initializes a new instance of ImageViewer. Initializes a new
+instance of ImageViewer.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImageViewer._ctor">
+            <summary>Initializes a new instance of ImageViewer.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImageViewer._ctor(Atalasoft.Imaging.AtalaImage)">
+            <summary>Initializes a new instance of ImageViewer specifying the
+initial AtalaImage.</summary>
+            <param name="image">The image that the control will be initially set to.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImageViewer.Dispose">
+            <summary>Clean up unmanaged resources.</summary>
+            <remarks>Calling Dispose will automatically dispose the current
+DisplayImage.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImageViewer.GetScaledResolutionHeight">
+            <summary>checks the image resolution and if the Dpi.X != Dpi.Y returns
+the value to scaled the height appropriately in the control.</summary>
+            <remarks>Having an unequal Dpi.X and Dpi.Y is common for some FAX
+images.</remarks>
+            <returns>A ratio of the Dpi.X / Dpi.Y that is used for changing the
+display of images in the control.</returns>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImageViewer.OnImageDraw(System.Drawing.Rectangle,System.Drawing.Rectangle,System.Drawing.Graphics)">
+            <summary>This method is used to draw the image onto the
+
+Viewport graphics.</summary>
+            <param name="graphics">The System.Drawing.Graphics of the viewport
+to draw on.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ImageViewer.Refresh">
+            <summary>    Removes any cached images used for fast displays and
+    redraws the image.</summary>
+            <remarks>This method should be called after modifying the AtalaImage
+directly, usually when using the drawing methods on the Canvas
+object.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImageViewer.AntialiasDisplay">
+            <summary>Gets or sets the antialiasing mode, controling how the image
+is scaled at different zoom levels.</summary>
+            <returns>The antialiasing mode, controling how the image is scaled at
+different zoom levels.</returns>
+            <remarks>A DotImage Document Imaging license is required for
+ScaleToGray.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImageViewer.ColorManage">
+            <summary>Get or set a value indicating if the control will
+automatically color correct images.</summary>
+            <returns>A value indicating if the control will automatically color
+correct images.</returns>
+            <remarks>    When true, the control uses the
+    DisplayProfile and the
+    ColorProfile of the image to display to
+    transform the colors to the display's colorspace. If the
+    OutputProfile is not null, then the image will
+    be proofed to the OutputProfile.
+    See Color Management for more information.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImageViewer.DisplayProfile">
+            <summary>Gets or sets the ColorProfile
+of the display device.</summary>
+            <returns>The ColorProfile of the display
+device.</returns>
+            <remarks>Uses the color profile associated with the current display by
+default. If no profile is associated with it, the sRGB profile is
+used.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImageViewer.Image">
+            <summary>    Gets or sets the image currently being displayed in the
+    ImageViewer control.</summary>
+            <returns>The image currently being displayed in the ImageViewer
+control.</returns>
+            <remarks>Set this image to change AtalaImage currently being
+displayed.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImageViewer.OutputProfile">
+            <summary>Gets or sets the color profile used for proofing images to a
+target device.</summary>
+            <returns>The color profile used for proofing images to a target
+device.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImageViewer.ProofIntent">
+            <summary>Gets or sets the rendering intent of the color transform used
+when proofing images.</summary>
+            <returns>The rendering intent of the color transform used when
+proofing images.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ImageViewer.RenderingIntent">
+            <summary>Gets or sets the rendering intent when transforming colors to
+the display device.</summary>
+            <returns>The rendering intent when transforming colors to the display
+device.</returns>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ImageViewer.AntialiasDisplayChanged">
+            <summary>Occurs when AntialiasDisplay changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ImageViewer.ImageChanged">
+            <summary>Occurs when commands are applied to change the image.</summary>
+            <remarks>This does not fire when the
+
+Image property changes. Handle the
+
+NewImage event to be notified when the Image property as
+changed.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.LineRubberband">
+            <summary>A line rubber-band that can be positioned with the mouse on a
+viewport control.</summary>
+            <remarks>    Generally used for rendering or drawing lines onto an
+    image.
+    Can be used as a component in the toolbox or instantiated
+    directly.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.LineRubberband._ctor">
+            <summary>Initializes a new instance of LineRubberBand. Initializes a
+new instance of LineRubberband.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.LineRubberband._ctor">
+            <summary>Initializes a new instance of LineRubberband.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.LineRubberband._ctor(Atalasoft.Imaging.WinControls.Viewport)">
+            <summary>Initializes a new instance of LineRubberband specifying the
+parent Viewport.</summary>
+            <param name="parent">The parent Viewport control.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.LineRubberband.GetRegion">
+            <summary>Returns the region occupied by this rubber-band.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.Magnifier">
+            <summary>The Magnifier is part of the ImageViewer
+control, and when selected in the MouseTools property it
+will display a magnified region of the image when holding the mouse
+button down.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Magnifier._ctor">
+            <summary>Initializes a new instance of the Magnifier.Initializes a new
+instance of Magnifier.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Magnifier._ctor">
+            <summary>Initializes a new instance of the Magnifier.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Magnifier._ctor(Atalasoft.Imaging.WinControls.Viewport)">
+            <summary>Initializes a new instance of the Magnifier specifying the
+parent viewport.</summary>
+            <param name="viewer">The parent Viewport for this component.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Magnifier.Dispose">
+            <summary>Cleans up the
+
+ZoomWindow form resources.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Magnifier.Active">
+            <summary>Gets or sets a value indicating whether the magnifier is
+currently active and responding to mouse events.</summary>
+            <returns>A value indicating whether the magnifier is currently active
+and responding to mouse events.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Magnifier.ActiveMouseButton">
+            <summary>Gets or sets the mouse button used to activate the
+Magnifier.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Magnifier.BackColor">
+            <summary>Gets or sets the background color of the magnifier.</summary>
+            <returns>The background color of the magnifier.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Magnifier.BackgroundImage">
+            <summary>Gets or sets the background image of the magnifier.</summary>
+            <returns>The background image of the magnifier.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Magnifier.BorderColor">
+            <summary>Gets or sets the color of the border around this
+
+Magnifier.</summary>
+            <returns>The color of the border around this
+
+Magnifier.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Magnifier.BorderWidth">
+            <summary>Gets or sets the width of the border around this
+Magnifier.</summary>
+            <returns>The width of the border around this Magnifier.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Magnifier.Cursor">
+            <summary>Gets or sets the cursor associated with the magnifier when
+active.</summary>
+            <returns>The cursor associated with the magnifier when active.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Magnifier.Parent">
+            <summary>    Gets or sets the parent Viewport control associated with
+    this magnifier.</summary>
+            <returns>The parent Viewport control associated with this
+magnifier.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Magnifier.Size">
+            <summary>Gets or sets the size of this Magnifier.</summary>
+            <returns>The size of this Magnifier.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Magnifier.Zoom">
+            <summary>Gets or sets the zoom level of the image in this
+Magnifier.</summary>
+            <returns>The zoom level of the image in this Magnifier.</returns>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.OpenImageFileDialog">
+            <summary>This class extends the OpenFileDialog by displaying an image
+preview that automatically updates as the user selects a file in
+the dialog.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.OpenImageFileDialog._ctor">
+            <summary>Creates a new instance of
+OpenImageFileDialog.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.OpenImageFileDialog.Reset">
+            <summary>Resets the property values to their default values.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.AddExtension">
+            <summary>Gets or sets a value indicating whether the dialog box
+automatically adds an extension to a file name if the user omits
+the extension.</summary>
+            <remarks>    The extension added to a file name depends on the
+    currently selected file filter and the value of the
+    CheckFileExists property.
+    If the CheckFileExists property is true,
+    the dialog box adds the first extension from the current file
+    filter that matches an existing file. If no files match the
+    current file filter, the dialog box adds the extension
+    specified in the DefaultExt property.
+    If the CheckFileExists property is false,
+    the dialog box adds the first valid file name extension from
+    the current file filter. If the current file filter contains no
+    valid file name extensions, the dialog box adds the extension
+    specified in the DefaultExt property.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.CheckFileExists">
+            <summary>    Gets or sets a value indicating whether the dialog box
+    displays a warning if the user specifies a file name that does
+    not exist.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.CheckPathExists">
+            <summary>Gets or sets a value indicating whether the dialog box
+displays a warning if the user specifies a path that does not
+exist.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.DefaultExt">
+            <summary>Gets or sets the default file name extension.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.DereferenceLinks">
+            <summary>Gets or sets a value indicating whether the dialog box
+returns the location of the file referenced by the shortcut or
+whether it returns the location of the shortcut (.lnk).</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.FileName">
+            <summary>Gets or sets a string containing the file name selected in
+the file dialog box.</summary>
+            <remarks>    The file name includes both the file path and the
+    extension. If no files are selected, this method returns an
+    empty string ("").
+    This property can only be the name of one selected file.
+    If you want to return an array containing the names of all
+    selected files in a multiple-selection dialog box, use
+    FileNames.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.FileNames">
+            <summary>Gets the file names of all selected files in the dialog
+box.</summary>
+            <remarks>Each file name includes both the file path and the extension.
+If no files are selected, this method returns an empty
+array.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.FileTitle">
+            <summary>Gets or sets the filename of the selected file.</summary>
+            <remarks>This does not include the path, only the filename is
+returned.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.Filter">
+            <summary>Gets or sets the current file name filter string, which
+determines the choices that appear in the "Files of type" box in
+the dialog box.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.FilterIndex">
+            <summary>Gets or sets the index of the filter currently selected in
+the file dialog box.</summary>
+            <remarks>    Use the FilterIndex property to set which
+    filtering option is shown first to the user. You can also use
+    the value of FilterIndex after showing the file dialog
+    to perform special file operations depending upon the filter
+    chosen.
+    
+        Note The index value of the first filter
+        entry is 1.
+    </remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.InitialDirectory">
+            <summary>Gets or sets the initial directory displayed by the file
+dialog box.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.Multiselect">
+            <summary>Gets or sets a value indicating whether the dialog box allows
+multiple files to be selected.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.PreviewBorderStyle">
+            <summary>Gets or sets the style of border used for the preview
+window.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.PreviewEnabled">
+            <summary>Gets or sets a value indicating whether the preview window is
+enabled.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.ReadOnlyChecked">
+            <summary>Gets or sets a value indicating whether the read-only check
+box is selected.</summary>
+            <remarks>The ShowReadOnly property must be set before in order for the
+read-only check box to appear in the dialog box.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.Resizable">
+            <summary>Gets or sets a value indicating whether the dialog is
+resizable.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.RestoreDirectory">
+            <summary>Gets or sets a value indicating whether the dialog box
+restores the current directory before closing.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.ShowHelp">
+            <summary>Gets or sets a value indicating whether the Help
+button is displayed in the file dialog.</summary>
+            <remarks>A
+
+HelpRequested event is raised when
+the user clicks the Help button.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.ShowImageInfoButton">
+            <summary>Gets or sets a value indicating whether the "information"
+button is displayed in the dialog toolbar.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.ShowPlacesBar">
+            <summary>Gets or sets a value indicating whether to show the places
+bar in the dialog.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.ShowPreviewButton">
+            <summary>Gets or sets a value indicating whether to display the
+preview button in the dialog toolbar.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.ShowReadOnly">
+            <summary>Gets or sets a value indicating whether the dialog box
+contains a read-only check box.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.Title">
+            <summary>Gets or sets the file dialog box title.</summary>
+            <remarks>The string is placed in the title bar of the dialog box. If
+the title is an empty string, the system uses a default title of
+"Open".</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.OpenImageFileDialog.ValidateNames">
+            <summary>Gets or sets a value indicating whether the dialog box
+accepts only valid Win32 file names.</summary>
+            <remarks>If the edit control contains anything but spaces when the
+user clicks OK, the dialog returns the file name, whether it
+is valid or not. No default extension is added to the text.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.OpenImageFileDialog.FileOk">
+            <summary>Occurs when the user clicks on the Open button on the
+dialog box.</summary>
+            <remarks>This event can be used to force the dialog to remain
+displayed if the file selected does not meet your
+requirements.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.PrintCompositeEventArgs">
+            <summary>Provides data for the
+
+PrintImage event in the
+
+ImageCompositePrintDocument class.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.PrintCompositeEventArgs._ctor(System.Drawing.Graphics,System.Drawing.Rectangle,System.Drawing.Rectangle,System.Drawing.Printing.PageSettings)">
+            <summary>Instantiates a new instance of
+
+ImagePrintPageEventArgs.</summary>
+            <param name="graphics">The Graphics object associated with the printer.</param>
+            <param name="marginBounds">The area within the margins.</param>
+            <param name="pageBounds">The bounds of the page.</param>
+            <param name="pageSettings">The PageSettings object associated with the print job.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.PrintCompositeEventArgs.Caption">
+            <summary>Gets or sets the caption to be printed beneath the
+image.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.PrintCompositeEventArgs.CompositeIndex">
+            <summary>Gets the index of the image on the specific page.</summary>
+            <remarks>This is the zero based index of the image, usually printed
+from left to right, top to bottom, but in the case of landscape,
+the order is bottom to top, left to right.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.PrintCompositeEventArgs.Image">
+            <summary>Gets or sets the image to print.</summary>
+            <remarks>This property must be set to an AtalaImage
+object, or nothing will be printed.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.PrintCompositeEventArgs.ImageBounds">
+            <summary>Gets or sets the position and size of the image on the page
+that will be printed.</summary>
+            <remarks>This value can be modified to change the location and size of
+the printed image. However the value works independantly of
+orientation. The ImageBounds will be rotated 90 degrees prior to
+printing with landscape orientations.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.PrintCompositeEventArgs.ImageIndex">
+            <summary>Gets the index of the image that is about to print.</summary>
+            <remarks>This is the image number (minus one).</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.PrintCompositeEventArgs.MinMargins">
+            <summary>Gets the minimum margins (in pixels) for the printer being
+used.</summary>
+            <remarks>This property was added because the MinMargins property in
+the PageSetupDialog does not work.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.PrintImageEventArgs">
+            <summary>Provides data for the AfterPrintPage, GetImage and PrintImage
+events of ImagePrintDocument.</summary>
+            <remarks>This class is used by ImagePrintDocument to allow images to
+be printed in a single print job without having to load all of the
+images at once.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.PrintImageEventArgs._ctor(System.Drawing.Graphics,System.Drawing.Rectangle,System.Drawing.Rectangle,System.Drawing.Printing.PageSettings)">
+            <summary>Creates a new instance of PrintImageEventArgs.</summary>
+            <param name="graphics">The graphics object associated with the print job.</param>
+            <param name="marginBounds">The area within the margins.</param>
+            <param name="pageBounds">The bounds of the page.</param>
+            <param name="pageSettings">The PageSettings object associated with the print job.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.PrintImageEventArgs.DestRectangle">
+            <summary>Gets or sets the destination rectangle.</summary>
+            <remarks>This rectangle can be used to modify the position and size of
+the image on the printed page. This should only be modified in the
+PrintImage event.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.PrintImageEventArgs.Image">
+            <summary>Gets or sets the image to print.</summary>
+            <remarks>Setting this to null (Nothing in Visual
+Basic) will inform the ImagePrintDocument that there are no more
+images to print.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.PrintImageEventArgs.ImageIndex">
+            <summary>Gets or sets the current image being printed.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.PrintImageEventArgs.MinMargins">
+            <summary>Gets the minimum margins (in pixels) for the printer being
+used.</summary>
+            <remarks>This property was added because the MinMargins property in
+the PageSetupDialog does not work.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.PrintImageEventArgs.SourceRectangle">
+            <summary>Gets or sets the source rectangle of the image to
+print.</summary>
+            <remarks>This can be used to modify the area of the image to print.
+This property should only be modified in the PrintImage
+event.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.RectangleRubberband">
+            <summary>A rectangular rubber-band that can be positioned with the
+mouse on a viewport control.</summary>
+            <remarks>    This object is used to select a rectangular region in an
+    image for cropping, zooming, and applying a command on a
+    rectangular region as well as drawing rectangles onto an
+    image.
+    Can be used as a component in the toolbox or instantiated
+    directly.
+    See RectangleSelection for an object deriving from
+    RectangleRubberBand that can be resized once created.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RectangleRubberband._ctor">
+            <summary>Initializes a new instance of RectangleRubberBand.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RectangleRubberband._ctor">
+            <summary>Initializes a new instance of RectangleRubberBand.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RectangleRubberband._ctor(Atalasoft.Imaging.WinControls.Viewport)">
+            <summary>Initializes a new instance of RectangleRubberBand specifying
+the parent Viewport.</summary>
+            <param name="parent">The parent Viewport control.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RectangleRubberband.GetRegion">
+            <summary>Returns the rectangular region occupied by this
+rubber-band.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.RectangleRubberband.CornerRadius">
+            <summary>Gets or sets the rounding radius of each corner in
+pixels.</summary>
+            <remarks>Set to Size.Empty for sharp corners.</remarks>
+            <returns>The rounding radius of each corner in pixels.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.RectangleRubberband.Fill">
+            <summary>Gets or sets a Fill that is used to fill the
+inside of the rectangle.</summary>
+            <remarks>When this value is null, the rectangle is unfilled.</remarks>
+            <returns>A Fill that is used to fill the inside of
+the rectangle.</returns>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.RectangleSelection">
+            <summary>A rectangular selection that can be positioned and moved with
+the mouse on a viewport control.</summary>
+            <remarks>    This object is used to select a rectangular region in an
+    image for cropping, zooming, and applying a command on a
+    rectangular region. By deafult is will display as an animated,
+    black and white selection.
+    The RectangleSelection can be used as a component in the
+    toolbox or instantiated directly.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RectangleSelection._ctor">
+            <summary>Initializes a new instance of RectangleSelection</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RectangleSelection._ctor">
+            <summary>Initializes a new instance of RectangleSelection.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RectangleSelection._ctor(Atalasoft.Imaging.WinControls.Viewport)">
+            <summary>Initializes a new instance of RectangleSelection specifying
+the parent Viewport.</summary>
+            <param name="parent">The parent Viewport control.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RectangleSelection.Dispose">
+            <returns>Free up unmanaged resources.</returns>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RectangleSelection.GetRegion">
+            <summary>Returns a rectangular region occupied by this
+selection.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RectangleSelection.HitTest(System.Drawing.Point,System.Boolean)">
+            <summary>Returns a value indicating if the position is within the
+RubberBand boundary.</summary>
+            <returns>A value indicating if the position is within the RubberBand
+boundary.</returns>
+            <param name="position">The position to test.</param>
+            <param name="ImageCoordinates">If true, position is in image coordinates otherwise position
+is in display coordinates.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.RectangleSelection.Animated">
+            <summary>Gets or sets a valid indicating if the selection is
+animated.</summary>
+            <returns>A valid indicating if the selection is animated.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.RectangleSelection.AnimationSpeed">
+            <summary>Gets or sets the animation speed in milliseconds.</summary>
+            <returns>The animation speed in milliseconds.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.RectangleSelection.SelectionNESWCursor">
+            <summary>Gets or sets the cursor displayed when resizing the top-right
+or bottom-left corners of the selection.</summary>
+            <returns>    The cursor displayed when resizing the
+    top-right or bottom-left corners of the
+    selection.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.RectangleSelection.SelectionNSCursor">
+            <summary>    Gets or sets the cursor displayed when
+    resizing the top or bottom edges of the
+    selection.</summary>
+            <returns>    The cursor displayed when resizing the top
+    or bottom edges of the selection.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.RectangleSelection.SelectionNWSECursor">
+            <summary>    Gets or sets the cursor displayed when
+    resizing the top-left or bottom-right corners of the
+    selection.</summary>
+            <returns>    The cursor displayed when resizing the
+    top-left or bottom-right corners of the
+    selection.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.RectangleSelection.SelectionWECursor">
+            <summary>Gets or sets the cursor displayed when resizing the left or
+right edges of the selection.</summary>
+            <returns>    The cursor displayed when resizing the
+    left or right edges of the selection.</returns>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.Rubberband">
+            <summary>A base class which all rubber bands inherit from.</summary>
+            <remarks>Allows entities to be drawn onto a Viewport by clicking and
+dragging with the mouse. Derived classes can draw lines,
+rectangles, and ellipses and be used to draw primitives and make
+region selections.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Rubberband.Cancel">
+            <summary>Cancels dragging a new rubberband.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Rubberband.Dispose">
+            <returns>Free up unmanaged resources.</returns>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Rubberband.GetDisplayBounds">
+            <summary>Returns a Rectangle representing the
+rectangular rubberband boundary in Viewport
+display coordinates.</summary>
+            <returns>A Rectangle representing the rectangular
+rubberband boundary in Viewport display
+coordinates.</returns>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Rubberband.GetRegion">
+            <summary>    Inheriting classes must implement this method and return
+    the region occupied by the rubber band.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Rubberband.HitTest(System.Drawing.Point,System.Boolean)">
+            <summary>Returns a value indicating if the position is within the
+RubberBand boundary.</summary>
+            <returns>A value indicating if the position is within the RubberBand
+boundary.</returns>
+            <param name="position">The position to test.</param>
+            <param name="imageCoordinates">If true, position is in image coordinates otherwise position
+is in display coordinates.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Rubberband.SetDisplayBounds(System.Drawing.RectangleF)">
+            <summary>Sets the rectangular boundary of the rubberband by using
+Viewport coordinates.</summary>
+            <param name="selectionRect">The new Rectangle boundary of the
+rubberband.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Rubberband.Start(System.Drawing.PointF,System.Boolean)">
+            <summary>Programmatically starts a new rubberband without user
+interaction.</summary>
+            <param name="startPoint">The start point of the new rubberband.</param>
+            <param name="imageCoordinates">If true, uses image pixel coordinates, otherwise uses
+Viewport coordinates.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.Active">
+            <summary>Gets or sets a value indicating if the rubberband is active
+in the parent Viewport control.</summary>
+            <remarks>When true, the mouse can interact with the RubberBand. When
+false, the current RubberBand will still be displayed, but the
+mouse cannot interact with it. When this value is set to true, any
+other RubberBands with the same Parent will be deactivated.</remarks>
+            <returns>A value indicating if the rubberband is active in the parent
+Viewport control.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.ActiveButtons">
+            <summary>Gets or sets a value indicating which mouse buttons are used
+to draw the rubberband.</summary>
+            <returns>A value indicating which mouse buttons are used to draw the
+rubberband.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.AspectRatio">
+            <summary>Gets or sets the aspect ratio which the rubberband will be
+contrained to.</summary>
+            <returns>The aspect ratio which the rubberband will be contrained
+to.</returns>
+            <remarks>If the aspect ratio is 0, the rubberband may be freely drawn
+without any aspect ratio. Default is 0.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.BackgroundColor">
+            <summary>Gets or sets the background color of a dashed line.</summary>
+            <returns>The background color of a dashed line.</returns>
+            <remarks>This value is only applicable when Inverted = false and the
+the Pen LineStyle is set to a value other then solid. Default =
+Transparent.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.Bounds">
+            <summary>Gets or sets the rectangular area occupied by the rubberband
+in image pixel coordinates.</summary>
+            <returns>The rectangular area occupied by the rubberband in image
+pixel coordinates.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.ClickLock">
+            <summary>Gets or sets a value indicating if clicking on the
+Viewport without moving the mouse starts or
+finishes a rubberband.</summary>
+            <returns>A value indicating if clicking on the
+Viewport without moving the mouse starts or
+finishes a rubberband.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.ConstrainPosition">
+            <summary>Gets or sets a value indicating if the RubberBand can be
+drawn outside the image area.</summary>
+            <returns>A value indicating if the RubberBand can be drawn outside the
+image area.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.Cursor">
+            <summary>Gets or sets the cursor which is displayed in the parent
+Viewport when active.</summary>
+            <returns>The cursor which is displayed in the parent Viewport when
+active.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.Inverted">
+            <summary>Gets or sets a value indicating if the rubberband is drawn
+inverted.</summary>
+            <returns>A value indicating if the rubberband is drawn
+inverted.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.MoveCursor">
+            <summary>    Gets or sets the cursor used when moving the
+    rubberband.</summary>
+            <remarks>Only applicable when MoveWhenInside is true.</remarks>
+            <returns>The cursor used when moving the rubberband.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.MoveWhenInside">
+            <summary>Gets or sets a value indicating if the rubberband can be
+moved with the mouse.</summary>
+            <returns>A value indicating if the rubberband can be moved with the
+mouse.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.Parent">
+            <summary>Gets or sets the parent ViewPort control.</summary>
+            <returns>The parent ViewPort control.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.Pen">
+            <summary>Gets or sets a value of the pen which is used to draw the
+rubberband.</summary>
+            <returns>A value of the pen which is used to draw the
+rubberband.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.Persist">
+            <summary>Gets or sets a value indicating if the rubberband continues
+to display after the mouse button is released.</summary>
+            <returns>A value indicating if the rubberband continues to display
+after the mouse button is released.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.SnapToPixelGrid">
+            <summary>Gets or sets a value indicating if the rubberband snaps to a
+grid occupied by one image pixel.</summary>
+            <returns>A value indicating if the rubberband snaps to a grid occupied
+by one image pixel.</returns>
+            <remarks>    The grid is only noticeable when the zoom is greater then
+    1.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Rubberband.Visible">
+            <summary>Gets or sets a value indicating if the rubberband is
+currently visible.</summary>
+            <returns>A value indicating if the rubberband is currently
+visible.</returns>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.ActiveButtonsChanged">
+            <summary>Occurs when ActiveButtons changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.ActiveChanged">
+            <summary>Occurs when Active changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.AspectRatioChanged">
+            <summary>Occurs when AspectRatio changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.BackgroundColorChanged">
+            <summary>Occurs when BackgroundColor changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.Changed">
+            <summary>Occurs when the rubber band changes size (occurs on the
+MouseUp Event).</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.Changing">
+            <summary>Occurs when the rubber band is changing size (occurs on the
+MouseMove Event).</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.ClickLockChanged">
+            <summary>Occurs when ClickLock changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.ConstrainPositionChanged">
+            <summary>Occurs when ConstrainPposition changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.CursorChanged">
+            <summary>Occurs when Cursor changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.InvertedChanged">
+            <summary>Occurs when Inverted changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.MoveCursorChanged">
+            <summary>Occurs when MoveCursor changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.MoveWhenInsideChanged">
+            <summary>Occurs when MoveWhenInside changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.ParentChanged">
+            <summary>Occurs when Parent changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.PenChanged">
+            <summary>Occurs when Pen changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.PersistChanged">
+            <summary>Occurs when Persist changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.SnapToPixelGridChanged">
+            <summary>Occurs when SnapToPixelGrid changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Rubberband.VisibleChanged">
+            <summary>Fires when</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.RubberbandEventArgs">
+            <summary>Provides data for the Changed and Changing
+events of the RubberBand class.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RubberbandEventArgs._ctor">
+            <summary>Initializes a new instance of RubberbandEventargs.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RubberbandEventArgs._ctor">
+            <summary>Initializes a new instance of RubberbandEventargs.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RubberbandEventArgs._ctor(System.Drawing.PointF,System.Drawing.PointF)">
+            <summary>Creates a new instance of RubberbandEventArgs specifying the
+starting and ending points of the rubberband.</summary>
+            <param name="startPoint">The top-left corner of the rubberband.</param>
+            <param name="endPoint">The bottom-right corner of the rubberband.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.RubberbandEventArgs.GetBounds">
+            <summary>Gets the rectangular area of the rectangle in image pixel
+coordinates.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.RubberbandEventArgs.EndPoint">
+            <summary>Gets the end position of the
+RubberBand.</summary>
+            <returns>The end position of the RubberBand.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.RubberbandEventArgs.StartPoint">
+            <summary>    Gets the start position of the
+    RubberBand.</summary>
+            <returns>The start position of the RubberBand.</returns>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ScreenCapture">
+            <summary>This class is used to capture the screen, window or a
+specified area of the screen or window.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ScreenCapture._ctor">
+            <summary>Creates a ScreenCapture object that can be used to perform
+screen and window captures.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ScreenCapture._ctor">
+            <summary>Creates a new instance of ScreenCapture.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ScreenCapture._ctor(System.IntPtr)">
+            <summary>Creates a new instance of ScreenCapture specifying the window
+handle to capture.</summary>
+            <param name="handle">The window handle to capture.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ScreenCapture._ctor(System.IntPtr,System.Boolean)">
+            <summary>Creates a new instance of ScreenCapture specifying the window
+handle to capture and whether the entire window or only the client
+area is captured.</summary>
+            <param name="handle">The window to capture.</param>
+            <param name="clientArea">A value specifiying whether the entire window is captured or
+only the client area.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ScreenCapture._ctor(System.IntPtr,System.Drawing.Rectangle)">
+            <summary>Creates a new instance ScreenCapture specifying the window
+handle and a rectangular area of the window to capture.</summary>
+            <param name="handle">The window to capture.</param>
+            <param name="area">A rectangular area of the window to capture.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ScreenCapture.CaptureScreen">
+            <summary>Captures the desktop screen.</summary>
+            <returns>The captured image.</returns>
+            <remarks>    To capture only the workable area of the screen, set the
+    ClientArea property to true.
+    If the Area property has been set,
+    ClientArea will be ignored.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ScreenCapture.CaptureWindow">
+            <summary>Captures all or part of a specific window.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ScreenCapture.Area">
+            <summary>Gets or sets the rectangular area of the screen or window to
+capture.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ScreenCapture.ClientArea">
+            <summary>Gets or sets a value indicating whether the entire window is
+captured or only the client area.</summary>
+            <remarks>When capturing the screen with CaptureScreen, this property
+indicates whether the whole screen or only the working area of the
+screen will be captured, unless the Area has been set.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ScreenCapture.Handle">
+            <summary>Gets or sets the handle of the window to capture.</summary>
+            <remarks>If this property is set to IntPtr.Zero, the
+screen will be captured.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ScrollEventArgs">
+            <summary>Provides data for the Scrolling and
+ScrollChanged events of the
+
+Scrollport control.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ScrollEventArgs._ctor">
+            <summary>Initializes a new instance of
+
+ScrollEventArgs.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ScrollEventArgs._ctor">
+            <summary>Initializes a new instance of
+
+ScrollEventArgs.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ScrollEventArgs._ctor(System.Drawing.Point)">
+            <summary>Initializes a new instance of
+
+ScrollEventArgs specifying the scroll position.</summary>
+            <param name="scrollPosition">Gets the position of the scrollbar.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ScrollEventArgs._ctor(System.Drawing.Point,Atalasoft.Imaging.WinControls.ScrollBarDirection)">
+            <summary>Initializes a new instance of
+
+ScrollEventArgs specifying the scroll position and scroll bar
+of interest.</summary>
+            <param name="scrollPosition">Gets the position of the scrollbar.</param>
+            <param name="scrollBar">The scrollbar of interest.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ScrollEventArgs.ScrollBar">
+            <summary>Gets the scroll bar of interest.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ScrollEventArgs.ScrollPosition">
+            <summary>Gets the scroll position.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.Scrollport">
+            <summary>Defines a base class that can be used for scrollable viewport
+to display and scroll any rectangular area.</summary>
+            <remarks>Similar to the System.Windows.Forms.ScrollableControl but
+with some changes and bug fixes to the .NET Framework
+version.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Scrollport.OnScrollChanged(Atalasoft.Imaging.WinControls.ScrollEventArgs)">
+            <summary>Raises the
+Atalasoft.Imaging.WinControls.Scrollport.ScrollChanged
+event.</summary>
+            <param name="e">A
+
+ScrollEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Scrollport.OnScrolling(Atalasoft.Imaging.WinControls.ScrollEventArgs)">
+            <summary>Raises the
+Atalasoft.Imaging.WinControls.Scrollport.Scrolling
+event.</summary>
+            <param name="e">A
+
+ScrollEventArgs that contains the event data.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Scrollport.Centered">
+            <summary>Gets of sets a value indicating if the rectangular area is
+centered in the control.</summary>
+            <returns>A value indicating if the rectangular area is centered in the
+control.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Scrollport.HScroll">
+            <summary>Sets of returns a value indicating if the Horizontal scroll
+bar is visible.</summary>
+            <remarks>A value indicating if the Horizontal scroll bar is
+visible.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Scrollport.ScrollBarStyle">
+            <summary>Gets or sets a value indicating the visibility of the
+scrollbars.</summary>
+            <returns>A value indicating the visibility of the scrollbars.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Scrollport.ScrollPosition">
+            <summary>Gets or sets the top left position of the scrollable
+area.</summary>
+            <returns>The top left position of the scrollable area.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Scrollport.ScrollRectangle">
+            <summary>Gets the System.Drawing.Rectangle of the scrollable area in
+the scrollport.</summary>
+            <returns>The System.Drawing.Rectangle of the scrollable area in the
+scrollport.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Scrollport.ScrollSize">
+            <summary>Gets or sets the System.Drawing.Size of the scrollable
+area.</summary>
+            <returns>The System.Drawing.Size of the scrollable area.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Scrollport.SmoothScroll">
+            <summary>Gets or sets a value indicating whether the contents update
+while the scroll thumb is being dragged.</summary>
+            <returns>A value indicating whether the contents update while the
+scroll thumb is being dragged.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Scrollport.VScroll">
+            <summary>Sets of returns a value indicating if the Vertical scroll bar
+is visible.</summary>
+            <remarks>A value indicating if the Vertical scroll bar is
+visible.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Scrollport.CenteredChanged">
+            <summary>Occurs when Atalasoft.Imaging.WinControls.Scrollport.Centered
+changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Scrollport.ScrollBarStyleChanged">
+            <summary>Occurs when ScrollBarStyle changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Scrollport.ScrollChanged">
+            <summary>Occurs when the scrollbar changes position.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Scrollport.Scrolling">
+            <summary>Occurs while the thumb on the scrollbar is being dragged with
+the mouse.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Scrollport.SmoothScrollChanged">
+            <summary>Occurs when SmoothScroll changes.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.Thumbnail">
+            <summary>This class contains information about the thumbnail image
+stored in the
+
+ThumbnailView and
+
+FolderThumbnailView controls.</summary>
+            <remarks>Contains the AtalaImage thumbnail object,
+the text label, and file information for the Thumbnail objects
+stored in the ThumbnailView control.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Thumbnail.CompareTo(System.Object)">
+            <summary>Compares two Thumbnail objects to determine if they are the
+same.</summary>
+            <param name="obj">The Thumbnail object being compared.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Thumbnail.FileInfo">
+            <summary>Gets the file information associated with the thumbnail image
+if it was loaded from a file.</summary>
+            <remarks>This value is null (Nothing in VB) if the thumbnail was
+loaded as an AtalaImage using the
+
+AddImage method of
+
+ThumbnailView.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Thumbnail.FilePath">
+            <summary>Gets the file path associated with the thumbnail image if it
+was loaded from a file.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Thumbnail.FrameIndex">
+            <summary>Gets the zero based frame index of the thumbnail if it was
+loaded from a file and is a multipage image such as a TIFF.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Thumbnail.Image">
+            <summary>Gets the thumbnail AtalaImage.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Thumbnail.Selected">
+            <summary>Gets or sets a value indicating whether this thumbnail is
+currently selected.</summary>
+            <remarks>After setting this property to true, the
+
+Select method must be called before the items are shown as
+selected.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Thumbnail.Text">
+            <summary>Gets or sets the text caption associated with this
+
+Thumbnail object.</summary>
+            <remarks>This property is used as the label when
+
+DisplayText equals
+
+ThumbViewAttributes.DisplayName.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ThumbnailCollection">
+            <summary>Contains a collection of
+
+Thumbnail objects.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailCollection.Count">
+            <summary>Gets the number of items in this collection.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailCollection.Item(System.Int32)">
+            <summary>Gets an enumerator for the
+
+Thumbnail item in the collection.</summary>
+            <param name="index">The index of the collection.</param>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ThumbnailDropEventArgs">
+            <summary>This class is send in the ThumbnailDrop event to indicate
+where the dropped items were placed.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailDropEventArgs._ctor(System.Int32)">
+            <summary>Creates an instance of ThumbnailDropEventArgs.</summary>
+            <param name="insertIndex">The index where the first item was dropped.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailDropEventArgs.InsertIndex">
+            <summary>Gets the index value where the first item was
+inserted.</summary>
+            <remarks>If multiple items were dropped, they are inserted in order
+starting at this index value.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ThumbnailEventArgs">
+            <summary>Provides data for various events in the
+
+ThumbnailView control.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailEventArgs._ctor(Atalasoft.Imaging.WinControls.Thumbnail)">
+            <summary>Initializes a new instance of
+ThumbnailEventArgs.</summary>
+            <param name="tn">The thumbnail object.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailEventArgs.Thumbnail">
+            <summary>Gets the
+
+Thumbnail object containing data about the thumbnail
+image.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ThumbnailLoadEventArgs">
+            <summary>Provides data for the
+
+ThumbnailLoad event in the
+
+ThumbnailView control.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailLoadEventArgs._ctor">
+            <summary>Initializes a new instance of
+ThumbnailLoadEventArgs.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailLoadEventArgs._ctor">
+            <summary>Initializes a new instance of
+ThumbnailLoadEventArgs.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailLoadEventArgs._ctor(System.String,Atalasoft.Imaging.ProgressEventHandler)">
+            <summary>Initializes a new instance of
+ThumbnailLoadEventArgs specifying the filename and
+progress event handler.</summary>
+            <param name="fileName">The filename of the image to be loaded.</param>
+            <param name="progress">The progress event handler used for a callback when the image
+is being loaded and processed.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailLoadEventArgs.Cancel">
+            <summary>Set this property to true to cancel the thumbnail
+load.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailLoadEventArgs.FileName">
+            <summary>The filename of the image file that is to be loaded. This
+value is null (Nothing in VB) if an AtalaImage was
+passed in directly.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailLoadEventArgs.Image">
+            <summary>The Atalaimage that was passed in to load
+into the Thumnail control. This value is null (Nothing in VB) if
+the image is loaded from a file.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailLoadEventArgs.Progress">
+            <summary>The ProgressEventHandler for the thumbnail
+that is about to be loaded. This event handler can be used to show
+progress of each thumbnail being loaded.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ThumbnailView">
+            <summary>A thumbnail list control designed to display thumbnails of
+AtalaImage objects, or image files.</summary>
+            <remarks>    The ThumbnailView control displays a
+    list of thumbnail images obtained from an image file, or
+    directly from an
+    AtalaImage. The control
+    will resample the image passed into the
+    
+    AddImage or
+    
+    AddImageFile to the maximum width or height specified in
+    
+    ThumbnailSize, while keeping the original aspect
+    ratio.
+    A common use of the
+    ThumbnailView control is to view the thumbnail
+    of each page in a multipage TIFF image. When the thumbnail item
+    is clicked, the associated page can be displayed in the
+    associated 
+    ImageViewer or
+    
+    WorkspaceViewer control. The
+    
+    SelectedIndexChanged,
+    
+    ThumbnailActivate, or
+    
+    ThumbnailClicked event can be handled to respond to the
+    thumbnail select or click.
+    A custom background image can be
+    displayed for each thumbnail by setting the
+    
+    BackgroundThumb property. Each thumbnail image will then be
+    overlayed onto this image. Setting the
+    BackgroundThumb property
+    can enhance the visual style of the thumbnail view
+    control.
+    For viewing thumbnails in a folder,
+    the
+    
+    FolderThumbnailView control is is better choice.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView._ctor">
+            <summary>Creates a new instance of the ThumbnailView
+control.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.AddImage">
+            <summary>Add a single AtalaImage to the
+ThumbnailView control optionally specifying the
+text to display below the image.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.AddImage(Atalasoft.Imaging.AtalaImage)">
+            <summary>Adds an image to the ThumbnailView.</summary>
+            <param name="image">The image to add.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.AddImage(Atalasoft.Imaging.AtalaImage,System.String)">
+            <summary>Adds an image to the ThumbnailView
+specifying the text to display below the image.</summary>
+            <param name="image">The image to add.</param>
+            <param name="caption">The text displayed below the image.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.AddImage(System.String,System.String)">
+            <summary>Adds a thumbnail to the control specifying the filename and
+caption for the thumbnail.</summary>
+            <param name="fileName">The filename of the image to create a thumbnail from.</param>
+            <param name="caption">The text displayed below the image.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.Cancel">
+            <summary>Cancels any pending thumbnails from being processed and/or
+loaded.</summary>
+            <remarks>This method is only relevant when
+
+Asynchronous is true.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.Clear">
+            <summary>Remove all images from the ThumbnailView
+control.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.EnsureVisible(System.Int32)">
+            <summary>Use this method to bring a
+
+Thumbnail into view.</summary>
+            <param name="index">The index of the
+
+Thumbnail to bring into view.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.GetItemAt(System.Int32,System.Int32)">
+            <summary>Gets the
+
+Thumbnail located at specific x, y coordinates.</summary>
+            <returns>The
+
+Thumbnail found at the coordinates given or null
+(Nothing in Visual Basic) if no Thumbnail was
+found.</returns>
+            <param name="x">The x coordinate.</param>
+            <param name="y">The y coordinate.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.InsertImage">
+            <summary>The InsertImage methods are used to insert a
+
+Thumbnail into the collection at a specific index.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.InsertImage(System.Int32,Atalasoft.Imaging.AtalaImage)">
+            <summary>Inserts an AtalaImage object into a specific index.</summary>
+            <param name="index">The index where the image should be inserted.</param>
+            <param name="image">The AtalaImage to insert.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.InsertImage(System.Int32,Atalasoft.Imaging.AtalaImage,System.String)">
+            <summary>Inserts an AtalaImage object into a specific index with a
+caption.</summary>
+            <param name="index">The index where the image should be inserted.</param>
+            <param name="image">The AtalaImage to insert.</param>
+            <param name="caption">The capture to display under the thumbnail.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.InsertImage(System.Int32,System.String,System.String)">
+            <summary>Inserts an image from file into a specific index with a
+caption.</summary>
+            <param name="index">The index where the image should be inserted.</param>
+            <param name="fileName">The filename of the image used for the thumbnail.</param>
+            <param name="caption">The capture to display under the thumbnail.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.RemoveThumbnail(Atalasoft.Imaging.WinControls.Thumbnail)">
+            <summary>Removes the specified
+
+Thumbnail from the
+
+Items collection.</summary>
+            <param name="tn">The thumbnail to remove/</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.Update">
+            <remarks>This method can be used to update a single thumbnail or the
+entire list.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.Update(Atalasoft.Imaging.WinControls.Thumbnail)">
+            <summary>Updates a single thumbnail which was loaded from a
+file.</summary>
+            <param name="thumbnail">The
+
+Thumbnail object to update. This thumbnail must have the
+
+FilePath property set to a valid filename.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ThumbnailView.Update(Atalasoft.Imaging.WinControls.Thumbnail,Atalasoft.Imaging.AtalaImage)">
+            <summary>Updates a single thumbnail with a new image.</summary>
+            <remarks>This method can be used to update the thumbnail after the
+original image has been modified.</remarks>
+            <param name="thumbnail">The
+
+Thumbnail to update.</param>
+            <param name="newImage">The new image for the thumbnail.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.Activation">
+            <summary>Gets or sets the method required by to user to activate a
+thumbnail.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.Asynchronous">
+            <summary>Gets or sets a value indicating if the thumbnails are loaded
+asynchronously or synchronously.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.BackgroundThumb">
+            <summary>Gets or sets the background image used for the
+thumbnails.</summary>
+            <remarks>The thumbnail images will be overlayed onto this image,
+giving each thumbnail an improved visual style.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.DisplayText">
+            <summary>Gets or sets the attriute used for text displayed below the
+thumbnail.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.ErrorImage">
+            <summary>Gets or sets the image displayed when there is an error
+reading a file.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.Items">
+            <summary>Gets a reference to the ThumbnailCollection
+for this control.</summary>
+            <remarks>The Items property can be used to enumerate through each
+   
+Thumbnail within the ThumbnailView
+control.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.LabelEdit">
+            <summary>Gets or sets a value indicating if the text below the
+thumbnail can be modified by the user.</summary>
+            <remarks>See the
+
+BeforeLabelEdit and 
+AfterLabelEdit for responding to a label being edited.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.LabelWrap">
+            <summary>Gets or sets a value indicating if the label text will wrap
+to the next line, or show an ellipsis if the length exceeds the
+thumbnail width.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.MaxWorkerThreads">
+            <summary>Gets or sets the number of worker threads that will be active
+at a single time in the thread pool.</summary>
+            <remarks>This value defaults to 3 meaning that up to 3 images will
+load at once in the background thread pool. Increasing this number
+will cause more simultanious threads to be created which could
+increase performance with multiple CPU systems.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.MultiSelect">
+            <summary>Gets or sets a value indicating whether multiple thumbnails
+can be selected at once.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.SelectedIndices">
+            <summary>Gets a reference to a collection if indexes that are
+currently selected in the ThumbnailView
+control.</summary>
+            <remarks>Use this collection to determine which thumbnails are
+selected.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.SelectedItems">
+            <summary>Gets a ThumbnailCollection containing the
+currently selected thumbnails.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.SortBy">
+            <summary>Gets or sets the ThumbViewAttribute used to
+sort the thumbnails.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.ThumbnailSize">
+            <summary>Gets or sets the size of the thumbnails in pixels.</summary>
+            <remarks>Each thumbnail will be resized to fit the width or height of
+the ThumbnailSize (whichever is greater). The
+maximum thumbnail size is 255 x 255 pixels.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ThumbnailView.TopItem">
+            <summary>Returns the
+
+Thumbnail at the top of the control.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ThumbnailView.AfterLabelEdit">
+            <summary>Occurs when the label for an item is edited by the
+user.</summary>
+            <remarks>    The AfterLabelEdit event occurs when the user
+    finishes modifying the text for an item. The new string that
+    the user types for the item is passed to the event, and the
+    event handler can reject the change. If the event handler
+    rejects the change, the text reverts to the text as it was
+    before the user began editing the item. In order for the
+    AfterLabelEdit event to be raised,
+    the
+    
+    LabelEdit property of the
+    
+    ThumbnailView control must be set to true. You can
+    create an event handler for the
+    
+    BeforeLabelEdit event to perform tasks before the user
+    edits the text of an item.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ThumbnailView.BeforeLabelEdit">
+            <summary>Occurs when the user starts editing the label of an
+item.</summary>
+            <remarks>The BeforeLabelEdit event occurs when the user begins
+modifying the text for an item. If the event handler cancels this
+event, the user cannot edit the text. You can use this event to
+prevent the user from editing specific items in the
+
+ThumbnailView control. If the
+
+LabelEdit property of the ThumbnailView control is set
+to false, the BeforeLabelEdit event is not raised;
+all user attempts to edit item labels are automatically
+rejected.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ThumbnailView.ItemDrag">
+            <summary>Occurs when the user begins dragging an item.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ThumbnailView.NewThumbnail">
+            <summary>Occurs after a new thumbnail is added and visible in the
+ThumbnailView control.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ThumbnailView.SelectedIndexChanged">
+            <summary>Occurs when the selected thumbnail index changes.</summary>
+            <remarks>Handle this event to respond to the user clicking or
+navigating to a thumbnail with the keyboard in order to view the
+full size image in an associated
+
+ImageViewer control.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ThumbnailView.ThumbnailActivate">
+            <summary>Occurs when a thumbnail is activated.</summary>
+            <remarks>The
+
+Activation property controls the behavior required for this
+event to be fired.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ThumbnailView.ThumbnailClicked">
+            <summary>Occurs when a thumbnail is clicked.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ThumbnailView.ThumbnailDoubleClicked">
+            <summary>Occurs when a thumbnail is double-clicked.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ThumbnailView.ThumbnailDrop">
+            <summary>Occurs when the user has dropped an item onto the
+control.</summary>
+            <remarks>To find out which item was dragged, handle the
+
+ItemDrag event. If multiple items are being dragged, check the
+
+SelectedIndicies property in the 
+ItemDrag event to learn which items are being dragged.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.ThumbnailView.ThumbnailLoad">
+            <summary>Occurs just before a thumbnail image is loaded.</summary>
+            <remarks>    Handle this event to override the thumbnail load process.
+    By setting the Image property of the
+    ThumbnailLoadEventArgs,
+    you can load the image with customized decoder settings. If you
+    are using a custom decoder that has a special method for
+    obtaining thumbnails, write the thumbnail load code in this
+    event handler.
+    The event can also be used to obtain
+    a reference to the ProgressEventHandler for
+    the image being loaded in order to show progress of each
+    thumbnail as it's loaded.
+    The Cancel property
+    of the ThumbnailLoadEventArgs can be set to
+    true to prevent the thumbnail to be loaded into the
+    control.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.Viewport">
+            <summary>Defines a base scrollable viewport for images contained in
+classes that inherit this abstract class.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Viewport._ctor">
+            <summary>Initialize a new instance of the ViewPort
+control.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Viewport.Dispose">
+            <summary>Clean up unmanaged resources.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Viewport.GetCurrentImage(System.Boolean@)">
+            <summary>Override this method and pass in a new image. This is used to
+update the magnifier image.</summary>
+            <returns>An Atalasoft.Imaging.AtalaImage or
+System.Drawing.Image object containing the current
+image</returns>
+            <param name="isBitmapImage">Indicates if the Current image is a GDI+
+System.Drawing.Image object or if false, a
+dotImage Atalasoft.Imaging.AtalaImage.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Viewport.GetScaledResolutionHeight">
+            <summary>Returns the vertical resolution based on the difference in X
+and Y resolution.</summary>
+            <returns>The vertical resolution based on the difference in X and Y
+resolution.</returns>
+            <remarks>A differing vertical resolution is common for Fax images.
+Returns a value of 1 unless overridden by an inherited
+class.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Viewport.OnImageDraw(System.Drawing.Rectangle,System.Drawing.Rectangle,System.Drawing.Graphics)">
+            <summary>Override this method to draw the image onto the
+viewport.</summary>
+            <param name="graphics">The System.Drawing.Graphics object to draw
+the image onto.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Viewport.OnMouseMovePixel(System.Windows.Forms.MouseEventArgs)">
+            <summary>Raises the OnMouseMovePixel event.</summary>
+            <param name="e">A System.Windows.Forms.MouseEventArgs that
+contains the pixel location.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.Viewport.SetZoomMode(Atalasoft.Imaging.WinControls.AutoZoomMode)">
+            <summary>Sets the zoom to the AutoZoomMode.</summary>
+            <remarks>This is a one time setting. See AutoZoom for maintaining this
+zoom style.</remarks>
+            <param name="zoomType">The zoom mode to apply.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.ActiveMouseButton">
+            <summary>Gets or sets the mouse button used to activate mouse
+tools.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.AutoZoom">
+            <summary>Gets or sets a value indicating how the image should be
+zoomed as the control is resized or the image size changes.</summary>
+            <returns>A value indicating how the image should be zoomed as the
+control is resized or the image size changes.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.ImageBorderPen">
+            <summary>Gets or sets the
+Atalasoft.Imaging.Drawing.AtalaPen used to draw a
+border around an image. Set to null for no border.</summary>
+            <returns>The pen used to draw a border around an image.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.ImagePosition">
+            <summary>Gets the visible rectangular region that is occupied by the
+image excluding the image border.</summary>
+            <returns>The visible rectangular region that is occupied by the image
+excluding the image border.</returns>
+            <remarks>The property is the same as ScrollPosition but it removes the
+image border returning the exact position of the image
+itself.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.ImageRectangle">
+            <summary>Gets the rectangular area occupied by the image excluding the
+image border.</summary>
+            <returns>The rectangular area occupied by the image excluding the
+image border.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.ImageSize">
+            <summary>Gets or sets the size of the image in the viewport.</summary>
+            <returns>The size of the image in the viewport.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.Magnifier">
+            <summary>Gets a reference to the Magnifier attached to this control
+allowing it's properties to be queried and modified.</summary>
+            <returns>A reference to the Magnifier attached to this control
+allowing it's properties to be queried and modified.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.MouseTool">
+            <summary>Gets or sets the value indicating the behavior of the mouse
+when interacting with the viewport.</summary>
+            <returns>The value indicating the behavior of the mouse when
+interacting with the viewport.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.PanCursor">
+            <summary>Gets or sets the cursor that is displayed in this Viewport
+when using the Pan MouseTool.</summary>
+            <returns>    The cursor that is displayed in this
+    Viewport when using the Pan MouseTool.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.ResolutionScaleMode">
+            <summary>Gets or sets a value indicating how images with different X
+and Y resolutions are displayed.</summary>
+            <remarks>It is common for some FAX images to have a a Y resolution
+that is smaller than the X resolution. It is intended that the
+height of these images be stretched for display. The
+ResolutionScaleMode property controls this behavior. The default
+mode is FAX which only adjusts the aspect ratio of images with
+binary images.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.Selection">
+            <summary>Gets or sets a RubberBand that is used when the MouseTool is
+set to Selection.</summary>
+            <returns>A RubberBand that is used when the MouseTool is set to
+Selection.</returns>
+            <remarks>This property may be set to any object inheriting from
+RubberBand including the RectangleSelection and
+EllipseRubberBand.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.Zoom">
+            <summary>Gets or sets the zoom level of the image in the
+viewport.</summary>
+            <returns>The zoom level of the image in the viewport.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.ZoomAreaCursor">
+            <summary>Gets or sets the cursor used for the ZoomArea mouse
+tool.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.ZoomCursor">
+            <summary>Gets or sets The cursor that is displayed in this Viewport
+when using the Zoom MouseTool.</summary>
+            <returns>    The cursor that is displayed in this
+    Viewport when using the Zoom MouseTool.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.ZoomInCursor">
+            <summary>    Gets or sets the cursor that is displayed
+    in this Viewport when using the ZoomIn MouseTool.</summary>
+            <returns>    The cursor that is displayed in this
+    Viewport when using the ZoomIn MouseTool.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.ZoomInOutPercentage">
+            <summary>Gets or sets the percentage that the zoom will change when
+using the various Zoom mouse tools.</summary>
+            <returns>The percentage that the zoom will change when using the
+various Zoom mouse tools.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.ZoomOutCursor">
+            <summary>    Gets or sets the cursor that is displayed in this
+    Viewport when using the ZoomOut MouseTool.</summary>
+            <returns>    The cursor that is displayed in this
+    Viewport when using the ZoomOut MouseTool.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.Viewport.ZoomRectangle">
+            <summary>Gets or sets the rubberband associated with the ZoomArea
+MouseTool.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Viewport.AutoZoomChanged">
+            <summary>Occurs when the AutoZoom property has been changed.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Viewport.MagnifierChanged">
+            <summary>Occurs when Magnifier changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Viewport.MouseMovePixel">
+            <summary>Occurs when the cursor moves over a pixel in the image
+returning the pixel location.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Viewport.MouseToolChanged">
+            <summary>Occurs when MouseTool changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Viewport.PanCursorChanged">
+            <summary>Occurs when PanCursor changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Viewport.SelectionChanged">
+            <summary>Occurs when Selection changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Viewport.ZoomAreaCursorChanged">
+            <summary>Occurs when the cursor of the ZoomArea mouse tool has been
+changed.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Viewport.ZoomChanged">
+            <summary>Occurs when Zoom changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Viewport.ZoomCursorChanged">
+            <summary>Occurs when ZoomCursor changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Viewport.ZoomInCursorChanged">
+            <summary>Occurs when ZoomInCursor changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Viewport.ZoomInOutPercentageChanged">
+            <summary>Occurs when ZoomInOutPercentage changes.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.Viewport.ZoomOutCursorChanged">
+            <summary>Occurs when ZoomOutCursor changes.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.WorkspaceViewer">
+            <summary>A scrollable viewport containing a Workspace object.</summary>
+            <remarks>The WorkspaceViewer control is intended to
+be the primary control used for displaying images.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer._ctor">
+            <summary>Initializes a new instance of the WorkspaceViewer
+control.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.ApplyCommand">
+            <summary>    Applies an ImageCommand to the current image in order to
+    process it.</summary>
+            <remarks>If Asynchronous is true, the command will be
+processed in a background thread.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.ApplyCommand(Atalasoft.Imaging.ImageProcessing.ImageCommand)">
+            <remarks>Applies an ImageCommand to the current image in order to
+process it.</remarks>
+            <param name="command">The Command to apply. Any object that inherits ImageCommand
+can be passed into this method.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.ApplyCommand(Atalasoft.Imaging.ImageProcessing.ImageCommand,System.String)">
+            <summary>    Creates an undo level, then applies an ImageCommand to
+    the current image in order to process it.</summary>
+            <param name="command">    The Command to apply. Any object that inherits ImageCommand can
+    be passed into this method. 
+    The Command to apply. Any object that inherits
+    ImageCommand can be passed into this method.</param>
+            <param name="undoDescription">    A text description of the action being performed. 
+    A description of the undo level that will be added before
+    processing.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Open(System.IO.Stream)">
+            <summary>Loads an image from a stream into the WorkspaceViewer.</summary>
+            <param name="stream">A stream containing the image data.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Open(System.IO.Stream,System.Int32)">
+            <summary>Loads an image from a stream into the WorkspaceViewer
+specifying the frame to load.</summary>
+            <param name="stream">A stream containing the image data.</param>
+            <param name="frameIndex">A zero-based index of the frame to load when the image is a
+multi-framed format such as TIFF. Set this to -1 to load all of the
+frames.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Open(System.IO.Stream,System.Int32,Atalasoft.Imaging.Metadata.MetadataContainer)">
+            <summary>Loads an image from a stream into the WorkspaceViewer
+specifying the frame index and metadata container.</summary>
+            <param name="stream">A stream containing the image data.</param>
+            <param name="frameIndex">A zero-based index of the frame to load when the image is a
+multi-framed format such as TIFF. Set this to -1 to load all of the
+frames.</param>
+            <param name="metadata">A MetadataContainer into which the metadata from the image is
+loaded.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Open(System.IO.Stream,Atalasoft.Imaging.Metadata.MetadataContainer)">
+            <summary>Loads an image and metadata from a stream into a
+WorkspaceViewer.</summary>
+            <param name="stream">A stream containing the image data.</param>
+            <param name="metadata">A MetadataContainer into which the metadata from the image is
+loaded.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Open(System.String)">
+            <summary>Loads an image file into a WorkspaceViewer.</summary>
+            <param name="fileName">The filename of the image to load.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Open(System.String,System.Int32)">
+            <summary>Loads an image file into a WorkspaceViewer with the specified
+frame index.</summary>
+            <param name="filename">The filename of the image to load.</param>
+            <param name="frameIndex">A zero-based index of the frame to load when the image is a
+multi-framed format such as TIFF. Set this to -1 to load all of the
+frames.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Open(System.String,System.Int32,Atalasoft.Imaging.Metadata.MetadataContainer)">
+            <summary>Loads an image file and metadata into the WorkspaceViewer
+from the specified frame index.</summary>
+            <param name="filename">The filename of the image to load.</param>
+            <param name="frameIndex">A zero-based index of the frame to load when the image is a
+multi-framed format such as TIFF. Set this to -1 to load all of the
+frames.</param>
+            <param name="metadata">A MetadataContainer into which the metadata from the image is
+loaded.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Open(System.String,Atalasoft.Imaging.Metadata.MetadataContainer)">
+            <summary>Loads an image file and metadata into a
+WorkspaceViewer.</summary>
+            <param name="fileName">The filename of the image to load.</param>
+            <param name="metadata">A MetadataContainer into which the metadata from the image is
+loaded.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Save">
+            <summary>    Writes the current AtalaImage or ImageCollection to a
+    file or stream.</summary>
+            <remarks>Saving an image with this method when the
+Workspace is in Asynchronous mode will add this
+operation to the ProcessQueue and save Asynchronously.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Save(System.IO.Stream,Atalasoft.Imaging.Codec.ImageEncoder)">
+            <summary>Saves the current image(s) to a stream.</summary>
+            <param name="stream">The stream to save the image(s) into.</param>
+            <param name="encoder">The ImageEncoder used to encode the image data.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Save(System.IO.Stream,Atalasoft.Imaging.Codec.ImageEncoder,System.Int32)">
+            <summary>Saves the current image(s) to a stream using the specified
+encoder and frame index.</summary>
+            <param name="stream">The stream to save the image(s) into.</param>
+            <param name="encoder">The ImageEncoder used to encode the image data.</param>
+            <param name="frameIndex">The image index in the collection to save. Set this to -1 if
+all images are to be saved.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Save(System.String,Atalasoft.Imaging.Codec.ImageEncoder)">
+            <summary>Saves the current image(s) to a file using the specified
+encoder.</summary>
+            <param name="fileName">The filename to which the image data is saved.</param>
+            <param name="encoder">The ImageEncoder used to encode the image data.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Save(System.String,Atalasoft.Imaging.Codec.ImageEncoder,System.Int32)">
+            <summary>Saves the current image(s) to a file using the specified
+encoder and frame index.</summary>
+            <param name="fileName">The filename to which the image data is saved.</param>
+            <param name="encoder">The ImageEncoder used to encode the image data.</param>
+            <param name="frameIndex">The image index in the collection to save. Set this to -1 if
+all images are to be saved.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Save(System.String,Atalasoft.Imaging.Codec.ImageType)">
+            <summary>Saves the current image(s) using the specified image
+type.</summary>
+            <param name="fileName">The filename to which the image data is saved.</param>
+            <param name="imageType">The type of image encoder to use.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.SetWorkspace(Atalasoft.Imaging.Workspace)">
+            <summary>Sets the Workspace of this control.</summary>
+            <param name="workspace">The Workspace object to set.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.WorkspaceViewer.Update">
+            <summary>Updates the image in the control with the current image in
+the workspace.</summary>
+            <remarks>Set
+
+AutoUpdate to automatically turn on or off this
+behavior.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.WorkspaceViewer.Asynchronous">
+            <summary>    Gets or sets a value indicating if method calls through
+    this Workspace object are processed
+    asynchronously in a background thread.</summary>
+            <remarks>    By default, this value is false. When
+    this value is true the workspace is operating
+    in asynchronous mode and the ProcessQueue is used to queue each
+    command that is applied to the image. If the AtalaImage is
+    accessed directly, unexpected threading issues might
+    occur.
+    See Asynchronous Image Processing for more information on
+    asynchronous programming in dotImage.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.WorkspaceViewer.AutoDispose">
+            <summary>Gets or sets a value indicating if the Workspace should
+dispose all images it contains when finalized.</summary>
+            <returns>A value indicating if the Workspace should dispose all images
+it contains when finalized.</returns>
+            <remarks>This value is true by default. Set it to false if using
+images in another location.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.WorkspaceViewer.AutoUpdate">
+            <summary>Gets or sets a value indicating if the control updates its
+display whenever the current image changes.</summary>
+            <returns>A value indicating if the control updates it's display
+whenever the current image changes.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.WorkspaceViewer.Image">
+            <summary>    Gets or sets the current
+    AtalaImage
+    that is active in this Workspace.</summary>
+            <remarks>    When the image that is being set already exists in the
+    ImageCollection, then that image is set as the current, and the
+    
+    ChangedImage event fires. When the image being set does not
+    exist in the collection, the current image is replaced with the
+    new image, and the current image is either added to the
+    
+    UndoCollection, or disposed.
+    To replace the current image, without disposing it, or
+    placing it into the UndoCollection, use the
+    
+    Replace method in the
+    
+    ImageCollection by calling
+    myWorkspace.Images.Replace(newImage) instead of
+    myWorkspace.Image = newImage.
+
+ҐāၔŨŸŸailClicked_EV.html">
+    ThumbnailClicked
+    ThumbnailClicked event can be handled to respond to the
+    thumbnail select or click.
+    A custom background image can be
+    displayed for each thumbnail by setting the
+    
+    BackgroundThumb property. Each thumbnail image will then be
+    overlayed onto this image. Setting the
+    BackgroundThumb property
+    can enhance the visual style of the thumbnail view
+    control.
+    For viewing thumbnails in a folder,
+    the
+    
+    FolderThumbnailView control is is better choice.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.WorkspaceViewer.Images">
+            <summary>    Gets the ImageCollection of this
+    Workspace object.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.WorkspaceViewer.Queue">
+            <summary>    Gets the
+    
+    ProcessQueue containing queued items that this
+    Workspace
+    object is currently processing.</summary>
+            <remarks>The ProcessQueue only contains items if the
+Workspace is running in Asynchronous mode.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.WorkspaceViewer.Undos">
+            <summary>    Gets the UndoCollection object containing the undo
+    history of this Workspace.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.WorkspaceViewer.ChangedImage">
+            <summary>    Fires when pixel data in the current image changes or the
+    
+    Current image in the
+    
+    ImageCollection is changed.</summary>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.WorkspaceViewer.DisposeImage">
+            <summary>Fired when an image in the ImageCollection or UndoCollection
+is disposed.</summary>
+            <remarks>This even should be handled if images are being shared. If
+this event contains an image that shouldn't be disposed, set the
+Cancel property to true.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.WorkspaceViewer.ImageStreamCompleted">
+            <summary>    Fires after an image has been read or saved signifying
+    that the Stream which was passed in can be
+    closed.</summary>
+            <remarks>This event only fires if the stream was created outside
+dotImage.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.WorkspaceViewer.NewImage">
+            <summary>    Fires when the
+    
+    Image property of the Workspace is set to
+    a new image, a command has been applied, which results in a new
+    image, or a new image has been loaded into memory.</summary>
+            <remarks>This event typically fires when opening an image, or when
+processing an image when a new image is generated as a result, and
+the old image is either disposed, or placed into an undo level.
+This event is not fired when the current image in the
+
+ImageCollection changes, or when the pixel data of the current
+image changes due to applying a command with it's
+
+InPlaceProcessing property set to true.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.WorkspaceViewer.ProcessCompleted">
+            <summary>Fires when an asynchronous process has completed.</summary>
+            <remarks>This is fired when processing commands, opening, or saving
+images.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.WorkspaceViewer.ProcessError">
+            <summary>    Fires when an error occurs in a separate thread when
+    being processed asynchronously.</summary>
+            <remarks>This event can be handled to react to an exception when it
+occurs in another thread. Typically a message box with exception
+details is displayed to the user. When this event is not handled,
+and the Asynchronous property is true, errors can go un-noticed,
+and without any error messages displayed.</remarks>
+        </member>
+        <member name="E:Atalasoft.Imaging.WinControls.WorkspaceViewer.Progress">
+            <summary>Fires while an image is being processed.</summary>
+            <remarks>Handle this event to show a progress bar or to cancel an
+operation while in progress. Some operations will fire this event
+from 0 - 100 multiple times.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.WinControls.ZoomWindow">
+            <summary>The zoom window is a form that displays a zoomed portion of
+the current image.</summary>
+            <remarks>This form is usually used in conjunction with the
+
+Magnifier MouseTool but can also be a standalone
+window.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ZoomWindow._ctor">
+            <summary>Initializes a new instance of the
+
+ZoomWindow.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ZoomWindow._ctor(System.Boolean)">
+            <summary>Creates a new instance of ZoomWindow specifying whether the
+zoom window uses a BitmapViewer or an ImageViewer.</summary>
+            <param name="bitmapStyle">Set to true if a BitmapViewer is used
+instead of an ImageViewer.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.WinControls.ZoomWindow.Dispose(System.Boolean)">
+            <summary>Clean up any resources being used.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ZoomWindow.BackColor">
+            <summary>Gets or sets the background color of the window.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ZoomWindow.BackgroundImage">
+            <summary>Gets or sets the background image of the window.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ZoomWindow.CenterPoint">
+            <summary>Gets or sets the center pixel of the image inside the
+ZoomWindow.</summary>
+            <returns>The center pixel of the image inside the ZoomWindow.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ZoomWindow.Image">
+            <summary>Gets or sets the
+Atalasoft.Imaging.AtalaImage that is being
+displayed in this ZoomWindow.</summary>
+            <returns>The Atalasoft.Imaging.AtalaImage that is
+being displayed in this ZoomWindow.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ZoomWindow.ImageView">
+            <summary>Gets a reference to the
+
+ImageViewer control which is part of the
+ZoomWindow.</summary>
+            <returns>A reference to the
+
+ImageViewer control which is part of the
+ZoomWindow.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.WinControls.ZoomWindow.Zoom">
+            <summary>Gets or sets the zoom level of the image in this
+ZoomWindow.</summary>
+            <returns>The zoom level of the image in this ZoomWindow.</returns>
+        </member>
+        <member name="M:__Delegates.PrintCompositeEventHandler(System.Object,Atalasoft.Imaging.WinControls.PrintCompositeEventArgs)">
+            <summary>Represents the method that handles the AfterPrintImage and
+PrintImage events of the ImageCompositePrintDocument class.</summary>
+            <param name="sender">The ImageCompositePrintDocument raising this event.</param>
+            <param name="e">A PrintCompositeEventArgs containing information about this
+event.</param>
+        </member>
+        <member name="M:__Delegates.PrintImageEventHandler(System.Object,Atalasoft.Imaging.WinControls.PrintImageEventArgs)">
+            <summary>Represents the method that will handle the AfterPrintPage,
+GetImage and PrintImage events of ImagePrintDocument.</summary>
+            <param name="sender">The ImagePrintDocument raising this event.</param>
+            <param name="e">A PrintImageEventArgs containing information about this
+event.</param>
+        </member>
+        <member name="M:__Delegates.RubberbandEventHandler(System.Object,Atalasoft.Imaging.WinControls.RubberbandEventArgs)">
+            <summary>Represents the method that will handle the Changed and
+Changing event of the RubberBand
+component.</summary>
+            <param name="sender">The object raising this event.</param>
+            <param name="e">A RubberbandEventArgs containing information
+about this event.</param>
+        </member>
+        <member name="M:__Delegates.ScrollEventHandler(System.Object,Atalasoft.Imaging.WinControls.ScrollEventArgs)">
+            <summary>Represents the method that will handle the Scrolling
+and ScrollChanged event of the
+
+Scrollport control.</summary>
+            <param name="sender">The object raising this event.</param>
+            <param name="e">A ScrollEventArgs containing information about this
+event.</param>
+        </member>
+        <member name="M:__Delegates.ThumbnailEventHandler(System.Object,Atalasoft.Imaging.WinControls.ThumbnailEventArgs)">
+            <summary>Represents the method that will handle the various events of
+the
+
+ThumbnailView control.</summary>
+            <param name="sender">The object raising this event.</param>
+            <param name="e">The
+href="Atalasoft.dotImage.WinControls~Atalasoft.Imaging.WinControls.ThumbnailEventArgs.html"&gt;ThumbnailEventArgs
+containing information about this event.</param>
+        </member>
+        <member name="M:__Delegates.ThumbnailLoadEventHandler(System.Object,Atalasoft.Imaging.WinControls.ThumbnailLoadEventArgs)">
+            <summary>Represents the method that will handle the
+
+ThumbnailLoad event of the
+
+ThumbnailView control.</summary>
+            <param name="sender">The object raising this event.</param>
+            <param name="e">The
+href="Atalasoft.dotImage.WinControls~Atalasoft.Imaging.WinControls.ThumbnailLoadEventArgs.html"&gt;ThumbnailLoadEventArgs
+containing information about this event.</param>
+        </member>
+    </members>
+</doc>
+

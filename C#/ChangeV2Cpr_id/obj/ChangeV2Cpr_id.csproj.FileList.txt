@@ -1,0 +1,8 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\ChangeV2Cpr_id.Form1.resources
+obj\Debug\ChangeV2Cpr_id.Properties.Resources.resources
+obj\Debug\ChangeV2Cpr_id.csproj.GenerateResource.Cache
+bin\Debug\ChangeV2Cpr_id.exe
+bin\Debug\ChangeV2Cpr_id.pdb
+obj\Debug\ChangeV2Cpr_id.exe
+obj\Debug\ChangeV2Cpr_id.pdb

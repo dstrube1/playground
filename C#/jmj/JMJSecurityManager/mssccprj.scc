@@ -1,0 +1,9 @@
+SCC = This is a Source Code Control file
+
+[JMJSecurityManager.csproj]
+SCC_Aux_Path = "\\Techserv\Devel\VSS"
+SCC_Project_Name = "$/EproLibBase.root/SecurityManager/JMJSecurityManager.root/JMJSecurityManager", RCFBAAAA
+
+[JMJSecurityManager.sln]
+SCC_Aux_Path = "\\Techserv\Devel\VSS"
+SCC_Project_Name = "$/EproLibBase.root/SecurityManager/JMJSecurityManager.root/JMJSecurityManager", RCFBAAAA

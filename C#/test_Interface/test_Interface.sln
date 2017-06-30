@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test_Interface", "test_Interface.csproj", "{E2968861-779E-4E56-B0B4-4CD7457186E7}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{E2968861-779E-4E56-B0B4-4CD7457186E7}.Debug.ActiveCfg = Debug|.NET
+		{E2968861-779E-4E56-B0B4-4CD7457186E7}.Debug.Build.0 = Debug|.NET
+		{E2968861-779E-4E56-B0B4-4CD7457186E7}.Release.ActiveCfg = Release|.NET
+		{E2968861-779E-4E56-B0B4-4CD7457186E7}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

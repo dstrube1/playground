@@ -1,0 +1,5 @@
+bin\Debug\RepInfoCrawl_2.exe
+bin\Debug\RepInfoCrawl_2.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\RepInfoCrawl_2.exe
+obj\Debug\RepInfoCrawl_2.pdb

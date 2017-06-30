@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://secure.newcropaccounts.com/v5/WebServices/Pharmacy.asmx?wsdl" docRef="https://secure.newcropaccounts.com/v5/WebServices/Pharmacy.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="https://secure.newcropaccounts.com/v5/WebServices/Pharmacy.asmx" xmlns:q1="https://secure.newcropaccounts.com/V5/webservices" binding="q1:PharmacySoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

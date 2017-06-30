@@ -1,0 +1,12 @@
+FTPAccess.exe <SOURCE> <DEST> [ARGUMENTS]
+
+EXAMPLE:
+--------------------------------------------------------------------------
+FTPAccess.exe "ftp://ftp.myftp.com/*.*" "C:\test" -uid "anon" -pwd "pw"
+
+
+Arguments:
+-uid <username>
+	Specify the FTP User Name
+-pwd <password>
+	Specify the FTP Password

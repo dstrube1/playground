@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileMover", "FileMover.csproj", "{2B7DDF8A-E516-4E78-B03E-9B3F529BB8DE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{2B7DDF8A-E516-4E78-B03E-9B3F529BB8DE}.Debug.ActiveCfg = Debug|.NET
+		{2B7DDF8A-E516-4E78-B03E-9B3F529BB8DE}.Debug.Build.0 = Debug|.NET
+		{2B7DDF8A-E516-4E78-B03E-9B3F529BB8DE}.Release.ActiveCfg = Release|.NET
+		{2B7DDF8A-E516-4E78-B03E-9B3F529BB8DE}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

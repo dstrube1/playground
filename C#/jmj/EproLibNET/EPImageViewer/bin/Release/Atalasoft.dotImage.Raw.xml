@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<doc>
+    <assembly>
+        <name>Atalasoft.dotImage.Raw</name>
+    </assembly>
+    <members>
+        <member name="N:Atalasoft.Imaging.Codec">
+            <summary>The image codec namespace.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.RawColorSpace">
+            <summary>Indicates the color space of the Raw image.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.RawColorSpace.GrayScale">
+            <summary>Resulting image is single channel grayscale.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.RawColorSpace.Rgb">
+            <summary>Resulting image is RGB.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.RawColorSpace.FourColors">
+            <summary>Resulting image is CMYK or GBRG.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.RawColorSpace.Default">
+            <summary>RawDecoder will automatically determine the
+color depth of the resulting image.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.RawInterpolationMethods">
+            <summary>The RAW format has one color per pixel due to BAYER
+transformation performed inside D.C. RawInterpolationMethod
+indicates the type of interpolation performed, if any, to transform
+the image into the desired colorspace.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.RawInterpolationMethods.None">
+            <summary>Does not interpolate colors, provides RAW image data.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.RawInterpolationMethods.BiLinear">
+            <summary>Performs Bi-Linear interpolation.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.RawInterpolationMethods.Vng">
+            <summary>Performs VNG interpolation.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.RawWhiteBalanceMethods">
+            <summary>Indicates the type of white balance correction, if any, to
+apply.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.RawWhiteBalanceMethods.None">
+            <summary>Do not correct for white balance.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.RawWhiteBalanceMethods.AutoWhiteBalance">
+            <summary>Performs auto white balance correction.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.RawWhiteBalanceMethods.CameraWhiteBalance">
+            <summary>Performs white balance correction based on camera
+settings.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.CameraInfo">
+            <summary>Stores detailed camera information such as make, model, and
+data size.</summary>
+            <remarks>This information is contained within the
+
+RawImageInfo class from the
+
+GetImageInfo method of the RawDecoder.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.CameraInfo._ctor">
+            <summary>    Instantiates a new instance of
+    CameraInfo.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.CameraInfo.Artist">
+            <summary>Gets the name of the artist if available.</summary>
+            <returns>The name of the artist.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.CameraInfo.DateTime">
+            <summary>Gets the date and time when the picture was taken.</summary>
+            <returns>The date and time when the picture was taken.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.CameraInfo.Make">
+            <summary>Gets the camera make.</summary>
+            <returns>The camera make.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.CameraInfo.Model">
+            <summary>Gets the camera model.</summary>
+            <returns>The camera model.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.CameraInfo.ModelExtended">
+            <summary>Gets extended information on the camera model if
+available.</summary>
+            <returns>Extended information on the camera model if available.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.CameraInfo.Software">
+            <summary>Gets the name of the software used in creating the image, if
+available.</summary>
+            <returns>The name of the software used in creating the image.</returns>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.RawDecoder">
+            <summary>Decoder for Digital Camera RAW Format Images.</summary>
+            <remarks>    To enable automatic decoding of RAW images in DotImage,
+    add an instance of the RawDecoder to the static
+    
+    Decoders collection in the
+    
+    RegisteredDecoders class. Often, some RAW images are
+    mistaken as TIFF, therefore we recommend inserting the
+    RawDecoder collection before the TiffDecoder. See the example
+    below.
+    For faster viewing RAW images, without re-processing
+    them, set the
+    
+    HalfScale property to true. This can increase speed by an
+    order of magnitude, but the resulting loaded image will be 1/2
+    the original size.
+    See the
+    Atalasoft.dotImage.Raw
+    Assembly for information on supported features and
+    cameras.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.RawDecoder._ctor">
+            <summary>Creates an instance of RawDecoder.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.RawDecoder._ctor">
+            <summary>    Creates an instance of RawDecoder with
+    default properties.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.RawDecoder._ctor(System.Boolean,Atalasoft.Imaging.Codec.RawInterpolationMethods,Atalasoft.Imaging.Codec.RawWhiteBalanceMethods,Atalasoft.Imaging.Codec.RawColorSpace,System.Single,System.Single,System.Single,System.Single)">
+            <summary>    Creates an instance of RawDecoder
+    specifying properties.</summary>
+            <param name="resample">If true, will load the image at half
+scale.</param>
+            <param name="interpolation">The interpolation method.</param>
+            <param name="whiteBalance">White balance correction method.</param>
+            <param name="colorSpace">Color space of the resulting image.</param>
+            <param name="brightness">Controls the brightness of the decoded image.</param>
+            <param name="redScale">Red color multiplier.</param>
+            <param name="blueScale">Blue color multiplier.</param>
+            <param name="gamma">Image processing parameter, controling pixel value within
+color range</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.RawDecoder._ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>    Creates an instance of RawDecoder
+    specifying properties.</summary>
+            <param name="brightness">Controls the brightness of the decoded image.</param>
+            <param name="redScale">Red color multiplier.</param>
+            <param name="blueScale">Blue color multiplier.</param>
+            <param name="gamma">Image processing parameter, controling pixel value within
+color range</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.RawDecoder.GetImageInfo(System.IO.Stream)">
+            <summary>Returns information about the RAW image passed as the input
+stream.</summary>
+            <returns>Information about the RAW image passed as the input
+stream.</returns>
+            <remarks>Cast the returned ImageInfo object to a RawImageInfo object
+in order to obtain detailed RAW information.</remarks>
+            <param name="stream">Input stream</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.RawDecoder.IsValidFormat(System.IO.Stream)">
+            <summary>Returns true if the input stream is a valid RAW
+format.</summary>
+            <returns>True if the input stream is a valid Raw format.</returns>
+            <param name="stream">The input stream.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.RawDecoder.Read(System.IO.Stream,Atalasoft.Imaging.ProgressEventHandler)">
+            <summary>Returns an AtalaImage containing the decoded
+RAW image.</summary>
+            <returns>An AtalaImage containing the decoded RAW image.</returns>
+            <param name="stream">Input stream</param>
+            <param name="progress">A progress Delegate. Pass in null (Nothing in VB) to ignore
+progress events.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.RawDecoder.BlueScale">
+            <summary>Gets or sets the multiplier value of the blue color
+channel.</summary>
+            <returns>The multiplier value of the blue color channel.</returns>
+            <remarks>The default value is 1.0.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.RawDecoder.Brightness">
+            <summary>Gets or sets a value controlling the brightness of the
+decoded image.</summary>
+            <returns>A value controlling the brightness of the decoded
+image.</returns>
+            <remarks>Default value is 1.0.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.RawDecoder.ColorSpace">
+            <summary>Gets or sets the color space of the resulting image.</summary>
+            <returns>Color space of the resulting image.</returns>
+            <remarks>In almost all cases, the RAW decoder can automatically
+identify proper color space for the input image, Default is
+recommended.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.RawDecoder.GammaValue">
+            <summary>    Gets or sets a value which controls mapping the input
+    color space into the available range of pixel values.</summary>
+            <returns>A value which controls mapping the input color space into the
+available range of pixel values.</returns>
+            <remarks>If this value is set as 1.0 then all pixel values will be
+constant. When set to 0 then the mapping is linear. Default is
+0.6.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.RawDecoder.HalfScale">
+            <summary>    Gets or sets a value that when true will read the image
+    at one half scale.</summary>
+            <remarks>Setting this to true can lead to decode
+times up to 1000 times faster.</remarks>
+            <returns>A value that when true will read the image at one half
+scale.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.RawDecoder.Interpolation">
+            <summary>Gets or sets the interpolation method used for color
+enhancement.</summary>
+            <returns>The interpolation method used for color enhancement.</returns>
+            <remarks>Default method is Bilinear and VNG.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.RawDecoder.RedScale">
+            <summary>Gets or sets the multiplier value of the red color
+channel.</summary>
+            <returns>Multiplier value of the red color channel.</returns>
+            <remarks>The default value is 1.0.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.RawDecoder.SupportedImageType">
+            <summary>Returns ImageType.Unknown.</summary>
+            <returns>Returns ImageType.Unknown.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.RawDecoder.WhiteBalance">
+            <summary>    Gets or sets the color balance of the image reflecting
+    the lighting conditions under which the photo was taken.</summary>
+            <returns>The color balance of the image reflecting the lighting
+conditions under which the photo was taken.</returns>
+            <remarks>Default is RawWhiteBalanceMethod.None.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.RawImageInfo">
+            <summary>    Includes detailed RAW image info returned when invoking
+    GetImageInfo.</summary>
+            <remarks>This class derives from ImageInfo and is
+returned in the RawDecoder GetImageInfo
+method. The class must be cast to RawImageInfo
+when obtained from GetImageInfo. See the example below.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.RawImageInfo._ctor">
+            <summary>Initializes an instance of RawImageInfo.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.RawImageInfo._ctor(System.Drawing.Size,System.Int32,Atalasoft.Imaging.Codec.ImageType,Atalasoft.Imaging.Dpi,Atalasoft.Imaging.PixelFormat,Atalasoft.Imaging.Codec.CameraInfo)">
+            <summary>Initializes an instance of RawImageInfo.</summary>
+            <param name="size">image size</param>
+            <param name="colorDepth">bits per pixel of the image</param>
+            <param name="imageType">supported image file formats that dotImage can either read or
+write</param>
+            <param name="resolution">resolution of image</param>
+            <param name="pixelFormat">specifies the format of the color data for each pixel in the
+image</param>
+            <param name="cameraInfo">information on digital camera by which raw image was
+taken</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.RawImageInfo._ctor(System.Drawing.Size,System.Drawing.Size,System.Int32,Atalasoft.Imaging.Codec.ImageType,Atalasoft.Imaging.Dpi,Atalasoft.Imaging.PixelFormat,Atalasoft.Imaging.Codec.CameraInfo)">
+            <summary>Initializes an instance of RawImageInfo.</summary>
+            <param name="size">processed size of output image</param>
+            <param name="rawSize">original size of raw image</param>
+            <param name="colorDepth">bits per pixel of the image</param>
+            <param name="imageType">supported image file formats that dotImage can either read or
+write</param>
+            <param name="resolution">resolution of image</param>
+            <param name="pixelFormat">specifies the format of the color data for each pixel in the
+image</param>
+            <param name="cameraInfo">information on digital camera by which raw image was
+taken</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.RawImageInfo.CameraInfo">
+            <summary>Gets detailed camera information.</summary>
+            <returns>Detailed camera information.</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.RawImageInfo.DataSize">
+            <summary>Gets the size of the RAW data in bytes</summary>
+            <returns>The size of the RAW data in bytes</returns>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.RawImageInfo.RawImageSize">
+            <summary>Gets the size in pixels of the original RAW image including
+margins.</summary>
+            <returns>The size in pixels of the original RAW image including
+margins.</returns>
+        </member>
+    </members>
+</doc>
+

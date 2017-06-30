@@ -1,0 +1,5 @@
+bin\Debug\searchTextsForText.exe
+bin\Debug\searchTextsForText.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\searchTextsForText.exe
+obj\Debug\searchTextsForText.pdb

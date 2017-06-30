@@ -1,0 +1,14 @@
+Documentation contents
+======================
+ cert-basics.txt - X.509 certificate basics
+ cert-howto.txt  - Certificates HOWTO
+ ciphers.txt     - OpenSSL/BSDftpd-ssl cipher list format description
+ standards.txt   - Standards related to BSDftpd-ssl
+ verify-win.txt  - Locations of trusted CA certificates and CRLs
+                   for Windows port of SSLftp-0.13 FTP client
+ readme.tjh      - Original SSLftp-0.13 readme file
+
+Standards.txt, ciphers.txt, cert-basics.txt and cert-howto.txt files are taken
+from BSDftpd-ssl distribution, but information that is contained in them is
+actual for Windows port of ftps too. Verify-win.txt is based on BSDftpd-ssl's
+verify.txt, but provides information that is specific for this program.

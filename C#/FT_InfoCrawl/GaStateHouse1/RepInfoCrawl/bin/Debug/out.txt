@@ -1,0 +1,125 @@
+District	Name	CongressID	Party	Phone	Address
+9	Amerson,%20Amos/	34072	R	404.657.8534	Room 401 	State Capitol	Atlanta, Georgia 30334
+123	Anderson,%20Alberta/	2693	D	404.656.7859	Room 512	Coverdell Legislative Office Building
+56	Ashe,%20Kathy/	2768	D	404.656.0116	Room 409 	Coverdell Legislative Office Building
+166	Barnard,%20Terry/	2700	R	404.656.5138	Room 401 	State Capitol	Atlanta, Georgia 30334
+78	Barnes,%20Mike/	6201	D	404.656.0265	Room 604 	Coverdell Legislative Office Building
+68	Bearden,%20Tim/	146414	R		Room 607 	Coverdell Legislative Office Building
+65	Beasley-Teague,%20Sharon/	2766	D	404.656.0220	Room 509 	Coverdell Legislative Office Building
+		404.656.6372	
+31	Benton,%20Tommy/	146341	R	404.656.0177	Room 501 	Coverdell Legislative Office Building
+174	Black,%20Ellis/	34084	D	404.656.0287	Room 607 	Coverdell Legislative Office Building
+162	Bordeaux,%20Tom/	2703	D	404.656.6372	Room 511 	Coverdell Legislative Office Building
+175	Borders,%20Ron/	6209	D	404.656.0265	Room 604 	Coverdell 	Legislative Office Building
+10	Bridges,%20Ben/	2756	R	404.656.5143	Room 402 	State Capitol	Atlanta, Georgia 30334
+69	Brown,%20Jeff/	2670	R	404.463.2247	Room 245 	State Capitol	Atlanta, Georgia 30334
+		404.656.6372	
+			
+160	Bryant,%20Bob/	146561	D	404.656.0298	Room 608 	Coverdell Legislative Office Building
+130	Buckner,%20Debbie/	136698	D	404.656.6372	Room 511 	Coverdell Legislative Office Building
+76	Buckner,%20Gail/	2633	D	404.656.0220	Room 509 	Coverdell Legislative Office Building	Atlanta, Georgia 30334
+50	Burkhalter,%20Mark/	2788	R	404.656.5072	Room 340 	State Capitol	Atlanta, Georgia 30334
+119	Burmeister,%20Sue/	34092	R	404.656.5024	Room 415 	State Capitol	Atlanta, Georgia 30334
+157	Burns,%20Jon/	146548	R	404.656.0213	Room 508 	Coverdell Legislative Office Building
+18	Butler,%20Mark/	136674	R	404.656.0213	Room 508 	Coverdell Legislative Office Building
+159	Carter,%20Buddy/	146550	R	404.656.0213	Room 508 	Coverdell Legislative Office Building
+		404.656.0314	
+			
+		404.656.0314	
+			
+103	Casas,%20David%20S/	136636	R	404.656.0254	Room 601 	Coverdell Legislative Office Building
+81	Chambers,%20Jill/	136608	R	404.656.3949	Room 614 	Coverdell Legislative Office Building
+116	Channell,%20Mickey/	2688	D	404.656.0298	Room 608 	Coverdell Legislative Office Building
+134	Cheokas,%20Mike/	146525	D	404.656.0325	Room 612 	Coverdell 	Legislative Office Building
+101	Coan,%20Mike/	2663	R	404.656.6801	Room 218 	State Capitol	Atlanta, Georgia 30334
+125	Cole,%20Jim/	146519	R	404.656.0152	Room 401 	Coverdell Legislative Office Building
+97	Coleman,%20Brooks/	2734	R	404.656.9210	Room 416 	State Capitol	Atlanta, Georgia 30334
+144	Coleman,%20Terry/	2720	D	404.656.5069	Room 436 	State Capitol	Atlanta, Georgia 30334
+41	Cooper,%20Sharon/	2739	R	404.463.8142	Room 415 	State Capitol	Atlanta, Georgia 30334
+102	Cox,%20Clay/	146488	R	404.656.0188	Room 504 	Coverdell Legislative Office Building
+127	Crawford,%20Mack/	2671	R		Room 245 	State Capitol	Atlanta, Georgia 30334
+109	Davis,%20Steve/	146497	R	404.656.0254	Room 601 	Coverdell Legislative Office Building
+59	Dean,%20Douglas/	2773	D	404.656.6372	Room 511 	Coverdell Legislative Office Building
+6	Dickson,%20Tom/	146313	R	404.656.0202	Room 507 	Coverdell Legislative Office Building
+75	Dodson,%20Ron/	6195	I	404.656.0152	Room 401 	Coverdell Legislative Office Building
+45	Dollar,%20Matt/	136962	R	404.656.0254	Room 601 	Coverdell Legislative Office Building
+		404.656.0137	
+			
+86	Drenner,%20Karla%20Lea/	34107	D	404.656.0202	Room 507 	Coverdell Legislative Building
+36	Ehrhart,%20Earl/	2744	R	404.656.5141	Room HM-1 State Capitol	Atlanta, Georgia 30334
+108	England,%20Terry/	146493	R	404.656.0177	Room 501 	Coverdell Legislative Office Building
+128	Epps,%20Carl%20Von/	2669	D	404.656.7859	Room 512 	Coverdell Legislative Office Building
+117	Fleming,%20Barry/	136663	R	404.656.5024	Room 415 	State Capitol	Atlanta, Georgia 30334
+99	Floyd,%20Hugh/	136639	D	404.656.0314	Room 611 	Legislative Office Building	Atlanta, Georgia 30334
+99	Floyd,%20Hugh/	136639	D	404.656.0314	Room 611 	Coverdell Legislative Office Building
+147	Floyd,%20Johnny/	2716	D		Room 501 	Coverdell Legislative Office Building
+66	Fludd,%20Virgil/	49018	D		Room 611 	Coverdell Legislative Office Building
+43	Franklin,%20Bobby/	2778	R	404.656.5087	Room 402 	Coverdell Legislative Office Building
+140	Freeman,%20Allen/	146532	R	404.656.0177	Room 501 	Coverdell Legislative Office Building
+57	Gardner,%20Pat/	48846	D	404.656.0265	Room 604 	Coverdell Legislative Office Building
+48	Geisinger,%20Harry/	146388	R	404.656.0254	Room 601 	Coverdell Legislative Office Building
+34	Golick,%20Rich/	6156	R	404.651.7737	Room 109 	State Capitol	Atlanta, Georgia 30334
+137	Graves,%20David/	2675	R	404.656.7855	Room 404	Coverdell Legislative Office Building	Atlanta, Georgia 30334
+12	Graves,%20Tom/	136564	R	404.657.8440	Room 401 	State Capitol	Atlanta, Georgia 30334
+149	Greene,%20Gerald/	2704	D	404.656.0314	Room 611 	Coverdell Legislative Office Building
+148	Hanner,%20Bob/	2697	D	404.656.7859	Room 512 	Coverdell Legislative Office Building
+118	Harbin,%20Ben/	2690	R	404.463.2247	Room 245 	State Capitol	Atlanta, Georgia 30334
+177	Hatfield,%20Mark/	146580	R	404.656.0109	Room 404 	Coverdell Legislative Office Building
+104	Heard,%20John/	136641	R	404.657.8441	Room 401 	State Capitol	Atlanta, Georgia 30334
+114	Heard,%20Keith/	2665	D	404.656.0220	Room 509 	Coverdell Legislative Office Building
+62	Heckstall,%20Joe/	2562	D	404.656.0220	Room 509 	Coverdell Legislative Office Building
+67	Hembree,%20Bill/	6204	R	404.656.5146	Room 417 	State Capitol	Atlanta, Georgia 30334
+87	Henson,%20Michele/	2636	D	404.656.0116	Room 409 	Coverdell Legislative Office Building
+61	Holmes,%20Bob/	2566	D	404.656.0116	Room 409 	Coverdell Legislative Office Building
+112	Holt,%20Doug/	146505	R	404.656.0152	Room 401 	Coverdell Legislative Office Building
+71	Horne,%20Billy/	146422	R	404.656.0287	Room 607 	Coverdell Legislative Office Building
+170	Houston,%20Penny/	2714	R	404.656.0202	Room 507 	Coverdell Legislative Office Building
+121	Howard,%20Henry/	497038	D	404.656.0287	Room 607 	Legislative Office Building	Atlanta, Georgia 30334
+124	Hudson,%20Sistie/	2687	D	404.656.7859	Room 512 	Coverdell Legislative Office Building
+133	Hugley,%20Carolyn%20Fleming/	2667	D	404.656.5058	Room 408 	Coverdell Legislative Office Building
+161	Jackson,%20Lester/	6207	D	404.656.6372	Room 511 	Legislative Office Building	Atlanta, Georgia 30334
+80	Jacobs,%20Mike/	146438	D	404.656.0325	Room 612 	Legislative Office Building	Atlanta, Georgia 30334
+135	James,%20Lynmore/	2718	D	404.656.0116	Room 409 	Coverdell Legislative Office Building
+28	Jamieson,%20Jeanette/	2730	D	404.656.0202	Room 507 	Coverdell Legislative Office Building
+8	Jenkins,%20Charles/	49655	D	404.656.0126	Room 411 	Coverdell Legislative Office Building
+82	Jennings,%20Paul/	146445	R	404.656.0126	Room 411 	Coverdell Legislative Office Building
+37	Johnson,%20Terry/	146349	D	404.656.0325	Room 612 	Coverdell Legislative Office Building
+46	Jones,%20Jan/	136591	R	404.463.2247	Room 245 	State Capitol	Atlanta, Georgia 30334
+44	Jones,%20Sheila/	146363	D	404.656.0323	Room 611 	Coverdell Legislative Office Building
+77	Jordan,%20Darryl/	34144	D	404.656.0116	Room 409 	Coverdell Legislative Office Building
+	34144	D	404.656.0116	
+179	Keen,%20Jerry/	34145	R	404.656.5052	Room 338 	State Capitol	Atlanta, Georgia 30334
+173	Keown,%20Mike/	146573	R	404.656.0177	Room 501 	Coverdell Legislative Office Building
+115	Kidd,%20Jane/	146509	D	404.656.0325	Room 612 	Coverdell Legislative Office Building
+126	Knight,%20David/	146520	R	404.656.0152	Room 401 	Coverdell Legislative Office Building
+24	Knox,%20Tom/	34147	R	404.656.6831	Room 220 	State Capitol	Atlanta, Georgia 30334
+72	Lakly,%20Dan/	146425	R	404.656.0202	Room 507 	Coverdell Legislative Office Building
+158	Lane,%20Bob/	2724	R	404.656.5115	Room 226 	State Capitol	Atlanta, Georgia 30334
+167	Lane,%20Roger/	146565	R	404.656.0109	Room 404 	Coverdell Legislative Office Building
+15	Lewis,%20Jeff/	2588	R	404.656.9198	Room 401 	State Capitol	Atlanta, Georgia 30334
+142	Lord,%20Jimmy/	2679	D	404.656.7859	Room 512 	Coverdell Legislative Office Building
+139	Lucas,%20David/	2676	D	404.656.0220	Room 509 	Legislative Office Building	Atlanta, Georgia 30334
+110	Lunsford,%20John/	34152	R		Room 401 	State Capitol	Atlanta, Georgia 30334
+32	Manning,%20Judy/	2740	R	404.656.7857	Room 401 	State Capitol	Atlanta, Georgia 30334
+		404.656.3947	
+			
+		404.656.0116	
+		404.656.5087	
+			
+		404.656.0254	
+		404.656.0298	
+		404.657.8442	
+		404.656.0325	
+		404.656.5125	
+		404.656.5024	
+		404.656.5096	
+		404.656.5072	
+		404.656.7856	
+		404.656.0213	
+			
+		404.656.0109	
+		404.656.0109	
+			
+19	Richardson,%20Glenn/	2780	R	404.656.5020	at Home... </span></td>	          </tr>	          <tr>	            <td height="21" colspan="3" valign="top">r>
+		404.656.9210	
+			

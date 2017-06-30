@@ -1,0 +1,10 @@
+bin\Debug\mmpma.exe
+bin\Debug\mmpma.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\mmpma.Form1.resources
+obj\Debug\mmpma.Properties.Resources.resources
+obj\Debug\mmpma.csproj.GenerateResource.Cache
+obj\Debug\mmpma.exe
+obj\Debug\mmpma.pdb
+bin\Debug\dbInfo.pdb
+bin\Debug\dbInfo.dll

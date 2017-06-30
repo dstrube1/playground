@@ -1,0 +1,5 @@
+SCC = This is a Source Code Control file
+
+[EPIntDaemonLib.csproj]
+SCC_Aux_Path = "\\Techserv\Devel\VSS"
+SCC_Project_Name = "$/EPIntSender.root/EPIntSender/EPIntDaemonLib", MASAAAAA

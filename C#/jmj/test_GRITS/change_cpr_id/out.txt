@@ -1,0 +1,233 @@
+IF EXISTS(select 1
+			from sysreferences sr, sysobjects so, sysobjects so2, sysconstraints sc
+			where sc.constid  *= sr.constid and
+				  sc.constid = so.id and 
+				  sc.id = so2.id 
+			and so2.name = 'p_Objective_Result_Qualifier'
+			and so.name = 'FK_p_Objective_Result_Qua2__13')
+	ALTER TABLE dbo.p_Objective_Result_Qualifier DROP
+		CONSTRAINT FK_p_Objective_Result_Qua2__13
+GO
+
+BEGIN TRANSACTION
+GO
+
+UPDATE p_Assessment set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Assessment_Progress set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Attachment_Header set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Attachment_List set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Attachment_Object set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Chart_Alert set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Chart_Alert_Progress set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Development set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Development_Stage set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Encounter_Assessment set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Encounter_Assessment_Charge set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Encounter_Charge set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Encounter_Log set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Family_History set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Family_Illness set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Finding set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_History set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_History_Questionnaire set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Lastkey set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Letter set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Material_Used set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Objective set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Objective_Comment set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Objective_Location set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Objective_Result set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Objective_Result_Qualifier set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Patient set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Patient_Encounter set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Patient_Insurance set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Treatment_Item set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE p_Treatment_Progress set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+UPDATE o_message_log set cpr_id = 'new' where cpr_id = 'old'
+IF @@ERROR <> 0
+	BEGIN
+	ROLLBACK TRANSACTION
+	RETURN
+	END
+
+COMMIT TRANSACTION
+GO
+
+IF NOT EXISTS(select 1
+			from sysreferences sr, sysobjects so, sysobjects so2, sysconstraints sc
+			where sc.constid  *= sr.constid and
+				  sc.constid = so.id and 
+				  sc.id = so2.id 
+			and so2.name = 'p_Objective_Result_Qualifier'
+			and so.name = 'FK_p_Objective_Result_Qua2__13')
+	ALTER TABLE dbo.p_Objective_Result_Qualifier ADD 
+		CONSTRAINT FK_p_Objective_Result_Qua2__13 FOREIGN KEY 
+		(
+		cpr_id,
+		treatment_id,
+		observation_id,
+		location,
+		result_sequence
+		) REFERENCES dbo.p_Objective_Result (
+		cpr_id,
+		treatment_id,
+		observation_id,
+		location,
+		result_sequence
+		)
+GO

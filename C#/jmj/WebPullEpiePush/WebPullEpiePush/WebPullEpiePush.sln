@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPullEpiePush", "WebPullEpiePush.csproj", "{BC3D7760-7426-46F9-9628-40E8AE20396C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{BC3D7760-7426-46F9-9628-40E8AE20396C}.Debug.ActiveCfg = Debug|.NET
+		{BC3D7760-7426-46F9-9628-40E8AE20396C}.Debug.Build.0 = Debug|.NET
+		{BC3D7760-7426-46F9-9628-40E8AE20396C}.Release.ActiveCfg = Release|.NET
+		{BC3D7760-7426-46F9-9628-40E8AE20396C}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

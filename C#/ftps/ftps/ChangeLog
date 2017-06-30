@@ -1,0 +1,66 @@
+* 15 November 2002 Nick Leuta <skynick@stu.lipetsk.ru>
+  [0.13-0.6]
+- "-z noprot" command-line option was added to prevent an attempt to turn on
+  protection of data connections during establishing secure FTP-TLS session
+  with server.
+- Documentation was updated, new versions of some files were imported from
+  BSDftpd-ssl documentation. Original readme from SSLftp-0.13 was re-included
+  into the source tree.
+- License was included into the source tree.
+
+* 14 April 2002 Nick Leuta <skynick@stu.lipetsk.ru>
+  [0.13-0.5]
+- Enhancement: CRL support has been added.
+- Execution of FTP commands on a secondary control connection
+  (proxy ftp-command) was enabled in TLS/SSL mode.
+- Security enhancement: a server certificate presented for the data connection
+  must match the one used for the corresponding control connection.
+- Documentation was updated.
+
+* 21 February 2002 Nick Leuta <skynick@stu.lipetsk.ru>
+  [0.13-0.4]
+- Support for .netrc file was enabled.
+- Error in shell escape code fixed.
+- More comprehensive documentation was added.
+- Next modifications were ported from bsdftpd-ssl v0.5.1:
+  - Support for trusted CA certificates storage (without defaults) and cipher
+  preference list.
+  - Revision of TLS/SSL debugging code.
+- Unnecessary verbosity was left in debugging mode.
+- Some UNIX-to-Win32 porting bugs were fixed.
+
+* 10 August 2001 Nick Leuta <skynick@stu.lipetsk.ru>
+  [0.13-0.3]
+- Next features were ported from bsdftpd-ssl v0.5.0:
+  Enhancement: support for RFC2228 and FTP-TLS draft (from 5th April, 2001)
+  was added, but compatibility with previous FTP-SSL upgrade is still
+  supported.
+  Addition: command "prot" added for turning on/off encryption of data
+  connections.
+  Modification: TLS/SSL cipher messages now displayed in more verbose form,
+  status information also was modified.
+- Note: unlike ftps utility from bsdftpd-ssl distribution this implementation
+  supports only next parameters for "-z" command-line option: secure, nosecure,
+  tls and ssl.
+
+* 10 July 2001 Nick Leuta <skynick@stu.lipetsk.ru>
+  [0.13-0.2.1]
+- Upper/lower case id mapping now works.
+
+* 13 June 2001 Nick Leuta <skynick@stu.lipetsk.ru>
+  [0.13-0.2]
+- Bugfix release: many of bugs were fixed.
+- Addition: changing modification time of downloaded files (if remote server
+  supports MDTM command).
+- Issue: connection lost if reply string from remote server contains symbol
+  with 0xff code. Obtained with localized version of MS WinNT Workstation due
+  to localized reply strings. May be fixed in future releases if needed.
+- Issue: where is a problem with "proxy" (alternate connection) if main server
+  connected via ssl. I can't investigate this issue currently because this
+  feature today works with limited number of ftp servers. So don't use "proxy"
+  if connected via ssl or use "ftps -z nossl" to disable ssl.
+- Break: upper/lower case id mapping.
+
+*  6 June 2001 Nick Leuta <skynick@stu.lipetsk.ru>
+  [0.13-0.1]
+- Initial release

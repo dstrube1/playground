@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<doc>
+    <assembly>
+        <name>Atalasoft.dotImage.PdfRasterizer</name>
+    </assembly>
+    <members>
+        <member name="N:Atalasoft.Imaging.Codec.Pdf">
+            <summary>This namespace contains PDF classes and enumerations.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Pdf.Document">
+            <summary>The Document class is the top-level class
+that represents an existing PDF document.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.Document._ctor">
+            <summary>Initializes a new instance of the Document
+class.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.Document._ctor(System.IO.BinaryReader)">
+            <summary>Opens an existing document using a BinaryReader.</summary>
+            <param name="reader">The reader from which the document is read.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.Document._ctor(System.IO.BinaryReader,System.String)">
+            <summary>Opens an existing password-protected document using a
+BinaryReader.</summary>
+            <param name="reader">The reader from which the document is read.</param>
+            <param name="password">Password that is required to open this document.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.Document._ctor(System.IO.Stream)">
+            <summary>Opens an existing document using a
+Stream.</summary>
+            <param name="stream">A Stream containing a PDF Document</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.Document._ctor(System.IO.Stream,System.String)">
+            <summary>Opens an existing password-protected document using a
+Stream.</summary>
+            <param name="stream">A Stream containing a PDF Document</param>
+            <param name="password">Password that is required to open this document.</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.Document.Author">
+            <summary>The person who authored this document.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.Document.Creator">
+            <summary>The application that created this document before it was
+converted to PDF.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.Document.Keywords">
+            <summary>Keywords of this document.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.Document.Pages">
+            <summary>Collection of pages in this document.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.Document.Producer">
+            <summary>The application that converted this document to PDF.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.Document.Subject">
+            <summary>Subject of this document.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.Document.Title">
+            <summary>Title of this document.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Pdf.ExtractedImageInfo">
+            <summary>Represents a single occurrence of an image on a PDF page.
+Encapsulates both the image and its location on the page.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.ExtractedImageInfo.Image">
+            <summary>Gets the extracted image. The extracted image.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.ExtractedImageInfo.Transformation">
+            <summary>Gets the transformation required to draw the image at the
+right location. The transformation that should be performed in
+order to draw the image at the right location. This transformation
+assumes that the original coordinate system has its origin at the
+lower-left corner and a unit corresponds to a point (1/72 inch). It
+also assumes that the image is drawn at the origin of the
+transformed coordinate system as a unit rectangle.</summary>
+            <remarks>This transformation assumes that the original coordinate
+system has its origin at the lower-left corner and a unit
+corresponds to a point (1/72 inch). It also assumes that the image
+is drawn at the origin of the transformed coordinate system as a
+unit rectangle.</remarks>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Pdf.Page">
+            <summary>A page inside an existing PDF document. Obtained through the
+
+Item property of the
+
+Pages class.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.Page.Draw">
+            <summary>Draws the page context onto a graphics object.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.Page.Draw(System.Drawing.Graphics)">
+            <summary>Draws the page content using page boundary 'Default'.</summary>
+            <param name="graphics">Graphics object to which content is drawn.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.Page.Draw(System.Drawing.Graphics,Atalasoft.Imaging.ProgressEventHandler,Atalasoft.Imaging.Codec.Pdf.PageBoundary)">
+            <summary>Draws the page content with a specified page boundary.</summary>
+            <param name="graphics">Graphics object to which content is drawn.</param>
+            <param name="pageBoundary">The page boundary that is used to draw the PDF page. If the
+page boundary is not specified for this page, Default is
+used.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.Page.ExtractImages">
+            <summary>Extracts all images on this page.</summary>
+            <returns>Extracted images. Can be of zero length.</returns>
+            <remarks>This method is faster</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.Page.Height">
+            <summary>Gets the viewer height of this page in points.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.Page.SingleImageOnly">
+            <summary>Gets a value indicating if the content of this PDF page
+consists of a single image only.</summary>
+            <remarks>When this value is true, the
+
+ExtractImages method is more efficient than rendering the PDF
+as a Page.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.Page.Width">
+            <summary>Gets the viewer width of this page in points.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Pdf.Pages">
+            <summary>Collection of pages inside a PDF document. Non-creatable.
+Obtained through the
+
+Pages property of the
+
+Document class.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.Pages.Count">
+            <summary>Gets the number of pages.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.Pages.Item(System.Int32)">
+            <summary>Retrieve a page by 0-based index.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Pdf.PdfDecoder">
+            <summary>A MultiFramedImageDecoder used to read PDF pages as images
+from a Stream.</summary>
+            <remarks>To support reading JPEG2000 and JBIG2 compressed PDF files,
+you must distribute the Atalasoft.dotImage.Jbig2.dll,
+Atalasoft.dotImage.Jpeg2000.dll, and AtalaJp2.dll
+alongside your Atalasoft.dotImage.PdfRasterizer.dll. However you
+are not required to distribute these dependencies if you do not
+wish to support JP2 or JBIG images within PDF files.</remarks>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.PdfDecoder._ctor">
+            <summary>Initializes a new instance of a
+PdfDecoder.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.PdfDecoder.GetFrameCount(System.IO.Stream)">
+            <summary>Returns the number of pages in a PDF document.</summary>
+            <returns>Number of pages.</returns>
+            <param name="stream">The Stream that holds the PDF document. It is assumed that
+the Stream position points is at the start of the PDF
+document.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.PdfDecoder.GetImageInfo">
+            <summary>Returns information about the PDF without decoding it.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.PdfDecoder.GetImageInfo(System.IO.Stream)">
+            <summary>Returns information about the first page of the PDF
+document.</summary>
+            <remarks>To obtain the PDF specific information, the ImageInfo return
+value must be cast to a PdfImageInfo.</remarks>
+            <returns>An instance of a
+
+PdfImageInfo.</returns>
+            <param name="stream">The Stream that holds the PDF document. It is assumed that
+the Stream position points is at the start of the PDF
+document.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.PdfDecoder.GetImageInfo(System.IO.Stream,System.Int32)">
+            <summary>Returns information about the given page of the PDF
+document.</summary>
+            <remarks>To obtain the PDF specific information, the ImageInfo return
+value must be cast to a PdfImageInfo.</remarks>
+            <returns>An instance of a
+
+PdfImageInfo.</returns>
+            <param name="stream">The Stream that holds the PDF document. It is assumed that
+the Stream position points is at the start of the PDF
+document.</param>
+            <param name="pageIndex">The zero-based index of the page from which to return
+information.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.PdfDecoder.IsValidFormat(System.IO.Stream)">
+            <summary>Returns true if and only if the specified Stream contains a
+PDF document.</summary>
+            <returns>True if and only if the specified Stream contains a PDF
+document.</returns>
+            <param name="stream">The Stream that holds the PDF document to verify. It is
+assumed that the stream position points is at the start of the PDF
+document.</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.PdfDecoder.Read">
+            <summary>Read a PDF document as an AtalaImage.</summary>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.PdfDecoder.Read(System.IO.Stream,System.Int32,Atalasoft.Imaging.ProgressEventHandler)">
+            <summary>Read a PDF document and return the given page as an
+AtalaImage.</summary>
+            <returns>AtalaImage containing the given page.</returns>
+            <param name="stream">The stream that holds the PDF document. It is assumed that
+the stream position points is at the start of the PDF
+document.</param>
+            <param name="pageIndex">The zero-based index of the page from which to return
+information.</param>
+            <param name="progress">The progress delegate. Can be set to null (Nothing in Visual
+Basic).</param>
+        </member>
+        <member name="M:Atalasoft.Imaging.Codec.Pdf.PdfDecoder.Read(System.IO.Stream,Atalasoft.Imaging.ProgressEventHandler)">
+            <summary>Read a PDF document and return the first page as an
+AtalaImage.</summary>
+            <returns>AtalaImage containing the first page.</returns>
+            <param name="stream">The stream that holds the PDF document. It is assumed that
+the stream position points is at the start of the PDF
+document.</param>
+            <param name="progress">The progress delegate. Can be set to null (Nothing in Visual
+Basic).</param>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.PdfDecoder.Resolution">
+            <summary>Gets or sets the resolution at which to render a PDF
+page.</summary>
+            <remarks>Note that in general rendering a PDF page will cause embedded
+images to be up- or down-sampled. To retrieve embedded images at
+their original sample rate, use the
+
+ExtractImages method.</remarks>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.PdfDecoder.SmoothingMode">
+            <summary>Gets or sets a value specifying whether and how smoothing
+(antialiasing) is applied to lines, curves, and edges of filled
+areas and text.</summary>
+            <remarks>In contrast to GDI+, the smoothing mode does effect text.
+This follows from the fact that the PDF decoder draws text as
+bezier curves.</remarks>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Pdf.PdfDecoder.MAXRESOLUTION">
+            <summary>The maximum resolution that PDF's can be read at.</summary>
+        </member>
+        <member name="F:Atalasoft.Imaging.Codec.Pdf.PdfDecoder.MINRESOLUTION">
+            <summary>The minimum resolution that PDF's can be read at.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Pdf.PdfImageInfo">
+            <summary>Includes information about an image that is created from a
+PDF page using the
+
+PdfDecoder.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.PdfImageInfo.Author">
+            <summary>Gets the person who authored this document.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.PdfImageInfo.Creator">
+            <summary>Gets the application that created this document before it was
+converted to PDF.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.PdfImageInfo.Keywords">
+            <summary>Gets the keywords of this document.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.PdfImageInfo.Producer">
+            <summary>Gets the application or module that created this PDF
+document.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.PdfImageInfo.Subject">
+            <summary>Gets the subject of this document.</summary>
+        </member>
+        <member name="P:Atalasoft.Imaging.Codec.Pdf.PdfImageInfo.Title">
+            <summary>Gets the title of this document.</summary>
+        </member>
+        <member name="T:Atalasoft.Imaging.Codec.Pdf.Summary">
+            <summary>Provides a summary of the rasterization process. This class
+is currently empty and has been added for future extension.</summary>
+            <remarks>An instance of this class is returned by the Page.Draw
+method.</remarks>
+        </member>
+    </members>
+</doc>
+

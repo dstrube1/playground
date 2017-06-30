@@ -1,0 +1,28 @@
+BSDftpd-ssl project  <URL: http://bsdftpd-ssl.sc.ru/ >
+
+                   Standards related to BSDftpd-ssl
+
+RFCs
+----
+All RFCs are available at http://www.ieft.org/rfc/rfcNNNN.txt, where NNNN is
+an RFC number below.
+
+959 FILE TRANSFER PROTOCOL (FTP). J. Postel, J. Reynolds. October 1985.
+
+2228 FTP Security Extensions. M. Horowitz, S. Lunt. October 1997.
+
+2246 The TLS Protocol Version 1.0. T. Dierks, C. Allen. January 1999.
+
+3280 Internet X.509 Public Key Infrastructure Certificate and Certificate
+     Revocation List (CRL) Profile. R. Housley, W. Polk, W. Ford, D. Solo.
+     April 2002.
+
+Drafts
+------
+To find the latest possible Internet drafts, it's recommended to browse
+ftp://ftp.isi.edu/internet-drafts/.
+
+"Securing FTP with TLS", 2nd April, 2002, <draft-murray-auth-ftp-ssl-09.txt>
+
+"FTP/TLS Friendly Firewalls", 19th June, 2002,
+   <draft-fordh-ftp-ssl-firewall-01.txt>

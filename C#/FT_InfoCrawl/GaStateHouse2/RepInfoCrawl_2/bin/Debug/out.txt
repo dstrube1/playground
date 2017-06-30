@@ -1,0 +1,353 @@
+District	Name	CongressID	Party	Phone	Address		Home
+001	Neal	146299	R	404.656.0152	Room 401 	Coverdell Legislative Office Building
+	709 N Main 	LaFayette, Georgia 30728		706.638.6518 - Home	706.638.6518 - Fax	423.421.3292 - Cell
+002	Scott	146304	R	404.656.0254	Room 601 	Coverdell Legislative Office Building
+	PO Box 7	Rossville, Georgia 30741		706.861.7045 - Home
+003	Forster	34115	R	404.656.3947	Room 614 	Coverdell Legislative Office Building
+	PO Box 100 	Ringgold, Georgia 30736		706.937.4304 - Office
+004	Williams	48674	R	404.656.3904	Room 613 	Legislative Office Building
+	132 Huntington Road	Dalton, Georgia 30720		706.278.3221 - Office	706.278.0390 - Home	706.226.2201 - Fax
+005	Meadows	146312	R	404.656.0188	Room 504 	Coverdell Legislative Office Building
+	110 Victory Court	Calhoun, Georgia 30701		706.629.4441 - Office	706.629.9810 - Home	706.629.3631 - Fax	770.878.1951 - Cell
+006	Dickson	146313	R	404.656.0202	Room 507 	Coverdell Legislative Office Building
+	5043 Village Drive	Cohutta, Georgia  30710			706.694.3908 - Home	706.264.8827 - Cell
+007	Ralston	136951	R	404.656.5943	Room 132 	State Capitol
+	PO Box 1196	Blue Ridge, Georgia 30513		706.632.2221 - Office	706.632.6193 - Fax
+008	Jenkins	49655	D	404.656.0126	Room 411 	Coverdell Legislative Office Building
+	PO Box 909 	Blairsville, Georgia 30514		706.781.4965 - Office	706.781.4965 - Cell		706.745.4684 - Fax
+009	Amerson	34072	R	404.657.8534	Room 401 	State Capitol	Atlanta, Georgia 30334	698 North Chestatee Street	Dahlonega, Georgia 30533		706.864.6589 - Home
+010	Bridges	2756	R	404.656.5143	Room 402 	State Capitol
+	100 Sang Road	Cleveland, Georgia 30528		706.865.1962 - Home	706.219.3272 - Fax
+011	Reece	6155	D	404.656.7859	Room 512 	Coverdell Legislative Office Building
+	693 Massey Road	Menlo, Georgia 30731		706.862.2657 - Office	706.862.2657 - Home	706.862.2657 - Fax
+012	Graves	136564	R	404.657.8440	Room 401 	State Capitol
+	475 Craig Road	Ranger, Georgia 30734		706.334.4030 - Home	404.656.7789 - Fax
+013	Smith	2658	D	404.656.0314	Room 611 	Coverdell Legislative Office Building
+	PO Box 486	Rome, Georgia 30162-0486		706.232.1997 - Home
+014	Loudermilk	146321	R	404.656.0152	Room 401 	Coverdell Legislative Office Building
+	PO Box 436	Cassville, Georgia 30123		770.387.2424 - Office	678.721.5612 - Home	770.387.1411 - Fax
+015	Lewis	2588	R	404.656.9198	Room 401 	State Capitol
+	PO Box 480	White, Georgia 30184		770.382.6141 - Office	770.382.4411 - Home
+016	Cummings	2735	D	404.656.0265	Room 604 	Coverdell Legislative Office Building
+	735 Morgan Valley Road	Rockmart, Georgia 30153		770.684.3747- Home 	404.463.2634 - Fax
+017	Maxwell	136576	R	404.656.3904	Room 613 	Coverdell Legislative Office Building
+	716 Graham Road	Dallas, Georgia 30132		770.386.5420 - Office	770.445.3318 - Home
+018	Butler	136674	R	404.656.0213	Room 508 	Coverdell Legislative Office Building
+	PO Box 607	Carrollton, Georgia 30112		770.834.0072 - Office	770.830.1268 - Fax
+019	Richardson	2780	R	404.656.5020	at Home... </span></td>	          </tr>	          <tr>	            <td height="21" colspan="3" valign="top">&nbsp;</td>	            <td valign="top"><!--DWLayoutEmptyCell&nbsp;</td>	          </tr>	          <tr>	insufficient formatting for home address parse
+020	Byrd	146327	R	404.656.0126	Room 411 	Coverdell Legislative Office Building
+	PO Box 906	Woodstock, Georgia 30188		678.445.1506 - Home	678.445.9013 - Fax	404.557.2218 - Cell
+021	Hill	49014	R	404.656.0126	Room 411 	Coverdell Legislative Office Building
+	145 Mountain Brook Drive	Canton, Georgia 30115		770.345.7252 - Office	770.592.5568 - Home	770.345.2394 - Fax	770.712.2879 - Cell
+022	Scheid	146331	R	404.657.8442	Room 401 	State Capitol
+	131 Chickasaw Run	Woodstock, Georgia 30188		770.516.8179 - Home
+023	Murphy	136566	R	404.656.0188	Room 504 	Coverdell Legislative Office Building
+	3830 Adams Road	Cumming, Georgia 30041		770.887.1960 - Office	770.781.9319 - Home	770.205.0602 - Fax
+024	Knox	34147	R	404.656.6831	Room 220 	State Capitol
+	302 Tribble Gap Road	Cumming, Georgia 30040		770.887.0400 - Office
+025	Mills	2755	R	404.656.5099	Room 228 	State Capitol
+	3948 Kilgore Falls Drive	Gainesville, Georgia 30507		770.967.6801 - Home	770.967.6801 - Fax
+026	Rogers	2757	R	404.463.2247	Room 245 	State Capitol
+	PO Box 639	Gainesville, Georgia 30503		770.535.6645 - Office	770.532.9484 - Home	770.535.0107 - Fax
+027	Reece	136573	R	404.656.7856	Room 401 	State Capitol
+	PO Box 664	Gainesville, Georgia 30503		770.534.9566 - Office	770.534.9566 - Home	404.657.0499 - Fax
+028	Jamieson	2730	D	404.656.0202	Room 507 	Coverdell Legislative Office Building
+	PO Box 852	Toccoa, Georgia 30577		706.886.6889 - Office	706.886.1168 - Home	706.886.9390 - Fax
+029	Powell	2731	D	404.656.0202	Room 507 	Coverdell Legislative Office Building
+	PO Box 248	Hartwell, Georgia 30643		706.376.4422 - Office
+030	McCall	2655	R	404.656.5115	Room 226 	State Capitol
+	2835 Washington Highway	Elberton, Georgia 30635		706.283.5436 - Home	706.283.6656 - Fax
+031	Benton	146341	R	404.656.0177	Room 501 	Coverdell Legislative Office Building
+	177 Martin Street	Jefferson, Georgia 30549		706.335.5519 - Office 	706.367.5891 - Home
+032	Manning	2740	R	404.656.7857	Room 401 	State Capitol
+	480 Davis Carnes Lane	Marietta, Georgia 30064		770.422.0408 - Office	770.422.2890 - Home
+033	Wix	6160	D	404.656.7859	Room 512 	Coverdell Legislative Office Building
+	4630 Glore Road	Mableton, Georgia 30126		770.948.3278 - Office	770.948.4542 - Home	770.948.7737 - Fax
+034	Golick	6156	R	404.651.7737	Room 109 	State Capitol
+	2372 Simpson Farm Way	Smyrna, Georgia 30080		770.319.7200 - Home	770.319.0970 - Fax
+035	Setzler	146379	R	404.656.0126	Room 411 	Coverdell Legislative Office Building
+	1555 Boxwood Trace	Acworth, Georgia 30102		404.817.0115 - Office	770.420.0520 - Home
+036	Ehrhart	2744	R	404.656.5141	Room HM-1 State Capitol
+	5500 Wright Road	Powder Springs, Georgia 30127		770.437.7536 - Office	770.943.8568 - Home	770.437.2601 - Fax
+037	Johnson	146349	D	404.656.0325	Room 612 	Coverdell Legislative Office Building
+	570 Shay Drive	Marietta, Georgia 30060		770.432.7028 - Home	770.432.5364 - Fax	770.314.9933 - Cell
+038	Tumlin	146354	R	404.656.0177	Room 501 	Coverdell Legislative Office Building
+	PO Box 1667	Marietta, Georgia 30061		770.428.9060 - Office
+039	Morgan	136581	D	404.656.0109	Room 404 	Coverdell Legislative Office Building
+	6570 Brandemere Way	Austell, Georgia 30168		770.948.6447 - Home	404.651.8086 - Fax	770.912.0609 - Cell
+040	Teilhet	136585	D	404.656.0298	Room 608 	Coverdell Legislative Office Building
+	2946 Anderson Circle	Smyrna, Georgia 30080		770.422.1776 - Office	770.435.0568 - Home	770.426.6155 - Fax
+041	Cooper	2739	R	404.463.8142	Room 415 	State Capitol
+	4028 River Ridge Chase	Marietta, Georgia 30067		770.956.8357 - Office	770.951.2841 - Home	770.956.9693 - Fax
+042	Parsons	2787	R	404.463.2247	Room 245 	State Capitol
+	3167 Sycamore Lane	Marietta, Georgia 30066		770.977.4426 - Office
+043	Franklin	2778	R	404.656.5087	Room 402 	Coverdell Legislative Office Building
+	4552 Cedar Knoll Drive	Marietta, Georgia 30066		770.591.6240 - Office	770.928.0896 - Home
+044	Jones	146363	D	404.656.0323	Room 611 	Coverdell Legislative Office Building
+	3246 Amhurst Drive, NW	Atlanta, Georgia 30318-5902		404.542.8683 - Home
+045	Dollar	136962	R	404.656.0254	Room 601 	Coverdell Legislative Office Building
+	1945 Annwicks Drive	Marietta, Georgia 30062		770.485.1946 - Home
+046	Jones	136591	R	404.463.2247	Room 245 	State Capitol
+	13765 Brittle Road	Alpharetta, Georgia 30004		770.346.9667 - Office	770.346.9849 - Home
+047	Martin	49016	R	404.656.0213	Room 508 	Coverdell Legislative Office Building
+	11770 Haynes Bridge Road	Suite 205-544	Alpharetta, Georgia 30004		404.656.0213 - Office
+048	Geisinger	146388	R	404.656.0254	Room 601 	Coverdell Legislative Office Building
+	224 River View Trail	Roswell, Georgia 30075		770.594.1510 - Fax
+049	Willard	34198	R	404.656.5125	Room 132 	State Capitol
+	755 River Gate Drive	Atlanta, Georgia 30350		404.656.5125 - Office	770.392.0676 - Home	770.481.7111 - Fax
+050	Burkhalter	2788	R	404.656.5072	Room 340 	State Capitol
+	9800 Medlock Bridge Road	Suite 3	Duluth, Georgia 30097			770.418.9098 - Office	770.418.9669 - Fax
+051	Rice	2656	R	404.656.5912	Room 220 	State Capitol
+	4151 Blue Iris Hollow	Norcross, Georgia 30092		770.447.9646 - Home
+052	Wilkinson	34197	R	404.463.8143	Room 415 	State Capitol
+	850 Old Creek Trail	Sandy Springs, Georgia 30328		404.705.8309 - Office	404.843.8630 - Home
+053	Stanley-Turner	2772	D	404.656.0325	Room 612 	Legislative Office Building
+	712 Gary Road, NW	Atlanta, Georgia 30318-6216		404.794.8357 - Home
+054	Lindsey	146386	R	404.656.0188	Room 504 	Coverdell Legislative Office Building
+	1150 Angelo Court	Atlanta, Georgia 30319		404.926.4155 - Office	404.264.1737 - Fax	404.316.4466 - Cell
+055	Thomas	136982	D	404.656.0314	Room 611 	Legislative Office Building
+	765 Jones Avenue, NW	Atlanta, Georgia 30314		404.525.7251 - Home	404.588.9159 - Fax
+056	Ashe	2768	D	404.656.0116	Room 409 	Coverdell Legislative Office Building	82 Westminster Drive, NE	Atlanta, Georgia 30309-3329		404.875.9467 - Office	404.875.0548 - Fax
+057	Gardner	48846	D	404.656.0265	Room 604 	Coverdell Legislative Office Building
+	668 East Pelham Road	Atlanta, Georgia 30324		404.634.6272 - Office	404.873.9944 - Home
+058	Orrock	2786	D	404.656.0325	Room 612 	Coverdell Legislative Office Building
+	1070 Delaware Avenue, SE	Atlanta, Georgia 30316		404.622.6687 - Home
+059	Dean	2773	D	404.656.6372	Room 511 	Coverdell Legislative Office Building
+	346 Arthur Street, SW	Atlanta, Georgia 30310		404.522.8900 - Office	404.525.0489 - Home	404.523.5222 - Fax
+060	Sinkfield	2779	D	404.656.6372	Room 511 	Coverdell Legislative Office Building
+	404.622.1515 - Home
+061	Holmes	2566	D	404.656.0116	Room 409 	Coverdell Legislative Office Building
+	PO Box 110009	Atlanta, Georgia 30311-3203		404.755.9528 - Home	404.651.8086 - Fax	404.406.0953 - Cell
+062	Heckstall	2562	D	404.656.0220	Room 509 	Coverdell Legislative Office Building
+	2713 Briarwood Boulevard	East Point, Georgia 30344		404.344.2062
+063	Brooks	2570	D	404.656.6372	Room 511 	Coverdell Legislative Office Building
+	404.753.3361 - Home	404.524.5531 - Office
+064	Bruce	136987	D	404.656.0314	Room 611 	Coverdell Legislative Office Building
+	410 Stone Arbor Court	Atlanta, Georgia 30331		404.344.8051 - Home	404.656.6372 - Office	404.344.8051 - Fax
+065	Beasley-Teague	2766	D	404.656.0220	Room 509 	Coverdell Legislative Office Building
+	PO Box 488	Red Oak, Georgia  30272		770.964.1024 - Home
+066	Fludd	49018	D	404.656.0314	Room 611 	Coverdell Legislative Office Building
+	PO Box 125	Fayetteville, Georgia 30214		678.364.6434 - Home 	404.656.0314 - Office	404.651.8086 - Fax
+067	Hembree	6204	R	404.656.5146	Room 417 	State Capitol
+	4159 Pool Road 	Winston, Georgia 30187		770.942.1656 - Home
+068	Bearden	146414	R	404.656.0287	Room 607 	Coverdell Legislative Office Building
+	561 Lake Connie   Road	Carrollton, Georgia&nbsp;   30116		678.988.8801
+069	Brown	2670	R	404.463.2247	Room 245 	State Capitol
+	2010 Foxcroft Drive	LaGrange, Georgia 30240		706.882.7610 - Home	706.884.3232 ext. 203 - Office	706.884.4106 - Fax
+070	Smith	2612	R	404.656.7149	Room 228 	State Capitol
+	Eight Evergreen Drive	Newnan, Georgia 30263		770.253.9427 - Office	770.253.9427 - Home
+071	Horne	146422	R	404.656.0287	Room 607 	Coverdell Legislative Office Building
+	64 Ivy Springs Drive	Newnan, Georgia 30265		770.683.4676 - Office	419.858.8539 - Fax
+072	Lakly	146425	R	404.656.0202	Room 507 	Coverdell Legislative Office Building
+	306 Raintree Bend	Peachtree City, Georgia 30269		770.487.9884 - Home	770.487.9884 - Fax	404.202.9811 - Cell
+073	Yates	2683	R	404.656.5126	Room 217 	State Capitol
+	961 Birdie Road	Griffin, Georgia 30223		770.412.7166 - Office	770.227.1474 - Home	770.412.7166 - Fax
+074	Abdul-Salaam	146427	D	404.656.0325	Room 612 	Coverdell Legislative Office Building
+	<span class="style2">PO Box 960941	Riverdale, Georgia 30274		678.508.7388 - Office	770.997.6383 - Home
+075	Dodson	6195	I	404.656.0152	Room 401 	Coverdell Legislative Office Building
+	1283 Trahlyta Terrace	Lake City, Georgia 30260		404.366.2324 - Home	404.803.6612 - Cell 	404.366.3196 - Fax
+076	Buckner	2633	D	404.656.0220	Room 509 	Coverdell Legislative Office Building
+	7324 Cardif Place	Jonesboro, Georgia 30236		770.473.9039 - Home
+077	Jordan	34144	D	404.656.0116	Room 409 	Coverdell Legislative Office Building
+	316 Herring Way	Riverdale, Georgia 30274		770.471.3370
+078	Barnes	6201	D	404.656.0265	<!-- TemplateBeginEditable name="Address" Room 604 	Coverdell Legislative Office Building	</span></td>	            <td><span class="style2">11530 New Hope Road	Hampton, Georgia 30228		770.471.4722 - Home	770.473.9100 - Office	770.471.2622 - Fax
+079	Millar	2775	R	404.656.5064	Room 417 	State Capitol
+	5249 Brooke Farm Drive	Dunwoody, Georgia 30338		404.504.8116 - Office	770.396.3096 - Home	404.231.9585 - Fax
+080	Jacobs	146438	D	404.656.0325	Room 612 	Legislative Office Building
+	1708 N. Holly Lane	Atlanta, Georgia 30329		404.888.0922 - Office	404.321.1716 - Home
+081	Chambers	136608	R	404.656.3949	Room 614 	Coverdell Legislative Office Building
+	4372 Stonington Circle	Atlanta, Georgia 30338		770.458.7732
+082	Jennings	146445	R	404.656.0126	Room 411 	Coverdell Legislative Office Building
+	1843 Castleway Lane	Atlanta, Georgia 30345-4015		404.321.3158 - Home
+083	Oliver	136612	D	404.656.0265	Room 604 	Coverdell Legislative Office Building
+	150 East Ponce de Leon Avenue	Suite 350	Decatur, Georgia 30030		404.377.0485 - Home	404.377.0486 - Fax
+084	McClinton	2639	D	404.656.0220	Room 509	Coverdell Legislative Office Building
+	132 East Lake Drive, SE	Atlanta, Georgia 30334		404.373.3371 - Home
+085	Benfield	49055	D	404.656.7859	Room 512 	Coverdell Legislative Office Building
+	940 Artwood Road, NE 	Atlanta, Georgia 30307		404.377.7014 - Home	404.377.0486 - Fax	404.964.7025 - Cell
+086	Drenner	34107	D	404.656.0202	Room 507 	Coverdell Legislative Building
+	PO Box 348	Avondale Estates, Georgia 30002		404.508.4128
+087	Henson	2636	D	404.656.0116	Room 409 	Coverdell Legislative Office Building
+	4140 Creek Stone Court	Stone Mountain, Georgia 30083		404.296.1442
+088	Mitchell	136627	D	404.656.0116	Room 409 	Legislative Office Building
+	PO Box 88	Stone Mountain, Georgia 30086		770.465.8800 - Home	770.465.8888 - Fax
+089	Williams	34057	D	404.656.0202	Room 507 	Coverdell Legislative Office Building
+	PO Box 436	Avondale Estates, Georgia 30002
+090	Mosby	136614	D	404.656.0287	Room 607 	Coverdell Legislative Office Building
+	2101 Sugar Creek Falls Drive	Atlanta, Georgia 30316		404.656.0298
+091	Watson	2641	D	404.656.0220	Room 509 	Coverdell Legislative Office Building
+	4299 Sherwood Oaks Drive	Decatur, Georgia 30334		678.360.0742 - Cell
+092	Stephenson	136620	D	404.656.0126	Room 411 	Coverdell Legislative Office Building
+	3262 Herrenhut Road	Lithonia, Georgia 30038			770.808.0645 - Home	404.815.7400 - Office
+093	Sailor	34178	D	404.656.0287	Room 607 	Legislative Office Building
+	PO Box 360493	Decatur, Georgia 30036		770.323.9976 - Home
+094	Mangham	34154	D	404.656.0126	Room 411 	Coverdell Legislative Office Building
+	PO Box 639	Decatur, Georgia 30031-0639		404.525.0100 - Office	770.498.2177 - Home	404.377.6720 - Fax
+095	Mumford	146476	R	404.656.0254	Room 601 	Coverdell Legislative Office Building
+	884 Green Street	Conyers, Georgia 30012		770.918.9914 - Office	770.760.7680 - Fax
+096	Marin	136632	D	404.656.0314	Room 611 	Coverdell Legislative Office Building
+	4420 Hopkins Run Drive 	Duluth, Georgia 30096		770.416.8465
+097	Coleman	2734	R	404.656.9210	Room 416 	State Capitol
+	3919 Hillside Drive	Duluth, Georgia 30096		770.476.4471 - Home	770.476.4471 - Office
+098	Reese	146481	R	404.656.0254	Room 601 	Coverdell Legislative Office Building
+	5885 Cumming Hwy	Suite 108-303 	Sugar Hill, Georgia 30518		770.932.0795 - Home 	770.932.6707 - Fax
+099	Floyd	136639	D	404.656.0314	Room 611 	Coverdell Legislative Office Building
+	744 Omaha Drive	Norcross, Georgia 30093		770.921.2735 - Home	404.202.8212 - Cell
+100	Thomas	146483	D	404.656.0325	Room 612 	Coverdell Legislative Office Building
+	906 Huntington Way	Lilburn, Georgia 30047		770.270.1192 - Office	678.380.6938 - Home
+101	Coan	2663	R	404.656.6801	Room 218 	State Capitol
+	1602 Braselton Highway	Lawrenceville, Georgia 30043		770.963.2456
+102	Cox	146488	R	404.656.0188	Room 504 	Coverdell Legislative Office Building
+	PO Box 834	Lilburn, Georgia 30048-0834		678.218.4100 - Office	770.270.9782 - Home
+103	Casas	136636	R	404.656.0254	Room 601 	Coverdell Legislative Office Building
+	PO Box 283	Lilburn, Georgia 30048-0283		770.931.8033 - Home	770.931.8033 - Office	770.931.8839 - Fax
+104	Heard	136641	R	404.657.8441	Room 401 	State Capitol
+	1430 Eugenia Terrace	Lawrenceville, Georgia 30045		770.845.5555 - Office	770.682.6820 - Fax
+105	Sheldon	136655	R	404.656.0188	Room 504 	Coverdell Legislative Office Building
+	PO Box 893	Dacula, Georgia 30019		770.963.5472 - Home
+107	Walker	2650	R	404.656.5139	Room 401 	State Capitol
+	2972 Lake Edmond Road	Loganvill, Georgia 30052		770.448.4142 - Office	770.466.3421 - Home	770.448.1852 - Fax	678.283.2040 - Cell
+108	England	146493	R	404.656.0177	Room 501 	Coverdell Legislative Office Building
+	1060 Old Hog Mountain Road	Auburn, Georgia 30011		770.867.1601 - Office	770.867.8096 - Home	770.867.2160 - Fax
+109	Davis	146497	R	404.656.0254	Room 601 	Coverdell Legislative Office Building
+	1109 River Green Court	McDonough, Georgia 30252		678.432.3401 - Office
+110	Lunsford	34152	R	404.656.7573	Room 401 	State Capitol
+	P.O. Box. 1598 	McDonough, Georgia 30252		770.914.6796 - Home	678.583.0109 - Fax
+111	May	146503	R	404.656.0188	Room 504 	Coverdell Legislative Office Building
+	PO Box 883	Monroe, Georgia 30655		770.318.1491 - Cell
+112	Holt	146505	R	404.656.0152	Room 401 	Coverdell Legislative Office Building
+	70 Stagg Trace	Social Circle, Georgia 30025		770.786.3005 - Home 	770.596.0781 - Cell
+113	Smith	6193	R	404.463.2247	Room 245 	State Capitol
+	PO Box 108	Watkinsville, Georgia 30677		706.769.8794 - Home	706.769.8795 - Fax
+114	Heard	2665	D	404.656.0220	Room 509 	Coverdell Legislative Office Building
+	PO Box 5068	Athens, Georgia 30604-5068		706.353.1772 - Home	706.548.7952 - Fax
+115	Kidd	146509	D	404.656.0325	Room 612 	Coverdell Legislative Office Building
+	410 Hampton Court	Athens, Georgia 30605		706.543.5195 - Home	404.657.4868 - Fax
+116	Channell	2688	D	404.656.0298	Room 608 	Coverdell Legislative Office Building
+	PO Box 839	Greensboro, Georgia 30642		706.453.1230 - Office	706.453.1225 - Fax
+117	Fleming	136663	R	404.656.5024	Room 415 	State Capitol
+	507 Canterbury Court 	Harlem, Georgia 30814		706.724.0171 - Office	404.657.8278 - Fax
+118	Harbin	2690	R	404.463.2247	Room 245 	State Capitol
+	4571-A Cox Road	Evans, Georgia 30809		706.869.1953 - Office	706.863.8959 - Fax
+119	Burmeister	34092	R	404.656.5024	Room 415 	State Capitol
+	PO Box 212176	Augusta, Georgia 30917-2176		706.481.9591 - Office	706.481.9541 - Fax
+120	Murphy	136690	D	404.656.0265	Room 604 	Coverdell 	Legislative Office Building
+	3238 Peach Orchard Road	Augusta, Georgia 30909		706.790.4600 - Office	706.863.0532 - Home	706.798.5130 - Fax
+121	Howard	497038	D	404.656.0287	Room 607 	Legislative Office Building
+	2514 Pate Avenue	Augusta, Georgia 30906		706.722.1123 - Office	706.793.8244 - Home	706.724.7828 - Fax
+122	Warren	137033	D	404.656.0287	Room 607 	Coverdell Legislative Office Building
+	1122 Bennock Mill Road	Augusta, Georgia 30906		706.793.2439 - Office	706.798.6491 - Home
+123	Anderson	2693	D	404.656.7859	Room 512	Coverdell Legislative Office Building	PO Box 886	Waynesboro, Georgia  30830		706.437.6903 - Office 	706.554.2540 - Home	706.437.0008 - Fax
+124	Hudson	2687	D	404.656.7859	Room 512 	Coverdell Legislative Office Building
+	PO Box 58	Sparta, Georgia  31087		706.444.7247 - Home	706.444.9455 - Fax
+125	Cole	146519	R	404.656.0152	Room 401 	Coverdell Legislative Office Building
+	PO Box 787 	Forsyth, Georgia 31029		478.994.8674 - Home
+126	Knight	146520	R	404.656.0152	Room 401 	Coverdell Legislative Office Building
+	526 Brook Circle	Griffin, Georgia 30224
+127	Crawford	2671	R	404.463.2247	Room 245 	State Capitol
+	PO Box 350	Concord, Georgia 30206		770.567.5300 - Office	770.567.5302 - Fax
+128	Epps	2669	D	404.656.7859	Room 512 	Coverdell Legislative Office Building
+	PO Box 1368	LaGrange, Georgia 30241		706.884.6768 - Home	706.884.0408 - Fax
+129	Smith	2611	R	404.656.7153	Room 218 	State Capitol
+	PO Box 171	Pine Mountain, Georgia 31822		706.663.4462 - Office	706.663.4785 - Home	706.663.9175 - Fax
+130	Buckner	136698	D	404.656.6372	Room 511 	Coverdell Legislative Office Building
+	780 Fielder's Mill Road	Junction City, Georgia 31812		706.269.3630 - Home	706.322.0753 - Office	404.651.8086 - Fax
+131	Smith	146524	R	404.656.0109	Room 404 	Coverdell Legislative Office Building
+	PO Box 2122	Columbus, Georgia 31902-2122		706.324.0197 - Home
+132	Smyre	2695	D	404.656.0116	Room 409 	Coverdell Legislative Office Building
+	PO Box 181	Columbus, Georgia 31902		706.649.2243 - Office	706.563.1794 - Home	706.649.2479 - Fax
+133	Hugley	2667	D	404.656.5058	Room 408 	Coverdell Legislative Office Building
+	PO Box 6342	Columbus, Georgia 31917-6342		706.687.4327 - Office	706.685.8065 - Home	706.687.5582 - Fax
+134	Cheokas	146525	D	404.656.0325	Room 612 	Coverdell 	Legislative Office Building
+	PO Box 824	Americus, Georgia 31709		229.928.2507 - Home	229.924.7823 - Office	229.924.7893 - Fax
+135	James	2718	D	404.656.0116	Room 409 	Coverdell Legislative Office Building
+	114 Walnut Street	Montezuma, Georgia 31063		478.472.5064 - Office	478.472.6391 - Home	478.472.5060 - Fax	478.951.7339 - Cell
+136	Ray	2672	D	404.656.0265	Room 604 	Coverdell Legislative Office Building
+	261 Ray Road	Fort Valley, Georgia 31030		478.825.7202 - Office	478.825.8739 - Home	478.825.0716 - Fax	478.955.4330 - Cell
+137	Graves	2675	R	404.656.7855	Room 404	Coverdell Legislative Office Building
+	PO Box 6475	Macon, Georgia 31208		478.745.1621 - Office	478.745.9808 - Fax
+138	Randall	30098	D	404.656.0109	Room 404 	Coverdell Legislative Office Building
+	PO Box 121	Macon, Georgia 31202		478.474.7932 - Home
+139	Lucas	2676	D	404.656.0220	Room 509 	Coverdell Legislative Office Building
+	2694 Saratoga Drive	Macon, Georgia 31211		478.755.0115 - Office	478.742.2387 - Home
+140	Freeman	146532	R	404.656.0177	Room 501 	Coverdell Legislative Office Building
+	195 Walden Woods Drive	Macon, Georgia 31216		478.781.0195 - Home	478.335.3003 - Cell
+141	Parham	2678	D	404.656.0202	Room 507 	Coverdell Legislative Office Building
+	PO Box 606	Milledgeville, Georgia 31061		478.453.3882 - Office	478.452.5152 - Home	478.414.1170 - Fax
+142	Lord	2679	D	404.656.7859	Room 512 	Coverdell Legislative Office Building
+	PO Box 254	Sandersville, Georgia 31082		478.552.9910 - Office	478.552.5937 - Home	478.552.9911 - Fax
+143	Porter	2713	D	404.656.5058	Room 408 	Coverdell Legislative Office Building
+	PO Drawer B, CSS	Dublin, Georgia 31040		478.272.5522 - Home
+144	Coleman	2720	D	404.656.5069	Room 436 	State Capitol
+	PO Box 157	Eastman, Georgia 31023		478.374.5594 - Office	478.374.6772 - Fax
+145	Talton	146537	R	404.656.0254	Room 601 	Coverdell Legislative Office Building
+	1126 South Davis Drive	Warner Robins, Georgia 31088
+146	O'Neal	48845	R	404.656.5103	Room 133 	State Capitol
+	200 Willingham Dr. 	Bonaire, Georgia 31005		478.953.4557 - Office
+147	Floyd	2716	D	404.656.0177	Room 501 	Coverdell Legislative Office Building
+	PO Box 5260	Cordele, Georgia 31010		229.273.5312 - Office	229.273.6622 - Fax	229.276.7065 - Cell
+148	Hanner	2697	D	404.656.7859	Room 512 	Coverdell Legislative Office Building
+	9610 Plains Highway	Parrott, Georgia 39877		229.623.2841
+149	Greene	2704	D	404.656.0314	Room 611 	Coverdell Legislative Office Building
+	Route 3, Box 316	Cuthbert, Georgia 39840		229.732.2750 - Home	229.732.2973 - Fax
+150	Dukes	2707	D	404.656.0126	Room 411 	Coverdell Legislative Office Building
+	920 Highland Avenue	Albany, Georgia 31701
+151	Sims	146540	D	404.656.0152	Room 401 	Coverdell Legislative Office Building
+	2203 - A Champagne Lane	Albany, Georgia 31707		229.434.7304 - Home	229.347.0251 - Cell
+152	Rynders	136716	R	404.656.7855	Room 401 	State Capitol
+	423 Martindale Drive	Albany, Georgia 31721		229.888.9928 - Office	229.436.7456 - Home	229.888.9956 - Fax
+153	Scott	2664	R	404.656.5132	Room 218 	State Capitol
+	1610 John Orr Drive Building F	PO Box 988	Tifton, Georgia 31793		229.386.5128 - Office	229.388.0896 - Fax
+154	Roberts	136712	R	404.651.7737	Room 109 	State Capitol
+	767 Brushy Creek Road	Ocilla, Georgia 31774		229.425.5404 - Office	229.468.5404 - Home	229.468.7018 - Fax
+155	Morris	6208	R	404.656.6372	Room 511 	Coverdell Legislative Office Building
+	PO Box 1749	Vidalia, Georgia 30475		912.538.1062 - Office
+156	Parrish	2722	D	404.656.0298	Room 608 	Coverdell Legislative Office Building
+	224 West Main Street	Swainsboro, Georgia 30401		478.237.7032 - Office
+157	Burns	146548	R	404.656.0213	Room 508 	Legislative Office Building
+	5829 Clyo-Kildare Road	Newington, Georgia 30446		912.754.3439
+158	Lane	2724	R	404.656.5115	Room 226 	State Capitol
+	205 Aldred Avenue	Statesboro, Georgia 30458		912.764.7450 - Office	912.764.6813 - Home
+159	Carter	146550	R	404.656.0213	Room 508 	Coverdell Legislative Office Building
+	406 Purple Finch Drive	Pooler, Georgia 31322		912.748.6470 - Home	912.748.1414 - Office	912.748.4029 - Fax	912.604.5149 - Cell
+160	Bryant	146561	D	404.656.0298	Room 608 	Coverdell Legislative Office Building
+	4110 4th Street	Garden City, Georgia 31408		912.964.2526 - Home
+161	Jackson	6207	D	404.656.6372	Room 511 	Legislative Office Building
+	1501 Abercorn Street	Savannah, Georgia 31401		912.233.1350 - Office	912.201.0431 - Fax
+162	Bordeaux	2703	D	404.656.6372	Room 511 	Coverdell Legislative Office Building
+	126 East Liberty Street	Savannah, Georgia 31401		912.234.9245 - Home	912.233.7180 - Office
+163	Day	2699	R	404.656.5096	Room 218 	State Capitol
+	PO Box 2627	Tybee Island, Georgia 31328-2627		912.786.5000 - Office	912.786.7050 - Home
+164	Stephens	2705	R	404.656.5122	Room 228 	State Capitol
+	45 Cove Drive	Savannah, Georgia 31419		912.966.5665 - Office	912.964.0061 - Home	912.964.9699 - Fax
+165	Williams	136709	D	404.656.6372	Room 511 	Coverdell Legislative Office Building
+	9041 East Oglethorpe Highway	Midway, Georgia 31320		912.368.4983 - Office	912.368.4982 - Fax
+166	Barnard	2700	R	404.656.5138	Room 401 	State Capitol	Atlanta, Georgia 30334	Route 3, Box 5240	Glennville, Georgia 30427		912.654.1048 - Home	912.557.4741 - Office	912.557.4103 - Fax
+167	Lane	146565	R	404.656.0109	Room 404 	Coverdell Legislative Office Building
+	PO Box 899-D	Darien, Georgia 31305		912.264.8296 - Office	912.437.3546 - Home	912.265.3757 - Fax
+168	Smith	2621	R	404.656.5105	Room 131 	State Capitol
+	197 Campground Church Road	Nicholls, Georgia 31554		912.632.0001 - Home
+169	Sims	2680	R	404.656.0287	Room 607 	Coverdell Legislative Office Building
+	9699 W. Baker Highway	Ambrose, Georgia 31512		912.384.1234 - Office	912.384.7138 - Home	912.384.1709 - Fax
+170	Houston	2714	R	404.656.0202	Room 507 	Coverdell Legislative Office Building
+	1115 Ray City Road	Nashville, Georgia 31639		229.686.2467 - Home	339.686.7454 - Office
+171	Royal	2710	D	404.656.0109	Room 404 	Coverdell Legislative Office Building
+	PO Box 607	Camilla, Georgia 31730		229.336.7974 - Office	229.336.8136 - Fax
+172	Maddox	146560	R	404.656.0152	Room 401 	Coverdell Legislative Office Building
+	2228 Highway 93 South	Cairo, Georgia 39828		229.377.1812 - Home	229.377.1884 - Fax	229.221.4595 - Cell
+173	Keown	146573	R	404.656.0177	Room 501 	Coverdell Legislative Office Building
+	PO Box 96 	Coolidge, Georgia 31738		229.346.3663 - Home	229.224.4205 - Cell
+174	Black	34084	D	404.656.0287	Room 607 	Coverdell Legislative Office Building
+	5900 Jumping Gully Road	Valdosta, Georgia 31601		229.559.7546 - Home	229.559.7546 - Office
+175	Borders	6209	D	404.656.0265	Room 604 	Coverdell 	Legislative Office Building
+	1010 Slater Street	Valdosta, Georgia  31601		229.247.5888 - Home	229.259.0604 - Office	229.259.9907 - Fax
+176	Shaw	2628	D	404.656.7859	Room 512 	Coverdell Legislative Office Building
+	410 Chestnut Avenue	Lakeland, Georgia 31635		229.482.3505 - Office	339.482.8043 - Fax
+177	Hatfield	146580	R	404.656.0109	Room 404 	Coverdell Legislative Office Building
+	1604 Moss Creek Road	Waycross, Georgia 31501		912.283.3820 - Office	912.285.1675 - Home	912.283.3819 - Fax
+178	Mosley	2623	R	404.656.0177	Room 501 	Coverdell Legislative Office Building
+	1901 Old Screven Road	Jesup, Georgia 31545		912.427.6133 - Home
+179	Keen	34145	R	404.656.5052	Room 338 	State Capitol
+	PO Box 24290	St. Simons Island, Georgia 31522		912.634.4500 - Office	912.638.2615 - Home	912.634.4522 - Fax
+180	Hill	136721	R	404.656.0177	Room 501 	Coverdell Legislative Office Building
+	2353 Village Drive 	Kingsland, Georgia 31548		912.673.7373 - Office	912.673.6337 - Fax

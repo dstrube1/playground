@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpIE Message Monitor Daemon", "EpIE Message Monitor Daemon.csproj", "{97EE52A0-E794-45DC-82C6-95A5DCE1C1BC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {11757589-FBFE-4F81-BD48-B67AE37EBCDB}
+		SccProjectUniqueName1 = EpIE\u0020Message\u0020Monitor\u0020Daemon.csproj
+		SccLocalPath1 = .
+		CanCheckoutShared = false
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{97EE52A0-E794-45DC-82C6-95A5DCE1C1BC}.Debug.ActiveCfg = Debug|.NET
+		{97EE52A0-E794-45DC-82C6-95A5DCE1C1BC}.Debug.Build.0 = Debug|.NET
+		{97EE52A0-E794-45DC-82C6-95A5DCE1C1BC}.Release.ActiveCfg = Release|.NET
+		{97EE52A0-E794-45DC-82C6-95A5DCE1C1BC}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

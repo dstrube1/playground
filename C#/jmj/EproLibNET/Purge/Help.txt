@@ -1,0 +1,17 @@
+Purge.exe <PATH> [ARGUMENTS]
+
+Arguments:
+-age ##
+	Removes files older than age ## in days
+-age ##h
+	Removes files older than age ## in hours
+-age ##m
+	Removes files older than age ## in minutes
+-subdir
+	Removes matching files in all subdirectories
+-ignorero
+	Deletes matching read-only files
+-archive <zipfile>
+	Saves all files to specified zip file before deleting
+-move <path>
+	Moves all files to the specified path instead of deleting them

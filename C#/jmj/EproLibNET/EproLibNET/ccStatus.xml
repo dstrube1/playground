@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WDDXOutputInfo>
+	<statuscode name="dxlmrpresult" desc="LMRP Medical Necessity">
+		<result value="R">
+			<statustext>Medical necessity issue -Red</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="G">
+			<statustext>Medical necessity requirement met -Green</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="Y">
+			<statustext>Possible medical necessity issue -Yellow</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="C">
+			<statustext>No policy exists -Clear</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="S">
+			<statustext>Not covered by Medicare -Shaded</statustext>
+			<severity>2</severity>
+		</result>
+	</statuscode>
+	<statuscode name="gender_issue" desc="Gender Issue">
+		<result value="0">
+			<statustext>No gender issue</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="1">
+			<statustext>CPT issue with gender</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="2">
+			<statustext>ICD9 issue with gender</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="3">
+			<statustext>CPT and ICD9 issue with gender</statustext>
+			<severity>3</severity>
+		</result>
+	</statuscode>
+	<statuscode name="statuscode" desc="Packet Process">
+		<result value="0">
+			<statustext>success</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="1">
+			<statustext>No data passed to validator</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="2">
+			<statustext>Data passed to validator not a structure</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="3">
+			<statustext>Invalid login</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="4">
+			<statustext>Data not WDDX packet</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="99">
+			<statustext>Failed insert on the unique number table</statustext>
+			<severity>3</severity>
+		</result>
+	</statuscode>
+	<statuscode name="dxncdv" desc="NCD Dx Edits">
+		<result value="-1">
+			<statustext>Policy not found</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="17">
+			<statustext>Medicare will deny payment</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="16">
+			<statustext>Policy too complex for existing logic</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="15">
+			<statustext>Ambulance edit</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="14">
+			<statustext>CPT code covered but no ICD-9 codes are specified</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="13">
+			<statustext>Requires additional documentation</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="12">
+			<statustext>Contains additional CPT codes not directly related to the ICD9</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="11">
+			<statustext>Policy list of ICD9 codes are designated as invalid or rest of universe is in the policy</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="10">
+			<statustext>Policy list of ICD9 codes are designated as invalid or rest of ICD9 codes not mentioned in the policy</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="9">
+			<statustext>Two CPT codes to meet Medical necessity</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="8">
+			<statustext>Experimental/investigational</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="7">
+			<statustext>Policy list all diagnosis that do not meet necessity or lists non-covered procedure</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="6">
+			<statustext>Unlisted/unspecified CPT code for policy when multiple CPT codes are in policy</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="5">
+			<statustext>Unlisted/unspecifiec CPT for policy where unlisted CPT is only code</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="4">
+			<statustext>Time sensitive frequency edit</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="2">
+			<statustext>Valid CPT that requires 2 ICD9's</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="1">
+			<statustext>CPT and ICD-9 combination</statustext>
+			<severity>1</severity>
+		</result>
+	</statuscode>
+	<statuscode name="maternity_issue" desc="Maternity Issue">
+		<result value="0">
+			<statustext>No maternity issue</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="2">
+			<statustext>ICD9 issue with maternity</statustext>
+			<severity>3</severity>
+		</result>
+	</statuscode>
+	<statuscode name="age_issue" desc="Age Issue">
+		<result value="0">
+			<statustext>No age issue</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="2">
+			<statustext>ICD9 issue with age</statustext>
+			<severity>3</severity>
+		</result>
+	</statuscode>
+	<statuscode name="dxlmrpv" desc="LMRP Dx Edits">
+		<result value="-1">
+			<statustext>Policy not found</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="17">
+			<statustext>Medicare will deny payment</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="16">
+			<statustext>Policy too complex for existing logic</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="15">
+			<statustext>Ambulance edit</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="14">
+			<statustext>CPT code covered but no ICD-9 codes are specified</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="13">
+			<statustext>Requires additional documentation</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="12">
+			<statustext>Contains additional CPT codes not directly related to the ICD9</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="11">
+			<statustext>Policy list of ICD9 codes are designated as invalid or rest of universe is in the policy</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="10">
+			<statustext>Policy list of ICD9 codes are designated as invalid or rest of ICD9 codes not mentioned in the policy</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="9">
+			<statustext>Two CPT codes to meet Medical necessity</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="8">
+			<statustext>Experimental/investigational</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="7">
+			<statustext>Policy list all diagnosis that do not meet necessity or lists non-covered procedure</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="6">
+			<statustext>Unlisted/unspecified CPT code for policy when multiple CPT codes are in policy</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="5">
+			<statustext>Unlisted/unspecified CPT for policy where unlisted CPT is only code</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="4">
+			<statustext>Time sensitive frequency edit</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="2">
+			<statustext>Valid CPT that requires 2 ICD9's</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="1">
+			<statustext>CPT and ICD-9 combination</statustext>
+			<severity>1</severity>
+		</result>
+	</statuscode>
+	<statuscode name="dxresult" desc="Dx Validity">
+		<result value="0">
+			<statustext>Valid Dx Code</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="1">
+			<statustext>Invalid Dx Code</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="2">
+			<statustext>Not coded to highest level</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="3">
+			<statustext>Unspecified code</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="4">
+			<statustext>Nonspecific code</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="5">
+			<statustext>Manifestation code</statustext>
+			<severity>2</severity>
+		</result>
+	</statuscode>
+	<statuscode name="ccistatus" desc="CPT Bundling">
+		<result value="-1">
+			<statustext>Does not apply</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="1">
+			<statustext>Bundling issue and modifier is allowed</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="0">
+			<statustext>Bundling code cannot be used</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="9">
+			<statustext>Bundling issue and modifier is allowed</statustext>
+			<severity>1</severity>
+		</result>
+	</statuscode>
+	<statuscode name="cptcoderesult" desc="CPT Validity">
+		<result value="0">
+			<statustext>Valid CPT code</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="1">
+			<statustext>Invalid CPT code</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="2">
+			<statustext>Expired CPT code</statustext>
+			<severity>3</severity>
+		</result>
+	</statuscode>
+	<statuscode name="modifierresult" desc="CPT/Modifier Validity">
+		<result value="0">
+			<statustext>Valid Modifier/CPT combination</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="1">
+			<statustext>Invalid Modifier/CPT combination</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="2">
+			<statustext>Modifier is missing and may be required</statustext>
+			<severity>2</severity>
+		</result>
+	</statuscode>
+	<statuscode name="dxncdresult" desc="NCD Medical Necessity">
+		<result value="R">
+			<statustext>Medical necessity issue -Red</statustext>
+			<severity>3</severity>
+		</result>
+		<result value="G">
+			<statustext>Medical necessity requirement met -Green</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="Y">
+			<statustext>Possible medical necessity issue -Yellow</statustext>
+			<severity>2</severity>
+		</result>
+		<result value="C">
+			<statustext>No policy exists -Clear</statustext>
+			<severity>1</severity>
+		</result>
+		<result value="S">
+			<statustext>Not covered by Medicare -Shaded</statustext>
+			<severity>2</severity>
+		</result>
+	</statuscode>
+</WDDXOutputInfo>

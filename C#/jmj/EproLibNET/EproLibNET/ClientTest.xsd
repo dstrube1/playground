@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="ClientTest" targetNamespace="http://www.jmjtech.com/ClientTest.xsd" elementFormDefault="qualified"
+	xmlns="http://www.jmjtech.com/ClientTest.xsd" xmlns:mstns="http://www.jmjtech.com/ClientTest.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Tests">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="test_name" type="xs:string" />
+				<xs:element name="test_result" type="xs:string" />
+				<xs:element name="specific_information" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
