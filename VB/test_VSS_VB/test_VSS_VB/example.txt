@@ -1,0 +1,599 @@
+'\\Techserv\devel\VSS2005
+'http://support.microsoft.com/default.aspx?scid=kb;en-us;135995
+'http://mark.michaelis.net/SourceSafe/Faq.htm
+'http://mark.michaelis.net/blog/
+
+'
+
+' SourceSafe routines written 9th July 2002 by Bob Mahon, Hexatec Systems Ltd
+' Database routines added 30th July 2002
+
+' These routines combine SourceSafe labelling with Access database records to make modifications tracable.
+' Modifications (Changes) are uniquely numbered and described in an Access database.
+' To commit a change, ensure all associated files are open in Visual C. Invoke SaveChanges macro
+' and enter the Bug ID (optional) and description when requested. Changed files are labeled 'Change xxx' where xxx is
+' the change number. If a Bug ID is associated with the change, this is appended to the label.
+' Modifications can be traced by using combination of SourceSafe Find and
+' History facilities (requires SourceSafe keyword expansions to be present - see below).
+' The project is labeled with 'Build xxx' where xxx is the build number and the build number is 
+' then incremented automatically on Release builds. Specific builds can be recovered using
+' SourceSafe commands
+
+' A project database file is required. This should be the same name as the project but with an mdb extension.
+' The associated database file (Access 2000) includes the required tables.
+' The tables are : 
+' Changes - logs changes when the SaveChanges routine is invoked.
+' Builds - logs builds when a release build is made.
+' The database code requires ADO to be installed. It is assumed that the user has Access 2000 installed.
+' If the database facilities are not required, simply comment out the lines asscociated with recordset objects
+' (variable Rs in SaveBuild and SaveChanges)
+
+' Includes the Build Number Incrementer by CCB Consulting moved to the BuildFinish event
+' Code is called when a successful Release build compilation occurs.
+' The code is checked into SourceSafe and a label is added to the project which
+' contains the build number.
+' The project resource file is then checked out if necessary and the build
+' number incremented. This means further modifications will be associated with the
+' new build number
+
+' The SaveChanges routine is used to save all open documents. An optional Bug ID can be entered
+' along with a description. 
+
+' The AddSSHeader routine Insert the SourceSafe keyword expansion comments at the top of
+' each source open file. This is required in order that files can be searched for label strings.
+
+' It is recommended that both the SaveChanges and AddSSHeader routines be assigned to 
+' a toolbar or keystrokes.
+
+' set user and password according to project needs if necessary.
+' If used, user and password will need to be uncommented in the object Open calls
+'Const USER = "SourceSafeUserID"
+'Const PASSWORD = ""
+
+Dim inifile	' SourceSafe ini file
+Dim sBuild	' Global variable used to hold present build number
+Dim project	' SourceSafe project name
+Dim root	' root directory
+Dim rc		' SourceSafe resource file for project
+Dim sRCFile	' resource file name
+Dim sMDBFile' changes database
+
+sub ReportSettings(change)
+' reports global settings to macro window
+	PrintToOutputWindow ""
+	if change = true then
+		PrintToOutputWindow "Change at " & CStr(now)
+	else
+		PrintToOutputWindow "Release Build " & sBuild & " at " & CStr(now)
+	end if
+	PrintToOutputWindow "SourceSafe ini file : " & inifile
+	PrintToOutputWindow "fullname = " & application.activeproject.fullname
+	PrintToOutputWindow "Project = " & project
+	PrintToOutputWindow "root = " & root
+	PrintToOutputWindow "sRCFile = " & sRCFile
+	PrintToOutputWindow "rc = " & rc
+	PrintToOutputWindow "sMDBFile = " & sMDBFile
+End Sub
+
+'---------------------------------------------------------------------------------------
+Function GetProjectDir(FullName)
+' Microsoft example routine to get dir
+Dim proj_path
+Dim count
+Dim full_path
+Dim i
+	proj_path = Split(StrReverse(FullName),"\",-1,1)
+
+	count = UBound(proj_path)
+
+	full_path = ""
+
+	for i = 1 to count 
+		full_path = full_path & "\" & proj_path(i)
+	next
+
+	GetProjectDir = StrReverse(full_path)
+End Function
+
+Function Initialise()
+' Initialise global variables used by routines
+dim scc
+dim oDoc
+dim text
+dim fields
+	' get project directory
+	root = GetProjectDir(application.activeproject.fullname)
+
+	' set the name of the active project's .rc file
+	sRCFile = application.activeproject.fullname
+	sRCFile = Left( sRCFile, Len(sRCFile) - 3 )
+	sRCFile = sRCFile & "rc"
+
+	' set the name of the active project's mdb file
+	' set the name of the active project's .rc file
+	sMDBFile = application.activeproject.fullname
+	sMDBFile = Left( sMDBFile, Len(sMDBFile) - 3 )
+	sMDBFile = sMDBFile & "mdb"
+
+	' open source code control file file as text
+	scc = root + "mssccprj.scc"
+	set oDoc = Documents.Open(scc, "Text",True)
+	if err=0 then
+		' extract SourceSafe path
+		oDoc.Selection.FindText "SCC_Aux_Path", dsMatchCase
+		oDoc.Selection.SelectLine
+		text = oDoc.Selection
+		fields = Split(text,Chr(34),-1,1)
+		text = fields(1)
+
+		' assume ini file is sourcesafe.ini
+		inifile = text + "\sourcesafe.ini"
+		' extract project name
+		oDoc.Selection.FindText "SCC_Project_Name", dsMatchCase
+		oDoc.Selection.SelectLine
+		text = oDoc.Selection
+		fields = Split(text,Chr(34),-1,1)
+		project = fields(1)
+
+		' create SourceSafe resource file id
+		rc = project + "/" + application.activeproject + ".rc"
+		oDoc.Close()
+		Initialise = True
+	else
+		MsgBox "Source Code Control file missing"
+		Initialise = False
+	end if
+end Function
+
+'---------------------------------------------------------------------------------------
+Sub SaveBuild()
+' Check In project and apply a label which includes the build number
+Dim objVSSDatabase
+Dim objProjectItem
+Dim label
+Dim comment
+Dim Number
+Dim Description
+Dim Connect
+Dim Rs
+
+	if Initialise=false then Exit Sub
+
+	' handle errors
+	On Error Resume Next
+	Number = 0
+
+    set objVSSDatabase = CreateObject("SourceSafe")
+
+	if Err=0 then
+		' Attempt to log into SourceSafe.
+		objVSSDatabase.Open inifile ', USER, PASSWORD
+		if Err=0 then
+			' Get project item
+			Set objProjectItem = objVSSDatabase.VSSItem(project)
+			if Err=0 then
+				' Set LocalSpec may be needed in some instances...
+'				objProjectItem.LocalSpec = root
+				if Err=0 then
+					' Check In project
+					comment = "Automatic check In on Release Build " & sBuild
+
+					objProjectItem.CheckIn comment, root, 131072	'VSSFLAG_KEEPYES
+					if Err=0 then
+						' Apply label containing build number
+						label = "Build " & sBuild
+						objProjectItem.Label label, comment
+						PrintToOutputWindow comment
+
+						if Err=0 then
+							Connect = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & sMDBFile & ";Mode=ReadWrite"
+
+							Set Rs = CreateObject("ADODB.Recordset")
+							Rs.Open "Builds", Connect, 0,2,2 ' adOpenForwardOnly,adLockPessimistic,adCmdTable
+							if Err=0 then
+								Rs.AddNew
+								Rs.fields("Build") = sBuild
+								Rs.Update
+								Rs.Close
+								Set Rs = Nothing
+							end if
+						end if
+					end if
+				end if
+
+				' Report any errors	
+				if Err<>0 then Number = Err : Description = Err.Description
+				' Tidy up
+				set objProjectItem = nothing
+			end if
+		end if
+
+		' Report any errors	
+		if Err<>0 then Number = Err : Description = Err.Description
+		' Tidy up
+		set objVSSDatabase = nothing
+	end if
+
+	' Report any errors	
+	if Err<>0 then Number = Err : Description = Err.Description
+
+	if Number<>0 then MsgBox "SourceSafe Error # " & CStr(Number) & " " & Description
+End Sub
+
+'---------------------------------------------------------------------------------------
+Sub CheckOutRC()
+' If the rc file is not checked out, do it now
+Dim objVSSDatabase
+Dim	objRCItem
+
+	' handle errors
+	On Error Resume Next
+	Number = 0
+
+    set objVSSDatabase = CreateObject("SourceSafe")
+
+	if Err=0 then
+		' Attempt to log into SourceSafe.
+		objVSSDatabase.Open inifile ', USER, PASSWORD
+		if Err=0 then
+			set objRCItem = objVSSDatabase.VSSItem(rc)
+			if Err=0 then
+				if objRCItem.IsCheckedOut = 0 then
+					objRCItem.CheckOut
+					PrintToOutputWindow rc & " resource file checked out"
+				end if
+			end if
+
+			' Report any errors	
+			if Err<>0 then Number = Err : Description = Err.Description
+			' Tidy up
+			set objRCItem = nothing
+		end if
+
+		' Report any errors	
+		if Err<>0 then Number = Err : Description = Err.Description
+		' Tidy up
+		set objVSSDatabase = nothing
+	end if
+
+	' Report any errors	
+	if Err<>0 then Number = Err : Description = Err.Description
+
+	if Number<>0 then MsgBox "SourceSafe Error # " & CStr(Number) & " " & Description
+End Sub
+
+'---------------------------------------------------------------------------------------
+Sub GetBuildNumber()
+' Just extract the present build number for use in SourceSafe
+dim oDoc
+
+	'open *.rc file as text
+	set oDoc = Documents.Open(sRCFile, "Text")
+
+	'position to the correct section of the file
+	oDoc.Selection.FindText " FILEVERSION", dsMatchCase
+	'save the line number for the next search
+	lLineNbr = oDoc.Selection.CurrentLine
+
+	'use a regular expression search string for the first version search
+	sOne = "[0-9]+,[0-9]+,[0-9]+,"
+
+	'find the first string
+	oDoc.Selection.FindText sOne, dsMatchRegExp
+
+	if oDoc.Selection.CurrentLine = lLineNbr then
+		'convert the regular expression to an absolute search string
+		sOne = oDoc.Selection
+		'build an absolute search string for the strings with embedded spaces
+		sTwo = Replace(sOne, ",", ", ")
+		'move to the build number
+		oDoc.Selection.CharRight
+		'select the build number
+		oDoc.Selection.WordRight dsExtend
+		sBuild = oDoc.Selection
+	end if
+
+	PrintToOutputWindow "Build number found as " & sBuild
+	oDoc.Close dsSaveChangesNo
+	set oDoc = nothing
+End Sub
+
+'---------------------------------------------------------------------------------------
+Sub IncrementBuildNumber()
+' written 7/11/00 by CCB Consulting
+dim oDoc
+dim sOne
+dim sTwo
+dim iSelect
+dim lLineNbr
+dim bFound
+
+	'open *.rc file as text
+	set oDoc = Documents.Open(sRCFile, "Text")
+
+	'position to the correct section of the file
+	oDoc.Selection.FindText " FILEVERSION", dsMatchCase
+	'save the line number for the next search
+	lLineNbr = oDoc.Selection.CurrentLine
+
+	'use a regular expression search string for the first version search
+	sOne = "[0-9]+,[0-9]+,[0-9]+,"
+
+	'find the first string
+	oDoc.Selection.FindText sOne, dsMatchRegExp
+
+	if oDoc.Selection.CurrentLine = lLineNbr then
+		'convert the regular expression to an absolute search string
+		sOne = oDoc.Selection
+		'build an absolute search string for the strings with embedded spaces
+		sTwo = Replace(sOne, ",", ", ")
+		'move to the build number
+		oDoc.Selection.CharRight
+		'select the build number
+		oDoc.Selection.WordRight dsExtend
+
+		'increment the build number
+		sBuild = oDoc.Selection + 1
+		'replace the old build number with the new one
+		oDoc.Selection = sBuild
+	else 'something went wrong
+		msgbox "Version number 1 not found. Closing without changes."
+		oDoc.Close dsSaveChangesNo
+		set oDoc = nothing
+		exit sub
+	end if
+
+	'now change the other 3 occurences of the build number
+	for iSelect = 2 to 4
+		if iSelect = 2 then 
+			bFound = oDoc.Selection.FindText(sOne)
+		else
+			bFound = oDoc.Selection.FindText(sTwo)
+		end if
+		oDoc.Selection.CharRight
+		oDoc.Selection.WordRight dsExtend
+		oDoc.Selection = sBuild
+		if bFound = False then
+			msgbox "Version number " & iSelect & " not found. Closing without changes."
+			oDoc.Close dsSaveChangesNo
+			set oDoc = nothing
+			exit sub
+		end if
+	next
+
+	PrintToOutputWindow "Build number changed to " & sBuild
+	'close and save *.rc
+	oDoc.Close dsSaveChangesYes
+	set oDoc = nothing
+End Sub
+
+'---------------------------------------------------------------------------------------
+Sub Application_BuildFinish(NumErrors, NumWarnings)
+' Invoked when build is finished
+
+	if InStr(1,activeconfiguration, "Release", 1) > 0 then	' Only do this for release builds...
+		if NumErrors=0 then								' Only when no errors
+			if Initialise = true then
+				ReportSettings(false)
+				Documents.CloseAll()
+				GetBuildNumber
+				SaveBuild
+				CheckOutRC
+				IncrementBuildNumber
+			end if
+		else
+			MsgBox "Build errors. Project not Checked In"
+		end if
+	end if
+End Sub
+
+Sub SaveChanges()
+'Description: Check In Changes to all open files to SouceSafe
+Dim objVSSDatabase
+Dim objProjectItem
+Dim objItem
+Dim label
+Dim comment
+Dim lablecomment
+Dim Number
+Dim Description
+Dim folder
+Dim Name
+Dim different
+Dim subdir
+Dim count
+Dim Connect
+Dim Rs
+Dim ID
+Dim desc
+Dim Files
+Dim BugID
+
+	if Initialise=false then Exit Sub
+	GetBuildNumber
+	ReportSettings(true)
+
+	Connect = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & sMDBFile & ";Mode=ReadWrite"
+
+	Set Rs = CreateObject("ADODB.Recordset")
+	Rs.Open "Changes", Connect, 0,2,2 ' adOpenForwardOnly,adLockPessimistic,adCmdTable
+	if Err=0 then
+		Rs.AddNew
+		ID = Rs.fields("ID")
+
+		BugID = InputBox("Enter Bug ID","Save Changes")
+		desc = InputBox("Enter Description","Save Changes")
+
+		labelcomment = "Check In on Change " & ID
+		comment = labelcomment & " : " & desc
+		label = "Change " & ID
+		if Len(BugID) > 0 then label = label & " (Bug ID " & BugID & ")"
+
+
+		' Ensure all files are saved before checking in
+		Documents.SaveAll()
+
+		' handle errors
+		On Error Resume Next
+		Number = 0
+
+		set objVSSDatabase = CreateObject("SourceSafe")
+
+		if Err=0 then
+			' Attempt to log into SourceSafe.
+			objVSSDatabase.Open inifile ', USER, PASSWORD
+			if Err=0 then
+				for each doc in Application.Documents
+					if Len(Files) > 0 then Files = Files & ", "
+					Files = Files & Doc.Name
+					folder = Doc.Path & "\"
+					subdir = ""
+					count = Len(Doc.Path)-Len(root)
+					if count > 0 then subdir = Right(Doc.Path,count)
+					Name = project & "/"
+					if Len(subdir)>0 then
+						Name = Name & subdir & "/"
+					end if 
+					Name = Name & Doc.Name
+					set objItem = objVSSDatabase.VSSItem(Name)
+					if Err=0 then
+						if objItem.IsCheckedOut <> 0 then	' is checked out
+							different = objItem.IsDifferent(folder & Doc.Name)
+							if Err=0 then
+								if different = true then	' is different
+									objItem.CheckIn comment, folder & Doc.Name, 131072	'VSSFLAG_KEEPYES
+									PrintToOutputWindow "Checked in " & Doc.Name
+'--------------------------------------------------------------------------------------
+' Include the following two lines to label individual files.
+									objItem.Label label, labelcomment
+									PrintToOutputWindow Doc.Name & " labelled " & label
+'--------------------------------------------------------------------------------------
+								end if
+							end if
+						end if
+						' Report any errors	
+						if Err<>0 then Number = Err : Description = Err.Description
+						set objItem = nothing
+					end if
+					if Err<>0 then Exit For
+				next
+
+'--------------------------------------------------------------------------------------
+' Include the following lines to label the whole project for each change
+'				if Err=0 then
+'					' Get project item
+'					Set objProjectItem = objVSSDatabase.VSSItem(project)
+'					if Err=0 then
+'						' Set LocalSpec may be needed in some instances...
+'		'				objProjectItem.LocalSpec = folder
+'						if Err=0 then
+'							' Apply label containing change number
+'							label = "Change " & ID
+'						end if
+'
+'						' Report any errors	
+'						if Err<>0 then Number = Err : Description = Err.Description
+'						' Tidy up
+'						set objProjectItem = nothing
+'					end if
+'				end if
+'--------------------------------------------------------------------------------------
+
+				' Report any errors	
+				if Err<>0 then Number = Err : Description = Err.Description
+				' Tidy up
+			end if
+
+			' Report any errors	
+			if Err<>0 then Number = Err : Description = Err.Description
+			' Tidy up
+			set objVSSDatabase = nothing
+		end if
+
+		' Report any errors	
+		if Err<>0 then Number = Err : Description = Err.Description
+
+		if Number<>0 then MsgBox "SourceSafe Error # " & CStr(Number) & " " & Description
+
+		' Now update the record
+		Rs.fields("Build") = sBuild
+		Rs.fields("Files") = Files
+		Rs.fields("Description") = desc
+		Rs.fields("BugID") = BugID
+		Rs.Update
+		Rs.Close
+		Set Rs = Nothing
+	end if
+End Sub
+
+Sub AddHeader(strName)
+' Adds header to a single file
+	pos = Instr(strName, ".")
+	if (pos < 1) then
+		Exit Sub
+	end if
+
+	strExt = Mid(strName, pos)
+
+	if (UCase(strExt) = ".CPP") then
+		strDesc = "implementation file"
+	else 
+		if (UCase(strExt) = ".H") then
+			strDesc = "header file"
+		else
+			if (UCase(strExt) = ".RC") then
+				strDesc = "resource file"
+			else
+				exit sub
+			end if
+		end if
+	end if
+	ActiveDocument.Selection.StartOfDocument
+
+	' Check for existing keyword expansion
+	for i = 1 to 20
+		ActiveDocument.Selection.SelectLine
+
+		if Instr(ActiveDocument.Selection, "* $History:") > 0 then
+'			MsgBox "File already has keyword expansion."
+			exit sub
+		end if  
+
+		ActiveDocument.Selection.LineDown
+	next
+
+	strFullName = ActiveDocument.FullName
+	PrintToOutputWindow "Adding header to " & strFullName
+	pos = Instr(strFullName, ":")
+
+	if (pos > 0) then
+		strFullName = Mid(strFullName, pos + 1)
+	end if
+
+	ActiveDocument.Selection.StartOfDocument
+	ActiveDocument.Selection = "// " + strName + " : " + strDesc + vbCrLf 
+	ActiveDocument.Selection = "//" + vbCrLf
+	ActiveDocument.Selection = "// $Header: $" + vbCrLf
+	ActiveDocument.Selection = "// $Modtime: $" + vbCrLf
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "/* --------------------------------------------------------" + vbCrLf
+	ActiveDocument.Selection = " * $History: $" + vbCrLf
+	ActiveDocument.Selection = " * --------------------------------------------------------" + vbCrLf
+	ActiveDocument.Selection = " */" + vbCrLf
+End Sub
+
+Sub AddSSHeader()
+'DESCRIPTION: Insert the source safe keyword expansion comments at the top of each source file
+	for each doc in Application.Documents
+		doc.Active = true
+		strName = UCase(doc.Name)
+		AddHeader strName
+	next
+
+	Documents.CloseAll()
+end sub
+
+sub    Application_NewDocument(theDocument)
+	AddHeader theDocument.Name
+end sub
+

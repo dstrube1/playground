@@ -1,0 +1,305 @@
+No rows for DuMais Pediatrics
+No rows for Sugarloaf Pediatrics
+No rows for Riverside Pediatrics
+No rows for Kid''s Klinic, PLLC
+No rows for Mountain View Pediatrics
+No rows for Ethel and Raphael Pediatrics
+No rows for Metropolitan Eye Associates
+Neurology Associates of St. Joseph, Inc..UserProperties["Customer ID"] = 2143
+Okmulgee Pediatrics.UserProperties["Customer ID"] = 2144
+No rows for Greenville Children''s Clinic
+Mansfield OB/GYN Assn, PA.UserProperties["Customer ID"] = 2136
+No rows for Children''s Clinic of Corpus Chrisit
+Grand Meadows Pediatrics.UserProperties["Customer ID"] = 2145
+Eastern Pediatrics.UserProperties["Customer ID"] = 2140
+His Grace Medical, LLC.UserProperties["Customer ID"] = 2141
+JMJ Technologies.UserProperties["Customer ID"] = 9999
+No rows for Children''s Clinic of Jonesboro PA
+South Padre Island Pediatrics.UserProperties["Customer ID"] = 2050
+No rows for Rain Tree Pediatrics
+TLC Pediatrics.UserProperties["Customer ID"] = 1941
+All About Kids.UserProperties["Customer ID"] = 2131
+Ultimate Living Medical Clinic.UserProperties["Customer ID"] = 2101
+Tots & Tykes Pediatrics.UserProperties["Customer ID"] = 2122
+No rows for Light MD
+Le Pediatrics.UserProperties["Customer ID"] = 2118
+Lacar Kids Clinic.UserProperties["Customer ID"] = 2121
+Stonebriar Pediatrics.UserProperties["Customer ID"] = 2128
+Stonebridge Pediatrics.UserProperties["Customer ID"] = 2126
+No rows for Childrens Medicine of Rockdale
+No rows for Morcos-Gannon, Daniela
+A Cornerstone Family Practice.UserProperties["Customer ID"] = 2119
+Pediatric Care of Chelsea.UserProperties["Customer ID"] = 2125
+Paces Ferry Medical Group.UserProperties["Customer ID"] = 2022
+Pediatric Care Center.UserProperties["Customer ID"] = 2067
+Caring Hands Pediatrics.UserProperties["Customer ID"] = 2123
+Sierra Care Physician''s Group.UserProperties["Customer ID"] = 2113
+Skyline Medical Associates.UserProperties["Customer ID"] = 2115
+No rows for Pediatrics, Le
+Northside Children''s Pediatric Center PC.UserProperties["Customer ID"] = 2117
+Cornerstone Medical Center.UserProperties["Customer ID"] = 2110
+Building Blocks Pediatrics.UserProperties["Customer ID"] = 2111
+No rows for ABC Pediatrics Ltd. of Naperville
+No rows for Sampson Medical Center
+Cumberland Ridge Family Practice.UserProperties["Customer ID"] = 2109
+No rows for Yalamanchili
+No rows for Capital Area Internal Medicine
+Friendswood Urgent Care.UserProperties["Customer ID"] = 2108
+No rows for Michelle Thomas, MD
+No rows for Medical Park Urgent Care
+No rows for Family Practice Medical Center of CA
+Pediatric & Adolescent Center of Grand Prairie.UserProperties["Customer ID"] = 2097
+Children''s Care Clinic.UserProperties["Customer ID"] = 2100
+PCC.UserProperties["Customer ID"] = 124
+Healthy Texan Pediatrics.UserProperties["Customer ID"] = 2096
+No rows for Healthy Kids
+Locust Grove Pediatrics.UserProperties["Customer ID"] = 2095
+Covenant Care Pediatrics.UserProperties["Customer ID"] = 2098
+Children & Community Health Center of McKinney.UserProperties["Customer ID"] = 2087
+No rows for Weissmd
+Salud Pediatrics.UserProperties["Customer ID"] = 2086
+Pediatrics at Whitlock.UserProperties["Customer ID"] = 2092
+No rows for Barnwell Pediatrics, P.A.
+No rows for Family Medical Associates
+Macomb Pediatrics, S.C..UserProperties["Customer ID"] = 2085
+No rows for Nolensville Family Care
+Sullivan, Shawn M..UserProperties["Customer ID"] = 2065
+Dallas Primary Care Specialists.UserProperties["Customer ID"] = 2088
+Siena Hills Primary Care.UserProperties["Customer ID"] = 2084
+Pearland Pediatrics.UserProperties["Customer ID"] = 2089
+No rows for Pediatric Partners(Overland Park)
+St. Joseph''s Pediatrics.UserProperties["Customer ID"] = 2080
+No rows for HealthFirst Rapid Care
+Global Pediatrics.UserProperties["Customer ID"] = 2081
+Women and Children First.UserProperties["Customer ID"] = 2078
+No rows for Dentler MD
+No rows for Rhyne
+No rows for Children''s Medical Center
+No rows for Gaby MD
+Allergy & Asthma Center.UserProperties["Customer ID"] = 2060
+No rows for Pediatric Partners, LLC (Bogart)
+Dracut Pediatrics.UserProperties["Customer ID"] = 2072
+Northwest Medical Partners.UserProperties["Customer ID"] = 2068
+Covington Pediatrics.UserProperties["Customer ID"] = 2066
+No rows for Butler
+No rows for Southwest Allergy & Asthma Center
+Advance Family Practice.UserProperties["Customer ID"] = 2044
+Northern Pines Health Center.UserProperties["Customer ID"] = 2045
+No rows for Gorenberg, Alan
+No rows for Family Medicine Associates
+No rows for Edgemnon
+GC Duluth Pediatrics.UserProperties["Customer ID"] = 2054
+No rows for Aline MD
+Flowers and Mansfield Pediatrics.UserProperties["Customer ID"] = 2055
+Kids Kare.UserProperties["Customer ID"] = 2053
+No rows for Now Medical Technologies
+No rows for Children''s Clinic of Harlingen.
+West Georgia Pediatric Partners.UserProperties["Customer ID"] = 2033
+No rows for Wayne Obstetrics & Gynecolgy
+Texas Allergy Center.UserProperties["Customer ID"] = 2021
+Penny Pediatrics.UserProperties["Customer ID"] = 2039
+Pediatric Clinics.UserProperties["Customer ID"] = 2031
+Blancher & Stadther.UserProperties["Customer ID"] = 2028
+Auburn Pediatrics.UserProperties["Customer ID"] = 2037
+ABCD Pediatrics.UserProperties["Customer ID"] = 2027
+ABC Pediatrics (Corpus Christi).UserProperties["Customer ID"] = 2038
+Deer Park Family Clinic.UserProperties["Customer ID"] = 2040
+No rows for Snellvile Pediatrics
+Cypress Lakewood Clinic.UserProperties["Customer ID"] = 2026
+Total Family Care.UserProperties["Customer ID"] = 1901
+No rows for Purohit Pedaitric Clinic
+Wood Ranch Medical.UserProperties["Customer ID"] = 2025
+Prima Health Clinic.UserProperties["Customer ID"] = 2029
+No rows for Health Point
+No rows for Patel MD
+Pediatric Physicians.UserProperties["Customer ID"] = 2013
+No rows for Allied Owners Residency
+No rows for Kennesaw Pediatrics
+No rows for BP Pros, Inc
+No rows for iip-group
+No rows for VantageMed Corporation
+Yerington Paiute Tribe Health Clinic.UserProperties["Customer ID"] = 2024
+Coastal Neurological Institute.UserProperties["Customer ID"] = 1917
+Wee Tots Pediatrics.UserProperties["Customer ID"] = 2020
+Pediatric Group Associates.UserProperties["Customer ID"] = 2018
+No rows for Richard Kelly, MD PA
+Livingston Pediatrics.UserProperties["Customer ID"] = 2019
+Senior First Healthcare.UserProperties["Customer ID"] = 2012
+No rows for TranstimeMed, LLC
+A Kid''s World Pediatrics.UserProperties["Customer ID"] = 1982
+Kiest Park Medical Clinic.UserProperties["Customer ID"] = 2009
+No rows for Timeless Concepts Group
+No rows for Strategic Business Systems
+No rows for Regional Medical Services
+No rows for Pace Technologies, Inc
+No rows for MS Solutions
+No rows for Medworks,LLC
+MediSys.UserProperties["Customer ID"] = 138
+No rows for MediSource Technologies
+No rows for Medical Office Software
+No rows for Latitude Medical Solutions, Inc.
+No rows for Integrimed
+No rows for Final Support
+No rows for California Medical Systems
+No rows for Bennett EncounterPRO Sales
+No rows for Atlanta Consulting Group
+No rows for Douglas H. Gaither, MD
+No rows for Ashland Primary Care Physicians Clinic, P.C.
+ABC Pediatrics of Fayetteville.UserProperties["Customer ID"] = 1881
+No rows for Admed, P.C.
+No rows for Peter H. Marsh, MD, PA
+Dickerson Dermatology.UserProperties["Customer ID"] = 2010
+No rows for Pediatric Associates Inc.
+No rows for Oster (LLC, Richard T. Oster D. O.)
+No rows for ABC Children''s Health Center P. C.
+No rows for Zenner
+Cinco Ranch Pediatrics.UserProperties["Customer ID"] = 2003
+No rows for NowMedTech
+Motley & Crestani Family Practice.UserProperties["Customer ID"] = 2000
+No rows for PoITs LLC
+No rows for Urology Inc.
+Cornerstone Pediatrics.UserProperties["Customer ID"] = 1998
+No rows for CompuEdge
+No rows for Pediatric Physicians Alliance
+No rows for McMahon
+No rows for Cheridan Technologies, LLC
+Family Medical Dental Center.UserProperties["Customer ID"] = 1997
+Family Physicians of Anderson.UserProperties["Customer ID"] = 1996
+No rows for Northampton Pediatrics
+Zamora, Sergio.UserProperties["Customer ID"] = 1995
+Alice Pediatric Clinic.UserProperties["Customer ID"] = 1991
+No rows for McDonald
+Atlanta Family Practice Center.UserProperties["Customer ID"] = 1883
+No rows for Ritchey
+No rows for Winchester Family Practice PSC
+No rows for Kids Specialists The
+No rows for Malen
+No rows for Illumina HealthTech
+No rows for Caselnova
+Refineria Isla.UserProperties["Customer ID"] = 1946
+No rows for Laramie Pediatrics
+No rows for Pinnacle Sports Medicine & Orthopaedics
+Palm Bay Pediatrics.UserProperties["Customer ID"] = 1864
+No rows for Grand Valley State University,Kirkhoff School of Nursing
+MY OBGYN.UserProperties["Customer ID"] = 1869
+Island Coast Pediatrics.UserProperties["Customer ID"] = 1905
+Mount Holly Family Practice.UserProperties["Customer ID"] = 1880
+No rows for American Medical Systems
+No rows for Advanced Medical Systems
+Rivertown Pediatrics.UserProperties["Customer ID"] = 1930
+Woodruff Family Medicine.UserProperties["Customer ID"] = 1898
+No rows for Advanced Facial Plastics & ENT Institute
+Jonesboro Pediatrics.UserProperties["Customer ID"] = 1999
+No rows for Southwest Alabama Physicians
+Redwood Pediatric & Adolescent Medicine.UserProperties["Customer ID"] = 1984
+Pediatrics Plus.UserProperties["Customer ID"] = 1980
+Serpentine Clinic.UserProperties["Customer ID"] = 1986
+No rows for Brill
+Metro Atlanta Cardiology Consultants.UserProperties["Customer ID"] = 1978
+Kellum Medical Group.UserProperties["Customer ID"] = 1985
+No rows for Thompson Peak Family Care
+No rows for Pediatric & Adolescent Assoc of Lexington
+No rows for Women''s Health at Blue Ridge
+Family Care Medical Services.UserProperties["Customer ID"] = 1976
+East Texas Family Medicine.UserProperties["Customer ID"] = 1972
+No rows for Peachtree City Physicians Group
+No rows for Northwest Medical Clinic
+Columbus Children''s Clinic.UserProperties["Customer ID"] = 1974
+South GA Pediatric & Allergy Center.UserProperties["Customer ID"] = 1973
+Palmetto Family Medicine.UserProperties["Customer ID"] = 1964
+No rows for Myers
+No rows for Reston Family Medicine
+No rows for VIP Midsouth
+No rows for Lexes Women''s Medical Group
+No rows for Center for Spinal Care
+No rows for Tricom Information Systems, Inc.
+No rows for Washington Eye Clinic
+No rows for I-wen Tseng, DO
+Houston Medical & Dental.UserProperties["Customer ID"] = 1963
+Wise Pediatrics.UserProperties["Customer ID"] = 1958
+All Childrens Clinic.UserProperties["Customer ID"] = 1970
+Tehachapi Medical Clinic.UserProperties["Customer ID"] = 1955
+Pediatric Healthcare Associates.UserProperties["Customer ID"] = 1938
+No rows for Weaver-Hawn
+Premier Immediate Care.UserProperties["Customer ID"] = 1919
+No rows for Raleigh Group, The
+No rows for Pediatric Associates PSC
+Southwestern Women''s Clinic.UserProperties["Customer ID"] = 1906
+Riverpoint Pediatrics.UserProperties["Customer ID"] = 1888
+No rows for Ratmeyer Pediatrics
+Northstar Pediatrics.UserProperties["Customer ID"] = 1872
+Northpoint Pediatrics.UserProperties["Customer ID"] = 1962
+North Jefferson Internal Medicine.UserProperties["Customer ID"] = 1945
+No rows for Independent Reseller
+McDonough Pediatrics.UserProperties["Customer ID"] = 1854
+Lakeside Family Practice.UserProperties["Customer ID"] = 1937
+King, Wolf & Helm Family Medicine.UserProperties["Customer ID"] = 1926
+No rows for Pediatric Physicians  Alliance
+No rows for KowalikMD
+Goldsboro Pediatrics.UserProperties["Customer ID"] = 1859
+No rows for Braun
+Deerfoot Internal Medicine.UserProperties["Customer ID"] = 1944
+Decatur Pediatric Group.UserProperties["Customer ID"] = 1894
+No rows for David Reeve MD
+Cooper Pediatrics.UserProperties["Customer ID"] = 1851
+Cobb Pediatrics.UserProperties["Customer ID"] = 1863
+No rows for Children''s Medical Group-Moultrie
+No rows for Childrens Clinic-Tolar
+No rows for Fenton
+No rows for Bowne''s Children''s Clinic
+No rows for Metz
+No rows for North Georgia Dermatology
+No rows for Stockstill
+No rows for Rio Nuevo Family Practice
+Phillips Medical Group.UserProperties["Customer ID"] = 1952
+No rows for Dumont
+No rows for Medical Dermatology Specialist PC
+No rows for Medical Group, The
+No rows for IntegriSystems
+No rows for Megow
+No rows for Women''s Medical Center
+No rows for Women''s Care of Clermont
+No rows for Woman''s Place, The
+No rows for Westside Dermatology, LLC
+No rows for Leon
+Tri-County Pediatrics.UserProperties["Customer ID"] = 1878
+No rows for Tree of Life Health Alliance
+Town Center Pediatrics.UserProperties["Customer ID"] = 1942
+All About Children Pediatrics.UserProperties["Customer ID"] = 1947
+St. Clair Pediatrics.UserProperties["Customer ID"] = 1899
+No rows for Southside Family Practice
+Sandy Plains Pediatrics.UserProperties["Customer ID"] = 1896
+No rows for Belknap
+Jercinovic Pediatrics.UserProperties["Customer ID"] = 1875
+No rows for Gariti, MD
+No rows for Holifield Clinic, LLC
+Growing Up Pediatrics.UserProperties["Customer ID"] = 1897
+No rows for Doerman
+No rows for Quad City Pediatrics
+Premier Pediatrics.UserProperties["Customer ID"] = 1900
+No rows for Pediatric Partners of Memphis
+No rows for Pediatric Associates of Lubbock
+No rows for Pediatric Associates of Lawrenceville
+Narayanan Pediatric Clinic.UserProperties["Customer ID"] = 1887
+Fountain Inn Family Practice.UserProperties["Customer ID"] = 1911
+Eastern Shores Childrens Clinic.UserProperties["Customer ID"] = 1908
+No rows for Dakota Medical Clinic
+Cordele Pediatrics.UserProperties["Customer ID"] = 1884
+Clark & Conrad Family Medicine.UserProperties["Customer ID"] = 1914
+No rows for Children''s Medical Care Inc.
+No rows for Southwest Pediatric Endocrinology
+No rows for Cook and Moulton, MPA
+Gwinnett Pediatrics.UserProperties["Customer ID"] = 1852
+Cumming Pediatrics.UserProperties["Customer ID"] = 1893
+No rows for LaVista Pediatrics
+No rows for Coit
+No rows for Kalter
+No rows for Center for Internal Medicine & Prventative Care
+No rows for Children''s Clinic, The
+Womens Health Care of Georgia.UserProperties["Customer ID"] = 1882
+No rows for Carraway Medical Foundation
+Pacific Coast Pediatrics.UserProperties["Customer ID"] = 1890
+Arlington Premier Health Clinic.UserProperties["Customer ID"] = 1909
+No rows for Eagle''s Landing Pediatric
+Main Street Pediatrics.UserProperties["Customer ID"] = 1931
+Robinson Family Practice.UserProperties["Customer ID"] = 1873
