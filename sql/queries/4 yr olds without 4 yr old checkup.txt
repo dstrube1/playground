@@ -1,0 +1,4 @@
+SELECT DISTINCT billing_id, first_name, last_name, date_of_birth
+FROM dbo_p_Assessment INNER JOIN dbo_p_Patient ON dbo_p_Assessment.cpr_id=dbo_p_Patient.cpr_id
+WHERE date_of_birth>begin And date_of_birth<end And assessment_id Not In ('WELL4Y')
+ORDER BY last_name, date_of_birth;

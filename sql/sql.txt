@@ -1,0 +1,86 @@
+to see if mysql server is running: 
+go to System Preferences
+
+to see what databases exist:
+show databases;
+
+to switch to a database:
+use [name];
+
+to show what tables exist in a database:
+show tables;
+
+to login to mysql as root:
+mysql -u root
+
+to replicate a mysql db:
+mysqldump --user timesheet --password=timesheet timesheet > timesheet_dump.txt
+
+import database from prior dump file:
+mysql -u timesheet --password=timesheet timesheet < timesheet_dump.txt
+
+to create user spmdbuser and set password:
+CREATE USER spmdbuser;
+GRANT ALL ON *.* TO 'spmdbuser'@'localhost';
+SET PASSWORD FOR 'spmdbuser'@'localhost' = PASSWORD('spmdbuser');
+
+to create db:
+CREATE DATABASE IF NOT EXISTS spm;
+CREATE DATABASE IF NOT EXISTS timesheet;
+
+larch:
+mysql --host=10.50.1.2 --user timesheet --password=timesheet
+pjf:
+mysql --host=10.50.1.71 --user root --password=c4m3r4
+
+create user:
+GRANT usage ON *.* TO timesheet@localhost IDENTIFIED BY 'timesheet';
+
+grant rights:
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON timesheet.* TO timesheet@localhost;
+
+login from command line 
+mysql -u timesheet
+
+with password:
+mysql -u timesheet --password=timesheet
+
+and specific database:
+mysql -u timesheet --password=timesheet timesheet
+
+to select database after logging in (w/ or w/o ';'):
+use timesheet
+
+select * from association;
+select * from location;
+select * from timesheet_assignments;
+select * from timesheet_client;
+select * from timesheet_config;
+select * from timesheet_note;
+select * from timesheet_project;
+select * from timesheet_task;
+select * from timesheet_task_assignments;
+select * from timesheet_times;
+select * from timesheet_user;
+delete from association;
+delete from location;
+delete from timesheet_assignments;
+delete from timesheet_client;
+delete from timesheet_config;
+delete from timesheet_note;
+delete from timesheet_project;
+delete from timesheet_task;
+delete from timesheet_task_assignments;
+delete from timesheet_times;
+delete from timesheet_user;
+drop table association;
+drop table location;
+drop table timesheet_assignments;
+drop table timesheet_client;
+drop table timesheet_config;
+drop table timesheet_note;
+drop table timesheet_project;
+drop table timesheet_task;
+drop table timesheet_task_assignments;
+drop table timesheet_times;
+drop table timesheet_user;

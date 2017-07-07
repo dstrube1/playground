@@ -1,0 +1,4 @@
+SELECT billing_id, first_name, last_name, date_of_birth, treatment_description
+FROM dbo_p_Treatment_Item INNER JOIN dbo_p_Patient ON dbo_p_Treatment_Item.cpr_id = dbo_p_Patient.cpr_id
+WHERE date_of_birth>begin And date_of_birth<end 
+ORDER BY last_name, date_of_birth;

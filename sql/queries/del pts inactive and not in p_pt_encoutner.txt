@@ -1,0 +1,2 @@
+delete from p_patient where patient_status not in ('active')
+delete from p_patient_encounter where cpr_id not in (select distinct cpr_id from p_patient)

@@ -1,0 +1,4 @@
+Select distinct billing_id, first_name, last_name, date_of_birth, count(*) as [Count] 
+from dbo_p_Patient INNER JOIN dbo_p_treatment_item ON dbo_p_Patient.cpr_id = dbo_p_treatment_item.cpr_id
+Where date_of_birth < #8/12/1993# and treatment_description in ("HEP B", "Hep B, pediatric", "Hep B, pediatric (VFC)", "DTaP, Hep B", "DTaP, Hib, Prevnar, Hep B", "DTaP, IPV, Hep B", "Hep B, adult", "Hep B, adult, IM", "Imm Hep B, pediatric", "Imm VFC Hep B,Pediatrics") and treatment_type in ("PASTIMMUN", "IMMUNIZATION") 
+GROUP BY billing_id, first_name, last_name, date_of_birth;

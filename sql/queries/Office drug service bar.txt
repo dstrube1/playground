@@ -1,0 +1,8 @@
+--script to fix the office drug service bar
+
+UPDATE c_workplan_item
+SET description = 'Administer Office Drug'
+WHERE description like '%WP%'
+AND item_number in
+(SELECT item_number FROM c_workplan_item
+WHERE ordered_service = 'MEDICATION')

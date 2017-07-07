@@ -1,0 +1,1 @@
+dump transaction cpr with truncate_only; 

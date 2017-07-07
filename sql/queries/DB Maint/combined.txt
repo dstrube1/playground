@@ -1,0 +1,120 @@
+BEGIN TRANSACTION            
+  DECLARE @JobID BINARY(16)  
+  DECLARE @ReturnCode INT    
+  SELECT @ReturnCode = 0     
+IF (SELECT COUNT(*) FROM msdb.dbo.syscategories WHERE name = N'[Uncategorized (Local)]') < 1 
+  EXECUTE msdb.dbo.sp_add_category @name = N'[Uncategorized (Local)]'
+
+  -- Delete the job with the same name (if it exists)
+  SELECT @JobID = job_id     
+  FROM   msdb.dbo.sysjobs    
+  WHERE (name = N'EPRO Backup Delete')       
+  IF (@JobID IS NOT NULL)    
+  BEGIN  
+  -- Check if the job is a multi-server job  
+  IF (EXISTS (SELECT  * 
+              FROM    msdb.dbo.sysjobservers 
+              WHERE   (job_id = @JobID) AND (server_id <> 0))) 
+  BEGIN 
+    -- There is, so abort the script 
+    RAISERROR (N'Unable to import job ''EPRO Backup Delete'' since there is already a multi-server job with this name.', 16, 1) 
+    GOTO QuitWithRollback  
+  END 
+  ELSE 
+    -- Delete the [local] job 
+    EXECUTE msdb.dbo.sp_delete_job @job_name = N'EPRO Backup Delete' 
+    SELECT @JobID = NULL
+  END 
+
+BEGIN 
+
+  -- Add the job
+  EXECUTE @ReturnCode = msdb.dbo.sp_add_job @job_id = @JobID OUTPUT , @job_name = N'EPRO Backup Delete', @owner_login_name = N'sa', @description = N'No description available.', @category_name = N'[Uncategorized (Local)]', @enabled = 1, @notify_level_email = 0, @notify_level_page = 0, @notify_level_netsend = 0, @notify_level_eventlog = 2, @delete_level= 0
+  IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback 
+
+  -- Add the job steps
+--NOTE:
+-- DEL command given flag /A-A so as to delete only cpr*bak files 
+-- with the attribute of archive flag set to clear;
+-- i.e. files that have already been archived
+
+
+  EXECUTE @ReturnCode = msdb.dbo.sp_add_jobstep @job_id = @JobID, @step_id = 1, @step_name = N'Step 1', @command = N'DEL /A-A "D:\Program Files\Microsoft SQL Server\MSSQL\BACKUP\cpr_shalom*.bak"', @database_name = N'', @server = N'', @database_user_name = N'', @subsystem = N'CMDEXEC', @cmdexec_success_code = 0, @flags = 0, @retry_attempts = 2, @retry_interval = 5, @output_file_name = N'', @on_success_step_id = 0, @on_success_action = 1, @on_fail_step_id = 0, @on_fail_action = 2
+  IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback 
+  EXECUTE @ReturnCode = msdb.dbo.sp_update_job @job_id = @JobID, @start_step_id = 1 
+
+  IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback 
+
+  -- Add the job schedules
+  EXECUTE @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id = @JobID, @name = N'Scheduled 1', @enabled = 1, @freq_type = 8, @active_start_date = 20050112, @active_start_time = 215000, @freq_interval = 9, @freq_subday_type = 1, @freq_subday_interval = 0, @freq_relative_interval = 0, @freq_recurrence_factor = 1, @active_end_date = 99991231, @active_end_time = 235959
+  IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback 
+
+  -- Add the Target Servers
+  EXECUTE @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @JobID, @server_name = N'(local)' 
+  IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback 
+
+END
+COMMIT TRANSACTION          
+GOTO   EndSave              
+QuitWithRollback:
+  IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION 
+EndSave: 
+
+
+BEGIN TRANSACTION            
+  DECLARE @JobID BINARY(16)  
+  DECLARE @ReturnCode INT    
+  SELECT @ReturnCode = 0     
+IF (SELECT COUNT(*) FROM msdb.dbo.syscategories WHERE name = N'[Uncategorized (Local)]') < 1 
+  EXECUTE msdb.dbo.sp_add_category @name = N'[Uncategorized (Local)]'
+
+  -- Delete the job with the same name (if it exists)
+  SELECT @JobID = job_id     
+  FROM   msdb.dbo.sysjobs    
+  WHERE (name = N'EPRO DB Backup')       
+  IF (@JobID IS NOT NULL)    
+  BEGIN  
+  -- Check if the job is a multi-server job  
+  IF (EXISTS (SELECT  * 
+              FROM    msdb.dbo.sysjobservers 
+              WHERE   (job_id = @JobID) AND (server_id <> 0))) 
+  BEGIN 
+    -- There is, so abort the script 
+    RAISERROR (N'Unable to import job ''EPRO DB Backup'' since there is already a multi-server job with this name.', 16, 1) 
+    GOTO QuitWithRollback  
+  END 
+  ELSE 
+    -- Delete the [local] job 
+    EXECUTE msdb.dbo.sp_delete_job @job_name = N'EPRO DB Backup' 
+    SELECT @JobID = NULL
+  END 
+
+BEGIN 
+
+  -- Add the job
+  EXECUTE @ReturnCode = msdb.dbo.sp_add_job @job_id = @JobID OUTPUT , @job_name = N'EPRO DB Backup', @owner_login_name = N'sa', @description = N'No description available.', @category_name = N'[Uncategorized (Local)]', @enabled = 1, @notify_level_email = 0, @notify_level_page = 0, @notify_level_netsend = 0, @notify_level_eventlog = 2, @delete_level= 0
+  IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback 
+
+  -- Add the job steps
+  EXECUTE @ReturnCode = msdb.dbo.sp_add_jobstep @job_id = @JobID, @step_id = 1, @step_name = N'Step 1', @command = N'EXECUTE master.dbo.xp_sqlmaint N''-PlanID 83C3CA5F-D459-4D14-BE15-BEAE4F395861 -Rpt "C:\Temp\EPRO DB Maintenance Plan.txt" -DelTxtRpt 4WEEKS -WriteHistory -VrfyBackup -BkUpMedia DISK -BkUpDB -UseDefDir -DelBkUps 1DAYS -BkExt "BAK"''', @database_name = N'cpr_shalom', @server = N'', @database_user_name = N'', @subsystem = N'TSQL', @cmdexec_success_code = 0, @flags = 0, @retry_attempts = 2, @retry_interval = 5, @output_file_name = N'', @on_success_step_id = 0, @on_success_action = 1, @on_fail_step_id = 0, @on_fail_action = 2
+  IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback 
+  EXECUTE @ReturnCode = msdb.dbo.sp_update_job @job_id = @JobID, @start_step_id = 1 
+
+  IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback 
+
+  -- Add the job schedules
+  EXECUTE @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id = @JobID, @name = N'Scheduled 1', @enabled = 1, @freq_type = 8, @active_start_date = 20050112, @active_start_time = 220000, @freq_interval = 9, @freq_subday_type = 1, @freq_subday_interval = 0, @freq_relative_interval = 0, @freq_recurrence_factor = 1, @active_end_date = 99991231, @active_end_time = 235959
+  IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback 
+
+  -- Add the Target Servers
+  EXECUTE @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @JobID, @server_name = N'(local)' 
+  IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback 
+
+END
+COMMIT TRANSACTION          
+GOTO   EndSave              
+QuitWithRollback:
+  IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION 
+EndSave: 
+
+

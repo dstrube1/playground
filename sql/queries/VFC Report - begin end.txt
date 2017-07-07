@@ -1,0 +1,4 @@
+SELECT DISTINCT [dbo_p_Treatment_Item].[treatment_description], [dbo_p_Patient].[last_name], [dbo_p_Patient].[first_name], [dbo_p_Patient].[billing_id], [dbo_p_Treatment_Item].[begin_date]
+FROM dbo_p_Patient INNER JOIN dbo_p_Treatment_Item ON [dbo_p_Patient].[cpr_id]=[dbo_p_Treatment_Item].[cpr_id]
+WHERE treatment_type In ("PASTIMMUN","Immunization") And begin_date>begin And begin_date<end And treatment_description Like "*(VFC)"
+ORDER BY [treatment_description], [last_name];

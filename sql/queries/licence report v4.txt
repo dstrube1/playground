@@ -1,0 +1,3 @@
+SELECT user_full_name, degree, dea_number, license_number
+FROM dbo_c_User
+where user_status="OK" and first_name not in ("");

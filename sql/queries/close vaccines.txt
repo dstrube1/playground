@@ -1,0 +1,3 @@
+Update p_Patient_WP_Item 
+set status='CANCELLED', completed_by='SUPPORT', begin_date= GETDATE(), end_date=GETDATE(), owned_by='SUPPORT'
+where encounter_id=9301 and description='Administer Hep B, high risk, 3-dose, IM' and status='DISPATCHED' and owned_by='!CliniSupp';

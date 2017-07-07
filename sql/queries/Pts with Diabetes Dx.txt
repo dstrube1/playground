@@ -1,0 +1,3 @@
+SELECT dbo_p_Patient.first_name, dbo_p_Patient.last_name, dbo_p_Patient.billing_id, dbo_p_Assessment.begin_date
+FROM dbo_p_Assessment INNER JOIN dbo_p_Patient ON dbo_p_Assessment.cpr_id = dbo_p_Patient.cpr_id
+where assessment_id = 'DIABETESMEL';

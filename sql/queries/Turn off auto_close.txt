@@ -1,0 +1,2 @@
+UPDATE dbo_c_Assessment_Definition SET auto_close = 'N'
+WHERE auto_close='Y';

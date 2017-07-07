@@ -1,0 +1,2 @@
+SELECT dbo_p_Patient.last_name, dbo_p_Patient.first_name, dbo_p_Patient.date_of_birth, dbo_p_Patient.billing_id, dbo_p_Assessment.assessment_id, dbo_p_Assessment.assessment, dbo_p_Assessment.created, dbo_p_Assessment.created_by
+FROM dbo_p_Patient INNER JOIN dbo_p_Assessment ON dbo_p_Patient.cpr_id = dbo_p_Assessment.cpr_id;

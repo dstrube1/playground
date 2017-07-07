@@ -1,0 +1,21 @@
+drop table #count_this
+go
+
+CREATE TABLE #count_this(YYYY varchar(10),namer varchar(80),bill_id varchar(24), physician varchar(24)) ON [PRIMARY] 
+insert into #count_this
+select  YYYY = datepart(yyyy,pe.encounter_date)
+,p.last_name + ', ' + p.first_name as name
+,p.billing_id as bill_id, user_short_name as physician
+
+from p_patient_encounter pe, p_patient p, c_user
+where p.cpr_id = pe.cpr_id
+and pe.indirect_flag = 'D'
+and datepart(yyyy,pe.encounter_date) >= '2000'
+and user_id = attending_doctor
+
+select 
+count(namer) AS Encounters,
+YYYY,namer,bill_id, physician from #count_this
+group by physician, YYYY,namer,bill_id
+HAVING COUNT(namer) >= 2
+order by physician, YYYY asc, encounters desc,namer asc

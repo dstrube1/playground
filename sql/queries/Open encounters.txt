@@ -1,0 +1,4 @@
+SELECT dbo_p_Patient.billing_id, dbo_p_Patient.first_name, dbo_p_Patient.last_name, dbo_p_Patient.date_of_birth, dbo_p_Patient_Encounter.encounter_date, dbo_c_User.user_short_name
+FROM (dbo_p_Patient INNER JOIN dbo_p_Patient_Encounter ON dbo_p_Patient.cpr_id = dbo_p_Patient_Encounter.cpr_id) INNER JOIN dbo_c_User ON dbo_p_Patient_Encounter.attending_doctor = dbo_c_User.user_id
+WHERE dbo_p_Patient_Encounter.encounter_status="OPEN" and encounter_date> begin
+ORDER BY dbo_c_User.user_short_name, encounter_date;

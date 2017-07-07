@@ -1,0 +1,3 @@
+SELECT *
+FROM dbo_c_provider INNER JOIN dbo_c_User ON [dbo_c_provider].[provider_id]=[dbo_c_User].[provider_id]
+WHERE user_status="OK";

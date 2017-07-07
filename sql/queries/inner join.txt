@@ -1,0 +1,17 @@
+SELECT *
+FROM dbo_p_Patient INNER JOIN dbo_p_Patient_Encounter ON dbo_p_Patient.cpr_id = dbo_p_Patient_Encounter.cpr_id;
+
+SELECT *
+FROM (dbo_p_Patient INNER JOIN dbo_p_Patient_Encounter ON dbo_p_Patient.cpr_id = dbo_p_Patient_Encounter.cpr_id) INNER JOIN dbo_p_Treatment_Item ON dbo_p_Patient_Encounter.encounter_id = dbo_p_Treatment_Item.open_encounter_id;
+
+2 tables: t1, t2 
+...FROM t1 IJ t2 ON t1.c=t2.c...
+
+3 tables: t1, t2 t3
+...FROM (t1 IJ t2 ON t1.c=t2.c) IJ t3 on t2.c=t3.c...
+
+N tables:  t1, t2, ... tn
+FROM ((...t1 IJ t2 ON t1.c=t2.c) IJ t3 on t2.c=t3.c) IJ t4 ON...) IJ tn ON tn-1.c = tn.c...
+      ^n-2
+
+(c=column, IJ=Inner Join)

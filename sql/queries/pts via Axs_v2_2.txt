@@ -1,0 +1,4 @@
+SELECT dbo_p_Patient.last_name, dbo_p_Patient.first_name, dbo_p_Patient.date_of_birth, dbo_p_Patient.billing_id, dbo_p_Assessment.assessment_id, dbo_p_Assessment.assessment, dbo_p_Assessment.created
+FROM dbo_p_Patient INNER JOIN (dbo_c_Assessment_Definition INNER JOIN dbo_p_Assessment ON dbo_c_Assessment_Definition.assessment_id = dbo_p_Assessment.assessment_id) ON dbo_p_Patient.cpr_id = dbo_p_Assessment.cpr_id
+where dbo_p_Assessment.created > begin and dbo_p_Assessment.created < end and icd_9_code in ("")
+order by dbo_p_Assessment.assessment, last_name, first_name, dbo_p_Assessment.created;

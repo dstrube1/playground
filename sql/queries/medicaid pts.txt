@@ -1,0 +1,3 @@
+SELECT first_name, last_name, date_of_birth, dbo_p_Patient.billing_id
+FROM dbo_p_Patient INNER JOIN dbo_p_Patient_Insurance ON dbo_p_Patient.cpr_id = dbo_p_Patient_Insurance.cpr_id
+WHERE insurance_id in ("4 1", "41", "Medicaid");

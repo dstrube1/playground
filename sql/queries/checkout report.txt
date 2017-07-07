@@ -1,0 +1,4 @@
+SELECT first_name, last_name, billing_id, encounter_date
+FROM dbo_p_Patient INNER JOIN dbo_p_Patient_Encounter ON dbo_p_Patient.cpr_id = dbo_p_Patient_Encounter.cpr_id
+WHERE dbo_p_Patient_Encounter.encounter_status = "closed" and discharge_date >= begin and discharge_date <= endplusone
+ORDER BY last_name;

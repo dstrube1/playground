@@ -1,0 +1,40 @@
+DECLARE @user_id varchar(24), @user_full_name varchar(64), @role_name varchar(32)
+
+DECLARE userCursor CURSOR FOR
+SELECT user_id, user_full_name FROM c_User WHERE user_status = 'OK' ORDER BY last_name, first_name
+
+OPEN userCursor
+
+FETCH NEXT FROM userCursor 
+INTO @user_id, @user_full_name
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+PRINT @user_full_name
+
+DECLARE roleCursor CURSOR FOR
+SELECT role_name FROM c_Role INNER JOIN c_User_Role ON c_User_Role.role_id = c_Role.role_id AND c_User_Role.user_id = @user_id ORDER BY role_name
+
+OPEN roleCursor
+
+FETCH NEXT FROM roleCursor
+INTO @role_name
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+PRINT '   ' + @role_name
+FETCH NEXT FROM roleCursor
+INTO @role_name
+END
+
+CLOSE roleCursor
+DEALLOCATE roleCursor
+
+PRINT ' '
+
+FETCH NEXT FROM userCursor 
+INTO @user_id, @user_full_name
+END
+
+CLOSE userCursor
+DEALLOCATE userCursor

@@ -1,0 +1,3 @@
+SELECT patient_workplan_item_id, cpr_id, encounter_id, description, status, retries
+FROM dbo_p_Patient_WP_Item
+WHERE ordered_for="#JMJ" and status not in ("Completed", "Cancelled", "Expired");

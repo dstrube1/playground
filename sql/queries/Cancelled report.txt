@@ -1,0 +1,3 @@
+SELECT user_short_name, dbo_p_Patient_WP_Item.description
+FROM dbo_p_Patient_WP_Item INNER JOIN dbo_c_User ON dbo_p_Patient_WP_Item.completed_by = dbo_c_User.user_id
+where dbo_p_Patient_WP_Item.status="CANCELLED" and dbo_p_Patient_WP_Item.encounter_id = 98968;

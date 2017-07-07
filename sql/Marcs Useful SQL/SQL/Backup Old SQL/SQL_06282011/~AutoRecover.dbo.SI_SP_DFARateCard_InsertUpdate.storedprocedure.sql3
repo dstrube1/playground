@@ -1,0 +1,178 @@
+USE [Searchignite]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SI_SP_DFARateCard_InsertUpdate]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[SI_SP_DFARateCard_InsertUpdate]
+GO
+
+USE [Searchignite]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE Procedure [dbo].[SI_SP_DFARateCard_InsertUpdate]
+@DFARateCardID int = null,
+@ClientID int,
+@StartDate smalldatetime = null, 
+@DFARateCardTypeID tinyint = null,
+@DFACampaignID nvarchar(50) = null,
+@DFACampaignName nvarchar(256) = null,
+@DFARateTypeID tinyint = null,
+@Rate money = null,
+@AllActionType bit = null,
+@CPMAdServingFees money = null,
+@CPCAdServingFees money = null,
+@DFARateCardDetail XML = null,
+@UserID int,
+@AdvertiserID INT = NULL,
+@ExternalSourceID INT = NULL,
+@IncludeThirdPartyFee BIT = 0,
+@CurrencyID INT = NULL,
+@RateCardSourceID INT = NULL
+as
+/*
+-----------------------------------------------------------------------------------------
+Change History
+-----------------------------------------------------------------------------------------
+03/14/2011 ??? Initial.
+03/14/2011 MRS 4.8 Insert AdvertiserID and ExternalSourceID into DFARateCard
+06/09/2011 MRS 5.3 Added IncludeThirdPartyFee Column to DFARateCard Table
+06/17/2011 MRS 5.3 Added CurrencyID Column to DFARateCard Table, added AdvertiserID and ExternalSourceID to check whether to expire
+-----------------------------------------------------------------------------------------
+
+*/
+begin
+	set nocount on
+	Declare @OldDFARateCardID int, @DFARateCardHistoryID bigint, @EndDate smalldatetime, @DFARateCardStatusID tinyint
+	declare @ClientNow smalldatetime
+	
+
+	if @DFARateCardID is null
+	begin
+		--This is new insertion
+		select @ClientNow = convert(smalldatetime, convert(varchar(20), [dbo].[fn_GetCurrentClientTime] (@ClientID), 101)),
+			@StartDate = convert(smalldatetime, convert(varchar(20),@StartDate, 101))
+		
+		if @StartDate <= @ClientNow
+			--Rate Card Status is current
+			select @DFARateCardStatusID = 1
+		else
+			select @DFARateCardStatusID = 2
+			
+		--SIP-5395 Make sure it does not have same start Date
+		if exists (select 1 
+					from dbo.DFARateCard 
+					where ClientID = @ClientID 
+						and StartDate = @StartDate 
+						and DFARateCardTypeID = @DFARateCardTypeID 
+						and isnull(DFACampaignID, 0) = isnull(@DFACampaignID, 0) 
+						AND isnull(AdvertiserID, 0) = isnull(@AdvertiserID, 0)
+						and ExternalSourceID = isnull(@ExternalSourceID, ExternalSourceID)
+						and StatusFlag = 1)
+		begin
+			select -2 as DFARateCardID
+			return
+		end
+			
+		--First need to make sure there's no overlap
+		select @OldDFARateCardID = max(DFARateCardID)
+		from dbo.DFARateCard
+		where ClientID = @ClientID
+			and StartDate < @StartDate
+			and EndDate >= @StartDate
+			and DFARateCardTypeID = @DFARateCardTypeID
+			and isnull(DFACampaignID, 0) = isnull(@DFACampaignID, 0)
+			AND isnull(AdvertiserID, 0) = isnull(@AdvertiserID, 0)
+			and ExternalSourceID = isnull(@ExternalSourceID, ExternalSourceID)
+			and StatusFlag = 1
+		
+		if @OldDFARateCardID > 0
+		begin
+			--There's overlap, need to change EndDate
+			update dbo.DFARateCard
+			set EndDate = dateadd(dd, -1, @StartDate),
+				DFARateCardStatusID = (Case when dateadd(dd, -1, @StartDate) <  @ClientNow then 3 else DFARateCardStatusID end)
+			where DFARateCardID = @OldDFARateCardID
+			 
+			exec SI_SP_DFARateCardHistory_Save @OldDFARateCardID, @ClientID, @UserID
+		end
+		
+		--Need to find EndDate		
+		select @EndDate = dateadd(dd, -1, min(StartDate))
+		from DFARateCard
+		where ClientID = @ClientID
+		and StartDate > @StartDate
+		and DFARateCardTypeID = @DFARateCardTypeID
+		and isnull(DFACampaignID, 0) = isnull(@DFACampaignID, 0)
+		AND isnull(AdvertiserID, 0) = isnull(@AdvertiserID, 0)
+		and ExternalSourceID = isnull(@ExternalSourceID, ExternalSourceID)
+		and StatusFlag = 1
+	
+		select @EndDate = isnull(@EndDate, '12/31/2049')
+		
+		--Now start insertion
+		insert into dbo.DFARateCard
+			(ClientID, StartDate, EndDate, DFARateCardTypeID, DFACampaignID, DFACampaignName, DFARateCardStatusID, DFARateTypeID, Rate, AllActionType, CPMAdServingFees, CPCAdServingFees, LastUpdateDate, AdvertiserID, ExternalSourceID,IncludeThirdPartyFee, CurrencyID, RateCardSourceID)
+		values (@ClientID, @StartDate, @EndDate, @DFARateCardTypeID, @DFACampaignID, @DFACampaignName, @DFARateCardStatusID, @DFARateTypeID, @Rate, @AllActionType, @CPMAdServingFees, @CPCAdServingFees, getutcdate(), @AdvertiserID, @ExternalSourceID, @IncludeThirdPartyFee, @CurrencyID,@RateCardSourceID)
+		
+		select @DFARateCardID = scope_identity()
+		
+	end
+	else
+	begin
+		--This is update
+		update dbo.DFARateCard
+		set StartDate = isnull(@StartDate, StartDate),
+			EndDate = isnull(@EndDate, EndDate),
+			DFARateCardTypeID = isnull(@DFARateCardTypeID, DFARateCardTypeID),
+			DFACampaignID = isnull(@DFACampaignID, DFACampaignID),
+			DFACampaignName = isnull(@DFACampaignName, DFACampaignName),
+			DFARateTypeID = isnull(@DFARateTypeID, DFARateTypeID),
+			Rate = isnull(@Rate, Rate),
+			AllActionType = isnull(@AllActionType, AllActionType),
+			CPMAdServingFees = isnull(@CPMAdServingFees, CPMAdServingFees),
+			CPCAdServingFees = isnull(@CPCAdServingFees, CPCAdServingFees),
+			LastUpdateDate = getutcdate(),
+			AdvertiserID = isnull(@AdvertiserID,AdvertiserID),
+			--ExternalSourceID = isnull(@ExternalSourceID,ExternalSourceID),
+		    IncludeThirdPartyFee = ISNULL(@IncludeThirdPartyFee,IncludeThirdPartyFee),
+		    CurrencyID = ISNULL(@CurrencyID,CurrencyID)--,
+		   -- RateCardSourceID = ISNULL(@RateCardSourceID,RateCardSourceID)
+		where DFARateCardID = @DFARateCardID
+		
+	end
+	
+	If @DFARateCardDetail is not null
+	begin
+		delete from dbo.DFARateCardDetail
+		where ClientID = @ClientID
+		and DFARateCardID = @DFARateCardID
+		
+		insert into dbo.DFARateCardDetail
+			(ClientID, DFARateCardID, CustomerTransactionTypeID, DFAEventTypeID, Rate)
+		select @ClientID, @DFARateCardID, CG.DFARateCardDetail.value('@actiontypeid','int'), CG.DFARateCardDetail.value('@eventtypeid','tinyint'), CG.DFARateCardDetail.value('@rate','money')
+		from @DFARateCardDetail.nodes('//DFAActionTypeRateMappingBO') AS CG(DFARateCardDetail)
+	end
+
+	--Create History record
+	exec SI_SP_DFARateCardHistory_Save @DFARateCardID, @ClientID, @UserID
+	
+	select @DFARateCardID as DFARateCardID
+	
+end
+
+
+
+
+GO
+
+GRANT EXECUTE ON [dbo].[SI_SP_DFARateCard_InsertUpdate] TO [webaccess] AS [dbo]
+GO
+
+

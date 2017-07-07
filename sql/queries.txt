@@ -1,0 +1,1211 @@
+request to SIOPS:
+===
+Please execute & verify the following on ATLSQLMainPR.SearchIgnite.local\ATL_SQLMain_PR :: SearchIgnite. 
+Thanks 
+
+BEGIN TRAN 
+UPDATE ...
+--Expect # record(s) affected
+--COMMIT TRAN
+
+======================================================================================
+--example netmining query:
+ATLNANPR.searchignite.local\ATL_NAN_PR
+select d.date, imps.advertiser_id, sum(imps.impressions) 'impressions_NAN', sum(imps.cost) 'cost_NAN' 
+from nan_stats.dbo.impression_stats imps (nolock)
+	inner join evo5_lookup.dbo.l_dates d (nolock) on d.date_id = imps.date_id 
+where imps.advertiser_id = 1677 and d.date BETWEEN '2013-08-18' and '2013-08-27' 
+group by d.date,imps.advertiser_id 
+order by d.date asc
+--http://jira.dentsunetwork.com/browse/NM-6458
+-- / http://jira.dentsunetwork.com/browse/SICS-8654
+======================================================================================
+select CONVERT(VARCHAR(10),GETDATE(),111) --yyyy-mm-dd
+select CONVERT(VARCHAR(8),GETDATE()-'12:00',108) --hh:mm:ss -12 h
+select CONVERT(VARCHAR(16),GETDATE()-'12:00',120) --yyyy-mm-dd hh:mm:ss -12h
+--see also http://www.w3schools.com/sql/func_convert.asp
+
+======================================================================================
+tracking server testing:
+
+select * from ClickTrackingRaw_A with (nolock) where --easterncreatedate > '2012-09-21 15:00' or
+UserUniqueGuid = 'e9469391-3f18-4371-ad28-5f40ba2e715a'
+
+select * from ClickTrackingRaw_b with (nolock) where --createdate > '2012-09-21 19:00' or
+UserUniqueGuid = 'e9469391-3f18-4371-ad28-5f40ba2e715a'
+
+
+select * from transactionTrackingRaw_A with (nolock) where UserUniqueGuid = 'e9469391-3f18-4371-ad28-5f40ba2e715a'
+select * from transactionTrackingRaw_b with (nolock) where --easterncreatedate > '2012-09-21 15:00' or
+UserUniqueGuid = 'e9469391-3f18-4371-ad28-5f40ba2e715a'
+
+
+======================================================================================
+
+server ATL02SQLDEV01.searchignite.local\ATL_SQLMAIN_DEV (formerly 10.50.0.185) (dev):
+db: SearchIgnite :
+
+--to force a crawl to be run:
+--this is supposed to be run with no ClientID specified
+EXEC SI_SP_GenerateCrawlGroup 106,0  --Use "0" for Even # ClientID
+EXEC SI_SP_GenerateCrawlGroup 82,1  --Use "1" for Odd # ClientID
+
+======================================================================================
+
+server ATLSQLProcPR.SearchIgnite.local\ATL_SQLProc_PR (formerly 10.50.0.176\SQLProc) :
+db: SIProcessing :
+
+--repull file destinations:
+select * from dbo.CrawlingFileTracking 
+where ClientID = x and SEID = y and FileTypeID in (1,2) --1=keyword, 2=group
+and ReportDate >= 'a' and ReportDate <= 'b' 
+and createdate >='date of repull' 
+order by ReportDate asc 
+
+--click-tracking testing:
+select * from trackedexposure where useruniqueguid = 'a4115480-6ea4-43ae-af4f-6671d319fb67'
+
+--currency conversion factor for Apple:
+select * from Apple_CurrencyMultiplier
+where CurrencyID = 31
+
+--record of DFA tracking:
+select * from DFAFileTracking with (nolock)
+where clientId=4922
+order by DFAReportDate desc
+
+--duplicate actions? e.g. SICS-8846
+select * from Trackedcache where ClientID = 9091 and  tid = 1870461579  
+
+SIProcessing_CacheHistory: 
+select top 10 * from TrackedCache where ClientID = 2520 and EasternCreateDate between '2012-05-14 00:50:15' and '2012-05-14 04:25:15'
+
+--revenue 5-30, client 2537, 3rd party daily report
+SELECT SUM(TransactionAmount) --ROW_NUMBER() OVER (PARTITION BY HashKey ORDER BY TransactionAmount DESC) AS RNUM, *
+FROM SIProcessing_Attribution.dbo.TrackedAction
+WHERE TrackedActionID IN (
+SELECT TrackedActionID FROM dbo.trackedCache WHERE ClientID=2537 AND EasternCreateDate >= '2012-05-30' AND EasternCreateDate < '2012-05-31' AND ChannelID=4
+)
+
+--H&R Block reprocessing document requires BatchID; get it from H&RBlock
+--see also SICS-6023
+
+--3rd party data, like Media Mind:
+select * from ThirdPartyFileQueue where ClientID = 2537 and FileTypeID=19 and ReportDate between '2013-06-04' and '2013-06-08' 
+order by ReportDate desc
+
+===
+--to resummarize - no good for organic / NS - see goodToKnow's notes on resummarizing- espeically for date range
+USE [SIProcessing]
+GO
+
+DECLARE	@return_value int
+
+EXEC	@return_value = [SIAdmin].[SI_SP_ResummarizeTrackedAndReported]
+		@ClientList = N'4588', --can give multiple clients separated by ,
+		@StartDate = '2012-06-25', --no date offset, just give it the actual date range
+		@EndDate = '2012-06-25', --if you want to give a day before and day after for the range, it won't hurt
+		@Comment = N'SICS-6025'
+
+SELECT	'Return Value' = @return_value
+
+GO
+
+--to check on the status of the above query:
+SELECT LastReportDate, Inprocess, COUNT(1) as count
+ FROM CrawlingTracking_History
+WHERE   ReportProcessedDate IS NULL and clientId in (4588, ...)
+GROUP BY LastReportDate, Inprocess
+ORDER BY LastReportDate, Inprocess
+-- Inprocess column means it's actually doing something, so as long as it's 0, it's waiting to be worked on
+--then when it is worked on, it'll disappear from the results
+===
+===
+--investigating low revenue for client 4575 on 6-21 for action type="Order Booking -3233" (from SICS-6025):
+SELECT * FROM SIProcessing_attribution..TrackedAction ta
+WHERE AffiliateId = 100
+   and  CreateDateUTC >= '6/20/12'
+   and CreateDateUTC  < '6/23/12'
+   AND REcordstatus = 'A'
+AND EXISTS (SELECt 1 FROM SIProcessing_attribution..TrackedExposure te
+  WHERE CLientID = 4575
+   AND UserUniqueGUID = ta.UserUniqueGUID)
+      and ta.CustomerTransactionTypeID =  13016 --Order Booking -3233
+      order by CreateDateUTC desc
+
+-- get ta.CustomerTransactionTypeID here / rename action type here:
+select * from ClientCustomerTransactionType where ClientID = 3233
+--note- this table exists primarily on ATLSQLMainPR - changes to this table on ATLSQLProcPR must be made via ATLSQLMainPR
+===
+to remove transactions:
+update trackedaction 
+set recordstatus='I', EffectiveEndDateUTC=dateadd(HOUR,1,GETUTCDATE())
+where clientid=7492 and trackedActionid in (1245055955,
+1245251114,
+1246465171)
+--example SICS-6302
+
+--to have a report of counts by date, grouping days together:
+select count(*), cast(LocalizedCreateDate as date) LocalizedCreateDate
+from trackedaction 
+where ClientID = 3289 and LocalizedCreateDate > '2012-08-05' and TrackingSourceID = 3
+group by cast(LocalizedCreateDate as date)
+
+===
+--to find Apple clients that are not in the Mapping table:
+SELECT * FROM SIProcessing_CacheHistory..LUApple_Clients_RegionMapping m FULL OUTER JOIN (SELECT ClientID FROM SIProcessing.dbo.affiliategroupclients
+WHERE affiliateid IN (100)) a ON a.ClientID = m.clientid
+WHERE a. clientid IS NULL OR m.ClientID IS null
+
+--they must be inserted like so:
+insert into LUApple_Clients_RegionMapping (ClientName, ClientID, ParentName, ParentID, CountryCode, RegionID) 
+VALUES 
+('Apple - Mac (UK)',3622, 'Apple MarCom AOS EMEA',6624,800,3)
+
+--find the regionID and country codes here:
+select * from SIProcessing_CacheHistory..LUApple_Region_CountryCodeMapping where Abbreviation='cn'
+
+--get clients and their parents:
+select c.ClientName, c.clientid, c2.ClientName as ParentName, c2.clientid as ParentClientId 
+from clients c with (nolock) inner join clients c2 with (nolock) on c.ParentClientID = c2.clientID
+where c.clientid in (#)
+
+--if there is a row where clientid is null in the last column but not in the 2nd, 
+--then search for the clientid like so:
+select * from SIProcessing_CacheHistory..LUApple_Clients_RegionMapping 
+where clientid=6388
+
+select * FROM SIProcessing.dbo.affiliategroupclients
+where clientid=6388
+
+===
+--tracked action / transaction
+--http://planning.innovationinteractive.com:8080/browse/SICS-7565
+select * from dbo.TrackedAction
+where trackedactionid=1591704493  --transaction ID
+
+--use that^ to get the useruniqueguid, and look that up for all clicks / exposures associated with this action
+
+select * from TrackedExposure 
+where useruniqueguid='234d5ad2-ac0d-4343-8e30-cc687a840d80' and ClientID=3825
+===
+
+--ATLSQLProcPR SIProcessingAttribution
+
+--whether an exposure was for a mobile device:
+select top 5 DeviceTypeID, DeviceModelID, * from TrackedExposure with (nolock)
+where KeywordID=552892 and clientid=8021 and adcategoryid=14075547 and CampaignID=427847 and CreateDateUTC > '2013-05-17'
+
+===
+
+--ATLSQLProcPR SIProcessing_Staging
+--if Shovel service seems backed up, check this queue here:
+select count(*) from ssbtargetqueue
+--SICS-8243
+======================================================================================
+
+server 10.120.103.40\ATL_SIACCESS_PR:
+--“where tracking happens"
+HistoryException - raw tracking history / raw action log - be careful to use nolock:
+select top 5 * from TransactionTrackingRaw_History with (nolock)
+
+--investigating low revenue for client 4575 on 6-21 for action type="Order Booking -3233" (SICS-6025):
+--1: get the guids from SIProcessing_attribution..TrackedAction
+--2: plug those guids from there to here along with the affiliate head client id (3233) here:
+select * from dbo.TransactionTrackingRaw_loginfo where ClientID = 3233 --this is the client id
+and UserUniqueGuid in ('7cfe7bfd-c031-4501-9baf-a8365e4fc14b',...)
+
+--looking for a specific transaction: - look in HistoryException, not SIAccess; use nolock - sics-7352:
+select * from TransactionTrackingRaw_History with (nolock) where 
+EasternCreateDate > '1/21/13'
+and EasternCreateDate < '1/23/13'
+and clientid in (3233,3499) 
+and x1 in ('W219909640','W218014731')
+
+
+--raw pixel call for client X on date Y for action types Z:
+select TRHID,TransactionAmount,TransactionTypeID,IPAddress,BrowserVersion,MoreInfo,N1,N2,N3,N4,N5,N6,
+X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,CustomerTransactionTypeID,EasternCreateDate,
+CreateDate,loginfo,WebServerName,ClickCreateDate,RecordCreateDateUTC
+--all the same: N7,N8,N9,N10, ReferenceID,OrigClientID
+from TransactionTrackingRaw_History t with (nolock)
+where clientid =X and EasternCreateDate between 'Y' and 'Y+1'
+and customertransactiontypeid in (Z)
+order by customertransactiontypeid
+
+===
+--redirect db 
+--all redirect ids:
+select * from Tracking_*
+--if group redirect, use that; else if creative redirect, use that; else if keyword redirect, use that; else, no redirect, 404
+--some job updates from MAIN to here; must ask dbOps to find what the job is
+======================================================================================
+
+server ATLSQLMainPR :
+db: SIOLAP:
+--Save as Template analytics report templates:
+select top 5 * from reporttemplate order by reporttemplateID desc
+--presumably, if one saves a template as their default view, it also gets a record here:
+select top 5 * from reporttemplateuserdefault order by reporttemplateID desc
+
+--default reports:
+select top 5 * from ReportChannel --categories
+select * from ReportType where RPTTypeName='Search Engine'
+--RPTChannelID=2 --paid Search
+
+--one admin server has excessive memusage for a report service; what reports were run around this time?
+--also, how to text compare on xml fields?
+SELECT RPTQueueID, CreatedDate , ClientID, UserID, RecordCount, RPTStatusID, RequestingMachine, ProcessingMachine 
+FROM dbo.ReportQueue(nolock)
+WHERE CreatedDate >= '2014-01-23 05:00:00' 
+AND CreatedDate <= '2014-01-23 09:00:00'
+AND RecordCount >= 1000000
+
+--to disable scheduled report emails:
+--SICS-8423
+--not ReportQueueEmail
+
+-- where was a report executed:
+--- Cross - Channel: Channel 01-16-2013 
+Select top 100 *,rq.generatemachineinfo.value('(/MachineInfo//MachineName/node())[1]', 'nvarchar(max)') as MachineNameExecuted 
+  from reportqueue rq, reportqueueemail rqe where rq.clientid = 2537 and rq.userid = 7300 
+and rq.createddate > '2013-08-01 14:30:00.000' and rq.rptTypeid = 209 and rq.rptqueueid =rqe.rptqueueid 
+ ======================================================================================
+
+server ATLSQLMainPR.SearchIgnite.local\ATL_SQLMain_PR (formerly 10.50.0.162)
+db: searchignite 
+
+alternatively: 
+server ATLSQLDWPR.SearchIgnite.local \ATL_SQLDW_PR (formerly 10.50.0.128\sqldw) 
+db: SIAnalysis
+
+--to find the redirectUrls for clients' keywords:
+select count (*) --top 100 * 
+from CSKeywords where ClientID = 1637 and SEID = 1 and StatusFlag = 1
+
+--to find a client's redirecturl default:
+select * from ClientMailOption where ClientID = 1637
+
+--to find a client's login info for adwords.google.com:
+select * from ClientSearchEngineMapping where clientId= 
+
+--SEID = search engingeID:
+select * from SearchEngine
+
+--^combining both:
+select s.SearchEngine, c.* 
+from ClientSearchEngineMapping c with (nolock) 
+	inner join SearchEngine s with (nolock) on s.SEID = c.SEID
+where ClientID=6727
+
+--to get campaign titles and ids:
+select * from Campaign where ClientID=2918
+
+--to find crawlrecord crawltypeIds (like insert 5 vs modify 14):
+select * from LUCrawlType 
+
+===
+--to get crawlrecords:
+select * from CrawlRecord where ClientID=2918 and seid=1 
+--and RecordDateTime between '2012-03-14' and '2012-03-15'
+and CrawlTypeID=1
+order by RecordDateTime desc
+
+--^that will give a crawlrecordid, which can be used to get the crawlrecordgroupid here:
+select * from CrawlRecordGroup where CrawlRecordId=2086204803
+
+--^that can be used to get info about the crawl's file:
+select * from CrawlGroup where CrawlGroupID=38875860
+
+--OR:
+===
+declare @StartCrawlRecordID int, @EndCrawlRecordID int
+declare @StartDate DATETIME, @EndDate DateTime
+declare @ClientID INT, @ItemID int, @CrawlTypeId int, @SEID int
+Set @StartDate = 'someDate'
+Set @EndDate = 'someDate'
+SET @ClientID=#
+Set @ItemID=#
+set @CrawlTypeId=#
+set @SEID=#
+
+select @StartCrawlRecordID = MIN(CrawlRecordID), @EndCrawlRecordID = MAX(CrawlRecordID)
+from dbo.CrawlRecord cr
+where cr.RecordDateTime BETWEEN @StartDate AND @EndDate
+
+select DISTINCT cg.*, cr.crawltypeid as CrawlTypeId
+from CrawlRecordGroup crg with (nolock) 
+ inner join CrawlRecord cr with (nolock) on cr.CrawlRecordID = crg.CrawlRecordID
+ inner join CrawlGroup cg with (nolock) on cg.CrawlGroupID = crg.CrawlGroupID and cg.CreateDate >= @StartDate
+where cr.clientid=@ClientID and cr.ProcessDateTime BETWEEN @StartDate AND @EndDate AND cr.itemID in (@ItemID) 
+and cr.CrawlRecordID between @StartCrawlRecordID and @EndCrawlRecordID and CrawlTypeId = @CrawlTypeId and cg.SEID=@SEID
+order by cg.CreateDate
+
+-- if looking up crawl log for keyword, itemid=ckeyworid
+-- if for an ad, adcateogryid (groupid)
+-- manual sync has null cr.ProcessDateTime 
+-- manual sync has crawltypeid=1; auto sync has crawltypeid=22
+===
+to delete clients:
+--1- 
+select TimeZoneDisplayID, * from clients where clientid in (#)
+
+--2-
+EXEC [SIAdmin].[SI_SP_Clients_InsertUpdate] 
+@ClientID = #, 
+@StatusFlag = 0, --not required for just moving clients
+@TimeZoneDisplayID = #, --this will automatically update TimeZoneID as well
+@ParentClientID = 7047, --we put them here as a record of messups; not a required field
+@ClientName = N'', --not required
+@comment = N'SICS-####' 
+===
+
+--to get SPOTids:
+select Name, * from CampaignOptimizerSettings
+where ClientID = 4191
+and Name in (
+'Team_1_201203',
+'Team_2_201203')
+
+--to get SPOT groups - in db DMS_SPot
+select top 5 * from SPOTAdGroups
+where SPOTID=7083 and AdCategoryID=13562118
+
+--to get SPOTAdGroups for active spot groups:
+select top 5 s.name, c.* --, s.* 
+from DMS_Spot.dbo.SPOTAdGroups g with (nolock) 
+	inner join SearchIgnite.dbo.CampaignOptimizerSettings s with (nolock) on g.spotid=s.spotid
+	inner join SearchIgnite.dbo.Campaignadcategory c with (nolock) on c.AdCategoryID = g.AdCategoryID
+where s.clientid=209 and s.StatusFlag=1 and c.StatusFlag=1
+order by s.name
+
+--bulksheet uploads / bulk requests queue
+select * from BulkSheetQueue 
+where ClientID=6240 and DateCreated between '2012-03-20' and '2012-03-21' and BulkSheetQueueID in (257214,
+257215)
+
+--to find progress of still active bulksheets:
+select b.updatedate, 
+--(CAST(NumberOfChangesMade AS FLOAT) / TotalChanges)*100 as percentDone, 
+NumberOfChangesMade, TotalChanges, * 
+from BulkSheetQueue b
+where --TotalChanges > 0 and 
+BulkSheetStatusID in (9,13)
+order by b.updatedate
+
+to delete keywords:
+UPDATE CSKeywords set KeywordSearchEngineDetailStatusID=0, Statusflag = 0, 
+CSKeywordstatusID = 4, UpdateDate = getdate() 
+where CampaignID=# and ClientID=# and CSKID=#
+
+--to delete ads:
+update CampaignAdTitleMapping 
+set StatusFlag=0, UpdateDate=GETDATE()
+where SETitleID in (#)
+
+===
+--DFA regrabs / repull, run this with all the # values updated:
+--client #
+USE [Searchignite]
+GO
+
+DECLARE @return_value int
+
+EXEC @return_value = [SIAdmin].[SI_SP_DFA_Data_Regrab]
+@ClientID = #,
+@RecordDateTime = N'# 10:00', --for data on 4-22 & 4-21, use 4-23
+@Comment = N'SICS-#'--ticket number
+
+SELECT 'Return Value' = @return_value
+
+GO
+===
+--repull crawl records / Facebook data / to reprocess data:
+USE [Searchignite] 
+GO 
+
+DECLARE @return_value int 
+
+EXEC @return_value = [dbo].[SI_SP_AdminTools_CreateCrawlRecords] 
+@ClientID = #, --clientId
+@SEID = #,  
+@ItemID = #, --clientId
+@IsInsert = 1,
+@RecordDateTime = N'2014- 10:00', -- 2012-03-29 will repull data for 3-28 and 3-27
+@InsertReportGeneralCrawlRecord = 1,
+@Comment = '#'--ticket #
+
+SELECT 'Return Value' = @return_value 
+
+GO 
+
+--check for which searchengines this client has like so:
+select * from clientsearchenginemapping c inner join searchengine s on s.seid=c.seid
+where clientid=3289
+
+--check status of above like so:
+select * from crawlrecord 
+where --recorddatetime between '2012-07-01' and '2012-07-12' and
+seid=1 and clientid=7115 and crawltypeid=22 and ProcessDateTime is null
+order by recorddatetime desc
+
+--if 3rd party repull, find out if it's for mediamind or dfa; if mediamind, go here:
+http://10.50.0.125:9083/repull
+===
+
+in CampaignAdCategory :
+GroupID = AdCategoryID
+AdCategoryID can be the itemId in CrawlRecord
+AdID = SETitleID
+
+to move account:
+BEGIN TRAN 
+UPDATE Clients 
+SET ParentClientID = 6623 
+WHERE ClientID IN (5903) 
+--Expect 1 record modified 
+--COMMIT TRAN
+
+===
+--how to do a wipeout:
+--1: do ***NOT*** use this:
+[SIAdmin].[SI_SP_WipeoutClientAccountAndCampaignTab] 
+
+--2: ask:
+Will you want the account reimported or the entire account wiped with nothing new brought in from the engine?
+
+3- reimport = managed
+(not reimport = unmanaged)
+new account, new login = reimport
+if unmanage (ie, not reimport), { //first
+go to Accounts, Publisher, select the account publisher and unmanage, save
+}
+
+//either way, then 
+go to SI_SP_AdminTools_ReimportClientBySearchEngine, clientid, seid, wipeout=yes/1, like so:
+
+(see SICS-5498 for example):
+
+USE [Searchignite]
+GO
+
+DECLARE @return_value int
+
+EXEC @return_value = SI_SP_AdminTools_ReimportClientBySearchEngine 
+@ClientId = #,
+	@SEID = #,
+	@WipeOut=1
+	
+SELECT 'Return Value' = @return_value
+
+GO
+===
+
+--to get DFA login info:
+select * from ClientTrackingSourceMapping where clientId=0 or username='X'
+
+--to change DFA login info:
+update both:
+select * from ClientTrackingSourceMapping where ClientID=#
+select * from External_AdvertiserClient_Mapping  where ClientID=#
+
+--if Image Ads tab in Media / Ads isn't showing:
+1- find where in LUFeature FeatureID= feature for these images ads
+update LUFeature
+set Enabled=1
+where FeatureID = x
+
+--given a cskid, what is the client, campaign, group and keyword?
+select c2.ClientID as ClientId, c2.ClientName, c3.CampaignID as CampaignID, c3.CampaignTitle, 
+	c4.AdCategoryID as AdCategoryID, c4.AdCategoryName, c1.Keyword
+from CSKeywords c1 with (nolock) 
+	inner join Clients c2 with (nolock) on c1.ClientID=c2.ClientID
+	inner join Campaign c3 with (nolock) on c1.CampaignID = c3.CampaignID
+	inner join CampaignAdCategory c4 with (nolock) on c1.AdCategoryID=c4.AdCategoryID
+where c1.CSKID=173559704
+
+--unmanage engine accounts / publishers:
+Update ClientSearchEngineMapping 
+Set CanCrawling=0 
+Where ClientID IN (X) 
+-- see also:
+SI_SP_ClientSearchEngineMapping_Disable
+
+--campaign end dates:
+select top 5 * from CampaignSearchEngine 
+where CampaignID in (321213,321214,321215)
+
+to verify a translation is in dev / qa / prod:
+1-
+select * from ResourceKeys
+order by id desc
+2-
+select * from ResourceValues
+where resource_key_id=2458
+
+----localization for App screens (non-Analytics)
+select * from ResourceValues where resource_key_value='Email sent successfully!'
+select * from ResourceKeys where id=2460
+--combined:
+select language_id as rv_language_id, resource_key_value as rv_resource_key_value, rk.id as rk_id, resource_key as rk_resource_key_value 
+from ResourceValues rv inner join ResourceKeys rk on rv.resource_key_id = rk.id
+where resource_key_value='Generation Date' --or resource_key_id=2460 
+
+----localization for analytics
+select * from Resources where textKey ='Email sent successfully!'
+select * from ResourcesLocale where ResourcesID=3539
+--combined:
+select * 
+from Resources r inner join ResourcesLocale rl on r.ResourcesID = rl.ResourcesID
+where textKey ='Invalid keyword bid'
+
+see also: SIP-10237
+===
+
+--ftp server usernames and passwords:
+select * from ClientCrawlingDataFeedProcess --only a few rows exist
+
+--to see the duplicate lookback time window:
+select DuplicateTransSeconds_Paid, DuplicateTransSeconds_NaturalSearch, * from ClientMailOption where clientID=5486
+--DoubleLogTimeInSeconds = for D cookie; d in d cookie= double; to prevent double logging of the same click / action pixel load event
+
+--to see all active and valid clients with no deduplication
+select c.* from ClientMailOption cmo inner join Clients c on c.ClientID=cmo.ClientID
+where DoubleLogTimeInSeconds=0 and c.StatusFlag=1 and ClientLevelID=1
+
+===
+--for Vanity URL for digitalriver :
+--1- run this:
+select * from ClientMailOption where clientID in (2828,#clientId)
+--verify that ServerSideDomains are NOT identical
+
+--2-
+USE [Searchignite]
+GO
+
+DECLARE	@return_value int
+
+EXEC	@return_value = [SIAdmin].[SI_SP_ClientMailOption_InsertUpdate]
+		@ClientID = #clientID,
+		@Campaign70Alert = 1,
+		@Campaign90Alert = 1,
+		@ServerSideDomain = N'https://track.digitalriver.com/'
+
+SELECT	'Return Value' = @return_value
+
+GO
+
+--3-
+--verify that ServerSideDomains are identical
+select * from ClientMailOption where clientID in (2828,#clientId)
+===
+
+--to verify a keyword has a group outside the IO UI: 
+SELECT AdCategoryID FROM dbo.CSKeywords WHERE ClientID=3386 AND CSKID=432688456 --groupId 
+SELECT * FROM dbo.CampaignAdCategory WHERE ClientID=3386 AND AdCategoryID=10229906 --group's row 
+
+--to get a campaign's externalID:
+select * from SEExternalIDInfo where cckvalue=344029 --campaignId 
+and clientid=1933 -- good idea to make it faster with indexing
+--CCKTypeId:
+--campaign=1, group=2, keyword=3
+
+===
+
+to update a client's time zone, must update both columns TimeZoneDisplayID, TimeZoneID:
+SELECT TimeZoneDisplayID, TimeZoneID, DaylightSaving, * FROM clients WHERE ClientID IN (7411, 7412)
+SELECT * FROM dbo.LUTimeZone
+SELECT * FROM dbo.LUTimeZoneDisplay
+===
+
+--to turn off logging:
+--Execute SI_SP_ClientMailOption_InsertUpdate, like so:
+USE [Searchignite]
+GO
+
+DECLARE	@return_value int
+
+EXEC	@return_value = [SIAdmin].[SI_SP_ClientMailOption_InsertUpdate]
+		@ClientID = 5676,
+		@Campaign70Alert = 1, --this row
+		@Campaign90Alert = 1, --and this row are required albeit irrelevant to this request
+		@TrackPaidClicks = 0, --all tracked rows set to 0 = turned off logging
+		@TrackNaturalClicks = 0,
+		@TrackTransactions = 0,
+		@TrackEditorial = 0,
+		@TrackPaidInclusion = 0
+
+SELECT	'Return Value' = @return_value
+
+GO
+
+--to turn off Other Media, just these params:
+@ClientID = 1637, 
+@Campaign70Alert = 1, 
+@Campaign90Alert = 1, 
+@TrackPaidInclusion = 0 
+===
+
+--to see if a client is affiliated:
+select * from AffiliateGroupClients where clientid=1637
+--if row exists, they're affiliated
+
+--to look up an ad based on the id in the IO uI:
+select * from campaignadtitlemapping where setitleid=83021970 --IO UI id
+
+--affiliate group, eg, apple:
+select * from AffiliateGroupClients where affiliateid=100
+select * from AffiliateGroup where affiliateid=100
+
+===
+--to regrab engine data:
+USE [Searchignite]
+GO
+
+DECLARE	@return_value int
+
+EXEC	@return_value = [dbo].[SI_SP_AdminTools_CreateCrawlRecords]
+		@ClientID = 7492,
+		@SEID = 1,
+		@ItemID = 7492,
+		@IsInsert = 1,
+		@RecordDateTime = N'2012-09-14 10:00',
+		@InsertReportGeneralCrawlRecord = 1,
+		@Comment = N'SICS-6654'
+
+SELECT	'Return Value' = @return_value
+
+GO
+
+@RecordDateTime : if you want this run for 7/1 - 6/19, then first run for 7/2 - 
+this will run for 7/2 & 7/1; then run for 6/30, 6/28, and so on to 6/20
+
+===
+--roles and permissions - only on ATLSQLMainPR, not .128
+--SICS-6199:
+--first must get the permissionid:
+select * from LUPermission where permission like '%click tr%'
+
+--then get the roleid:
+select * from role
+
+select * from LUPermissionAccess
+--1=granted, 2=denied
+
+select * from role_LUPermission where permissionid=24 --View Click Tracking permission
+and roleid=6 --manager
+
+--permissions which Uber Admin is not granted:
+select * 
+from LUPermission r
+where NOT EXISTS(SELECT * FROM role_LUPermission WHERE r.permissionId = permissionId and roleid=1)
+--alternate:
+select * from LUPermission where permissionid not in (
+select permissionId from role_LUPermission WHERE roleid=1)
+===
+
+--campaign and group name of keyword(s):
+select c.campaigntitle, g.adcategoryname,  k.updatedate, ckeywordid, keyword, * 
+from cskeywords k 
+	inner join campaign c on c.campaignid=k.campaignid
+	inner join campaignadcategory g on g.adcategoryid = k.adcategoryid
+where cskid in (
+449765488
+)
+
+===
+--new Publisher request: 
+--example SICS-5563
+--0: make sure the publisher doesn't already exist
+select * from NatureSearchEngine where NatureSEName like '%%'
+select * from LUPublisher where PublisherName like '%%'
+--1: get relevant ids here:
+select top 5 * from NatureSearchEngine order by nseid desc
+select top 5 * from LUPublisher order by LegacySearchEngineID desc
+select * from LUCurrency 
+select * from LUNSType --note: when matthew says Other Media, he probably doesn't mean Other Media, probably means Paid Inclusion
+select * from LUPublisherRegion 
+
+--2: execute this in dev, then QA (must include LUPublisher), then new SIOPS ticket (must include rollbacks) to Ops- assign to marc, let him know:
+--Please add the following publisher(s):
+
+BEGIN TRAN 
+Insert Into NatureSearchEngine (NSEID, StatusFlag, CurrencyID, NSTypeID, SEID, ImageID, PublisherRegionID, NatureSEName) 
+Values (, 1, , , NULL, NULL, , '') 
+--Expect # Record(s) 
+--COMMIT TRAN 
+
+===
+Currency tables:
+select * from CurrencyExchangeData where ToCurrencyID=31 or FromCurrencyID=31
+select * from CurrencyExchangeRate where (ToCurrencyID=31 or FromCurrencyID=31) and recordstatus='A'
+select * from LUCurrency where CurrencyID=31
+===
+
+Kill bulksheet (upload or download):
+update BulkSheetQueue 
+set BulkSheetStatusID = 8
+where BulkSheetQueueID = 312046 and clientId=3208
+
+--order of clauses:
+select count(*), emailaddress 
+from UserDetail 
+where emailaddress='aknoch@searchignite.com'
+group by emailaddress
+having count(*) > 1 
+order by emailaddress
+
+--users with the default password Password2:
+select * from users where userpassword='CcFkqRmrUkRWfO5zeK+kng=='
+
+===
+--rate card stuff:
+select * from ludfaratecardtype
+select * from ludfaratecardstatus
+select * from ludfaratetype
+select * from luratecardsource
+select * from dfaratecard
+where clientid = 3028
+and dfaratecardtypeid = 1
+and statusflag = 1
+
+===
+example of "except" (SICS-6618):
+create table #tmp ( cac NVARCHAR(MAX) COLLATE SQL_Latin1_General_CP1_CI_AS);
+insert into #tmp (cac) VALUES 
+('Balenciaga City Handbags: HandBags - Brand, Product Line - Tablet'),
+('Burberry Luxury Shoulder Bags: HandBags - Brand - Tablet'),
+('Burberry Satchels: HandBags - Brand - Tablet')
+
+
+SELECT cac COLLATE SQL_Latin1_General_CP1_CI_AS FROM #tmp EXCEPT ( select ADCategoryName from campaignadcategory 
+where clientid=6314 and campaignid in (332488)
+ and AdCategoryName in (
+'Balenciaga City Handbags: HandBags - Brand, Product Line - Tablet',
+'Burberry Luxury Shoulder Bags: HandBags - Brand - Tablet',
+'Burberry Satchels: HandBags - Brand - Tablet'
+) 
+and UpdateDate > '2012-09-04');
+--order by campaignid, AdCategoryName
+
+drop table #tmp
+===
+textads for SICS-6618:
+create table #tmp (
+grpid int, 
+cid int, 
+title NVARCHAR(255) COLLATE SQL_Latin1_General_CP1_CI_AS, 
+description1 NVARCHAR(2000) COLLATE SQL_Latin1_General_CP1_CI_AS, 
+displayurl NVARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS, 
+groupname NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS
+);
+
+create table #notindb (
+grpid int, 
+cid int, 
+title NVARCHAR(255) COLLATE SQL_Latin1_General_CP1_CI_AS, 
+description1 NVARCHAR(2000) COLLATE SQL_Latin1_General_CP1_CI_AS, 
+displayurl NVARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CI_AS, 
+groupname NVARCHAR(200) COLLATE SQL_Latin1_General_CP1_CI_AS
+);
+
+insert into #tmp (grpid, cid, title, description1, displayurl, groupname) VALUES 
+(null,332488,'Balenciaga City Sale','Big Selection of Balenciaga City Handbags.','BagBorroworSteal.com/Balenciaga','Balenciaga City Handbags: HandBags - Brand, Product Line - Tablet')
+;
+
+declare @arg1 INT; --grpid
+declare @arg2 INT; --cid
+declare @arg3 NVARCHAR(255); --title
+declare @arg4 NVARCHAR(2000); --description
+declare @arg5 NVARCHAR(1000); --displayurl
+declare @arg6 NVARCHAR(200); --groupname
+
+
+WHILE (SELECT COUNT(*) FROM #tmp) > 0
+BEGIN
+ select top 1 @arg1=grpid from #tmp;
+ select top 1 @arg2=cid from #tmp;
+ select top 1 @arg3=title from #tmp;
+ select top 1 @arg4=description1 from #tmp;
+ select top 1 @arg5=displayurl from #tmp;
+ select top 1 @arg6=groupname from #tmp;
+ 
+ if @arg1 IS NULL
+ BEGIN
+  if not exists (select top 1 * from CampaignAdTitleMapping WHERE
+   clientid = 6314 AND
+   campaignid = @arg2 AND
+   title = @arg3 AND
+   description1 = @arg4 AND
+   displayurl = @arg5 AND
+   AdCategoryID = (select top 1 AdCategoryID from CampaignAdCategory where AdCategoryName = @arg6)
+  )
+  BEGIN
+   insert into #notindb (grpid, cid, title, description1, displayurl, groupname) VALUES
+   (@arg1,@arg2,@arg3,@arg4,@arg5,@arg6)
+  END
+ END
+ else
+ BEGIN
+  if not exists (select top 1 * from CampaignAdTitleMapping WHERE
+   clientid = 6314 AND
+   campaignid = @arg2 AND
+   title = @arg3 AND
+   description1 = @arg4 AND
+   displayurl = @arg5 AND
+   AdCategoryID = @arg1)
+  BEGIN
+   insert into #notindb (grpid, cid, title, description1, displayurl, groupname) VALUES
+   (@arg1,@arg2,@arg3,@arg4,@arg5,@arg6) 
+  END
+ END
+ 
+ delete from #tmp 
+ where (grpid = @arg1 or grpid is null) AND cid = @arg2 AND title = @arg3 
+ AND description1 = @arg4 AND displayurl = @arg5 AND groupname = @arg6
+END
+
+select * from #notindb;
+
+drop table #tmp;
+drop table #notindb;
+
+===
+
+--to remove dfa integration (SICS-6644):
+http://confluence.innovationinteractive.com/display/SITECHCS/DFA+API+Connection+Removal
+
+-- to find the app server that handled a bulksheet (SICS-6700): 
+select AppServer, * from BulkSheetQueue 
+where clientID = 2169 
+and displayname like 'one_way_c%'
+order by DateCreated desc
+
+--to change an account from agency to client:
+update clients 
+set ClientLevelID = 1 -- from client to agency: 1 to 7
+where clientid=7772 
+
+--to remove action types: set statusflag=0 where...
+select * from ClientCustomerTransactionType where clientid=4468
+
+--if no publishers are showing when creating an optimization group (SICS-6844)
+select * from SearchEngine where seid=77 
+--seid 77 has AllowOptimize=0
+
+--external IDs for ads:
+select * from campaignadtitlemapping where clientid=7450
+
+-- SICS-7217: keywords not getting inserted when dropped in ftp folder:
+SELECT * FROM SearchIgnite.dbo.BulkKeywordProcessQueue --order by CreateDateUTC desc
+/* The BulkKeywordRaw table contains all raw data (directly from file) 
+   The BulkKeywordStage table contains all transformed data, and is used as source for archive file */
+SELECT AdCategoryName, CampaignTitle, SearchEngine, * FROM DMS_Staging.dbo.BulkKeywordRaw
+SELECT AdCategoryName, CampaignTitle, SearchEngine, * FROM DMS_Staging.dbo.BulkKeywordStage 
+
+--all clients that are exactly 7 levels deep:
+select c0.ClientID as RootChild, c1.ClientID as Parent1, c2.ClientID as Parent2, c3.ClientID as Parent3, c4.ClientID as Parent4, c5.ClientID as Parent5, c6.ClientID as Parent6, c7.ClientID as Parent7
+ from clients c0 with (nolock) 
+	inner join clients c1 with (nolock) on c0.ParentClientID = c1.ClientID 
+	inner join clients c2 with (nolock) on c1.ParentClientID = c2.ClientID 
+	inner join clients c3 with (nolock) on c2.ParentClientID = c3.ClientID 
+	inner join clients c4 with (nolock) on c3.ParentClientID = c4.ClientID 
+	inner join clients c5 with (nolock) on c4.ParentClientID = c5.ClientID 
+	inner join clients c6 with (nolock) on c5.ParentClientID = c6.ClientID 
+	inner join clients c7 with (nolock) on c6.ParentClientID = c7.ClientID 
+where c0.StatusFlag=1 and c1.StatusFlag=1 and c2.StatusFlag=1 and c3.StatusFlag=1 and c4.StatusFlag=1 and c5.StatusFlag=1 and c6.StatusFlag=1 and c7.StatusFlag=1 
+	and c0.ParentClientID <> 1 and c1.ParentClientID <> 1 and c2.ParentClientID <> 1 and c3.ParentClientID <> 1 and c4.ParentClientID <> 1 and c5.ParentClientID <>1 and c6.ParentClientID =1
+	and c0.ClientLevelID=1
+order by c6.ClientID,c5.ClientID,c4.ClientID,c3.ClientID,c2.ClientID, c1.ClientID
+
+--who in dev has data for the 3rd party daily report?
+select distinct clientid from RPT_UM_Summary_CampaignPublisher where generatedate >= '2013-02-01'
+
+--DAV:
+ClientTransactionVariableDesc
+
+--to create webservice API tokens:
+exec SIAdmin.SI_SP_Clients_SIToken
+@clientid=#, --one at a time
+@comment='SICS-'
+
+===
+--datagrid logic / functionality for campaign / group tabs:
+select * from ludatagrid
+--DataGridID = 2 == Group tab, Paid Search view
+--datagridid=30 == Group tab, search+facebook
+
+select * from ludatagridcolumn where datagridid=30 
+--DataGridColumnID = 811 == this is the source of the @SortDataGridColumnID called here:
+
+exec SI_SP_CampaignManagement_Group_ReadByFilterHierID
+@startdate='2013-02-11',
+@enddate='2013-03-12',
+@clientid=3289,
+@userid=7218, 
+@viewid=9,
+@SortDataGridColumnID=811,
+@SortDescending=1
+===
+
+in clients table, tpsid=third party something id: for omniture(?)
+
+--status of bulkservers:
+SELECT AppServer, COUNT(*) AS Count,
+ CAST(AVG(fileSize) AS FLOAT)/1000000.0 AS AvgFileSize_MB,
+ CAST(MAX(fileSize) AS FLOAT)/1000000.0 AS MaxFileSize_MB,
+ SUM(NumberOfChangesMade) AS TotalChangesMade,
+ SUM(TotalChanges) AS TotalChangesToDo,
+ CAST(SUM(NumberOfChangesMade) AS FLOAT)/CAST(SUM(TotalChanges) AS FLOAT) * 100.0 AS TotalProgress,
+ MAX(DateCreated) AS LastPickedUp
+FROM dbo.BulkSheetQueue
+WHERE BulkSheetStatusID = 9
+GROUP BY AppServer
+
+--what clients are agencies without any clients:
+SELECT top 10 c.clientid FROM dbo.Clients c WHERE ClientLevelID = 7 AND NOT EXISTS (
+	SELECT top 1 1 FROM Clients b WHERE ClientLevelID = 1 AND b.ParentClientID= c.ClientID )
+order by c.clientid desc
+
+--to set the sync lock in clientsearchenginemapping from 1 to 0:
+--must get Ops to do it
+
+--to uncheck daylight savings for a client:
+--must move client to a TimeZoneDisplayID that doesn't observe daylight savings
+--see also [SIAdmin].[SI_SP_Clients_InsertUpdate] & LUTimeZoneDisplay 
+
+--which clients are mediamind:
+select * from ClientTrackingSourceMapping m inner join clients c on c.clientid=m.clientid
+where TrackingSourceID=6 and c.statusflag=1
+--see also:
+select * from LUTrackingSource
+
+===
+--add ssr=1 to clients:
+USE [Searchignite]
+GO
+
+DECLARE	@return_value int
+
+EXEC	@return_value = [SIAdmin].[SI_SP_ClientMailOption_SuppressPixelOnSSR_Update]
+@ClientIDs = N'8703,8692,8700,8699',
+@SuppressPixelOnSSR = 1,
+@Comment = N'SICS-7962,SICS-7963'
+
+SELECT	'Return Value' = @return_value
+
+GO
+--verify like so:
+select SuppressPixelOnSSR, * from clientmailoption where clientid in (8703,8692,8700,8699)
+===
+
+--whether clients use ssr or not:
+select SSRedirect, c.clientid, clientname
+from clients c
+	inner join clientmailoption cmo on c.clientid=cmo.clientid
+where parentclientid in (7477, 1862) 
+order by c.clientid
+
+keyword mobile urls:
+CSKeywordDeviceURL
+
+--to find which groups are in more than 1 virtual group:
+select d.AdCategoryID, count(*) as [Is in this many virtual groups]
+from VirtualGroupDetailCache d with (nolock) 
+	inner join VirtualGroup v with (nolock) on v.vgid=d.vgid
+	inner join CampaignAdCategory g with (nolock) on d.AdCategoryID = g.AdCategoryID
+where d.clientid=7492 and v.statusflag=1 and g.statusflag=1
+group by d.AdCategoryID
+having count(*) > 1
+order by count(*) desc
+
+--"where processdatetime is greater than 2 hours more than recorddatetime":
+where ProcessDateTime > DATEADD(Hour, 2, Recorddatetime)
+
+--to delete report templates (on SIOLAP):
+update ReportTemplate 
+set statusflag=0 
+where clientid in (#) 
+and statusflag=1 
+
+--who is on p2c?:
+select* from DFAMapping where ExposureSourceTypeID=2 
+
+--what is VirtualGroupTimeFrame ?
+--???
+
+--what's been crawled on one server today?
+select * from CrawlRecord where CrawlRecordID in (
+select crawlrecordID  from CrawlRecordGroup where CrawlGroupID in (select CrawlGroupID  from CrawlGroup 
+where AppServer like 'DFW01CRAWL002%' and ExecutionDate > '7/2/13'))
+
+--to change Action type weight:
+update ClientCustomerTransactionTypeWeight
+
+--record of DFA P2C reports getting run:
+select * from DFAExternalReportProcess where ClientID = 8397
+
+--to disable sitelinks:
+update Clientmailoption 
+set TrackSitelinks=0
+where clientid in (#)
+--can't use [SIAdmin].[SI_SP_ClientMailOption_InsertUpdate]
+--also:
+insert into Clients_SyncSitelinks
+(ParentClientID,ClientID,SyncSitelinks,UpdateDateUTC)
+values()
+===
+--to add new affiliation:
+--0: verify the row doesn't already exist for this client
+--1:
+insert into AffiliateGroup
+(AffiliateName,AgencyClientID,StatusFlag)
+values('client name',#clientid#,1)
+
+--2: after verifying this next part doesn't exist, 
+--get the affiliateID, use it in this next:
+insert into AffiliateGroupClients
+===
+
+--make the next record insert with id 1
+DBCC CHECKIDENT('table', RESEED, 0)
+
+--to check on @Comment paramed stored procs:
+SELECT *
+FROM SIAdmin_AuditLog
+WHERE Comment = '#comment'
+
+--what users can access a client:
+SELECT DISTINCT u.* FROM users u INNER JOIN Users_Clients_Role c ON u.UserID=c.UserID 
+WHERE UserName LIKE '%@360i.com' AND u.StatusFlag=1 AND c.ClientID=8767 AND c.StatusFlag=1 
+ORDER BY u.UpdateDate DESC 
+
+--what clients does a user have access to:
+SELECT c.ClientID, ClientName, r.Role
+FROM users u 
+	INNER JOIN Users_Clients_Role ucr ON u.UserID=ucr.UserID 
+	INNER JOIN Clients c on c.ClientID=ucr.ClientID
+	INNER JOIN role r on ucr.RoleID=r.RoleID
+WHERE UserName LIKE 'tim.kennedy@datapop.com' AND u.StatusFlag=1 and r.StatusFlag=1 and c.StatusFlag=1 and ucr.StatusFlag=1
+ORDER BY u.UpdateDate DESC 
+
+--to recrawl sitelinks
+INSERT INTO CrawlRecord 
+(ItemID,ClientID,SEID,CreateDateUTC,RecordDateTime,CrawlRecordTypeID,CrawlRecordStatusID,CrawlTypeID)
+VALUES (
+,--ItemID / campaignid,
+,--ClientID,
+,--SEID,
+GETUTCDATE(),--CreateDateUTC,
+GETUTCDATE(),--RecordDateTime,
+--NULL,--ProcessDateTime, <- unnecessary
+1,--CrawlRecordTypeID,
+0,--CrawlRecordStatusID,
+51--CrawlTypeID
+)
+
+--to repull SEO data
+--PSEUDO SQL:
+insert into CrawlRecord 
+CrawlTypeID=38
+ItemID = ClientID
+RecordDateTime = GETUTCDATE()
+
+--to grant execute permission on object (like stored proc) [obj] to [user]
+grant exec on [obj] to [user]
+--related?
+USE [SIProcessing]
+GO
+EXEC sp_addrolemember N'webaccess', N'siwebservice'
+GO
+
+--to do an insert with values from another table, eg, SICS-8867: 
+insert into affiliategroup 
+ (AffiliateName ,AgencyClientID ,StatusFlag)
+select  ClientName ,ClientID  ,1 
+from Clients 
+where ClientID in (9537,9538)
+
+--list of clients with parentclientids and ROOT clientids (highest in the chain under Europe/Asia/etc...):
+WITH 
+clientroots (clientid, clientname, parentclientid, parentclientname, rootclientid, rootclientname, level)
+AS
+(
+SELECT clientid, clientname, clientid, ClientName, clientid, ClientName, 0 AS Level
+FROM dbo.Clients
+WHERE ParentClientID IN (SELECT clientid FROM clients WHERE ParentClientID = 1 AND StatusFlag = 1)
+AND StatusFlag = 1
+UNION ALL
+SELECT c.clientid, c.clientname, c.parentclientid, r.clientname, r.rootclientid, r.rootclientname, r.Level + 1
+FROM clients c
+JOIN clientroots r
+ON c.ParentClientID = r.clientid
+WHERE c.StatusFlag = 1
+)
+SELECT * FROM clientroots
+ORDER BY clientid
+
+--the relationship between sitelink and sitelink template url:
+select SiteLinkID, sl.DisplayText, SiteLinkTemplateURLID, sl.URL, sltu.URL
+from sitelink sl with (nolock)
+ inner join sitelinkextension sle with (nolock) on sl.sitelinkextensionid = sle.sitelinkextensionid
+ inner join sitelinktemplatecampaign sltc with (nolock) on sltc.campaignid=sle.CampaignID
+ inner join sitelinktemplateurl sltu with (nolock) on sltu.SiteLinkTemplateID=sltc.SiteLinkTemplateID
+where sl.StatusFlag=1 and sle.StatusFlag=1 and sltc.StatusFlag=1 and sltu.StatusFlag=1 and sltu.clientid = 7351 and sl.DisplayText=sltu.DisplayText
+order by SiteLinkID
+
+--to turn off organic:
+UPDATE clientMailOption
+SET TrackNaturalClicks = 0
+WHERE ClientID=x AND TrackNaturalClicks = 1 
+
+--to delete secondary attribution profile:
+UPDATE dbo.ClientAttributionProfileSetting 
+SET RecordStatus = 'I' 
+WHERE ClientID IN (X) 
+AND ProfileSequence = 2 
+AND RecordStatus = 'A' 
+--is this also necessary?
+UPDATE dbo.ClientAttributionProfileSettingHistory 
+SET RecordStatus = 'I' 
+WHERE ClientID IN (X) 
+AND ClientAttributionProfileID IN (X) 
+AND ProfileSequence = 2 
+AND RecordStatus = 'A' 
+
+--to enable "Landing optimization by CVR" function for all the ad-group level redirect:
+UPDATE CampaignAdCategory 
+SET OptimizeLandingPage = 1, 
+OptimizeByConversion = 1 
+WHERE ClientID = #
+AND StatusFlag = 1 
+
+--list of all clients with GDN
+SELECT DISTINCT ClientID, displaynetworkaudience.seid, SearchEngine 
+FROM dbo.DisplayNetworkAudience JOIN dbo.SearchEngine ON dbo.DisplayNetworkAudience.SEID = dbo.SearchEngine.SEID
+ORDER BY ClientID
+
+--sync schedule:
+select * from SearchEngineAutoSyncSchedule
+
+--to see where report files get written to:
+select * from SISystemConfig where SystemConfigDesc = 'OLAP Report Queue Storage Path'
+
+--to adjust Max CPC:
+update searchenginegeneralconfig set ConfigValue = $ where ConfigID = 24 and SEID = n
+--see also: http://jira.dentsunetwork.com/browse/SIOPS-9691
+
+--to Disable autosync for one client/engine
+delete from SearchEngineAutoSyncSchedule where ClientID = X and SeID = Y
+--also get the inserts needed to restore the rows deleted when submitting the ticket to Ops
+--example:
+-- http://jira.dentsunetwork.com/browse/SIOPS-9762
+
+--to do a replace:
+update SiteLink
+set URL=REPLACE(url,'psid=99999','psid=19999')
+where ClientID=3767 and statusflag=1 and (URL like '%psid=99999%')
+
+select distinct cg.* from CrawlRecordGroup crg inner join CrawlGroup cg on cg.CrawlGroupID=crg.CrawlGroupID
+where CrawlRecordID in (X)
+

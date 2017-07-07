@@ -1,0 +1,1874 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ShowPlanXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.1" Build="10.0.2531.0" xmlns="http://schemas.microsoft.com/sqlserver/2004/07/showplan">
+  <BatchSequence>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="13" StatementEstRows="964059" StatementId="1" StatementOptmLevel="FULL" StatementSubTreeCost="2117.55" StatementText="INSERT INTO #Bid_BidRank(CSKID, CurrentRank, UpdateDate, FinalBid, QualityScore,MinBid)&#xD;&#xA;	SELECT br.CSKID, br.CurrentRank, @now, bi.FinalBid,br.QualityScore,br.MinBid&#xD;&#xA;	FROM dbo.Staging_BidRank br &#xD;&#xA;		JOIN Bid bi ON bi.CSKID = br.CSKID AND br.CurrentRank IS NOT NULL&#xD;&#xA;		&#xD;&#xA;" StatementType="INSERT" QueryHash="0x87363A810224BBF1" QueryPlanHash="0xDEB45148FE9780EF">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="1" CachedPlanSize="24" CompileTime="11" CompileCPU="11" CompileMemory="376">
+            <RelOp AvgRowSize="9" EstimateCPU="0.964059" EstimateIO="29.424" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="964059" LogicalOp="Insert" NodeId="0" Parallel="false" PhysicalOp="Table Insert" EstimatedTotalSubtreeCost="2117.55">
+              <OutputList />
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <Update DMLRequestSort="false">
+                <Object Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank]" />
+                <SetPredicate>
+                  <ScalarOperator ScalarString="[#Bid_BidRank].[CSKID] = [SearchIgnite].[dbo].[Staging_BidRank].[CSKID] as [br].[CSKID],[#Bid_BidRank].[CurrentRank] = [SearchIgnite].[dbo].[Staging_BidRank].[CurrentRank] as [br].[CurrentRank],[#Bid_BidRank].[UpdateDate] = [@Now],[#Bid_BidRank].[FinalBid] = [SearchIgnite].[dbo].[Bid].[FinalBid] as [bi].[FinalBid],[#Bid_BidRank].[QualityScore] = [SearchIgnite].[dbo].[Staging_BidRank].[QualityScore] as [br].[QualityScore],[#Bid_BidRank].[MinBid] = [SearchIgnite].[dbo].[Staging_BidRank].[MinBid] as [br].[MinBid]">
+                    <ScalarExpressionList>
+                      <ScalarOperator>
+                        <MultipleAssign>
+                          <Assign>
+                            <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CSKID" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Table="[#Bid_BidRank]" Column="CurrentRank" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CurrentRank" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Table="[#Bid_BidRank]" Column="UpdateDate" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Column="@Now" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Table="[#Bid_BidRank]" Column="FinalBid" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Bid]" Alias="[bi]" Column="FinalBid" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Table="[#Bid_BidRank]" Column="QualityScore" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="QualityScore" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Table="[#Bid_BidRank]" Column="MinBid" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="MinBid" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                        </MultipleAssign>
+                      </ScalarOperator>
+                    </ScalarExpressionList>
+                  </ScalarOperator>
+                </SetPredicate>
+                <RelOp AvgRowSize="37" EstimateCPU="0.0964059" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="964059" LogicalOp="Top" NodeId="1" Parallel="false" PhysicalOp="Top" EstimatedTotalSubtreeCost="2087.17">
+                  <OutputList>
+                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CSKID" />
+                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CurrentRank" />
+                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="QualityScore" />
+                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="MinBid" />
+                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Bid]" Alias="[bi]" Column="FinalBid" />
+                  </OutputList>
+                  <RunTimeInformation>
+                    <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                  </RunTimeInformation>
+                  <Top RowCount="true" IsPercent="false" WithTies="false">
+                    <TopExpression>
+                      <ScalarOperator ScalarString="(0)">
+                        <Const ConstValue="(0)" />
+                      </ScalarOperator>
+                    </TopExpression>
+                    <RelOp AvgRowSize="37" EstimateCPU="617.857" EstimateIO="285.567" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="964059" LogicalOp="Inner Join" NodeId="2" Parallel="false" PhysicalOp="Merge Join" EstimatedTotalSubtreeCost="2087.07">
+                      <OutputList>
+                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CSKID" />
+                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CurrentRank" />
+                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="QualityScore" />
+                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="MinBid" />
+                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Bid]" Alias="[bi]" Column="FinalBid" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                      </RunTimeInformation>
+                      <Merge ManyToMany="true">
+                        <InnerSideJoinColumns>
+                          <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Bid]" Alias="[bi]" Column="CSKID" />
+                        </InnerSideJoinColumns>
+                        <OuterSideJoinColumns>
+                          <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CSKID" />
+                        </OuterSideJoinColumns>
+                        <Residual>
+                          <ScalarOperator ScalarString="[SearchIgnite].[dbo].[Bid].[CSKID] as [bi].[CSKID]=[SearchIgnite].[dbo].[Staging_BidRank].[CSKID] as [br].[CSKID]">
+                            <Compare CompareOp="EQ">
+                              <ScalarOperator>
+                                <Identifier>
+                                  <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Bid]" Alias="[bi]" Column="CSKID" />
+                                </Identifier>
+                              </ScalarOperator>
+                              <ScalarOperator>
+                                <Identifier>
+                                  <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CSKID" />
+                                </Identifier>
+                              </ScalarOperator>
+                            </Compare>
+                          </ScalarOperator>
+                        </Residual>
+                        <RelOp AvgRowSize="29" EstimateCPU="1.00836" EstimateIO="6.43868" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916550" LogicalOp="Index Scan" NodeId="3" Parallel="false" PhysicalOp="Index Scan" EstimatedTotalSubtreeCost="7.44704" TableCardinality="916550">
+                          <OutputList>
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CSKID" />
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CurrentRank" />
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="QualityScore" />
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="MinBid" />
+                          </OutputList>
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="0" ActualRows="916549" ActualEndOfScans="0" ActualExecutions="1" />
+                          </RunTimeInformation>
+                          <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CSKID" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CurrentRank" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="QualityScore" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="MinBid" />
+                              </DefinedValue>
+                            </DefinedValues>
+                            <Object Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Index="[Staging_BidRank_CSKID_CurrentRank]" Alias="[br]" IndexKind="NonClustered" />
+                            <Predicate>
+                              <ScalarOperator ScalarString="[SearchIgnite].[dbo].[Staging_BidRank].[CurrentRank] as [br].[CurrentRank] IS NOT NULL">
+                                <Compare CompareOp="IS NOT">
+                                  <ScalarOperator>
+                                    <Identifier>
+                                      <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CurrentRank" />
+                                    </Identifier>
+                                  </ScalarOperator>
+                                  <ScalarOperator>
+                                    <Const ConstValue="NULL" />
+                                  </ScalarOperator>
+                                </Compare>
+                              </ScalarOperator>
+                            </Predicate>
+                          </IndexScan>
+                        </RelOp>
+                        <RelOp AvgRowSize="19" EstimateCPU="299.766" EstimateIO="875.992" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="272514000" LogicalOp="Index Scan" NodeId="4" Parallel="false" PhysicalOp="Index Scan" EstimatedTotalSubtreeCost="1175.76" TableCardinality="272514000">
+                          <OutputList>
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Bid]" Alias="[bi]" Column="CSKID" />
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Bid]" Alias="[bi]" Column="FinalBid" />
+                          </OutputList>
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="0" ActualRows="272514395" ActualEndOfScans="1" ActualExecutions="1" />
+                          </RunTimeInformation>
+                          <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Bid]" Alias="[bi]" Column="CSKID" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Bid]" Alias="[bi]" Column="FinalBid" />
+                              </DefinedValue>
+                            </DefinedValues>
+                            <Object Database="[SearchIgnite]" Schema="[dbo]" Table="[Bid]" Index="[IND_BID_CSKID]" Alias="[bi]" IndexKind="NonClustered" />
+                          </IndexScan>
+                        </RelOp>
+                      </Merge>
+                    </RelOp>
+                  </Top>
+                </RelOp>
+              </Update>
+            </RelOp>
+            <ParameterList>
+              <ColumnReference Column="@Now" ParameterRuntimeValue="'2011-10-25 18:13:18.897'" />
+            </ParameterList>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="19" StatementEstRows="916548" StatementId="2" StatementOptmLevel="FULL" StatementSubTreeCost="64.1933" StatementText="insert [#Bid_BidRank________________________________________________________________________________________________________00000000C6D0] select * from [#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" StatementType="INSERT" QueryHash="0x19BAB2E44FEEC70D" QueryPlanHash="0x9D59EBC247130D77">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="2" MemoryGrant="97328" CachedPlanSize="24" CompileTime="794" CompileCPU="703" CompileMemory="144">
+            <RelOp AvgRowSize="9" EstimateCPU="0.602488" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Gather Streams" NodeId="0" Parallel="true" PhysicalOp="Parallelism" EstimatedTotalSubtreeCost="64.1933">
+              <OutputList />
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <Parallelism>
+                <RelOp AvgRowSize="9" EstimateCPU="0.458274" EstimateIO="17.0109" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Insert" NodeId="1" Parallel="true" PhysicalOp="Index Insert" EstimatedTotalSubtreeCost="63.5908">
+                  <OutputList />
+                  <RunTimeInformation>
+                    <RunTimeCountersPerThread Thread="1" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+                    <RunTimeCountersPerThread Thread="2" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+                    <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                  </RunTimeInformation>
+                  <CreateIndex>
+                    <Object Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Index="[IDX_tmp_Bid_BidRank_CSKID]" IndexKind="Clustered" />
+                    <RelOp AvgRowSize="45" EstimateCPU="41.6612" EstimateIO="0.00563063" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Sort" NodeId="2" Parallel="true" PhysicalOp="Sort" EstimatedTotalSubtreeCost="46.1216">
+                      <OutputList>
+                        <ColumnReference Column="RowRefSrc1008" />
+                      </OutputList>
+                      <MemoryFractions Input="1" Output="1" />
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="1" ActualRebinds="1" ActualRewinds="0" ActualRows="459288" ActualEndOfScans="1" ActualExecutions="1" />
+                        <RunTimeCountersPerThread Thread="2" ActualRebinds="1" ActualRewinds="0" ActualRows="457260" ActualEndOfScans="1" ActualExecutions="1" />
+                        <RunTimeCountersPerThread Thread="0" ActualRebinds="0" ActualRewinds="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                      </RunTimeInformation>
+                      <Sort Distinct="false">
+                        <OrderBy>
+                          <OrderByColumn Ascending="true">
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="CSKID" />
+                          </OrderByColumn>
+                          <OrderByColumn Ascending="true">
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="CurrentRank" />
+                          </OrderByColumn>
+                        </OrderBy>
+                        <PartitionId>
+                          <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="CSKID" />
+                        </PartitionId>
+                        <RelOp AvgRowSize="45" EstimateCPU="0.504141" EstimateIO="3.95061" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Table Scan" NodeId="3" Parallel="true" PhysicalOp="Table Scan" EstimatedTotalSubtreeCost="4.45475" TableCardinality="916548">
+                          <OutputList>
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="CSKID" />
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="CurrentRank" />
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="UpdateDate" />
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="FinalBid" />
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="QualityScore" />
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="MinBid" />
+                          </OutputList>
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="1" ActualRows="476440" ActualEndOfScans="1" ActualExecutions="1" />
+                            <RunTimeCountersPerThread Thread="2" ActualRows="440108" ActualEndOfScans="1" ActualExecutions="1" />
+                            <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                          </RunTimeInformation>
+                          <TableScan Ordered="false" ForcedIndex="false" NoExpandHint="false">
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="CSKID" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="CurrentRank" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="UpdateDate" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="FinalBid" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="QualityScore" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" Column="MinBid" />
+                              </DefinedValue>
+                            </DefinedValues>
+                            <Object Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank________________________________________________________________________________________________________00000000C6D0]" IndexKind="Heap" />
+                          </TableScan>
+                        </RelOp>
+                      </Sort>
+                    </RelOp>
+                  </CreateIndex>
+                </RelOp>
+              </Parallelism>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="15" StatementEstRows="916548" StatementId="3" StatementOptmLevel="FULL" StatementSubTreeCost="997.546" StatementText="MERGE dbo.CSKeywordsRankInfo AS target&#xD;&#xA;	USING (SELECT CSKID, CurrentRank, UpdateDate, FinalBid, QualityScore,MinBid&#xD;&#xA;				FROM #Bid_BidRank &#xD;&#xA;	) AS source &#xD;&#xA;	ON (target.CSKID = source.CSKID)&#xD;&#xA;	WHEN MATCHED THEN &#xD;&#xA;		UPDATE SET CurrentRank = source.CurrentRank,&#xD;&#xA;        Bid = source.FinalBid,&#xD;&#xA;        LGRank = (CASE WHEN source.CurrentRank = 0 THEN target.LGRank ELSE source.CurrentRank END),&#xD;&#xA;        LGBid = (CASE WHEN source.CurrentRank = 0 THEN target.LGBid ELSE source.FinalBid END),&#xD;&#xA;        LGDate = (CASE WHEN source.CurrentRank = 0 THEN target.LGDate ELSE source.UpdateDate END),&#xD;&#xA;		QualityScore = source.QualityScore,&#xD;&#xA;        MinBid = source.MinBid,&#xD;&#xA;        UpdateDate = source.UpdateDate&#xD;&#xA;    WHEN NOT MATCHED BY TARGET THEN &#xD;&#xA;		INSERT (CSKID, CurrentRank, UpdateDate, Bid, LGRank, LGBid, LGDate,QualityScore,MinBid) &#xD;&#xA;		VALUES (CSKID, CurrentRank, UpdateDate, FinalBid, CurrentRank, FinalBid, UpdateDate, QualityScore,MinBid)&#xD;&#xA;	OUTPUT inserted.CSKID,inserted.CurrentRank,inserted.Bid,inserted.MinBid INTO #output(CSKID,CurrentRank,Bid,MinBid);&#xD;&#xA;	&#xD;&#xA;	--SELECT COUNT(1) FROM #output&#xD;&#xA;	--SELECT COUNT(1) FROM #Bid_BidRank &#xD;&#xA;	&#xD;&#xA;" StatementType="MERGE" QueryHash="0x3B73EBA66B43B8F0" QueryPlanHash="0x7BD72FE8531E7317">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="1" CachedPlanSize="72" CompileTime="38" CompileCPU="38" CompileMemory="1280">
+            <RelOp AvgRowSize="9" EstimateCPU="0.916548" EstimateIO="27.2181" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Insert" NodeId="0" Parallel="false" PhysicalOp="Table Insert" EstimatedTotalSubtreeCost="997.546">
+              <OutputList />
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <Update DMLRequestSort="false">
+                <Object Database="[tempdb]" Schema="[dbo]" Table="[#output]" />
+                <SetPredicate>
+                  <ScalarOperator ScalarString="[#output].[CSKID] = [SearchIgnite].[dbo].[CSKeywordsRankInfo].[CSKID] as [target].[CSKID],[#output].[CurrentRank] = [SearchIgnite].[dbo].[CSKeywordsRankInfo].[CurrentRank] as [target].[CurrentRank],[#output].[Bid] = [SearchIgnite].[dbo].[CSKeywordsRankInfo].[Bid] as [target].[Bid],[#output].[MinBid] = [SearchIgnite].[dbo].[CSKeywordsRankInfo].[MinBid] as [target].[MinBid],[#output].[RankChanged] = NULL">
+                    <ScalarExpressionList>
+                      <ScalarOperator>
+                        <MultipleAssign>
+                          <Assign>
+                            <ColumnReference Table="[#output]" Column="CSKID" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Table="[#output]" Column="CurrentRank" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CurrentRank" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Table="[#output]" Column="Bid" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="Bid" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Table="[#output]" Column="MinBid" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="MinBid" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Table="[#output]" Column="RankChanged" />
+                            <ScalarOperator>
+                              <Const ConstValue="NULL" />
+                            </ScalarOperator>
+                          </Assign>
+                        </MultipleAssign>
+                      </ScalarOperator>
+                    </ScalarExpressionList>
+                  </ScalarOperator>
+                </SetPredicate>
+                <RelOp AvgRowSize="36" EstimateCPU="0.00380277" EstimateIO="0.947763" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Merge" NodeId="3" Parallel="false" PhysicalOp="Clustered Index Merge" EstimatedTotalSubtreeCost="969.412">
+                  <OutputList>
+                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CurrentRank" />
+                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="Bid" />
+                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="MinBid" />
+                  </OutputList>
+                  <RunTimeInformation>
+                    <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                  </RunTimeInformation>
+                  <Update DMLRequestSort="true">
+                    <Object Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Index="[PK_CSKeywordsRankInfo]" Alias="[target]" IndexKind="Clustered" />
+                    <SetPredicate SetPredicateType="Insert">
+                      <ScalarOperator ScalarString="[SearchIgnite].[dbo].[CSKeywordsRankInfo].[MinBid] as [target].[MinBid] = [Expr1013],[SearchIgnite].[dbo].[CSKeywordsRankInfo].[LGRank] as [target].[LGRank] = [Expr1014],[SearchIgnite].[dbo].[CSKeywordsRankInfo].[LGDate] as [target].[LGDate] = [Expr1015],[SearchIgnite].[dbo].[CSKeywordsRankInfo].[CSKID] as [target].[CSKID] = RaiseIfNullUpdate([Expr1016]),[SearchIgnite].[dbo].[CSKeywordsRankInfo].[UpdateDate] as [target].[UpdateDate] = RaiseIfNullUpdate([Expr1017]),[SearchIgnite].[dbo].[CSKeywordsRankInfo].[Bid] as [target].[Bid] = [Expr1018],[SearchIgnite].[dbo].[CSKeywordsRankInfo].[QualityScore] as [target].[QualityScore] = [Expr1019],[SearchIgnite].[dbo].[CSKeywordsRankInfo].[LGBid] as [target].[LGBid] = [Expr1020],[SearchIgnite].[dbo].[CSKeywordsRankInfo].[CurrentRank] as [target].[CurrentRank] = [Expr1021],[SearchIgnite].[dbo].[CSKeywordsRankInfo].[Rank1Bid] as [target].[Rank1Bid] = [Expr1022]">
+                        <ScalarExpressionList>
+                          <ScalarOperator>
+                            <MultipleAssign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="MinBid" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1013" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGRank" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1014" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGDate" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1015" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                                <ScalarOperator>
+                                  <Intrinsic FunctionName="RaiseIfNullUpdate">
+                                    <ScalarOperator>
+                                      <Identifier>
+                                        <ColumnReference Column="Expr1016" />
+                                      </Identifier>
+                                    </ScalarOperator>
+                                  </Intrinsic>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="UpdateDate" />
+                                <ScalarOperator>
+                                  <Intrinsic FunctionName="RaiseIfNullUpdate">
+                                    <ScalarOperator>
+                                      <Identifier>
+                                        <ColumnReference Column="Expr1017" />
+                                      </Identifier>
+                                    </ScalarOperator>
+                                  </Intrinsic>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="Bid" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1018" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="QualityScore" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1019" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGBid" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1020" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CurrentRank" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1021" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="Rank1Bid" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1022" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                            </MultipleAssign>
+                          </ScalarOperator>
+                        </ScalarExpressionList>
+                      </ScalarOperator>
+                    </SetPredicate>
+                    <SetPredicate SetPredicateType="Update">
+                      <ScalarOperator ScalarString="[SearchIgnite].[dbo].[CSKeywordsRankInfo].[MinBid] as [target].[MinBid] = [Expr1013],[SearchIgnite].[dbo].[CSKeywordsRankInfo].[LGRank] as [target].[LGRank] = [Expr1014],[SearchIgnite].[dbo].[CSKeywordsRankInfo].[LGDate] as [target].[LGDate] = [Expr1015],[SearchIgnite].[dbo].[CSKeywordsRankInfo].[UpdateDate] as [target].[UpdateDate] = RaiseIfNullUpdate([Expr1017]),[SearchIgnite].[dbo].[CSKeywordsRankInfo].[Bid] as [target].[Bid] = [Expr1018],[SearchIgnite].[dbo].[CSKeywordsRankInfo].[QualityScore] as [target].[QualityScore] = [Expr1019],[SearchIgnite].[dbo].[CSKeywordsRankInfo].[LGBid] as [target].[LGBid] = [Expr1020],[SearchIgnite].[dbo].[CSKeywordsRankInfo].[CurrentRank] as [target].[CurrentRank] = [Expr1021]">
+                        <ScalarExpressionList>
+                          <ScalarOperator>
+                            <MultipleAssign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="MinBid" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1013" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGRank" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1014" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGDate" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1015" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="UpdateDate" />
+                                <ScalarOperator>
+                                  <Intrinsic FunctionName="RaiseIfNullUpdate">
+                                    <ScalarOperator>
+                                      <Identifier>
+                                        <ColumnReference Column="Expr1017" />
+                                      </Identifier>
+                                    </ScalarOperator>
+                                  </Intrinsic>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="Bid" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1018" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="QualityScore" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1019" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGBid" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1020" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                              <Assign>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CurrentRank" />
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1021" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Assign>
+                            </MultipleAssign>
+                          </ScalarOperator>
+                        </ScalarExpressionList>
+                      </ScalarOperator>
+                    </SetPredicate>
+                    <ActionColumn>
+                      <ColumnReference Column="Action1012" />
+                    </ActionColumn>
+                    <RelOp AvgRowSize="92" EstimateCPU="0.439943" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Assert" NodeId="4" Parallel="false" PhysicalOp="Assert" EstimatedTotalSubtreeCost="968.46">
+                      <OutputList>
+                        <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                        <ColumnReference Column="Action1012" />
+                        <ColumnReference Column="Expr1013" />
+                        <ColumnReference Column="Expr1014" />
+                        <ColumnReference Column="Expr1015" />
+                        <ColumnReference Column="Expr1016" />
+                        <ColumnReference Column="Expr1017" />
+                        <ColumnReference Column="Expr1018" />
+                        <ColumnReference Column="Expr1019" />
+                        <ColumnReference Column="Expr1020" />
+                        <ColumnReference Column="Expr1021" />
+                        <ColumnReference Column="Expr1022" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                      </RunTimeInformation>
+                      <Assert StartupExpression="false">
+                        <RelOp AvgRowSize="100" EstimateCPU="0.0733238" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Compute Scalar" NodeId="5" Parallel="false" PhysicalOp="Sequence Project" EstimatedTotalSubtreeCost="968.02">
+                          <OutputList>
+                            <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                            <ColumnReference Column="Action1012" />
+                            <ColumnReference Column="Expr1013" />
+                            <ColumnReference Column="Expr1014" />
+                            <ColumnReference Column="Expr1015" />
+                            <ColumnReference Column="Expr1016" />
+                            <ColumnReference Column="Expr1017" />
+                            <ColumnReference Column="Expr1018" />
+                            <ColumnReference Column="Expr1019" />
+                            <ColumnReference Column="Expr1020" />
+                            <ColumnReference Column="Expr1021" />
+                            <ColumnReference Column="Expr1022" />
+                            <ColumnReference Column="Expr1047" />
+                          </OutputList>
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                          </RunTimeInformation>
+                          <SequenceProject>
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1047" />
+                                <ScalarOperator ScalarString="conditional_row_number">
+                                  <Sequence FunctionName="conditional_row_number" />
+                                </ScalarOperator>
+                              </DefinedValue>
+                            </DefinedValues>
+                            <RelOp AvgRowSize="100" EstimateCPU="0.018331" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Segment" NodeId="6" Parallel="false" PhysicalOp="Segment" EstimatedTotalSubtreeCost="967.947">
+                              <OutputList>
+                                <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                                <ColumnReference Column="Action1012" />
+                                <ColumnReference Column="Expr1013" />
+                                <ColumnReference Column="Expr1014" />
+                                <ColumnReference Column="Expr1015" />
+                                <ColumnReference Column="Expr1016" />
+                                <ColumnReference Column="Expr1017" />
+                                <ColumnReference Column="Expr1018" />
+                                <ColumnReference Column="Expr1019" />
+                                <ColumnReference Column="Expr1020" />
+                                <ColumnReference Column="Expr1021" />
+                                <ColumnReference Column="Expr1022" />
+                                <ColumnReference Column="Segment1087" />
+                              </OutputList>
+                              <RunTimeInformation>
+                                <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                              </RunTimeInformation>
+                              <Segment>
+                                <GroupBy>
+                                  <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                                </GroupBy>
+                                <SegmentColumn>
+                                  <ColumnReference Column="Segment1087" />
+                                </SegmentColumn>
+                                <RelOp AvgRowSize="92" EstimateCPU="0.0916548" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Compute Scalar" NodeId="7" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="967.929">
+                                  <OutputList>
+                                    <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                                    <ColumnReference Column="Action1012" />
+                                    <ColumnReference Column="Expr1013" />
+                                    <ColumnReference Column="Expr1014" />
+                                    <ColumnReference Column="Expr1015" />
+                                    <ColumnReference Column="Expr1016" />
+                                    <ColumnReference Column="Expr1017" />
+                                    <ColumnReference Column="Expr1018" />
+                                    <ColumnReference Column="Expr1019" />
+                                    <ColumnReference Column="Expr1020" />
+                                    <ColumnReference Column="Expr1021" />
+                                    <ColumnReference Column="Expr1022" />
+                                  </OutputList>
+                                  <ComputeScalar>
+                                    <DefinedValues>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1014" />
+                                        <ScalarOperator ScalarString="CASE WHEN [Action1012]=(4) THEN [#Bid_BidRank].[CurrentRank] ELSE CASE WHEN [#Bid_BidRank].[CurrentRank]=(0.00) THEN [SearchIgnite].[dbo].[CSKeywordsRankInfo].[LGRank] as [target].[LGRank] ELSE [#Bid_BidRank].[CurrentRank] END END">
+                                          <IF>
+                                            <Condition>
+                                              <ScalarOperator>
+                                                <Compare CompareOp="EQ">
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Column="Action1012" />
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Const ConstValue="(4)" />
+                                                  </ScalarOperator>
+                                                </Compare>
+                                              </ScalarOperator>
+                                            </Condition>
+                                            <Then>
+                                              <ScalarOperator>
+                                                <Identifier>
+                                                  <ColumnReference Table="[#Bid_BidRank]" Column="CurrentRank" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </Then>
+                                            <Else>
+                                              <ScalarOperator>
+                                                <IF>
+                                                  <Condition>
+                                                    <ScalarOperator>
+                                                      <Compare CompareOp="EQ">
+                                                        <ScalarOperator>
+                                                          <Identifier>
+                                                            <ColumnReference Table="[#Bid_BidRank]" Column="CurrentRank" />
+                                                          </Identifier>
+                                                        </ScalarOperator>
+                                                        <ScalarOperator>
+                                                          <Const ConstValue="(0.00)" />
+                                                        </ScalarOperator>
+                                                      </Compare>
+                                                    </ScalarOperator>
+                                                  </Condition>
+                                                  <Then>
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGRank" />
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                  </Then>
+                                                  <Else>
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Table="[#Bid_BidRank]" Column="CurrentRank" />
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                  </Else>
+                                                </IF>
+                                              </ScalarOperator>
+                                            </Else>
+                                          </IF>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1015" />
+                                        <ScalarOperator ScalarString="CASE WHEN [Action1012]=(4) THEN [#Bid_BidRank].[UpdateDate] ELSE CASE WHEN [#Bid_BidRank].[CurrentRank]=(0.00) THEN [SearchIgnite].[dbo].[CSKeywordsRankInfo].[LGDate] as [target].[LGDate] ELSE [#Bid_BidRank].[UpdateDate] END END">
+                                          <IF>
+                                            <Condition>
+                                              <ScalarOperator>
+                                                <Compare CompareOp="EQ">
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Column="Action1012" />
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Const ConstValue="(4)" />
+                                                  </ScalarOperator>
+                                                </Compare>
+                                              </ScalarOperator>
+                                            </Condition>
+                                            <Then>
+                                              <ScalarOperator>
+                                                <Identifier>
+                                                  <ColumnReference Table="[#Bid_BidRank]" Column="UpdateDate" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </Then>
+                                            <Else>
+                                              <ScalarOperator>
+                                                <IF>
+                                                  <Condition>
+                                                    <ScalarOperator>
+                                                      <Compare CompareOp="EQ">
+                                                        <ScalarOperator>
+                                                          <Identifier>
+                                                            <ColumnReference Table="[#Bid_BidRank]" Column="CurrentRank" />
+                                                          </Identifier>
+                                                        </ScalarOperator>
+                                                        <ScalarOperator>
+                                                          <Const ConstValue="(0.00)" />
+                                                        </ScalarOperator>
+                                                      </Compare>
+                                                    </ScalarOperator>
+                                                  </Condition>
+                                                  <Then>
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGDate" />
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                  </Then>
+                                                  <Else>
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Table="[#Bid_BidRank]" Column="UpdateDate" />
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                  </Else>
+                                                </IF>
+                                              </ScalarOperator>
+                                            </Else>
+                                          </IF>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1016" />
+                                        <ScalarOperator ScalarString="CASE WHEN [Action1012]=(4) THEN [#Bid_BidRank].[CSKID] ELSE [SearchIgnite].[dbo].[CSKeywordsRankInfo].[CSKID] as [target].[CSKID] END">
+                                          <IF>
+                                            <Condition>
+                                              <ScalarOperator>
+                                                <Compare CompareOp="EQ">
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Column="Action1012" />
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Const ConstValue="(4)" />
+                                                  </ScalarOperator>
+                                                </Compare>
+                                              </ScalarOperator>
+                                            </Condition>
+                                            <Then>
+                                              <ScalarOperator>
+                                                <Identifier>
+                                                  <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </Then>
+                                            <Else>
+                                              <ScalarOperator>
+                                                <Identifier>
+                                                  <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </Else>
+                                          </IF>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1020" />
+                                        <ScalarOperator ScalarString="CASE WHEN [Action1012]=(4) THEN CONVERT_IMPLICIT(float(53),[#Bid_BidRank].[FinalBid],0) ELSE CASE WHEN [#Bid_BidRank].[CurrentRank]=(0.00) THEN [SearchIgnite].[dbo].[CSKeywordsRankInfo].[LGBid] as [target].[LGBid] ELSE CONVERT_IMPLICIT(float(53),[#Bid_BidRank].[FinalBid],0) END END">
+                                          <IF>
+                                            <Condition>
+                                              <ScalarOperator>
+                                                <Compare CompareOp="EQ">
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Column="Action1012" />
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Const ConstValue="(4)" />
+                                                  </ScalarOperator>
+                                                </Compare>
+                                              </ScalarOperator>
+                                            </Condition>
+                                            <Then>
+                                              <ScalarOperator>
+                                                <Convert DataType="float" Scale="0" Style="0" Implicit="true">
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Table="[#Bid_BidRank]" Column="FinalBid" />
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                </Convert>
+                                              </ScalarOperator>
+                                            </Then>
+                                            <Else>
+                                              <ScalarOperator>
+                                                <IF>
+                                                  <Condition>
+                                                    <ScalarOperator>
+                                                      <Compare CompareOp="EQ">
+                                                        <ScalarOperator>
+                                                          <Identifier>
+                                                            <ColumnReference Table="[#Bid_BidRank]" Column="CurrentRank" />
+                                                          </Identifier>
+                                                        </ScalarOperator>
+                                                        <ScalarOperator>
+                                                          <Const ConstValue="(0.00)" />
+                                                        </ScalarOperator>
+                                                      </Compare>
+                                                    </ScalarOperator>
+                                                  </Condition>
+                                                  <Then>
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGBid" />
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                  </Then>
+                                                  <Else>
+                                                    <ScalarOperator>
+                                                      <Convert DataType="float" Scale="0" Style="0" Implicit="true">
+                                                        <ScalarOperator>
+                                                          <Identifier>
+                                                            <ColumnReference Table="[#Bid_BidRank]" Column="FinalBid" />
+                                                          </Identifier>
+                                                        </ScalarOperator>
+                                                      </Convert>
+                                                    </ScalarOperator>
+                                                  </Else>
+                                                </IF>
+                                              </ScalarOperator>
+                                            </Else>
+                                          </IF>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1022" />
+                                        <ScalarOperator ScalarString="CASE WHEN [Action1012]=(4) THEN NULL ELSE [SearchIgnite].[dbo].[CSKeywordsRankInfo].[Rank1Bid] as [target].[Rank1Bid] END">
+                                          <IF>
+                                            <Condition>
+                                              <ScalarOperator>
+                                                <Compare CompareOp="EQ">
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Column="Action1012" />
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Const ConstValue="(4)" />
+                                                  </ScalarOperator>
+                                                </Compare>
+                                              </ScalarOperator>
+                                            </Condition>
+                                            <Then>
+                                              <ScalarOperator>
+                                                <Const ConstValue="NULL" />
+                                              </ScalarOperator>
+                                            </Then>
+                                            <Else>
+                                              <ScalarOperator>
+                                                <Identifier>
+                                                  <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="Rank1Bid" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </Else>
+                                          </IF>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                    </DefinedValues>
+                                    <RelOp AvgRowSize="113" EstimateCPU="0.0916548" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Top" NodeId="8" Parallel="false" PhysicalOp="Top" EstimatedTotalSubtreeCost="967.837">
+                                      <OutputList>
+                                        <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                                        <ColumnReference Table="[#Bid_BidRank]" Column="CurrentRank" />
+                                        <ColumnReference Table="[#Bid_BidRank]" Column="UpdateDate" />
+                                        <ColumnReference Table="[#Bid_BidRank]" Column="FinalBid" />
+                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="Rank1Bid" />
+                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGRank" />
+                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGBid" />
+                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGDate" />
+                                        <ColumnReference Column="Action1012" />
+                                        <ColumnReference Column="Expr1013" />
+                                        <ColumnReference Column="Expr1017" />
+                                        <ColumnReference Column="Expr1018" />
+                                        <ColumnReference Column="Expr1019" />
+                                        <ColumnReference Column="Expr1021" />
+                                      </OutputList>
+                                      <RunTimeInformation>
+                                        <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                                      </RunTimeInformation>
+                                      <Top RowCount="true" IsPercent="false" WithTies="false">
+                                        <TopExpression>
+                                          <ScalarOperator ScalarString="(0)">
+                                            <Const ConstValue="(0)" />
+                                          </ScalarOperator>
+                                        </TopExpression>
+                                        <RelOp AvgRowSize="113" EstimateCPU="0.0916548" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Compute Scalar" NodeId="9" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="967.745">
+                                          <OutputList>
+                                            <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                                            <ColumnReference Table="[#Bid_BidRank]" Column="CurrentRank" />
+                                            <ColumnReference Table="[#Bid_BidRank]" Column="UpdateDate" />
+                                            <ColumnReference Table="[#Bid_BidRank]" Column="FinalBid" />
+                                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="Rank1Bid" />
+                                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGRank" />
+                                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGBid" />
+                                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGDate" />
+                                            <ColumnReference Column="Action1012" />
+                                            <ColumnReference Column="Expr1013" />
+                                            <ColumnReference Column="Expr1017" />
+                                            <ColumnReference Column="Expr1018" />
+                                            <ColumnReference Column="Expr1019" />
+                                            <ColumnReference Column="Expr1021" />
+                                          </OutputList>
+                                          <ComputeScalar>
+                                            <DefinedValues>
+                                              <DefinedValue>
+                                                <ColumnReference Column="Expr1013" />
+                                                <ScalarOperator ScalarString="[#Bid_BidRank].[MinBid]">
+                                                  <Identifier>
+                                                    <ColumnReference Table="[#Bid_BidRank]" Column="MinBid" />
+                                                  </Identifier>
+                                                </ScalarOperator>
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Column="Expr1017" />
+                                                <ScalarOperator ScalarString="[#Bid_BidRank].[UpdateDate]">
+                                                  <Identifier>
+                                                    <ColumnReference Table="[#Bid_BidRank]" Column="UpdateDate" />
+                                                  </Identifier>
+                                                </ScalarOperator>
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Column="Expr1018" />
+                                                <ScalarOperator ScalarString="CONVERT_IMPLICIT(float(53),[#Bid_BidRank].[FinalBid],0)">
+                                                  <Convert DataType="float" Scale="0" Style="0" Implicit="true">
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Table="[#Bid_BidRank]" Column="FinalBid" />
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                  </Convert>
+                                                </ScalarOperator>
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Column="Expr1019" />
+                                                <ScalarOperator ScalarString="[#Bid_BidRank].[QualityScore]">
+                                                  <Identifier>
+                                                    <ColumnReference Table="[#Bid_BidRank]" Column="QualityScore" />
+                                                  </Identifier>
+                                                </ScalarOperator>
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Column="Expr1021" />
+                                                <ScalarOperator ScalarString="[#Bid_BidRank].[CurrentRank]">
+                                                  <Identifier>
+                                                    <ColumnReference Table="[#Bid_BidRank]" Column="CurrentRank" />
+                                                  </Identifier>
+                                                </ScalarOperator>
+                                              </DefinedValue>
+                                            </DefinedValues>
+                                            <RelOp AvgRowSize="88" EstimateCPU="0.0916548" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Compute Scalar" NodeId="10" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="967.654">
+                                              <OutputList>
+                                                <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                                                <ColumnReference Table="[#Bid_BidRank]" Column="CurrentRank" />
+                                                <ColumnReference Table="[#Bid_BidRank]" Column="UpdateDate" />
+                                                <ColumnReference Table="[#Bid_BidRank]" Column="FinalBid" />
+                                                <ColumnReference Table="[#Bid_BidRank]" Column="QualityScore" />
+                                                <ColumnReference Table="[#Bid_BidRank]" Column="MinBid" />
+                                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="Rank1Bid" />
+                                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGRank" />
+                                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGBid" />
+                                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGDate" />
+                                                <ColumnReference Column="Action1012" />
+                                              </OutputList>
+                                              <RunTimeInformation>
+                                                <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                                              </RunTimeInformation>
+                                              <ComputeScalar>
+                                                <DefinedValues>
+                                                  <DefinedValue>
+                                                    <ColumnReference Column="Action1012" />
+                                                    <ScalarOperator ScalarString="ForceOrder(CASE WHEN [TrgPrb1010] IS NOT NULL THEN (1) ELSE (4) END)">
+                                                      <Intrinsic FunctionName="ForceOrder">
+                                                        <ScalarOperator>
+                                                          <IF>
+                                                            <Condition>
+                                                              <ScalarOperator>
+                                                                <Compare CompareOp="IS NOT">
+                                                                  <ScalarOperator>
+                                                                    <Identifier>
+                                                                      <ColumnReference Column="TrgPrb1010" />
+                                                                    </Identifier>
+                                                                  </ScalarOperator>
+                                                                  <ScalarOperator>
+                                                                    <Const ConstValue="NULL" />
+                                                                  </ScalarOperator>
+                                                                </Compare>
+                                                              </ScalarOperator>
+                                                            </Condition>
+                                                            <Then>
+                                                              <ScalarOperator>
+                                                                <Const ConstValue="(1)" />
+                                                              </ScalarOperator>
+                                                            </Then>
+                                                            <Else>
+                                                              <ScalarOperator>
+                                                                <Const ConstValue="(4)" />
+                                                              </ScalarOperator>
+                                                            </Else>
+                                                          </IF>
+                                                        </ScalarOperator>
+                                                      </Intrinsic>
+                                                    </ScalarOperator>
+                                                  </DefinedValue>
+                                                </DefinedValues>
+                                                <RelOp AvgRowSize="88" EstimateCPU="68.0964" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Right Outer Join" NodeId="11" Parallel="false" PhysicalOp="Merge Join" EstimatedTotalSubtreeCost="967.562">
+                                                  <OutputList>
+                                                    <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                                                    <ColumnReference Table="[#Bid_BidRank]" Column="CurrentRank" />
+                                                    <ColumnReference Table="[#Bid_BidRank]" Column="UpdateDate" />
+                                                    <ColumnReference Table="[#Bid_BidRank]" Column="FinalBid" />
+                                                    <ColumnReference Table="[#Bid_BidRank]" Column="QualityScore" />
+                                                    <ColumnReference Table="[#Bid_BidRank]" Column="MinBid" />
+                                                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                                                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="Rank1Bid" />
+                                                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGRank" />
+                                                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGBid" />
+                                                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGDate" />
+                                                    <ColumnReference Column="TrgPrb1010" />
+                                                  </OutputList>
+                                                  <RunTimeInformation>
+                                                    <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                                                  </RunTimeInformation>
+                                                  <Merge ManyToMany="false">
+                                                    <InnerSideJoinColumns>
+                                                      <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                                                    </InnerSideJoinColumns>
+                                                    <OuterSideJoinColumns>
+                                                      <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                                                    </OuterSideJoinColumns>
+                                                    <Residual>
+                                                      <ScalarOperator ScalarString="[SearchIgnite].[dbo].[CSKeywordsRankInfo].[CSKID] as [target].[CSKID]=[#Bid_BidRank].[CSKID]">
+                                                        <Compare CompareOp="EQ">
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                        </Compare>
+                                                      </ScalarOperator>
+                                                    </Residual>
+                                                    <RelOp AvgRowSize="49" EstimateCPU="3.1464" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="31464000" LogicalOp="Compute Scalar" NodeId="12" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="894.507">
+                                                      <OutputList>
+                                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="Rank1Bid" />
+                                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGRank" />
+                                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGBid" />
+                                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGDate" />
+                                                        <ColumnReference Column="TrgPrb1010" />
+                                                      </OutputList>
+                                                      <ComputeScalar>
+                                                        <DefinedValues>
+                                                          <DefinedValue>
+                                                            <ColumnReference Column="TrgPrb1010" />
+                                                            <ScalarOperator ScalarString="(1)">
+                                                              <Const ConstValue="(1)" />
+                                                            </ScalarOperator>
+                                                          </DefinedValue>
+                                                        </DefinedValues>
+                                                        <RelOp AvgRowSize="45" EstimateCPU="34.6105" EstimateIO="856.75" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="31464000" LogicalOp="Clustered Index Scan" NodeId="13" Parallel="false" PhysicalOp="Clustered Index Scan" EstimatedTotalSubtreeCost="891.36" TableCardinality="31464000">
+                                                          <OutputList>
+                                                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                                                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="Rank1Bid" />
+                                                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGRank" />
+                                                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGBid" />
+                                                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGDate" />
+                                                          </OutputList>
+                                                          <RunTimeInformation>
+                                                            <RunTimeCountersPerThread Thread="0" ActualRows="31463989" ActualEndOfScans="1" ActualExecutions="1" />
+                                                          </RunTimeInformation>
+                                                          <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                                                            <DefinedValues>
+                                                              <DefinedValue>
+                                                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="CSKID" />
+                                                              </DefinedValue>
+                                                              <DefinedValue>
+                                                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="Rank1Bid" />
+                                                              </DefinedValue>
+                                                              <DefinedValue>
+                                                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGRank" />
+                                                              </DefinedValue>
+                                                              <DefinedValue>
+                                                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGBid" />
+                                                              </DefinedValue>
+                                                              <DefinedValue>
+                                                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Alias="[target]" Column="LGDate" />
+                                                              </DefinedValue>
+                                                            </DefinedValues>
+                                                            <Object Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo]" Index="[PK_CSKeywordsRankInfo]" Alias="[target]" IndexKind="Clustered" />
+                                                          </IndexScan>
+                                                        </RelOp>
+                                                      </ComputeScalar>
+                                                    </RelOp>
+                                                    <RelOp AvgRowSize="45" EstimateCPU="1.00836" EstimateIO="3.95053" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Clustered Index Scan" NodeId="17" Parallel="false" PhysicalOp="Clustered Index Scan" EstimatedTotalSubtreeCost="4.95889" TableCardinality="916548">
+                                                      <OutputList>
+                                                        <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                                                        <ColumnReference Table="[#Bid_BidRank]" Column="CurrentRank" />
+                                                        <ColumnReference Table="[#Bid_BidRank]" Column="UpdateDate" />
+                                                        <ColumnReference Table="[#Bid_BidRank]" Column="FinalBid" />
+                                                        <ColumnReference Table="[#Bid_BidRank]" Column="QualityScore" />
+                                                        <ColumnReference Table="[#Bid_BidRank]" Column="MinBid" />
+                                                      </OutputList>
+                                                      <RunTimeInformation>
+                                                        <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                                                      </RunTimeInformation>
+                                                      <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                                                        <DefinedValues>
+                                                          <DefinedValue>
+                                                            <ColumnReference Table="[#Bid_BidRank]" Column="CSKID" />
+                                                          </DefinedValue>
+                                                          <DefinedValue>
+                                                            <ColumnReference Table="[#Bid_BidRank]" Column="CurrentRank" />
+                                                          </DefinedValue>
+                                                          <DefinedValue>
+                                                            <ColumnReference Table="[#Bid_BidRank]" Column="UpdateDate" />
+                                                          </DefinedValue>
+                                                          <DefinedValue>
+                                                            <ColumnReference Table="[#Bid_BidRank]" Column="FinalBid" />
+                                                          </DefinedValue>
+                                                          <DefinedValue>
+                                                            <ColumnReference Table="[#Bid_BidRank]" Column="QualityScore" />
+                                                          </DefinedValue>
+                                                          <DefinedValue>
+                                                            <ColumnReference Table="[#Bid_BidRank]" Column="MinBid" />
+                                                          </DefinedValue>
+                                                        </DefinedValues>
+                                                        <Object Database="[tempdb]" Schema="[dbo]" Table="[#Bid_BidRank]" Index="[IDX_tmp_Bid_BidRank_CSKID]" />
+                                                      </IndexScan>
+                                                    </RelOp>
+                                                  </Merge>
+                                                </RelOp>
+                                              </ComputeScalar>
+                                            </RelOp>
+                                          </ComputeScalar>
+                                        </RelOp>
+                                      </Top>
+                                    </RelOp>
+                                  </ComputeScalar>
+                                </RelOp>
+                              </Segment>
+                            </RelOp>
+                          </SequenceProject>
+                        </RelOp>
+                        <Predicate>
+                          <ScalarOperator ScalarString="CASE WHEN [Expr1047]&gt;(1) THEN (0) ELSE NULL END">
+                            <IF>
+                              <Condition>
+                                <ScalarOperator>
+                                  <Compare CompareOp="GT">
+                                    <ScalarOperator>
+                                      <Identifier>
+                                        <ColumnReference Column="Expr1047" />
+                                      </Identifier>
+                                    </ScalarOperator>
+                                    <ScalarOperator>
+                                      <Const ConstValue="(1)" />
+                                    </ScalarOperator>
+                                  </Compare>
+                                </ScalarOperator>
+                              </Condition>
+                              <Then>
+                                <ScalarOperator>
+                                  <Const ConstValue="(0)" />
+                                </ScalarOperator>
+                              </Then>
+                              <Else>
+                                <ScalarOperator>
+                                  <Const ConstValue="NULL" />
+                                </ScalarOperator>
+                              </Else>
+                            </IF>
+                          </ScalarOperator>
+                        </Predicate>
+                      </Assert>
+                    </RelOp>
+                  </Update>
+                </RelOp>
+              </Update>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="19" StatementEstRows="916548" StatementId="4" StatementOptmLevel="FULL" StatementSubTreeCost="60.502" StatementText="insert [#output_____________________________________________________________________________________________________________00000000C6CF] select * from [#output_____________________________________________________________________________________________________________00000000C6CF]" StatementType="INSERT" QueryHash="0xECBCBDB1DA515AC1" QueryPlanHash="0x4510079F9DA12FCB">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="2" MemoryGrant="88384" CachedPlanSize="24" CompileTime="751" CompileCPU="686" CompileMemory="136">
+            <RelOp AvgRowSize="9" EstimateCPU="0.602488" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Gather Streams" NodeId="0" Parallel="true" PhysicalOp="Parallelism" EstimatedTotalSubtreeCost="60.502">
+              <OutputList />
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <Parallelism>
+                <RelOp AvgRowSize="9" EstimateCPU="0.458274" EstimateIO="13.987" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Insert" NodeId="1" Parallel="true" PhysicalOp="Index Insert" EstimatedTotalSubtreeCost="59.8995">
+                  <OutputList />
+                  <RunTimeInformation>
+                    <RunTimeCountersPerThread Thread="2" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+                    <RunTimeCountersPerThread Thread="1" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+                    <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                  </RunTimeInformation>
+                  <CreateIndex>
+                    <Object Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Index="[IDX_tmp_output_CSKID]" IndexKind="Clustered" />
+                    <RelOp AvgRowSize="37" EstimateCPU="41.6612" EstimateIO="0.00563063" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Sort" NodeId="2" Parallel="true" PhysicalOp="Sort" EstimatedTotalSubtreeCost="45.4542">
+                      <OutputList>
+                        <ColumnReference Column="RowRefSrc1008" />
+                      </OutputList>
+                      <MemoryFractions Input="1" Output="1" />
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="2" ActualRebinds="1" ActualRewinds="0" ActualRows="450389" ActualEndOfScans="1" ActualExecutions="1" />
+                        <RunTimeCountersPerThread Thread="1" ActualRebinds="1" ActualRewinds="0" ActualRows="466159" ActualEndOfScans="1" ActualExecutions="1" />
+                        <RunTimeCountersPerThread Thread="0" ActualRebinds="0" ActualRewinds="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                      </RunTimeInformation>
+                      <Sort Distinct="false">
+                        <OrderBy>
+                          <OrderByColumn Ascending="true">
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="CSKID" />
+                          </OrderByColumn>
+                        </OrderBy>
+                        <PartitionId>
+                          <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="CSKID" />
+                        </PartitionId>
+                        <RelOp AvgRowSize="37" EstimateCPU="0.504141" EstimateIO="3.2832" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Table Scan" NodeId="3" Parallel="true" PhysicalOp="Table Scan" EstimatedTotalSubtreeCost="3.78734" TableCardinality="916548">
+                          <OutputList>
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="CSKID" />
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="CurrentRank" />
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="Bid" />
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="MinBid" />
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="RankChanged" />
+                          </OutputList>
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="2" ActualRows="453123" ActualEndOfScans="1" ActualExecutions="1" />
+                            <RunTimeCountersPerThread Thread="1" ActualRows="463425" ActualEndOfScans="1" ActualExecutions="1" />
+                            <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                          </RunTimeInformation>
+                          <TableScan Ordered="false" ForcedIndex="false" NoExpandHint="false">
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="CSKID" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="CurrentRank" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="Bid" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="MinBid" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="RankChanged" />
+                              </DefinedValue>
+                            </DefinedValues>
+                            <Object Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" IndexKind="Heap" />
+                          </TableScan>
+                        </RelOp>
+                      </Sort>
+                    </RelOp>
+                  </CreateIndex>
+                </RelOp>
+              </Parallelism>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="17" StatementEstRows="705458" StatementId="5" StatementOptmLevel="FULL" StatementSubTreeCost="86.3538" StatementText="UPDATE t&#xD;&#xA;	SET RankChanged = br.RankChanged&#xD;&#xA;	FROM #output t&#xD;&#xA;	JOIN dbo.Staging_BidRank br ON br.CSKID = t.CSKID&#xD;&#xA;	&#xD;&#xA;" StatementType="UPDATE" QueryHash="0x4887A9715ECBD3EC" QueryPlanHash="0x4AB661CA705004B7">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="2" MemoryGrant="221552" CachedPlanSize="48" CompileTime="556" CompileCPU="49" CompileMemory="424">
+            <RelOp AvgRowSize="9" EstimateCPU="0.705458" EstimateIO="23.0315" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="705458" LogicalOp="Update" NodeId="0" Parallel="false" PhysicalOp="Clustered Index Update" EstimatedTotalSubtreeCost="86.3538">
+              <OutputList />
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <Update DMLRequestSort="true">
+                <Object Database="[tempdb]" Schema="[dbo]" Table="[#output]" Index="[IDX_tmp_output_CSKID]" Alias="[t]" />
+                <SetPredicate>
+                  <ScalarOperator ScalarString="#output.[RankChanged] as [t].[RankChanged] = [SearchIgnite].[dbo].[Staging_BidRank].[RankChanged] as [br].[RankChanged]">
+                    <ScalarExpressionList>
+                      <ScalarOperator>
+                        <MultipleAssign>
+                          <Assign>
+                            <ColumnReference Table="#output" Alias="[t]" Column="RankChanged" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="RankChanged" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                        </MultipleAssign>
+                      </ScalarOperator>
+                    </ScalarExpressionList>
+                  </ScalarOperator>
+                </SetPredicate>
+                <RelOp AvgRowSize="16" EstimateCPU="0.0705458" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="705458" LogicalOp="Top" NodeId="1" Parallel="false" PhysicalOp="Top" EstimatedTotalSubtreeCost="62.6168">
+                  <OutputList>
+                    <ColumnReference Column="Uniq1002" />
+                    <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="RankChanged" />
+                  </OutputList>
+                  <RunTimeInformation>
+                    <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                  </RunTimeInformation>
+                  <Top RowCount="true" IsPercent="false" WithTies="false">
+                    <TopExpression>
+                      <ScalarOperator ScalarString="(0)">
+                        <Const ConstValue="(0)" />
+                      </ScalarOperator>
+                    </TopExpression>
+                    <RelOp AvgRowSize="16" EstimateCPU="4.67905" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="705458" LogicalOp="Gather Streams" NodeId="2" Parallel="true" PhysicalOp="Parallelism" EstimatedTotalSubtreeCost="62.5463">
+                      <OutputList>
+                        <ColumnReference Column="Uniq1002" />
+                        <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="RankChanged" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                      </RunTimeInformation>
+                      <Parallelism>
+                        <OrderBy>
+                          <OrderByColumn Ascending="true">
+                            <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                          </OrderByColumn>
+                          <OrderByColumn Ascending="true">
+                            <ColumnReference Column="Uniq1002" />
+                          </OrderByColumn>
+                        </OrderBy>
+                        <RelOp AvgRowSize="16" EstimateCPU="31.4548" EstimateIO="0.00563063" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="705458" LogicalOp="Distinct Sort" NodeId="3" Parallel="true" PhysicalOp="Sort" EstimatedTotalSubtreeCost="57.8672">
+                          <OutputList>
+                            <ColumnReference Column="Uniq1002" />
+                            <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="RankChanged" />
+                          </OutputList>
+                          <MemoryFractions Input="0.220867" Output="1" />
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="2" ActualRebinds="1" ActualRewinds="0" ActualRows="458314" ActualEndOfScans="1" ActualExecutions="1" />
+                            <RunTimeCountersPerThread Thread="1" ActualRebinds="1" ActualRewinds="0" ActualRows="458234" ActualEndOfScans="1" ActualExecutions="1" />
+                            <RunTimeCountersPerThread Thread="0" ActualRebinds="0" ActualRewinds="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                          </RunTimeInformation>
+                          <Sort Distinct="true">
+                            <OrderBy>
+                              <OrderByColumn Ascending="true">
+                                <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                              </OrderByColumn>
+                              <OrderByColumn Ascending="true">
+                                <ColumnReference Column="Uniq1002" />
+                              </OrderByColumn>
+                            </OrderBy>
+                            <RelOp AvgRowSize="16" EstimateCPU="1.42451" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="705458" LogicalOp="Repartition Streams" NodeId="4" Parallel="true" PhysicalOp="Parallelism" EstimatedTotalSubtreeCost="26.4068">
+                              <OutputList>
+                                <ColumnReference Column="Uniq1002" />
+                                <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="RankChanged" />
+                              </OutputList>
+                              <RunTimeInformation>
+                                <RunTimeCountersPerThread Thread="2" ActualRows="458314" ActualEndOfScans="1" ActualExecutions="1" />
+                                <RunTimeCountersPerThread Thread="1" ActualRows="458234" ActualEndOfScans="1" ActualExecutions="1" />
+                                <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                              </RunTimeInformation>
+                              <Parallelism PartitioningType="Hash">
+                                <PartitionColumns>
+                                  <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                                  <ColumnReference Column="Uniq1002" />
+                                </PartitionColumns>
+                                <RelOp AvgRowSize="16" EstimateCPU="11.3988" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="705458" LogicalOp="Inner Join" NodeId="5" Parallel="true" PhysicalOp="Hash Match" EstimatedTotalSubtreeCost="24.9823">
+                                  <OutputList>
+                                    <ColumnReference Column="Uniq1002" />
+                                    <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                                    <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="RankChanged" />
+                                  </OutputList>
+                                  <MemoryFractions Input="1" Output="0.779133" />
+                                  <RunTimeInformation>
+                                    <RunTimeCountersPerThread Thread="2" ActualRows="458314" ActualEndOfScans="1" ActualExecutions="1" />
+                                    <RunTimeCountersPerThread Thread="1" ActualRows="458234" ActualEndOfScans="1" ActualExecutions="1" />
+                                    <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                                  </RunTimeInformation>
+                                  <Hash>
+                                    <DefinedValues />
+                                    <HashKeysBuild>
+                                      <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                                    </HashKeysBuild>
+                                    <HashKeysProbe>
+                                      <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CSKID" />
+                                    </HashKeysProbe>
+                                    <ProbeResidual>
+                                      <ScalarOperator ScalarString="#output.[CSKID] as [t].[CSKID]=[SearchIgnite].[dbo].[Staging_BidRank].[CSKID] as [br].[CSKID]">
+                                        <Compare CompareOp="EQ">
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                                            </Identifier>
+                                          </ScalarOperator>
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CSKID" />
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </Compare>
+                                      </ScalarOperator>
+                                    </ProbeResidual>
+                                    <RelOp AvgRowSize="15" EstimateCPU="1.47447" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Repartition Streams" NodeId="6" Parallel="true" PhysicalOp="Parallelism" EstimatedTotalSubtreeCost="5.26103">
+                                      <OutputList>
+                                        <ColumnReference Column="Uniq1002" />
+                                        <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                                      </OutputList>
+                                      <RunTimeInformation>
+                                        <RunTimeCountersPerThread Thread="2" ActualRows="458314" ActualEndOfScans="1" ActualExecutions="1" />
+                                        <RunTimeCountersPerThread Thread="1" ActualRows="458234" ActualEndOfScans="1" ActualExecutions="1" />
+                                        <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                                      </RunTimeInformation>
+                                      <Parallelism PartitioningType="Hash">
+                                        <PartitionColumns>
+                                          <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                                        </PartitionColumns>
+                                        <RelOp AvgRowSize="15" EstimateCPU="0.50418" EstimateIO="3.28238" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Clustered Index Scan" NodeId="7" Parallel="true" PhysicalOp="Clustered Index Scan" EstimatedTotalSubtreeCost="3.78656" TableCardinality="916548">
+                                          <OutputList>
+                                            <ColumnReference Column="Uniq1002" />
+                                            <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                                          </OutputList>
+                                          <RunTimeInformation>
+                                            <RunTimeCountersPerThread Thread="1" ActualRows="452868" ActualEndOfScans="1" ActualExecutions="1" />
+                                            <RunTimeCountersPerThread Thread="2" ActualRows="463680" ActualEndOfScans="1" ActualExecutions="1" />
+                                            <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                                          </RunTimeInformation>
+                                          <IndexScan Ordered="true" ForcedIndex="false" NoExpandHint="false">
+                                            <DefinedValues>
+                                              <DefinedValue>
+                                                <ColumnReference Column="Uniq1002" />
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Table="#output" Alias="[t]" Column="CSKID" />
+                                              </DefinedValue>
+                                            </DefinedValues>
+                                            <Object Database="[tempdb]" Schema="[dbo]" Table="[#output]" Index="[IDX_tmp_output_CSKID]" Alias="[t]" />
+                                          </IndexScan>
+                                        </RelOp>
+                                      </Parallelism>
+                                    </RelOp>
+                                    <RelOp AvgRowSize="12" EstimateCPU="1.37961" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916550" LogicalOp="Repartition Streams" NodeId="8" Parallel="true" PhysicalOp="Parallelism" EstimatedTotalSubtreeCost="8.32247">
+                                      <OutputList>
+                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CSKID" />
+                                        <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="RankChanged" />
+                                      </OutputList>
+                                      <RunTimeInformation>
+                                        <RunTimeCountersPerThread Thread="2" ActualRows="458315" ActualEndOfScans="1" ActualExecutions="1" />
+                                        <RunTimeCountersPerThread Thread="1" ActualRows="458235" ActualEndOfScans="1" ActualExecutions="1" />
+                                        <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                                      </RunTimeInformation>
+                                      <Parallelism PartitioningType="Hash">
+                                        <PartitionColumns>
+                                          <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CSKID" />
+                                        </PartitionColumns>
+                                        <RelOp AvgRowSize="12" EstimateCPU="0.504181" EstimateIO="6.43868" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916550" LogicalOp="Index Scan" NodeId="9" Parallel="true" PhysicalOp="Index Scan" EstimatedTotalSubtreeCost="6.94286" TableCardinality="916550">
+                                          <OutputList>
+                                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CSKID" />
+                                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="RankChanged" />
+                                          </OutputList>
+                                          <RunTimeInformation>
+                                            <RunTimeCountersPerThread Thread="1" ActualRows="448460" ActualEndOfScans="1" ActualExecutions="1" />
+                                            <RunTimeCountersPerThread Thread="2" ActualRows="468090" ActualEndOfScans="1" ActualExecutions="1" />
+                                            <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                                          </RunTimeInformation>
+                                          <IndexScan Ordered="false" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                                            <DefinedValues>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="CSKID" />
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Alias="[br]" Column="RankChanged" />
+                                              </DefinedValue>
+                                            </DefinedValues>
+                                            <Object Database="[SearchIgnite]" Schema="[dbo]" Table="[Staging_BidRank]" Index="[Staging_BidRank_CSKID_CurrentRank]" Alias="[br]" IndexKind="NonClustered" />
+                                          </IndexScan>
+                                        </RelOp>
+                                      </Parallelism>
+                                    </RelOp>
+                                  </Hash>
+                                </RelOp>
+                              </Parallelism>
+                            </RelOp>
+                          </Sort>
+                        </RelOp>
+                      </Parallelism>
+                    </RelOp>
+                  </Top>
+                </RelOp>
+              </Update>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="19" StatementEstRows="916548" StatementId="6" StatementOptmLevel="FULL" StatementSubTreeCost="64.5393" StatementText="insert [#output_____________________________________________________________________________________________________________00000000C6CF] select *, %%bmk%% from [#output_____________________________________________________________________________________________________________00000000C6CF]" StatementType="INSERT" QueryHash="0x2910F135B1DA1834" QueryPlanHash="0x3981F5ACCD61B2E7">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="2" MemoryGrant="63872" CachedPlanSize="24" CompileTime="562" CompileCPU="562" CompileMemory="120">
+            <RelOp AvgRowSize="9" EstimateCPU="0.916548" EstimateIO="12.0987" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Insert" NodeId="0" Parallel="false" PhysicalOp="Index Insert" EstimatedTotalSubtreeCost="64.5393">
+              <OutputList />
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <CreateIndex>
+                <Object Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Index="[IDX_tmp_output_RankChanged]" IndexKind="NonClustered" />
+                <RelOp AvgRowSize="16" EstimateCPU="6.07061" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Gather Streams" NodeId="1" Parallel="true" PhysicalOp="Parallelism" EstimatedTotalSubtreeCost="51.524">
+                  <OutputList>
+                    <ColumnReference Column="RowRefSrc1011" />
+                  </OutputList>
+                  <RunTimeInformation>
+                    <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                  </RunTimeInformation>
+                  <Parallelism>
+                    <OrderBy>
+                      <OrderByColumn Ascending="true">
+                        <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="RankChanged" />
+                      </OrderByColumn>
+                      <OrderByColumn Ascending="true">
+                        <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="CSKID" />
+                      </OrderByColumn>
+                      <OrderByColumn Ascending="true">
+                        <ColumnReference Column="Uniq1002" />
+                      </OrderByColumn>
+                    </OrderBy>
+                    <RelOp AvgRowSize="16" EstimateCPU="41.6612" EstimateIO="0.00563063" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Sort" NodeId="2" Parallel="true" PhysicalOp="Sort" EstimatedTotalSubtreeCost="45.4534">
+                      <OutputList>
+                        <ColumnReference Column="RowRefSrc1011" />
+                      </OutputList>
+                      <MemoryFractions Input="1" Output="1" />
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="2" ActualRebinds="1" ActualRewinds="0" ActualRows="475686" ActualEndOfScans="1" ActualExecutions="1" />
+                        <RunTimeCountersPerThread Thread="1" ActualRebinds="1" ActualRewinds="0" ActualRows="440862" ActualEndOfScans="1" ActualExecutions="1" />
+                        <RunTimeCountersPerThread Thread="0" ActualRebinds="0" ActualRewinds="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                      </RunTimeInformation>
+                      <Sort Distinct="false">
+                        <OrderBy>
+                          <OrderByColumn Ascending="true">
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="RankChanged" />
+                          </OrderByColumn>
+                          <OrderByColumn Ascending="true">
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="CSKID" />
+                          </OrderByColumn>
+                          <OrderByColumn Ascending="true">
+                            <ColumnReference Column="Uniq1002" />
+                          </OrderByColumn>
+                        </OrderBy>
+                        <RelOp AvgRowSize="16" EstimateCPU="0.50418" EstimateIO="3.28238" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Clustered Index Scan" NodeId="3" Parallel="true" PhysicalOp="Clustered Index Scan" EstimatedTotalSubtreeCost="3.78656" TableCardinality="916548">
+                          <OutputList>
+                            <ColumnReference Column="Uniq1002" />
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="CSKID" />
+                            <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="RankChanged" />
+                          </OutputList>
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="2" ActualRows="475686" ActualEndOfScans="1" ActualExecutions="1" />
+                            <RunTimeCountersPerThread Thread="1" ActualRows="440862" ActualEndOfScans="1" ActualExecutions="1" />
+                            <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="0" ActualExecutions="0" />
+                          </RunTimeInformation>
+                          <IndexScan Ordered="false" ForcedIndex="false" NoExpandHint="false">
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Column="Uniq1002" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="CSKID" />
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Column="RankChanged" />
+                              </DefinedValue>
+                            </DefinedValues>
+                            <Object Database="[tempdb]" Schema="[dbo]" Table="[#output_____________________________________________________________________________________________________________00000000C6CF]" Index="[IDX_tmp_output_CSKID]" IndexKind="Clustered" />
+                          </IndexScan>
+                        </RelOp>
+                      </Sort>
+                    </RelOp>
+                  </Parallelism>
+                </RelOp>
+              </CreateIndex>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="19" StatementEstRows="916548" StatementId="7" StatementOptmLevel="FULL" StatementSubTreeCost="36.1642" StatementText="INSERT INTO dbo.CSKeywordsRankInfo5daysHist(CSKID, UpdateDate, CurrentRank, Bid, MinBid)&#xD;&#xA;	SELECT CSKID, @Now, CurrentRank, Bid, MinBid&#xD;&#xA;	FROM #output&#xD;&#xA;	WHERE RankChanged = 1&#xD;&#xA;	&#xD;&#xA;	&#xD;" StatementType="INSERT" QueryHash="0xC56A11FB6AD4266F" QueryPlanHash="0x827E9B8C0B403E0A">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="1" CachedPlanSize="24" CompileTime="4" CompileCPU="4" CompileMemory="280">
+            <RelOp AvgRowSize="9" EstimateCPU="0.916548" EstimateIO="30.242" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Insert" NodeId="0" Parallel="false" Partitioned="true" PhysicalOp="Clustered Index Insert" EstimatedTotalSubtreeCost="36.1642">
+              <OutputList />
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <RunTimePartitionSummary>
+                <PartitionsAccessed PartitionCount="1">
+                  <PartitionRange Start="11" End="11" />
+                </PartitionsAccessed>
+              </RunTimePartitionSummary>
+              <Update WithOrderedPrefetch="true" DMLRequestSort="true">
+                <Object Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo5daysHist]" Index="[PK_CSKeywordsRankInfo5daysHist]" IndexKind="Clustered" />
+                <SetPredicate>
+                  <ScalarOperator ScalarString="[SearchIgnite].[dbo].[CSKeywordsRankInfo5daysHist].[CSKID] = RaiseIfNullInsert([#output].[CSKID]),[SearchIgnite].[dbo].[CSKeywordsRankInfo5daysHist].[UpdateDate] = RaiseIfNullInsert([@Now]),[SearchIgnite].[dbo].[CSKeywordsRankInfo5daysHist].[CurrentRank] = [Expr1008],[SearchIgnite].[dbo].[CSKeywordsRankInfo5daysHist].[Bid] = [#output].[Bid],[SearchIgnite].[dbo].[CSKeywordsRankInfo5daysHist].[MinBid] = [#output].[MinBid],[PtnId1000] = RaiseIfNullInsert([Expr1009]),[SearchIgnite].[dbo].[CSKeywordsRankInfo5daysHist].[Rank1Bid] = NULL">
+                    <ScalarExpressionList>
+                      <ScalarOperator>
+                        <MultipleAssign>
+                          <Assign>
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo5daysHist]" Column="CSKID" />
+                            <ScalarOperator>
+                              <Intrinsic FunctionName="RaiseIfNullInsert">
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Table="[#output]" Column="CSKID" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Intrinsic>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo5daysHist]" Column="UpdateDate" />
+                            <ScalarOperator>
+                              <Intrinsic FunctionName="RaiseIfNullInsert">
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="@Now" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Intrinsic>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo5daysHist]" Column="CurrentRank" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Column="Expr1008" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo5daysHist]" Column="Bid" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Table="[#output]" Column="Bid" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo5daysHist]" Column="MinBid" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Table="[#output]" Column="MinBid" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Column="PtnId1000" ComputedColumn="true" />
+                            <ScalarOperator>
+                              <Intrinsic FunctionName="RaiseIfNullInsert">
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Expr1009" />
+                                  </Identifier>
+                                </ScalarOperator>
+                              </Intrinsic>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Database="[SearchIgnite]" Schema="[dbo]" Table="[CSKeywordsRankInfo5daysHist]" Column="Rank1Bid" />
+                            <ScalarOperator>
+                              <Const ConstValue="NULL" />
+                            </ScalarOperator>
+                          </Assign>
+                        </MultipleAssign>
+                      </ScalarOperator>
+                    </ScalarExpressionList>
+                  </ScalarOperator>
+                </SetPredicate>
+                <RelOp AvgRowSize="40" EstimateCPU="0.0916548" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Compute Scalar" NodeId="2" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="5.00565">
+                  <OutputList>
+                    <ColumnReference Table="[#output]" Column="CSKID" />
+                    <ColumnReference Table="[#output]" Column="Bid" />
+                    <ColumnReference Table="[#output]" Column="MinBid" />
+                    <ColumnReference Column="Expr1008" />
+                    <ColumnReference Column="Expr1009" />
+                  </OutputList>
+                  <ComputeScalar>
+                    <DefinedValues>
+                      <DefinedValue>
+                        <ColumnReference Column="Expr1009" />
+                        <ScalarOperator ScalarString="RangePartitionNew([@Now],(1),'2011-09-12 00:00:00.000','2011-09-13 00:00:00.000','2011-09-14 00:00:00.000','2011-09-15 00:00:00.000','2011-09-16 00:00:00.000','2011-09-17 00:00:00.000','2011-09-18 00:00:00.000','2011-09-19 00:00:00.000','2011-09-20 00:00:00.000','2011-09-21 00:00:00.000')">
+                          <Intrinsic FunctionName="RangePartitionNew">
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Column="@Now" />
+                              </Identifier>
+                            </ScalarOperator>
+                            <ScalarOperator>
+                              <Const ConstValue="(1)" />
+                            </ScalarOperator>
+                            <ScalarOperator>
+                              <Const ConstValue="'2011-09-12 00:00:00.000'" />
+                            </ScalarOperator>
+                            <ScalarOperator>
+                              <Const ConstValue="'2011-09-13 00:00:00.000'" />
+                            </ScalarOperator>
+                            <ScalarOperator>
+                              <Const ConstValue="'2011-09-14 00:00:00.000'" />
+                            </ScalarOperator>
+                            <ScalarOperator>
+                              <Const ConstValue="'2011-09-15 00:00:00.000'" />
+                            </ScalarOperator>
+                            <ScalarOperator>
+                              <Const ConstValue="'2011-09-16 00:00:00.000'" />
+                            </ScalarOperator>
+                            <ScalarOperator>
+                              <Const ConstValue="'2011-09-17 00:00:00.000'" />
+                            </ScalarOperator>
+                            <ScalarOperator>
+                              <Const ConstValue="'2011-09-18 00:00:00.000'" />
+                            </ScalarOperator>
+                            <ScalarOperator>
+                              <Const ConstValue="'2011-09-19 00:00:00.000'" />
+                            </ScalarOperator>
+                            <ScalarOperator>
+                              <Const ConstValue="'2011-09-20 00:00:00.000'" />
+                            </ScalarOperator>
+                            <ScalarOperator>
+                              <Const ConstValue="'2011-09-21 00:00:00.000'" />
+                            </ScalarOperator>
+                          </Intrinsic>
+                        </ScalarOperator>
+                      </DefinedValue>
+                    </DefinedValues>
+                    <RelOp AvgRowSize="36" EstimateCPU="0.0916548" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Top" NodeId="3" Parallel="false" PhysicalOp="Top" EstimatedTotalSubtreeCost="4.914">
+                      <OutputList>
+                        <ColumnReference Table="[#output]" Column="CSKID" />
+                        <ColumnReference Table="[#output]" Column="Bid" />
+                        <ColumnReference Table="[#output]" Column="MinBid" />
+                        <ColumnReference Column="Expr1008" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                      </RunTimeInformation>
+                      <Top RowCount="true" IsPercent="false" WithTies="false">
+                        <TopExpression>
+                          <ScalarOperator ScalarString="(0)">
+                            <Const ConstValue="(0)" />
+                          </ScalarOperator>
+                        </TopExpression>
+                        <RelOp AvgRowSize="37" EstimateCPU="0.0916548" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Compute Scalar" NodeId="4" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="4.3824">
+                          <OutputList>
+                            <ColumnReference Table="[#output]" Column="CSKID" />
+                            <ColumnReference Table="[#output]" Column="Bid" />
+                            <ColumnReference Table="[#output]" Column="MinBid" />
+                            <ColumnReference Column="Expr1008" />
+                          </OutputList>
+                          <ComputeScalar>
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1008" />
+                                <ScalarOperator ScalarString="CONVERT_IMPLICIT(numeric(18,1),[#output].[CurrentRank],0)">
+                                  <Convert DataType="numeric" Precision="18" Scale="1" Style="0" Implicit="true">
+                                    <ScalarOperator>
+                                      <Identifier>
+                                        <ColumnReference Table="[#output]" Column="CurrentRank" />
+                                      </Identifier>
+                                    </ScalarOperator>
+                                  </Convert>
+                                </ScalarOperator>
+                              </DefinedValue>
+                            </DefinedValues>
+                            <RelOp AvgRowSize="37" EstimateCPU="1.00836" EstimateIO="3.28238" EstimateRebinds="0" EstimateRewinds="0" EstimateRows="916548" LogicalOp="Clustered Index Scan" NodeId="5" Parallel="false" PhysicalOp="Clustered Index Scan" EstimatedTotalSubtreeCost="4.29074" TableCardinality="916548">
+                              <OutputList>
+                                <ColumnReference Table="[#output]" Column="CSKID" />
+                                <ColumnReference Table="[#output]" Column="CurrentRank" />
+                                <ColumnReference Table="[#output]" Column="Bid" />
+                                <ColumnReference Table="[#output]" Column="MinBid" />
+                              </OutputList>
+                              <RunTimeInformation>
+                                <RunTimeCountersPerThread Thread="0" ActualRows="916548" ActualEndOfScans="1" ActualExecutions="1" />
+                              </RunTimeInformation>
+                              <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" NoExpandHint="false">
+                                <DefinedValues>
+                                  <DefinedValue>
+                                    <ColumnReference Table="[#output]" Column="CSKID" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Table="[#output]" Column="CurrentRank" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Table="[#output]" Column="Bid" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Table="[#output]" Column="MinBid" />
+                                  </DefinedValue>
+                                </DefinedValues>
+                                <Object Database="[tempdb]" Schema="[dbo]" Table="[#output]" Index="[IDX_tmp_output_CSKID]" />
+                                <Predicate>
+                                  <ScalarOperator ScalarString="[#output].[RankChanged]=(1)">
+                                    <Compare CompareOp="EQ">
+                                      <ScalarOperator>
+                                        <Identifier>
+                                          <ColumnReference Table="[#output]" Column="RankChanged" />
+                                        </Identifier>
+                                      </ScalarOperator>
+                                      <ScalarOperator>
+                                        <Const ConstValue="(1)" />
+                                      </ScalarOperator>
+                                    </Compare>
+                                  </ScalarOperator>
+                                </Predicate>
+                              </IndexScan>
+                            </RelOp>
+                          </ComputeScalar>
+                        </RelOp>
+                      </Top>
+                    </RelOp>
+                  </ComputeScalar>
+                </RelOp>
+              </Update>
+            </RelOp>
+            <ParameterList>
+              <ColumnReference Column="@Now" ParameterRuntimeValue="'2011-10-25 18:13:18.897'" />
+            </ParameterList>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+  </BatchSequence>
+</ShowPlanXML>

@@ -1,0 +1,3 @@
+SELECT dbo_c_Drug_Definition.common_name, dbo_c_Drug_Definition.generic_name, dbo_c_Package.description
+FROM (dbo_c_Drug_Definition INNER JOIN dbo_c_Drug_Package ON dbo_c_Drug_Definition.drug_id = dbo_c_Drug_Package.drug_id) INNER JOIN dbo_c_Package ON dbo_c_Drug_Package.package_id = dbo_c_Package.package_id
+WHERE (((dbo_c_Drug_Definition.status)="OK"));

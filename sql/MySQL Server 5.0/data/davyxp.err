@@ -1,0 +1,39 @@
+InnoDB: The first specified data file .\ibdata1 did not exist:
+InnoDB: a new database to be created!
+070605 15:15:22  InnoDB: Setting file .\ibdata1 size to 10 MB
+InnoDB: Database physically writes the file full: wait...
+070605 15:15:23  InnoDB: Log file .\ib_logfile0 did not exist: new to be created
+InnoDB: Setting log file .\ib_logfile0 size to 5 MB
+InnoDB: Database physically writes the file full: wait...
+070605 15:15:23  InnoDB: Log file .\ib_logfile1 did not exist: new to be created
+InnoDB: Setting log file .\ib_logfile1 size to 5 MB
+InnoDB: Database physically writes the file full: wait...
+InnoDB: Doublewrite buffer not found: creating new
+InnoDB: Doublewrite buffer created
+InnoDB: Creating foreign key constraint system tables
+InnoDB: Foreign key constraint system tables created
+070605 15:15:24  InnoDB: Started; log sequence number 0 0
+070605 15:15:25 [Note] mysqld-nt.exe: ready for connections.
+Version: '5.0.41-community-nt'  socket: ''  port: 3306  MySQL Community Edition (GPL)
+070607 12:40:07  InnoDB: Database was not shut down normally!
+InnoDB: Starting crash recovery.
+InnoDB: Reading tablespace information from the .ibd files...
+InnoDB: Restoring possible half-written data pages from the doublewrite
+InnoDB: buffer...
+070607 12:40:07  InnoDB: Starting log scan based on checkpoint at
+InnoDB: log sequence number 0 43655.
+InnoDB: Doing recovery: scanned up to log sequence number 0 43655
+070607 12:40:07  InnoDB: Started; log sequence number 0 43655
+070607 12:40:07 [Note] mysqld-nt.exe: ready for connections.
+Version: '5.0.41-community-nt'  socket: ''  port: 3306  MySQL Community Edition (GPL)
+070609 19:59:33  InnoDB: Database was not shut down normally!
+InnoDB: Starting crash recovery.
+InnoDB: Reading tablespace information from the .ibd files...
+InnoDB: Restoring possible half-written data pages from the doublewrite
+InnoDB: buffer...
+070609 19:59:34  InnoDB: Starting log scan based on checkpoint at
+InnoDB: log sequence number 0 43655.
+InnoDB: Doing recovery: scanned up to log sequence number 0 43655
+070609 19:59:34  InnoDB: Started; log sequence number 0 43655
+070609 19:59:35 [Note] mysqld-nt.exe: ready for connections.
+Version: '5.0.41-community-nt'  socket: ''  port: 3306  MySQL Community Edition (GPL)
