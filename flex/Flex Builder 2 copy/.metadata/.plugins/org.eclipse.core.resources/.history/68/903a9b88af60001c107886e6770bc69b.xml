@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" 
+	xmlns:base.blade="base.blade.*" xmlns:config="app.config.*">
+	<mx:Script>
+		<![CDATA[
+			import base.lenz.frame.BaseLenzFrame;
+			import mx.controls.Alert; 
+			import lenz.main.site_select.SiteSelectionLenz;
+			import lenz.main.investigator.InvestigatorLenz;
+			import lenz.main.monitor.MonitorLenz;
+			//import lenz.main.study_mgr.StudyManagerLenz;
+			import app.App;
+			
+			[Bindable]
+			private var yOffsetGlobalNavs:int = 60;
+			[Bindable]
+			private var xOffsetGlobalNavs:int = 90;
+			[Bindable]
+			private var bSize:int = 104; // button size
+			
+		 	[Bindable]
+            private var selectedUser:Object;
+			[Embed(source="/resources/images/woman_icon2.png")]
+	        public var User1Image:Class; 
+	        [Embed(source="/resources/images/StudyManager.jpg")]
+	        public var User2Image:Class; 
+	        [Embed(source="/resources/images/Monitor.jpg")]
+	        public var User3Image:Class; 
+	        [Embed(source="/resources/images/woman_icon3.png")]
+	        public var User4Image:Class; 
+	        
+			[Bindable]
+			private var users:Array = [{label:"User1",data:User1Image},
+				{label:"User2",data:User2Image}];
+			[Bindable]
+			private var resolutions:Array = [{label:"640 x 800",data:1},{label:"800 x 600",data:2}];
+			[Bindable]
+            private var selectedTheme:Object;
+			[Bindable]
+			private var themes:Array = new Array("Green (default)","Blue", "Steel");
+			
+			private function mouseOut(event:Event):void {
+				event.target.alpha=1;			
+			}
+			
+			private function mouseOver(event:Event):void {
+				event.target.alpha=0.5;	
+				
+				
+			}
+			
+				private function highlight(canvas:Canvas):void{
+				canvas.alpha=0.5;
+			}
+			
+			private function unhighlight(canvas:Canvas):void{
+				canvas.alpha=0.1;
+			}
+			public function changeUser():void{
+		        //this.parentApplication.hasOwnProperty("backgroundImage") = false
+		        //this.parentApplication.toString() = LenzDemo3_0
+		        Alert.show(this.parentApplication.hasOwnProperty("backgroundImage").toString());
+		        //base.lenz.frame.BaseLenzFrame
+			}
+		]]>
+	</mx:Script>
+	
+	
+	
+	<base.blade:BladeItem id="cass" height="100" width="100" mouseOut="mouseOut(event)" mouseOver="mouseOver(event)"  horizontalCenter="0" verticalCenter="0" visible="true">
+		<mx:Image horizontalCenter="0" verticalCenter="0" scaleContent="true" source="@Embed('/resources/images/gloe.png')" />
+		<mx:Label horizontalCenter="0" verticalCenter="30" color="#FFFFFF" fontSize="10" text="Site Selection" />
+	</base.blade:BladeItem>
+	
+
+	<base.blade:BladeItem id="settings" height="100" width="100" mouseOut="mouseOut(event)" mouseOver="mouseOver(event)"  horizontalCenter="0" verticalCenter="0" visible="true">
+		<mx:Image horizontalCenter="0" verticalCenter="0" source="@Embed('/resources/images/icon_settings.png')" />		
+		<mx:Label horizontalCenter="0" verticalCenter="40" color="#FFFFFF" fontSize="10" text="Settings" />
+	</base.blade:BladeItem>
+	
+	
+
+
+	<base.blade:BladeItem id="GlobalNav" width="650" height="350" horizontalCenter="0" verticalCenter="0" visible="true">
+	    <mx:Canvas width="633" height="230" styleName="filledTone" y="60" x="15"></mx:Canvas>
+	
+		<mx:Image id="topbar" source="@Embed('/resources/images/top_3_bar.png')" y="50	" x="32"  />
+	
+	<mx:Canvas y="60">
+		<config:GlobalNavigationItem id="WF" x="{xOffsetGlobalNavs}" y="{yOffsetGlobalNavs}"
+			title="Home" imgSource="@Embed('/resources/images/home_icon.png')"/> 
+	
+		<config:GlobalNavigationItem id="SS" x="{xOffsetGlobalNavs+(bSize*1)}" y="{yOffsetGlobalNavs}"
+    		clickFunction="{[SiteSelectionLenz.LENZ_ID]}" title="Study Allocation" imgSource="@Embed('/resources/images/site_selection_icon.png')" />
+    		
+		<config:GlobalNavigationItem id="II" x="{xOffsetGlobalNavs+(bSize*2)}" y="{yOffsetGlobalNavs}" visible="true"
+			 title="" imgSource="@Embed('/resources/images/investigator_icon.png')" />
+		
+		<config:GlobalNavigationItem id="CA" x="{xOffsetGlobalNavs+(bSize*3)}" y="{yOffsetGlobalNavs}" visible="true"
+			title="" imgSource="@Embed('/resources/images/country_allocation_icon.png')"/>
+		
+		<config:GlobalNavigationItem id="SM" x="{xOffsetGlobalNavs+(bSize*4)}" y="{yOffsetGlobalNavs}"
+			title="Study Management" imgSource="@Embed('/resources/images/study_manager_icon.png')"/>
+		<!-- clickFunction="{[StudyManagerLenz.LENZ_ID]}" -->
+		</mx:Canvas>
+		
+	</base.blade:BladeItem>
+	
+
+	
+</mx:Canvas>

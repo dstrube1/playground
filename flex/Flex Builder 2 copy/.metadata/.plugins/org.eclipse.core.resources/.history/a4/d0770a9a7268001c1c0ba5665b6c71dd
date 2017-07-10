@@ -1,0 +1,14 @@
+package base.event
+{
+	public class DataUpdateEvent extends BaseLenzEvent
+	{
+		public static const EVENT_CODE:String = DATA_UPDATE_EVENT_BASE;		
+		
+		public static const DATA_UPDATE_EVENT_BASE:String = "DataUpdateEvent_BASE";
+		
+		public function DataUpdateEvent( lenz:String=null) {
+			 
+			super(EVENT_CODE, lenz);
+		}
+	}
+}

@@ -1,0 +1,8 @@
+Gem rails-1.2.6
+  rake (>= 0.7.2)
+  activesupport (= 1.4.4)
+  activerecord (= 1.15.6)
+  actionpack (= 1.13.6)
+  actionmailer (= 1.3.6)
+  actionwebservice (= 1.2.6)
+

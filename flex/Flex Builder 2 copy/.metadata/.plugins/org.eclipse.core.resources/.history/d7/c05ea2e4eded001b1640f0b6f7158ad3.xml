@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas  xmlns:mx="http://www.adobe.com/2006/mxml" 
+	height="1000" width="700"  
+	styleName="lenzFrame" 
+	creationComplete="onCreationComplete()"
+	xmlns:base.lenz.panel="base.lenz.panel.*">
+	
+	<mx:Metadata>
+		[DefaultProperty("subComponents")]
+	</mx:Metadata>
+	
+	<mx:Number id="frameThickness" />
+	<mx:String id="title" />
+
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.containers.Panel;
+			import base.lenz.panel.ReflectPanel;
+			import flash.utils.setTimeout;
+
+			import base.event.LenzInitializedEvent;
+			import base.lenz.Lenz;
+			import base.lenz.frame.LenzFrame;
+			import base.event.PanelReadyEvent;
+			import base.lenz.panel.LenzPanel;
+
+
+		
+			
+			
+			// 
+			protected var currentLenz:Lenz = null;
+			protected var currentPanel:LenzPanel = null;
+
+			
+			/*
+				@SMELL - we have two functions that do the
+				same thing.
+			*/
+			public function getCurrentLenz() :Lenz {
+				return currentLenz;
+			}
+
+			public function getTitle():String {
+				return title;
+			}
+	
+	
+			public function getFrameComponent():DisplayObject {
+				return this;
+			}
+			
+			
+			
+			public function getLenz():Lenz {
+				return(currentLenz);
+			}
+			
+	
+	
+			public function getPanel():LenzPanel {
+				return(currentPanel);
+			}
+	
+			public function setPanel( panel:LenzPanel):void {
+				
+				
+				lenzRoot.removeAllChildren();
+				lenzRoot.addChild(panel.getPanelComponent());
+				currentPanel = panel;   
+
+
+
+				//	panel.activate();
+			}
+	
+	
+	
+	
+	
+			public function schedule( closure:Function, delay:Number, rest:Array):void {
+				
+				
+				setTimeout(closure, delay, rest);				
+			}
+	
+		
+	
+	
+
+	
+	
+
+
+		     private var _components:Array;
+		     
+		     
+		     
+		     
+		     
+		     
+
+
+			public function set activate(b:Boolean):void {
+				
+				if (b) {
+					
+					currentLenz.initialize();
+					
+				} else {
+					
+					// unregister all of our event listeners (TBD)
+					
+					currentLenz.close();
+				}
+				
+				
+				activateFrame();
+				
+			}
+			
+			
+			public function get activate():Boolean {
+				
+				return currentLenz != null;
+				
+			}
+
+
+
+
+
+
+			protected function addListeners():void {
+				
+				addEventListener(LenzInitializedEvent.EVENT_CODE, onLenzInitializedEvent);
+				
+				addEventListener(PanelReadyEvent.EVENT_CODE, onPanelReadyEvent);
+			
+				
+			}
+
+
+
+			protected function onLenzInitializedEvent(ev:LenzInitializedEvent):void {
+				
+
+				
+				if (ev.getLenz() != currentLenz.getLenzId()) {
+					throw new Error("Mismatching lenzes - event lenze is : "+ev.getLenz()+", expecting "+currentLenz.getLenzId()+"... possibly we did not close the frame properly?");
+				}
+				
+			
+				
+				
+			}
+
+
+			protected function onPanelReadyEvent(ev:PanelReadyEvent):void {
+				
+				currentLenz.onPanelReadyEvent(ev);
+				
+			}
+
+
+
+
+
+
+		     private function onCreationComplete():void {
+
+		     	updateReflectPanel();
+		     	
+		     	addComponents();
+		     	
+		     	addListeners();
+		     	
+
+		     }
+
+
+
+
+		     
+		     
+		     
+		     private function set subComponents( a:Array ) : void
+	    	 {
+	        	 _components = a;
+	     	 }
+	     	 
+		     private function addComponents() : void 
+		     {
+		          lenzRoot.removeAllChildren();
+		          
+		          if (_components != null) {
+			          for(var i:int=0; i < _components.length; i++) {
+			               lenzRoot.addChild( _components[i] );
+			          }
+			      }
+		     }
+			
+
+		
+		]]>
+	</mx:Script>
+
+	<mx:Canvas styleName="lenzCanvas" id="lenzRoot" x="{frameThickness+1}" y="{frameThickness-1}" 
+		height="{height - frameThickness*2}"
+		width="{width - frameThickness*2}">
+
+
+
+	</mx:Canvas>
+
+		
+
+	<base.lenz.panel:ReflectPanel id="reflectPanel"	x="130" y="560" height="150" width="763" alpha="1.0">
+	</base.lenz.panel:ReflectPanel>
+		
+   
+	
+	
+	
+	
+</mx:Canvas>

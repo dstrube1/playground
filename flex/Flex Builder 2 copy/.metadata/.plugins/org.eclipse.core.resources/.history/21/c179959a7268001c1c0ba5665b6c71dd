@@ -1,0 +1,48 @@
+package base.services
+{ 
+	public class Response
+	{
+		public var ControlMap:MapArray;
+		public var DataMap:MapArray;
+		public var ResponseCode:int;
+		
+		
+		
+		
+		
+		public function Response(o:Object):void {
+			
+			if (o.hasOwnProperty("ControlMap")) {
+				ControlMap = MapArray.fromServer(o["ControlMap"]);
+			}
+			
+			if (o.hasOwnProperty("DataMap")) {
+				DataMap = MapArray.fromServer(o["DataMap"]);
+			}
+			
+			ResponseCode = o["ResponseCode"];
+			
+		}
+		
+		
+		public function decode( helper:MapArrayHelper):void {
+			
+			helper.decode(ControlMap);
+			helper.decode(DataMap);
+						
+		}
+		
+		
+		public static function emptyResponse( code:int):Response {
+			
+			var r:Response = new Response( { ResponseCode: code} );
+			
+			r.ControlMap = new MapArray();
+			r.DataMap = new MapArray();
+			
+			return r;
+			
+		}
+		
+	}
+}

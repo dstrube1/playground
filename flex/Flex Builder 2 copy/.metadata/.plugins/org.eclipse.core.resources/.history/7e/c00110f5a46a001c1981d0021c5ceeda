@@ -1,0 +1,24 @@
+package app.server.calls
+{
+	import base.services.Content;
+	import app.server.LenzServer;
+	import base.services.LenzServiceHelper;
+	import base.services.ValueType;
+	import base.services.calls.ServiceCall;
+	
+	public class LoginCall implements ServiceCall
+	{
+		
+		public function call( name:String, params:Object):void {
+			
+			
+			var content:Content = LenzServiceHelper.createAction("loginAction");
+			content.DataMap.add("login.username.key", ValueType.STRING, params["username"]);
+			content.DataMap.add("login.password.key", ValueType.STRING, params["password"]);
+			
+			LenzServer.postSvc( content, params["failure"], params["result"]);											
+			
+		}
+		
+	}
+}

@@ -1,0 +1,61 @@
+#Tue Jan 27 11:24:18 EST 2009
+/instance/com.aptana.rdt.ui/ignore-auto-install-ruby-debug-base-0.10.0=true
+/instance/org.eclipse.core.resources/encoding=UTF-8
+/instance/org.rubypeople.rdt.launching/org.rubypeople.rdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8"?>\n<vmSettings defaultVM\="43,org.rubypeople.rdt.launching.StandardVMType13,1216049495729">\n<vmType id\="org.rubypeople.rdt.launching.JRubyVMType">\n<vm id\="1216049501365" name\="org.jruby_1.1.0.5965_RC2p2" path\="/Applications/Aptana Studio/plugins/org.jruby_1.1.0.5965_RC2p2">\n<libraryLocations>\n<libraryLocation src\="/Applications/Aptana Studio/plugins/org.jruby_1.1.0.5965_RC2p2/lib/ruby/site_ruby/1.8"/>\n<libraryLocation src\="/Applications/Aptana Studio/plugins/org.jruby_1.1.0.5965_RC2p2/lib/ruby/site_ruby"/>\n<libraryLocation src\="/Applications/Aptana Studio/plugins/org.jruby_1.1.0.5965_RC2p2/lib/ruby/1.8"/>\n</libraryLocations>\n</vm>\n</vmType>\n<vmType id\="org.rubypeople.rdt.launching.StandardVMType">\n<vm id\="1216049495729" name\="usr" path\="/System/Library/Frameworks/Ruby.framework/Versions/Current/usr">\n<libraryLocations>\n<libraryLocation src\="/Library/Ruby/Site/1.8"/>\n<libraryLocation src\="/Library/Ruby/Site/1.8/universal-darwin9.0"/>\n<libraryLocation src\="/Library/Ruby/Site"/>\n<libraryLocation src\="/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8"/>\n<libraryLocation src\="/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0"/>\n<libraryLocation src\="/Users/davy/Documents/Aptana Studio/.metadata/.plugins/org.rubypeople.rdt.launching/1216049495729/lib"/>\n</libraryLocations>\n</vm>\n</vmType>\n</vmSettings>\n
+/instance/com.aptana.ide.framework.jaxer/JAXER_SERVER_LOCAL_PATH_KEY=/Applications/Aptana Studio/plugins/com.aptana.ide.framework.jaxer.server.macosx_1.2.1.020234/jam/jaxer/
+/instance/com.aptana.ide.server/serverManager.serverCount=16
+/instance/org.eclipse.update.core/updatePolicyURL=http\://update.aptana.com/update/studio/1.2.1beta/3.2/policy.xml
+/instance/org.eclipse.ui.browser/browsers=<?xml version\="1.0" encoding\="UTF-8"?>\n<web-browsers current\="0">\n<system/>\n<external location\="/Applications/Firefox.app/Contents/MacOS/firefox-bin" name\="Firefox"/>\n</web-browsers>
+/instance/org.eclipse.ui.ide/platformState=1233072873253
+/instance/com.aptana.ide.intro/com.aptana.ide.intro.LATEST_UPDATE_CONTENT=json\=%7B%22updates%22%3A%7B%22uf%22%3A%5B%5D,%22nf%22%3A%5B%7B%22label%22\:%22Aptana%20RadRails%22,%22nv%22%3A%221.0.2.200806111809NGT%22%7D,%5D%7D%7D
+/instance/com.aptana.ide.server.jetty/shownAlready=true
+file_export_version=3.0
+/instance/com.aptana.rdt.ui/ignore-auto-install-ruby-debug-ide-0.1.10=true
+/instance/org.eclipse.core.resources/version=1
+@org.eclipse.ui.browser=3.2.0.v20060602
+/instance/com.aptana.ide.core/com.aptana.ide.core.CACHED_KEY=hxqwcGZ3PiT3ORsEtRkKRg\=\=
+@com.aptana.ide.framework.jaxer=1.2.1.020234
+/instance/org.eclipse.ui.editors/overviewRuler_migration=migrated_3.1
+@com.aptana.ide.core.ui=1.2.1.020234
+/instance/org.eclipse.ui.browser/internalWebBrowserHistory=http\://127.0.0.1\:3000/tags|*|http\://127.0.0.1\:3000/tag|*|http\://127.0.0.1\:3000/|*|file\:/Users/davy/Library/Application Support/Aptana/Aptana Studio/configuration/org.eclipse.osgi/bundles/193/1/.cp/content/startpage.html?firstUpdate\=true&amp;json\=%7B%22updates%22%3A%7B%22uf%22%3A%5B%5D,%22nf%22%3A%5B%7B%22label%22\:%22Aptana%20RadRails%22,%22nv%22%3A%221.0.2.200806111809NGT%22%7D,%5D%7D%7D|*|file\:/Users/davy/Library/Application Support/Aptana/Aptana Studio/configuration/org.eclipse.osgi/bundles/193/1/.cp/content/startpage.html?firstUpdate\=true&amp;json\=%7B%22updates%22%3A%7B%22uf%22%3A%5B%7B%22label%22%3A%22Aptana%20Studio%22,%22nv%22%3A%221.1.6.009905%22%7D,%5D,%22nf%22%3A%5B%5D%7D%7D|*|file\:/Users/davy/Library/Application Support/Aptana/Aptana Studio/configuration/org.eclipse.osgi/bundles/146/1/.cp/content/startpage.html?firstUpdate\=true&amp;json\=%7B%22updates%22%3A%7B%22uf%22%3A%5B%7B%22label%22%3A%22Aptana%20Studio%22,%22nv%22%3A%221.1.5.009212%22%7D,%5D,%22nf%22%3A%5B%5D%7D%7D|*|
+/instance/com.aptana.ide.editors//profile.file\:/Users/davy/Documents/Aptana%20Studio/test.files=file\:/Users/davy/Documents/Aptana%20Studio/test/public/javascripts/prototype.js,file\:/Users/davy/Documents/Aptana%20Studio/test/public/javascripts/effects.js,file\:/Users/davy/Documents/Aptana%20Studio/test/public/javascripts/dragdrop.js,file\:/Users/davy/Documents/Aptana%20Studio/test/public/javascripts/controls.js,file\:/Users/davy/Documents/Aptana%20Studio/test/public/javascripts/application.js
+/configuration/org.eclipse.ui.ide/MAX_RECENT_WORKSPACES=5
+/configuration/org.eclipse.ui.ide/RECENT_WORKSPACES=/Users/davy/Documents/Aptana Studio
+/instance/com.aptana.ide.intro/com.aptana.ide.intro.SHOW_STARTPAGE_FORCED=true
+/instance/com.aptana.ide.intro/com.aptana.ide.intro.SHOWN_PREVIOUSLY=true
+@com.aptana.ide.rcp.main=1.2.1.020234
+/configuration/org.eclipse.ui.ide/SHOW_WORKSPACE_SELECTION_DIALOG=false
+/instance/org.rubypeople.rdt.core/org.rubypeople.rdt.core.loadpathVariable.GEM_LIB=/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems;/Library/Ruby/Gems/1.8/gems
+@com.aptana.ide.server.jetty=1.2.1.020234
+@org.eclipse.ui.ide=3.2.1.M20060915-1030
+/instance/com.aptana.ide.core.ui/com.aptana.ide.core.ui.PREF_KEY_FIRST_STARTUP=true
+@org.eclipse.core.resources=3.2.2.R32x_v20061218
+/instance/com.aptana.ide.editors/profile..list=test\=file\:/Users/davy/Documents/Aptana%20Studio/test
+@com.aptana.ide.core=1.2.1.020234
+/instance/com.aptana.ide.core.ui/com.aptana.ide.core.ui.AUTO_BACKUP_LASTNAME=/Users/davy/Documents/Aptana Studio/preferences/prefBackup7_14_08v2.epr
+/configuration/org.eclipse.ui.ide/RECENT_WORKSPACES_PROTOCOL=2
+@com.aptana.ide.server=1.2.1.020234
+/instance/com.aptana.ide.intro/com.aptana.ide.intro.IS_PORTAL_SHOWN_PREVIOUSLY=true
+@org.eclipse.ui.editors=3.2.1.r321_v20060721
+\!/=
+/instance/org.eclipse.team.ui/org.eclipse.team.ui.first_time=false
+@com.aptana.ide.editors=1.2.1.020234
+/instance/com.aptana.ide.framework.jaxer/JAXER_INTERNAL_SERVER_LOCAL_PATH_KEY=/Applications/Aptana Studio/plugins/com.aptana.ide.framework.jaxer.server.macosx_1.2.1.020234/jam/jaxer/
+/instance/com.aptana.ide.server.ui/serversView.column.6=50
+/instance/com.aptana.ide.server.ui/serversView.column.5=100
+/instance/com.aptana.ide.server.ui/serversView.column.4=100
+/instance/com.aptana.ide.server.ui/serversView.column.3=400
+@org.eclipse.update.core=3.2.3.R32x_v20070118
+/instance/com.aptana.ide.server.ui/serversView.column.2=100
+/instance/com.aptana.ide.server.ui/serversView.column.1=100
+/instance/com.aptana.ide.rcp.main/com.aptana.ide.rcp.main.WORKSPACE_ENCODING_SET=true
+/instance/com.aptana.ide.intro/com.aptana.ide.intro.MESSAGE_CENTER_LEFT_WEIGHT=33
+/instance/com.aptana.ide.server.ui/serversView.column.0=45
+/instance/com.aptana.ide.core.ui/com.aptana.ide.core.ui.WEB_PERSPECTIVE_LAST_VERSION=60
+/instance/com.aptana.ide.core.ui/com.aptana.ide.core.PREF_GLOBAL_SYNC_CLOAKING_EXTENSIONS=.svn;.tmp*~;.settings;CVS;.git;.DS_Store;/tmp/cache/*;/tmp/pids/*;/tmp/sessions/*;/tmp/sockets/*;/log/*.log;/README;/doc/*
+@com.aptana.ide.intro=1.2.1.020234
+@org.eclipse.team.ui=3.2.1.M200608151725
+/instance/org.eclipse.ui.ide/EXIT_PROMPT_ON_CLOSE_LAST_WINDOW=false
+@com.aptana.ide.server.ui=1.2.1.020234
+/instance/org.rubypeople.rdt.ui/useAnnotationsPrefPage=true
+/instance/org.rubypeople.rdt.ui/useQuickDiffPrefPage=true

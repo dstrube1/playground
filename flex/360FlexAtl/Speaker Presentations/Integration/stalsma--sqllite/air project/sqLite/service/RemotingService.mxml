@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:UIComponent xmlns:mx="http://www.adobe.com/2006/mxml">
+	
+	<mx:Script>
+		<![CDATA[
+			import vo.PhoneNr;
+			import vo.UserBean;
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.utils.ObjectUtil;
+			import mx.rpc.events.ResultEvent;
+			import mx.rpc.events.FaultEvent;
+		
+		public function getUsers():void {
+            _userRemoteService.getUsers();
+		}
+		
+		private function resultHandler( event:ResultEvent ):void {
+			updateMsg("Extracting results");
+
+			//extract the results
+			var resultArray:ArrayCollection = new ArrayCollection( event.result as Array );
+
+			//transform to array coll
+			var userBeanCol:ArrayCollection = arrayToUserBeanCollection( resultArray );
+			dispatchEvent( new UserDataEvent( UserDataEvent.USERDATAEVENT_NAME, userBeanCol ) );
+		}
+
+		private function faultHandler( result:FaultEvent ):void {
+			wsFault( result );
+		}
+
+		private function wsFault( result:FaultEvent ):void {
+			Alert.show( ObjectUtil.toString( result ) );
+			//Alert.show("There was an error with the remoting service", "Information");					
+		}
+
+		private function arrayToUserBeanCollection( aIn:ArrayCollection ):ArrayCollection {
+			var newCollection:ArrayCollection = new ArrayCollection();
+			var curItem:Object;
+			
+			for( var i:int = 0 ; i < aIn.length ; i++ ) {
+				curItem = aIn.getItemAt(i);
+				
+				var newBean:UserBean = new UserBean();
+				newBean.userid = curItem.USERID;
+				newBean.firstName = curItem.FIRSTNAME;
+				newBean.lastName = curItem.LASTNAME;
+				newBean.email = curItem.EMAIL;
+				newBean.company = curItem.COMPANY;
+				
+				var aPhone:Array = curItem.PHONENR as Array;
+				for( var j:int = 0 ; j < aPhone.length ; j++ ) {
+					var newPhone:PhoneNr = new PhoneNr();
+					
+					newPhone.userid = newBean.userid;
+					newPhone.phoneid = aPhone[j].PHONEID;
+					newPhone.phoneNr = aPhone[j].PHONENR;
+					newPhone.type = aPhone[j].TYPE;
+					
+					newBean.aPhoneNr.addItem( newPhone );
+				}
+				
+				
+				newCollection.addItem( newBean );
+			}
+			
+			return newCollection;
+		}
+
+
+		private function updateMsg( s:String ):void {
+			Factory.getInstance().applicationModel.statusMsg = s;
+		}
+		
+		]]>
+	</mx:Script>
+	<mx:RemoteObject
+		id="_userRemoteService"
+		endpoint="http://localhost:8500/flex2gateway"
+		destination="ColdFusion"
+		source="sqLite.components.UserService"
+		result="resultHandler(event)"
+		fault="faultHandler(event)" />
+</mx:UIComponent>

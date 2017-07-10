@@ -1,0 +1,182 @@
+package base.lenz
+{
+	import base.Context;
+	import base.lenz.frame.LenzFrame; 
+	import flash.events.Event;
+	import base.event.LenzInitializedEvent;
+	import base.lenz.Lenz;
+	import flash.display.DisplayObject;
+	import base.lenz.panel.LenzPanel;
+	import base.log.Logger;
+	import mx.core.Application;
+	import base.event.PanelReadyEvent;
+	import base.event.LenzClosedEvent;
+	import flash.utils.Timer;
+	import flash.events.TimerEvent;
+	import mx.controls.Alert;
+	//import base.controller.ClickManager;
+	
+	public class BaseLenz  implements Lenz
+	{
+		
+		protected var globalContext:Context = null;
+		protected var visualContext:Context = null;
+		
+		protected var lenzFrame:LenzFrame = null;
+		
+		protected var currentPanel:LenzPanel = null;
+		
+		private var constructed:Boolean = false;
+		
+		
+		protected var logger:Logger = Logger.getLogger('BaseLenz');
+		
+		
+		public function BaseLenz():void {
+
+		}
+		
+		//HB ----------------
+		public function getCurrentPanel():LenzPanel {
+			return currentPanel;
+		}		
+		
+		
+		
+		public function newPanel(panel:Class):void {
+			
+			close();
+			/* Need to replace Timer with EventListener */
+			/*var time:Timer = new Timer(500, 1);
+			
+			time.start();
+			time.addEventListener(TimerEvent.TIMER_COMPLETE, onPanelClose);*/
+
+			//setPanel(panel);
+			currentPanel = new panel();
+			
+		}
+		
+		
+		public function setGlobalContext( ctx:Context):void {
+			
+			globalContext = ctx;
+			
+		}
+		
+		public function setVisualContext(ctx: Context):void {
+			visualContext = ctx;
+		}
+
+		public function setLenzFrame( lf:LenzFrame):void {
+			lenzFrame = lf;				
+		}
+
+		public function close():void {
+			
+			currentPanel.close();
+			
+			lenzFrame.schedule(sendCloseEvent, 500, null);
+			
+		}
+		
+		public function activate():void {
+			
+			logger.debug("Activating current panel: "+currentPanel.getTitle());
+			
+			if (currentPanel == null) {
+				throw new Error("Lenz did not specify currentPanel, cannot activate it.  Suggest specifying currentPanel in creationComplete()");
+			} else {
+				
+				currentPanel.open();
+			
+			}
+		}
+
+		public function initialize():void {
+			
+			logger.debug("initialized: "+constructed);
+			
+			if (constructed && lenzFrame != null) {
+				
+				// send out LenzInitializedEvent, so the frame can move forward to the next step.
+				
+				var ev:Event = new LenzInitializedEvent(this.getLenzId());
+				
+				logger.debug("BaseLenz: dispatching "+ev.type+" :  "+this.getLenzId());
+				
+				lenzFrame.dispatchEvent(ev);
+				
+			}
+			
+		}
+
+
+		
+		
+				
+		public function getLenzId():String {
+			throw new Error("getLenzId must be subclassed");
+		}
+		
+
+
+		public function onPanelReadyEvent( ev:PanelReadyEvent):void {
+			
+			currentPanel.open();
+			
+		}
+
+
+
+
+
+		// subclasses should call this at the end of their constructor
+		protected function lenzCreationComplete():void {
+			constructed = true;
+			
+			initialize();
+		}
+		
+		
+		
+		protected function setPanel( lp:LenzPanel):void {
+			currentPanel = lp;
+			lenzFrame.setPanel( currentPanel );  // this tells the frame which panel to put into the main area.
+		}
+		
+		
+		
+		
+		private function sendCloseEvent(pEv:Event):void {
+			
+			var ev:Event = new LenzClosedEvent(getLenzId());
+			
+			lenzFrame.dispatchEvent(ev);
+			
+		}
+		
+		private function onPanelClose(ev:LenzClosedEvent):void{
+			lenzFrame.setPanel( currentPanel );
+		}
+		
+		
+		
+		public function fetchInitialData( handler:Function ):void {
+			Alert.show("fetchInitialData must be overridden by subclass, in this case "+getLenzId());
+		}
+		
+		
+		public function getNotificationClickHandler():Function {
+			Alert.show("getNotificationClickHandler must be overridden by subclass, in this case: "+getLenzId());
+			return(null);
+		}
+		
+		
+/* 		public function getClickManager():ClickManager {
+			Alert.show("getClickManager must be overridden by subclass, in this case: "+getLenzId());
+			return(null);
+		} */
+		
+	}
+}

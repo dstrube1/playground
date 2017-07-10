@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application
+ width="100%" height="100%"
+ xmlns:mx="http://www.adobe.com/2006/mxml" 
+ layout="absolute" backgroundGradientColors="[#ffffff, #ffffff]">
+<mx:TextArea backgroundColor="#ffffff" id="a1" x="168" y="468" text="a1"/>
+<mx:TextArea backgroundColor="#f9f9f9" id="a2" x="168" y="416" text="a2"/>
+<mx:TextArea backgroundColor="#e0e0e0" id="a3" x="168" y="364" text="a3"/>
+<mx:TextArea backgroundColor="#dedede"  id="a4" x="168" y="312" text="a4"/>
+<mx:TextArea backgroundColor="#cccccc" id="a5" x="168" y="260" text="a5"/>
+<mx:TextArea backgroundColor="#adf8ff" id="a6" x="168" y="208" text="a6"/>
+<mx:TextArea backgroundColor="#9fbfdf" id="a7" x="168" y="156" text="a7"/>
+<mx:TextArea backgroundColor="#999999" id="a8" x="168" y="104" text="a8"/>
+<mx:TextArea backgroundColor="#99CCFF" id="a9" x="168" y="52" text="a9"/> <!-- not from styles -->
+<mx:TextArea backgroundColor="#8e8e8e" id="a10" y="572" text="a10"/>
+<mx:TextArea backgroundColor="#3370ce" id="a11" y="520" text="a11"/>
+<mx:TextArea backgroundColor="#1f4488" id="a12" y="468" text="a12"/>
+<mx:TextArea backgroundColor="#195eb9" id="a13" y="416" text="a13"/>
+<mx:TextArea backgroundColor="#000000" id="a14" y="364" text="a14"/>
+<mx:TextArea backgroundColor="#aaaaaa" id="a15" y="312" text="a15"/>
+<mx:TextArea backgroundColor="#5c5c5c" id="a16" y="260" text="a16"/>
+<mx:TextArea backgroundColor="#666666" id="a17" y="208" text="a17"/>
+<mx:TextArea backgroundColor="#eeeeee" id="a18" y="156" text="a18"/>
+<mx:TextArea backgroundColor="#c0c0c0" id="a19" y="104" text="a19"/>
+<mx:TextArea backgroundColor="#cacaca" id="a20" y="52" text="a20"/>
+</mx:Application>

@@ -1,0 +1,7 @@
+package base.services.calls
+{ 
+	public interface ServiceCall
+	{
+		function call( name:String, params:Object):void;
+	}
+}

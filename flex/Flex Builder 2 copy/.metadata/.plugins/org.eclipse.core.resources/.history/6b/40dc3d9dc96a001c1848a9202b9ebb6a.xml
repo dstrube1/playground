@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RSSReaderController xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="components.rss.*"
+	timeStep="100" yStep="1" spacingY="10" shiftFunction="{onShiftEvent}" 
+	width="100%" height="100%" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off" 
+	 >
+	
+	<mx:Script>
+  		<![CDATA[
+	  		import mx.controls.Alert;
+			import mx.core.UIComponent;
+			import mx.controls.*;
+	
+			private var pause:Boolean = false;
+			private var timeStepTemp:int = 0;
+	
+	  		private function onShiftEvent( item:Object ):void {
+	  			//Alert.show("onShiftEvent:" + item.link+"/"+ + item.title+"/" + item.body );
+	  			if( !pause ) {
+	  				shiftContent();
+		  			if( item != null && canAdd() ) 
+		  				addRSSItem( item );	  				
+	  			}
+	  		} 
+  						
+  		 	private function shiftContent():void {			
+  		 		if (this.numChildren < 4 && timeStepTemp ==0){
+  		 			timeStepTemp=timeStep;
+  		 			timeStep=timeStep / 10;
+  		 		}
+  		 		else {
+  		 			timeStep = timeStepTemp;
+  		 			timeStepTemp=0;
+  		 		}
+ 				for each( var cmpt:UIComponent in  this.getChildren() ) {
+ 					cmpt.y -= yStep;
+ 					if( cmpt.y < -(spacingY + cmpt.height) ) {
+ 						this.removeChild( cmpt );
+ 					}
+ 				}
+  			}
+  			
+	  		private function canAdd():Boolean {			
+	 			if( this.numChildren > 0 ) {
+	 	 			var last:DisplayObject = this.getChildAt( this.numChildren-1 );
+	 				if( (last.y + spacingY + last.height ) < this.height ) return true;	
+	 				else return false;		
+	 			}		
+	 			return true;
+	 		}
+  		
+  			private function addRSSItem( item:Object ):void {
+				var x:int = 5;
+	 			var y:int = this.height;
+	 			if( this.numChildren > 0 ) {
+	 	 			var last:DisplayObject = this.getChildAt( this.numChildren-1 );
+					y = last.y + last.height + spacingY;
+	 			}
+	 	        if( item != null ) { 	        	
+	 	        	var title:DisplayObject = createDisplayItemTitle( item );
+	 	        	
+	 	        	title.width = this.width - 12;
+		        	title.x = x;
+		        	title.y = y;
+		         	this.addChild( title );	
+		         	
+		         	var body:DisplayObject = createDisplayItemBody( item );
+	 	        	body.width = this.width - 12;
+		        	body.x = x;
+		        	body.y = y + title.height + 2*spacingY;
+		         	this.addChild( body );		 	        	
+	 	        }  				
+  			}
+  			
+  			private function createDisplayItemTitle( data:Object ):DisplayObject { 			
+	 			var title:LinkButton = new LinkButton();
+	 			title.label = data.title;
+	 			title.data = data.link;
+	 			title.styleName = "rssTitle";
+	 			title.addEventListener( MouseEvent.CLICK, onClick );
+	 			title.addEventListener( MouseEvent.MOUSE_OVER, onMousOver );
+	 			title.addEventListener( MouseEvent.MOUSE_OUT, onMousOut );
+	 				
+ 				return title;
+ 			}
+
+  			private function createDisplayItemBody( data:Object ):DisplayObject { 			
+	 			var txt:Text = new Text();
+				txt.text = data.body;
+				txt.data = data.link;
+	 			txt.styleName = "rssBody";	
+	 			//txt.addEventListener( MouseEvent.CLICK, onClick );
+	 			txt.addEventListener( MouseEvent.MOUSE_OVER, onMousOver );
+	 			txt.addEventListener( MouseEvent.MOUSE_OUT, onMousOut );
+ 				return txt;
+ 			}
+
+ 			private function onMousOver(event:Event):void {		
+ 				pause = true;
+ 			}
+ 			
+ 			private function onMousOut(event:Event):void {	
+ 				pause = false;
+ 			}
+ 		
+	   		private function onClick(event:Event):void {		 			
+	 			var link:String = event.target.data;
+	 			navigateToURL(new URLRequest(link));
+	 		}	
+ 			
+  		]]>
+  	</mx:Script>
+  	 	
+</RSSReaderController>

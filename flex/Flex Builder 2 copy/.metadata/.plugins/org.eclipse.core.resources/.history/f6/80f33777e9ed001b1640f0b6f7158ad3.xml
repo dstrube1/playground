@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BaseLenzPanel xmlns="base.lenz.panel.*" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	implements="base.lenz.panel.LenzPanel"
+	creationComplete="onCreationComplete()" 
+	title="Site Selection">
+	 
+	<mx:Script>
+		<![CDATA[
+			
+			
+			private var _form:SiteSelectStartForm = null;
+
+
+			
+			protected function onCreationComplete():void {
+
+				lenzId = "SiteSelectPanel";
+				
+				_form = new SiteSelectStartForm();
+				
+				super.completePanel(_form);
+				ready();
+				
+				
+			}
+			
+			public override function animateContent():void {
+				_form.animate();
+			}
+
+			
+		]]>
+	</mx:Script>
+	
+</BaseLenzPanel>

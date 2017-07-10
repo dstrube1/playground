@@ -1,0 +1,67 @@
+package base.services
+{
+	import mx.collections.ArrayCollection;
+	import base.util.ServiceUtils;
+	
+	public class MapArray 
+	{
+		
+		public var Key:Array = new Array();
+		public var Type:Array = new Array();
+		public var Value:Array = new Array();
+		
+		
+		
+		public static function fromServer(o:Object):MapArray {
+
+			var m:MapArray = new MapArray();
+			
+			if (o.hasOwnProperty("Key")) {
+								
+				var kTmp:ArrayCollection = ServiceUtils.arrayCollection(o["Key"]);
+				var tTmp:ArrayCollection = ServiceUtils.arrayCollection(o["Type"]);
+				var vTmp:ArrayCollection = ServiceUtils.arrayCollection(o["Value"]);
+				
+				for (var i:int = 0; i < kTmp.length; i++) {
+															
+					m.add(kTmp[i], tTmp[i], vTmp[i]);
+				}
+				
+			}
+			
+			return(m);
+
+		}		
+		
+		public function MapArray():void {
+			
+			
+		}
+		
+		
+		public function add( key:String, type:String, value:Object):void {
+			
+			Key.push(key);
+			Type.push(type);			
+			Value.push(value);
+			
+		}
+		
+				
+				
+		public function getValue( key:String):Object {
+
+			for (var i:int = 0; i < Key.length; i++) {
+				
+				if (Key[i] == key) {
+					return(Value[i]);
+				}
+				
+			}			
+
+			return null;
+		}		
+		
+		
+	}
+}

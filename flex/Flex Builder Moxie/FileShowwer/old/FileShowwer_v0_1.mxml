@@ -1,0 +1,59 @@
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute">
+	<mx:Script>
+		<![CDATA[
+			import flash.filesystem.File;
+			import mx.controls.Alert;
+			import flash.filesystem.FileStream;
+			import flash.filesystem.FileMode;
+			
+			public function test1():void{
+				// Create a reference to the file on the file system
+				var file:File = File.desktopDirectory.resolve(desktop.text);
+				// Create a stream and open the file for reading
+				var stream:FileStream = new FileStream();
+				stream.open( file, FileMode.READ );
+				// Read and show the entire contents of the file as a string
+				var contents:String = stream.readUTFBytes( stream.bytesAvailable )
+				area.text = "Contents of file ["+file.nativePath+
+					"]:"+contents;
+				// Clean up - free resources that are in use
+				stream.close();
+			}
+			public function test2():void{
+				var file:File = new File();
+				file.nativePath = anywhere.text;
+				if (file.exists){
+					area.text = "Exists: "+file.nativePath;
+				}
+			}
+			public function test3():void{
+
+				var dir:File = File.desktopDirectory;
+				if (dir.isDirectory)
+				{
+					area.text = dir.nativePath+" is a directory.";
+				}
+			}
+			
+		]]>
+	</mx:Script>
+	<mx:Button x="10" y="10" label="1" click="test1()"/>
+	<mx:Button x="10" y="40" label="2" click="test2()"/>
+	<mx:Button x="10" y="70" label="3" click="test3()"/>
+	<mx:Canvas x="10" y="100" width="383" height="239">
+	
+		<mx:Panel width="380" height="230" 
+			dragDrop="Alert.show('Dragged onto and dropped')">
+			<mx:TextArea height="190" id="area" width="360"/>
+		</mx:Panel>
+	</mx:Canvas>
+	<mx:TextInput x="71" y="10" id="desktop" width="116"/>
+	<mx:Label x="207" y="12" text="File name on desktop" width="155"/>
+	<mx:TextInput x="71" y="40" id="anywhere" width="116"/>
+	<mx:Label x="207" y="42" text="File name anywhere"/>
+	<mx:Canvas x="71" y="68" width="322" height="24" id="dropTarg"
+		backgroundColor="red">
+	</mx:Canvas>
+	
+</mx:WindowedApplication>

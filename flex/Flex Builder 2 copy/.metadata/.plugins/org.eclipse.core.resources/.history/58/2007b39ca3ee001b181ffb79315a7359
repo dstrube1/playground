@@ -1,0 +1,61 @@
+package app
+{
+	import app.config.LenzFactory;
+	//import app.server.LenzServer;
+	
+	import base.lenz.panel.PanelBuilder;
+	import base.log.LogWindow;
+	import base.log.Logger;
+	//import base.services.LenzService;
+	
+	import lenz.login.LoginLenz;
+	
+	import mx.core.ClassFactory;
+	
+	
+	public class Init
+	{
+		
+		private var config:Object = null;
+
+		
+		
+		
+		public function Init( logWin:LogWindow, configParams:Object):void {
+			
+			config = configParams;
+			
+			// all the configuration for the base code goes here, or in sub methods of this.
+			initLogger(logWin);
+			
+			registerLenzes();
+			
+			configPanelBuilder();
+						
+		}
+			
+		
+		private function initLogger(logWin:LogWindow):void {
+							
+			Logger.initialize(logWin.getTextArea()); 
+			
+		}
+		
+		
+		private function registerLenzes():void {
+			
+			LenzFactory.registerLenz( LoginLenz.LENZ_ID, LoginLenz);
+			
+			
+		}
+			
+		
+		private function configPanelBuilder():void {
+			
+			PanelBuilder.setContentHeight(App.LENZ_PANEL_CONTENT_HEIGHT);
+			
+		}
+		
+		
+	}
+}

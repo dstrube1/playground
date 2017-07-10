@@ -1,0 +1,175 @@
+===============================================
+best practices:
+code behind=bad, more code
+excessive binding- binding too many variables; makes it hard to debug
+ant continuous build, wiki
+matter expert, expert developers, hands on mentor, 
+arch fwork: caringorm, pureMVC != best practice
+app fwork: every integrator?
+caringorm- write and develop quickly
+===============================================
+future of DS: get code and slides
+===============================================
+java powered flex apps: get code, updated slides
+
+Service capture- cool debugging tool for tracking service calls
+slide 20: topic = typo = queue
+hsql- comes on automatically with jboss instance
+blazeDS AMF Serialization negates lazy-loading; all lazy-loading will get fired at serialization; super secret nifty tool coming soon
+[Managed]
+[RemoteClass...
+===============================================
+flex 4
+
+thermo :
+use drawing tools to create wireframs or import artwork directly from Creative Suite
+built on eclipse (like FB)
+transform static artwork in place into the interactive components of a Flex app
+define states & transitions visually and easily define VFX and transistions
+deliver working data-driven...
+create component from photoshop, illustrator or fireworks
+selectively turn artwork into functional comps that inherit the original image as a comp skin
+Thermo- releases 2009
+CSS Design view: tweak the default appearance visually
+skinning workflow: create any look using Flex Skin Design Ext in CS3; import Artwork Wizard to transform image into Flex skin
+
+flex for mobile devices:
+device must be AVM/AS3 compliant - this is part of the Tamarin Tracing, an open source Mozilla project
+What does mobile team need from Flex? ...
+not clear how strong desire is for MXML based layout
+component set will need to be redesigned for mobile needs- mobile friendly flavor of Flex
+currently in swf: styling infrastructure, focus mgt, transition/FX, relative layout mgrs ===> SWF
+big tricky problem to resolve dependencies to choose modules of functionality
+being open source will help
+should have: full AS editor, compiler, debugging, profiling
+
+flex 4 reductive approach- already in flex 3 a little
+1- figure out how a component should behave and look
+2- what is fundemental and what is incidental?
+3- strip the incidentals into separate classes
+4- repeat
+5- rebuild with new requested functionality
+bake MVC into every component: M: data model (button label setter and getter); 
+C: core behavior, required sub comps (none for button), states (up, down, over, out); 
+V: graphics, layout, data representation, animation, definable using MXML
+
+MISC:
+astro 3d fx
+perspective transforms; full mouse interaction
+hydra filters: most under 1 K; AIF toolkit available on Adobe Labs w/ source examples
+hydra filter work alongside built in filters
+Velum: Text engine- bidirectional, device font interpretaion, multicolumn, complex scripts (glyphs)
+better compiler performance
+vectors in ECMAScript in astro, typed arrays, vectors with bound checking
+function Vector (length:uint=0; fixed:boolean=false){}
+Flex3 can use Flex 4, vv, (Flex4 button can be used in a Flex2 project?)
+MXML-G 
+===============================================
+Flex Open Source projects
+dougmccune.com/blog
+<- code from this talk
+flexlib.net
+universalmind.com
+code.google.com/hosting
+flexbox.mrinalwadhwa.com
+riaforge.org 
+<- air survey code, eventually
+FlexSpy- very cool
+install subclipse, add svn repository, checkout source as Flex Library Project, build swc, add to your build path
+licenses: good: MIT, New BSD, Apache; Bad: GPL
+degrafa- graphics in xml
+alivePDF- create PDF in AS, save with AIR
+WindowShade- drop down button tag
+FOAM: http://dougmccune.com/360Flex_ATL/PhysicsContainer/
+===============================================
+bitmap techniques
+flash: bitmap =2d array of pixels
+image: loader side and display side
+smoothing
+snapping
+bitmap->bitmap data: n->1
+bitmap must be loaded from own domain or crossdomain.xml to be manipulated
+slides: ech.net/360flex2008
+===============================================
+YahooMaps API: see testYahoo.mxml
+===============================================
+MemMgt & 
+Flash Video tips & Tricks:
+http://labs.realeyes.com/default.cfm?cnt=presentations
+VideoDisplay:autoBandwidthDetection: only works for Flash Media Server
+loading SWF as a ByteArray ignores the sandbox security model
+===============================================
+Architecting AIR Applications
+Analogy- big considerations
+dog house, home, office building
+costs of change as a definition
+maintainability resusability
+
+	big rocks
+cross OS Compat- file systems, menus, dock (mac) & tray (win) icons, alerts
+Offline/Online clients- network API, SQL API, File System API
+Security- code signings, sandboxes
+JavaScript- top level html app, reuse exiting html in AS, ScriptBridge
+Sharing Code b/n web and desktop
+application update API
+
+	software development patterns for AIR
+Class Object Model and MVC
+Object relational mapping: Esria's VOFactory; ORM Mapping Lyer for Local SQL API
+Service Facades & Value Objects
+Session Patterns (Database, middle tier, client side)
+
+	micro architectures
+caringormdocs.org
+views know they're attached to caringorm=bad
+ties things together
+PureMVC.org
+love data binding=hate puremvc
+better for more general projects where lists will be reused
+
+	automated builds
+build script; 
+cruise control
+build unit tests (& run them), docs
+report build success or fail via email
+
+	unit testing
+FlexUnit/ASUnit/DPUnit
+do it from the beginning- project must be testable
+code paths: cyclomatic complexity
+Code Coverage Utility (like Clover for Java)- how many lines of code that tests are reaching- coming from Alex Uhlman from Adobe Consulting
+Pragmatic Programmers Right BICEP approach tells you what to test
+Mocking / Faking objects- do not leave function, much less class; mock contains asserts
+run them as part of automated build process with AIRRunner.org
+
+	data services options
+RTMP v Flex Remoting v Web Services v XML: XML is slow; Remoting is fast; RTMP is connected- all others are stateless
+Remoting is more than just Java: WebORB supports .NET, PHP, Ruby & java : supports RTMP
+Rocks professional AIR- Data Services chapter
+
+	advanced project setup
+project directory structure
+component architecture
+application modularity
+
+	modeling & docuemnting
+Sparx Systems Enterprise Architect to Model code before or adter you write it- 200$; sparxsystems.com.au
+ASDoc- write comments in your code for every function, var and class; comes with FlexSDK (Alt+Shift+D in FB); run as part of automated build
+
+	common problems
+logging / tracing
+exception mgt 
+metrics gathering / reporting
+
+	AIR limits
+Native Code invocation
+PDF generation
+Run on Linux (next v in Q3 of 2008)
+Remote runtime class loading- must use Script Bridge
+	extending AIR thru 3rd party tools
+Merapi for Java
+WebORB for .NET
+===============================================
+a painter paints paintings with paint
+flickr.com/groups/flex360atl08
+pacifica sdk and addin for voip;ex social browser

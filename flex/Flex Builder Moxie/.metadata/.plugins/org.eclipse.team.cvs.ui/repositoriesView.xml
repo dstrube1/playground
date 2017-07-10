@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repositories-view>
+	<repository id=":extssh:dstrube@72.54.140.99:/home/cvs">
+		<module path="Dendrite">
+		</module>
+	</repository>
+</repositories-view>

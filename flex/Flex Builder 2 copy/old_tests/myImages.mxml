@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Image;
+/*			public function setImages(o:Object):void{
+/*				for each (var object:Object in o){
+					t.text += "\nfound object in o\n";
+					var image:Image = object as Image;
+					image.alpha = 0.1;
+					this.addChild(image);
+				}* /
+				var image:Image = o["b"] as Image;
+				this.addChild(image);
+			}*/
+			public function setImages(a:Array):void{
+				var image:Image = a[0] as Image;
+				this.addChild(image);
+			}
+		]]>
+	</mx:Script>
+	<mx:TextArea id="t" text="text in myImages Canvas"  width="178" height="98"/>
+</mx:Canvas>

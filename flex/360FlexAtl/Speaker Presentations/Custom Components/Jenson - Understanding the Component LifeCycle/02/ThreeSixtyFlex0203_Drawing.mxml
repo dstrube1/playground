@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	xmlns:paper="acj.containers.*" creationComplete="init()" 
+	backgroundColor="#92BBF0"
+	backgroundGradientColors="[#FFFFFF,#92BBF0]" >
+	<mx:Script>
+		<![CDATA[
+			import acj.paperClasses.tools.RectangleTool;
+			import acj.paperClasses.tools.LineTool;
+			import acj.paperClasses.tools.DrawingTool;
+			
+			private var selectedTool:DrawingTool;
+			 
+			 
+			/**
+			* please note the code in this mxml file i'm not proud of... the whole
+			* lineToolClicked and rectangleToolClicked is too static
+			* but the point of this example is to show how to draw, not create
+			* a buttonToggle thingy mo bob... so to delay putting this out there... 
+			* this is just a quicky interface... 
+			**/
+			private function init():void{
+			} 
+			
+			private function lineToolClicked(event:Event):void{
+				btnRectangleTool.selected = !btnLineTool.selected;
+				blankPaperWrapper.selectedTool = acj.paperClasses.tools.LineTool;
+			}
+			
+			private function rectangleToolClicked(event:Event):void{
+				btnLineTool.selected = !btnRectangleTool.selected;
+				blankPaperWrapper.selectedTool = acj.paperClasses.tools.RectangleTool;
+			}
+		]]>
+	</mx:Script>
+	<mx:HBox width="80%" height="80%" horizontalAlign="center" verticalAlign="bottom">
+		<paper:BlankPaperWrapper id="blankPaperWrapper">
+			<mx:Image id="image" source="assets/testImage.png" completeEffect="Fade" maintainAspectRatio="true"/>
+		</paper:BlankPaperWrapper>
+	</mx:HBox>
+	
+	<mx:HBox width="150" height="100%" right="10" top="10" bottom="10">
+		<mx:VBox width="42" height="100%">
+			<mx:Button id="btnLineTool" icon="@Embed('assets/LineTool.png')" click="lineToolClicked(event)" toggle="true"/>
+			<mx:Button id="btnRectangleTool" icon="@Embed('assets/RectangleTool.png')" click="rectangleToolClicked(event)" toggle="true"/>
+		</mx:VBox>
+		
+		<mx:Text text="click a tool and start drawing by draggin your mouse on the white, the class isn't finished yet, but it's just an example... please dont be too harsh to judge" width="100%" height="100%"/>		
+		
+	</mx:HBox>
+	
+
+</mx:Application>

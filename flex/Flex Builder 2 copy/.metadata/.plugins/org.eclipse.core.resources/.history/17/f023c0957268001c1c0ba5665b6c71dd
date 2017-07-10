@@ -1,0 +1,11 @@
+package app.model.CountryAllocation
+{
+	public class Country extends GeographicalLocation
+	{
+		public function Country(id:String,name:String,selected:int ):void
+		{
+			super( id, name, selected );
+			this.type = "Country";
+		}
+	}
+}

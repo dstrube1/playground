@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="com.adobe.flexbuilder.editors.common.last.project.parent" value="C:\Documents and Settings\Davy\Desktop"/>
+	<item key="com.adobe.flexbuilder.editors.common.last.server.type" value="0"/>
+	<item key="com.adobe.flexbuilder.editors.common.use.default.location" value="true"/>
+	<section name="com.adobe.flexbuilder.editors.common.ui.pi.PropertiesView">
+		<item key="Style" value="true"/>
+		<item key="ViewOption" value="1"/>
+		<item key="Common" value="true"/>
+		<item key="Layout" value="true"/>
+	</section>
+</section>

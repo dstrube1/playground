@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+	 width="85" height="28">
+
+
+	<mx:String id="title" /> 
+	
+	<mx:Script>
+		<![CDATA[
+			
+			public var displayClick:Function = defaultClick;
+			public var imgSource:Object;
+			
+			public function defaultClick():void {
+				// do nothing
+			}
+		
+		
+		
+		]]>
+	</mx:Script>
+	<mx:Canvas id="buttonLabel" 
+			width="85" height="28" 
+			borderStyle="solid" borderColor="#FFFFFF" cornerRadius="5" 
+			backgroundColor="#FFFFFF" backgroundAlpha="0.34"  mouseOver="buttonIcon.alpha=1.0;buttonLabel.setStyle('backgroundAlpha',0.54);" mouseOut="buttonIcon.alpha=0.7;buttonLabel.setStyle('backgroundAlpha',0.34)" click="{displayClick}">
+			<mx:Label text="{title}" color="#FFFFFF" paddingLeft="37"  verticalCenter="0"/>
+		</mx:Canvas>
+	<mx:Image id="buttonIcon" source="{imgSource}" x="25" y="200" alpha="0.7" mouseOver="buttonIcon.alpha=1.0;buttonLabel.setStyle('backgroundAlpha',0.54);" mouseOut="buttonIcon.alpha=0.7;buttonLabel.setStyle('backgroundAlpha',0.34)" click="{displayClick}"/>
+</mx:Canvas>

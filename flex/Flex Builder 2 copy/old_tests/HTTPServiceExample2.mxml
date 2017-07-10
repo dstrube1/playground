@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!-- Simple example to demonstrate the HTTPService tag. -->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+    creationComplete="feedRequest.send();">
+
+    <!-- The url property specifies the location of the requested file, 
+    You should use the latest RSS 2.0 URL listed on the right side of 
+    the blog at http://www.adobe.com/go/mchotinblog. -->
+
+    <mx:HTTPService 
+        id="feedRequest" 
+        url="http://127.0.0.1:8081/lifeline/xml/tagList.do" 
+        useProxy="false" />
+
+    <mx:Panel title="HTTPService Example 2" height="100%" width="100%" 
+        paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10">
+
+        <mx:DataGrid id="dgPosts" height="100%" width="100%" 
+            dataProvider="{feedRequest.lastResult.ResultSet.name}">
+            <mx:columns>
+                <mx:DataGridColumn headerText="Name" dataField="name"/>
+            </mx:columns>
+        </mx:DataGrid>
+
+    </mx:Panel>    
+</mx:Application>

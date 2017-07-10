@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml">
+<mx:Script>
+	<![CDATA[
+	
+	]]>
+</mx:Script>
+<mx:Image source="@Embed('images/global_nav_tombstones.png')" x="227" y="45"/>
+    <mx:Canvas id="a" x="245" y="66" width="101" height="77" backgroundColor="black" />
+    <mx:Canvas id="b" x="354" y="66" width="101" height="77" backgroundColor="red" />
+    <mx:Canvas id="c" x="463" y="66" width="101" height="77" backgroundColor="white" />
+    <mx:Canvas id="d" x="572" y="66" width="101" height="77" backgroundColor="yellow" />
+    <mx:Canvas id="e" x="681" y="66" width="101" height="77" backgroundColor="blue" />
+    <mx:Canvas id="f" x="790" y="66" width="101" height="77" backgroundColor="green" />
+    
+    
+</mx:Canvas>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- saved from url=(0014)about:internet -->
+
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<title></title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+
+				asdocTitle = 'Flex 3 Language Reference';
+
+				var baseRef = '../';
+
+				window.onload = configPage;
+
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a href="../language-elements.html">Language&nbsp;Elements</a>&nbsp;| <a onclick="loadClassListFrame('../index-list.html')" href="../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../index.html?mxml/mxml/script.html&amp;mxml-tags.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">&nbsp;</td><td align="right" id="subNav" class="titleTableSubNav"></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle(""); titleBar_setSubNav(false,false,false,false,false,false,false,false,false,false,false,false,false,false);}
+
+--></script>
+<div class="MainContent">
+        <div style="height:20px;" width="100%"></div>
+        <h3>&lt;mx:Script> tag implemented by the compiler</h3>
+        <hr />
+
+        <p>You use the  &lt;mx:Script&gt; tag to define blocks of ActionScript code. ActionScript blocks can contain variable and function definitions. You can place blocks of ActionScript code in the body of the tag, or you can include an external file by specifying the source with the <code>source</code> property of the tag, as shown below:</p>
+
+<pre>
+&lt;mx:Script source="<i>file_name.as</i>" /&gt;
+</pre>
+
+        <p>The script within an &lt;mx:Script&gt; tag is accessible from any component in the MXML file. The &lt;mx:Script&gt; tag must be located at the top level of the MXML file, within the Application or other top level component tag. You can define multiple script blocks in your MXML files, but you should try to keep them in one location to improve readability.</p>
+        
+        <p><b>MXML Syntax</b></p>
+        <p>When using a script block in the body of the tag, you must wrap the contents in a CDATA construct. This prevents the compiler from interpreting the contents of the script block as XML, and allows ActionScript to be properly generated. As a result, it is a good practice to write all your &lt;mx:Script&gt; and &lt;/mx:Script&gt; tags as follows:</p>
+
+<pre> &lt;mx:Script&gt;<br>   &lt;![CDATA[<br />       //ActionScript statements<br />   ]]&gt;<br /> &lt;/mx:Script&gt; </pre> </p>
+    <hr />
+    <br />
+    <div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mxml/script.html','');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:52 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:52 AM GMT-04:00 -->

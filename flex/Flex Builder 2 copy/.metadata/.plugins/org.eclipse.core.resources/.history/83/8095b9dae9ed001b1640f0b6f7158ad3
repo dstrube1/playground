@@ -1,0 +1,162 @@
+package app.server.mock.impl
+{
+	import base.services.Content;
+	import base.services.mock.MockService;
+	import base.services.MapArray;
+	import base.services.ValueType;
+	import app.frame.MainLenzFrame;
+	import mx.containers.ControlBar;
+	import base.services.CommonKeys;
+
+
+	public class MockGetViewService extends BaseMockService implements MockService
+	{
+		
+		private var viewResponse:Object = new Object();
+		
+		
+		public function call(content:Content, failureHandler:Function, resultHandler:Function):void
+		{
+			
+
+			var control:MapArray = new MapArray();
+			var data:MapArray = new MapArray();
+			var responseCode:int = 200;
+			
+			var view:String = content.DataMap.getValue("view.id.key") as String;
+			
+			//HB
+			//var dataHash:Object = getNextViewResponse(viewResponse, view);
+			
+			var dataHash:Object = getViewResponse(viewResponse, view);
+
+			if (dataHash === null) {
+				responseCode = 500;
+			} else {
+		
+				if (view == "Main.Northeast" || view == "Main.Europe" || view == "Main") {
+								
+					convertMain(control, data, dataHash);
+					
+				} else if (view == "Metric.Site" || view == "Metric.World" || view == "Metric.Subgraph" || view == "Metric") {
+					
+					convertMetrics(control, data, dataHash);					
+					
+				} else if (view == "PR.Result" || view == "ProblemResolution") {
+					
+					convertPR(control, data, dataHash);
+				}
+			}
+			
+			
+			respond( responseCode, control, data, resultHandler);
+			
+		}
+		
+	
+		public function setView( viewName:String, data:Object):void {
+			
+			viewResponse[viewName] = data;
+			
+		}
+		
+		private function getViewResponse( viewHash:Object, key:String):Object {
+			
+			var tmp:Object = viewHash[key];
+			return tmp;
+			
+		}
+		
+		
+		private function getNextViewResponse( viewHash:Object, key:String):Object {
+			
+			var tmp:Object = viewHash[key];
+			
+			if (tmp == null) {
+				return tmp;
+			}
+			if (tmp is Array) {
+				
+				var a:Array = tmp as Array;
+				
+				var response:Object = a.shift();
+				
+				return(response);
+					
+			} else {
+				
+				return tmp;
+				
+			}
+			
+		}
+		
+		
+		private function convertMain( control:MapArray, data:MapArray, hash:Object):void {
+			data.add("study.name", ValueType.STRING, hash["study_name"]);
+			data.add("changePanel", ValueType.STRING, hash["changePanel"]);
+			data.add("panel", ValueType.STRING, hash["panel"]);
+			data.add("form", ValueType.STRING, hash["form"]);
+			data.add("patient.db", ValueType.XML, hash["patient_db"]);
+			data.add("geographic.map.url", ValueType.URL, hash["geographic_map_url"]);
+			data.add("budget.graph.url", ValueType.URL, hash["budget_graph_url"]);
+			
+			control.add(CommonKeys.NOTIFY_XML_DB, ValueType.XML, hash["notification_xml"]);
+			
+		}
+		
+		private function convertMetrics( control:MapArray, data:MapArray, hash:Object):void {
+			data.add("study.name", ValueType.STRING, hash["study_name"]);
+			data.add("panel", ValueType.STRING, hash["panel"]);
+			data.add("form", ValueType.STRING, hash["form"]);
+			data.add("patient.db", ValueType.XML, hash["patient_db"]);
+			
+			control.add(CommonKeys.NOTIFY_XML_DB, ValueType.XML, hash["notification_xml"]);
+			
+			if (data.getValue("form") == "metrics1") {
+
+				data.add("drilldown", ValueType.STRING, hash["drilldown"]);
+				data.add("geographic.map.url", ValueType.STRING, hash["geographic_map_url"]);
+				data.add("radar.small.graph.url", ValueType.STRING, hash["radar_small_graph_url"]);
+				data.add("radar.graph.url", ValueType.STRING, hash["radar_graph_url"]);
+
+				
+			} else { //"metrics2" form
+				
+				data.add("metric.subgraph.count", ValueType.STRING, hash["metric_subgraph_count"]);
+				data.add("submetric.1.small.graph.url", ValueType.URL, hash["submetric_1_small_graph_url"]);
+				data.add("submetric.2.small.graph.url", ValueType.URL, hash["submetric_2_small_graph_url"]);
+				data.add("submetric.3.small.graph.url", ValueType.URL, hash["submetric_3_small_graph_url"]);
+				data.add("submetric.1.large.graph.url", ValueType.URL, hash["submetric_1_large_graph_url"]);
+				data.add("submetric.2.large.graph.url", ValueType.URL, hash["submetric_2_large_graph_url"]);
+				data.add("submetric.3.large.graph.url", ValueType.URL, hash["submetric_3_large_graph_url"]);
+			}
+	
+		}
+		
+		
+		private function convertPR( control:MapArray, data:MapArray, hash:Object):void {
+			//control.add("resolutions.db", ValueType.XML, hash["resolutions_db"]);
+			data.add("study.name", ValueType.STRING, hash["study_name"]);
+			data.add("panel", ValueType.STRING, hash["panel"]);
+			data.add("form", ValueType.STRING, hash["form"]);
+			data.add("patient.db", ValueType.XML, hash["patient_db"]);
+			data.add("plans.db", ValueType.XML, hash["plans_db"]);
+			data.add("notification.details", ValueType.XML, hash["notification_details_db"]);
+			
+			control.add(CommonKeys.NOTIFY_XML_DB, ValueType.XML, hash["notification_xml"]);
+			
+			//if (data.getValue("form") == "PR2") {
+				
+				//data.add("simulation.count", ValueType.INTEGER, hash["simulation_count"]);
+				data.add("forecast.graph.url.current", ValueType.STRING, hash["forecast_graph_url_current"]);
+				data.add("forecast.graph.url.1", ValueType.STRING, hash["forecast_graph_url_1"]);
+				data.add("forecast.graph.url.2", ValueType.STRING, hash["forecast_graph_url_2"]);
+				
+				
+			//}
+			
+		}
+		
+	}
+}

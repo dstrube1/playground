@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:utils="com.utils.*"
+	width="700" height="522" 
+	title="Help"
+	horizontalAlign="center" layout="horizontal" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	showCloseButton="true" close="handleClose(event)">
+	
+	<mx:Script>
+        <![CDATA[
+        	import mx.events.CloseEvent;        	
+        	
+            import mx.controls.Alert;
+			import mx.rpc.events.ResultEvent;
+			import mx.managers.PopUpManager;
+			import mx.collections.ArrayCollection;
+			import mx.collections.XMLListCollection;			
+			import mx.core.Application;
+			private var params:Object = new Object();
+
+			[Bindable] private var listTicket:XMLListCollection;
+
+			private function handleClose(event:CloseEvent):void{
+				PopUpManager.removePopUp(this);
+			}
+			private function sendTicket():void
+			{
+				params = {"email":txtEmail.text, 
+						"phone":txtPhone.text, 
+						"time":txtTime.text,
+						"browser":selBrowser.selectedItem,
+						"version":txtVersion.text,
+						"computer":selComputer.selectedItem,
+						"issue":txtIssue.text
+						}; 
+				ticketService.cancel();
+				ticketService.send(params);
+				ticketService.method = "POST";
+			}
+
+			public function resultHandlerTicket(event:ResultEvent):void {	
+				var result:XML = XML(event.result);  
+				code = result.item.code.toString();
+				if (code != "0"){
+					Alert.show("There was a problem during the submission of your support request.  Please try again.  We apologize for this inconvenience.", "Submission Problem");
+				} else {
+					Alert.show("Your Support Ticket has been successfully submitted.  You will receive an email shortly with your Support Ticket number.  Please be sure to retain this number for you records.", "Request Received");
+				}
+			}
+
+
+            [Bindable]
+            public var browsers:ArrayCollection = new ArrayCollection(
+                [ {label:"--Select a Browser--", data:""},
+                  {label:"Internet Explorer", data:"IE"}, 
+                  {label:"Firefox", data:"FF"}, 
+                  {label:"Safari", data:"SI"}, 
+                  {label:"Opera", data:"OP"},
+                  {label:"Google Chrome", data:"GC"},
+                  {label:"Other", data:"OT"}
+                  ]);
+                  
+            [Bindable]
+            public var computers:ArrayCollection = new ArrayCollection(
+                [ {label:"--Select a Computer--", data:""},
+                  {label:"Windows PC", data:"PC"}, 
+                  {label:"Apple Mac", data:"MC"}
+                  ]);
+
+            
+        ]]>
+    </mx:Script>
+    
+
+	<mx:HTTPService id="ticketService" url="http://www.revparsuite.com/ticket.asp?userid={ Application.application.userID }&amp;hotel={ Application.application.hotel }" 
+		result="resultHandlerTicket(event)"
+		resultFormat="e4x"
+        useProxy="false" />
+
+	<mx:VBox width="100%" height="100%" paddingLeft="10" paddingRight="10" paddingBottom="10" paddingTop="10">
+		<mx:Text text="Please complete the fields below to open a ticket with the RevPAR Suite Support Team.  Someone will contact you within 24 hrs:" width="100%"/>
+		<mx:Form width="100%" height="100%">
+			<mx:FormItem label="Best contact email:" required="true">
+				<mx:TextInput id="txtEmail"/>
+			</mx:FormItem>
+			<mx:FormItem label="Best contact phone:">
+				<mx:TextInput id="txtPhone"/>
+			</mx:FormItem>
+			<mx:FormItem label="Best timeframe to reach you:">
+				<mx:TextInput id="txtTime"/>
+			</mx:FormItem>
+			<mx:FormItem label="Internet browser:" required="true">
+				<mx:ComboBox id="selBrowser" dataProvider="{browsers}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Browser version:" required="true">
+				<mx:TextInput id="txtVersion"/>
+			</mx:FormItem>
+			<mx:FormItem label="Computer:" required="true">
+				<mx:ComboBox id="selComputer" dataProvider="{computers}"/>
+			</mx:FormItem>
+			
+				<mx:HRule width="100%"/>
+				<mx:FormItem label="Describe your issue with as much detail as possible:" required="true">
+						<mx:TextArea id="txtIssue" width="335" height="158"/>
+				</mx:FormItem>
+
+			
+			
+		</mx:Form>
+		<mx:HBox width="100%" height="54" horizontalAlign="right" verticalAlign="middle">
+			<mx:HBox width="100%" height="48">
+				<mx:Button label="Back to FAQ's" height="49" width="130" id="btnBack"/>
+			</mx:HBox>
+			<mx:Text text="If unable to find a solution above, open a Support Ticket and someone will contact you within 24 hrs:" width="293" height="30"/>
+			<mx:Button label="Open Support Ticket" height="53" width="207" id="btnSupport" click="sendTicket()"/>
+		</mx:HBox>
+	</mx:VBox>
+
+</mx:TitleWindow>

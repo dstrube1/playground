@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="org.rubypeople.rdt.launching.LaunchConfigurationTypeRubyApplication">
+<booleanAttribute key="org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND" value="false"/>
+<stringAttribute key="org.rubypeople.rdt.launching.FILE_NAME" value="script/generate"/>
+<stringAttribute key="org.rubypeople.rdt.launching.WORKING_DIRECTORY" value="/Users/davy/Documents/Aptana Studio/test"/>
+<stringAttribute key="org.rubypeople.rdt.launching.PROGRAM_ARGUMENTS" value="resource tag name:string"/>
+<booleanAttribute key="org.rubypeople.rdt.launching.REQUIRES_REFRESH" value="true"/>
+<booleanAttribute key="org.eclipse.debug.ui.private" value="true"/>
+<stringAttribute key="org.rubypeople.rdt.launching.USE_TERMINAL" value="org.radrails.rails.shell"/>
+<stringAttribute key="org.rubypeople.rdt.launching.TERMINAL_COMMAND" value="script/generate resource tag name:string"/>
+<stringAttribute key="org.rubypeople.rdt.launching.PROJECT_NAME" value="test"/>
+</launchConfiguration>

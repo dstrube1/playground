@@ -1,0 +1,25 @@
+package base.services
+{
+	public class CommonKeys 
+	{
+		
+		// these need to be in synch with the CommonKeys.java on the server.
+		
+		public static const ERROR_MSG_KEY:String = "error.msg";
+		public static const ACTION_NAME_KEY:String = "action.name";
+		public static const RESOURCE_NAME_KEY:String = "resource.name";
+		public static const SUCCESS_MSG_KEY:String = "success.msg";
+		public static const SESSION_ID_KEY:String = "session.id";
+		
+	
+		public static const NOTIFY_ALARM_COUNT:String = "notification.alarm.count";
+		public static const NOTIFY_ALERT_COUNT:String = "notification.alert.count";
+		public static const NOTIFY_INFO_COUNT:String = "notification.info.count";
+	
+		public static const NOTIFY_XML_DB:String = "notification.db.xml";
+
+
+		public static const STUDY_ID_KEY:String = "study.id.key";
+		
+	}
+}

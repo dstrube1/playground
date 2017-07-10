@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:sides="view.sides.*">
+	
+	<mx:Style>
+		.my3DButtonSkin
+		{
+			upSkin: ClassReference( "view.distortion.ButtonSkin3D" );
+			overSkin: ClassReference( "view.distortion.ButtonSkin3D" );
+			downSkin: ClassReference( "view.distortion.ButtonSkin3D" );
+		}
+	</mx:Style>
+	
+	<mx:Button 
+		id="skin" 
+		label="3D Skin"
+		styleName="my3DButtonSkin"/>
+
+</mx:VBox>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:local="*" 
+	creationComplete="createListener1()">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.events.DataGridEvent;
+			
+			public function createListener1():void{
+				dgc1.addEventListener(MouseEvent.MOUSE_OVER, setLabelMOC1);
+				//dgc1.addEventListener(DataGridEvent.HEADER_RELEASE, setLabelMOC1);
+				//dgc1.addEventListener(DataGridEvent.COLUMN_STRETCH,setLabelMOC1);
+				dg.addEventListener(MouseEvent.CLICK, setLabelCOG);	
+				b1.addEventListener(MouseEvent.MOUSE_OVER,setLabelMOB);				
+				dgc1.addEventListener(MouseEvent.CLICK, setLabelCOC1);
+				
+				//doesn't work: dg.setStyle("backgroundColor","#9fbfdf");
+				//dg.setStyle("themeColor","#9fbfdf");
+
+				//works:
+				//var dgAIC:Array = ["#9fbfdf","#9fbfdf"];
+				//dg.setStyle("alternatingItemColors",dgAIC);
+				//dg.setStyle("color","#9fbfdf"); //text color
+				//dg.setStyle("rollOverColor","#9fbfdf");
+				//dg.setStyle("selectionColor","#9fbfdf");
+				
+			}
+			public function setLabelMOC1(e:Event):void{
+				L1.text = "Moused over column 1"; 
+			} 
+			public function setLabelCOG(e:Event):void{
+				L1.text = "clicked on grid"; 
+			} 
+			public function setLabelMOB(e:Event):void{
+				L1.text = "moused over button"; 
+			} 
+			public function setLabelCOC1(e:Event):void{
+				L1.text = "Clicked on column1"; 
+			} 
+		]]>
+	</mx:Script>
+	
+		<mx:Panel x="10" y="10" width="250" height="200" layout="absolute">
+				<mx:Label id="L1" x="10" y="10" text="Label"/>
+				<mx:Button x="30" y="82" label="Button" id="b1"/>
+		</mx:Panel>
+	
+		<mx:ArrayCollection id="ac">
+			<mx:source>
+				<mx:Object title="1" pubDate="today" letter="a" />
+				<mx:Object title="2" pubDate="tomorrow" letter="b"/>
+				<mx:Object title="3" pubDate="that boring movie about everything freezing" letter="c"/>
+			</mx:source>
+		</mx:ArrayCollection>
+
+		<mx:DataGrid id="dg" width="585" x="10" y="232" dataProvider="{ac}" 
+			change="showDetails()" >
+			<mx:columns>
+				<mx:DataGridColumn id="dgc1" headerText="Posts" dataField="title" sortable="true" />
+				<mx:DataGridColumn id="dgc2" headerText="Date" dataField="pubDate" width="300" />
+				<mx:DataGridColumn id="dgc3" headerText="Letter" dataField="letter"/>
+			</mx:columns> 
+		</mx:DataGrid>
+		<mx:List x="754" y="10"></mx:List>
+	
+	<!--			<local:CciGrid rolloverText="" columnHeader="" columnFieldName="" columnId=""/>id="ccig" columns="2" -->		 
+
+</mx:Application>

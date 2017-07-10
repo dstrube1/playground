@@ -1,0 +1,1157 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
+<meta content="SoundEffect,mx.effects.SoundEffect,alphaFrom,alphaTo,color,targetArea,name,value,captureRollEvents,originX,originY,zoomHeightFrom,zoomHeightTo,zoomWidthFrom,zoomWidthTo,toValue,isStyle,property,roundValue,fromValue,heightBy,heightFrom,heightTo,hideChildrenTargets,widthBy,widthFrom,widthTo,perElementOffset,instanceClass,repeatCount,repeatDelay,startDelay,suspendBackgroundProcessing,endValuesCaptured,className,customFilter,duration,relevantProperties,relevantStyles,filter,effectTargetHost,isPlaying,target,targets,name,value,relevantStyles,alphaFrom,alphaTo,blurXFrom,blurXTo,blurYFrom,blurYTo,color,inner,knockout,strength,angleFrom,angleTo,originX,originY,className,duration,effect,effectTargetHost,playheadTime,propertyChanges,repeatCount,repeatDelay,startDelay,suspendBackgroundProcessing,target,triggerEvent,easingFunction,duration,listener,easingFunction,xBy,xFrom,xTo,yBy,yFrom,yTo,filterFunction,filterProperties,filterStyles,requiredSemantics,alphaFrom,alphaTo,createMaskFunction,moveEasingFunction,scaleEasingFunction,scaleXFrom,scaleXTo,scaleYFrom,scaleYTo,xFrom,xTo,yFrom,yTo,showTarget,children,blurXFrom,blurXTo,blurYFrom,blurYTo,index,relativeTo,position,bufferTime,loops,panEasingFunction,panFrom,panTo,startTime,useDuration,volumeEasingFunction,volumeFrom,volumeTo,autoLoad,isLoading,sound,source,getAffectedProperties,play,createInstances,createInstance,initInstance,pause,resume,reverse,end,filterInstance,captureStartValues,captureMoreStartValues,captureEndValues,getValueFromTarget,applyValueToTarget,effectStartHandler,effectEndHandler,suspendEventHandling,resumeEventHandling,endEffectsForTarget,initEffect,startEffect,play,pause,resume,reverse,end,finishEffect,finishRepeat,tweenEventHandler,setTweenHandlers,endTween,seek,reverse,pause,resume,filterInstance,defaultFilterFunctionEx,defaultFilterFunction,getAffectedProperties,tweenEventHandler,addChild,load" name="keywords">
+<title>mx.effects.SoundEffect (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'SoundEffect - Flex 3 Language Reference';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../index.html?mx/effects/SoundEffect.html&amp;mx/effects/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;SoundEffect</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class SoundEffect"); titleBar_setSubNav(false,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.effects</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  SoundEffect</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">SoundEffect  <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../mx/effects/Effect.html">Effect</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../flash/events/EventDispatcher.html">EventDispatcher</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../Object.html">Object</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  The SoundEffect class plays an MP3 audio file. 
+  For example, you could play a sound when a user clicks a Button control. 
+  This effect lets you repeat the sound, select the source file,
+  and control the volume and pan. 
+   <p>You specify the MP3 file using the <code>source</code> property. 
+  If you have already embedded the MP3 file, using the <code>Embed</code>
+  keyword, you can pass the Class object of the MP3 file to the
+  <code>source</code> property. 
+  Otherwise, specify the full URL to the MP3 file.</p>
+  
+  <p></p>
+<a name="mxmlSyntaxSummary"></a><span class="classHeaderTableLabel">MXML Syntax</span><span style="display:none" id="showMxmlLink"><a onclick="toggleMXMLOnly();" href="#mxmlSyntaxSummary"><img class="collapsedImage" alt="collapsed" title="collapsed" src="../../images/collapsed.gif">Show MXML Syntax</a>
+<br>
+</span><span id="hideMxmlLink"><a onclick="toggleMXMLOnly();" href="#mxmlSyntaxSummary"><img class="expandedImage" alt="expanded" title="expanded" src="../../images/expanded.gif">Hide MXML Syntax</a></span>
+<div class="mxmlSyntax" id="mxmlSyntax">   <p>The <code>&lt;mx:SoundEffect&gt;</code> tag
+  inherits all of the tag attributes of its superclass,
+  and adds the following tag attributes:</p>
+  
+  <pre>
+  &lt;mx:SoundEffect
+    <b>Properties</b>
+    id="ID"
+    autoLoad="true|false"
+    bufferTime="1000"
+    loops="0"
+    panEasingFunction=""
+    panFrom="0"
+    source=""
+    startTime="0"
+    useDuration="true|false"
+    volumeEasingFunction="true|false"
+    volumeTo="1"
+     
+    <b>Events</b>
+    complete="<i>No default</i>"
+    id3="<i>No default</i>"
+    ioError="<i>No default</i>"
+    progress="<i>No default</i>"
+  /&gt;
+  </pre>
+  
+  </div>
+<script type="text/javascript" language="javascript">
+<!--
+setMXMLOnly();
+--></script>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../mx/effects/effectClasses/SoundEffectInstance.html" target="">mx.effects.effectClasses.SoundEffectInstance</a>
+<br>
+<a href="../../flash/media/Sound.html" target="">flash.media.Sound</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#autoLoad">autoLoad</a> : <a href="../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription"> 
+      If true, load the MP3 file 
+      when the source has been specified.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#bufferTime">bufferTime</a> : <a href="../../Number.html">Number</a> = 1000<div class="summaryTableDescription"> 
+      The SoundEffect class uses an internal Sound object to control
+      the MP3 file.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#className">className</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription">[read-only] 
+      The name of the effect class, such as "Fade".</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#constructor">constructor</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  A reference to the class object or constructor function for a given object instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#customFilter">customFilter</a> : <a href="../../mx/effects/EffectTargetFilter.html">EffectTargetFilter</a>
+<div class="summaryTableDescription">
+      Specifies a custom filter object, of type EffectTargetFilter, used by
+      the effect to determine the targets on which to play the effect.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#duration">duration</a> : <a href="../../Number.html">Number</a>
+<div class="summaryTableDescription"> 
+      Duration of the effect in milliseconds.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#effectTargetHost">effectTargetHost</a> : IEffectTargetHost<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#filter">filter</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription">
+      Specifies an algorithm for filtering targets for an effect.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#instanceClass">instanceClass</a> : <a href="../../Class.html">Class</a>
+<div class="summaryTableDescription">
+      An object of type Class that specifies the effect
+      instance class class for this effect class.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isLoading">isLoading</a> : <a href="../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">[read-only] 
+      This property is true if the MP3 has been loaded.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#isPlaying">isPlaying</a> : <a href="../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">[read-only] 
+      A read-only flag which is true if any instances of the effect
+      are currently playing, and false if none are.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#loops">loops</a> : <a href="../../int.html">int</a> = 0<div class="summaryTableDescription">
+      The number of times to play the sound in a loop, where a value of
+      0 means play the effect once, a value of 1 means play the effect twice,
+      and so on.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#panEasingFunction">panEasingFunction</a> : <a href="../../Function.html">Function</a>
+<div class="summaryTableDescription">
+      The easing function for the pan effect.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#panFrom">panFrom</a> : <a href="../../Number.html">Number</a>
+<div class="summaryTableDescription">
+      Initial pan of the Sound object.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#panTo">panTo</a> : <a href="../../Number.html">Number</a>
+<div class="summaryTableDescription">
+      Final pan of the Sound object.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#perElementOffset">perElementOffset</a> : <a href="../../Number.html">Number</a> = 0<div class="summaryTableDescription">
+   Additional delay in milliseconds for subsequent targets after the first
+   target.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#prototype">prototype</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">[static] 
+  A reference to the prototype object of a class or function object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#relevantProperties">relevantProperties</a> : <a href="../../Array.html">Array</a>
+<div class="summaryTableDescription">
+      An Array of property names to use when performing filtering.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#relevantStyles">relevantStyles</a> : <a href="../../Array.html">Array</a>
+<div class="summaryTableDescription">
+      An Array of style names to use when performing filtering.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#repeatCount">repeatCount</a> : <a href="../../int.html">int</a> = 1<div class="summaryTableDescription">
+      Number of times to repeat the effect.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#repeatDelay">repeatDelay</a> : <a href="../../int.html">int</a> = 0<div class="summaryTableDescription">
+      Amount of time, in milliseconds, to wait before repeating the effect.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#sound">sound</a> : <a href="../../flash/media/Sound.html">Sound</a>
+<div class="summaryTableDescription">[read-only] 
+      The Sound object that the MP3 file has been loaded into.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#source">source</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+      The URL or class of the MP3 file to play.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#startDelay">startDelay</a> : <a href="../../int.html">int</a> = 0<div class="summaryTableDescription">
+      Amount of time, in milliseconds, to wait before starting the effect.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#startTime">startTime</a> : <a href="../../Number.html">Number</a> = 0<div class="summaryTableDescription"> 
+      The initial position in the MP3 file, in milliseconds, 
+      at which playback should start.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#suspendBackgroundProcessing">suspendBackgroundProcessing</a> : <a href="../../Boolean.html">Boolean</a> = false<div class="summaryTableDescription">
+      If true, blocks all background processing
+      while the effect is playing.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#target">target</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription"> 
+      The UIComponent object to which this effect is applied.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#targets">targets</a> : <a href="../../Array.html">Array</a>
+<div class="summaryTableDescription">
+      An Array of UIComponent objects that are targets for the effect.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#useDuration">useDuration</a> : <a href="../../Boolean.html">Boolean</a> = true<div class="summaryTableDescription">
+      If true, stop the effect
+      after the time specified by the duration 
+      property has elapsed.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#volumeEasingFunction">volumeEasingFunction</a> : <a href="../../Function.html">Function</a>
+<div class="summaryTableDescription">
+      The easing function for the volume effect.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#volumeFrom">volumeFrom</a> : <a href="../../Number.html">Number</a>
+<div class="summaryTableDescription">
+      Initial volume of the Sound object.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#volumeTo">volumeTo</a> : <a href="../../Number.html">Number</a>
+<div class="summaryTableDescription">
+      Final volume of the Sound object.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedProperty" id="hideInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Properties</a>
+</div>
+<div class="showInheritedProtectedProperty" id="showInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Properties</a>
+</div>
+</div>
+<table id="summaryTableProtectedProperty" class="summaryTable hideInheritedProtectedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/effects/Effect.html#protected">endValuesCaptured</a> : <a href="../../Boolean.html">Boolean</a> = false<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#SoundEffect()">SoundEffect</a>(target:<a href="../../Object.html">Object</a> = null)</div>
+<div class="summaryTableDescription">
+      Constructor.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#addEventListener()">addEventListener</a>(type:<a href="../../String.html">String</a>, listener:<a href="../../Function.html">Function</a>, useCapture:<a href="../../Boolean.html">Boolean</a> = false, priority:<a href="../../int.html">int</a> = 0, useWeakReference:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+    Registers an event listener object with an EventDispatcher object so that the listener 
+    receives notification of an event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#captureEndValues()">captureEndValues</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Captures the current values of the relevant properties
+      on the effect's targets and saves them as end values.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#captureMoreStartValues()">captureMoreStartValues</a>(targets:<a href="../../Array.html">Array</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Captures the current values of the relevant properties
+      of an additional set of targets
+     
+      This function is used by Flex when a data change
+      effect is run.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#captureStartValues()">captureStartValues</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Captures the current values of the relevant properties
+      on the effect's targets.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#createInstance()">createInstance</a>(target:<a href="../../Object.html">Object</a> = null):IEffectInstance</div>
+<div class="summaryTableDescription">
+      Creates a single effect instance and initializes it.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#createInstances()">createInstances</a>(targets:<a href="../../Array.html">Array</a> = null):<a href="../../Array.html">Array</a>
+</div>
+<div class="summaryTableDescription">
+      Takes an Array of target objects and invokes the 
+      createInstance() method on each target.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#dispatchEvent()">dispatchEvent</a>(event:<a href="../../flash/events/Event.html">Event</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Dispatches an event into the event flow.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#end()">end</a>(effectInstance:IEffectInstance = null):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Interrupts an effect that is currently playing,
+      and jumps immediately to the end of the effect.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#getAffectedProperties()">getAffectedProperties</a>():<a href="../../Array.html">Array</a>
+</div>
+<div class="summaryTableDescription">
+      Returns an Array of Strings, where each String is the name
+      of a property that is changed by this effect.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#hasEventListener()">hasEventListener</a>(type:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Checks whether the EventDispatcher object has any listeners registered for a specific type 
+    of event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">hasOwnProperty</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an object has a specified property defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">isPrototypeOf</a>(theClass:<a href="../../Object.html">Object</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an instance of the Object class is in the prototype chain of the object specified 
+  as the parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#load()">load</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Loads the MP3 if the source property points to a URL.</div>
+</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#pause()">pause</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Pauses the effect until you call the resume() method.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#play()">play</a>(targets:<a href="../../Array.html">Array</a> = null, playReversedFromEnd:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../Array.html">Array</a>
+</div>
+<div class="summaryTableDescription">
+      Begins playing the effect.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">propertyIsEnumerable</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether the specified property exists and is enumerable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#removeEventListener()">removeEventListener</a>(type:<a href="../../String.html">String</a>, listener:<a href="../../Function.html">Function</a>, useCapture:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+    Removes a listener from the EventDispatcher object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#resume()">resume</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Resumes the effect after it has been paused 
+      by a call to the pause() method.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#reverse()">reverse</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Plays the effect in reverse, if the effect is currently playing,
+      starting from the current position of the effect.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#setPropertyIsEnumerable()">setPropertyIsEnumerable</a>(name:<a href="../../String.html">String</a>, isEnum:<a href="../../Boolean.html">Boolean</a> = true):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+     Sets the availability of a dynamic property for loop operations.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#toString()">toString</a>():<a href="../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the string representation of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#valueOf()">valueOf</a>():<a href="../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the primitive value of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#willTrigger()">willTrigger</a>(type:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Checks whether an event listener is registered with this EventDispatcher object or any of 
+    its ancestors for the specified event type.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedMethod" id="hideInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
+</div>
+<div class="showInheritedProtectedMethod" id="showInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
+</div>
+</div>
+<table id="summaryTableProtectedMethod" class="summaryTable hideInheritedProtectedMethod" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#protected()">applyValueToTarget</a>(target:<a href="../../Object.html">Object</a>, property:<a href="../../String.html">String</a>, value:<a href="../../specialTypes.html#*">*</a>, props:<a href="../../Object.html">Object</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Used internally by the Effect infrastructure.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#protected()">effectEndHandler</a>(event:<a href="../../mx/events/EffectEvent.html">EffectEvent</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Called when an effect instance has finished playing.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#protected()">effectStartHandler</a>(event:<a href="../../mx/events/EffectEvent.html">EffectEvent</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      This method is called when the effect instance starts playing.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#protected()">filterInstance</a>(propChanges:<a href="../../Array.html">Array</a>, target:<a href="../../Object.html">Object</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+      Determines the logic for filtering out an effect instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#protected()">getValueFromTarget</a>(target:<a href="../../Object.html">Object</a>, property:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#*">*</a>
+</div>
+<div class="summaryTableDescription">
+      Called by the captureStartValues() method to get the value
+      of a property from the target.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#protected()">initInstance</a>(instance:IEffectInstance):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Copies properties of the effect to the effect instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<div class="showHideLinks">
+<div class="hideInheritedEvent" id="hideInheritedEvent">
+<a onclick="javascript:setInheritedVisible(false,'Event');" href="#eventSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Events</a>
+</div>
+<div class="showInheritedEvent" id="showInheritedEvent">
+<a onclick="javascript:setInheritedVisible(true,'Event');" href="#eventSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Events</a>
+</div>
+</div>
+<table id="summaryTableEvent" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th> Summary </th><th class="summaryTableOwnerCol">Defined By</th>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#event:activate">activate</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when Flash Player or the and AIR application gains operating system focus and becomes active.</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:complete">complete</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when the sound file finishes loading.</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#event:deactivate">deactivate</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when Flash Player loses operating system focus and is becoming inactive.</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#event:effectEnd">effectEnd</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when the effect finishes playing, either when the effect finishes playing or when the effect has been interrupted by a call to the end() method.</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/effects/Effect.html#event:effectStart">effectStart</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when the effect starts playing.</td><td class="summaryTableOwnerCol"><a href="../../mx/effects/Effect.html">Effect</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:id3">id3</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when ID3 data is available for an MP3 sound file.</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:ioError">ioError</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when an error occurs during the loading of the sound file.</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:progress">progress</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched periodically as the sound file loads.</td><td class="summaryTableOwnerCol">SoundEffect</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="autoLoad"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">autoLoad</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>autoLoad:<a href="../../Boolean.html">Boolean</a></code>&nbsp;&nbsp;[read-write] <p></p><p> 
+      If <code>true</code>, load the MP3 file 
+      when the <code>source</code> has been specified.
+           </p><p> The default value is <code>true</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get autoLoad():<a href="../../Boolean.html">Boolean</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set autoLoad(value:<a href="../../Boolean.html">Boolean</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="bufferTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">bufferTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var bufferTime:<a href="../../Number.html">Number</a> = 1000</code>
+<p></p><p> 
+      The SoundEffect class uses an internal Sound object to control
+      the MP3 file.
+      This property specifies the minimum number of milliseconds 
+      worth of sound data to hold in the Sound object's buffer.
+      The Sound object waits until it has at least
+      this much data before beginning playback,
+      and before resuming playback after a network stall.
+           </p><p> The default value is <code>1000</code>.</p>
+</div>
+<a name="propertyDetail"></a><a name="isLoading"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isLoading</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>isLoading:<a href="../../Boolean.html">Boolean</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+      This property is <code>true</code> if the MP3 has been loaded. 
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isLoading():<a href="../../Boolean.html">Boolean</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="loops"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">loops</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var loops:<a href="../../int.html">int</a> = 0</code>
+<p></p><p>
+      The number of times to play the sound in a loop, where a value of
+      0 means play the effect once, a value of 1 means play the effect twice,
+      and so on. If you repeat the MP3 file, it still uses the setting of the
+      <code>useDuration</code> property to determine the playback time.
+           <p>The <code>duration</code> property takes precedence
+      over this property. 
+      If the effect duration is not long enough to play the sound
+      at least once, the sound does not loop.</p>
+           </p><p> The default value is <code>0</code>.</p>
+</div>
+<a name="propertyDetail"></a><a name="panEasingFunction"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">panEasingFunction</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var panEasingFunction:<a href="../../Function.html">Function</a></code>
+<p></p><p>
+      The easing function for the pan effect.
+      Use this function to interpolate between the values
+      of <code>panFrom</code> and <code>panTo</code>.
+     </p></div>
+<a name="propertyDetail"></a><a name="panFrom"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">panFrom</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var panFrom:<a href="../../Number.html">Number</a></code>
+<p></p><p>
+      Initial pan of the Sound object.
+      The value can range from -1.0 to 1.0, where -1.0 uses only the left 
+      channel, 1.0 uses only the right channel, and 0.0 balances the sound 
+      evenly between the two channels.
+           </p><p> The default value is <code>0.0</code>.</p>
+</div>
+<a name="propertyDetail"></a><a name="panTo"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">panTo</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var panTo:<a href="../../Number.html">Number</a></code>
+<p></p><p>
+      Final pan of the Sound object.
+      The value can range from -1.0 to 1.0, where -1.0 uses only the left channel,
+      1.0 uses only the right channel, and 0.0 balances the sound evenly
+      between the two channels.
+           </p><p> The default value is <code>0.0</code>.</p>
+</div>
+<a name="propertyDetail"></a><a name="sound"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sound</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>sound:<a href="../../flash/media/Sound.html">Sound</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+      The Sound object that the MP3 file has been loaded into. 
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get sound():<a href="../../flash/media/Sound.html">Sound</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="source"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">source</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>source:<a href="../../Object.html">Object</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      The URL or class of the MP3 file to play.
+      If you have already embedded the MP3 file, using the <code>Embed</code> keyword, 
+      you can pass the Class object of the MP3 file to the <code>source</code> property. 
+      Otherwise, specify the full URL to the MP3 file.
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get source():<a href="../../Object.html">Object</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set source(value:<a href="../../Object.html">Object</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="startTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">startTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var startTime:<a href="../../Number.html">Number</a> = 0</code>
+<p></p><p> 
+      The initial position in the MP3 file, in milliseconds, 
+      at which playback should start.
+           </p><p> The default value is <code>0</code>.</p>
+</div>
+<a name="propertyDetail"></a><a name="useDuration"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">useDuration</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var useDuration:<a href="../../Boolean.html">Boolean</a> = true</code>
+<p></p><p>
+      If <code>true</code>, stop the effect
+      after the time specified by the <code>duration</code> 
+      property has elapsed.
+      If <code>false</code>, stop the effect
+      after the MP3 finishes playing or looping.
+           </p><p> The default value is <code>true</code>.</p>
+</div>
+<a name="propertyDetail"></a><a name="volumeEasingFunction"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">volumeEasingFunction</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var volumeEasingFunction:<a href="../../Function.html">Function</a></code>
+<p></p><p>
+      The easing function for the volume effect.
+      This function is used to interpolate between the values
+      of <code>volumeFrom</code> and <code>volumeTo</code>.
+     </p></div>
+<a name="propertyDetail"></a><a name="volumeFrom"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">volumeFrom</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var volumeFrom:<a href="../../Number.html">Number</a></code>
+<p></p><p>
+      Initial volume of the Sound object.
+      Value can range from 0.0 to 1.0.
+           </p><p> The default value is <code>1</code>.</p>
+</div>
+<a name="propertyDetail"></a><a name="volumeTo"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">volumeTo</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var volumeTo:<a href="../../Number.html">Number</a></code>
+<p></p><p>
+      Final volume of the Sound object.
+      Value can range from 0.0 to 1.0.
+           </p><p> The default value is <code>1</code>.</p>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor Detail</div>
+<a name="SoundEffect()"></a><a name="SoundEffect(Object)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">SoundEffect</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function SoundEffect(target:<a href="../../Object.html">Object</a> = null)</code>
+<p></p><p>
+      Constructor.
+           </p><span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">target</span>:<a href="../../Object.html">Object</a></code> (default = <code>null</code>)<code></code> &mdash; The Object to animate with this effect.
+     </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method Detail</div>
+<a name="load()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">load</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function load():<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Loads the MP3 if the <code>source</code> property points to a URL.
+     </p></div>
+<div class="detailSectionHeader"> Event Detail </div>
+<a name="event:complete"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">complete</td><td class="detailHeaderType">event&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/Event.html"><code>flash.events.Event</code></a>
+<br>
+<span class="label">Event.type property = </span><a href="../../flash/events/Event.html#COMPLETE"><code>flash.events.Event.COMPLETE</code></a>
+<br>
+<p></p><p>
+  Dispatched when the sound file finishes loading.
+   </p>
+ The <code>Event.COMPLETE</code> constant defines the value of the <code>type</code> property of a <code>complete</code> event object. 
+ 
+ <p>This event has the following properties:</p>
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>false</code>; there is no default behavior to cancel.</td>
+</tr>
+<tr>
+<td><code>currentTarget</code></td><td>The object that is actively processing the Event 
+ object with an event listener.</td>
+</tr>
+<tr>
+<td><code>target</code></td><td>The network object that has completed loading. 
+     </td>
+</tr></table>
+ 
+ </div>
+<a name="event:id3"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">id3</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/Event.html"><code>flash.events.Event</code></a>
+<br>
+<span class="label">Event.type property = </span><a href="../../flash/events/Event.html#ID3"><code>flash.events.Event.ID3</code></a>
+<br>
+<p></p><p>
+  Dispatched when ID3 data is available for an MP3 sound file.
+   </p>
+ The <code>Event.ID3</code> constant defines the value of the <code>type</code> property of an <code>id3</code> event object. 
+ <p>This event has the following properties:</p>
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>false</code>; there is no default behavior to cancel.</td>
+</tr>
+<tr>
+<td><code>currentTarget</code></td><td>The object that is actively processing the Event 
+ object with an event listener.</td>
+</tr>
+<tr>
+<td><code>target</code></td><td>The Sound object loading the MP3 for which ID3 data is now available. 
+ The <code>target</code> is not always the object in the display list 
+ that registered the event listener. Use the <code>currentTarget</code> 
+ property to access the object in the display list that is currently processing the event.</td>
+</tr></table>
+ 
+ </div>
+<a name="event:ioError"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ioError</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/IOErrorEvent.html"><code>flash.events.IOErrorEvent</code></a>
+<br>
+<span class="label">IOErrorEvent.type property = </span><a href="../../flash/events/IOErrorEvent.html#IO_ERROR"><code>flash.events.IOErrorEvent.IO_ERROR</code></a>
+<br>
+<p></p><p>
+  Dispatched when an error occurs during the loading of the sound file.
+   </p>
+ Defines the value of the <code>type</code> property of an <code>ioError</code> event object.
+ <p>This event has the following properties:</p>
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>false</code>; there is no default behavior to cancel.</td>
+</tr>
+<tr>
+<td><code>currentTarget</code></td><td>The object that is actively processing the Event 
+ object with an event listener.</td>
+</tr>
+<tr>
+<td><code>errorID</code></td><td>A reference number associated with the specific error.</td>
+</tr>
+<tr>
+<td><code>target</code></td><td>The network object experiencing the input/output error.</td>
+</tr>
+<tr>
+<td><code>text</code></td><td>Text to be displayed as an error message.</td>
+</tr></table>
+ 
+ </div>
+<a name="event:progress"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">progress</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/ProgressEvent.html"><code>flash.events.ProgressEvent</code></a>
+<br>
+<span class="label">ProgressEvent.type property = </span><a href="../../flash/events/ProgressEvent.html#PROGRESS"><code>flash.events.ProgressEvent.PROGRESS</code></a>
+<br>
+<p></p><p>
+  Dispatched periodically as the sound file loads.
+   <p>Within the event object, you can access the number of bytes
+  currently loaded and the total number of bytes to load.
+  The event is not guaranteed to be dispatched, which means that
+  the <code>complete</code> event might be dispatched 
+  without any <code>progress</code> events being dispatched.</p>
+   </p>
+ Defines the value of the <code>type</code> property of a <code>progress</code> event object.
+ 
+ <p>This event has the following properties:</p>
+ 
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>bytesLoaded</code></td><td>The number of items or bytes loaded at the time the listener processes the event.</td>
+</tr>
+<tr>
+<td><code>bytesTotal</code></td><td>The total number of items or bytes that ultimately will  be loaded if the loading process succeeds.</td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>false</code>; there is no default behavior to cancel.</td>
+</tr>
+<tr>
+<td><code>currentTarget</code></td><td>The object that is actively processing the Event 
+ object with an event listener.</td>
+</tr>
+<tr>
+<td><code>target</code></td><td>The network object reporting progress. </td>
+</tr></table>
+ 
+ </div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/effects/SoundEffect.html','mx/effects/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

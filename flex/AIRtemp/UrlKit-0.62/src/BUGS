@@ -1,0 +1,20 @@
+- Safari history support: navigating w/ back and forward across
+boundary of set of URLs belonging to UrlKit app causes bookkeeping problems.
+
+- IE6: loading bookmarks (Allan Young <allany@adobe.com>)
+> One anomaly that I ran into is that with IE, let's say I navigate to 
+> a series of pages in my app, thus pushing some histories to the back 
+> button via UrlKit, I do see history in my back button popup menu for 
+> each page...but if I then load any bookmark and then examine the back 
+> button popup menu, only the last history item that I pushed via UrlKit 
+> is visible...but then, if I click the back button, I can correctly 
+> walk back through the history. Indeed, that first click of the back 
+> button re-populates the back button menu with the history of the pages 
+> I pushed.
+> 
+
+- IE6: titles of history entries
+> Also (unrelated) the history popup menu in IE shows a truncated full 
+> URL for each history item (that is, starting with http://), whereas 
+> Firefox shows just the browser window title for my pushed pages.
+

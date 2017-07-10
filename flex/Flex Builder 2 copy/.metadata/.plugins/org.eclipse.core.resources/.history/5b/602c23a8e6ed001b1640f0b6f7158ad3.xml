@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="740" height="450"
+	implements="base.form.LenzForm" 
+	xmlns:panel="lenz.main.study_mgr.panel.*"
+	styleName="studyManagerMainForm" 
+	horizontalCenter="0" 
+	xmlns:notification="base.notification.*">
+	 
+	<mx:Script>
+		<![CDATA[
+			import app.server.LenzServer;
+			import lenz.main.study_mgr.controller.StudyClickManager;
+			import mx.controls.Alert;
+			import base.lenz.panel.LenzPanel;
+			import app.App;
+			import base.services.MapArray;
+			
+			private var _parent:LenzPanel = null;
+			
+			private var high:Array = null;
+			private var medium:Array = null;
+			private var low:Array = null;
+			
+			[Bindable]
+			private var sName:String = "";
+			[Bindable]
+			private var notifDetails:Array = null;
+			[Bindable]
+			private var labelText:String = null;
+			[Bindable]
+			private var descText:String = null;
+			
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+
+	
+			
+		]]>
+	</mx:Script>
+
+	<mx:Label x="0" y="5" color="#000000" id="studyName" maxHeight="30" text="{sName}" fontThickness="200" fontSize="18" click="Alert.show('List of open studies here')" />
+		
+		<mx:Label text="{labelText}" x="20" y="50" width="450" color="#000000" />
+		
+		<mx:Label text="{descText}" x="40" y="75" width="450" color="#000000" />
+		
+		<mx:Label text="Potential Resolutions:" x="40" y="125" color="#000000" />
+		
+
+		
+</mx:Canvas>
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml">
+
+    <mx:Script>
+        <![CDATA[
+
+            private function moveImage():void {
+                myMove.end();
+                myMove.xTo=img.x-60; 
+                myMove.play();
+            }
+      ]]>
+    </mx:Script>
+
+    <mx:Move id="myMove" target="{img}"/>
+
+    <mx:Panel width="95%" height="95%" 
+        paddingTop="5" paddingLeft="10" paddingRight="10" paddingBottom="5">
+
+        <mx:Canvas id="canvas" width="100%" height="100%" mouseDown="moveImage();">
+
+            <mx:Image id="img" source="@Embed(source='assets/gone.gif')" width="1332" height="947"/>
+
+        </mx:Canvas>
+    
+    </mx:Panel>
+</mx:Application>

@@ -1,0 +1,9 @@
+package base.util
+{
+	public interface BreadcrumbStackListener
+	{
+		
+		function update( stack:BreadcrumbStack):void;
+		
+	}
+}

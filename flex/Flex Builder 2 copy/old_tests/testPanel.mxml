@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="400" height="300">
+<mx:Script>
+	<![CDATA[
+		import mx.controls.Alert;
+			
+			private function submitLogin():void{
+				Alert.show("clicked");
+			}
+	]]>
+</mx:Script>
+	<mx:TextInput x="77" y="16" width="200" height="30" cornerRadius="5" id="username" />
+
+	<mx:TextInput x="77" y="54" width="200" height="30" cornerRadius="5" id="password" displayAsPassword="true" />        
+		 
+
+    <mx:Button x="25" y="172" label="Secure Login" color="white" width="145" height="28" 
+    	fontSize="11" click="submitLogin();"/>
+		
+		
+
+</mx:Panel>

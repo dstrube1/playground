@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:local="*" layout="absolute">
+	<mx:WebService id="wsBlogAggr" 
+		wsdl="http://weblogs.macromedia.com/mxna/webservices/mxna2.cfc?wsdl"
+		useProxy="false">
+		<mx:operation name="getMostPopularPosts">
+			<mx:request xmlns="">
+				<daysBack>{cbDaysBack.value}</daysBack>
+				<limit>{cbNumPosts.value}</limit>
+			</mx:request>
+		</mx:operation>
+	</mx:WebService>
+	<mx:Panel x="10" y="10" width="475" height="400" layout="absolute">
+	<local:array />
+		<mx:ComboBox x="10" y="19" id="cbNumPosts">
+			<mx:Object label="Top 5" data="5"/>
+			<mx:Object label="Top 10" data="10"/>
+			<mx:Object label="Top 15" data="15"/>
+		</mx:ComboBox>
+		<mx:ComboBox x="147" y="19" id="cbDaysBack">
+			<mx:Object label="10 days back" data="10"/>
+			<mx:Object label="20 days back" data="20"/>
+			<mx:Object label="30 days back" data="30"/>
+		</mx:ComboBox>
+		<mx:DataGrid x="10" y="65" id="dgTopPosts" width="400" dataProvider="{wsBlogAggr.getMostPopularPosts.lastResult}">
+			<mx:columns>
+				<mx:DataGridColumn headerText="Top Posts" dataField="postTitle"/>
+				<mx:DataGridColumn headerText="Clicks" dataField="clicks" width="75"/>
+			</mx:columns>
+		</mx:DataGrid>
+		<mx:LinkButton x="10" y="215" label="Select an item and click here for full post"
+			click="navigateToURL(new URLRequest(dgTopPosts.selectedItem.postLink));" />
+		<mx:Button x="314" y="19" label="Get" id="bGet" click="wsBlogAggr.getMostPopularPosts.send()"/>
+	</mx:Panel>
+	
+</mx:Application>

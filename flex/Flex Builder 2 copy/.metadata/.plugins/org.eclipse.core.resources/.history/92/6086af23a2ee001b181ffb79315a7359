@@ -1,0 +1,62 @@
+package app.config
+{
+	import base.lenz.Lenz;
+	//import base.Context;
+	
+	public class LenzFactory
+	{
+		
+		private static var lenzRegistry:Object = new Object();
+		private static var lenzCache:Object = new Object();
+		//private static var appContext:Context = null;
+		
+		public static function registerLenz( name:String, impl:Class):void {
+			
+		
+			lenzRegistry[name] = impl;
+			
+		}
+		
+		
+		
+		/* public static function defineContext( ctx:Context):void {
+			
+			appContext = ctx;
+			
+		} */
+		
+		
+		public static function getLenz( name:String):Lenz {
+			
+			if (lenzCache.hasOwnProperty(name)) {
+			
+				return(lenzCache[name]);
+				
+			} else if (lenzRegistry.hasOwnProperty(name)) {
+				
+				var lenzClass:Class = lenzRegistry[name];
+				
+				var newLenz:Lenz = new lenzClass();
+				
+				lenzCache[name] = newLenz;				
+				
+				// this is where we give the lenz it's application context
+				
+				if (appContext != null) {
+					
+					newLenz.setGlobalContext(appContext);
+					
+				}
+				
+				
+				return(newLenz);
+				
+			} else {
+				throw Error("No Lenz available with name: "+name);
+			}
+			
+		}
+		
+		
+	}
+}

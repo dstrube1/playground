@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommitComments>	<CommitComment>repositioning lenz template so that it&apos;s less pretty and more functional for 1024*768 resolutions</CommitComment>
+	<CommitComment>fixed an image bug</CommitComment>
+	<CommitComment>added comment on testing done at Flex360 Seattle</CommitComment>
+	<CommitComment>added tool tips for the country lists</CommitComment>
+	<CommitComment>removing blades</CommitComment>
+	<CommitComment>update of project properties with flash 9.0.47 requirement
+</CommitComment>
+	<CommitComment>setting return type of setObject from nothing (ie, &quot;&quot;) to void</CommitComment>
+	<CommitComment>minor tweaks to User Preference blade</CommitComment>
+	<CommitComment>eliminated the today screen as default homepage after login; 
+removed study manager and today screen as clickable options in global navigation</CommitComment>
+	<CommitComment>new background images, cleaned up User Pref blade</CommitComment>
+</CommitComments>

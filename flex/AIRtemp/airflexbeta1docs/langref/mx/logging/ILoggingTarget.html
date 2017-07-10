@@ -1,0 +1,254 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
+<meta content="ILoggingTarget,mx.logging.ILoggingTarget,filters,level,LOG,level,message,category,filters,id,level,FATAL,ERROR,WARN,INFO,DEBUG,ALL,category,addLogger,removeLogger,getLevelString,isFatal,isError,isWarn,isInfo,isDebug,addTarget,removeTarget,getLogger,flush,hasIllegalCharacters,log,debug,error,fatal,info,warn,addLogger,removeLogger,initialized,logEvent,log,debug,error,fatal,info,warn" name="keywords">
+<title>mx.logging.ILoggingTarget (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'ILoggingTarget - Flex 3 Language Reference';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../index.html?mx/logging/ILoggingTarget.html&amp;mx/logging/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Interface&nbsp;ILoggingTarget</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Interface ILoggingTarget"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.logging</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public  interface  ILoggingTarget</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implementors</td><td><a href="../../mx/logging/AbstractTarget.html">AbstractTarget</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  All logger target implementations within the logging framework
+  must implement this interface.
+ <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#filters">filters</a> : <a href="../../Array.html">Array</a>
+<div class="summaryTableDescription">
+      In addition to the level setting, filters are used to
+      provide a psuedo-hierarchical mapping for processing only those events
+      for a given category.</div>
+</td><td class="summaryTableOwnerCol">ILoggingTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#level">level</a> : <a href="../../int.html">int</a>
+<div class="summaryTableDescription">
+      Provides access to the level this target is currently set at.</div>
+</td><td class="summaryTableOwnerCol">ILoggingTarget</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addLogger()">addLogger</a>(logger:<a href="../../mx/logging/ILogger.html">ILogger</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Sets up this target with the specified logger.</div>
+</td><td class="summaryTableOwnerCol">ILoggingTarget</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeLogger()">removeLogger</a>(logger:<a href="../../mx/logging/ILogger.html">ILogger</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Stops this target from receiving events from the specified logger.</div>
+</td><td class="summaryTableOwnerCol">ILoggingTarget</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="filters"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">filters</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>filters:<a href="../../Array.html">Array</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      In addition to the <code>level</code> setting, filters are used to
+      provide a psuedo-hierarchical mapping for processing only those events
+      for a given category.
+      
+      <p>Each logger belongs to a category.
+      By convention these categories map to the fully qualified class name
+      in which the logger is used.
+      For example, a logger that is logging messages for the
+      <code>mx.rpc.soap.WebService</code> class would use 
+      <code>"mx.rpc.soap.WebService"</code> as the parameter
+      to the <code>Log.getLogger()</code> call.
+      When messages are sent under this category only those targets that have
+      a filter which matches that category will receive notification of those
+      events.
+      Filter expressions may include a wildcard match, indicated with an
+      asterisk.
+      The wildcard must be the right most character in the expression.
+      For example: rpc*, mx.*, or *.
+      If an invalid expression is specified a <code>InvalidFilterError</code>
+      will be thrown.
+      No spaces or any of the following characters are valid within a filter
+      expression: []~$^&amp;\/(){}&lt;&gt;+=`!#%?,:;'"@.</p>
+      
+      </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get filters():<a href="../../Array.html">Array</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set filters(value:<a href="../../Array.html">Array</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+<br>
+<span class="label"> Example </span>
+<br>
+<br>      <pre>
+      var traceLogger:ILoggingTarget = new TraceTarget();
+      traceLogger.filters = [ "mx.rpc.*", "mx.messaging.*" ];
+      Log.addTarget(traceLogger);
+      </pre>
+     </div>
+<a name="propertyDetail"></a><a name="level"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">level</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>level:<a href="../../int.html">int</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Provides access to the level this target is currently set at.
+      Value values are:
+      <ul>
+        <li><code>LogEventLevel.FATAL</code> designates events that are very
+        harmful and will eventually lead to application failure</li>
+             <li><code>LogEventLevel.ERROR</code> designates error events that might
+        still allow the application to continue running.</li>
+             <li><code>LogEventLevel.WARN</code> designates events that could be
+        harmful to the application operation</li>
+             <li><code>LogEventLevel.INFO</code> designates informational messages
+        that highlight the progress of the application at
+        coarse-grained level.</li>
+             <li><code>LogEventLevel.DEBUG</code> designates informational
+        level messages that are fine grained and most helpful when
+        debugging an application.</li>
+             <li><code>LogEventLevel.ALL</code> intended to force a target to
+        process all messages.</li>
+      </ul>
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get level():<a href="../../int.html">int</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set level(value:<a href="../../int.html">int</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method Detail</div>
+<a name="addLogger()"></a><a name="addLogger(mx.logging.ILogger)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addLogger</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addLogger(logger:<a href="../../mx/logging/ILogger.html">ILogger</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Sets up this target with the specified logger.
+      This allows this target to receive log events from the specified logger.
+      
+      <p><b>Note:</b> This method is called by the framework
+      and should not be called by you directly.</p>
+      
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">logger</span>:<a href="../../mx/logging/ILogger.html">ILogger</a></code> &mdash; The ILogger that this target listens to.
+     </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="removeLogger()"></a><a name="removeLogger(mx.logging.ILogger)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeLogger</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeLogger(logger:<a href="../../mx/logging/ILogger.html">ILogger</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Stops this target from receiving events from the specified logger.
+      
+      <p><b>Note:</b> This method is called by the framework
+      and should not be called by you directly.</p>
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">logger</span>:<a href="../../mx/logging/ILogger.html">ILogger</a></code> &mdash; The ILogger that this target ignores.
+     </td>
+</tr>
+</table>
+</p>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/logging/ILoggingTarget.html','mx/logging/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

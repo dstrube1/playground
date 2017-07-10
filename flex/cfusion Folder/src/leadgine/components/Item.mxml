@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" 
+	horizontalGap="3"
+    height="60"
+    paddingBottom="3"
+    paddingTop="3"
+    paddingRight="3"
+    initialize="setButtonEnabled()"
+    creationComplete="init()"
+    click="debug()">
+    
+	<mx:Metadata>
+		[Event(name="removeItem", type="flash.events.Event")]
+	</mx:Metadata>
+	<mx:Style>
+		.remButt {
+			backgroundColor: #FF66CC;
+		}
+	</mx:Style>
+<mx:Script>
+
+<![CDATA[
+	import mx.collections.ArrayCollection;
+	import leadgine.components.dto.FullServiceReferral;
+	import mx.core.Application;
+	
+	[Bindable]
+	public var toolText:String = "Remove This";
+	[Bindable]
+	public var isFirstItem:Boolean = false;
+	public var myDate:String;
+	public var myFunctionArray:ArrayCollection;
+	[Bindable]
+	public var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	[Bindable]
+	public var startTime:String;
+	[Bindable]
+	public var endTime:String;
+	[Bindable]
+	public var functionDesc:String;
+	[Bindable]
+	public var numPeople:String;
+	[Bindable]
+	public var setup:String;
+	[Bindable]
+	public var foodBevComment:String;
+	[Bindable] public var readOnly:Boolean = false;
+	
+	//this variable is the most compelling reason to replace all public vars with public getters and or setters; only getter in this case
+	public var myID:String;
+	
+	private function debug():void{
+		var i:uint=0;//breakpoint here
+	}
+	
+	public function init():void{
+		if (myFunctionArray == null){
+			myFunctionArray = myDTO.functionArray;
+			if (myFunctionArray == null){
+				myFunctionArray = new ArrayCollection();
+				Application.application.myFullServiceReferral.functionArray = myFunctionArray;
+			}
+		}
+	}
+	public function getContent():String{
+		return "";
+	}
+		/*
+	private function populateSavedValues():void{
+		for (var i:uint=0; i<myFunctionArray.length; i++){
+			var o:Object = myFunctionArray.getItemAt(i);
+			if (o.myID == this.myID){
+				//myDate is set by FunctionDate
+				isFirstItem		 = o.isFirstItem;
+				startTime.text	 = o.startTime;
+				endTime.text	 = o.endTime;
+				functionDesc.text= o.functionDesc;
+				numPeople.text	 = o.numPeople;
+				setup.text		 = o.setup;
+				myFunctionArray.setItemAt(o,i);
+				return;
+			}
+		}
+	}
+		*/
+	
+	private function removeThis():void {
+		clearItem();
+		dispatchEvent(new Event('removeItem'));
+	}
+	private function clearItem():void {
+		startTimeInput.text		 = "";
+		endTimeInput.text		 = "";
+		functionDescInput.text	 = "";
+		numPeopleInput.text		 = "";
+		setupInput.text			 = "";
+		foodBevCommentInput.text = "";
+		textChange();
+	}
+	private function textChange():void{
+		startTime	 = startTimeInput.text;
+		endTime		 = endTimeInput.text;
+		functionDesc = functionDescInput.text;
+		numPeople	 = numPeopleInput.text;
+		setup		 = setupInput.text;
+		foodBevComment=foodBevCommentInput.text;
+		setButtonEnabled();
+	}
+	private function setButtonEnabled():void {
+		if(isFirstItem){
+			if(startTimeInput.text == "" && endTimeInput.text == "" && functionDescInput.text == "" && 
+				numPeopleInput.text == "" && setupInput.text == "" && foodBevCommentInput.text == ""){
+				btnRemove.enabled = false;
+			} else {
+				btnRemove.enabled = true;
+			}
+		}
+	}
+	/*
+	Why was I trying to handle this here, when it's clearly easier to do from FunctionDate?
+	private function updateOnEnter(event:KeyboardEvent):void{
+		if (event.keyCode == Keyboard.ENTER){
+			updateItem();
+		}
+	}
+	
+	public function updateItem():void{
+		//this should have its own copy of the functionArray by now, so we shouldn't have to do this:
+		//if (myFunctionArray == null){
+		//	myFunctionArray = new ArrayCollection();
+		//}
+//having to do this makes me worry about (re)setting the global array at the bottom
+		for (var i:uint=0; i<myFunctionArray.length; i++){
+			var o:Object = myFunctionArray.getItemAt(i);
+			if (o.myID == this.myID){
+				o.isFirstItem = isFirstItem;
+				o.myDate = myDate;
+				if (startTime != null){
+					o.startTime		 = startTime.text;
+					o.endTime		 = endTime.text;
+					o.functionDesc	 = functionDesc.text;
+					o.numPeople		 = numPeople.text;
+					o.setup			 = setup.text;
+				}
+				myFunctionArray.setItemAt(o,i);
+				Application.application.myFullServiceReferral.functionArray = myFunctionArray;
+				return;
+			}
+		}
+		var newObject:Object = new Object();
+		newObject.myID = myID;
+		newObject.isFirstItem = isFirstItem;
+		newObject.myDate = myDate;
+		if (startTime != null){
+			newObject.startTime = startTime.text;
+			newObject.endTime = endTime.text;
+			newObject.functionDesc = functionDesc.text;
+			newObject.numPeople = numPeople.text;
+			newObject.setup = setup.text;
+		}
+		myFunctionArray.addItem(newObject);
+		Application.application.myFullServiceReferral.functionArray = myFunctionArray;
+	}
+	*/
+]]>
+</mx:Script>
+
+	<mx:LinkButton id="btnRemove" styleName="removeButton" label=""  
+		click="removeThis()" toolTip="{toolText}"
+		width="20" height="20" visible="{!readOnly}" 
+		/>
+	<mx:TextInput id="startTimeInput" 		width="70" editable="{!readOnly}" change="textChange()" text="{startTime}" />
+	<mx:TextInput id="endTimeInput" 		width="70" editable="{!readOnly}" change="textChange()" text="{endTime}" />
+	<mx:TextInput id="functionDescInput" 	width="100" editable="{!readOnly}" change="textChange()" text="{functionDesc}" />
+	<mx:TextInput id="numPeopleInput" 		width="80" editable="{!readOnly}" change="textChange()" text="{numPeople}" 
+		restrict="0-9" textAlign="right" />
+	<mx:TextInput id="setupInput" 			width="80" editable="{!readOnly}" change="textChange()" text="{setup}" />
+	<mx:TextArea id="foodBevCommentInput" 	width="210" editable="{!readOnly}" change="textChange()" height="100%"  
+		minHeight="50" text="{foodBevComment}" />
+</mx:HBox>

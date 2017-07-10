@@ -1,0 +1,29 @@
+package app.server.calls
+{
+	import base.services.calls.ServiceCall;
+	import base.services.Content;
+	import base.services.LenzServiceHelper;
+	import base.services.ValueType;
+	
+	import app.server.LenzServer;
+	
+	public class DatabaseResetCall implements ServiceCall
+	{
+		
+		public function call(name:String, params:Object):void
+		{
+			var content:Content;
+			
+			if (params["actionId"] == "resetDatabase") {
+				content = LenzServiceHelper.createResourceCall("databaseResetLenzServerAction");
+				
+				content.DataMap.add("database.reset.action.key", ValueType.STRING, params["actionId"]);
+				content.DataMap.add("user.id.key", ValueType.STRING, params["userId"]);
+				
+				LenzServer.getSvc( content, params["failure"], params["result"]);
+				
+			}
+		}
+		
+	}
+}

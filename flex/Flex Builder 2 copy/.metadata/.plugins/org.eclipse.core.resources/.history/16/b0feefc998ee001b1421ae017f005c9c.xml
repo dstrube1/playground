@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="750" height="470" horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm" horizontalScrollPolicy="off" verticalScrollPolicy="off" color="0x000000">
+	 
+	<mx:Script>
+		<![CDATA[
+			
+			import base.lenz.panel.LenzPanel;
+			import lenz.main.site_select.SiteSelectionLenz;
+			
+			private var _parent:LenzPanel = null;
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+			}
+			
+			private function launchApp( appId:int):void {
+				
+				
+				
+			}
+			
+			public function initializeForm():void {
+				
+		
+			}
+			
+			
+			public function populateResources(data:Object):void { }
+			
+		]]>
+	</mx:Script>
+
+
+	<mx:Label x="0" y="5" color="#000000" maxHeight="30" text="Country Allocation Site Profiling: Base Protocol" fontThickness="200" fontSize="18"  />
+		
+	<mx:Canvas id="surveyContent" top="50" left="10" right="10" height="410" horizontalScrollPolicy="off">
+		<mx:Label fontWeight="bold" text="Saved Criteria:" y="20" x="30"/>
+		<mx:ComboBox x="126" y="20" enabled="false" id="criteria" selectedIndex="-1"></mx:ComboBox>
+		<mx:Button x="332" y="20" label="Submit" id="criteriaSub"/>
+		<!-- Will need flat image of globe -->
+		<mx:Image x="390" y="60" width="289" height="111" source=""/>
+		<mx:Label fontWeight="bold" x="30" y="93" text="Phase:"/>
+		<mx:RadioButtonGroup id="phaseRadio"/>
+			<mx:RadioButton x="82" y="93" label="I" groupName="phaseRadio"/>
+			<mx:RadioButton x="112" y="93" label="II" groupName="phaseRadio" width="44"/>
+			<mx:RadioButton x="148" y="93" label="III" groupName="phaseRadio"/>
+			<mx:RadioButton x="185" y="93" label="IV" groupName="phaseRadio"/>
+		<mx:ComboBox x="82" y="119" id="therapeutic" selectedIndex="-1" width="147"></mx:ComboBox>
+		<mx:ComboBox x="82" y="149" id="disease" selectedIndex="-1" width="147"></mx:ComboBox>
+		<mx:Label fontWeight="bold" x="66" y="179" text="Planned # Sites:"/>
+		<mx:TextInput x="172" y="177" width="57"/>
+		<mx:Label fontWeight="bold" x="37" y="205" text="Estimated # Subjects:"/>
+		<mx:TextInput x="172" y="207" width="57"/>
+		<mx:Label fontWeight="bold" x="237" y="209" text="Screened:"/>
+		<mx:TextInput x="306" y="207" width="57"/>
+		<mx:Label fontWeight="bold" x="390" y="209" text="Enrolled:"/>
+		<mx:TextInput x="452" y="207" width="57"/>
+		<mx:Label fontWeight="bold" x="237" y="235" text="Randomized:"/>
+		<mx:TextInput x="325" y="237" width="57"/>
+		<mx:Label fontWeight="bold" x="390" y="235" text="Completed:"/>
+		<mx:TextInput x="469" y="237" width="57"/>
+		<mx:Label fontWeight="bold" x="50" y="266" textAlign="right" height="36">
+			<mx:text><![CDATA[All sites initiated by
+(date):]]></mx:text>
+		</mx:Label>
+		<mx:TextInput x="172" y="271" width="90"/>
+		<mx:Label fontWeight="bold" x="270" y="266" textAlign="right" height="36">
+			<mx:text><![CDATA[First Subject First Visit
+(date):]]></mx:text>
+		</mx:Label>
+		<mx:TextInput x="404" y="271" width="90"/>
+		<mx:Label fontWeight="bold" x="502" y="266" textAlign="right" height="36">
+			<mx:text><![CDATA[Last Subject First Visit
+(date):]]></mx:text>
+		</mx:Label>
+		<mx:TextInput x="636" y="271" width="90"/>
+		<mx:Label fontWeight="bold" x="43" y="310" height="36" textAlign="right">
+			<mx:text><![CDATA[Planned Investigator
+Grant ($ / Subject)]]></mx:text>
+		</mx:Label>
+		<mx:TextInput x="172" y="315" width="100"/>
+		<mx:Label fontWeight="bold" x="44" y="354" text="Country Constraints:"/>
+		<mx:ComboBox x="172" y="352" selectedIndex="-1" id="include_combo"></mx:ComboBox>
+		<mx:ComboBox x="349" y="352" selectedIndex="-1" id="exclude_combo"></mx:ComboBox>
+		<mx:Label fontWeight="bold" x="44" y="374" height="36" width="112" textAlign="right">
+			<mx:text><![CDATA[# of Known
+Competing Trials:]]></mx:text>
+		</mx:Label>
+		<mx:TextInput x="172" y="382" width="57"/>
+		<mx:Label fontWeight="bold" textAlign="right" y="418" x="44" height="36">
+			<mx:text><![CDATA[Investigational Drug
+Administration:]]></mx:text>
+		</mx:Label>
+		<mx:RadioButtonGroup id="drud_admin"/>
+			<mx:RadioButton label="Oral" y="440" x="172"/>
+			<mx:RadioButton label="Subcutaneous" y="440" x="282"/>
+			<mx:RadioButton label="Intramuscular" y="440" x="392"/>
+			<mx:RadioButton label="Intravenous" y="440" x="502"/>
+			<mx:RadioButton label="Topical" y="460" x="172"/>
+			<mx:RadioButton label="Rectal" y="460" x="282"/>
+			<mx:RadioButton label="Sublingual" y="460" x="392"/>
+			<mx:RadioButton label="Inhalation" y="460" x="502"/>
+		<mx:Label fontWeight="bold" text="Treatment Regimen:" y="480" x="50"/>
+		<mx:TextInput width="57" x="172" y="480" id="doses"/>
+		<mx:Label fontWeight="bold" text="doses per day" y="480" x="230"/>
+		<mx:Label fontWeight="bold" text="Study Population Considerations" x="10" y="560" fontSize="15"/>
+		<mx:Label fontWeight="bold" text="Type of Condition:" y="590" x="30"/>
+		<mx:RadioButtonGroup id="condition"/>
+			<mx:RadioButton label="Acute" y="590" x="140"/>
+			<mx:RadioButton label="Chronic" y="590" x="200"/>
+		<mx:Label fontWeight="bold" y="610" x="34" textAlign="right" height="36">
+			<mx:text><![CDATA[General Disease
+Category:]]></mx:text>
+		</mx:Label>
+		<mx:RadioButtonGroup id="category"/>
+			<mx:RadioButton label="Rare" y="610" x="140"/>
+			<mx:RadioButton label="Common" y="610" x="200"/>
+			<mx:RadioButton label="Uncommon" y="610" x="300"/>
+		<mx:Label fontWeight="bold" text="Disease Prevalence:" x="15" y="648"/>
+		<mx:TextInput width="57" x="140" y="648"/>
+		<mx:Label fontWeight="bold" text="/1000" y="648" x="200"/>
+		<mx:Label fontWeight="bold" text="Treatment Location:" y="680" x="20"/>
+		<mx:RadioButtonGroup id="location"/>
+			<mx:RadioButton label="Inpatient" x="140" y="680"/>
+			<mx:RadioButton label="Outpatient" y="680" x="240"/>
+		<mx:Label fontWeight="bold" text="Prior Treatment:" y="705" x="42"/>
+		<mx:RadioButtonGroup id="treatment"/>
+			<mx:RadioButton label="Treatment Naive" y="705" x="140"/>
+			<mx:RadioButton label="No more than" y="705" x="280"/>
+		<mx:TextInput y="705" width="57" x="390" id="prior_meds"/>
+		<mx:Label y="705" x="450" text="# Prior Medications Allowed"/>
+		<mx:Label fontWeight="bold" y="735" x="22" height="36" textAlign="right">
+			<mx:text><![CDATA[Average duration of
+study visits:]]></mx:text>
+		</mx:Label>
+		<mx:TextInput width="57" x="140" y="740"/>
+		<mx:Label fontWeight="bold" y="740" x="200" text="hours"/>
+		<mx:Label fontWeight="bold" y="770" x="23" height="36" textAlign="right">
+			<mx:text><![CDATA[Requires Overnight
+Stay:]]></mx:text>
+		</mx:Label>
+		<mx:RadioButtonGroup id="overnight"/>
+			<mx:RadioButton label="No" y="770" x="140"/>
+			<mx:RadioButton label="Yes" y="770" x="190"/>
+		<mx:Label text="If Yes, # Overnight Stays:" y="770" x="235"/>
+		<mx:TextInput y="765" x="375" width="57"/>
+		<mx:Label fontWeight="bold" text="Requires Involvement:" y="805" x="10"/>
+		<mx:RadioButtonGroup id="involvement"/>
+			<mx:RadioButton label="No" y="805" x="140"/>
+			<mx:RadioButton label="Yes" y="805" x="190"/>
+				
+	</mx:Canvas>
+	<mx:Button label="Submit" width="150" height="30" right="50" bottom="0" id="submitBtn"
+		click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('Ideal')"/>
+	
+</mx:Canvas>

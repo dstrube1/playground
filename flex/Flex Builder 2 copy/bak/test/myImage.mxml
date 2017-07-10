@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="400" height="300">
+	<mx:Image source="@Embed('/images/logo.png')" />
+	<mx:Button label="{title}" id="button" />
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Text;
+		import base.util.Populate;
+		
+	//	public var title;
+		
+		public static function setTitle(title:String):void{
+			button.label=title;
+		}
+			public static function place( disp:Panel, imageConfig:Object): myImage {
+								
+				var tmp:myImage = new myImage(); 
+				tmp.config(myImageConfig);
+				disp.addChild(tmp);
+				return(tmp);
+			}						
+			
+			public function config( o:Object ):void {
+				Populate.copyFromTo(o, this);
+			}
+		]]>
+	</mx:Script>
+</mx:Panel>
+  

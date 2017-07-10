@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="30" height="30"
+	paddingBottom="5" paddingLeft="5" paddingRight="5" paddingTop="5" 
+	borderColor="#BABABA" borderStyle="solid" borderThickness="2" 
+	backgroundColor="#F7F7F7">
+	<mx:Label id="file_lb" text="{data.text}" fontWeight="bold" color="#000000"/>
+</mx:VBox>

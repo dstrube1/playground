@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="installedFeatures">
+		<item value="com.adobe.flexbuilder.feature.core:3.0.172437"/>
+		<item value="com.adobe.flexbuilder.feature.standalone:3.0.172437"/>
+		<item value="org.eclipse.datatools.connectivity.feature:1.0.0.200612201"/>
+		<item value="org.eclipse.datatools.enablement.feature:1.0.0.200612201"/>
+		<item value="org.eclipse.datatools.modelbase.feature:1.0.0.200612201"/>
+		<item value="org.eclipse.emf.ecore.sdo:2.2.1.v200702131851"/>
+		<item value="org.eclipse.emf:2.2.2.v200702131851"/>
+		<item value="org.eclipse.platform:3.2.1.r321_v20060921-b_XVA-INSQSyMtx"/>
+		<item value="org.eclipse.rcp:3.2.1.r321_v20060801-2ekW2BxmcpPUOoq"/>
+	</list>
+	<section name="CleanDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="305"/>
+		<item key="DIALOG_HEIGHT" value="369"/>
+		<item key="DIALOG_Y_ORIGIN" value="124"/>
+		<item key="TOGGLE_SELECTED" value="true"/>
+		<item key="DIALOG_WIDTH" value="443"/>
+	</section>
+	<section name="org.eclipse.ui.views.problem">
+	</section>
+	<section name="ResourceNavigator">
+		<item key="ResourceWorkingSetFilter.STORE_WORKING_SET" value=""/>
+		<item key="ResourceViewer.STORE_SORT_TYPE" value="1"/>
+	</section>
+</section>

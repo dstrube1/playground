@@ -1,0 +1,14 @@
+package base.renderer
+{
+	public class RendererFactory
+	{
+		public static const GEO_RENDERER:String = "Main";
+		
+		public static function getRenderer (type:String) :Renderer {
+			if (type == GEO_RENDERER) {
+				return new GeoRenderer();
+			}
+			return null;
+		}
+	}
+}

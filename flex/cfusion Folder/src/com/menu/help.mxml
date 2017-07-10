@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:utils="com.utils.*"
+	width="700" height="522" 
+	title="Help"
+	horizontalAlign="center" layout="horizontal" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	creationComplete="fill()" 
+	showCloseButton="true" close="handleClose(event)" 
+	move="adjustForMove()"
+>
+	
+	<mx:Script>
+        <![CDATA[
+        	import mx.events.EffectEvent;
+        	import mx.effects.WipeLeft
+        	import mx.core.Application;
+        	import mx.events.CloseEvent;        	
+        	
+            import mx.controls.Alert;
+			import mx.rpc.events.ResultEvent;
+			import mx.managers.PopUpManager;
+			import mx.collections.ArrayCollection;
+			import mx.collections.XMLListCollection;			
+		
+			private var params:Object = new Object();
+			[Bindable] private var xmlFAQ:XMLList;
+
+			[Bindable] private var roles:ArrayCollection;
+
+			[Bindable] private var listFAQ:XMLListCollection;
+			[Bindable] private var listRoles:XMLListCollection;
+			
+			private function handleClose(event:CloseEvent):void{
+				closeReg();
+			}
+            private function closeReg():void {
+                // Check credentials (not shown) then remove pop up.
+                //Remove the popup behind it first
+                Application.application.ticket1.handleClose(null);
+                PopUpManager.removePopUp(this);
+            }
+            private function adjustForMove():void{
+            	Application.application.ticket1.x = this.x;
+				Application.application.ticket1.y = this.y;
+            }
+
+			public function regCompleted():void{
+				PopUpManager.removePopUp(this);
+			}
+			
+			public function resultHandlerFAQ(event:ResultEvent):void {	
+				var result:XML = XML(event.result);  
+				var xmlList:XMLList = result.items.children();
+				
+				xmlFAQ = result.items.item.category;  //children();
+				
+				var code:String;
+				
+				code = result.items.item[0].code.toString();
+				
+				
+				if (String(code) != "0"){
+					Alert.show("There was a problem retrieving list of FAQ's.  Please try again.  We apologize for this inconvenience.", "FAQ Problem");
+				} else {
+					listFAQ = new XMLListCollection(xmlList);
+				}
+			}
+			
+			public function faultHandler():void {
+				this.faqService.showBusyCursor = false;
+			}
+
+			public function fill():void {
+				faqService.cancel();
+				faqService.url="http://www.revparsuite.com/faqEXE.asp?userid=" + Application.application.userID;
+				faqService.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				faqService.addEventListener(ResultEvent.RESULT,resultHandlerFAQ);
+				faqService.method = "GET";
+				faqService.send(); 
+			}
+			public function insertItemHandler(event:ResultEvent):void {	
+				//fill();
+			}						
+			
+			
+            [Bindable]
+            public var selectedNode:XML;
+
+            // Event handler for the Tree control change event.
+            public function treeChanged(event:Event):void {
+                selectedNode=Tree(event.target).selectedItem as XML;
+            }
+            
+            
+            private function transitionClick():void{
+            	var wipeOut:WipeLeft = new WipeLeft();
+				wipeOut.showTarget = false;
+				wipeOut.target = this;
+				wipeOut.addEventListener(EffectEvent.EFFECT_END,wipeEndHandler);
+				Application.application.ticket1.visible = true;
+				wipeOut.stop();
+				wipeOut.play()
+            }
+            private function wipeEndHandler(e:EffectEvent):void{
+				this.visible = false;
+			}
+        ]]>
+    </mx:Script>
+    
+
+	<mx:HTTPService id="faqService" 
+		result="resultHandlerFAQ(event)"
+		resultFormat="e4x"
+        useProxy="false" />
+
+
+	<mx:VBox width="100%" height="100%" paddingLeft="10" paddingRight="10" paddingBottom="10" paddingTop="10">
+		<mx:Text text="Browse through the following Frequently Asked Questions for a solution to your problem.  If you are still having challenges, use the Support Ticket link at the bottom to submit your question to the RevPAR Suite Support Team." width="100%"/>
+		<mx:HDividedBox width="100%" liveDragging="true" height="341">
+			<mx:Tree id="myTree" width="50%" height="100%" 
+				alternatingItemColors="[#ffffff, #cccccc]" labelField="@label"
+				variableRowHeight="true"
+            	wordWrap="true"
+                showRoot="false" dataProvider="{xmlFAQ}" change="treeChanged(event)"/>
+			<mx:TextArea width="50%" height="100%" backgroundColor="#003300" color="#00ff00"
+                text="{selectedNode.@answer}"/>
+		</mx:HDividedBox>
+		<mx:HBox width="100%" height="54" horizontalAlign="right" verticalAlign="middle">
+			<mx:Text text="If unable to find a solution above, open a Support Ticket and someone will contact you within 24 hrs:" width="293" height="30"/>
+			<mx:Button label="Open Support Ticket" height="53" width="207" id="btnSupport" click="transitionClick()"/>
+		</mx:HBox>
+	</mx:VBox>
+
+</mx:TitleWindow>

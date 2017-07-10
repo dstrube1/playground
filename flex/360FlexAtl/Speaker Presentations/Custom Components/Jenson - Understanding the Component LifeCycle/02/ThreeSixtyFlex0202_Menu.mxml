@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:acj="acj.containers.*" 
+	layout="absolute">
+	
+	<mx:Style source="style.css"/>
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			
+			[Bindable]
+			private var myAC:ArrayCollection = new ArrayCollection(['Kitchen','Dining Room','Bathroom','Bedroom','Deck','sss']);
+		]]>
+	</mx:Script>
+	
+	<acj:MenuWrapper 
+		dataProvider="{myAC}" width="150" height="300" 
+		verticalGap="25" paddingTop="25" top="50"
+		labelBackgroundColor="0xFFFFFF" 
+		labelBackgroundAlpha=".2"
+		labelHoverPadding="10"
+		labelMinSize="16"
+		labelMaxSize="24"
+		styleName="libel"
+		/>
+		
+</mx:Application>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	horizontalAlign="right" 
+	width="100%" 
+	paddingTop="20" 
+	paddingBottom="20" 
+	paddingLeft="20" 
+	paddingRight="20">
+	
+	<mx:Metadata>
+		[Event("nextSection", type="mx.events.Event")]
+		[Event("prevSection", type="mx.events.Event")]
+	</mx:Metadata>
+	
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var hasNextBtn:Boolean = true;
+			[Bindable]
+			public var hasPrevBtn:Boolean = true;
+		]]>
+	</mx:Script>
+	
+	<mx:Button
+		id="prevButton" 
+		label="Previous" 
+		click="dispatchEvent( new Event( 'prevSection' ) );" 
+		visible="{hasPrevBtn}" />	
+
+	<mx:Spacer width="100%" />
+	
+	<mx:Button 
+		id="nextButton"
+		label="Next" 
+		click="dispatchEvent( new Event( 'nextSection' ) );" 
+		enabled="true"
+		visible="{hasNextBtn}" />	
+</mx:HBox>	
+

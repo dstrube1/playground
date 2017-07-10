@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+
+	<mx:ArrayCollection id="ac">
+		<mx:source>
+			<mx:Object title="1" pubDate="today" letter="a" />
+			<mx:Object title="2" pubDate="tomorrow" letter="b"/>
+			<mx:Object title="3" pubDate="that boring movie about everything freezing" letter="c"/>
+		</mx:source> 
+	</mx:ArrayCollection>
+		
+	<mx:Canvas id="favorites" label="Favorites" width="50%" height="50%">
+	    <mx:DataGrid id="favgrid" width="100%" variableRowHeight="true" height="100%"  editable="false" dataProvider="{ac}" >
+	         <mx:columns> 
+	         <mx:DataGridColumn id="dgc1" headerText="Posts" dataField="title" sortable="true" />
+				<mx:DataGridColumn id="dgc2" headerText="Date" dataField="pubDate" width="300" />
+				<mx:DataGridColumn id="dgc3" headerText="Letter" dataField="letter"/>
+<!--	            <mx:Array>
+	                <mx:DataGridColumn headerText="" backgroundColor="white" sortable="false">
+	                    <mx:itemRenderer>
+	                        <mx:Component>
+	                            <mx:VBox width="100%" verticalGap="0" paddingBottom="0" verticalScrollPolicy="off" paddingTop="0" borderStyle="none">
+	                                <mx:Script>
+	                                    <![CDATA[            
+										 		private function doSomething(event:Event):void
+										 		{
+										 			var s:Array = event.target.text.split(":");
+							 			      	    navigateToURL(new URLRequest("analysis.html?docid="+s[0]),"_self");
+										 		}				                                    
+										 ]]>
+	                                </mx:Script>
+	                            	<mx:HBox width="100%"  verticalGap="0" paddingBottom="0" paddingTop="0"  borderStyle="none" backgroundColor="#DDDDDD">
+	                                <mx:Text  id="repName" click="doSomething(event)" buttonMode="true" useHandCursor="true"  width="100%"  text="{data.id}:{data.name}" fontWeight="bold"/>
+	                                 </mx:HBox>
+	                                <mx:TextArea  id="repDesc" editable="false" borderStyle="none" verticalScrollPolicy="off" height="100%"   width="100%"  text="{data.desc}, created by {data.creator} on {data.creationDate}"/>
+	                            </mx:VBox>
+	                        </mx:Component>
+	                    </mx:itemRenderer>
+	                </mx:DataGridColumn>
+	            </mx:Array>
+	    -->    </mx:columns> 
+	    </mx:DataGrid> 						
+	</mx:Canvas>
+</mx:Application>

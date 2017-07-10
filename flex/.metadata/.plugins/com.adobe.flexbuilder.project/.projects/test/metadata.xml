@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<projectMetadata>
+  <swf bgcolor="ffffff" fullPath="/test/bin-debug/test.swf" height="100%" pageTitle="" width="100%"/>
+  <generatedHTMLResources/>
+  <swf bgcolor="ffffff" fullPath="/test/bin-release/test.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="ffffff" fullPath="/test/bin-debug/test2.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="ffffff" fullPath="/test/bin-debug/testNumberFormatter.swf" height="100%" pageTitle="" width="100%"/>
+  <swf bgcolor="ffffff" fullPath="/test/bin-debug/testNumberFormatter2.swf" height="100%" pageTitle="" width="100%"/>
+  <swf bgcolor="ffffff" fullPath="/test/bin-debug/testHeartbeatTimers.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="ffffff" fullPath="/test/bin-debug/testEmailValidation.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="ffffff" fullPath="/test/bin-debug/testTree.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="ffffff" fullPath="/test/bin-debug/testDate.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="ffffff" fullPath="/test/bin-debug/testText.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="ffffff" fullPath="/test/bin-debug/FizzBuzz.swf" height="100%" pageTitle="" width="100%"/>
+</projectMetadata>

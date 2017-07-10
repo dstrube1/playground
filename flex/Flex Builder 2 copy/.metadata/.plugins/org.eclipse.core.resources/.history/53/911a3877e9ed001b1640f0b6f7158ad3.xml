@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="750" height="470" horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm" horizontalScrollPolicy="off" verticalScrollPolicy="off" color="0x000000">
+	 
+	<mx:Script>
+		<![CDATA[
+			
+			import base.lenz.panel.LenzPanel;
+			import lenz.main.site_select.SiteSelectionLenz;
+			
+			private var _parent:LenzPanel = null;
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+			}
+			
+			private function launchApp( appId:int):void {
+				
+				
+				
+			}
+			
+			public function initializeForm():void {
+				
+		
+			}
+			
+			
+			public function populateResources(data:Object):void { }
+			
+		]]>
+	</mx:Script>
+	
+	<mx:Label x="0" y="5" color="#000000" maxHeight="30" text="Country Allocation Site Profiling: Site List" 
+		fontThickness="200" fontSize="18"  />
+	<mx:DataGrid id="site_list_grid" x="10" y="67"/>
+	<mx:DataGridColumn id="siteID" dataField="Site ID"/>
+	<mx:DataGridColumn id="siteName" dataField="Site Name"/>
+	<mx:DataGridColumn id="location" dataField="Location"/>
+	<mx:DataGridColumn id="exp" dataField="Experience"/>
+	<mx:DataGridColumn id="index" dataField="Index"/>
+	<mx:DataGridColumn id="irb" dataField="IRB"/>
+	<mx:Label text="Complete Site List" fontSize="10" bottom="0" x="576"/>
+	<mx:Button label="Download XLS" width="150" height="30" 
+		right="50" bottom="5" id="submitBtn" textAlign="center"
+		click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('Proto')"/>
+		
+</mx:Canvas>

@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="600" height="200" styleName="blade"
+	creationComplete="onCreationComplete()" >
+
+	<mx:String id="title"/>
+	<mx:String id="orientation" />  <!-- top, left, right, bottom -->
+	<mx:String id="retractOnClick" /> <!-- true, false -->
+
+	
+	<mx:Panel id="bladePanel" title="{title}" alpha="0.1" visible="false" styleName="bladePanel"
+		 textAlign="right" click="conditionalRetract()">
+		<mx:HBox id="bladePanelContent" height="100%" width="100%" paddingLeft="10" />
+	</mx:Panel>
+	
+	<mx:Image id="bladeMoveImage" source="{icon}" visible="false" click="retractBlade()" />
+	
+	<mx:Image id="bladeImage" source="{icon}" visible="true" click="exposeBlade()"
+		mouseOver="showImage.play()" mouseOut="hideImage.play()" alpha="0.01"/>
+
+	
+
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.events.EffectEvent;
+			import base.log.Logger;
+			import base.blade.BladeItem;
+			import base.blade.Blade;
+			import base.util.Populate;
+			
+			import mx.core.ScrollPolicy;
+			import mx.effects.easing.*;
+			
+			
+			public const  buttonShallowEdge:int = 40;
+			public const  buttonLongEdge:int = 200;
+			
+			
+			[Bindable]
+			public var targetHeightTo:int = 0;
+			[Bindable]
+			public var targetWidthTo:int = 0;
+			[Bindable]
+			public var minimizedHeightTo:int = 0;
+			[Bindable]
+			public var minimizedWidthTo:int = 0;
+			
+			[Bindable]
+			public var xBy:int = 0;
+			[Bindable]
+			public var yBy:int = 0;
+						
+
+			[Bindable]
+			public var expose:Parallel = null;
+			[Bindable]
+			public var retract:Parallel = null;
+
+
+
+			private var logger:Logger = Logger.getLogger('Blade');
+
+
+			public function onCreationComplete():void {
+
+				this.horizontalScrollPolicy=ScrollPolicy.OFF;
+				this.verticalScrollPolicy=ScrollPolicy.OFF;
+				
+				// Defaults
+				targetHeightTo = height;
+				targetWidthTo = width-(buttonShallowEdge/2);
+				minimizedHeightTo = height;
+				minimizedWidthTo = width;
+				
+				xBy = width-(buttonShallowEdge/2);
+				yBy = height;
+
+				expose = exposeBladeMove; 
+				retract = retractBladeMove;
+
+				// Now, dependent settings.
+	
+				if (orientation == null) {
+					orientation = "top";
+				}				
+				
+				if (orientation == "top") {
+
+					minimizedHeightTo = 0;
+					// minimizedWidthTo = 0;
+					expose = exposeBladeTopMove;
+					retract = retractBladeTopMove;
+					xBy = 0;
+					
+					bladeImage.height = buttonShallowEdge;
+					bladeImage.width  = buttonLongEdge;
+					bladeImage.y = 9; //
+					bladeImage.x = (width - bladeImage.width)/2;
+					
+					// moveable image
+					bladeMoveImage.height = buttonShallowEdge;
+					bladeMoveImage.width  = buttonLongEdge;
+					bladeMoveImage.y = 9; //
+					bladeMoveImage.x = (width - bladeMoveImage.width)/2;
+					
+					
+					bladePanel.height = 0;
+					bladePanel.width = width;
+					bladePanel.x = 0;
+					bladePanel.y = 0;
+					
+					height += (bladeMoveImage.height/2);
+					
+				} else if (orientation == "bottom") {
+					
+					minimizedHeightTo = 0;
+
+					expose = exposeBladeBottomMove;
+					retract = retractBladeBottomMove;
+					
+					//reduce height buffer to push the image down to just at the dark green outer rim;
+					//doing this thru bladeImage.y creates scrollbars
+					bladeImage.height = buttonShallowEdge-4; 
+					bladeImage.width  = buttonLongEdge;
+
+					bladeImage.y = height - bladeImage.height; 
+					bladeImage.x = (width - bladeImage.width)/2;
+					
+					// moveable image
+					bladeMoveImage.height = buttonShallowEdge-4; 
+					bladeMoveImage.width  = buttonLongEdge;
+
+					bladeMoveImage.y = height - bladeMoveImage.height; 
+					bladeMoveImage.x = (width - bladeMoveImage.width)/2;
+					
+					bladePanel.height = 0;
+					bladePanel.width = width;
+
+					bladePanel.x = 0;
+					bladePanel.y = height;
+
+					yBy = 0 - height;
+					xBy = 0;
+
+					
+				} else if (orientation == "left") {
+					
+					minimizedWidthTo = 0;
+					expose = exposeBladeNoMove;
+					retract = retractBladeNoMove;
+					
+					
+					
+					bladeImage.height = buttonLongEdge;
+					bladeImage.width  = buttonShallowEdge;
+					
+					bladeImage.y = 0;
+					//push the image to the outer rim
+					bladeImage.x = 10; 
+
+					// moveable icon
+					bladeMoveImage.height = buttonLongEdge;
+					bladeMoveImage.width  = buttonShallowEdge;
+					
+					bladeMoveImage.y = 0;
+					//push the image to the outer rim
+					bladeMoveImage.x = 10; 
+
+
+
+					bladePanel.height = height;
+					bladePanel.width  = 0;					
+
+					bladePanel.x = 0;
+					bladePanel.y = 0;
+					
+					
+				} else if (orientation == "right") {
+					
+					minimizedWidthTo = 0;
+					xBy = 0 - width+(bladeImage.width/2);
+					yBy = 0;
+					
+					bladeImage.height = buttonLongEdge;
+					//reduce the image buffer to pull the image to the outer rim;
+					//doing this thru bladeImage.x creates scrollbars
+					bladeImage.width  = buttonShallowEdge-3;
+
+					bladeImage.y = 0;
+					bladeImage.x = width - bladeImage.width;
+					
+					// Moveable image:
+					bladeMoveImage.height = buttonLongEdge;
+					//reduce the image buffer to pull the image to the outer rim;
+					//doing this thru bladeImage.x creates scrollbars
+					bladeMoveImage.width  = buttonShallowEdge-3;
+
+					bladeMoveImage.y = 0;
+					bladeMoveImage.x = width - bladeMoveImage.width;
+
+					bladePanel.height = height;
+					bladePanel.width  = 0;					
+
+					bladePanel.x = width;
+					bladePanel.y = 0;
+					
+				}
+			
+			
+//				bladeImage.visible = true;
+			
+				
+				
+			}
+			
+			//by default, only clicking the blade icon will retract the blade; 
+			//clicking the blade does not retract the blade;
+			//with this function (and the retractOnClick property), clicking on the blade may retract the blade
+			private function conditionalRetract():void{
+				if (retractOnClick=="true"){
+					retractBlade();
+				}
+			}
+						
+			public function exposeBlade():void {
+				bladeImage.visible = true;
+				expose.play();
+				/*
+				Alert.show("targetHeightTo="+targetHeightTo+
+				"\ntargetWidthTo="+targetWidthTo+
+				"\nbladeMoveImage.height="+bladeMoveImage.height+
+				"\nbladeMoveImage.width="+bladeMoveImage.width+
+				"\nbladeMoveImage.x="+bladeMoveImage.x+
+				"\nbladeMoveImage.y="+bladeMoveImage.y+
+				"\nyBy="+yBy+
+				"\nbladePanel.x="+bladePanel.x+
+				"\nbladePanel.y="+bladePanel.y				
+				);
+				*/
+			}	
+			
+			public function retractBlade():void {
+				retract.play();				
+			}		
+						
+						
+			public static function place( disp:Canvas, bladeConfig:Object): Blade {
+								
+				var tmp:Blade = new Blade(); 
+				tmp.config(bladeConfig);
+				disp.addChild(tmp);
+				return(tmp);
+			}						
+						
+						
+			public function config( o:Object ):void {
+				
+				Populate.copyFromTo(o, this);
+				
+			}			
+						
+						
+						
+			public function addBladeItem( item:BladeItem):void {
+				
+				//logger.debug("adding Blade ITem: "+item+" content.visible: "+bladePanelContent.visible);
+				
+				bladePanelContent.addChild(item);
+				
+			}
+			
+			
+			private function onExposeMoveEffectStart( event:EffectEvent ):void
+			{
+				bladePanel.visible=true;
+				bladePanel.alpha=1;
+				bladeImage.visible=false;
+				bladeMoveImage.visible=true;
+				
+				bladePanel.horizontalScrollPolicy=ScrollPolicy.OFF;
+				bladePanel.verticalScrollPolicy=ScrollPolicy.OFF;
+			}
+			
+			private function onExposeMoveEffectEnd( event:EffectEvent ):void
+			{
+				bladePanel.horizontalScrollPolicy=ScrollPolicy.OFF;
+				bladePanel.verticalScrollPolicy=ScrollPolicy.OFF;
+				bladeMoveImage.visible=true;
+			}
+			
+			
+			private function onRetractMoveEffectStart( event:EffectEvent ):void
+			{
+				bladePanel.horizontalScrollPolicy=ScrollPolicy.OFF;
+				bladePanel.verticalScrollPolicy=ScrollPolicy.OFF;
+		
+			}
+			
+			private function onRetractMoveEffectEnd( event:EffectEvent ):void
+			{
+				bladePanel.visible=false;
+				bladePanel.alpha=0;
+				bladeImage.visible=true;
+				bladePanel.horizontalScrollPolicy=ScrollPolicy.OFF;
+				bladePanel.verticalScrollPolicy=ScrollPolicy.OFF;
+				bladeMoveImage.visible=false;
+			}
+			
+			
+			private function onExposeNoMoveEffectStart( event:EffectEvent ):void
+			{
+				bladePanel.visible=true;
+				bladePanel.alpha=1.0;
+				bladeImage.visible=false;
+				bladeMoveImage.visible=true;
+				
+				bladePanel.horizontalScrollPolicy=ScrollPolicy.OFF;
+				bladePanel.verticalScrollPolicy=ScrollPolicy.OFF;
+			}
+			
+			private function onExposeNoMoveEffectEnd( event:EffectEvent ):void
+			{
+				//logger.debug('bladePanelContent:'+bladePanel.numChildren);
+				bladePanel.horizontalScrollPolicy=ScrollPolicy.OFF;
+				bladePanel.verticalScrollPolicy=ScrollPolicy.OFF;
+			}
+			
+			
+			private function onRetractNoMoveEffectStart( event:EffectEvent ):void
+			{
+				bladePanel.horizontalScrollPolicy=ScrollPolicy.OFF;
+				bladePanel.verticalScrollPolicy=ScrollPolicy.OFF;
+			}
+			
+			private function onRetractNoMoveEffectEnd( event:EffectEvent ):void
+			{
+				bladePanel.visible=false;
+				bladeImage.visible=true;
+				bladeMoveImage.visible=false;
+				bladePanel.horizontalScrollPolicy=ScrollPolicy.OFF;
+				bladePanel.verticalScrollPolicy=ScrollPolicy.OFF;
+			}
+			
+		]]>
+	</mx:Script>
+
+		
+	<mx:Parallel id="exposeBladeMove">
+		<mx:Resize target="{bladePanel}"
+			duration="500"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"
+        	effectStart="onExposeMoveEffectStart( event )"
+			effectEnd="onExposeMoveEffectEnd( event )"
+			heightTo="{targetHeightTo}"  
+			widthTo="{targetWidthTo}"
+			/>
+		<mx:Move target="{bladePanel}" yBy="{yBy}"
+			duration="500" 
+			easingFunction="mx.effects.easing.Quadratic.easeIn"
+        	xBy="{xBy}"
+			/>		
+		
+		
+		<mx:Move target="{bladeMoveImage}" xTo="{bladeImage.x-(targetWidthTo-(bladeMoveImage.width/2))}"
+			duration="520"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"/>		
+			
+			
+			
+	</mx:Parallel>
+	
+	<mx:Parallel id="retractBladeMove">
+		<mx:Resize target="{bladePanel}" 
+			duration="500"  
+	        easingFunction="mx.effects.easing.Quadratic.easeIn"
+	        effectStart="onRetractMoveEffectStart( event )"
+	        effectEnd="onRetractMoveEffectEnd( event )"
+			heightTo="{minimizedHeightTo}"
+			widthTo="{minimizedWidthTo}"
+			/> 
+		<mx:Move target="{bladePanel}" yBy="{0 - yBy}"
+			duration="500" 
+        	easingFunction="mx.effects.easing.Quadratic.easeIn"
+        	xBy="{0 - xBy}"
+			/>		
+		<mx:Move target="{bladeMoveImage}" xTo="{bladeImage.x}"
+			duration="520"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"/>	
+	</mx:Parallel>
+	
+	<mx:Parallel id="exposeBladeTopMove">
+		<mx:Resize target="{bladePanel}"
+			duration="500"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"
+        	effectStart="onExposeMoveEffectStart( event )"
+			effectEnd="onExposeMoveEffectEnd( event )"
+			heightTo="{targetHeightTo}"  
+			widthTo="{targetWidthTo}"
+			/>
+		<mx:Move target="{bladePanel}" yBy="0"
+			duration="500" 
+			easingFunction="mx.effects.easing.Quadratic.easeIn"
+        	xTo="0"
+			/>		
+		<mx:Move target="{bladeMoveImage}" yTo="{targetHeightTo-(bladeMoveImage.height/2)}"
+			duration="520"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"/>	
+	</mx:Parallel>
+	
+	<mx:Parallel id="retractBladeTopMove">
+		<mx:Resize target="{bladePanel}" 
+			duration="500"  
+	        easingFunction="mx.effects.easing.Quadratic.easeIn"
+	        effectStart="onRetractMoveEffectStart( event )"
+	        effectEnd="onRetractMoveEffectEnd( event )"
+			heightTo="{minimizedHeightTo}"
+			widthTo="{minimizedWidthTo}"
+			/> 
+		<mx:Move target="{bladePanel}" 
+			duration="500" 
+        	easingFunction="mx.effects.easing.Quadratic.easeIn"
+        	xTo="0"
+			/>		
+		<mx:Move target="{bladeMoveImage}" yTo="9"
+			duration="520" easingFunction="mx.effects.easing.Quadratic.easeIn"	/>		
+	</mx:Parallel>
+
+
+	<mx:Parallel id="exposeBladeBottomMove">
+		<mx:Resize target="{bladePanel}"
+			duration="500"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"
+        	effectStart="onExposeMoveEffectStart( event )"
+			effectEnd="onExposeMoveEffectEnd( event )"
+			heightTo="{targetHeightTo}"  
+			widthTo="{targetWidthTo}"/>
+		<mx:Move target="{bladePanel}" yBy="{yBy+40}"
+			duration="500" 
+			easingFunction="mx.effects.easing.Quadratic.easeIn"/>		
+		<mx:Move target="{bladeMoveImage}" yTo="{(bladeMoveImage.height/2)}"
+			duration="500"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"/>		
+	</mx:Parallel>
+	
+	<mx:Parallel id="retractBladeBottomMove">
+		<mx:Resize target="{bladePanel}" 
+			duration="500"  
+	        easingFunction="mx.effects.easing.Quadratic.easeIn"
+	        effectStart="onRetractMoveEffectStart( event )"
+	        effectEnd="onRetractMoveEffectEnd( event )"
+			heightTo="{minimizedHeightTo}"
+			widthTo="{minimizedWidthTo}"/> 
+		<mx:Move target="{bladePanel}" yTo="{0 - yBy}"
+			duration="500" 
+        	easingFunction="mx.effects.easing.Quadratic.easeIn"/>		
+		<mx:Move target="{bladeMoveImage}" yBy="{0 - yBy}"
+			duration="500"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"/>		
+	</mx:Parallel>
+
+
+	<mx:Parallel id="exposeBladeNoMove">
+		<mx:Resize target="{bladePanel}"
+			duration="500"
+        	easingFunction="mx.effects.easing.Quadratic.easeIn"
+        	effectStart="onExposeNoMoveEffectStart( event )"
+			effectEnd="onExposeNoMoveEffectEnd( event )"
+			heightTo="{targetHeightTo}"
+			widthTo="{targetWidthTo}"
+			/>
+		<mx:Move target="{bladeMoveImage}" xTo="{targetWidthTo-(bladeMoveImage.width/2)}"
+			duration="520" easingFunction="mx.effects.easing.Quadratic.easeIn"	/>	
+	</mx:Parallel>
+	
+	<mx:Parallel id="retractBladeNoMove">
+		<mx:Resize target="{bladePanel}" 
+			duration="500"  
+	        easingFunction="mx.effects.easing.Quadratic.easeIn"
+	        effectStart="onRetractNoMoveEffectStart( event )"
+	        effectEnd="onRetractNoMoveEffectEnd( event )"
+	        heightTo="{minimizedHeightTo}"
+			widthTo="{minimizedWidthTo}"
+			/>
+		<mx:Move target="{bladeMoveImage}" xTo="{bladeImage.x}"
+			duration="520" easingFunction="mx.effects.easing.Quadratic.easeIn"	/>	
+	</mx:Parallel>
+
+	<mx:Parallel id="showImage">
+		<mx:Fade target="{bladeImage}" alphaFrom="0.01" alphaTo="1.0" duration="500" />
+	</mx:Parallel>
+	<mx:Parallel id="hideImage" >
+		<mx:Fade target="{bladeImage}" alphaFrom="1.0" alphaTo="0.01" duration="500" />
+	</mx:Parallel>
+
+
+	
+	
+	
+</mx:Canvas>

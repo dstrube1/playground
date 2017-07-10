@@ -1,0 +1,11 @@
+<project name="Bookmarks" default="deploy">
+	<property name="deploy.dir" value="C:\apache\jakarta-tomcat-5.5.4\webapps\ROOT\Bookmarks"/>
+	<target name="clean">
+		<delete dir="${deploy.dir}"/>
+		<mkdir dir="${deploy.dir}"/>
+	</target>
+	
+	<target name="deploy">
+		<copydir src="bin" dest="${deploy.dir}"/>
+	</target>
+</project>

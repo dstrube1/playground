@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  y="12" x="5" creationComplete="onCreateComplete()">
+<!-- Davy, 20070313: width x height was 400x300 
+width="190" height="180"-->
+	
+	
+	<mx:Script>
+		<![CDATA[
+			import base.util.ModalWait;
+			import base.log.Logger;
+			import base.event.EventDelegate;
+			import mx.controls.Alert;
+			import base.lenz.NotificationReport;
+			import app.config.AppContext; 
+			import base.event.DataUpdateEvent;
+			import mx.events.IndexChangedEvent;
+
+			public var context:AppContext = null;
+			public var notificationReport:NotificationReport = null;
+			
+			private var controller:NotificationViewController = new NotificationViewController();
+			
+			[Bindable]
+			private var model:NotificationViewModel = new NotificationViewModel();
+
+
+			public static var clickHandler:Function = null;
+
+			
+			private var logger:Logger = Logger.getLogger("NotificationView");
+			
+			public var clickedItem:Object = null;
+			
+
+			private static var _selectedNotificationPane:int = 0;
+						
+			[Bindable]
+			public function get selectedNotificationPane():int 
+			{
+				return _selectedNotificationPane;
+			}
+			
+
+			public function set selectedNotificationPane(si:int):void 
+			{
+				_selectedNotificationPane = si;
+			}
+			
+			private function onCreateComplete():void {
+				
+
+
+				EventDelegate.instance().register( DataUpdateEvent.EVENT_CODE, controller.onDataUpdate );	
+				
+				
+				controller.setModel(model);
+				controller.setNotificationReport( notificationReport );
+				controller.setViewContext( context.getViewContext() );
+
+				// if there is already any alarm/notification data, let's pick it up right away.
+				controller.onDataUpdate();				
+				
+			}
+
+
+			private function createNotificationLabel( o:Object ):String {
+				
+				return o.text;
+			}
+
+           	private function createNotificationTip( item:Object ):String 
+			{
+				return item.text;
+			}
+			
+			private function onAlarmClicked( ev:Event ):void {
+				
+				onItemClicked("alarm", ev);
+				
+			}
+
+
+
+			private function onAlertClicked( ev:Event ):void {
+				
+				onItemClicked("alert", ev);
+				
+			}
+
+			private function onNotificationClicked( ev:Event ):void {
+				
+				onItemClicked("notification", ev);
+				
+			}
+
+
+
+			private function onItemClicked( type:String, ev:Event ):void {
+				ModalWait.start();
+				var obj:Object = ev.currentTarget.selectedItem;
+				clickedItem = obj;
+				//logger.debug("User clicked: "+type+" "+obj.id+", "+obj.text );
+				
+				if (clickHandler != null) {
+					clickHandler( obj );
+				}
+				
+			}
+					
+			
+			
+			public function setClickHandler( handler:Function ):void {
+				clickHandler = handler;
+			}
+			
+			public function notificationCategoryChanged(event:Event):void{
+				var indexChangedEvent:IndexChangedEvent = event as IndexChangedEvent;
+				_selectedNotificationPane = indexChangedEvent.newIndex;
+			}
+			
+			 
+		]]>
+	</mx:Script>
+	<!-- Davy, 20070313: was 200x200 -->
+	<mx:Accordion x="5" y="10" width="100%" height="100%" styleName="notificationPanel" selectedIndex="{selectedNotificationPane}" change="notificationCategoryChanged(event)" >
+		<mx:Canvas label="Urgent Alarms" width="100%" height="75%"  >
+			<mx:List dataProvider="{model.topLevelAlarms}" labelFunction="createNotificationLabel" showDataTips="true"  dataTipFunction="createNotificationTip" 
+				change="onAlarmClicked(event)"  
+				width="100%" height="100%" styleName="notificationPanellist" />			
+		</mx:Canvas>
+
+		<mx:Canvas label="Alerts" width="100%" height="75%">
+			<mx:List dataProvider="{model.filteredAlerts}" labelFunction="createNotificationLabel"  showDataTips="true"  dataTipFunction="createNotificationTip" 
+				change="onAlertClicked(event)" 
+				width="100%" height="100%" styleName="notificationPanellist" />			
+		</mx:Canvas>
+
+		<mx:Canvas label="Notifications" width="100%" height="75%">
+			<mx:List dataProvider="{model.filteredNotifications}" labelFunction="createNotificationLabel"  showDataTips="true"  dataTipFunction="createNotificationTip" 
+				change="onNotificationClicked(event)" 
+				width="100%" height="100%" styleName="notificationPanellist" />							
+		</mx:Canvas>
+
+
+	</mx:Accordion>
+	
+	
+</mx:Canvas>

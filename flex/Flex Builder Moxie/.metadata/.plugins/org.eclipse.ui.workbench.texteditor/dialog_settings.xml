@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="658"/>
+		<item key="DIALOG_Y_ORIGIN" value="391"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="app"/>
+		<item key="wrap" value="false"/>
+		<item key="casesensitive" value="false"/>
+		<list key="findhistory">
+			<item value="app"/>
+			<item value="App"/>
+			<item value="enabled"/>
+			<item value="FileCom"/>
+			<item value="files_vb."/>
+			<item value="myCanvas"/>
+			<item value="JPGE"/>
+			<item value="completeHandler"/>
+		</list>
+		<list key="replacehistory">
+		</list>
+	</section>
+</section>

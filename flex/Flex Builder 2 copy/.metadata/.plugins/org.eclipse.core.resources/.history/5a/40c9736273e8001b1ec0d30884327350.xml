@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="740" height="450"
+			implements="base.form.LenzForm" 
+			xmlns:panel="lenz.main.study_mgr.panel.*"
+			styleName="studyManagerMainForm" 
+			horizontalCenter="0" creationComplete="onCreationComplete()" 
+			xmlns:notification="base.notification.*" 
+			xmlns:funnel="base.lenz.funnel.*">
+	
+	<mx:Script>
+		<![CDATA[
+			import app.server.LenzServer;
+			import app.App;
+			
+			import base.db.MemDB;
+			import base.db.MemDbHelper;
+			import base.lenz.funnel.PatientFunnel;
+			import base.lenz.panel.LenzPanel;
+			import base.log.Logger;
+			import base.services.LenzServiceHelper;
+			import base.services.MapArray;
+			import base.util.ModalWait;
+
+			import lenz.main.study_mgr.controller.StudyClickManager;
+					
+			import mx.controls.Alert;			
+			import mx.collections.ArrayCollection;
+
+			private var _parent:LenzPanel = null;
+			private var patientFunnel:PatientFunnel = new PatientFunnel();
+			
+			private var topLevelAlarms:Array = null;
+			private var high:Array = new Array();
+			private var medium:Array = new Array();
+			private var low:Array = new Array();
+			private var ac:ArrayCollection;
+			
+			
+			private var logger:Logger = Logger.getLogger("StudyManagerGeoForm");
+
+			[Bindable]
+			private var sName:String = "";			
+			
+			[Bindable]
+			private var mapUrl:String;
+			
+			[Bindable]
+			private var budgetUrl:String;
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			protected function onCreationComplete():void {
+	
+				logger.debug("StudyManagerGeoForm: onCreationComplete");
+				
+				//Since pateint funnel will always be initialized & populated by populateResources()
+				//onCreation complete method of patient funnel panel is invoked  
+				//patientFunnel.createAdapter(null);
+				
+				// 3-27 - commenting this out, since it seems to be handled by populateResources()
+				// addPatientFunnel(this.funnelImg, null);
+
+
+				nv.setClickHandler(_parent.getParent().getNotificationClickHandler());
+				
+				logger.debug("StudyManagerGeoForm: loading url: "+mapUrl+" for mapSWF: "+mapSWF);
+				
+				mapSWF.load(mapUrl);
+				budget.load(budgetUrl);
+				
+				
+				funnelCanvas.removeAllChildren();
+				funnelCanvas.addChild(patientFunnel);
+			}
+			
+			public function initializeForm():void {
+				onCreationComplete();
+			}			
+			
+			/*
+			public function addPatientFunnel(can:Canvas, funnelStr:Object):void {
+				//can.removeAllChildren() also does the same thing.
+				for(var itr:int = 0; itr < can.getChildren().length; itr++) {
+					can.removeChildAt(itr);
+				}
+				var funnel:DisplayObject =  can.addChild(patientFunnel);
+				
+			}
+			 */
+			 
+			public function animate():void {
+				//lenz2Fade.play();
+			}
+			
+			public function displayResults():void {
+				
+				var clickMgr:StudyClickManager = new StudyClickManager();
+	 			clickMgr.processAction( {"currentLenzId":_parent.getParent().getLenzId(), "actionName":"displayPRView","actionParams":"view=PR.Result"} );
+				
+			}
+			
+			public function showResolutions(alarmId:String):void {
+				var clickMgr:StudyClickManager = new StudyClickManager();
+	 			clickMgr.processAction( {"currentLenzId":_parent.getParent().getLenzId(), "actionName":"displayPRView", "targetId":"resolutions", "actionParams":null} );
+			}
+			
+			public function displayRadarChart():void {
+				ModalWait.start();				
+				var clickMgr:StudyClickManager = new StudyClickManager();
+	 			clickMgr.processAction( {"currentLenzId":_parent.getParent().getLenzId(), "actionName":"displayMetricsView","actionParams":"view=Metric.World"} );
+
+								
+			}
+			
+			public function populateResources(data:Object):void {
+				sName = (data as MapArray).getValue("study.name") as String;
+				
+				var source:String = (data as MapArray).getValue("geographic.map.url") as String;
+				mapUrl = "resources/swf/RoundMovie.swf?movieName="+source;
+				mapSWF.load(mapUrl);
+				
+				var budgetSource:String = (data as MapArray).getValue("budget.graph.url") as String;
+				budgetUrl = "resources/swf/StepWrapper.swf?movieName="+budgetSource;
+				budget.load(budgetUrl);
+
+				logger.debug("loading url: "+source+" to mapSWF: "+mapSWF);
+				
+				var o:Object = (data as MapArray).getValue("patient.db");
+				var funnelXml:XML = new XML(o);
+				var db:MemDB = MemDbHelper.convert(funnelXml, MemDbHelper.FUNNEL);				
+				patientFunnel.refreshFunnel(db);
+				
+				var mapType:String = (data as MapArray).getValue("map.type") as String;
+				if (mapType == "world") {
+					globeIcon.visible = false;
+				} else {
+					globeIcon.visible = true;
+				}
+
+			}
+			
+			public function displayWorldView():void {
+				var clickMgr:StudyClickManager = new StudyClickManager();
+	 			clickMgr.processAction( {"currentLenzId":_parent.getParent().getLenzId(), "actionName":"drilldown","targetId":"Territory", "actionParams":"type=world,view=Main"} );
+			}
+			
+		]]>
+	</mx:Script>
+
+
+	<mx:Label x="0" y="5" color="#000000" id="studyName" maxHeight="30" text="{sName}" fontThickness="200" fontSize="18" click="Alert.show('List of open studies here')" />
+
+	<mx:Canvas x="10" y="45" id="main" width="490" height="250" borderStyle="none" borderColor="#5E5E5E" cornerRadius="0" >
+	
+		<mx:SWFLoader id="mapSWF" 
+			source="{mapUrl}"
+			scaleContent="false" 
+	 		width="460" height="250" alpha="1.0" verticalAlign="top" horizontalAlign="center"/>
+
+		<mx:Image id="radarIcon" source="resources/images/icon_radar.png" x="25" y="200" alpha="0.6" mouseOver="radarIcon.alpha=1.0;" mouseOut="radarIcon.alpha=0.6" click="displayRadarChart()"/>
+		<mx:Image id="globeIcon" source="resources/images/icon_globe.png" x="410" y="200" alpha="0.6" mouseOver="globeIcon.alpha=1.0;" mouseOut="globeIcon.alpha=0.6" click="displayWorldView()" visible="false"/>
+	</mx:Canvas>
+
+	<mx:VBox x="10" y="310"  verticalGap="3" >
+		<mx:SWFLoader  id="cycle" width="460" height="45" source="resources/swf/CycleWrapper.swf?movieName=CycleTime3.swf"  alpha="1.0" scaleContent="false"  horizontalAlign="center"/> <!--maxHeight="50" maxWidth="460"-->
+		
+		<mx:SWFLoader  id="timeline" width="460" height="17" source="resources/swf/TimelineWrapper.swf?movieName=Timeline.swf"  alpha="1.0" scaleContent="false" horizontalAlign="center"/> <!--maxHeight="17" maxWidth="460" -->
+		
+		<!--mx:SWFLoader  id="budget" width="460" height="60" source="resources/swf/StepWrapper.swf?movieName=Step.swf"  alpha="1.0"  scaleContent="false" horizontalAlign="center"/--> <!--maxHeight="70" maxWidth="460" -->	
+		<mx:SWFLoader  id="budget" width="460" height="60" source="{budgetUrl}"  alpha="1.0"  scaleContent="false" horizontalAlign="center"/>			
+	</mx:VBox>
+
+
+
+	<notification:NotificationView x="501" y="35" id="nv" 
+		context="{App.getContext()}" 
+		notificationReport="{LenzServer.notificationReport}" 
+		width="230" height="180" />
+
+	<mx:Canvas x="500" y="228" id="funnelCanvas" backgroundAlpha="0.0" width="230" height="200" cornerRadius="0"/>
+
+</mx:Canvas>

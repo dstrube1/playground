@@ -1,0 +1,52 @@
+package base.notification
+{
+	import base.services.Response;
+	import base.db.MemDbHelper;
+	import base.db.MemDB;
+	import base.services.MapArray;
+	import base.services.ValueType;
+	
+	public class ProblemResolutionViewController
+	{
+		private var model:ProblemResolutionViewModel = new ProblemResolutionViewModel();
+		
+		public function ProblemResolutionViewController():void {
+			
+		}
+		
+		public function setPlanNGraphData(data:Object):void {
+			var o:Object = (data as MapArray).getValue("plans.db");
+			var plansXml:XML = new XML(o);
+			buildModel(plansXml);
+			setGraphData(data as MapArray);
+		}
+		
+		public function setPlan(planXML:XML):void {
+			buildModel(planXML);
+		}
+		
+		private function buildModel(plansXML:XML):void {
+			var db:MemDB = MemDbHelper.convert(plansXML, MemDbHelper.PLAN);
+			
+			model.plans = db.fetch(null);
+		}
+		
+		public function setGraphData(data:MapArray):void {
+			//also store urls in model 
+			model.graphUrls = new MapArray();
+			
+			for (var i:int = 0; i < (data as MapArray).Key.length; i++) {
+				var key:String = (data as MapArray).Key[i];
+				if (key.substr(0, 18) == "forecast.graph.url") {
+					var url:Object = (data as MapArray).getValue(key);
+					model.graphUrls.add(key, ValueType.STRING, url);
+				}
+			}
+			
+		}
+		
+		public function getProblemResolutionData():ProblemResolutionViewModel {
+			return this.model;
+		}
+	}
+}

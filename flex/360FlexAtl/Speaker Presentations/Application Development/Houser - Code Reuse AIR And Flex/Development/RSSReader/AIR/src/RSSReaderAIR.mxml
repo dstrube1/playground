@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" xmlns:ns1="com.dotcomit.rss.*">
+
+<mx:Script><![CDATA[
+	import com.dotcomit.rss.RSSDelegateAS
+		
+	[Bindable] private var myRSS : RSSDelegateAS = new RSSDelegateAS();
+]]></mx:Script>
+<ns1:RSSDisplay x="10" y="10" 
+				rssDelegate="{myRSS}">
+</ns1:RSSDisplay>
+	
+</mx:WindowedApplication>

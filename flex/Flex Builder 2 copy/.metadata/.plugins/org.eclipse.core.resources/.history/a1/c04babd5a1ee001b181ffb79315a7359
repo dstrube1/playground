@@ -1,0 +1,29 @@
+package app
+{
+	import base.Context;
+	import app.config.AppContext;
+	
+	public class App
+	{
+		
+		public static const LENZ_PANEL_WIDTH:int = 850;
+		public static const LENZ_PANEL_HEIGHT:int = 600;
+		
+		public static const LENZ_PANEL_CONTENT_HEIGHT:int = 480;
+		
+		
+		public static var globalContext:AppContext = new AppContext();
+		
+		
+		
+		public static const DEFAULT_WAIT_TIMEOUT:int = 30;  // seconds
+		
+		
+		public static function getContext():AppContext {
+			return(globalContext);
+		}
+		
+		
+		
+	}
+}

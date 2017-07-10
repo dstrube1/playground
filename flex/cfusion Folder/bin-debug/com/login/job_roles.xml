@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+<response>
+	<items>
+		<item>
+		  <role name="-- Select Your Job Role --" data="" />
+		  <role name="Corporate Employee" data="CORP" />
+		  <role name="Hotel General Manager" data="GM" /> 
+		  <role name="Hotel Director of Sales/Marketing" data="DOS" />
+		  <role name="Hotel Sales Manager" data="SM" /> 
+		  <role name="Hotel Sales Coordinator" data="SA" />
+		  <role name="Director of Catering" data="DOC" />
+		  <role name="Hotel Catering Manager" data="CM" />
+		  <role name="Hotel Catering Coordinator" data="CA" />
+		  <role name="Director of Revenue" data="DOR" />
+		  <role name="Reservations Manager" data="RM" />
+		  <role name="Reservations Agent" data="RES" />
+		</item>
+	</items>
+</response>

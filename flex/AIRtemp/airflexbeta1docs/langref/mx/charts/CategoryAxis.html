@@ -1,0 +1,1025 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
+<meta content="CategoryAxis,mx.charts.CategoryAxis,element,index,item,itemRenderer,FOCUSED,SELECTED,FOCUSEDSELECTED,ROLLOVER,DISABLED,NONE,currentState,element,markerAspectRatio,label,legendData,marker,source,baseline,categoryField,dataProvider,labelFunction,padding,ticksBetweenLabels,parseFunction,requiredDescribedFields,unitSize,dataInterval,dataUnits,displayLocalTime,interval,labelUnits,alignLabelsToUnits,maximum,minimum,minorTickInterval,minorTickUnits,disabledDays,disabledRanges,interval,maximum,maximumLabelPrecision,minimum,minorInterval,type,highlightElements,labelFunction,axis,chart,gutters,heightLimit,horizontal,labelRenderer,length,minorTicks,otherAxes,placement,ticks,legendItemClass,dataProvider,position,text,value,radiusAxis,secondRadiusAxis,type,interval,maximum,maximumLabelPrecision,minimum,chartItem,contextColor,dataTipFunction,distance,id,item,x,y,displayText,element,canShowLabelVertically,canLabelExtendToEndOfChart,maxLabelWidth,type,clone,mapCache,filterCache,transformCache,invertTransform,formatForScreen,getLabelEstimate,preferDropLabels,getLabels,reduceLabels,update,transformCache,filterCache,reduceLabels,buildMinorTickCache,formatYears,formatMonths,formatDays,formatMinutes,formatSeconds,formatMilliseconds,invalidateSize,invalidateDisplayList,measure,updateDisplayList,move,setActualSize,chartStateChanged,adjustGutters,commitProperties,measure,updateDisplayList" name="keywords">
+<title>mx.charts.CategoryAxis (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'CategoryAxis - Flex 3 Language Reference';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../index.html?mx/charts/CategoryAxis.html&amp;mx/charts/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;CategoryAxis</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class CategoryAxis"); titleBar_setSubNav(false,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<div class="annotation">(Adobe Flex Charting 3 components only)</div>
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.charts</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  CategoryAxis<a href="../../mx/charts/chartClasses/IAxis.html">IAxis</a>, <a href="../../flash/events/IEventDispatcher.html">IEventDispatcher</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">CategoryAxis  <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../mx/charts/chartClasses/AxisBase.html">AxisBase</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../flash/events/EventDispatcher.html">EventDispatcher</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../Object.html">Object</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="../../mx/charts/chartClasses/IAxis.html">IAxis</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  The CategoryAxis class lets charts represent data
+  grouped by a set of discrete values along an axis.
+  You typically use the CategoryAxis class to define
+  a set of labels that appear along an axis of a chart.
+  For example, charts that render data according to City,
+  Year, Business unit, and so on.
+  
+  <p>A CategoryAxis used in a chart does not inherit its
+  <code>dataProvider</code> property from the containing chart.
+  You must explicitly set the <code>dataProvider</code> property
+  on a CategoryAxis.</p>
+  
+  <p>While you can use the same dataProvider to provide data
+  to the chart and categories to the CategoryAxis, a CategoryAxis
+  can optimize rendering if its dataProvider is relatively static.
+  If possible, ensure that the categories are relatively static
+  and that changing data is stored in separate dataProviders.</p>
+  
+  <p>The <code>dataProvider</code> property can accept
+  either an array of strings or an array of records (objects)
+  with a property specifying the category name.
+  If you specify a <code>categoryField</code> property,
+  the CategoryAxis assumes the dataProvider is an array of Objects.
+  If <code>categoryField</code> is <code>null</code>,
+  the CategoryAxis assumes dataProvider is an array of Strings.</p>
+  
+  <p></p>
+<a name="mxmlSyntaxSummary"></a><span class="classHeaderTableLabel">MXML Syntax</span><span style="display:none" id="showMxmlLink"><a onclick="toggleMXMLOnly();" href="#mxmlSyntaxSummary"><img class="collapsedImage" alt="collapsed" title="collapsed" src="../../images/collapsed.gif">Show MXML Syntax</a>
+<br>
+</span><span id="hideMxmlLink"><a onclick="toggleMXMLOnly();" href="#mxmlSyntaxSummary"><img class="expandedImage" alt="expanded" title="expanded" src="../../images/expanded.gif">Hide MXML Syntax</a></span>
+<div class="mxmlSyntax" id="mxmlSyntax">  
+  <p>The <code>&lt;mx:CategoryAxis&gt;</code> tag inherits all the properties
+  of its parent classes and adds the following properties:</p>
+  
+  <pre>
+  &lt;mx:CategoryAxis
+    <strong>Properties</strong>
+    categoryField="null"
+    dataProvider="<i>No default</i>"
+    labelFunction="<i>No default</i>"
+    padding="<i>Default depends on chart type</i>"
+    ticksBetweenLabels="<i>true</i>"
+  /&gt;
+  </pre>
+   </div>
+<script type="text/javascript" language="javascript">
+<!--
+setMXMLOnly();
+--></script>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#baseline">baseline</a> : <a href="../../Number.html">Number</a>
+<div class="summaryTableDescription">[read-only] 
+      
+   The baseline position for the axis.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#categoryField">categoryField</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription">
+      Specifies the field of the data provider
+      containing the text for the labels.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/charts/chartClasses/AxisBase.html#chartDataProvider">chartDataProvider</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">[write-only] 
+   The data provider assigned to the enclosing chart.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/charts/chartClasses/AxisBase.html">AxisBase</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#constructor">constructor</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  A reference to the class object or constructor function for a given object instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#dataProvider">dataProvider</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+      Specifies the data source containing the label names.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/charts/chartClasses/AxisBase.html#displayName">displayName</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription"> 
+   The name of the axis.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/charts/chartClasses/AxisBase.html">AxisBase</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#labelFunction">labelFunction</a> : <a href="../../Function.html">Function</a>
+<div class="summaryTableDescription">
+      Specifies a function that defines the labels that are generated
+      for each item in the CategoryAxis's dataProvider.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#padding">padding</a> : <a href="../../Number.html">Number</a>
+<div class="summaryTableDescription">
+      Specifies the padding added to either side of the axis
+      when rendering data on the screen.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#prototype">prototype</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">[static] 
+  A reference to the prototype object of a class or function object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ticksBetweenLabels">ticksBetweenLabels</a> : <a href="../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">
+      Specifies the location of major tick marks on the axis,
+      relative to the category labels.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/charts/chartClasses/AxisBase.html#title">title</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription">
+   The text for the title displayed along the axis.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/charts/chartClasses/AxisBase.html">AxisBase</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../mx/charts/chartClasses/AxisBase.html#unitSize">unitSize</a> : <a href="../../Number.html">Number</a>
+<div class="summaryTableDescription">[read-only] 
+   The size of one unit of data as represented by this axis.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/charts/chartClasses/AxisBase.html">AxisBase</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#CategoryAxis()">CategoryAxis</a>()</div>
+<div class="summaryTableDescription">
+      Constructor.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#addEventListener()">addEventListener</a>(type:<a href="../../String.html">String</a>, listener:<a href="../../Function.html">Function</a>, useCapture:<a href="../../Boolean.html">Boolean</a> = false, priority:<a href="../../int.html">int</a> = 0, useWeakReference:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+    Registers an event listener object with an EventDispatcher object so that the listener 
+    receives notification of an event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/charts/chartClasses/AxisBase.html#dataChanged()">dataChanged</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription"> 
+   Triggers events that inform the range object
+   when the chart data has changed.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/charts/chartClasses/AxisBase.html">AxisBase</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#dispatchEvent()">dispatchEvent</a>(event:<a href="../../flash/events/Event.html">Event</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Dispatches an event into the event flow.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#filterCache()">filterCache</a>(cache:<a href="../../Array.html">Array</a>, field:<a href="../../String.html">String</a>, filteredString:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Filters a set of values of arbitrary type
+   to a set of numbers that can be mapped.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#formatForScreen()">formatForScreen</a>(value:<a href="../../Object.html">Object</a>):<a href="../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+   Formats values for display in DataTips.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getLabelEstimate()">getLabelEstimate</a>():<a href="../../mx/charts/chartClasses/AxisLabelSet.html">AxisLabelSet</a>
+</div>
+<div class="summaryTableDescription">
+   Determines the range to estimate what the axis labels should be.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getLabels()">getLabels</a>(minimumAxisLength:<a href="../../Number.html">Number</a>):<a href="../../mx/charts/chartClasses/AxisLabelSet.html">AxisLabelSet</a>
+</div>
+<div class="summaryTableDescription">
+   Gets the labels text that is rendered.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#hasEventListener()">hasEventListener</a>(type:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Checks whether the EventDispatcher object has any listeners registered for a specific type 
+    of event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">hasOwnProperty</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an object has a specified property defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#invertTransform()">invertTransform</a>(value:<a href="../../Number.html">Number</a>):<a href="../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+   Maps a position along the axis back to a numeric data value.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">isPrototypeOf</a>(theClass:<a href="../../Object.html">Object</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an instance of the Object class is in the prototype chain of the object specified 
+  as the parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#mapCache()">mapCache</a>(cache:<a href="../../Array.html">Array</a>, field:<a href="../../String.html">String</a>, convertedField:<a href="../../String.html">String</a>, indexValues:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Converts a set of values of arbitrary type
+   to a set of numbers that can be transformed into screen coordinates.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#preferDropLabels()">preferDropLabels</a>():<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription"> 
+   Determines how the axis handles overlapping labels.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">propertyIsEnumerable</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether the specified property exists and is enumerable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#reduceLabels()">reduceLabels</a>(intervalStart:<a href="../../mx/charts/AxisLabel.html">AxisLabel</a>, intervalEnd:<a href="../../mx/charts/AxisLabel.html">AxisLabel</a>):<a href="../../mx/charts/chartClasses/AxisLabelSet.html">AxisLabelSet</a>
+</div>
+<div class="summaryTableDescription">
+   Invoked when an AxisRenderer is unable to cleanly render
+   the labels without overlap, and would like the Axis object
+   to reduce the set of labels.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/charts/chartClasses/AxisBase.html#registerDataTransform()">registerDataTransform</a>(transform:<a href="../../mx/charts/chartClasses/DataTransform.html">DataTransform</a>, dimensionName:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Each DataTransform that makes use of an axis
+   registers itself with that axis.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/charts/chartClasses/AxisBase.html">AxisBase</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#removeEventListener()">removeEventListener</a>(type:<a href="../../String.html">String</a>, listener:<a href="../../Function.html">Function</a>, useCapture:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+    Removes a listener from the EventDispatcher object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#setPropertyIsEnumerable()">setPropertyIsEnumerable</a>(name:<a href="../../String.html">String</a>, isEnum:<a href="../../Boolean.html">Boolean</a> = true):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+     Sets the availability of a dynamic property for loop operations.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#toString()">toString</a>():<a href="../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the string representation of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#transformCache()">transformCache</a>(cache:<a href="../../Array.html">Array</a>, field:<a href="../../String.html">String</a>, convertedField:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Maps a set of values from data space to screen space.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/charts/chartClasses/AxisBase.html#unregisterDataTransform()">unregisterDataTransform</a>(transform:<a href="../../mx/charts/chartClasses/DataTransform.html">DataTransform</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Each DataTransform that makes use of an axis
+   registers itself with that axis.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/charts/chartClasses/AxisBase.html">AxisBase</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#update()">update</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Updates the chart.</div>
+</td><td class="summaryTableOwnerCol">CategoryAxis</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#valueOf()">valueOf</a>():<a href="../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the primitive value of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#willTrigger()">willTrigger</a>(type:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Checks whether an event listener is registered with this EventDispatcher object or any of 
+    its ancestors for the specified event type.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedMethod" id="hideInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
+</div>
+<div class="showInheritedProtectedMethod" id="showInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
+</div>
+</div>
+<table id="summaryTableProtectedMethod" class="summaryTable hideInheritedProtectedMethod" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../mx/charts/chartClasses/AxisBase.html#protected()">describeData</a>(requiredFields:<a href="../../uint.html">uint</a>):<a href="../../Array.html">Array</a>
+</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../mx/charts/chartClasses/AxisBase.html">AxisBase</a></td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<div class="showHideLinks">
+<div class="hideInheritedEvent" id="hideInheritedEvent">
+<a onclick="javascript:setInheritedVisible(false,'Event');" href="#eventSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Events</a>
+</div>
+<div class="showInheritedEvent" id="showInheritedEvent">
+<a onclick="javascript:setInheritedVisible(true,'Event');" href="#eventSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Events</a>
+</div>
+</div>
+<table id="summaryTableEvent" class="summaryTable hideInheritedEvent" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th> Summary </th><th class="summaryTableOwnerCol">Defined By</th>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#event:activate">activate</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when Flash Player or the and AIR application gains operating system focus and becomes active.</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#event:deactivate">deactivate</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when Flash Player loses operating system focus and is becoming inactive.</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="baseline"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">baseline</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>baseline:<a href="../../Number.html">Number</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+      </p><p>
+   The baseline position for the axis.
+   Some series, such as ColumnSeries or AreaSeries, use this value to
+   define the base of a filled region when no minimum value is specified.
+  </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get baseline():<a href="../../Number.html">Number</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="categoryField"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">categoryField</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>categoryField:<a href="../../String.html">String</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Specifies the field of the data provider
+      containing the text for the labels.
+      If this property is <code>null</code>, CategoryAxis assumes 
+      that the dataProvider contains an array of Strings.
+           </p><p> The default value is <code>null</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get categoryField():<a href="../../String.html">String</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set categoryField(value:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="dataProvider"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">dataProvider</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>dataProvider:<a href="../../Object.html">Object</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Specifies the data source containing the label names.
+      The <code>dataProvider</code> can be an Array of Strings, an Array of Objects,
+      or any object that implements the IList or ICollectionView interface.
+      If the <code>dataProvider</code> is an Array of Strings,
+      ensure that the <code>categoryField</code> property
+      is set to <code>null</code>. 
+      If the dataProvider is an Array of Objects,
+      set the <code>categoryField</code> property
+      to the name of the field that contains the label text.
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get dataProvider():<a href="../../Object.html">Object</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set dataProvider(value:<a href="../../Object.html">Object</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="labelFunction"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">labelFunction</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>labelFunction:<a href="../../Function.html">Function</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Specifies a function that defines the labels that are generated
+      for each item in the CategoryAxis's <code>dataProvider</code>.
+      If no <code>labelFunction</code> is provided,
+      the axis labels default to the value of the category itself.
+           <p>The <code>labelFunction</code> method for a CategoryAxis
+      has the following signature:</p>
+      <pre>
+        labelFunction(<i>categoryValue</i>:Object, <i>previousCategoryValue</i>:Object, 
+          <i>axis</i>:CategoryAxis, <i>categoryItem</i>:Object):String
+      </pre>
+      
+      <p>Where:</p>
+      <ul>
+       <li><code><i>categoryValue</i></code> is the value of the category to be represented.</li>
+       <li><code><i>previousCategoryValue</i></code> is the value of the previous category on the axis.</li>
+       <li><code><i>axis</i></code> is the CategoryAxis being rendered.</li>
+       <li><code><i>categoryItem</i></code> is the item from the <code>dataProvider</code> 
+         that is being represented.</li>
+      </ul>
+      
+      <p>Flex displays the returned String as the axis label.</p>
+     
+      <p>If the <code>CategoryAxis.categoryField</code> property is not set, the value
+      will be the same as the <code>categoryValue</code> property.</p>
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get labelFunction():<a href="../../Function.html">Function</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set labelFunction(value:<a href="../../Function.html">Function</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="padding"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">padding</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>padding:<a href="../../Number.html">Number</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Specifies the padding added to either side of the axis
+      when rendering data on the screen.
+      Set to 0 to map the first category to the
+      very beginning of the axis and the last category to the end.
+      Set to 0.5 to leave padding of half the width
+      of a category on the axis between the beginning of the axis
+      and the first category and between the last category
+      and the end of the axis.
+      
+      <p>This is useful for chart types that render beyond the bounds
+      of the category, such as columns and bars.
+      However, when used as the horizontalAxis in a LineChart or AreaChart,
+      it is reset to 0.</p>
+      
+      </p><p> The default value is <code>0.5</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get padding():<a href="../../Number.html">Number</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set padding(value:<a href="../../Number.html">Number</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="ticksBetweenLabels"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ticksBetweenLabels</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>ticksBetweenLabels:<a href="../../Boolean.html">Boolean</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Specifies the location of major tick marks on the axis,
+      relative to the category labels.
+      If <code>true</code>, tick marks (and any associated grid lines)
+      appear between the categories.
+      If <code>false</code>, tick marks appear in the middle of the category,
+      aligned with the label.
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get ticksBetweenLabels():<a href="../../Boolean.html">Boolean</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set ticksBetweenLabels(value:<a href="../../Boolean.html">Boolean</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor Detail</div>
+<a name="CategoryAxis()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">CategoryAxis</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function CategoryAxis()</code>
+<p></p><p>
+      Constructor.
+     </p></div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method Detail</div>
+<a name="filterCache()"></a><a name="filterCache(Array,String,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">filterCache</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function filterCache(cache:<a href="../../Array.html">Array</a>, field:<a href="../../String.html">String</a>, filteredString:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p>
+   Filters a set of values of arbitrary type
+   to a set of numbers that can be mapped.
+     </p><p>
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">cache</span>:<a href="../../Array.html">Array</a></code> &mdash; An Array of objects where converted values
+   are read from and stored.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">field</span>:<a href="../../String.html">String</a></code> &mdash; The field of the objects in the cache Array
+   containing the pre-filtered values.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">filteredString</span>:<a href="../../String.html">String</a></code> &mdash; The field of the objects in the cache Array
+   where filtered values should be stored.
+  </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="formatForScreen()"></a><a name="formatForScreen(Object)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">formatForScreen</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function formatForScreen(value:<a href="../../Object.html">Object</a>):<a href="../../String.html">String</a></code>
+<p>
+   Formats values for display in DataTips.
+   Returns a user-readable string.
+     </p><p>
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:<a href="../../Object.html">Object</a></code> &mdash; The value to convert to a String. 
+   
+   </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../String.html">String</a></code> &mdash; The text of the DataTip.
+  </td>
+</tr>
+</table>
+</div>
+<a name="getLabelEstimate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getLabelEstimate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getLabelEstimate():<a href="../../mx/charts/chartClasses/AxisLabelSet.html">AxisLabelSet</a></code>
+<p>
+   Determines the range to estimate what the axis labels should be. 
+   The axis almost immediately calls the <code>getLabels()</code> method
+   to get the real values.
+   The axis uses the estimated values to adjust chart margins,
+   so any difference between the estimated labels and  actual labels
+   (returned from the <code>getLabels()</code> method) results in scaling
+   the labels to fit.
+     <p>An axis need only return the minimum and maximum labels
+   when returning an estimate.
+   If the label set is fairly static, without depending on the size
+   of the axis being rendered on screen, an axis can return the entire
+   label set from this function, and mark the estimate as accurate.</p>
+   
+   </p><p>
+      </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../mx/charts/chartClasses/AxisLabelSet.html">AxisLabelSet</a></code> &mdash; An Array of AxisLabel objects.
+  </td>
+</tr>
+</table>
+</div>
+<a name="getLabels()"></a><a name="getLabels(Number)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getLabels</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getLabels(minimumAxisLength:<a href="../../Number.html">Number</a>):<a href="../../mx/charts/chartClasses/AxisLabelSet.html">AxisLabelSet</a></code>
+<p>
+   Gets the labels text that is rendered.
+   When Flex calls this method, 
+   the axis has already determined the minimum length of the label.
+   
+   </p><p>
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">minimumAxisLength</span>:<a href="../../Number.html">Number</a></code> &mdash; The minimum length of the axis, in pixels.
+   The axis can be longer than this value, but not shorter.
+   
+   </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../mx/charts/chartClasses/AxisLabelSet.html">AxisLabelSet</a></code> &mdash; An array of AxisLabel objects.
+  </td>
+</tr>
+</table>
+</div>
+<a name="invertTransform()"></a><a name="invertTransform(Number)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">invertTransform</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function invertTransform(value:<a href="../../Number.html">Number</a>):<a href="../../Object.html">Object</a></code>
+<p>
+   Maps a position along the axis back to a numeric data value.
+     </p><p>
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:<a href="../../Number.html">Number</a></code> &mdash; The bound of the axis.
+   This parameter should be between 0 and 1,
+   with 0 representing the minimum bound of the axis, and 1 the maximum.
+  </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Object.html">Object</a></code></td>
+</tr>
+</table>
+</div>
+<a name="mapCache()"></a><a name="mapCache(Array,String,String,Boolean)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">mapCache</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function mapCache(cache:<a href="../../Array.html">Array</a>, field:<a href="../../String.html">String</a>, convertedField:<a href="../../String.html">String</a>, indexValues:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a></code>
+<p>
+   Converts a set of values of arbitrary type
+   to a set of numbers that can be transformed into screen coordinates.
+     </p><p>
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">cache</span>:<a href="../../Array.html">Array</a></code> &mdash; An Array of objects where converted values
+   are read from and stored.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">field</span>:<a href="../../String.html">String</a></code> &mdash; The field of the objects in the cache Array
+   containing the pre-converted values.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">convertedField</span>:<a href="../../String.html">String</a></code> &mdash; The field of the objects in the cache Array
+   where converted values should be stored.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">indexValues</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>false</code>)<code></code> &mdash; This parameter is <code>true</code> if the values being mapped
+   are index values, and <code>false</code> if they are natural data values.
+  </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="preferDropLabels()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">preferDropLabels</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function preferDropLabels():<a href="../../Boolean.html">Boolean</a></code>
+<p> 
+   Determines how the axis handles overlapping labels. 
+   Typically, numeric ranges return <code>true</code>,
+   while discrete value-based ranges do not.
+   You can can override this property by setting it directly on the axis.
+     </p><p>
+      </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Boolean.html">Boolean</a></code> &mdash; <code>true</code> if labels can be dropped without loss of data;
+   otherwise, <code>false</code>. 
+  </td>
+</tr>
+</table>
+</div>
+<a name="reduceLabels()"></a><a name="reduceLabels(mx.charts.AxisLabel,mx.charts.AxisLabel)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">reduceLabels</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function reduceLabels(intervalStart:<a href="../../mx/charts/AxisLabel.html">AxisLabel</a>, intervalEnd:<a href="../../mx/charts/AxisLabel.html">AxisLabel</a>):<a href="../../mx/charts/chartClasses/AxisLabelSet.html">AxisLabelSet</a></code>
+<p>
+   Invoked when an AxisRenderer is unable to cleanly render
+   the labels without overlap, and would like the Axis object
+   to reduce the set of labels.
+   The method is passed the two labels that are overlapping.
+     </p><p>
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">intervalStart</span>:<a href="../../mx/charts/AxisLabel.html">AxisLabel</a></code> &mdash; The start of the interval where labels overlap.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">intervalEnd</span>:<a href="../../mx/charts/AxisLabel.html">AxisLabel</a></code> &mdash; The end of the interval where labels overlap.
+     </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../mx/charts/chartClasses/AxisLabelSet.html">AxisLabelSet</a></code> &mdash; A new label set that resolves the overlap by reducing
+   the number of labels.
+  </td>
+</tr>
+</table>
+</div>
+<a name="transformCache()"></a><a name="transformCache(Array,String,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">transformCache</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function transformCache(cache:<a href="../../Array.html">Array</a>, field:<a href="../../String.html">String</a>, convertedField:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p>
+   Maps a set of values from data space to screen space.
+     </p><p>
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">cache</span>:<a href="../../Array.html">Array</a></code> &mdash; An Array of objects where mapped values
+   are read from and stored.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">field</span>:<a href="../../String.html">String</a></code> &mdash; The field of the objects in the cache Array
+   containing the pre-mapped values.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">convertedField</span>:<a href="../../String.html">String</a></code> &mdash; The field of the objects in the cache Array
+   where mapped values should be stored.
+  </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="update()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">update</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function update():<a href="../../specialTypes.html#void">void</a></code>
+<p>
+   Updates the chart.
+   This can be called multiple times per frame. 
+  </p><p>
+      </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/charts/CategoryAxis.html','mx/charts/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

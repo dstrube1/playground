@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:view="view.*"
+	xmlns:bean="vo.*"
+	width="700"
+	height="450"
+	layout="vertical" creationComplete="init()" >
+
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import vo.UserBean;
+			import service.UserDAO;
+			import service.ApplicationService;
+			import service.Factory;
+			import model.ApplicationModel;
+			
+			[Bindable]
+			private var applicationModel:ApplicationModel;
+			private var applicationService:ApplicationService;
+			
+			private function init():void {
+				applicationModel = Factory.getInstance().applicationModel;
+				applicationService = Factory.getInstance().applicationService;
+				
+				applicationModel.aEmailRecipients = applicationService.userDAO.getAll();
+			}
+			
+		]]>
+	</mx:Script>
+	<mx:Text text="{applicationModel.statusMsg}" />
+	<view:SyncData />
+	<view:EmailLists width="100%"
+		aEmailRecipients="{applicationModel.aEmailRecipients}"
+		aSelectedEmailRecipients="{applicationModel.aSelectedEmailRecipients}" />
+	
+</mx:WindowedApplication>

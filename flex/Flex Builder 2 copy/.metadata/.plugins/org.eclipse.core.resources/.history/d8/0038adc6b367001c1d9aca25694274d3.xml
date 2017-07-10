@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	height="768"
+	width="1024"
+	xmlns:app.frame="app.frame.*"
+	xmlns:app.config="app.config.*"
+	currentState="Initial"
+	initialize="onInitialize()"
+	creationComplete="onCreationComplete()"
+	tabChildren="false"
+	>
+
+	<mx:Style source="resources/style/Glaucoma.css" />
+	
+
+
+
+	<mx:states>
+		<mx:State name="Intro">
+			<mx:SetProperty target="{intro}" name="visible" value="true" />
+			<mx:SetProperty target="{intro}" name="activate" value="true" />
+		</mx:State>
+		
+		<mx:State name="Login">
+			<mx:SetProperty target="{login}" name="visible" value="true" />
+			<mx:SetProperty target="{login}" name="activate" value="true" />	
+		</mx:State>
+	
+		<mx:State name="Initial">
+			
+		</mx:State>
+		
+		<mx:State name="Main">
+		
+			<mx:SetProperty target="{login}" name="visible" value="false" />
+			<mx:SetProperty target="{login}" name="activate" value="false" />
+		
+		
+			<mx:SetProperty target="{intro}" name="visible" value="false" />
+			<mx:SetProperty target="{intro}" name="activate" value="false" />
+			
+			<mx:SetProperty target="{main}" name="visible" value="true" />
+			<mx:SetProperty target="{main}" name="activate" value="true" />	
+				
+		</mx:State>
+		
+	</mx:states>
+	
+
+	<app.config:PharmaLenzConfiguration id="pharmaLenzConfiguration" />
+	
+
+	<mx:Script>
+		<![CDATA[
+
+
+			import base.lenz.BaseLenz;
+			import app.config.AppContext;
+			import base.services.LenzServiceHelper;
+			import base.services.LenzService;
+			import base.log.Logger;
+			import base.event.AppModeEvent;
+			import app.App;
+			import mx.managers.PopUpManager;
+			import base.log.LogWindow;
+			import app.Init;
+			import mx.controls.Alert;
+			import base.util.ModalWait;
+			import mx.core.Application;
+			import mx.core.UIComponent;
+
+			
+			
+			[Bindable]
+			private var logWin:LogWindow = null;
+
+			private var init:Init;
+
+			private var logger:Logger = Logger.getLogger('LenzDemo3');
+			
+			
+			
+			public var isReady:Boolean = false;
+			
+			
+			
+			
+			private function loadPanel():void {
+				
+				
+				
+				
+			}
+			
+			private function onInitialize():void {
+
+				logWin = PopUpManager.createPopUp(this, LogWindow, false) as LogWindow;
+				logWin.visible = false;
+				
+
+				var config:Object = { 
+						svcUrl: pharmaLenzConfiguration.serviceHostPort, 
+						wsdlPath: pharmaLenzConfiguration.serviceWSDLPath, 
+						portPath: pharmaLenzConfiguration.servicePortPath, 
+						testMode: pharmaLenzConfiguration.testMode 
+						};
+
+				// we have to get the loaderInfo from a display object.  Application doesn't cut it.
+				var overrideConfig:Object = logWin.root.loaderInfo.parameters;
+				
+				if (overrideConfig != null) {
+					if (overrideConfig['testMode'] != null) {
+						if (overrideConfig.testMode == "true") {
+							config.testMode = true;
+						} else {
+							config.testMode = false;
+						} 
+					}
+					
+					if (overrideConfig['svcUrl'] != null) {
+						config.svcUrl = overrideConfig.svcUrl;
+						pharmaLenzConfiguration.serviceHostPort = overrideConfig.svcUrl;
+					}
+				}
+				
+				init = new Init(logWin, config);				
+			}
+			
+			private function onCreationComplete():void {
+
+
+				logger.debug("PharmaLenz2: onCreationComplete");		
+					
+				RegisterExternalInterfaces();
+				
+				addEventListener(AppModeEvent.MODE_CHANGE, onAppModeEvent,false,0,true);
+				
+				init.phase2(defaultBladeItems);
+				
+								
+				ModalWait.init(Application.application as Application, 2);
+
+
+				isReady = true;
+
+				// switch to the Intro state.
+				currentState = "Intro";
+
+				
+			}
+			
+			
+
+			public function RegisterExternalInterfaces():void
+            {                        	 
+            	logger.debug("Registering External Interface w/Function callHostContainer");
+            	                      
+            	 if (ExternalInterface.available) 
+            	 {
+                    ExternalInterface.addCallback("callHostContainer", callHostContainer);
+                    
+                 }  
+                 else 
+                 {
+                 	Alert.show('not inited');
+                    // Handle failure here
+                 }
+          	}
+			
+			
+			private function onAppModeEvent(appEvent:AppModeEvent):void {
+				
+				
+				logger.debug("appModeEvent:"+appEvent.subMode);
+				
+				if (appEvent.subMode == AppModeEvent.LOGIN_SUCCESS) {
+					
+					currentState = 'Main';
+				}
+				
+//				if ( appEvent.subMode == AppModeEvent.INTRO_SUCCESS && LenzServiceHelper.currentSessionId()!="-1" ) {
+				if ( LenzServiceHelper.currentSessionId()!="-1" ) {
+					
+					currentState = 'Main';
+				}	
+				else {
+					currentState = 'Login';
+				}		
+				
+			}
+			
+			
+			
+            public function callHostContainer( actionName:String, targetId:String, actionParams:String ):void
+            {
+            	
+            	logger.debug("callHostContainer()");
+            	
+            //	Alert.show("callHostContainer()");
+ 				//we need to figure out which Lenz is currently active and let that lenz handle the click
+				 
+				var currentLenzId:String = main.getCurrentLenz().getLenzId(); 
+	
+				if (currentLenzId == App.STUDY_MANAGER) {
+					
+					main.getCurrentLenz().getClickManager().processAction( {"currentLenzId":currentLenzId,"actionName":actionName,"targetId":targetId,"actionParams":actionParams} );
+					
+//	 				var clickMgr:StudyClickManager = new StudyClickManager();
+//	 				clickMgr.processAction( 
+ 				}
+ 				
+            }
+			
+			
+			
+			/* handling opening/shutting of panels and avoiding #1009 Flash errors */
+
+
+			public function addToBackStage( displatObject:DisplayObject ):void {
+				if( displatObject != null && !backStage.contains( displatObject ) ) {
+					backStage.addChild( displatObject );
+				}
+			}
+
+			public function removeFromBackStage( displatObject:DisplayObject ):void {
+				if( displatObject != null && backStage.contains( displatObject ) ) {
+					backStage.removeChild( displatObject );
+				}			
+			}
+
+			
+			
+			
+		]]>
+	</mx:Script>	
+	
+
+
+	<app.frame:LoginLenzFrame    visible="false" id="login"  logwindow="{logWin}" frameThickness="5" 
+		height="100%" width="100%" />
+
+
+	<app.frame:IntroLenzFrame    visible="false" id="intro"  logwindow="{logWin}" frameThickness="5" 
+		height="100%" width="100%" >
+		
+	</app.frame:IntroLenzFrame>
+	
+	<app.frame:MainLenzFrame    visible="false" id="main"  logwindow="{logWin}" frameThickness="5" 
+		height="100%" width="100%" />
+
+	
+<!--	
+	<mx:Canvas x="0" y="0" width="670" height="70" backgroundColor="#07125d" borderStyle="inset" borderColor="#888888" borderThickness="3">
+		<mx:Label x="10" y="10" text="&gt;" fontWeight="bold" color="#5a5c80" fontSize="30"/>
+	</mx:Canvas>
+	<mx:Canvas x="671" y="0" width="353" height="70" backgroundColor="#07125d" borderStyle="inset" borderColor="#888888" borderThickness="3">
+		<mx:Label x="156" y="11" text="PharmaLenz" fontSize="28" color="#e4e4e4" click="loadPanel()"/>
+	</mx:Canvas>
+	
+	
+	
+	<mx:Canvas x="102" y="201" width="802" height="512" cornerRadius="10" backgroundColor="#acacac" borderStyle="solid" borderColor="#fafafa" backgroundAlpha="0.62">
+		<mx:Canvas x="0" y="33" width="520" height="120" backgroundColor="#7eb6bf" borderStyle="solid" borderColor="#ffffff">
+		</mx:Canvas>
+		<mx:Canvas x="520" y="33" width="280" height="120" backgroundColor="#739eb9" borderStyle="solid" borderColor="#fdfdfd">
+			<mx:Label x="18" y="26" text="Today On" width="133" height="37" fontSize="24" color="#dddddd"/>
+			<mx:Label x="18" y="54" text="PharmaLenz" width="181" height="29" fontSize="24" color="#dddddd"/>
+		</mx:Canvas>
+	</mx:Canvas>
+-->
+
+<!--
+-->
+	<app.config:DefaultBladeItems id="defaultBladeItems"  height="1" width="1" alpha="0"/>
+	<mx:Canvas id="backStage" x="0" y="0" width="1" height="1">
+		<!-- Kepps all display objs, trying to remedy 1009 -->
+	</mx:Canvas>
+
+	
+</mx:Application>

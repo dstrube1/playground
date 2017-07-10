@@ -1,0 +1,41 @@
+package base.util
+{ 
+	import base.log.Logger;
+	
+	public class XMLMap{
+		//represents structure like:
+//		<map>
+//		  <element key="k1" value="1"/>
+//		  <element key="asdf" value="asdf"/>
+//		  <element key="fp" value="3.14159"/>
+//		  <element key="asdffd" value=""/>
+//		</map>
+
+		private static var logger:Logger = Logger.getLogger("XMLMap");
+		
+		public static function stringToObject(string:String=null):Object{
+			if (string == null || string == ""){
+				return new Object();
+			}
+			
+			var result:Object = new Object();
+			var xml:XML = new XML(string);
+			
+			for each (var element:XML in xml.element){
+            		result[element.@key] = element.@value;
+           	}
+			return result;
+		}
+		public static function objectToString(object:Object=null, keys:Array=null):String{
+			if (object==null || keys == null){
+				return "<map>\n</map>";
+			}
+			var data:String = "<map>\n";
+			for each (var key:Object in keys){
+            		data+="\n    <element key=\"" + key +"\" value=\"" + object[key]+"\"/>";
+           	}
+           	data +="</map>";
+			return data;
+		}
+	}
+}

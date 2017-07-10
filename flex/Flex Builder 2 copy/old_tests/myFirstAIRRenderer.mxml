@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+
+<mx:Metadata>
+     [Event(name="readArticle",type="events.ReadArticleCustomClass")]
+</mx:Metadata>
+
+	<mx:DateFormatter id="dateFormatter" formatString="D-MMM-YY"/>
+   
+   <mx:Text id="Title" 
+      htmlText="{data.title}" 
+      x="5" y="0" 
+      fontSize="11" selectable="false"
+      width="780"
+      textAlign="left" fontWeight="bold"/>
+   
+   <mx:Text id="PublishDate"
+      text="{dateFormatter.format(data.date)}"
+      x="5" y="{Title.height+3}" 
+      fontSize="9" selectable="false"
+      width="200"
+      textAlign="left" 
+      fontWeight="bold"/>         
+   
+   <mx:Text id="Author"
+      text="{data.creator}"
+      x="68" y="{Title.height+3}" 
+      fontSize="9" selectable="false"
+      width="200"
+      textAlign="left" fontWeight="bold"/>
+      
+   <mx:LinkButton id="ReadArticle"
+      label="> read article"
+      x="700" y="{Title.height-3}"
+      fontSize="10"
+      rollOverColor="#B8AF9C"
+      selectionColor="#595341"
+      textRollOverColor="#FFFFFF"
+      textSelectedColor="#FFFFFF"/>   
+      
+   <mx:Text id="Description"
+      htmlText="{data.description}"
+      x="5" y="{Title.height+20}" 
+      fontSize="10" selectable="false"
+      width="780"
+      textAlign="left"/>
+      
+   <mx:HRule x="0" y="115" width="100%"/>  
+</mx:Canvas>

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- saved from url=(0014)about:internet -->
+
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<title></title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+
+				asdocTitle = 'Flex 3 Language Reference';
+
+				var baseRef = '../';
+
+				window.onload = configPage;
+
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a href="../language-elements.html">Language&nbsp;Elements</a>&nbsp;| <a onclick="loadClassListFrame('../index-list.html')" href="../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../index.html?mxml/mxml/xml.html&amp;mxml-tags.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">&nbsp;</td><td align="right" id="subNav" class="titleTableSubNav"></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle(""); titleBar_setSubNav(false,false,false,false,false,false,false,false,false,false,false,false,false,false);}
+
+--></script>
+<div class="MainContent">
+        <div style="height:20px;" width="100%"></div>
+        <h3>&lt;mx:XML&gt; tag implemented by the compiler</h3>
+        <hr />
+
+        <p>The &lt;mx:XML&gt; tag is a compile-time tag that generates an XML object
+         or XMLNode object from a text model. 
+         The tag has the following features that are not provided directly by the Flash
+         classes:</p>
+         <ul>
+         <li>You can specify a file as the source of the XML text model.</li>
+         <li>You can use MXML binding expressions in the XML text to extract node 
+         contents from variable data; 
+         for example, you could bind a node's name attribute to a text input value, 
+         as in the following line:<br>
+         <code>&nbsp;&nbsp;&nbsp;&lt;child name="{textInput1.text}"/&gt;</code><br></li>
+         <li>You can use the <code>format="xml"</code> attribute to generate a 
+         legacy XMLNode object instead of an E4X-format XML object.</li>
+         </ul>
+        <p><b>MXML Syntax</b></p>
+        
+        <p>You can place an &lt;mx:XML&gt; tag in a Flex application file or in an MXML component file. 
+        The &lt;mx:XML&gt; tag must have an <code>id</code> attribute value to be referenced by another component.
+        The &lt;mx:XML&gt; tag does not need an <code>id</code> attribute value if the tag is a direct child of an 
+        &lt;mx:dataProvider&gt; tag. The tag body must have a single root node containing all child nodes.
+        The &lt;mx:XML&gt; tag  cannot be the root tag of an MXML component. You cannot specify Flash XML or XMLNode
+        class properties in the tag; you must specify these in ActionScript.</p>
+        
+        <p>The &lt;mx:XML&gt; tag has the following syntax:</p>
+    <pre>
+    &lt;mx:XML
+       id="<i>modelID</i>"
+       format="e4x|xml"&gt;
+          &lt;<i>root</i>&gt;
+             <i>child nodes</i>
+          &lt;/<i>root</i>&gt;
+    &lt;/mx:XML&gt; </pre>
+
+    <p>or:</p>
+    <pre>
+    &lt;mx:XML
+       id="<i>modelID</i>"
+       format="e4x|xml"
+       source="<i>fileName</i>"
+       /&gt;</pre>
+
+        <p>The default <code>format</code> property value of <code>e4x</code> creates 
+        an XML object, which implements the XML-handling standards defined in the 
+        ECMA-357 specification (known as "E4X"). 
+        For backward compatibility, you can set the <code>format</code> property to <code>xml</code> to generate
+        an object of the type flash.xml.XMLNode.</p>
+        
+        <p>The <code>source</code> property specifies an external source, such as a file, for the data model. 
+        The external source can contain static data and data binding expressions. 
+        The compiler reads the source value and compiles the source into the application; 
+        the <code>source</code> value is not read at runtime. </p>
+
+     <p>The following example uses the <mx:XML> tag to define a model for a MenuBar control:</p>
+    <pre>
+    &lt;?xml version="1.0"?&gt;
+    &lt;mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="#FFFFFF"&gt;
+    
+        &lt;mx:XML format="e4x" id="myMenuModel"&gt;
+            &lt;root label="Menu"&gt;
+            &lt;menuitem label="MenuItem A"&gt;
+                &lt;menuitem label="SubMenuItem 1-A"/&gt;
+                &lt;menuitem label="SubMenuItem 2-A" /&gt;
+            &lt;/menuitem&gt;
+            &lt;menuitem label="MenuItem B"/&gt;
+            &lt;menuitem label="MenuItem C" type="check"/&gt;
+            &lt;menuitem type="separator"/&gt;
+            &lt;menuitem label="MenuItem D"&gt;
+                &lt;menuitem label="SubMenuItem 1-D" type="radio" groupName="one"/&gt;
+                &lt;menuitem label="SubMenuItem 2-D" type="radio" groupName="one"/&gt;
+                &lt;menuitem label="SubMenuItem 3-D" type="radio" groupName="one"/&gt;
+            &lt;/menuitem&gt;
+            &lt;/root&gt;
+        &lt;/mx:XML&gt;
+    
+    
+        &lt;mx:MenuBar id="myMenu" labelField="@label" showRoot="true"&gt;
+            &lt;mx:dataProvider&gt;
+                {myMenuModel}
+            &lt;/mx:dataProvider&gt;
+        &lt;/mx:MenuBar&gt;
+    
+    &lt;/mx:Application&gt;
+</pre>
+</p> 
+    <hr />
+    <br />
+    <div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mxml/xml.html','');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:52 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:52 AM GMT-04:00 -->

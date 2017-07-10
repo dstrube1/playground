@@ -1,0 +1,14 @@
+package base.event
+{ 
+	import flash.events.Event;
+	
+	public class FormResourcedEvent  extends BaseLenzEvent
+	{
+		public static const FORM_RESOURCED_EVENT:String = "FormResourcedEvent";
+		
+		public function FormResourcedEvent() {
+			super(FORM_RESOURCED_EVENT, 'self');
+		}
+		
+	}
+}

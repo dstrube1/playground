@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	<mx:Canvas width="750" height="470">
+		<mx:Text x="283" y="10" text="Study Manager" fontSize="24"/>
+		<mx:Text x="263.5" y="425" text="Country Allocation" fontSize="24"/>
+		<mx:Text x="243" y="133" text="Investigator Identifier" fontSize="24"/>
+		<mx:Text x="191" y="275" text="Investigator / Physician Finder" fontSize="24"/>
+		
+	</mx:Canvas>
+</mx:Application>

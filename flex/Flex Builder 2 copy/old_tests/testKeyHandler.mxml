@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!-- events/TrapKeysOnTextArea.mxml -->
+<!-- http://livedocs.adobe.com/flex/201/html/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Book_Parts&file=events_054_19.html
+-->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml">
+  <mx:Script><![CDATA[
+     private function keyHandler(event:KeyboardEvent):void {
+     	if (event.keyCode == 9)
+           a.text+="key = TAB\n";
+       else if (event.keyCode == 8)
+           a.text+="key = Backspace\n";
+       else if (event.keyCode == 32)
+           a.text+="key = SPACE\n";
+       else if (event.keyCode == 46)
+           a.text+="key = DEL\n";
+       else if (event.keyCode == 27)
+           a.text+="key = ESC\n";
+       else if (event.keyCode == 20)
+           a.text+="key = CAPS\n";
+       else if (event.keyCode == 16)
+           a.text+="key = SHIFT\n";
+       else if (event.keyCode == 13)
+           a.text+="key = Enter\n";
+       else if (event.keyCode == 17)
+           a.text+="key = Start / Apple\n";
+
+      else 
+      	a.text+="keyCode = "+event.keyCode + "; charCode = " + event.charCode+"\n";
+     }
+  ]]></mx:Script>
+
+  <mx:TextInput id="my_input" keyUp="keyHandler(event)"/>
+  <mx:TextArea id="a" text="" height="300" width="200" />
+  
+</mx:Application>

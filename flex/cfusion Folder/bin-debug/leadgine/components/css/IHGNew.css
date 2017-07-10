@@ -1,0 +1,90 @@
+/* CSS file */
+Application {
+	themeColor: #7794A5;
+	fontFamily: "Lucida Grande";
+	fontSize: 11;
+	backgroundColor: #666666;
+}
+
+@font-face {
+	src:url("IHGFonts.swf");
+	fontFamily: "Lucida Grande";
+	fontWeight: normal;
+}
+@font-face {
+	src:url("IHGFonts.swf");
+	fontFamily: "Lucida Grande";
+	fontWeight: bold;
+}
+
+.mainTitle {
+	fontFamily: "Lucida Grande";
+	color: #FFFFFF;
+	fontWeight: bold;
+	fontSize: 24;
+	paddingLeft: 20;
+}
+.totalRow {
+	backgroundColor: #DDE8EE;
+	color: #000000;	
+}
+
+.secTitle {
+	fontFamily: "Lucida Grande";
+	color: #999999;
+	font-size: 18;
+	fontWeight: bold;
+	paddingLeft: 20;
+	paddingTop: 20;
+	paddingBottom: 10;	
+}
+
+.reqField {
+	fontFamily: "Lucida Grande";
+	color: red;
+	fontSize: 10;
+	paddingLeft: 20;
+	paddingRight: 20;
+	paddingTop: 20;
+	paddingBottom: 10;
+}
+
+.containerStyle {
+   backgroundColor: #ffffff;
+   borderStyle: solid;
+   borderThickness: 0;
+   dropShadowEnabled: true;
+   shadowDistance: 4;
+   shadowDirection: right;
+   dropShadowColor: #000033;
+   cornerRadius: 10;
+   width: 800;
+   height: 400;
+}
+
+.headerStyle {
+	paddingTop: 20;
+	paddingBottom: 10;	
+	backgroundColor: #7794A5;
+	borderStyle: solid;
+	borderThickness: 5;
+	borderColor: #FFFFFF;
+	cornerRadius: 10;
+	dropShadowEnabled: true;
+    shadowDistance: 4;
+    shadowDirection: right;
+    dropShadowColor: #000033;
+}
+
+.removeButton {
+	disabledSkin: Embed(source="../removeSkin.swf", symbol="Button_disabledSkin");
+	downSkin: Embed(source="../removeSkin.swf", symbol="Button_downSkin");
+	overSkin: Embed(source="../removeSkin.swf", symbol="Button_overSkin");
+	upSkin: Embed(source="../removeSkin.swf", symbol="Button_upSkin");
+}
+
+
+Form {
+	paddingBottom: 20;	
+}
+

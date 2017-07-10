@@ -1,0 +1,15 @@
+package base.util
+{ 
+	public class Assert
+	{
+		
+		public static function assertTrue( exp:Boolean, message:String):void {
+			
+			if (!exp) {
+				throw new AssertException( message );
+			}
+			
+		}
+		
+	}
+}

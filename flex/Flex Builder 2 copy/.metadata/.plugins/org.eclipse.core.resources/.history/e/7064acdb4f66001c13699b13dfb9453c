@@ -1,0 +1,455 @@
+@font-face {
+	src:url("/resources/style/arial.ttf");
+	fontFamily: arial;
+	flashType: true;
+}
+
+/*Interstate Regular */
+@font-face {
+	src:url("/resources/style/Interstate.ttf");
+	fontFamily: interstate;
+	flashType: true;
+}
+
+/*Interstate Bold */
+@font-face {
+	src:url("/resources/style/InterstateBold_4.ttf");
+	fontFamily: interstateBold;
+	fontWeight: bold;
+	flashType: true;
+	
+}
+
+/*Interstate Italic */
+@font-face {
+	src:url("/resources/style/InterstateItalic.ttf");
+	fontFamily: interstate;
+	fontStyle: italic;
+	flashType: true;
+}
+
+/*Interstate Bold Italic */
+@font-face {
+	src:url("/resources/style/InterstateBoldItalic.ttf");
+	fontFamily: interstate;
+	fontStyle: italic;
+	fontWeight: bold;
+	flashType: true;
+}
+
+Application {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	background-color: #000000;
+	margin: 0px;
+	padding: 0px;
+	/*
+    background-image: Embed("/resources/images/background.png");
+    */
+}
+
+Panel
+{
+
+	borderThickness: 1;
+	roundedBottomCorners: true;
+	cornerRadius: 8;
+	backgroundColor: #acacac;
+	borderStyle:  solid;
+	borderColor: #fafafa;
+	backgroundAlpha: 0.5;
+	padding: 0px;
+	margin: 0px;
+
+}
+
+DataGrid
+{
+
+   alternatingItemColors: #888DA0, #626A80;
+   headerColors: #626A80, #626A80;
+   verticalGridLines: false;
+   verticalGridLineColor: #333333;
+   useRollOver: true;
+   rollOverColor: #ABB0BF;
+   text-roll-over-color: #000000;
+   borderThickness: 0;
+   borderColor: #333333;
+   selectionColor: #A8ADBC;
+   color: #cccccc;
+   textSelectedColor: #cccccc;
+
+    headerStyleName: "DataGridHeaderStyle";
+}
+.DataGridHeaderStyle
+{
+	color: #D3D5DD;
+   	fontWeight: bold;
+   	fontStyle: normal;
+   	textDecoration: none;
+}
+
+VBox
+{
+	backgroundAlpha: 0.5;
+	backgroundColor: #626A80;
+}
+
+
+.invisibleScrollbar {
+	alpha: 0.01;
+	background-alpha: 0.01;
+}
+
+invisibleScrollbar {
+	alpha: 0.01;
+	background-alpha: 0.01;
+}
+
+
+.lenzCanvas {
+	alpha: 0.9;
+   /* background-image: Embed("/resources/images/bg_green.png"); */
+}
+
+
+.lenzFrame {
+	alpha: 1.0;
+	backgroundImage: Embed("/resources/images/background.png");
+	padding-bottom: 1;
+	padding-top: 1;
+	padding-left: 1;
+	padding-right: 1;
+	/*
+	backgroundColor: #111111;
+	*/
+}
+
+/*
+.menuBlade {
+}
+
+
+.filledHeader
+ {
+  }
+
+.filled
+        {
+        }
+        
+.filledRight
+        {
+        }
+        
+        
+.filledTone
+        {
+        }
+
+
+
+.rightPanel
+{
+
+}
+.rightPanelTitleStyle 
+{
+}
+*/
+.rightTextArea
+{
+	color: #FFFFFF;
+	backgroundAlpha: 0;
+}
+
+
+.lenzFormLabel {
+}
+
+.studyManagerMainForm {
+}
+
+
+.chartButtonLabel {
+}
+
+
+.lenzForm {
+}
+
+
+
+.introForm {
+	
+	horizontalScrollPolicy: off;
+	verticalScrollPolicy: off; 
+	verticalScrollBar: null;
+	horizontalScrollBar: null;
+	
+}
+
+.lenzPanel { 
+
+
+
+	cornerRadius: 8;
+	backgroundColor: #acacac;
+	borderStyle:  solid;
+	borderColor: #fafafa;
+	backgroundAlpha: 0.5;
+	padding: 0px;
+	margin: 0px;
+
+}
+
+
+.bottomRight { 
+}
+
+.lenzPanelTitle {
+	
+	color: #000000;
+	fontWeight: normal;
+	textAlign: center;
+}
+
+.loginForm {
+}
+
+.patientFunnel
+{
+}
+
+.blackPanel {
+} 
+
+.blackPanelTitleStyle {
+   color: #cccccc;
+   }
+
+.notificationPanel { 
+}
+
+.notificationPanellist
+{
+}
+	
+	
+.notificationOuterPanel
+{
+} 
+
+.notificationOuterPanelTitleStyle 
+{
+}	
+	
+.welcomeForm{
+}
+
+
+.noscrollbars { 
+	horizontalScrollPolicy: off;
+	verticalScrollPolicy: off; 
+	hScrollPolicy:off;
+	vScrollPolicy:off;
+	horizontal-center: 0;
+	vertical-center: 0;
+
+	
+}
+
+
+/* CSS file */
+
+HScrollBar 
+{
+	/*
+   cornerRadius: 0;
+   fillAlphas: 1, 1, 0.75, 0.65;
+   fillColors: #333333, #666666, #999999, #cccccc;
+   themeColor: #cccccc;
+   */
+}
+
+VScrollBar
+{
+	/*
+   cornerRadius: 0;
+   fillAlphas: 1, 1, 0.75, 0.65;
+   fillColors: #333333, #666666, #999999, #cccccc;
+   themeColor: #cccccc;
+   */
+}
+/*
+.IIDataGrid 
+{
+
+   alternatingItemColors: #555555, #333333;
+   headerColors: #333333, #333333;
+   verticalGridLines: false;
+   verticalGridLineColor: #333333;
+   useRollOver: true;
+   rollOverColor: #cccccc;
+   textRollOverColor: #666666;
+   borderThickness: 0;
+   borderColor: #333333;
+   selectionColor: #999999;
+   color: #cccccc;
+   textSelectedColor: #cccccc;
+    headerStyleName: "IIDataGridHeaderStyle";
+}
+.IIDataGridHeaderStyle
+{
+	color: #999999;
+   	fontWeight: bold;
+   	fontStyle: normal;
+   	textDecoration: none;
+}
+
+.IIKPIDataGrid 
+{
+
+   alternatingItemColors: #666666, #333333;
+   headerColors: #333333, #333333;
+   verticalGridLines: false;
+   verticalGridLineColor: #333333;
+   useRollOver: false;
+   rollOverColor: #333333;
+   textRollOverColor: #666666;
+   borderThickness: 0;
+   borderColor: #333333;
+   selectionColor: #999999;
+   color: #cccccc;
+   textSelectedColor: #cccccc;
+   headerStyleName : "headerStyleIIKPIDataGrid";
+}
+
+.headerStyleIIKPIDataGrid
+{
+	headerHeight: 0;
+}
+
+
+
+.IIStudiesPanel 
+{ 
+	
+   cornerRadius: 10;
+   headerHeight: 8;
+   borderThickness: 0;
+   dropShadowEnabled: false;
+   shadowDistance: 0;
+   shadowDirection: right;
+   roundedBottomCorners: true;
+   backgroundAlpha: 1;
+   borderAlpha: 1;
+ 	borderThicknessLeft: 5; 
+	borderThicknessRight: 0; 
+	borderThicknessTop: 0;
+  
+   headerColors: #333333, #333333;
+   backgroundColor: #333333;
+
+   borderColor: #333333;
+   titleStyleName: "IITermsPanelTitleStyle";
+}
+
+.IITermsPanel 
+{ 
+	title-style-name: "IITermsPanelTitleStyle"; 
+
+
+   cornerRadius: 10;
+   headerHeight: 35;
+   borderThickness: 0;
+   dropShadowEnabled: false;
+   shadowDistance: 0;
+   shadowDirection: right;
+   roundedBottomCorners: true;
+   backgroundAlpha: 1;
+   borderAlpha: 1;
+   headerColors: #333333, #333333;
+   backgroundColor: #333333;
+   borderColor: #333333;
+   titleStyleName: "IITermsPanelTitleStyle";
+} 
+
+.IITermsPanelTitleStyle 
+{
+   color: #999999;
+   font-weight: bold;
+}
+
+.IIKPIPanel
+{ 
+	title-style-name: "IITermsPanelTitleStyle"; 
+
+
+   cornerRadius: 10;
+   headerHeight: 10;
+   borderThickness: 0;
+   dropShadowEnabled: false;
+   shadowDistance: 0;
+   shadowDirection: right;
+   roundedBottomCorners: true;
+   backgroundAlpha: 1;
+   borderAlpha: 1;
+   headerColors: #333333, #333333;
+   backgroundColor: #333333;
+   borderColor: #333333;
+   titleStyleName: "IIKPIPanelTitleStyle";
+} 
+.IIKPIPanelTitleStyle 
+{
+   color: #cccccc;
+   font-weight: bold;
+}
+
+
+.IITermsTextArea
+{ 
+	borderAlpha: 1;
+	borderThickness: 0;
+	
+	horizontalScrollPolicy: off;
+	verticalScrollPolicy: off; 
+	letterSpacing: 0; 
+	editable: false; 
+	wordWrap: true;  
+	color: #cccccc; 
+	backgroundColor: #333333;
+} 
+
+.IICountriesList
+{ 
+	backgroundAlpha: 0.56;
+   backgroundColor: #666666;
+   alternatingItemColors: #999999, #cccccc;
+   rollOverColor: #ffffcc;
+   borderStyle: solid;
+   borderColor: #666666;
+   selectionColor: #ffffff;
+   dropShadowEnabled: true;
+   dropShadowColor: #333333;
+
+} 
+
+.IIButton
+{
+   fillAlphas: 0.16, 0.75, 0.75, 0.65;
+   fillColors: #006600, #006600, #ffffff, #006600;
+	
+	cornerRadius: 8;
+   	highlightAlphas: 0.3, 0;
+
+    color: #cccccc;
+   	themeColor: #003366;
+}
+
+.IILabel
+{
+	color: #cccccc;
+	 fontWeight: bold;
+}
+*/

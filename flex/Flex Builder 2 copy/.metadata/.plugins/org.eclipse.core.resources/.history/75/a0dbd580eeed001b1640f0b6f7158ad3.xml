@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="740" height="450"
+			implements="base.form.LenzForm" 
+			xmlns:panel="lenz.main.study_mgr.panel.*"
+			styleName="studyManagerMainForm" 
+			horizontalCenter="0" creationComplete="onCreationComplete()" 
+>
+	
+	<mx:Script>
+		<![CDATA[
+			import app.server.LenzServer;
+			import app.App;
+			
+			import base.lenz.panel.LenzPanel;
+			import base.services.LenzServiceHelper;
+			import base.services.MapArray;
+
+			import lenz.main.study_mgr.controller.StudyClickManager;
+					
+			import mx.controls.Alert;			
+			import mx.collections.ArrayCollection;
+
+			private var _parent:LenzPanel = null;
+			
+			private var topLevelAlarms:Array = null;
+			private var high:Array = new Array();
+			private var medium:Array = new Array();
+			private var low:Array = new Array();
+			private var ac:ArrayCollection;
+			
+			[Bindable]
+			private var sName:String = "";			
+			
+			[Bindable]
+			private var mapUrl:String;
+			
+			[Bindable]
+			private var budgetUrl:String;
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+				
+
+			
+		]]>
+	</mx:Script>
+
+
+	<mx:Label x="0" y="5" color="#000000" id="studyName" maxHeight="30" text="{sName}" fontThickness="200" fontSize="18" click="Alert.show('List of open studies here')" />
+
+	
+</mx:Canvas>

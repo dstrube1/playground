@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SuperPanel xmlns="nl.wv.extenders.panel.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:com="com.*"
+	xmlns:maps="com.google.maps.*"
+	creationComplete="fill()" endMaximize="onEndMaximize()" endRestore="onEndRestore()">
+	
+<mx:Script>
+<![CDATA[
+
+	import com.google.maps.overlays.MarkerOptions;
+	import com.google.maps.MapType;
+	import com.google.maps.InfoWindowOptions;
+	import com.google.maps.overlays.Marker;
+	import com.google.maps.MapMouseEvent;
+	import com.google.maps.LatLng;
+	import com.google.maps.controls.MapTypeControl;
+	import com.google.maps.controls.PositionControl;
+	import com.google.maps.controls.ZoomControl;
+	import com.google.maps.services.GeocodingEvent;
+	import com.google.maps.services.ClientGeocoder;
+
+	import mx.core.Application;
+	import mx.events.ItemClickEvent;
+	import mx.collections.ArrayCollection;
+	import mx.controls.dataGridClasses.DataGridColumn;
+	import mx.collections.XMLListCollection;
+	import mx.collections.ListCollectionView;
+	import mx.utils.ArrayUtil;
+	import mx.controls.dataGridClasses.DataGridItemRenderer;
+	import mx.managers.CursorManager;
+	import mx.formatters.DateFormatter;
+	import mx.rpc.events.ResultEvent;
+	import mx.utils.ObjectUtil;
+	import mx.utils.ObjectProxy;
+	import mx.controls.Alert;
+	import com.GradientCanvas;
+	import leadgine.components.dto.FullServiceReferral;
+
+	[Bindable] private var _selectedIndexSearch:Number = -1;				
+	[Bindable] private var listSearch:XMLListCollection;
+	
+	public var hotel:String;
+	public var code:String;
+	public var userid:String;
+
+	private var params:Object = new Object();
+	private var mappedAddresses:Array = new Array();
+	//This doesn't work
+	//[Bindable] private var myKey:String = FullServiceReferral.GOOGLE_MAP_KEY;
+	private var markerLabelIndex:uint = 0;
+	private var markerContentArray:ArrayCollection = new ArrayCollection();
+
+	private function searchGridItemClick():void{
+		Application.application.showReferralDialog(true,5);
+	}
+
+	public function resultHandlerSearch(event:ResultEvent):void {
+		var result:XML = XML(event.result);  
+	    var xmlList:XMLList = result.allLeads.children();	
+	    
+		listSearch = new XMLListCollection(xmlList);
+	}
+	
+	public function faultHandler():void {
+		this.searchService.showBusyCursor = false;
+	}
+
+	
+	//public function myPost():void{
+	//	searchService.cancel();
+	//	searchService.send(params);
+	//	searchService.method = "POST";
+	//}
+
+	private function set selectedIndexSearch(n:Number):void {
+		// Make sure we are within range of dataProvider.
+		if (n < 0)
+			n = listSearch.length - 1;
+		else if (n > (listSearch.length - 1))
+			n = 0;
+
+		_selectedIndexSearch = n;
+	}
+	
+	
+	private function get selectedIndexSearch():Number {
+		return _selectedIndexSearch;
+	}
+	
+	public function fill():void {
+		//Alert.show(searchService.url);
+		
+		searchService.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+		searchService.addEventListener(ResultEvent.RESULT,resultHandlerSearch);
+		searchService.method = "GET";
+		searchService.cancel();
+		searchService.send(); 
+
+	}
+
+	public function insertItemHandler(event:ResultEvent):void {	
+		//fill();
+	}						
+	
+	private function sortNumeric(obj1:Object, obj2:Object):int {
+		var value1:Number = (obj1.rooms == '' || obj1.rooms == null) ? null : new Number(obj1.rooms);
+		var value2:Number = (obj2.rooms == '' || obj2.rooms == null) ? null : new Number(obj2.rooms);
+		
+		if (value1 < value2) {
+			return -1;
+		} else if (value1 > value2) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+				
+
+	private function date_sort_Begin_Date(itemA:Object, itemB:Object):int {
+        var dateA:Date = new Date(Date.parse(itemA.begin));
+        var dateB:Date = new Date(Date.parse(itemB.begin));
+        return ObjectUtil.dateCompare(dateA, dateB);
+    }
+
+
+	private function date_sort_End_Date(itemA:Object, itemB:Object):int {
+        var dateA:Date = new Date(Date.parse(itemA.end));
+        var dateB:Date = new Date(Date.parse(itemB.end));
+        return ObjectUtil.dateCompare(dateA, dateB);
+    }
+	private function onEndMaximize():void{
+		vsIncentives.selectedIndex = 1;
+	}
+	private function onEndRestore():void{
+		vsIncentives.selectedIndex = 0;
+	}
+	private function onMapReady():void {
+		map.addControl(new ZoomControl());
+		map.addControl(new PositionControl());
+		map.addControl(new MapTypeControl());
+		var geoCoder:ClientGeocoder = new ClientGeocoder();
+		geoCoder.addEventListener(GeocodingEvent.GEOCODING_SUCCESS, handleGeocodingSuccess);
+		geoCoder.addEventListener(GeocodingEvent.GEOCODING_FAILURE, handleGeocodingFailure);
+		for each(var xml:XML in listSearch){
+			//does this item have coords? no. 
+			//Without, we must use another distinguishing mechanism
+			if (xml.hasOwnProperty("property_name")){
+				//is this item's address in the array of already mapped addresses?
+				var alreadyIn:Boolean = false;
+				for each(var mappedAddress:XML in mappedAddresses){
+					if (xml.property_name == mappedAddress.property_name){
+						if (xml.address1 == mappedAddress.address1){
+							alreadyIn = true;
+							break; 
+						}
+					}
+				}
+				if (alreadyIn){
+					//go on to the next item
+					continue;
+				}
+				//else
+				mappedAddresses.push(xml);
+				geoCoder.geocode(xml.brand + " - " + xml.property_name + "\n" + xml.address1 + ", " + xml.city + " " +xml.state + " " + xml.zip);
+			}
+		}
+	}
+	private function handleGeocodingSuccess(event:GeocodingEvent):void{
+		var placemarks:Array = event.response.placemarks;
+		if (placemarks.length == 0){
+			return;
+		}
+		var latLng:LatLng = placemarks[0].point as LatLng;
+		var marker:Marker = new Marker(latLng);
+		//This is how we set the marker label and the marker's infoWindow content:
+		//1- increment the index
+		//2- set the label = the index
+		//3- push to the content array the name of the geocode address
+		//4- keep in mind that at label N, the content is at N-1 (unless we trust users to know to start counting at 0)
+		markerLabelIndex++;
+		var options:MarkerOptions = new MarkerOptions({
+			label: markerLabelIndex.toString()
+			});
+		markerContentArray.addItem({name: event.response.name, latLng: latLng});
+		marker.setOptions(options);
+		map.addOverlay(marker);
+		map.setCenter(latLng,10,MapType.NORMAL_MAP_TYPE);
+		
+		marker.addEventListener(MapMouseEvent.CLICK,handleMarkerClick);
+		/* closures are cool, but in this case I prefer clarity over elegance
+			function(event:MapMouseEvent):void {
+				marker.openInfoWindow(new InfoWindowOptions({
+					title: event.currentTarget.name,//currentlyMapping.name,
+					content: placemarks[0].address
+				}));//end marker.openInfoWindow
+			});//end closure function
+			*/
+	}
+	private function handleMarkerClick(event:MapMouseEvent):void{
+		var marker:Marker = event.target as Marker;
+		//var info:InfoWindowOptions = new InfoWindowOptions();
+		var markerLabel:uint = Number(marker.getOptions().label);
+		var latLng:LatLng = markerContentArray[markerLabel-1].latLng as LatLng;
+		map.setCenter(latLng);
+		var name:String = markerContentArray[markerLabel-1].name.toString();
+		//use these lines if we want to popup an InfoWindow in addition to the HotelInfo text area:
+		//info.content = markerContentArray[markerLabel-1].name.toString();
+		//marker.openInfoWindow(info);
+		var myAddress:XML = new XML("");
+		var foundAddress:Boolean = false;
+		for each(var mappedAddress:XML in mappedAddresses){
+			if (name.indexOf(mappedAddress.property_name) != -1){
+				if (name.indexOf(mappedAddress.address1) != -1){
+					myAddress = mappedAddress;
+					foundAddress = true;
+					break; 
+				}
+			}
+		}
+		if (foundAddress){
+			hotelInfo.text = "Brand: "+myAddress.brand+"\n"+
+				"Name: "+myAddress.property_name+"\n"+
+				"Address: "+myAddress.address1 + "\n" +
+				"City: "+ myAddress.city + "\n" +
+				"State: " + myAddress.state + "\n" + 
+				"Zip: " + myAddress.zip+"\n"+
+				"Description: "+myAddress.description;
+		}else{
+			hotelInfo.text = "Error setting hotel info";
+		}
+	}
+	private function handleGeocodingFailure(event:GeocodingEvent):void{
+		//wanna throw up an alert?
+	}
+]]>
+</mx:Script>
+
+
+<mx:HTTPService id="searchService" url="http://www.revparsuite.com/leadgine/hotelsEXE.asp?clientid={ Application.application.clientID }" 
+	result="resultHandlerSearch(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:ViewStack id="vsIncentives" width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+<com:GradientCanvas
+	width="100%" height="100%" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.myFillColors1 }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="0"
+		click="{this.normalMaxClickHandler(null)}">
+
+		<mx:Canvas borderStyle="solid" borderColor="#666666" cornerRadius="20" backgroundColor="#FFFFFF" borderThickness="1" alpha="0.8" left="130" right="10" top="10" bottom="10">
+				<mx:Text text="View maps of hotel locations and property descriptions here." left="20" right="20" top="20" bottom="20" fontSize="14" color="#777777" fontFamily="Verdana"/>
+		</mx:Canvas>
+		<mx:Image source="assets/img/icons/grey_circle/globe.png" verticalCenter="0" left="30"/>
+
+</com:GradientCanvas>
+
+<mx:Canvas width="100%" height="100%" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+
+	<mx:VBox width="100%" height="100%" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10">
+	
+		<mx:TabNavigator id="tabSearch" horizontalAlign="left" tabOffset="30" width="100%" height="100%" 
+			paddingBottom="10" paddingRight="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off" creationPolicy="all">
+		
+			<mx:Canvas label="map" width="100%" height="100%" 
+				icon="@Embed('assets/img/icons/globe.png')"
+				paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+
+				<mx:VBox width="100%" height="100%">
+
+					<mx:Label text="This map marks all participating hotels within your company's portfolio:"/>
+					<mx:HDividedBox width="100%" height="100%" borderStyle="inset">
+						<mx:VBox width="20%" height="100%" borderStyle="inset" backgroundColor="#333333">
+							<mx:TextArea id="hotelInfo" width="100%" height="100%" />
+						
+						<!-- Repeat hotel info, including 'description' field from xml.  This hotel info should be clickable, and center map on location and 
+							display map marker info when clicked.  - cf -->
+							
+							
+						</mx:VBox>
+						<maps:Map id="map" width="80%" height="100%" 
+							key="ABQIAAAAXuXyTCQMOvuNsde1kkcArhQgrU5kbjlKk2X0omoanmzVDSsrVBREIpIaxGvHFAyYleNAOfcudxaxbA"
+							mapevent_mapready="onMapReady()" 
+							/>
+					</mx:HDividedBox>
+<!--
+Would have liked to keep this value outside of this file, but doing it this way throws ugly initialization error
+						key="{FullServiceReferral.GOOGLE_MAP_KEY}"
+						key="{myKey}"
+-->
+
+				</mx:VBox>
+			</mx:Canvas>
+	
+			<mx:Canvas label="listing" width="100%" height="100%" 
+					icon="@Embed('assets/img/icons/table.png')"
+					paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+						<mx:VBox width="100%" height="100%">
+						<mx:Label text="Below lists all participating hotels within your company's portfolio.  Click a column header to sort." y="8" right="-307" left="188"/>
+								<mx:DataGrid id="dataSearch" 
+									width="100%" height="100%" 
+							        selectedIndex="{_selectedIndexSearch}"
+							        dataProvider="{listSearch}" 
+							        itemClick="searchGridItemClick()" creationComplete="fill()">
+									<mx:columns>
+										<mx:DataGridColumn visible="false" dataField="id"/>
+										<mx:DataGridColumn visible="false" dataField="lat_coordinates"/>
+										<mx:DataGridColumn visible="false" dataField="long_coordinates"/>
+										<mx:DataGridColumn visible="false" dataField="photo"/>
+										<mx:DataGridColumn headerText="Brand" dataField="brand"/>
+										<mx:DataGridColumn headerText="Name" dataField="property_name"/>
+										<mx:DataGridColumn headerText="Code" dataField="property_code"/>
+										<mx:DataGridColumn headerText="Address 1" dataField="address1"/>
+										<mx:DataGridColumn headerText="Address 2" dataField="address2"/>
+										<mx:DataGridColumn headerText="City" dataField="city"/>
+										<mx:DataGridColumn headerText="State" dataField="state"/>
+										<mx:DataGridColumn headerText="Zip" dataField="zip"/>
+										<mx:DataGridColumn headerText="Country" dataField="country"/>
+									</mx:columns>
+								</mx:DataGrid>
+						</mx:VBox>
+								
+								
+				</mx:Canvas>
+		</mx:TabNavigator>
+	</mx:VBox>
+</mx:Canvas>
+</mx:ViewStack>
+</SuperPanel>

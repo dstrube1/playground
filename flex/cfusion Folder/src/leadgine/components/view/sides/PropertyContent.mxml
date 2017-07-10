@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" 
+	creationComplete="init()">
+<mx:Script>
+<![CDATA[
+	import mx.controls.Alert;
+	import leadgine.events.PropertyContentReadyEvent;
+	import mx.collections.XMLListCollection;
+	import leadgine.components.FunctionDate;
+	import mx.collections.ArrayCollection;
+	import mx.core.Application;
+	import leadgine.components.dto.FullServiceReferral;
+	
+	[Bindable] private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	[Bindable] public var startDate:String = RoomBlockInfoUnlimited.calcDate(myDTO.startDate,0);
+	//private var roomRowArray:ArrayCollection;
+	//private var functionArray:ArrayCollection;
+	
+	public var content:String = "";
+
+	private function init():void{
+		//checkTree.dataProvider = myDTO.folderCollection;
+		//checkTree.expandChildrenOf(checkTree.root,true);//.expandItem([0], true, true);
+		//TODO: If we make the tree enabled=false, then we must know how to make the tree expanded onLoad
+		//Better- no tree, just display selected Items
+		this.addEventListener(PropertyContentReadyEvent.PROPERTY_CONTENT_READY,handlePCR);
+		if (myDTO != null && myDTO.folderCollection != null){
+			lookForChecks(myDTO.folderCollection.children());
+		}
+		setContent();
+	}
+	private function handlePCR(pcrEvent:PropertyContentReadyEvent):void{
+		Alert.show("Caught event");
+	}
+	private function setContent():void{
+		content += "Property Selection: \n";
+		content += textArea.text;
+		content += "\n";
+	}
+	private function lookForChecks(xml:XMLList):void{
+		for each (var x:XML in xml){
+			if (x.@isBranch == "false"){
+				if (x.@state == "checked"){
+					textArea.text += x.@label+";   ";
+				}	
+			}
+			else{
+				lookForChecks(x.children());
+			}
+		}
+
+	}
+]]>
+</mx:Script>
+	<mx:HBox width="90%" height="100%" >
+		<mx:TextArea id="textArea" width="90%" height="100%" text="" editable="false" />
+	<!--
+		<mx:Tree
+				id="checkTree"
+				itemRenderer="leadgine.components.ReadOnlyCheckTreeRenderer"
+				labelField="@label"
+	 			width="100%" height="100%"
+	 			showRoot="true" editable="false" tabEnabled="false" enabled="false" 
+	 			 >
+	 	</mx:Tree>
+	 	-->
+	</mx:HBox>
+</mx:VBox>

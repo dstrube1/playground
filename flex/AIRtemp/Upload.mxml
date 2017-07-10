@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	creationComplete="init()">
+	<mx:Script>
+	<![CDATA[
+	import mx.rpc.http.HTTPService;
+	import flash.net.URLRequest;
+	import mx.utils.StringUtil;
+	
+	private var urlRequest:URLRequest;
+	private var loginService:HTTPService;
+	private var baseUrl:String;
+	private var myUrl:String;
+	private var progressCount:uint;
+	private var prevFileName:String;
+	
+	private function init():void{
+		baseUrl = "http://www.my-extraordinary-life.com/lifeline/xml";
+		myUrl = baseUrl+ "/login.do?username=davy&password=pass";
+			
+		loginService = new HTTPService();
+		loginService.url = myUrl;
+		loginService.method = "GET";
+		loginService.send();
+		progressCount = 0;
+		prevFileName = "";
+	}
+	private function browseForFile():void{
+		var file:File = new File();
+		var typeFilter:Array = new Array();
+		var imagesFilter:FileFilter = new FileFilter("Images", "*.jpg");
+		typeFilter.push(imagesFilter);
+		file.addEventListener(Event.SELECT, fileSelected);
+		file.browse(typeFilter);
+	}
+	private function browseForDir():void{
+		var dir:File = new File();
+		dir.addEventListener(Event.SELECT, dirSelected);
+		dir.browseForDirectory("Select a directory to upload");
+	}
+	private function fileSelected(event:Event):void{
+		var file:File = event.target as File;
+		filePath.text = file.nativePath;
+	}
+	private function dirSelected(event:Event):void{
+		var dir:File = event.target as File;
+		dirPath.text = dir.nativePath;
+	}
+	private function uploadFileClick():void{
+		result.text = "";
+		var token:String = loginService.lastResult.token;
+		token = StringUtil.trim(token);
+//		result.text += "\ntoken: X:"+token+":X\n";
+
+		myUrl = baseUrl+ "/artifact.do?action=save&name=test&description=test&token="+token;
+		urlRequest = new URLRequest(myUrl);
+		urlRequest.method = "POST";
+
+		var file:File = new File(filePath.text);
+		if (file.exists){
+			uploadFile(file);
+		}
+//		result.text += "\nfile exists: "+file.exists+"\n"; 
+	}
+	
+	private function uploadDirClick():void{
+		result.text = "";
+		var token:String = loginService.lastResult.token;
+		token = StringUtil.trim(token);
+		myUrl = baseUrl+ "/artifact.do?action=save&name=test&description=test&token="+token;
+		urlRequest = new URLRequest(myUrl);
+		urlRequest.method = "POST";
+
+		var dir:File = new File(dirPath.text);
+		if (dir.exists){
+			addListeners(dir);
+			for each (var file:File in dir.getDirectoryListing()){
+				if (file.extension.toLowerCase() == "jpg")
+					//result.text += "\nAttempting to upload file "+file.name +" from directory "+dir.name;
+					uploadFile(file);
+			}
+		}
+	}
+	
+	private function uploadFile(file:File):void{
+		addListeners(file);
+		file.upload(urlRequest,"image",true);
+	}
+	private function addListeners(file:File):void{
+		file.addEventListener(Event.COMPLETE,completeHandler);
+		file.addEventListener( IOErrorEvent.IO_ERROR, ioErrorHandler );
+		file.addEventListener( SecurityErrorEvent.SECURITY_ERROR, SecurityErrorEventHandler);
+		file.addEventListener( HTTPStatusEvent.HTTP_STATUS,HTTPStatusEventHandler);
+		file.addEventListener( ProgressEvent.PROGRESS, ProgressEventHandler);
+		file.addEventListener( DataEvent.UPLOAD_COMPLETE_DATA, DataEventHandler);
+		file.addEventListener(Event.ACTIVATE,activateHandler);
+		file.addEventListener(Event.OPEN,openHandler);
+	}
+	private function completeHandler(event:Event):void{
+		var file:File = event.target as File;
+		result.text += "\n"+file.name + " uploaded";
+	}
+	private function ioErrorHandler( event:IOErrorEvent ) :void 
+	{
+		result.text += "\nioError: " + event;
+	}
+	private function SecurityErrorEventHandler( event:SecurityErrorEvent ) :void 
+	{
+		result.text += "\nSecurityErrorEvent: " + event;
+	}
+	private function HTTPStatusEventHandler( event:HTTPStatusEvent ) :void 
+	{
+		result.text += "\nHTTPStatusEvent: " + event;
+	}
+	private function ProgressEventHandler( event:ProgressEvent ) :void 
+	{
+		var file:File = event.target as File;
+		if (prevFileName != file.name){
+		//if (progressCount % 20 == 0){
+			result.text += "\nProgressEvent: file="+file.name+"; bytesLoaded=" + event.bytesLoaded+"; bytesTotal="+event.bytesTotal;
+			prevFileName = file.name;
+		}
+		//result.text += "\nprogressCount = "+progressCount;
+		//progressCount++;
+	}
+	private function DataEventHandler( event:DataEvent ) :void 
+	{
+		result.text += "\nDataEvent: " + event;
+	}
+	private function activateHandler( event:Event ) :void 
+	{
+		result.text += "\nActivated: " + event;
+	}
+	private function openHandler( event:Event ) :void 
+	{
+		var file:File = event.target as File;
+		//result.text += "\nOpened: " + file.name;
+	}
+	]]>
+	</mx:Script>
+	<mx:Button x="10" y="0" label="Browse for file" click="browseForFile()"/>
+	<mx:Button x="10" y="30" label="Browse for directory" click="browseForDir()"/>
+	<mx:TextInput x="161" y="0" id="filePath" width="160"/>
+	<mx:TextInput x="161" y="30" id="dirPath" width="160"/>
+	<mx:Button id="uploadFileButton" label="Upload File" click="uploadFileClick()" x="329"/>
+	<mx:Button id="uploadDirButton" label="Upload Directory" click="uploadDirClick()" y="30" x="329"/>
+	<mx:Text id="result" text="Result:" y="60" width="100%" height="100%"/>
+</mx:WindowedApplication>

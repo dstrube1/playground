@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  
+	xmlns:base.lenz.panel="base.lenz.panel.*"
+	implements="base.lenz.panel.LenzPanel"
+	verticalScrollBar="{null}"
+	verticalScrollBarStyleName="invisibleScrollbar"
+	clipContent="false"
+	height="610"
+	width="763"
+	horizontalCenter="0"
+	verticalCenter="0"
+	backgroundAlpha="0">	 
+	
+	<!--
+		@UI  - if we increase the width, we get green bars along the outside of the Lenz Window background image,
+				which means that the canvas color is exposed along the sides. 
+				
+				But yet, backgroundAlpha is 0.  Not sure why we're getting this problem.  To make it worse, we can
+				see tiny bits of that dark green canvas color peeking through, which is a visual glitch that
+				must be eradicated.
+	-->
+	
+	
+	<mx:Metadata>		
+		[DefaultProperty("subComponents")]
+	</mx:Metadata>
+	
+	<mx:String id="title"/>
+	<mx:Number id="maxContentHeight" />
+
+
+
+	<mx:Script>
+		<![CDATA[
+			import base.event.ExposePanelEvent;
+			import base.log.Logger;
+			import base.event.PanelReadyEvent;
+			import base.lenz.Lenz;
+			import base.form.LenzForm;
+			import app.App;
+
+			import mx.effects.easing.*;
+			import mx.events.EffectEvent;
+			
+						
+			[Bindable]
+			private var targetHeightTo:int = maxContentHeight;
+			
+			[Bindable]
+			private var yBy:int = 0;
+						
+						
+			public const contentY:int = 30;
+			
+			//	backgroundImage from CVS/dendrite/lenz/shape_library/window_maximize.tif, 
+			//shrunk to horizontal=92%, vertical=89% 
+			[Embed(source="/resources/images/window_maximize.png")]
+	        public var standardBackgroundImage:Class; 
+	        [Bindable]
+	        public var baseBackgroundImage:Class = standardBackgroundImage; 
+			
+	
+			protected var logger:Logger = Logger.getLogger('BaseLenzPanel');
+	
+	
+
+			private var currentlyExposed:Boolean = false;
+
+
+			protected var lenzId:String = null;
+			
+			protected var _form:LenzForm = null;
+			
+			protected var parentLenz:Lenz = null;
+			
+			//HB
+			public function getCurrentForm():LenzForm {
+				return _form;
+			}
+
+			public function initializePanel():void {
+				logger.error("'abstract' initializePanel called. Should be implemented by subclass: "+title+", "+lenzId);
+				
+			}
+			
+			public function setFormType(type:String):void {
+				logger.error("setFormType called in super class, type: "+type+" with no implementation in subclass: "+title+", "+lenzId);
+			}
+			
+			//this method has to be overridden in the subclass
+			public function getDefaultFormClass():Class {
+				return null;
+			}
+			//HB
+	
+			protected var onExpose:Function;
+			protected var onRetract:Function;		
+		
+	
+			public function getParent():Lenz {
+				return this.parentLenz;
+			}
+	
+	
+			public function setParent( l:Lenz):void {
+				this.parentLenz = l;
+			}
+			
+			
+			/**
+				tell this panel it's time to get started.
+			*/
+			public function open():void {
+				
+				logger.debug("open(): sending ExposePanelEvent");
+				
+				// if the subclass needs to do things to prepare for activation, they can do them here.
+				
+				this.dispatchEvent(new ExposePanelEvent());
+				
+			}
+			
+			
+			public function close( closure:Function=null ):void {
+
+				setExposePanel( false, closure);	
+			}
+			
+			
+			
+			public function setMaxContentHeight( h:int):void {
+				maxContentHeight = h;
+			}	
+	
+	
+	
+			public function getPanelComponent():DisplayObject {
+				return this;
+			}
+	
+	
+	
+			public function getTitle():String {
+				return title;
+			}	
+	
+			
+			
+			
+			public function clearContent():void {
+				content.removeAllChildren();
+			}			
+			
+			
+			
+			
+			public function actionTaken( data:*):void {   // abstract
+				// do nothing.
+			}
+
+
+			public function animateContent():void {
+				if (_form != null) {
+					_form.animate();
+				}
+			}
+		
+		
+			public function set exposePanel( hint:Boolean):void {
+				setExposePanel(hint, null);
+			}
+		
+		
+			public function setExposePanel( hint:Boolean, onComplete:Function):void {
+				
+				logger.debug(lenzId+" exposePanel: "+hint+", curEx: "+currentlyExposed+", onComplete: "+onComplete);
+				
+				if (hint) {
+					if (expose != null) {
+
+						onExpose = onComplete;
+						
+						if (currentlyExposed) {
+							// do nothing.
+						} else {
+							
+							expose.play();
+							currentlyExposed = true;
+						}
+					}
+				} else {
+					if (retract != null) {
+						
+						onRetract = onComplete;
+						
+						if (currentlyExposed) {
+							retract.play();
+							currentlyExposed = false;
+						}
+					}
+				}
+				
+			}
+			
+			
+			public function newPanel(panel:Class):void {
+				
+				parentLenz.newPanel(panel);
+
+				
+			}
+			
+			
+			
+
+
+
+			// ---- subclassable --	
+	
+	
+			protected  function completePanel(form:LenzForm):void {
+				
+				
+				addComponents();
+			
+				setupAnimation();
+			
+				addForm(form);
+				
+				addEventListener(ExposePanelEvent.EXPOSE_PANEL_EVENT_BASE, onExposePanel);
+				
+								
+			}
+			
+			protected function ready():void {
+				
+				logger.debug("dispatching PanelReadyEvent: "+lenzId);
+				
+				this.dispatchEvent(new PanelReadyEvent( lenzId ));
+				
+			}
+			
+
+	
+	
+			protected function addForm( form:LenzForm): void {
+				
+				// so they can tell us to retract when the appropriate action is taken by 
+				// the user.
+				//
+				form.setLenzPanel(this);
+																
+				content.addChild(DisplayObject(form));								
+
+				_form = form;
+
+				content.height = 0;
+				content.visible = false;
+
+			}
+			
+			
+			
+			
+	
+	
+	
+			// -- private --
+	
+	
+			private function setupAnimation():void {
+				
+		
+
+				targetHeightTo = maxContentHeight;
+				
+	
+				// set y to the bottom of the slide area
+				content.y = content.y + targetHeightTo;
+				
+		
+				// we need Y to move up by height 
+				yBy = 0 - targetHeightTo;
+				
+				content.visible = false;
+				
+				
+			}
+
+
+			//------------------------------------------------------------------------
+			// component template stuff
+	
+		     private var _components:Array;
+	     
+		     private function set subComponents( a:Array ) : void
+	    	 {
+	        	 _components = a;
+	     	 }
+	     	 
+		     private function addComponents() : void 
+		     {
+		          content.removeAllChildren();
+		          
+		          if (_components != null) {
+			          for(var i:int=0; i < _components.length; i++) {
+			               content.addChild( _components[i] );
+			          }
+			      }
+		     }
+		
+		
+
+
+			
+			private function onExposePanel(ev:Event):void {
+				
+				logger.debug("onExposePanel");
+				
+				exposePanel = true;
+				
+			}
+			
+			//this method should be called after the renderer sets the source of UI components
+			//protected function paintComponent():void {
+			
+			//}	
+		
+		]]>
+	</mx:Script>
+
+
+
+	<!--
+		none of these verticalScrollbar hacks seem to work.  clipContent=false works, but it looks really strange when you
+		do it.
+	-->	
+	<mx:Canvas id="content" styleName="lenzPanel" height="0" width="{width}" 
+		x="0"
+		y="{contentY}" 
+		clipContent="true"
+		verticalScrollBar="{null}"
+		verticalScrollBarStyleName="invisibleScrollbar"
+		visible="false"  alpha="1.0" 
+		backgroundImage="{baseBackgroundImage}"	>
+		<!-- backgroundSize="106%" -->
+		<!-- 		backgroundAlpha="1.0" -->
+				
+	</mx:Canvas>
+	
+
+	<!-- moved to BaseLenzFrame:
+	<base.lenz.panel:ReflectPanel height="{0.15*height}" width="{content.width}" 		
+		y="{contentY + maxContentHeight}"
+		x="{content.x}"
+		alpha="1.0"
+		fillColors="[#444444, #444444]"
+		>
+	</base.lenz.panel:ReflectPanel>
+	-->
+	<mx:Button height="30" width="150" x="{0.7*width}" y="{0.82*height}" label="{title}" id="titleButton"
+			styleName="lenzPanelTitle"
+			alpha="1.0"
+			highlightAlphas="1,1"
+			selected="true"
+			visible="false"
+			/>	
+
+
+	
+	
+	<mx:Parallel id="expose">
+
+	
+		<mx:Resize target="{content}"
+			effectStart="content.visible=true;"
+			heightTo="{targetHeightTo}"  
+			easingFunction="mx.effects.easing.Quadratic.easeIn"
+			effectEnd="{animateContent(); if (onExpose != null) onExpose();}"
+			hideChildrenTargets="{[content]}"
+        	duration="500" />
+		<mx:Move target="{content}" yBy="{yBy}"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"
+        	duration="500" />		
+        <mx:Fade target="{content}" alphaFrom="0.1" alphaTo="1.0" duration="500" />
+        
+	</mx:Parallel>
+	
+	<mx:Parallel id="retract">
+	
+        <mx:Fade target="{content}" alphaFrom="1.0" alphaTo="0.1" duration="500" />
+		<mx:Move target="{content}" yBy="{0 - yBy}"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"
+        	duration="500" />		
+		<mx:Resize target="{content}" 
+			heightTo="0"
+			hideChildrenTargets="{[content]}"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"
+	        duration="500"  
+	        effectEnd="content.visible=false; content.height = 0; if (onRetract != null) onRetract();"/>
+	</mx:Parallel>
+	
+	
+
+	
+</mx:Canvas>

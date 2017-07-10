@@ -1,0 +1,590 @@
+<photos>
+	<photo>
+		<PHOTOID>1</PHOTOID>
+		<FILENAME>nature18.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Crab apple trees in bloom.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>2</PHOTOID>
+		<FILENAME>animals03.jpg</FILENAME>
+		<PHOTOGRAPHER>Emily Kim</PHOTOGRAPHER>
+		<DESC>Chubby donkey looking for a friend.</DESC>
+		<CATEGORYID>2</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>3</PHOTOID>
+		<FILENAME>people08.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Tulle veil with pearl accents.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>4</PHOTOID>
+		<FILENAME>nature10.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Green blades of grass.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>5</PHOTOID>
+		<FILENAME>misc04.jpg</FILENAME>
+		<PHOTOGRAPHER>David Hassoun</PHOTOGRAPHER>
+		<DESC>Thomas Edison's workshop.</DESC>
+		<CATEGORYID>5</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>6</PHOTOID>
+		<FILENAME>abstract02.jpg</FILENAME>
+		<PHOTOGRAPHER>David Hassoun</PHOTOGRAPHER>
+		<DESC>Firedancer at midnight in downtown Denver.</DESC>
+		<CATEGORYID>1</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>7</PHOTOID>
+		<FILENAME>city04.jpg</FILENAME>
+		<PHOTOGRAPHER>Emily Kim</PHOTOGRAPHER>
+		<DESC>Rooftops in Paris France.</DESC>
+		<CATEGORYID>3</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>8</PHOTOID>
+		<FILENAME>nature16.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Overgrown garden.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>9</PHOTOID>
+		<FILENAME>nature07.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Sun through trees.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>10</PHOTOID>
+		<FILENAME>nature08.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Trunk Bay. St. John U.S.V.I.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>11</PHOTOID>
+		<FILENAME>nature09.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>North.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>12</PHOTOID>
+		<FILENAME>abstract03.jpg</FILENAME>
+		<PHOTOGRAPHER>David Hassoun</PHOTOGRAPHER>
+		<DESC>Performer performing with two flames at once. Camera set at a slow shutter speed.</DESC>
+		<CATEGORYID>1</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>13</PHOTOID>
+		<FILENAME>people06.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Shriner mini-cars.  Music and Blossom Festival Canon City</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>14</PHOTOID>
+		<FILENAME>abstract05.jpg</FILENAME>
+		<PHOTOGRAPHER>Carrie Shizlier</PHOTOGRAPHER>
+		<DESC>Street performer during Carnivale. Piazza San Marco Venice.</DESC>
+		<CATEGORYID>1</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>15</PHOTOID>
+		<FILENAME>abstract06.jpg</FILENAME>
+		<PHOTOGRAPHER>Alida Simms</PHOTOGRAPHER>
+		<DESC>Chinese New Year celebration. Chinatown San Francisco.</DESC>
+		<CATEGORYID>1</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>16</PHOTOID>
+		<FILENAME>abstract07.jpg</FILENAME>
+		<PHOTOGRAPHER>Austin Ryan</PHOTOGRAPHER>
+		<DESC>The unrelenting sun. Death Valley California.</DESC>
+		<CATEGORYID>1</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>17</PHOTOID>
+		<FILENAME>abstract10.jpg</FILENAME>
+		<PHOTOGRAPHER>Cole Portman</PHOTOGRAPHER>
+		<DESC>Energy surge from gases orbiting Venus.</DESC>
+		<CATEGORYID>1</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>18</PHOTOID>
+		<FILENAME>abstract08.jpg</FILENAME>
+		<PHOTOGRAPHER>David Hassoun</PHOTOGRAPHER>
+		<DESC>Flight pattern of a firework. Camera set at slow shutter speed.</DESC>
+		<CATEGORYID>1</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>19</PHOTOID>
+		<FILENAME>abstract09.jpg</FILENAME>
+		<PHOTOGRAPHER>David Hassoun</PHOTOGRAPHER>
+		<DESC>Group of joggers seen through thermo goggles.</DESC>
+		<CATEGORYID>1</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>20</PHOTOID>
+		<FILENAME>abstract11.jpg</FILENAME>
+		<PHOTOGRAPHER>Jason Eberheart</PHOTOGRAPHER>
+		<DESC>Close up of cigarette being discarded from moving vehicle.</DESC>
+		<CATEGORYID>1</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>21</PHOTOID>
+		<FILENAME>animals01.jpg</FILENAME>
+		<PHOTOGRAPHER>Aziz Housaad</PHOTOGRAPHER>
+		<DESC>Photo of a doe and deer outside of Cheyenne Wyoming.</DESC>
+		<CATEGORYID>2</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>22</PHOTOID>
+		<FILENAME>animals02.jpg</FILENAME>
+		<PHOTOGRAPHER>Diane Rowlings</PHOTOGRAPHER>
+		<DESC>Close up of a doe outside of Cheyenne Wyoming.</DESC>
+		<CATEGORYID>2</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>23</PHOTOID>
+		<FILENAME>animals04.jpg</FILENAME>
+		<PHOTOGRAPHER>Emily Kim</PHOTOGRAPHER>
+		<DESC>Elsie having corn on the cobb.</DESC>
+		<CATEGORYID>2</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>24</PHOTOID>
+		<FILENAME>animals07.jpg</FILENAME>
+		<PHOTOGRAPHER>Austin Ryan</PHOTOGRAPHER>
+		<DESC>Mountain goat near the top of Pikes Peak.</DESC>
+		<CATEGORYID>2</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>25</PHOTOID>
+		<FILENAME>animals05.jpg</FILENAME>
+		<PHOTOGRAPHER>Emily Kim</PHOTOGRAPHER>
+		<DESC>Elsie driving to work in the morning.</DESC>
+		<CATEGORYID>2</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>26</PHOTOID>
+		<FILENAME>animals06.jpg</FILENAME>
+		<PHOTOGRAPHER>Emily Kim</PHOTOGRAPHER>
+		<DESC>Elsie helping out with the campfire.</DESC>
+		<CATEGORYID>2</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>27</PHOTOID>
+		<FILENAME>animals08.jpg</FILENAME>
+		<PHOTOGRAPHER>James Tiner</PHOTOGRAPHER>
+		<DESC>The purebreads and a donkey at T Cross Ranch Colorado.</DESC>
+		<CATEGORYID>2</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>28</PHOTOID>
+		<FILENAME>animals09.jpg</FILENAME>
+		<PHOTOGRAPHER>Carrie Shizlier</PHOTOGRAPHER>
+		<DESC>Baby racoon discovered after California wildfires.</DESC>
+		<CATEGORYID>2</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>29</PHOTOID>
+		<FILENAME>animals10.jpg</FILENAME>
+		<PHOTOGRAPHER>Cole Portman</PHOTOGRAPHER>
+		<DESC>Monkey and her baby.  Monkey Island Vietnam.</DESC>
+		<CATEGORYID>2</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>30</PHOTOID>
+		<FILENAME>animals11.jpg</FILENAME>
+		<PHOTOGRAPHER>Jason Eberheart</PHOTOGRAPHER>
+		<DESC>Iguana relaxing poolside in Westin St. John USVI.</DESC>
+		<CATEGORYID>2</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>31</PHOTOID>
+		<FILENAME>abstract04.jpg</FILENAME>
+		<PHOTOGRAPHER>David Hassoun</PHOTOGRAPHER>
+		<DESC>Superheated gases demonstration. Senior project MIT.</DESC>
+		<CATEGORYID>1</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>32</PHOTOID>
+		<FILENAME>animals12.jpg</FILENAME>
+		<PHOTOGRAPHER>Jason Eberheart</PHOTOGRAPHER>
+		<DESC>Shy gray parrot that blushes around crowds.</DESC>
+		<CATEGORYID>2</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>33</PHOTOID>
+		<FILENAME>city01.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Twilight. Manhattan.</DESC>
+		<CATEGORYID>3</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>34</PHOTOID>
+		<FILENAME>city02.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Evening rush hour. New York City New York.</DESC>
+		<CATEGORYID>3</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>35</PHOTOID>
+		<FILENAME>city03.jpg</FILENAME>
+		<PHOTOGRAPHER>Emily Kim</PHOTOGRAPHER>
+		<DESC>Traveling Art Exhibit. The Met New York City.</DESC>
+		<CATEGORYID>3</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>36</PHOTOID>
+		<FILENAME>flowers01.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Pink Vermillion.</DESC>
+		<CATEGORYID>4</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>37</PHOTOID>
+		<FILENAME>flowers02.jpg</FILENAME>
+		<PHOTOGRAPHER>Cate Reiter</PHOTOGRAPHER>
+		<DESC>Signs of Fall Martha''s Vineyard.</DESC>
+		<CATEGORYID>4</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>38</PHOTOID>
+		<FILENAME>flowers03.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Sub-alpine meadow blooms.</DESC>
+		<CATEGORYID>4</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>39</PHOTOID>
+		<FILENAME>flowers04.jpg</FILENAME>
+		<PHOTOGRAPHER>Aidan Wilson</PHOTOGRAPHER>
+		<DESC>Cactus flower. Scottsdale Arizona</DESC>
+		<CATEGORYID>4</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>40</PHOTOID>
+		<FILENAME>flowers05.jpg</FILENAME>
+		<PHOTOGRAPHER>Emily Kim</PHOTOGRAPHER>
+		<DESC>Indian paintbrush.</DESC>
+		<CATEGORYID>4</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>41</PHOTOID>
+		<FILENAME>flowers06.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Pink umbrella daisies.</DESC>
+		<CATEGORYID></CATEGORYID>
+	</photo>4
+	<photo>
+		<PHOTOID>42</PHOTOID>
+		<FILENAME>flowers07.jpg</FILENAME>
+		<PHOTOGRAPHER>Alexa Dansworth</PHOTOGRAPHER>
+		<DESC>White tea flowers.</DESC>
+		<CATEGORYID>4</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>43</PHOTOID>
+		<FILENAME>flowers08.jpg</FILENAME>
+		<PHOTOGRAPHER>Adam Martin</PHOTOGRAPHER>
+		<DESC>Native alpine flower Switzerland.</DESC>
+		<CATEGORYID></CATEGORYID>
+	</photo>4
+	<photo>
+		<PHOTOID>44</PHOTOID>
+		<FILENAME>flowers09.jpg</FILENAME>
+		<PHOTOGRAPHER>Emily Rossum</PHOTOGRAPHER>
+		<DESC>Cherry blossoms in bloom. Steamboat Springs Colorado</DESC>
+		<CATEGORYID>4</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>45</PHOTOID>
+		<FILENAME>flowers10.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Close-up of flower pistils and stamen.</DESC>
+		<CATEGORYID>4</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>46</PHOTOID>
+		<FILENAME>flowers11.jpg</FILENAME>
+		<PHOTOGRAPHER>Karl Bomblies</PHOTOGRAPHER>
+		<DESC>The Pride of Holland.</DESC>
+		<CATEGORYID>4</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>47</PHOTOID>
+		<FILENAME>misc01.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>19th century sugar mill.  St. John U.S.V.I.</DESC>
+		<CATEGORYID>5</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>48</PHOTOID>
+		<FILENAME>misc02.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Abandoned colonial home.  St. John U.S.V.I.</DESC>
+		<CATEGORYID>5</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>49</PHOTOID>
+		<FILENAME>misc05.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Roof damage after Tornado. Kansas.</DESC>
+		<CATEGORYID>5</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>50</PHOTOID>
+		<FILENAME>misc03.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Sunset Caneel Bay. St. John U.S.V.I.</DESC>
+		<CATEGORYID>5</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>51</PHOTOID>
+		<FILENAME>misc06.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Storm cellar where Kansas resident took shelter from F5 tornado.</DESC>
+		<CATEGORYID>5</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>52</PHOTOID>
+		<FILENAME>misc07.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Abandoned snack stand. Nassau Bahamas.</DESC>
+		<CATEGORYID>5</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>53</PHOTOID>
+		<FILENAME>misc08.jpg</FILENAME>
+		<PHOTOGRAPHER>Charles Stapelton</PHOTOGRAPHER>
+		<DESC>Bear cave.  Moab Utah.</DESC>
+		<CATEGORYID>5</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>54</PHOTOID>
+		<FILENAME>misc09.jpg</FILENAME>
+		<PHOTOGRAPHER>David Hassoun</PHOTOGRAPHER>
+		<DESC>Native American home.  Mesa Verde Colorado</DESC>
+		<CATEGORYID>5</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>55</PHOTOID>
+		<FILENAME>misc10.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Rusted mining headlamp.  Idaho Springs Colorado</DESC>
+		<CATEGORYID>5</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>56</PHOTOID>
+		<FILENAME>misc11.jpg</FILENAME>
+		<PHOTOGRAPHER>Gerard Annuit</PHOTOGRAPHER>
+		<DESC>Roan shipwreck.  St. John U.S.V.I.</DESC>
+		<CATEGORYID>5</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>57</PHOTOID>
+		<FILENAME>nature01.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Adolescent butterfly in the summer. taken atop Mount Evans in Colorado.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>58</PHOTOID>
+		<FILENAME>nature02.jpg</FILENAME>
+		<PHOTOGRAPHER>Collette Annuit</PHOTOGRAPHER>
+		<DESC>The road to forever.  New Orleans LA.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>59</PHOTOID>
+		<FILENAME>nature03.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Glorious sunset.  Tanzania Africa.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>60</PHOTOID>
+		<FILENAME>nature04.jpg</FILENAME>
+		<PHOTOGRAPHER>Joel Exeter</PHOTOGRAPHER>
+		<DESC>Fish Creek.  Wyoming.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>61</PHOTOID>
+		<FILENAME>nature05.jpg</FILENAME>
+		<PHOTOGRAPHER>Howard Aplin</PHOTOGRAPHER>
+		<DESC>Aspen majesty.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>62</PHOTOID>
+		<FILENAME>nature06.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Triumph of the survivor.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>63</PHOTOID>
+		<FILENAME>nature11.jpg</FILENAME>
+		<PHOTOGRAPHER>Joel Exeter</PHOTOGRAPHER>
+		<DESC>Fish Creek. Wyoming.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>64</PHOTOID>
+		<FILENAME>nature12.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Winter's end.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>65</PHOTOID>
+		<FILENAME>nature13.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Apache Teepee.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>66</PHOTOID>
+		<FILENAME>nature14.jpg</FILENAME>
+		<PHOTOGRAPHER>Brooke Preston</PHOTOGRAPHER>
+		<DESC>Japanese fishing boats.  Okinawa Japan.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>67</PHOTOID>
+		<FILENAME>nature15.jpg</FILENAME>
+		<PHOTOGRAPHER>Brooke Preston</PHOTOGRAPHER>
+		<DESC>Xiao hill. Okinawa Japan</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>68</PHOTOID>
+		<FILENAME>nature17.jpg</FILENAME>
+		<PHOTOGRAPHER>Evita Rhone</PHOTOGRAPHER>
+		<DESC>Jost Van Dyke. St. John U.S.V.I.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>69</PHOTOID>
+		<FILENAME>nature20.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Approaching Storm.  Black and White film.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>70</PHOTOID>
+		<FILENAME>people01.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>French bridal veil.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>71</PHOTOID>
+		<FILENAME>people02.jpg</FILENAME>
+		<PHOTOGRAPHER>Evander Sloan</PHOTOGRAPHER>
+		<DESC>Cambodian orphans.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>72</PHOTOID>
+		<FILENAME>people04.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Army helicopter pilot.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>73</PHOTOID>
+		<FILENAME>people05.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Preparation for Moroccan meal.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>74</PHOTOID>
+		<FILENAME>nature19.jpg</FILENAME>
+		<PHOTOGRAPHER>Charles Stapelton</PHOTOGRAPHER>
+		<DESC>Cascade Falls.  Telluride Colorado.</DESC>
+		<CATEGORYID>6</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>75</PHOTOID>
+		<FILENAME>abstract01.jpg</FILENAME>
+		<PHOTOGRAPHER>David Hassoun</PHOTOGRAPHER>
+		<DESC>Photo of a performer dancing with fire. Camera set at a slow shutter speed.</DESC>
+		<CATEGORYID>1</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>76</PHOTOID>
+		<FILENAME>people09.jpg</FILENAME>
+		<PHOTOGRAPHER>Clay Portman</PHOTOGRAPHER>
+		<DESC>Buddha statue shop. Chengdu China.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>77</PHOTOID>
+		<FILENAME>people10.jpg</FILENAME>
+		<PHOTOGRAPHER>Emily Kim</PHOTOGRAPHER>
+		<DESC>Flower carrier in Vietnam.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>78</PHOTOID>
+		<FILENAME>people11.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Motorcycle bride.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>79</PHOTOID>
+		<FILENAME>people12.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Cannonball.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>80</PHOTOID>
+		<FILENAME>people13.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Three piece tulle veil.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>81</PHOTOID>
+		<FILENAME>people14.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Woman waiting for her suitor.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>82</PHOTOID>
+		<FILENAME>people07.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Canon City Queen. Music and Blossom Festival Canon City.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>83</PHOTOID>
+		<FILENAME>people03.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Army drill exercise.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+	<photo>
+		<PHOTOID>84</PHOTOID>
+		<FILENAME>people15.jpg</FILENAME>
+		<PHOTOGRAPHER>Lisa Traylor</PHOTOGRAPHER>
+		<DESC>Parade crowd.</DESC>
+		<CATEGORYID>7</CATEGORYID>
+	</photo>
+</photos>

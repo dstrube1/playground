@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+        <META HTTP-EQUIV="Expires" CONTENT="-1"> 
+    </head>
+
+    <body>
+
+    <script>
+        function processUrl()
+        {
+            var pos = url.indexOf("?");
+            
+            url = pos != -1 ? url.substr(pos + 1) : "";
+
+            parent.setBrowserUrl(url);
+            parent.getPlayer().setPlayerUrl(url);
+        }
+        
+        var url = document.location.href;
+        processUrl();
+        document.write(url);
+    </script>
+    Yo, I'm your history.
+    </body>
+</html>

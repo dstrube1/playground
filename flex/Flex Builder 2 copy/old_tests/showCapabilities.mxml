@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+	creationComplete="t1()">
+
+ 
+<mx:Script>
+	<![CDATA[
+	import flash.system.Capabilities;
+	public function t1():void{
+		var a:Array = Capabilities.version.toString().split(" ");
+		v1.text += "\n Operating system = "+Capabilities.os; //a[0];
+		v1.text += "\n Adobe Flash Active X Player Version = "+a[1];
+		v1.text += "\n Language = "+Capabilities.language.toString();
+		v1.text += "\n screenColor = "+Capabilities.screenColor;
+		v1.text += "\n hasMP3 = "+Capabilities.hasMP3;
+		v1.text += "\n manufacturer = "+Capabilities.manufacturer;
+		v1.text += "\n Capabilities.serverString = "+Capabilities.serverString;
+		v1.text += "\n Capabilities.screenResolutionY = "+Capabilities.screenResolutionY;
+		v1.text += "\n Capabilities.screenResolutionX = "+Capabilities.screenResolutionX;
+		v1.text += "\n Capabilities.screenDPI = "+Capabilities.screenDPI;
+		v1.text += "\n Capabilities.playerType = "+Capabilities.playerType;
+		v1.text += "\n Capabilities.pixelAspectRatio = "+Capabilities.pixelAspectRatio;
+		v1.text += "\n Capabilities.hasVideoEncoder = "+Capabilities.hasVideoEncoder;
+		v1.text += "\n Capabilities.hasStreamingVideo = "+Capabilities.hasStreamingVideo;
+		v1.text += "\n Capabilities.hasStreamingAudio = "+Capabilities.hasStreamingAudio;
+		v1.text += "\n Capabilities.hasScreenPlayback = "+Capabilities.hasScreenPlayback;
+		v1.text += "\n Capabilities.hasScreenBroadcast = "+Capabilities.hasScreenBroadcast;
+		v1.text += "\n Capabilities.hasTLS = "+Capabilities.hasTLS;
+		
+//		v1.text += "\n  = "+Capabilities;
+		
+	}
+	]]>
+</mx:Script>
+	<mx:TextArea x="10" y="10" text=" " id="v1" visible="true" height="500" width="500"/>
+	
+</mx:Application>

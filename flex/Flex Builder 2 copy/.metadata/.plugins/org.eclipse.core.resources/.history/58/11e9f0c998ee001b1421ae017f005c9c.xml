@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="750" height="470" horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm" horizontalScrollPolicy="off" verticalScrollPolicy="off" color="0x000000">
+	 
+	<mx:Script>
+		<![CDATA[
+			
+			import base.lenz.panel.LenzPanel;
+			import lenz.main.site_select.SiteSelectionLenz;
+			
+			private var _parent:LenzPanel = null;
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+			}
+			
+			private function launchApp( appId:int):void {
+				
+				
+				
+			}
+			
+			public function initializeForm():void {
+				
+		
+			}
+			
+			
+			public function populateResources(data:Object):void { }
+			
+		]]>
+	</mx:Script>
+
+	<mx:Label x="0" y="5" color="#000000" id="studyName" maxHeight="30" text="Country Allocation Site Profiling:" fontThickness="200" fontSize="18"  />
+	<mx:Label x="310" y="5" id="site_found_number" fontSize="18" text="150 Sites Found" fontThickness="200"/>
+	
+	<mx:SWFLoader source="resources/swf/WorldMapMock.swf" 
+		x="10" y="45" width="490"/>
+
+	<mx:VBox x="10" y="310" verticalGap="3">
+		<mx:SWFLoader  id="budget" width="460" height="45" source="resources/swf/CycleWrapper.swf?movieName=CycleTime3.swf"  alpha="1.0" scaleContent="false"  horizontalAlign="center"/> <!--maxHeight="50" maxWidth="460"-->
+		<mx:SWFLoader  id="cycle" width="460" height="17" source="resources/swf/TimelineWrapper.swf?movieName=Timeline.swf"  alpha="1.0" scaleContent="false" horizontalAlign="center"/> <!--maxHeight="17" maxWidth="460" -->
+		<mx:SWFLoader  id="stepGraph" width="460" height="60" source="resources/swf/StepWrapper.swf?movieName=Step.swf"  alpha="1.0"  scaleContent="false" horizontalAlign="center"/> <!--maxHeight="70" maxWidth="460" -->				
+	</mx:VBox>
+
+	
+	<mx:Button label="Submit" width="150" height="30" right="50" bottom="0" id="submitBtn"
+		click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('Final')"/>	
+	<mx:Label x="543" y="68" text="15 Countries"/>
+	<mx:Button x="635" y="66" label="+ Add Country"/>
+	<mx:Label x="543" y="112" text="Country Name"/>
+	<mx:Label x="635" y="112" text="# of sites"/>
+	<mx:Label x="543" y="138" text="USA"/>
+	<mx:Label x="543" y="164" text="Canada"/>
+	<mx:Label x="543" y="190" text="Argentina"/>
+	<mx:Label x="543" y="216" text="Brazil"/>
+	<mx:Label x="543" y="242" text="Chile"/>
+	<mx:Label x="543" y="268" text="Mexico"/>
+	<mx:Label x="543" y="297" text="Belgium"/>
+	<mx:Label x="543" y="323" text="France"/>
+	<mx:Label x="543" y="349" text="Germany"/>
+	<mx:Label x="545" y="375" text="Italy"/>
+	<mx:Label x="644" y="138" text="40" textAlign="center"/>
+	<mx:Label x="644" y="164" text="10" textAlign="center"/>
+	<mx:Label x="644" y="190" text="6" textAlign="center"/>
+	<mx:Label x="644" y="216" text="10" textAlign="center"/>
+	<mx:Label x="644" y="242" text="6" textAlign="center"/>
+	<mx:Label x="644" y="268" text="10" textAlign="center"/>
+	<mx:Label x="644" y="297" text="4" textAlign="center"/>
+	<mx:Label x="644" y="323" text="5" textAlign="center"/>
+	<mx:Label x="644" y="349" text="6" textAlign="center"/>
+	<mx:Label x="644" y="375" text="3" textAlign="center"/>
+	<mx:CheckBox x="714" y="138"/>
+	<mx:CheckBox x="714" y="164"/>
+	<mx:CheckBox x="714" y="190"/>
+	<mx:CheckBox x="714" y="216"/>
+	<mx:CheckBox x="714" y="242"/>
+	<mx:CheckBox x="714" y="268"/>
+	<mx:CheckBox x="714" y="297"/>
+	<mx:CheckBox x="714" y="323"/>
+	<mx:CheckBox x="714" y="349"/>
+	<mx:CheckBox x="714" y="375"/>
+	<mx:HRule x="535" y="94" width="215" height="10"/>
+	
+</mx:Canvas>

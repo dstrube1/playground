@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:bean="vo.*">
+
+	<mx:ArrayCollection id="sampleData">
+		<bean:UserBean
+			userid="1"
+			firstName="fn1"
+			lastName="ln1"
+			email="em1"
+		  />
+		<bean:UserBean
+			userid="2"
+			firstName="fn2"
+			lastName="ln2"
+			email="em2"
+		  />
+		<bean:UserBean
+			userid="3"
+			firstName="fn3"
+			lastName="ln3"
+			email="em3"
+		/>
+		<bean:UserBean  
+			userid="4"
+			firstName="fn4"
+			lastName="ln4"
+			email="em4"
+		/>
+		<bean:UserBean  
+			userid="5"
+			firstName="fn5"
+			lastName="ln5"
+			email="em5"
+		/>
+		<bean:UserBean  
+			userid="6"
+			firstName="fn6"
+			lastName="ln6"
+			email="em6"
+		/>
+		<bean:UserBean  
+			userid="7"
+			firstName="fn7"
+			lastName="ln7"
+			email="em7"
+		/>
+	</mx:ArrayCollection>
+</mx:Canvas>

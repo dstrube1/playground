@@ -1,0 +1,1255 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
+<meta content="NetConnection,flash.net.NetConnection,TEXT,BINARY,VARIABLES,url,data,method,contentType,requestHeaders,followRedirects,userAgent,manageCookies,useCache,shouldCacheResponse,shouldAuthenticate,POST,GET,connected,uri,client,defaultObjectEncoding,objectEncoding,proxyType,connectedProxyType,usingTLS,bytesAvailable,connected,objectEncoding,endian,followRedirects,manageCookies,shouldAuthenticate,useCache,shouldCacheResponse,userAgent,FLUSHED,PENDING,fileList,connected,description,extension,macType,domain,client,data,dataFormat,bytesLoaded,bytesTotal,AMF0,AMF3,DEFAULT,dynamicPropertyWriter,creationDate,creator,extension,modificationDate,name,size,type,name,value,bufferTime,time,currentFPS,bufferLength,liveDelay,bytesLoaded,bytesTotal,soundTransform,checkPolicyFile,client,objectEncoding,connected,bytesAvailable,objectEncoding,endian,data,size,fps,defaultObjectEncoding,objectEncoding,client,registerClassAlias,getClassByAlias,navigateToURL,sendToURL,decode,toString,setLoginCredentials,writeDynamicProperty,close,addHeader,call,connect,connect,readBytes,writeBytes,writeBoolean,writeByte,writeShort,writeInt,writeUnsignedInt,writeFloat,writeDouble,writeMultiByte,writeUTF,writeUTFBytes,readBoolean,readByte,readUnsignedByte,readShort,readUnsignedShort,readInt,readUnsignedInt,readFloat,readDouble,readMultiByte,readUTF,readUTFBytes,close,flush,writeObject,readObject,setLoginCredentialsForHost,browse,connect,send,close,close,connect,send,allowDomain,allowInsecureDomain,load,close,browse,cancel,download,upload,close,attachAudio,attachCamera,send,receiveAudio,receiveVideo,pause,resume,togglePause,seek,play,publish,load,readBytes,readBoolean,readByte,readUnsignedByte,readShort,readUnsignedShort,readUnsignedInt,readInt,readFloat,readDouble,readMultiByte,readUTF,readUTFBytes,close,readObject,writeDynamicProperties,getLocal,getRemote,connect,close,flush,send,clear,setDirty,setProperty" name="keywords">
+<title>flash.net.NetConnection (Flex 3)</title>
+<script type="text/javascript" src="../../AC_OETags.js"></script>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'NetConnection - Flex 3 Language Reference';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../index.html?flash/net/NetConnection.html&amp;flash/net/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;NetConnection</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a>&nbsp;| <a href="#includeExamplesSummary">Examples</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class NetConnection"); titleBar_setSubNav(false,true,false,false,true,false,true,true,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">flash.net</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  NetConnection</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">NetConnection  <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../flash/events/EventDispatcher.html">EventDispatcher</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../Object.html">Object</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+ The NetConnection class lets you invoke commands on a remote
+ application server, such as Adobe's Flash Media Server 2 or Adobe Flex<span src="actionscript">, and 
+ to play streaming Flash Video (FLV) files from either an HTTP address or 
+ a local drive. Typically, you use NetConnection objects with NetStream objects</span>.
+ 
+ <p>When you use this class, consider the following security model:</p>
+  <ul>
+ <li>Loading and playing an audio or video file is not allowed if the calling file is in a network sandbox
+ and the file to be loaded is local.</li>
+ 
+  <li>By default, loading and playing an audio or video file is not allowed if the calling file is local and 
+ tries to load and play a remote file. A user must grant explicit permission to allow this.</li>
+ 
+ </ul>
+ 
+ <p>However, in the Adobe Integrated Runtime, content in the <code>application</code> security sandbox 
+ (content installed with the AIR application) are not restricted by these security limitations.</p>
+ 
+ <p>For more information, see the following:</p>
+ 
+ <ul>
+ 
+ <li>The <a href="http://www.adobe.com/go/progAS3_security" target="external">security chapter</a> in the 
+ <i>Programming ActionScript 3.0</i> book and the latest comments on LiveDocs</li>
+ 
+ <li>The "Understanding AIR Security" section of the "Getting started with Adobe AIR" chapter in 
+ the <i>Developing AIR Applications</i> book.</li>
+ 
+ <li>The <a href="http://www.adobe.com/go/fp9_0_security" target="external">Flash Player 9 Security white paper</a></li>
+ 
+ </ul>
+ 
+ <p>Some of the properties and methods in the NetStream class are intended for use primarily
+ with a server, such as Flash Media Server or Flex. They may contain additional server-side
+ functionality. For additional documentation, see the
+ NetStream class in <a href="http://livedocs.macromedia.com/fms/2/docs/00000575.html" target="">
+ Flash Media Server documentation</a>.</p>
+  <p><b>Note</b>: This class was dynamic in ActionScript 2.0 but is now sealed.
+ To write callback methods for this class, you can either extend the class and define the 
+ callback methods in your subclass, or you can use the <code>client</code>
+ property to refer to an object and define the callback methods on that object.</p>
+ 
+ <p></p>
+<p>
+<a href="#includeExamplesSummary">View the examples</a>
+</p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="NetConnection.html#client" target="">client</a>
+<br>
+<a href="NetStream.html" target="">NetStream</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#client">client</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  Indicates the object on which callback methods should be invoked.</div>
+</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#connected">connected</a> : <a href="../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">[read-only] 
+  Indicates whether a connection to a server has been made through
+  a persistent RTMP connection (true) or not (false).</div>
+</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#connectedProxyType">connectedProxyType</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription">[read-only] 
+  If a successful connection is made, indicates the method that was used to make it: 
+  a direct connection, the CONNECT method, or HTTP tunneling.</div>
+</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#constructor">constructor</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  A reference to the class object or constructor function for a given object instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#defaultObjectEncoding">defaultObjectEncoding</a> : <a href="../../uint.html">uint</a>
+<div class="summaryTableDescription">[static] 
+  The default object encoding (AMF version) for NetConnection objects created in the SWF file.</div>
+</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#objectEncoding">objectEncoding</a> : <a href="../../uint.html">uint</a>
+<div class="summaryTableDescription">
+  The object encoding (AMF version) for this NetConnection instance.</div>
+</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#prototype">prototype</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">[static] 
+  A reference to the prototype object of a class or function object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#proxyType">proxyType</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription">
+  Determines whether native SSL is used for RTMPS instead of HTTPS,
+  and whether the CONNECT method of tunneling is used to connect through a proxy
+  server.</div>
+</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#uri">uri</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription">[read-only] 
+  The URI of the application server that was passed to NetConnection.connect(),
+  if connect was used to connect to a server.</div>
+</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#usingTLS">usingTLS</a> : <a href="../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">[read-only] 
+     Indicates whether a secure connection was made using native Transport Layer Security (TLS) 
+  rather than HTTPS.</div>
+</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#NetConnection()">NetConnection</a>()</div>
+<div class="summaryTableDescription">
+  Creates a NetConnection object that you can use with a NetStream object
+  to invoke commands on a remote application server or to play
+  back streaming video (FLV) files locally or from a server.</div>
+</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#addEventListener()">addEventListener</a>(type:<a href="../../String.html">String</a>, listener:<a href="../../Function.html">Function</a>, useCapture:<a href="../../Boolean.html">Boolean</a> = false, priority:<a href="../../int.html">int</a> = 0, useWeakReference:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+    Registers an event listener object with an EventDispatcher object so that the listener 
+    receives notification of an event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addHeader()">addHeader</a>(operation:<a href="../../String.html">String</a>, mustUnderstand:<a href="../../Boolean.html">Boolean</a> = false, param:<a href="../../Object.html">Object</a> = null):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+  Adds a context header to the AMF packet structure.</div>
+</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#call()">call</a>(command:<a href="../../String.html">String</a>, responder:<a href="../../flash/net/Responder.html">Responder</a>, <a href="../../statements.html#..._(rest)_parameter">...</a> arguments):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+  Invokes a command or method on the server running Flash Media Server, or on an application server,
+  to which the application instance is connected.</div>
+</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#close()">close</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+  Closes the connection that was opened locally or with the server and dispatches
+  the netStatus event
+  with a code property of NetConnection.Connect.Closed.</div>
+</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#connect()">connect</a>(command:<a href="../../String.html">String</a>, <a href="../../statements.html#..._(rest)_parameter">...</a> arguments):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+  Opens a connection to a server.</div>
+</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#dispatchEvent()">dispatchEvent</a>(event:<a href="../../flash/events/Event.html">Event</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Dispatches an event into the event flow.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#hasEventListener()">hasEventListener</a>(type:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Checks whether the EventDispatcher object has any listeners registered for a specific type 
+    of event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">hasOwnProperty</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an object has a specified property defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">isPrototypeOf</a>(theClass:<a href="../../Object.html">Object</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an instance of the Object class is in the prototype chain of the object specified 
+  as the parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">propertyIsEnumerable</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether the specified property exists and is enumerable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#removeEventListener()">removeEventListener</a>(type:<a href="../../String.html">String</a>, listener:<a href="../../Function.html">Function</a>, useCapture:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+    Removes a listener from the EventDispatcher object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#setPropertyIsEnumerable()">setPropertyIsEnumerable</a>(name:<a href="../../String.html">String</a>, isEnum:<a href="../../Boolean.html">Boolean</a> = true):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+     Sets the availability of a dynamic property for loop operations.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#toString()">toString</a>():<a href="../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the string representation of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#valueOf()">valueOf</a>():<a href="../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the primitive value of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#willTrigger()">willTrigger</a>(type:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Checks whether an event listener is registered with this EventDispatcher object or any of 
+    its ancestors for the specified event type.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<div class="showHideLinks">
+<div class="hideInheritedEvent" id="hideInheritedEvent">
+<a onclick="javascript:setInheritedVisible(false,'Event');" href="#eventSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Events</a>
+</div>
+<div class="showInheritedEvent" id="showInheritedEvent">
+<a onclick="javascript:setInheritedVisible(true,'Event');" href="#eventSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Events</a>
+</div>
+</div>
+<table id="summaryTableEvent" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th> Summary </th><th class="summaryTableOwnerCol">Defined By</th>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#event:activate">activate</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when Flash Player or the and AIR application gains operating system focus and becomes active.</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:asyncError">asyncError</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when an exception is thrown asynchronously — that is, from native asynchronous code.</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#event:deactivate">deactivate</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when Flash Player loses operating system focus and is becoming inactive.</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:ioError">ioError</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when an input or output error occurs that causes a network operation to fail.</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:netStatus">netStatus</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when a NetConnection object is reporting its status or error condition.</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:securityError">securityError</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched if a call to NetConnection.call() attempts to connect to a server outside the caller's security sandbox.</td><td class="summaryTableOwnerCol">NetConnection</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="client"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">client</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>client:<a href="../../Object.html">Object</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+  Indicates the object on which callback methods should be invoked. The default is 
+     this NetConnection instance. If you set the <code>client</code> property to another object, 
+     callback methods will be invoked on that object.
+  
+  </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get client():<a href="../../Object.html">Object</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set client(value:<a href="../../Object.html">Object</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+<br>
+<span class="label">Throws</span>
+<br>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../TypeError.html">TypeError</a> </code> &mdash; The <code>client</code> property must be set to a non-null object. 
+    </td>
+</tr>
+</table>
+</div>
+<a name="propertyDetail"></a><a name="connected"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">connected</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>connected:<a href="../../Boolean.html">Boolean</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+  Indicates whether a connection to a server has been made through
+  a persistent RTMP connection (<code>true</code>) or not (<code>false</code>). 
+  When connected through HTTP, this property is always <code>false</code>.
+  It is always <code>true</code> for AMF connections to application servers. 
+    </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get connected():<a href="../../Boolean.html">Boolean</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="connectedProxyType"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">connectedProxyType</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>connectedProxyType:<a href="../../String.html">String</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+  If a successful connection is made, indicates the method that was used to make it: 
+  a direct connection, the <code>CONNECT</code> method, or HTTP tunneling. 
+  Possible values are "<code>none</code>",
+  "<code>HTTP</code>", "<code>HTTPS</code>", and "<code>CONNECT</code>". 
+  This property is valid only when a NetConnection object is connected.
+     This property is used in Flex applications and Flash Media Server applications.   
+  This property is applicable only when
+     RTMP, RTMPS, or RTMPT is used. The <code>CONNECT</code> method is applicable only to 
+     users who are connected to the network by a proxy server. 
+  
+  <p>
+  You can read this property to determine which method of connection
+  was used. This property returns "<code>none</code>" if a direct connection was made,
+  "<code>HTTP</code>" if HTTP tunneling was used, 
+  "<code>HTTPS</code>" if secure HTTPS tunneling was used, 
+  and "<code>CONNECT</code>" if the
+  proxy <code>CONNECT</code> method was used.
+  </p>
+  
+  </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get connectedProxyType():<a href="../../String.html">String</a></code>
+<br>
+<br>
+<span class="label">Throws</span>
+<br>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../ArgumentError.html">ArgumentError</a> </code> &mdash; An attempt was made to access this property when the NetConnection instance
+  was not connected. 
+    </td>
+</tr>
+</table>
+</div>
+<a name="propertyDetail"></a><a name="defaultObjectEncoding"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">defaultObjectEncoding</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>defaultObjectEncoding:<a href="../../uint.html">uint</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+  The default object encoding (AMF version) for NetConnection objects created in the SWF file.
+  When an object is written to or read from binary data, the <code>defaultObjectEncoding</code>
+  property
+  indicates which Action Message Format version should be used: the ActionScript 3.0 format
+  or the ActionScript 1.0 and ActionScript 2.0 format. 
+    <p>By default, <code>NetConnection.defaultObjectEncoding</code> is set to use the
+  ActionScript 3.0 format, AMF3. Changing <code>NetConnection.defaultObjectEncoding</code>
+  does not affect existing NetConnection instances; it affects only instances that 
+  are created subsequently.</p>
+       <p>To set an object's encoding separately (rather than setting object encoding for the entire
+     applicatoin), set the <code>objectEncoding</code> property of the NetConnection object instead.</p>
+    <p>For more detailed information, see the description of the <code>objectEncoding</code>
+  property.</p>
+  
+  </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get defaultObjectEncoding():<a href="../../uint.html">uint</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set defaultObjectEncoding(value:<a href="../../uint.html">uint</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="NetConnection.html#objectEncoding" target="">NetConnection.objectEncoding</a>
+<br>
+<a href="ObjectEncoding.html" target="">flash.net.ObjectEncoding</a>
+</div>
+</div>
+<a name="propertyDetail"></a><a name="objectEncoding"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">objectEncoding</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>objectEncoding:<a href="../../uint.html">uint</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+  The object encoding (AMF version) for this NetConnection instance. The default
+  value of this property is the value of <code>defaultObjectEncoding</code>. Acceptable values are
+  <code>ObjectEncoding.AMF3</code> and <code>ObjectEncoding.AMF0</code>.
+  
+  <p>It's important to understand this property if your file needs to
+  communicate with servers released prior to Flash Player 9 (which did not use the AMF3 format).</p>
+    <p>When an object is written to or read from binary data, the <code>objectEncoding</code>
+  property indicates which Action Message Format version should be used: 
+  the ActionScript 3.0 format (<code>ObjectEncoding.AMF3</code>) or the ActionScript 1.0
+  and ActionScript 2.0 format (<code>ObjectEncoding.AMF0</code>). 
+  When you use NetConnection objects to connect to a server,
+  three scenarios are possible:</p>
+  
+  <ul>
+  <li>Connecting exclusively to a server that was released with or after Flash Player 9,
+  such as Flex 2. The default value of <code>defaultObjectEncoding</code> is
+  <code>ObjectEncoding.AMF3</code>. All NetConnection instances created in this
+  SWF file use AMF3 serialization, so you don't need to set the
+  <code>objectEncoding</code> property.</li>
+    
+  <li>Connecting exclusively to a server that was released prior to Flash Player 9,
+  such as Flex 1.5 and Flash Media Server 2. 
+  In this scenario, set the static <code>defaultObjectEncoding</code> property to
+  <code>ObjectEncoding.AMF0</code>. All NetConnection instances created in this
+  SWF file use AMF0 serialization. You don't need to set the
+  <code>objectEncoding</code> property. </li>
+    <li>Connecting to multiple servers that use different encoding versions. Instead of
+  using <code>defaultObjectEncoding</code>, set the object encoding on a per-connection
+  basis using the <code>objectEncoding</code> property for each connection. 
+  Set it to <code>ObjectEncoding.AMF0</code> to connect to
+  servers that use AMF0 encoding, such as Flex 1.5 and Flash Media Server 2, 
+  and set it to <code>ObjectEncoding.AMF3</code> to connect to
+  servers that use AMF3 encoding, such as Flex 2.</li>
+    </ul>
+    <p>Changing <code>defaultObjectEncoding</code> does not affect existing 
+  NetConnection instances; it affects only instances that are created subsequently.</p>
+    <p>Once the NetConnection instance is connected, its <code>objectEncoding</code>
+  property is read-only.</p>
+  
+  <p>If you use the wrong encoding to connect to a server, the NetConnection object 
+  dispatches the <code>netStatus</code> event. The <code>NetStatusEvent.info</code>
+  property contains an information object with a <code>code</code> property value of
+  <code>NetConnection.Connect.Failed</code>, and a description explaining that the object
+  encoding is incorrect.</p>
+  
+  </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get objectEncoding():<a href="../../uint.html">uint</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set objectEncoding(value:<a href="../../uint.html">uint</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+<br>
+<span class="label">Throws</span>
+<br>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../ReferenceError.html">ReferenceError</a> </code> &mdash; An attempt was made to set the value of the <code>objectEncoding</code>
+  property while the NetConnection instance was connected.
+  
+  </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../../ArgumentError.html">ArgumentError</a> </code> &mdash; This property was set to a value other than <code>ObjectEncoding.AMF0</code>
+  or <code>ObjectEncoding.AMF3</code>.
+    </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="NetConnection.html#defaultObjectEncoding" target="">defaultObjectEncoding</a>
+<br>
+<a href="ObjectEncoding.html" target="">flash.net.ObjectEncoding</a>
+</div>
+</div>
+<a name="propertyDetail"></a><a name="proxyType"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">proxyType</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>proxyType:<a href="../../String.html">String</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+  Determines whether native SSL is used for RTMPS instead of HTTPS,
+  and whether the <code>CONNECT</code> method of tunneling is used to connect through a proxy
+  server. Acceptable values are "<code>none</code>",
+  "<code>HTTP</code>", "<code>CONNECT</code>", and "<code>best</code>".
+     This property is used in Flex applications and Flash Media Server 2 applications.
+       
+  <p>This property is applicable only when
+     using RTMP, RTMPS, or RTMPT. The <code>CONNECT</code> method is applicable only to 
+     users who are connected to the network by a proxy server.</p>
+       <p>The <code>proxyType</code> property determines which fallback methods are tried if the
+  initial connection attempt fails. You must set the <code>proxyType</code> property before 
+     calling the <code>NetConnection.connect()</code> method.
+     This property determines whether to try to use native Transport Layer Security (TLS), and how
+  to work with proxy servers that your application encounters when attempting to make a connection.</p>
+       <p>The default value for this property is "<code>none</code>"; if you do not 
+     change this value, HTTPS tunneling is used for RTMPS.
+  If the property is set to "<code>best</code>", the optimal method of connecting is
+  established, attempting the best method first and then falling back to other methods
+  if they fail. For RTMPS connections, native SSL sockets are used by default, 
+  and a fallback to other methods is used if necessary.
+  If the property is set to "<code>HTTP</code>"
+  and a direct connection fails, the old method of HTTP tunneling is used.
+  If the property is set to "<code>CONNECT</code>" and a direct connection fails,
+  the <code>CONNECT</code> method of tunneling is used. If that fails, the connection will
+  not fall back to HTTP tunneling.</p>
+    </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get proxyType():<a href="../../String.html">String</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set proxyType(value:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="uri"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">uri</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>uri:<a href="../../String.html">String</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+  The URI of the application server that was passed to <code>NetConnection.connect()</code>,
+  if <code>connect</code> was used to connect to a server. 
+  If <code>NetConnection.connect()</code> hasn't yet been called or if no URI was passed, 
+  this property is <code>undefined</code>.
+    </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get uri():<a href="../../String.html">String</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="usingTLS"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">usingTLS</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>usingTLS:<a href="../../Boolean.html">Boolean</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+     Indicates whether a secure connection was made using native Transport Layer Security (TLS) 
+  rather than HTTPS. This property is valid only when a NetConnection object is connected.
+  
+   </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get usingTLS():<a href="../../Boolean.html">Boolean</a></code>
+<br>
+<br>
+<span class="label">Throws</span>
+<br>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../ArgumentError.html">ArgumentError</a> </code> &mdash; An attempt was made to access this property when the NetConnection instance
+  was not connected. 
+    </td>
+</tr>
+</table>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor Detail</div>
+<a name="NetConnection()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">NetConnection</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function NetConnection()</code>
+<p></p><p>
+  Creates a NetConnection object that you can use with a NetStream object
+  to invoke commands on a remote application server or to play
+  back streaming video (FLV) files locally.
+  After creating the NetConnection object, use 
+  <code>connect()</code> to make the actual connection.
+  
+  <p>Playing external FLV files provides several advantages over embedding video in a Flash document,
+  such as better performance, better memory management, and independent video and Flash frame rates. 
+  </p>
+  
+  <p>If your ActionScript 3.0 SWF file needs to communicate with servers released prior
+  to Flash Player 9, you might need to adjust the NetConnection object's <code>objectEncoding</code> property.</p>
+      </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="NetConnection.html#connect()" target="">flash.net.NetConnection.connect()</a>
+<br>
+<a href="NetConnection.html#objectEncoding" target="">objectEncoding</a>
+</div>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method Detail</div>
+<a name="addHeader()"></a><a name="addHeader(String,Boolean,Object)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addHeader</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addHeader(operation:<a href="../../String.html">String</a>, mustUnderstand:<a href="../../Boolean.html">Boolean</a> = false, param:<a href="../../Object.html">Object</a> = null):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+  Adds a context header to the AMF packet structure. This header is sent with
+  every future AMF packet. If you call <code>NetConnection.addHeader()</code>
+  using the same name, the new header replaces the existing header, and the new header
+  persists for the duration of the NetConnection object. You can remove a header by
+  calling <code>NetConnection.addHeader()</code> with the name of the header to remove 
+  an undefined object. This method is relevant when used with a server, such as Flex or 
+  Flash Media Server.
+  
+  </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">operation</span>:<a href="../../String.html">String</a></code> &mdash; Identifies the header and the ActionScript object data associated with it.
+  
+  </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">mustUnderstand</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>false</code>)<code></code> &mdash; A value of <code>true</code> indicates that the server must understand
+  and process this header before it handles any of the following headers or messages.
+  </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">param</span>:<a href="../../Object.html">Object</a></code> (default = <code>null</code>)<code></code> &mdash; Any ActionScript object.
+  
+  </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="call()"></a><a name="call(String,flash.net.Responder,restParam)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">call</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function call(command:<a href="../../String.html">String</a>, responder:<a href="../../flash/net/Responder.html">Responder</a>, <a href="../../statements.html#..._(rest)_parameter">...</a> arguments):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+  Invokes a command or method on the server running Flash Media Server, or on an application server,
+  to which the application instance is connected. 
+  You must create a server-side function to pass to this method.
+    </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">command</span>:<a href="../../String.html">String</a></code> &mdash; A method specified in the form <code>[objectPath/]method</code>. For example, 
+  the <code>someObject/doSomething</code> command tells the remote server
+  to invoke the <code>clientObject.someObject.doSomething()</code> method, with all the optional
+  <code>... arguments</code> parameters. If the object path is missing, 
+  <code>clientObject.doSomething()</code> is invoked on the remote server.
+    </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">responder</span>:<a href="../../flash/net/Responder.html">Responder</a></code> &mdash; An optional object that is used to handle return values from the server.
+  The Responder object can have two defined methods to handle the returned result: 
+  <code>result</code> and <code>status</code>. If an error is returned as the result,
+  <code>status</code> is invoked; otherwise, <code>result</code> is invoked.
+    </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><a href="../../statements.html#..._(rest)_parameter">...</a> <span class="label">arguments</span></code> &mdash; Optional arguments that can be of any ActionScript type, 
+  including a reference to another ActionScript object. These arguments are passed 
+  to the method specified in the <code>command</code> parameter when the method is executed on the 
+  remote application server.
+    </td>
+</tr>
+</table>
+</p>
+<br>
+<span class="label">Events</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><b>securityError</b>:<a href="../../flash/events/SecurityErrorEvent.html"><code>SecurityErrorEvent</code></a></code> &mdash; A call attempted
+  to communicate with a server outside the caller's security sandbox.
+  You can avoid this problem by using a policy file on the server.</td>
+</tr>
+</table>
+</div>
+<a name="close()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">close</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function close():<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+  Closes the connection that was opened locally or with the server and dispatches
+  the <code>netStatus</code> event
+  with a <code>code</code> property of <code>NetConnection.Connect.Closed</code>.
+  <p>This method disconnects all NetStream objects running over this connection; 
+  any queued data that has not been sent is discarded. (To terminate 
+   streams
+  without closing the connection, use <code>NetStream.close()</code>.) 
+  If you call this method and then want to reconnect, you must recreate the NetStream object.</p>
+    
+    </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="NetStream.html" target="">NetStream</a>
+<br>
+<a href="../../flash/events/NetStatusEvent.html#info" target="">flash.events.NetStatusEvent.info</a>
+</div>
+</div>
+<a name="connect()"></a><a name="connect(String,restParam)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">connect</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function connect(command:<a href="../../String.html">String</a>, <a href="../../statements.html#..._(rest)_parameter">...</a> arguments):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+  Opens a connection to a server. Through this connection, you can play back audio or 
+  video (FLV) files 
+   from the local file system, or you
+  can invoke commands on a remote server.
+    <p>When using this method, consider the Flash Player security model and the following security 
+  considerations:</p>
+  
+  <ul>
+      <li>By default, the website denies access between sandboxes.  The website can enable access to a resource
+   by using a cross-domain policy file. </li>
+  
+   <li>A website can deny access to a resource by adding server-side ActionScript application 
+   logic in Flash Media Server.</li>
+  
+      <li>You cannot use the <code>NetConnection.connect()</code> method if the calling SWF file is in the
+   local-with-file-system sandbox.</li>
+  
+  <li>You can prevent a SWF file from using this method by setting the  <code>allowNetworking</code> 
+  parameter of the the <code>object</code> and <code>embed</code> tags in the HTML 
+  page that contains the SWF content.</li>
+  
+  </ul>
+  
+  <p>However, in the Adobe Integrated Runtime, content in the <code>application</code> security sandbox (content
+  installed with the AIR application) are not restricted by these security limitations.</p>
+  
+  <p>For more information, see the following:</p>
+  
+     <ul>
+     
+     <li>The <a href="http://www.adobe.com/go/progAS3_security" target="external">security chapter</a> in the 
+     <i>Programming ActionScript 3.0</i> book and the latest comments on LiveDocs</li>
+     
+     
+     
+     </ul>
+     
+  </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">command</span>:<a href="../../String.html">String</a></code> &mdash; Set this parameter to <code>null</code> if you are connecting to video without a server
+  (that is, video on the local computer that is running the SWF file). 
+  <p>If you are connecting to a server, set this parameter to the URI of the 
+  application on the server that runs when the connection is made. Use the following  
+  format (items in brackets are optional):</p>
+     <p><code>protocol:[//host][:port]/appname/[instanceName]</code></p>
+     <p>If the SWF file is served from the same host where the server is installed, 
+  you can omit the <code>host</code> parameter. If you omit the <code>instanceName</code> parameter, 
+  Flash Player connects to the application's default instance (<code>_definst_</code>).</p>
+  
+  </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><a href="../../statements.html#..._(rest)_parameter">...</a> <span class="label">arguments</span></code> &mdash; Optional parameters of any type to be passed to the application 
+  specified in <code>command</code>. If the application is unable to process the parameters 
+  in the order in which they are received, <code>netStatusEvent</code> is dispatched 
+  with the <code>code</code> property set to <code>NetConnection.Connect.Rejected</code>.
+  
+  </td>
+</tr>
+</table>
+</p>
+<br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../ArgumentError.html">ArgumentError</a> </code> &mdash; The URI passed to the <code>command</code> parameter is 
+  improperly formatted.
+  
+  </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../../flash/errors/IOError.html">IOError</a> </code> &mdash; The connection failed. This might happen if you call <code>connect()</code>
+  from within a <code>netStatus</code> event handler, which is not allowed.
+  
+  </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20"></td><td><code><a href="../../SecurityError.html">SecurityError</a> </code> &mdash; Local untrusted SWF files cannot communicate with the Internet. 
+  You can avoid this problem by reclassifying this SWF file as local-with-networking or trusted.
+    </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="NetStream.html" target="">flash.net.NetStream</a>
+</div>
+</div>
+<div class="detailSectionHeader"> Event Detail </div>
+<a name="event:asyncError"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">asyncError</td><td class="detailHeaderType">event&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/AsyncErrorEvent.html"><code>flash.events.AsyncErrorEvent</code></a>
+<br>
+<span class="label">AsyncErrorEvent.type property = </span><a href="../../flash/events/AsyncErrorEvent.html#ASYNC_ERROR"><code>flash.events.AsyncErrorEvent.ASYNC_ERROR</code></a>
+<br>
+<p></p><p>
+ Dispatched when an exception is thrown asynchronously &mdash; that is, 
+ from native asynchronous code. 
+ 
+ </p>
+ The <code>AsyncErrorEvent.ASYNC_ERROR</code> constant defines the value of the 
+ <code>type</code> property of an <code>asyncError</code> event object. 
+ <p>This event has the following properties:</p>
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>false</code>; there is no default
+ behavior to cancel. </td>
+</tr>
+<tr>
+<td><code>currentTarget</code></td><td>The object that is actively processing the
+ Event object with an event listener. </td>
+</tr>
+<tr>
+<td><code>target</code></td><td></td>
+</tr>
+<tr>
+<td><code>error</code></td><td>The error that triggered the event.</td>
+</tr></table>
+ 
+ </div>
+<a name="event:ioError"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ioError</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/IOErrorEvent.html"><code>flash.events.IOErrorEvent</code></a>
+<br>
+<span class="label">IOErrorEvent.type property = </span><a href="../../flash/events/IOErrorEvent.html#IO_ERROR"><code>flash.events.IOErrorEvent.IO_ERROR</code></a>
+<br>
+<p></p><p>
+ Dispatched when an input or output error occurs that causes a network operation to fail. 
+ </p>
+ Defines the value of the <code>type</code> property of an <code>ioError</code> event object.
+ <p>This event has the following properties:</p>
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>false</code>; there is no default behavior to cancel.</td>
+</tr>
+<tr>
+<td><code>currentTarget</code></td><td>The object that is actively processing the Event 
+ object with an event listener.</td>
+</tr>
+<tr>
+<td><code>errorID</code></td><td>A reference number associated with the specific error.</td>
+</tr>
+<tr>
+<td><code>target</code></td><td>The network object experiencing the input/output error.</td>
+</tr>
+<tr>
+<td><code>text</code></td><td>Text to be displayed as an error message.</td>
+</tr></table>
+ 
+ </div>
+<a name="event:netStatus"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">netStatus</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/NetStatusEvent.html"><code>flash.events.NetStatusEvent</code></a>
+<br>
+<span class="label">NetStatusEvent.type property = </span><a href="../../flash/events/NetStatusEvent.html#NET_STATUS"><code>flash.events.NetStatusEvent.NET_STATUS</code></a>
+<br>
+<p></p><p>
+ Dispatched when a NetConnection object is reporting its status or error condition. 
+ The <code>netStatus</code> event contains an <code>info</code> property,
+ which is an information object that contains specific information about the event, 
+ such as whether a connection attempt succeeded or failed. 
+ </p>
+    Defines the value of the <code>type</code> property of a <code>netStatus</code> event object.
+   <p>This event has the following properties:</p>
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>false</code>; there is no default behavior to cancel.</td>
+</tr>
+<tr>
+<td><code>currentTarget</code></td><td>The object that is actively processing the Event 
+ object with an event listener.</td>
+</tr>
+<tr>
+<td><code>info</code></td><td>An object with properties that describe the object's status or error condition.</td>
+</tr>
+<tr>
+<td><code>target</code></td><td>The NetConnection or NetStream object reporting its status. </td>
+</tr></table>
+ 
+ <p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../flash/events/NetStatusEvent.html#info" target="">flash.events.NetStatusEvent.info</a>
+</div>
+</div>
+<a name="event:securityError"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">securityError</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/SecurityErrorEvent.html"><code>flash.events.SecurityErrorEvent</code></a>
+<br>
+<span class="label">SecurityErrorEvent.type property = </span><a href="../../flash/events/SecurityErrorEvent.html#SECURITY_ERROR"><code>flash.events.SecurityErrorEvent.SECURITY_ERROR</code></a>
+<br>
+<p></p><p>
+ Dispatched if a call to <code>NetConnection.call()</code> 
+ attempts to connect to a server outside the caller's security sandbox.
+ </p>
+ The <code>SecurityErrorEvent.SECURITY_ERROR</code> constant defines the value of the <code>type</code> property of a <code>securityError</code> event object. 
+ 
+ <p>This event has the following properties:</p>
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>false</code>; there is no default behavior to cancel.</td>
+</tr>
+<tr>
+<td><code>currentTarget</code></td><td>The object that is actively processing the Event 
+ object with an event listener.</td>
+</tr>
+<tr>
+<td><code>target</code></td><td>The network object reporting the security error.</td>
+</tr>
+<tr>
+<td><code>text</code></td><td>Text to be displayed as an error message.</td>
+</tr></table>
+ 
+ <p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="NetConnection.html#call()" target="">NetConnection.call()</a>
+</div>
+</div>
+<a name="includeExamplesSummary"></a>
+<div class="detailSectionHeader">Examples</div>
+<div class="exampleHeader">NetConnectionExample.as</div>
+<br>
+<div class="detailBody"> The following example uses a Video object with the NetConnection and 
+ NetStream classes to load and play an FLV file. To run this example, you need an FLV file 
+ whose name and location match the variable passed to <code>videoURL</code>; 
+ in this case, an FLV file called Video.flv that is in the same directory as the SWF file.
+
+ <p>In this example, the code that creates the Video and NetStream objects and calls the
+ <code>Video.attachNetStream()</code> and <code>NetStream.play()</code> methods is placed 
+ in a handler function. The handler is called only if the
+ attempt to connect to the NetConnection object is successful; that is, 
+ when the <code>netStatus</code> event returns an <code>info</code> object with a <code>code</code>
+ property that indicates success. 
+ It is recommended that you wait for a successful connection before you call
+ <code>NetStream.play()</code>. </p>
+ <div class="listing"><pre>
+
+package {
+    import flash.display.Sprite;
+    import flash.events.NetStatusEvent;
+    import flash.events.SecurityErrorEvent;
+    import flash.media.Video;
+    import flash.net.NetConnection;
+    import flash.net.NetStream;
+    import flash.events.Event;
+
+    public class NetConnectionExample extends Sprite {
+        private var videoURL:String = "Video.flv";
+        private var connection:NetConnection;
+        private var stream:NetStream;
+
+        public function NetConnectionExample() {
+            connection = new NetConnection();
+            connection.addEventListener(NetStatusEvent.NET_STATUS, netStatusHandler);
+            connection.addEventListener(SecurityErrorEvent.SECURITY_ERROR, securityErrorHandler);
+            connection.connect(null);
+        }
+
+        private function netStatusHandler(event:NetStatusEvent):void {
+            switch (event.info.code) {
+                case "NetConnection.Connect.Success":
+                    connectStream();
+                    break;
+                case "NetStream.Play.StreamNotFound":
+                    trace("Stream not found: " + videoURL);
+                    break;
+            }
+        }
+
+        private function securityErrorHandler(event:SecurityErrorEvent):void {
+            trace("securityErrorHandler: " + event);
+        }
+
+        private function connectStream():void {
+            var stream:NetStream = new NetStream(connection);
+            stream.addEventListener(NetStatusEvent.NET_STATUS, netStatusHandler);
+            stream.client = new CustomClient();
+            var video:Video = new Video();
+            video.attachNetStream(stream);
+            stream.play(videoURL);
+            addChild(video);
+        }
+    }
+}
+
+class CustomClient {
+    public function onMetaData(info:Object):void {
+        trace("metadata: duration=" + info.duration + " width=" + info.width + " height=" + info.height + " framerate=" + info.framerate);
+    }
+    public function onCuePoint(info:Object):void {
+        trace("cuepoint: time=" + info.time + " name=" + info.name + " type=" + info.type);
+    }
+}</pre></div></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('flash/net/NetConnection.html','flash/net/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

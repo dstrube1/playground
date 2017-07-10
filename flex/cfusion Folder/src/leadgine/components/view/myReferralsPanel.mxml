@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SuperPanel xmlns="nl.wv.extenders.panel.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:com="com.*"
+	endMaximize="onEndMaximize()" endRestore="onEndRestore()">
+<mx:Script>
+<![CDATA[
+	import mx.events.ListEvent;
+	import mx.core.Application;
+	import mx.events.ItemClickEvent;
+	import leadgine.components.dto.FullServiceReferral;
+	
+	private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	
+	private function myReferralsButtonBarClick(event:ItemClickEvent):void{
+		myReferralsViewStack.selectedIndex = event.target.selectedIndex;
+	}
+	private function myCashButtonBarClick(event:ItemClickEvent):void{
+		myCashViewStack.selectedIndex = event.target.selectedIndex;
+	}
+	private var referralId:String;
+	private function myReferralsGridItemClick(event:ListEvent):void{
+		var i:uint = event.rowIndex;
+		var xml:XML = listReferrals.getItemAt(i) as XML;
+		referralId = xml.id;
+		//prep the myDTO for data population
+		//AFTER setting PropertySelection's folderCollection
+		searchService.url = "http://www.revparsuite.com/leadgine/hotelsEXE2.asp?clientid="+Application.application.clientID+
+				"&userid="+Application.application.userID+"&hotel="+Application.application.hotel;
+		searchService.method = "GET";
+		searchService.cancel();
+		searchService.send(); 
+		
+		
+	}
+	private function resultHandlerSearch(event:ResultEvent):void {
+		var result:XML = XML(event.result);  
+		var xmlList:XMLList = XMLList(result.children()); //remove the All level
+		myDTO.folderCollection = new XMLListCollection(xmlList);
+		myDTO.savedPropertySelection = true;
+		var myReferralsGridService:HTTPService = new HTTPService();
+		myReferralsGridService.url="http://www.revparsuite.com/leadgine/singleReferralEXE.asp?id="+referralId;
+		//no need for this call since it's a local var
+		//myReferralsGridService.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+		myReferralsGridService.addEventListener(ResultEvent.RESULT,myReferralsGridServiceResultHandler);
+		//TODO: refactor:
+		//myReferralsGridService.format = e4x
+		myReferralsGridService.method = "POST";
+		myReferralsGridService.cancel();
+		myReferralsGridService.send(); 
+		
+		myDTO.middlize();
+	}
+
+	private function myReferralsGridServiceResultHandler(event:ResultEvent):void{
+		var result:ObjectProxy = event.result as ObjectProxy;
+		//DS 20091002: Interesting:
+		//This yields an undefined or null:
+		//var resultX:XML = event.result as XML;
+		//This yields a more silently failing valueless but not null:
+		//var resultX:XML = XML(event.result);
+		var response:ObjectProxy = result.response  as ObjectProxy;
+		var items:ObjectProxy = response.items as ObjectProxy;
+		var item:ObjectProxy = items.item as ObjectProxy;
+		//Finally, we're at the meat
+		myDTO.setSummaryFromObjectProxy(item);
+		Application.application.showReferralDialog(true,5);
+	}
+	private function myCashGridItemClick():void{
+		myDTO.middlize();
+		Application.application.showReferralDialog(true,5);
+	}
+
+	
+			[Bindable]
+			public var myTitle:String;
+			
+			import mx.controls.Alert;
+			import mx.charts.HitData;
+			import mx.collections.ArrayCollection;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.collections.XMLListCollection;
+			import mx.collections.ListCollectionView;
+			import mx.utils.ArrayUtil;
+			import mx.controls.dataGridClasses.DataGridItemRenderer;
+			import mx.managers.CursorManager;
+			import mx.formatters.DateFormatter;
+			import mx.rpc.events.ResultEvent;
+			import mx.utils.ObjectUtil;
+			import mx.utils.ObjectProxy;								
+		    import mx.collections.GroupingField;
+	        import mx.collections.Grouping;
+	        import mx.collections.GroupingCollection;
+	import com.GradientCanvas;
+	                  
+			//[Bindable] private var oldIndex:Number = -1;
+			//[Bindable] private var selectedViewIndex:Number = 0;					
+			[Bindable] private var _selectedIndexReferrals:Number = -1;	
+			[Bindable] private var _selectedIndexBonuses:Number = -1;				
+						
+			//[Bindable] private var userid:Number = 1;
+			[Bindable] private var listReferrals:XMLListCollection;
+			[Bindable] private var listChartReferrals:XMLListCollection;
+			[Bindable] private var listBonuses:XMLListCollection;
+			[Bindable] private var listChartBonuses:XMLListCollection;
+			[Bindable] private var listSummaryDataIncoming:XMLListCollection;
+			
+			//[Bindable] private var dataMyReferrals:ArrayCollection;
+			//[Bindable] private var dataFields:ArrayCollection;			
+	        [Bindable] public var myGColl:GroupingCollection = new GroupingCollection();
+	        
+	        private var myGrp:Grouping = new Grouping();
+	        
+			private var AlertMsgSuccess:String;
+			private var AlertMsgSuccessTitle:String;
+			private var AlertMsgFail:String = "Your referral data could not be loaded.  Please click the 'Refresh' button to try again.";
+			private var AlertMsgFailTitle:String = "Load Problem";
+			
+			private var waitCursorSymbol:Class;			
+
+
+			public function resultHandlerReferrals(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listReferrals = new XMLListCollection(xmlList);
+				}
+			}
+
+			public function resultHandlerChartReferrals(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listChartReferrals = new XMLListCollection(xmlList);
+				}
+			}
+
+			public function resultHandlerBonuses(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listBonuses = new XMLListCollection(xmlList);
+				}
+			}
+
+			public function resultHandlerChartBonuses(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listChartBonuses = new XMLListCollection(xmlList);
+				}
+			}
+
+			public function faultHandler():void {
+				this.datReferrals.showBusyCursor = false;
+				this.datChartReferrals.showBusyCursor = false;
+				this.datBonuses.showBusyCursor = false;
+				this.datChartBonuses.showBusyCursor = false;
+			}
+			
+			private function set selectedIndexReferrals(n:Number):void {
+				// Make sure we are within range of dataProvider.
+				if (n < 0)
+					n = listReferrals.length - 1;
+				else if (n > (listReferrals.length - 1))
+					n = 0;
+
+				_selectedIndexReferrals = n;
+			}
+			
+			private function set selectedIndexBonuses(n:Number):void {
+				// Make sure we are within range of dataProvider.
+				if (n < 0)
+					n = listBonuses.length - 1;
+				else if (n > (listBonuses.length - 1))
+					n = 0;
+
+				_selectedIndexBonuses = n;
+			}
+			
+			private function get selectedIndexReferrals():Number {
+				return _selectedIndexReferrals;
+			}
+			
+			private function get selectedIndexBonuses():Number {
+				return _selectedIndexBonuses;
+			}
+			
+			public function fill():void {
+				datReferrals.cancel();
+				datReferrals.url="http://www.revparsuite.com/leadgine/myReferralsEXE.asp?myType=table&userid=" + Application.application.userID;
+				datReferrals.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				datReferrals.addEventListener(ResultEvent.RESULT,resultHandlerReferrals);
+				datReferrals.method = "POST";
+				datReferrals.send(); 
+				
+				datChartReferrals.cancel();
+				datChartReferrals.url="http://www.revparsuite.com/leadgine/myReferralsEXE.asp?myType=chart&userid=" + Application.application.userID;
+				datChartReferrals.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				datChartReferrals.addEventListener(ResultEvent.RESULT,resultHandlerChartReferrals);
+				datChartReferrals.method = "POST";
+				datChartReferrals.send(); 
+				
+				datBonuses.cancel();
+				datBonuses.url="http://www.revparsuite.com/leadgine/myBonusesEXE.asp?myType=table&userid=" + Application.application.userID;
+				datBonuses.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				datBonuses.addEventListener(ResultEvent.RESULT,resultHandlerBonuses);
+				datBonuses.method = "POST";
+				datBonuses.send(); 
+				
+				datChartBonuses.cancel();
+				datChartBonuses.url="http://www.revparsuite.com/leadgine/myBonusesEXE.asp?myType=chart&userid=" + Application.application.userID;
+				datChartBonuses.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				datChartBonuses.addEventListener(ResultEvent.RESULT,resultHandlerChartBonuses);
+				datChartBonuses.method = "POST";
+				datChartBonuses.send(); 
+				
+			}
+
+			public function insertItemHandler(event:ResultEvent):void {	
+				//fill();
+			}						
+			
+			private function sortNumeric(obj1:Object, obj2:Object):int {
+				var value1:Number = (obj1.rooms == '' || obj1.rooms == null) ? null : new Number(obj1.rooms);
+				var value2:Number = (obj2.rooms == '' || obj2.rooms == null) ? null : new Number(obj2.rooms);
+				
+				if (value1 < value2) {
+					return -1;
+				} else if (value1 > value2) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+						
+
+			private function date_sort_Begin_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.begin));
+                var dateB:Date = new Date(Date.parse(itemB.begin));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+
+
+			private function date_sort_End_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.end));
+                var dateB:Date = new Date(Date.parse(itemB.end));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+
+	        private function initDG():void {     
+				
+				// Call on the creationComplete event of the AdvancedDataGrid
+				
+	            // Initialize the GroupingCollection instance.
+	            myGColl.source = listReferrals;
+	                        
+	            // The Grouping instance defines the grouping fields
+	            // in the collection, and the order of the groups 
+	            // in the hierarchy.
+	            myGrp.fields = [new GroupingField("company")]; //new GroupingField("reg_mgr_name"), 
+	            
+	            // The grouping property contains a Grouping instance.
+	            myGColl.grouping = myGrp;
+	
+	            // Specify the GroupedCollection as the data provider for 
+	            // the AdvancedDataGrid control.
+	            //dataReferrals.dataProvider=myGColl;
+	            
+	            // Refresh the display.
+	            myGColl.refresh();
+
+	        } 
+	
+	private function onEndMaximize():void{
+		fill();
+		vsIncentives.selectedIndex = 1;
+	}
+	private function onEndRestore():void{
+		vsIncentives.selectedIndex = 0;
+	}
+
+
+	public function dtFunc(hd:HitData):String {
+        return "<B>" + hd.item.myMonth + "</B>:  " +
+            hd.item.myCount + " referral(s)";
+     }
+
+	public function dtFuncBonus(hd:HitData):String {
+        return "<B>Bonuses!<br>" + hd.item.myMonth + "</B>:  $" +
+            hd.item.myCount;
+     }
+	
+	
+	private function currencyLabel(item:Object, column:DataGridColumn):String
+    {
+        return fmtCurrency.format(item[column.dataField]);
+    }
+	
+	private function numberLabel(item:Object, column:DataGridColumn):String
+    {
+        return fmtNumber.format(item[column.dataField]);
+    }
+	
+
+]]>
+</mx:Script>
+
+<mx:HTTPService id="datReferrals" url="http://www.revparsuite.com/leadgine/myReferralsEXE.asp?myType=table&amp;userid={ Application.application.userID }" 
+	result="resultHandlerReferrals(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:HTTPService id="datChartReferrals" url="http://www.revparsuite.com/leadgine/myReferralsEXE.asp?myType=chart&amp;userid={ Application.application.userID }" 
+	result="resultHandlerChartReferrals(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+
+<mx:HTTPService id="datBonuses" url="http://www.revparsuite.com/leadgine/myBonusesEXE.asp?myType=table&amp;userid={ Application.application.userID }" 
+	result="resultHandlerBonuses(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:HTTPService id="datChartBonuses" url="http://www.revparsuite.com/leadgine/myBonusesEXE.asp?myType=chart&amp;userid={ Application.application.userID }" 
+	result="resultHandlerChartBonuses(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<!-- In preparation of the Summary, we must set the folderCollection for PropertySelection: -->
+<mx:HTTPService id="searchService" 
+	result="resultHandlerSearch(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+    
+<!--<mx:HTTPService id="summaryDataIncoming" 
+	url="http://www.revparsuite.com/leadgine/singleReferralEXE.asp?id={ Application.application.referralID }" 
+	result="resultHandlerSummaryDataIncoming(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>-->
+
+<mx:CurrencyFormatter id="fmtCurrency" precision="0" />
+<mx:NumberFormatter id="fmtNumber" useThousandsSeparator="true"/>
+
+<mx:SeriesSlide id="slideIn" duration="1000" direction="up"/>
+
+<mx:ViewStack id="vsIncentives" width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+<com:GradientCanvas 
+	width="100%" height="100%" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.myFillColors2 }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="0"
+		click="{this.normalMaxClickHandler(null)}">
+
+		<mx:Canvas borderStyle="solid" borderColor="#666666" cornerRadius="20" backgroundColor="#FFFFFF" borderThickness="1" alpha="0.8" left="130" right="10" top="10" bottom="10">
+				<mx:Text text="Let's see what you've referred (and EARNED!) in the past." left="20" right="20" top="20" bottom="20" styleName="myPanelCaption">
+					<mx:filters>
+				        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+				    </mx:filters>
+				</mx:Text>
+		</mx:Canvas>
+		<mx:Image source="assets/img/icons/grey_circle/user.png" verticalCenter="0" left="30"/>
+
+
+
+</com:GradientCanvas>
+<com:GradientCanvas label="Results" width="100%" height="100%" 
+		paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off"
+		colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.topGradientColor }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="100">
+	<mx:VBox width="100%" height="100%" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10">
+
+		<!--////////////////////////////////////////////////////////  
+			Tabs for "my referrals" and "my cash" options 
+		////////////////////////////////////////////////////////////-->
+
+			<mx:TabNavigator id="myReferralsMainButtonBar" backgroundColor="#ffffff" backgroundAlpha=".5" horizontalAlign="left" tabOffset="30" width="100%" height="100%" paddingBottom="10" paddingRight="10" >
+
+		<!--////////////////////////////////////////////////////////  
+							"my referrals" page 
+		////////////////////////////////////////////////////////////-->
+			<mx:VBox width="100%" height="100%" label="my referrals"
+				icon="@Embed('assets/img/icons/user.png')">
+				<mx:Canvas width="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+					<mx:ToggleButtonBar id="myReferralsButtonBar"
+						left="0"
+						dataProvider="{myReferralsViewStack}"
+						buttonHeight="32" itemClick="myReferralsButtonBarClick(event)"/>
+						
+				</mx:Canvas>
+
+				<mx:ViewStack id="myReferralsViewStack" width="100%" height="100%">
+					
+					<mx:VBox label="Chart" width="100%" height="100%"
+						icon="@Embed('assets/img/icons/pie_chart.png')">
+						<mx:Text text="Here are your referrals by month:" y="8" right="-307" left="188" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+						<mx:ColumnChart id="myChart" dataProvider="{listChartReferrals}" showDataTips="true" dataTipFunction="dtFunc" width="100%" height="100%">
+							<mx:filters>
+					           <mx:DropShadowFilter 
+					                distance="10" 
+					                color="0x666666"
+					                alpha=".8"
+					           />
+							</mx:filters>
+					        <mx:horizontalAxis>
+					           <mx:CategoryAxis 
+					           		id="hAxis"
+					                dataProvider="{listChartReferrals}" 
+					                categoryField="myMonth"
+					           />
+					        </mx:horizontalAxis>
+					        <mx:verticalAxis>
+					           <mx:LinearAxis 
+					           		id="vAxis"
+					           />
+					        </mx:verticalAxis>
+					        
+					        <mx:horizontalAxisRenderers>
+					       		<mx:AxisRenderer axis="{hAxis}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:horizontalAxisRenderers>
+					        
+					        <mx:verticalAxisRenderers>
+					       		<mx:AxisRenderer axis="{vAxis}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:verticalAxisRenderers>
+					        
+					        <mx:series>
+					           <mx:ColumnSeries 
+					                xField="myMonth" 
+					                yField="myCount" 
+					                displayName="Referrals"
+					                showDataEffect="{slideIn}">
+									<mx:filters>
+							           <mx:BevelFilter shadowAlpha=".1" angle="45" distance="5" strength="1" quality="50" highlightColor="#B2DC32" />
+							           <!--<mx:GlowFilter color="#a2d0fb" strength="3" alpha=".5" quality="50" />-->
+									</mx:filters>
+									<mx:fill>
+							           <mx:LinearGradient>
+							            <mx:entries>
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio="0" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#B2DC32" 
+							                    ratio=".33" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio=".80" 
+							                    alpha="1"
+							                />
+							            </mx:entries>
+							           </mx:LinearGradient>
+							        </mx:fill>
+								</mx:ColumnSeries>
+					        </mx:series>
+					     </mx:ColumnChart>
+					     <mx:Legend dataProvider="{myChart}" />
+
+					</mx:VBox>
+					
+					<mx:VBox label="Data"
+						width="100%" height="100%"
+						icon="@Embed('assets/img/icons/table.png')">
+					<mx:Text text="Below are your past referrals.  Click a column header to sort." y="8" right="-307" left="188" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							<mx:DataGrid id="dataReferrals" 
+								width="100%" height="100%" 
+						        selectedIndex="{_selectedIndexReferrals}"
+						        dataProvider="{listReferrals}" 
+						        doubleClickEnabled="true"
+						        itemDoubleClick="myReferralsGridItemClick(event)">
+						        <!--
+						        itemClick="selectedIndex=DataGrid(event.currentTarget).selectedIndex;" -->
+								<mx:columns>
+									<mx:DataGridColumn headerText="Status" dataField="myStatus"/>
+									<mx:DataGridColumn headerText="Company" dataField="company"/>
+									<mx:DataGridColumn headerText="Event" dataField="myEvent"/>
+									<mx:DataGridColumn headerText="Arrival" dataField="arrival"/>
+									<mx:DataGridColumn headerText="Rm Nts" textAlign="right" labelFunction="numberLabel"	dataField="totalTotal"/>
+									<mx:DataGridColumn headerText="Revenue" textAlign="right" labelFunction="currencyLabel" dataField="ttlRevenue"/>
+									<mx:DataGridColumn headerText="Bonus" textAlign="right" labelFunction="currencyLabel" dataField="bonus"/>
+									<mx:DataGridColumn headerText="Referred" dataField="sentDate"/>
+								</mx:columns>
+							</mx:DataGrid>
+							
+							<mx:HBox width="100%" verticalAlign="bottom">
+								<mx:HBox width="100%" horizontalAlign="left">
+									<mx:Image source="@Embed('assets/img/fountain_pen_chart_grn.jpg')"/>
+								</mx:HBox>
+								<mx:HBox width="100%" horizontalAlign="right" verticalAlign="bottom">
+									<mx:Button label="Refresh" width="240" height="50" click="fill()" icon="@Embed('assets/img/icons/refresh.png')"/>
+								</mx:HBox>
+							</mx:HBox>
+							
+					</mx:VBox>
+
+				</mx:ViewStack>
+			</mx:VBox>
+			
+			
+			
+			
+		<!--////////////////////////////////////////////////////////  
+							"my cash" page 
+		////////////////////////////////////////////////////////////-->
+			<mx:VBox width="100%" height="100%" label="my cash"
+				icon="@Embed('assets/img/icons/cash_bag.png')">
+				<mx:Canvas width="100%">
+					<mx:ToggleButtonBar id="myCashButtonBar"
+						left="0"
+						dataProvider="{myCashViewStack}"
+						buttonHeight="32" itemClick="myCashButtonBarClick(event)" />
+				</mx:Canvas>
+				
+				<mx:ViewStack id="myCashViewStack" width="100%" height="100%">
+				
+				
+					<mx:VBox label="Chart" width="100%" height="100%"
+						icon="@Embed('assets/img/icons/pie_chart.png')">
+					<mx:Text width="100%" text="Below are your past earned bonuses:" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+						<mx:ColumnChart id="myBonusChart" dataProvider="{listChartBonuses}" showDataTips="true" dataTipFunction="dtFuncBonus"  width="100%" height="100%">
+							<mx:filters>
+					           <mx:DropShadowFilter 
+					                distance="10" 
+					                color="0x666666"
+					                alpha=".8"
+					           />
+							</mx:filters>
+					        <mx:horizontalAxis>
+					           <mx:CategoryAxis 
+					           		id="hAxisBonus"
+					                dataProvider="{listChartBonuses}" 
+					                categoryField="myMonth"
+					           />
+					        </mx:horizontalAxis>
+					        <mx:verticalAxis>
+					           <mx:LinearAxis 
+					           		id="vAxisBonus"
+					           />
+					        </mx:verticalAxis>
+					        
+					        <mx:horizontalAxisRenderers>
+					       		<mx:AxisRenderer axis="{hAxisBonus}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:horizontalAxisRenderers>
+					        
+					        <mx:verticalAxisRenderers>
+					       		<mx:AxisRenderer axis="{vAxisBonus}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:verticalAxisRenderers>
+					        
+					        <mx:series>
+					           <mx:ColumnSeries 
+					                xField="myMonth" 
+					                yField="myCount" 
+					                displayName="Bonus $"
+					                showDataEffect="{slideIn}">
+									<mx:filters>
+							           <mx:BevelFilter shadowAlpha=".1" angle="45" distance="5" strength="1" quality="50" highlightColor="#B2DC32" />
+							           <!--<mx:GlowFilter color="#a2d0fb" strength="3" alpha=".5" quality="50" />-->
+									</mx:filters>
+									<mx:fill>
+							           <mx:LinearGradient>
+							            <mx:entries>
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio="0" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#B2DC32" 
+							                    ratio=".33" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio=".80" 
+							                    alpha="1"
+							                />
+							            </mx:entries>
+							           </mx:LinearGradient>
+							        </mx:fill>
+								</mx:ColumnSeries>
+					        </mx:series>
+					     </mx:ColumnChart>
+					     <mx:Legend dataProvider="{myBonusChart}"/>
+
+					</mx:VBox>
+				
+				
+					<mx:VBox label="Data"
+						width="100%" height="100%"
+						icon="@Embed('assets/img/icons/table.png')">
+						<mx:Text width="100%" text="Below are 'Definite' leads earning bonuses.  Click a column header to sort." styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+						<mx:DataGrid id="dataCash" 
+							width="100%" height="100%" 
+					        selectedIndex="{_selectedIndexBonuses}"
+					        dataProvider="{listBonuses}" 
+					        doubleClickEnabled="true"
+					        itemDoubleClick="myCashGridItemClick()">
+								<mx:columns>
+									<mx:DataGridColumn headerText="Company" dataField="company"/>
+									<mx:DataGridColumn headerText="Event" dataField="myEvent"/>
+									<mx:DataGridColumn headerText="Arrival" dataField="arrival"/>
+									<mx:DataGridColumn headerText="Rm Nts" textAlign="right" labelFunction="numberLabel"	dataField="totalTotal"/>
+									<mx:DataGridColumn headerText="Revenue" textAlign="right" labelFunction="currencyLabel" dataField="ttlRevenue"/>
+									<mx:DataGridColumn headerText="Bonus" textAlign="right" labelFunction="currencyLabel" dataField="bonus"/>
+									<mx:DataGridColumn headerText="Referred" dataField="sentDate"/>
+								</mx:columns>
+						</mx:DataGrid>
+						
+							
+							<mx:HBox width="100%" verticalAlign="bottom">
+								<mx:HBox width="100%" horizontalAlign="left">
+									<mx:Image source="@Embed('assets/img/fountain_pen_chart_grn.jpg')"/>
+								</mx:HBox>
+								<mx:HBox width="100%" horizontalAlign="right" verticalAlign="bottom">
+									<mx:Button label="Refresh" width="240" height="50" click="fill()" icon="@Embed('assets/img/icons/refresh.png')"/>
+								</mx:HBox>
+							</mx:HBox>
+							
+						
+					</mx:VBox>
+
+				</mx:ViewStack>
+			</mx:VBox>
+
+	</mx:TabNavigator>
+		
+	</mx:VBox>
+	</com:GradientCanvas>	
+</mx:ViewStack>
+</SuperPanel>

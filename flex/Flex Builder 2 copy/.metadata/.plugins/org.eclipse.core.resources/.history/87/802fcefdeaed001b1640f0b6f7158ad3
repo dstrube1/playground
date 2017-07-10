@@ -1,0 +1,28 @@
+package base.services
+{ 
+	import mx.rpc.soap.WebService;
+	import base.event.DataUpdateEvent;
+
+	public class RichLenzService implements LenzService
+	{
+		
+		private var delegate:LenzService = null;
+		
+		public function RichLenzService( baseSvc:LenzService):void {
+			
+			delegate = baseSvc;
+			
+		}
+		
+		
+	
+		
+		
+		
+		public function setWebService(ws:WebService):void
+		{
+			delegate.setWebService(ws);
+		}
+		
+	}
+}

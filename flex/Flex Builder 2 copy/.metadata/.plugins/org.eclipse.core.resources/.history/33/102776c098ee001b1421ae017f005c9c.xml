@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="750" height="470" horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm" horizontalScrollPolicy="off" verticalScrollPolicy="off" color="0x000000">
+	 
+	<mx:Script>
+		<![CDATA[
+			
+			import base.lenz.panel.LenzPanel;
+			import lenz.main.site_select.SiteSelectionLenz;
+			
+			private var _parent:LenzPanel = null;
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+			}
+			
+			private function launchApp( appId:int):void {
+				
+				
+				
+			}
+			
+			public function initializeForm():void {
+				
+		
+			}
+			
+			
+			public function populateResources(data:Object):void { }
+			
+		]]>
+	</mx:Script>
+
+
+	<mx:Label x="0" y="5" color="#000000" maxHeight="30" text="Country Allocation: Scenario Closeup: " fontThickness="200" fontSize="18"  />
+		
+	<mx:Canvas id="surveyContent" top="41" left="10" right="138" height="419" horizontalScrollPolicy="off">
+			<mx:DataGrid x="10" y="10" width="582" height="369" resizableColumns="true">
+					<mx:columns>
+							<mx:DataGridColumn headerText="Column 1" dataField="col1"/>
+							<mx:DataGridColumn headerText="Column 2" dataField="col2"/>
+							<mx:DataGridColumn headerText="Column 3" dataField="col3"/>
+					</mx:columns>
+			</mx:DataGrid>
+			<mx:Label x="530" y="387" text="Next Page"/>
+			<mx:Label x="10" y="387" text="Prev Page"/>
+
+			<mx:Button x="268" y="387" label="Accept" 
+					click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('ProposalBrowser')"/>
+
+	</mx:Canvas>
+	<mx:Label x="361" y="5" color="#000000" maxHeight="30" text="Scenario Name" fontThickness="200" fontSize="18"  />
+	
+</mx:Canvas>

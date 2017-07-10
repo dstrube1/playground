@@ -1,0 +1,98 @@
+package base.services
+{ 
+	import mx.rpc.soap.WebService;
+	import mx.rpc.soap.Operation;
+	import mx.rpc.events.FaultEvent;
+	import mx.rpc.events.ResultEvent;
+	
+	public class SimpleLenzService implements LenzService
+	{
+		
+		private var webService:WebService = null;
+
+		private var clear:Boolean = true;
+
+		private static var faultRegistry:Array = new Array();
+		private static var resultRegistry:Array = new Array();
+
+
+		
+		public function SimpleLenzService() {}
+		
+		
+		public function setWebService(myService:WebService):void {
+						
+			webService = myService;
+			
+		}
+		
+		
+		
+		public function getSvc( msg:Content, faultListener:Function, resultListener:Function ):void {
+						
+			setupListeners(webService.get, faultListener, resultListener);
+						
+			msg.encode(ServiceConfig.getMapArrayHelper());
+			
+			webService.get(msg);
+						
+		}
+		
+
+
+		public function postSvc( msg:Content, faultListener:Function, resultListener:Function ):void {
+						
+			setupListeners(webService.post, faultListener, resultListener);
+						
+			msg.encode(ServiceConfig.getMapArrayHelper());
+			
+			webService.post(msg);
+						
+		}
+		
+		
+
+
+
+		public function clearListeners():void {
+			clear = true;
+		}
+
+
+
+
+
+
+
+
+
+
+		private function setupListeners( op:Operation, faultListener:Function, resultListener:Function):void {
+
+			if (clear) {
+
+				if (faultRegistry[op] != null) {
+					op.removeEventListener(FaultEvent.FAULT, faultRegistry[op]);
+				}
+				
+				if (resultRegistry[op] != null) {
+					op.removeEventListener(ResultEvent.RESULT, resultRegistry[op]);
+				}
+
+			}
+			
+			if (!op.hasEventListener(FaultEvent.FAULT)) {
+				
+				faultRegistry[op] = faultListener;
+				op.addEventListener(FaultEvent.FAULT, faultListener,false,0,true);
+			}
+			
+			if (!op.hasEventListener(ResultEvent.RESULT)) {
+				resultRegistry[op] = resultListener;
+				op.addEventListener(ResultEvent.RESULT, resultListener,false,0,true);				
+			}
+		}
+		
+		
+	}
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" creationComplete="onCreateComplete()">
+
+	<mx:Script>
+		<![CDATA[
+			import base.util.ModalWait;
+			import base.services.ValueType;
+			import app.server.LenzServer;
+			import base.log.Logger;
+			import lenz.main.study_mgr.controller.StudyClickManager;
+			import base.services.MapArray;
+			import lenz.main.study_mgr.panel.StudyManagerForecastForm;
+			 
+			private var logger:Logger = Logger.getLogger("ProblemResolutionView");
+			
+			private var _clickManager:StudyClickManager = new StudyClickManager();
+			
+			private var controller:ProblemResolutionViewController = new ProblemResolutionViewController();
+			private var _parent:StudyManagerForecastForm = null;
+			
+			[Bindable]
+			private var model:ProblemResolutionViewModel = new ProblemResolutionViewModel();
+			
+			public function setParentForm(form:StudyManagerForecastForm):void {
+				_parent = form;
+			}
+			
+			private function onCreateComplete():void {
+			
+			}
+					
+			public function populateResources(data:ProblemResolutionViewModel):void {
+				planList.dataProvider=data.plans;
+				model = data;
+			}
+			
+			private function onPlanClicked( ev:Event ):void {			
+				var obj:Object = ev.currentTarget.selectedItem;				
+				if( obj.id != '-1')
+				{
+					ModalWait.start();
+					var d:MapArray = new MapArray();
+					d.add("plan_id", ValueType.STRING, obj.id);
+					d.add("view", ValueType.STRING, "PR.Result");
+					d.add("panel", ValueType.STRING, "PR");
+					d.add("form", ValueType.STRING, "PR2");
+					d.add("study.name", ValueType.STRING, LenzServer.sName);
+					
+					for (var i:int = 0; i < model.graphUrls.Key.length; i++) {
+						var key:String = model.graphUrls.Key[i];
+						d.add(key, ValueType.STRING, model.graphUrls.getValue(key));
+					}
+					
+					_parent.getPlanDetails(d)				
+				}			
+			}
+	
+	        private function createPlanTip( item:Object ):String {
+				return item.description;
+			}
+			
+			private function createPlanLabel( item:Object ):String {			
+				return item.name;
+			}
+						
+		]]>
+	</mx:Script>
+	
+	
+	<mx:Canvas id="main" width="100%" height="100%" 
+					borderStyle="none"  cornerRadius="8" 
+					backgroundColor="#595959" backgroundAlpha="0.0">
+				
+		<mx:List id="planList" labelFunction="createPlanLabel" 
+				change="ModalWait.start();onPlanClicked(event)" showDataTips="true" dataTipFunction="createPlanTip"  
+				width="100%" color="#000000" backgroundAlpha="0.0" borderStyle="none"
+				paddingLeft="10" />
+				
+		
+		
+	</mx:Canvas>
+	
+</mx:Canvas>

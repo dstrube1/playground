@@ -1,0 +1,3 @@
+#Wed Sep 19 19:31:09 EDT 2007
+eclipse.preferences.version=1
+ENABLED_DECORATORS=com.adobe.flexbuilder.editors.common.ui.project.applicationDecorator\:true,com.adobe.flexbuilder.editors.common.ui.project.classpathDecorator\:true,org.eclipse.datatools.connectivity.sqm.core.internal.ui.explorer.DependencyDecoration\:true,org.eclipse.datatools.connectivity.sqm.core.internal.ui.explorer.ColumnDecoration\:true,org.eclipse.datatools.connectivity.sqm.core.internal.ui.explorer.ForeignKeyDecoration\:true,org.eclipse.datatools.connectivity.sqm.internal.core.ui.bookmarkDecoration\:true,org.eclipse.datatools.connectivity.ui.decorator.contentextension\:false,org.eclipse.team.cvs.ui.decorator\:true,org.eclipse.ui.LinkedResourceDecorator\:true,

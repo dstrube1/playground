@@ -1,0 +1,218 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="IImageEncoder,mx.graphics.codec.IImageEncoder,CONTENT_TYPE,contentType,contentType,CONTENT_TYPE,contentType,encodeByteArray,encode,encode,encodeByteArray,encodeByteArray,encode" name="keywords">
+<title>mx.graphics.codec.IImageEncoder (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'IImageEncoder - Flex 3 Language Reference';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../../index.html?mx/graphics/codec/IImageEncoder.html&amp;mx/graphics/codec/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Interface&nbsp;IImageEncoder</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Interface IImageEncoder"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.graphics.codec</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public  interface  IImageEncoder</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implementors</td><td><a href="../../../mx/graphics/codec/JPEGEncoder.html">JPEGEncoder</a>, <a href="../../../mx/graphics/codec/PNGEncoder.html">PNGEncoder</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+ The IImageEncoder interface defines the interface that image encoders implement to 
+ take raw bitmaps as input and convert them to popular image formats 
+ such as PNG or JPEG.
+ 
+ <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="PNGEncoder.html" target="">PNGEncoder</a>
+<br>
+<a href="JPEGEncoder.html" target="">JPEGEncoder</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#contentType">contentType</a> : <a href="../../../String.html">String</a>
+<div class="summaryTableDescription">[read-only] 
+     The MIME type for the encoded image format.</div>
+</td><td class="summaryTableOwnerCol">IImageEncoder</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#encode()">encode</a>(image:<a href="../../../flash/display/BitmapData.html">BitmapData</a>):<a href="../../../flash/utils/ByteArray.html">ByteArray</a>
+</div>
+<div class="summaryTableDescription">
+     Encodes a raw BitmapData as a ByteArray.</div>
+</td><td class="summaryTableOwnerCol">IImageEncoder</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#encodeByteArray()">encodeByteArray</a>(raw:<a href="../../../flash/utils/ByteArray.html">ByteArray</a>, width:<a href="../../../int.html">int</a>, height:<a href="../../../int.html">int</a>, transparent:<a href="../../../Boolean.html">Boolean</a> = true):<a href="../../../flash/utils/ByteArray.html">ByteArray</a>
+</div>
+<div class="summaryTableDescription">
+     Encodes a raw bitmap ByteArray as a new ByteArray.</div>
+</td><td class="summaryTableOwnerCol">IImageEncoder</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="contentType"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">contentType</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>contentType:<a href="../../../String.html">String</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+     The MIME type for the encoded image format.
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get contentType():<a href="../../../String.html">String</a></code>
+<br>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method Detail</div>
+<a name="encode()"></a><a name="encode(flash.display.BitmapData)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">encode</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function encode(image:<a href="../../../flash/display/BitmapData.html">BitmapData</a>):<a href="../../../flash/utils/ByteArray.html">ByteArray</a></code>
+<p></p><p>
+     Encodes a raw BitmapData as a ByteArray.
+          </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">image</span>:<a href="../../../flash/display/BitmapData.html">BitmapData</a></code> &mdash; The input BitMap object.
+          </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../../flash/utils/ByteArray.html">ByteArray</a></code></td>
+</tr>
+</table>
+</div>
+<a name="encodeByteArray()"></a><a name="encodeByteArray(flash.utils.ByteArray,int,int,Boolean)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">encodeByteArray</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function encodeByteArray(raw:<a href="../../../flash/utils/ByteArray.html">ByteArray</a>, width:<a href="../../../int.html">int</a>, height:<a href="../../../int.html">int</a>, transparent:<a href="../../../Boolean.html">Boolean</a> = true):<a href="../../../flash/utils/ByteArray.html">ByteArray</a></code>
+<p></p><p>
+     Encodes a raw bitmap ByteArray as a new ByteArray. The ByteArray must
+     be written using four bytes per pixel as ARGB (Alpha, Red, Green Blue).
+          </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">raw</span>:<a href="../../../flash/utils/ByteArray.html">ByteArray</a></code> &mdash; The input ByteArray object.
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">width</span>:<a href="../../../int.html">int</a></code> &mdash; The width of the input image, in pixels.
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">height</span>:<a href="../../../int.html">int</a></code> &mdash; The height of the input image, in pixels.
+          </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">transparent</span>:<a href="../../../Boolean.html">Boolean</a></code> (default = <code>true</code>)<code></code> &mdash; If <code>false</code>, alpha channel information is ignored.
+          </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../../flash/utils/ByteArray.html">ByteArray</a></code></td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/graphics/codec/IImageEncoder.html','mx/graphics/codec/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

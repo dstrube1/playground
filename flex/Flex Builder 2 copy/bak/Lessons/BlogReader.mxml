@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" viewSourceURL="BlogReader_src.html" creationComplete="feedRequest.send()">
+<mx:Script> 
+	<![CDATA[
+		public function test(s:String):void{
+			if (s == "1"){
+				feedRequest.url = "http://undefined.com/ia/index.xml";
+			}
+			else if (s =="2"){
+				feedRequest.url = "http://weblogs.macromedia.com/mchotin/index.xml";
+			}
+			else feedRequest.url = s;
+			feedRequest.send();
+		}
+	]]>
+</mx:Script>
+	<mx:Panel title="Pick One" x="10" y="10" width="276" height="200" layout="absolute">
+		<mx:RadioButtonGroup id="Blogs" change="feedRequest.send()"/>
+		<mx:RadioButton x="10.0" y="26.0" label="IA" groupName="Blogs" click="test(String(1))"/><!--  -->
+		<mx:RadioButton x="10.0" y="50.0" label="Chotin" groupName="Blogs" click="test(String(2))"/>
+		<mx:RadioButton x="10.0" y="75.0" label="Other" groupName="Blogs" click="test(tOther.text)"/>
+		<mx:TextInput x="83" y="73" id="tOther"/>
+	</mx:Panel>
+	<mx:HTTPService id="feedRequest" url="http://undefined.com/ia/index.xml" useProxy="false" />
+		<!-- url=http://weblogs.macromedia.com/mchotin/index.xml 
+		http://undefined.com/ia/index.xml
+		doesn't work: http://slashdot.org/index.xml
+		url used in this object is just the default; won't be used necessarily-->
+	<mx:Panel title="{feedRequest.lastResult.rss.channel.title}" width="607" height="300" x="10" y="230">
+		<!--<mx:Label text="Welcome to Flex!" mouseDownEffect="WipeRight"  textAlign="center"/>-->
+		<mx:DataGrid id="dgPosts" width="585" x="20" y="20" dataProvider="{feedRequest.lastResult.rss.channel.item}">
+			<mx:columns>
+				<mx:DataGridColumn headerText="Posts" dataField="title"/>
+				<mx:DataGridColumn headerText="Date" dataField="pubDate" width="300"/>
+			</mx:columns>
+		</mx:DataGrid>
+		<mx:TextArea text="TextArea" width="400" x="20" y="175" htmlText="{dgPosts.selectedItem.description}"/>
+		<mx:LinkButton label="Read Full Post" x="20" y="225" 
+			click="navigateToURL(new URLRequest(dgPosts.selectedItem.link))"/>
+	</mx:Panel> 
+</mx:Application>

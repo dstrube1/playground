@@ -1,0 +1,17 @@
+package base.event
+{ 
+	import flash.events.Event;
+
+	public class ExposePanelEvent extends BaseLenzEvent
+	{
+		
+		public static const EXPOSE_PANEL_EVENT_BASE:String = "ExposePanelEvent_BASE";
+		
+		public function ExposePanelEvent() {
+			super(EXPOSE_PANEL_EVENT_BASE, 'self');
+		}
+		
+		
+		
+	}
+}

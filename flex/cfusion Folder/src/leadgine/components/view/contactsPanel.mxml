@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SuperPanel xmlns="nl.wv.extenders.panel.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:com="com.*"
+	xmlns:utils="com.utils.*"
+	endMaximize="onEndMaximize()" endRestore="onEndRestore()" creationPolicy="all">
+	
+<mx:Script>
+<![CDATA[
+	import mx.containers.Form;
+
+			[Bindable] private var _selectedIndexContacts:Number = -1;				
+			[Bindable] private var listContacts:XMLListCollection;
+			[Bindable] private var listData:XMLListCollection;
+			
+			import mx.core.Application;
+			import mx.events.ItemClickEvent;
+			import mx.collections.ArrayCollection;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.collections.XMLListCollection;
+			import mx.collections.ListCollectionView;
+			import mx.utils.ArrayUtil;
+			import mx.controls.dataGridClasses.DataGridItemRenderer;
+			import mx.managers.CursorManager;
+			import mx.formatters.DateFormatter;
+			import mx.rpc.events.ResultEvent;
+			import mx.utils.ObjectUtil;
+			import mx.utils.ObjectProxy;
+			import mx.controls.Alert;
+			import mx.containers.TitleWindow;
+			import mx.managers.PopUpManager;
+			import com.GradientCanvas;
+			import com.ComboBox2;
+			import mx.events.CloseEvent;
+			
+			import leadgine.components.dto.FullServiceReferral;
+			
+			[Embed(source='assets/img/icons/caution.png')]
+			private var confirmIcon:Class;
+			
+			private var params:Object = new Object();
+			[Bindable] private var selectedContactID:Number = 0;
+			private var myURL:String = "";
+			private var myNewContact:Boolean=false;
+			
+			private var AlertMsgSuccess:String;
+			private var AlertMsgSuccessTitle:String;
+			private var AlertMsgFail:String = "Contact data could not be loaded.  Please click the 'Refresh' button to try again.";
+			private var AlertMsgFailTitle:String = "Load Problem";
+
+			public function resultHandlerContacts(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listContacts = new XMLListCollection(xmlList);
+				}
+				
+
+			}
+			
+			public function faultHandler():void {
+				this.contactsService.showBusyCursor = false;
+			}
+
+			private function set selectedIndexContacts(n:Number):void {
+				// Make sure we are within range of dataProvider.
+				if (n < 0)
+					n = listContacts.length - 1;
+				else if (n > (listContacts.length - 1))
+					n = 0;
+
+				_selectedIndexContacts = n;
+
+			}
+			
+			
+			private function get selectedIndexContacts():Number {
+				return _selectedIndexContacts;
+			}
+			
+			public function fill():void {
+				contactsService.url="http://www.revparsuite.com/leadgine/contactsEXE.asp?userid=" + Application.application.userID + "&myType=all";
+				contactsService.send();
+			}
+
+			public function insertItemHandler(event:ResultEvent):void {	
+				//fill();
+			}						
+			
+
+			public function updateContact():void{
+				if(myNewContact==false){
+					selectedContactID = dataContacts.selectedItem.id;
+				}else{
+					selectedContactID = 0;
+				}
+				
+				myURL = "http://www.revparsuite.com/leadgine/contactsEXE.asp?userid=" + Application.application.userID + "&myType=update&contactID=" + selectedContactID;
+
+			    params = {
+			    "first": txtFirst.text,
+			    "last": txtLast.text,
+			    "company": txtCompany.text, 
+			    "title": txtTitle.text,
+			    "address1": txtAddress1.text,
+			    "address2": txtAddress2.text,
+			    "city": txtCity.text,
+			    "state": selStates.selectedItem.data,
+			    "zip": txtZip.text,
+			    "country": selCountries.selectedItem.data,
+			    "email1": txtEmail1.text,
+			    "email2": txtEmail2.text,
+			    "phone": txtPhone.text,
+			    "mobile": txtMobile.text,
+			    "fax": txtFax.text,
+			    "iata": txtIATA.text,
+			    "notes": txtNotes.text
+			    }; 
+				
+				updateService.cancel();
+				updateService.url = myURL;
+				updateService.method = "POST";
+				updateService.send(params);
+			}
+			
+			public function resultHandlerUpdate(event:ResultEvent):void {	
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					Alert.show(AlertMsgSuccess, AlertMsgSuccessTitle);
+
+					vsIncentives.selectedIndex=1;
+				}
+				refresh();
+			}
+
+			public function refresh():void {
+				contactsService.send();	
+			}			
+			
+			public function cancelContact():void{
+				vsIncentives.selectedIndex = 1;
+				resetContact();
+			}
+			public function resetContact():void{
+			    txtFirst.text="";
+			    txtLast.text="";
+			    txtCompany.text="";
+			    txtTitle.text="";
+			    txtAddress1.text="";
+			    txtAddress2.text="";
+			    txtCity.text="";
+			    selStates.selectedIndex = 0;
+			    txtZip.text="";
+			    selCountries.selectedIndex = 0;
+			    txtEmail1.text="";
+			    txtEmail2.text="";
+			    txtPhone.text="";
+			    txtMobile.text="";
+			    txtFax.text="";
+			    txtIATA.text="";
+			    txtNotes.text="";
+
+			}
+			
+			public function newContact():void{
+				vsIncentives.selectedIndex=2;
+				myNewContact=true;
+				resetContact();
+				AlertMsgSuccess = "Your new Contact has been succussfully saved to the database.";
+				AlertMsgSuccessTitle = "Contact Saved";
+				AlertMsgFail = "There was a problem saving your new Contact to the database.  Please try again.";
+				AlertMsgFailTitle = "Problem Saving";
+			}		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			private function sortNumeric(obj1:Object, obj2:Object):int {
+				var value1:Number = (obj1.rooms == '' || obj1.rooms == null) ? null : new Number(obj1.rooms);
+				var value2:Number = (obj2.rooms == '' || obj2.rooms == null) ? null : new Number(obj2.rooms);
+				
+				if (value1 < value2) {
+					return -1;
+				} else if (value1 > value2) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+						
+
+			private function date_sort_Begin_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.begin));
+                var dateB:Date = new Date(Date.parse(itemB.begin));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+
+
+			private function date_sort_End_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.end));
+                var dateB:Date = new Date(Date.parse(itemB.end));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+	private function onEndMaximize():void{
+		fill();
+		vsIncentives.selectedIndex = 1;
+	}
+	private function onEndRestore():void{
+		vsIncentives.selectedIndex = 0;
+	}
+	private function preValidate():void{
+		if(txtFirst.text != ""){
+			btnSave.enabled=true;
+		}
+				
+		AlertMsgSuccess = "Your Contact\'s info has been succussfully updated.";
+		AlertMsgSuccessTitle = "Contact Updated";
+		AlertMsgFail = "There was a problem updating your Contact\'s information.  Please try again.";
+		AlertMsgFailTitle = "Problem Updating";
+	}
+	
+	public function confirmDelete():void{
+		Alert.show("Are you certain you wish to Delete this Contact?","Delete?",Alert.YES | Alert.NO, this, deleteContact, confirmIcon, Alert.NO);
+	}
+	
+	private function deleteContact(event:CloseEvent):void{
+		if (event.detail == Alert.YES) {
+			AlertMsgSuccess = "Your Contact has been succussfully removed to the database.";
+			AlertMsgSuccessTitle = "Contact Deleted";
+			AlertMsgFail = "There was a problem removing your Contact from the database.  Please try again.";
+			AlertMsgFailTitle = "Problem Deleting";
+			
+			myURL = "http://www.revparsuite.com/leadgine/contactsEXE.asp?userid=" + Application.application.userID + "&myType=delete&contactID=" + selectedContactID;
+	
+			updateService.cancel();
+			updateService.url = myURL;
+			updateService.method = "POST";
+			updateService.send(params);
+			resetContact();
+			vsIncentives.selectedIndex=1;
+			myNewContact=false;
+			
+			refresh();
+		}
+	}
+	
+]]>
+</mx:Script>
+
+
+<mx:HTTPService id="contactsService" url="http://www.revparsuite.com/leadgine/contactsEXE.asp?userid={ Application.application.userID }&amp;myType=all" 
+	result="resultHandlerContacts(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:HTTPService id="updateService" url="http://www.revparsuite.com/leadgine/contactsEXE.asp?userid={ Application.application.userID }&amp;myType=update&amp;contactID={ selectedContactID }" 
+	result="resultHandlerUpdate(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+    
+<mx:Array id="validators" >
+    <!--<mx:PhoneNumberValidator source="{txtPhone}" property="text"/>
+	<mx:EmailValidator source="{txtEmail1}" property="text"/>
+	<mx:EmailValidator source="{txtEmail2}" property="text"/>-->
+	<mx:StringValidator source="{txtFirst}" property="text" minLength="1" tooShortError="Please enter a First Name for this Contact."/>
+	<mx:StringValidator source="{txtLast}" property="text" minLength="2" tooShortError="Please enter a Last Name for this Contact."/>
+</mx:Array>
+		
+		
+<mx:ViewStack id="vsIncentives" width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+<com:GradientCanvas 
+	width="100%" height="100%" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.myFillColors2 }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90" 
+		interpolationMethod = "linearRGB" borderAlphas="0" 
+		click="{this.normalMaxClickHandler(null)}">
+		<mx:Canvas borderStyle="solid" borderColor="#666666" cornerRadius="20" backgroundColor="#FFFFFF" borderThickness="1" alpha="0.8" left="130" right="10" top="10" bottom="10">
+				<mx:Text text="Here are all of the Contacts you've entered leads for." left="20" right="20" top="20" bottom="20" styleName="myPanelCaption">
+					<mx:filters>
+				        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+				    </mx:filters>
+				</mx:Text>
+		</mx:Canvas>
+		<mx:Image source="assets/img/icons/grey_circle/mobile_phone.png" verticalCenter="0" left="30"/>
+
+</com:GradientCanvas>
+
+
+		<!--<mx:TabNavigator id="tabContacts" horizontalAlign="left" tabOffset="30" width="100%" height="100%" 
+			paddingBottom="10" paddingRight="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off" creationPolicy="all">-->
+<com:GradientCanvas label="Results" width="100%" height="100%" 
+		paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off"
+		colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.topGradientColor }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="100">
+		
+				<mx:VBox width="100%" height="100%" label="contacts" backgroundColor="#ffffff" backgroundAlpha=".5"
+					paddingBottom="10" paddingRight="10" paddingLeft="10" paddingTop="10"
+					verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+						<mx:Text text="Below are all contacts you've entered leads for in the past.  Click a column header to sort." styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+
+
+						<mx:VBox width="100%" height="100%">
+							<mx:DataGrid id="dataContacts" 
+								width="100%" height="100%" 
+						        selectedIndex="{_selectedIndexContacts}"
+						        dataProvider="{listContacts}" 
+						        doubleClickEnabled="true"
+						        itemDoubleClick="selectedContactID=dataContacts.selectedItem.id;vsIncentives.selectedIndex=2;preValidate()"
+								>
+								<!-- itemClick="selectedIndex=dataContacts.selectedIndex;"
+								itemDoubleClick="contactsGridItemClick();tabContacts.selectedIndex=1" -->
+								
+								<mx:columns>
+									<mx:DataGridColumn visible="false" dataField="id"/>
+									<mx:DataGridColumn width="100" headerText="First" dataField="first_name"/>
+									<mx:DataGridColumn width="100" headerText="Last" dataField="last_name"/>
+									<mx:DataGridColumn width="200" headerText="Company" dataField="company"/>
+									<mx:DataGridColumn visible="false" headerText="Title" dataField="myTitle"/>
+									<mx:DataGridColumn visible="false" headerText="Address 1" dataField="address1"/>
+									<mx:DataGridColumn visible="false" headerText="Address 2" dataField="address2"/>
+									<mx:DataGridColumn width="150" headerText="City" dataField="city"/>
+									<mx:DataGridColumn width="50" headerText="State" dataField="state"/>
+									<mx:DataGridColumn visible="false" headerText="Postal Code" dataField="zip"/>
+									<mx:DataGridColumn visible="false" headerText="Country" dataField="country"/>
+									<mx:DataGridColumn width="200" headerText="Office Phone" dataField="phone"/>
+									<mx:DataGridColumn visible="false" headerText="Mobile" dataField="mobile"/>
+									<mx:DataGridColumn headerText="Primary Email" dataField="email1"/>
+									<mx:DataGridColumn visible="false" headerText="Secondary Email" dataField="email2"/>
+									<mx:DataGridColumn visible="false" headerText="Fax" dataField="fax"/>
+									<mx:DataGridColumn visible="false" headerText="IATA #" dataField="iata"/>
+									<mx:DataGridColumn visible="false" headerText="Notes" dataField="Notes"/>
+								</mx:columns>
+							</mx:DataGrid>
+							<mx:HBox width="100%" verticalAlign="bottom">
+								<mx:HBox width="100%" horizontalAlign="left">
+									<mx:Image source="@Embed('assets/img/dialing_horizontal_grn.jpg')"/>
+								</mx:HBox>
+								<mx:HBox width="100%" horizontalAlign="right" verticalAlign="bottom">
+									<mx:Button label="Create New Contact" width="240" height="50" click="newContact()" icon="@Embed('assets/img/icons/edit2.png')"/>
+									<mx:Button label="Refresh" width="240" height="50" click="fill()" icon="@Embed('assets/img/icons/refresh.png')"/>
+								</mx:HBox>
+							</mx:HBox>
+						</mx:VBox>
+				</mx:VBox>
+
+	</com:GradientCanvas>
+	
+<com:GradientCanvas label="Results" width="100%" height="100%" 
+		paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off"
+		colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.topGradientColor }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="100">
+		
+		
+	<mx:VBox width="100%" label="criteria" height="100%" horizontalAlign="center" paddingTop="20" >
+		<mx:Canvas backgroundColor="#ffffff" 
+			cornerRadius="30" 
+			borderStyle="solid" borderColor="#000000" borderThickness="1" 
+			dropShadowEnabled="true">
+		
+				<mx:VBox width="100%" height="100%" label="edit"
+					icon="@Embed('assets/img/icons/edit.png')"
+					paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" 
+					horizontalAlign="center"
+					verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+
+							<utils:ValidatorForm
+									id="frmContact"
+									defaultButton="{btnSave}"
+									validators="{validators}"
+									creationPolicy="all"
+									>	
+								<mx:Text width="400" text="Keep your Contacts' information up-to-date below.  Be sure to Save your changes:" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+								<mx:FormItem label="First Name:" required="true">
+									<mx:TextInput id="txtFirst" text="{ dataContacts.selectedItem.first_name }" width="300" maxChars="50"/>
+								</mx:FormItem>
+								<mx:FormItem label="Last Name:" required="true">
+									<mx:TextInput id="txtLast" text="{ dataContacts.selectedItem.last_name }" width="300" maxChars="50"/>
+								</mx:FormItem>
+								<mx:FormItem label="Company:" required="false">
+									<mx:TextInput id="txtCompany" text="{ dataContacts.selectedItem.company }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Job Title:" required="false">
+									<mx:TextInput id="txtTitle" text="{ dataContacts.selectedItem.myTitle }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Address 1:" required="false">
+									<mx:TextInput id="txtAddress1" text="{ dataContacts.selectedItem.address1 }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Address 2:" required="false">
+									<mx:TextInput id="txtAddress2" text="{ dataContacts.selectedItem.address2 }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="City:" required="false">
+									<mx:TextInput id="txtCity" text="{ dataContacts.selectedItem.city }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="State:" required="false">
+									<com:ComboBox2 width="300" textAlign="left" id="selStates" selectedValue="{ dataContacts.selectedItem.state }" dataProvider="{FullServiceReferral.STATES}" />
+								</mx:FormItem>
+								<mx:FormItem label="Postal Code:" required="false">
+									<mx:TextInput id="txtZip" text="{ dataContacts.selectedItem.zip }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Country:" required="false">
+									<com:ComboBox2 width="300" textAlign="left" id="selCountries" selectedValue="{ dataContacts.selectedItem.country }" dataProvider="{FullServiceReferral.COUNTRIES}" />
+								</mx:FormItem>
+								<mx:FormItem label="Office Phone:" required="false">
+									<mx:TextInput id="txtPhone" text="{ dataContacts.selectedItem.phone }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Mobile Phone:" required="false">
+									<mx:TextInput id="txtMobile" text="{ dataContacts.selectedItem.mobile }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Primary Email:" required="false">
+									<mx:TextInput id="txtEmail1" text="{ dataContacts.selectedItem.email1 }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Secondary Email:" required="false">
+									<mx:TextInput id="txtEmail2" text="{ dataContacts.selectedItem.email2 }" width="300" maxChars="100"/>
+								</mx:FormItem>								
+								<mx:FormItem label="Fax" required="false">
+									<mx:TextInput id="txtFax" text="{ dataContacts.selectedItem.fax }" width="300" maxChars="20"/>
+								</mx:FormItem>
+								<mx:FormItem label="IATA Number" required="false">
+									<mx:TextInput id="txtIATA" text="{ dataContacts.selectedItem.iata }" width="300" maxChars="20"/>
+								</mx:FormItem>
+								<mx:FormItem label="Notes" required="false">
+									<mx:TextArea id="txtNotes" text="{ dataContacts.selectedItem.notes }" width="400" height="100" maxChars="1000"/>
+								</mx:FormItem>
+							</utils:ValidatorForm>
+						    <mx:ControlBar horizontalAlign="right" paddingTop="3" paddingBottom="3" paddingRight="10">
+						        <mx:Button label="Cancel" click="cancelContact()" />
+						        <mx:Button label="Delete" click="confirmDelete()" />
+						        <mx:Button label="Save" id="btnSave" enabled="false" click="updateContact()" />
+						    </mx:ControlBar>
+
+				
+				</mx:VBox>
+			</mx:Canvas>
+		</mx:VBox>
+	</com:GradientCanvas>
+	<!--</mx:TabNavigator>-->
+</mx:ViewStack>
+
+</SuperPanel>

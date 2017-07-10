@@ -1,0 +1,18 @@
+package base.event
+{
+	import flash.events.Event; 
+
+	public class SelectLenzEvent extends BaseLenzEvent
+	{
+		
+		public static const SELECT_LENZ_EVENT_BASE:String = "SelectLenzEvent_Base";
+		
+		
+		public function SelectLenzEvent( pLenz:String )
+		{
+			super(SELECT_LENZ_EVENT_BASE, pLenz);
+		}
+		
+		
+	}
+}

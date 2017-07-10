@@ -1,0 +1,129 @@
+package base.services
+{
+	import app.server.calls.GetStudyOverviewCall;
+	import app.server.calls.GetViewCall;
+	import app.server.calls.LoginCall;
+	 
+	import base.db.MemDB;
+	import base.db.MemDbHelper;
+	import base.services.calls.ServiceCall;
+	
+	public class LenzServiceHelper
+	{
+		
+		
+		public static var serviceCallRegistry:Object = {
+		
+			loginAction: new LoginCall(),
+			getStudyOverview: new GetStudyOverviewCall(),
+			getView: new GetViewCall(),
+			
+			
+			
+			placeholder: null
+		
+		};
+		
+		
+		private static var _sessionId:String = "-1";
+		
+		public static function storeSessionId( id:String):void {
+			_sessionId = id;
+		}
+		
+		
+		public static function setAction( content:Content, action:String):void {
+			
+			content.ControlMap.add(CommonKeys.ACTION_NAME_KEY, ValueType.STRING, action);		
+			
+		}
+
+		public static function setResource( content:Content, res:String):void {
+			
+			content.ControlMap.add(CommonKeys.RESOURCE_NAME_KEY, ValueType.STRING, res);		
+			
+		}
+
+		
+		public static function getErrorMessage( r:Response):String {
+			
+			return String(r.ControlMap.getValue(CommonKeys.ERROR_MSG_KEY));
+			
+		}
+		
+		public static function getSessionId( r:Response):String {
+			
+			return String(r.ControlMap.getValue(CommonKeys.SESSION_ID_KEY));
+			
+		}
+		
+		public static function getString( r:Response, key:String):String {
+			
+			return String(r.DataMap.getValue(key));
+			
+		}
+		
+		public static function setParamString( c:Content, key:String, val:String):void {
+			c.DataMap.add(key, ValueType.STRING, val);
+		}
+		
+		
+		
+		public static function createAction( name:String):Content {
+			
+			var content:Content = new Content();
+			content.sessionId = _sessionId;
+			
+			setAction(content, name);
+			
+			return(content);
+			
+			
+		}
+		
+
+
+		public static function createResourceCall( name:String):Content {
+			
+			var content:Content = new Content();
+			content.sessionId = _sessionId;
+			
+			setResource(content, name);
+			
+			return(content);
+			
+			
+		}
+
+
+		
+		public static function callAction( actionName:String, params:Object):void {
+
+			callService( actionName, params, "action");
+			
+		}
+
+
+		public static function callResource( resourceName:String, params:Object):void {
+			
+			callService( resourceName, params, "resource");
+			
+		}
+
+
+		private static function callService( name:String, params:Object, type:String):void {
+			
+			var svcCall:ServiceCall = serviceCallRegistry[name];
+			
+			if (svcCall != null) {
+				svcCall.call( name, params);
+			} else {
+				throw Error("No service call defined for "+type+" name: "+name);
+			}
+		
+		}
+
+		
+		
+	}
+}

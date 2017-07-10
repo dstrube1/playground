@@ -1,0 +1,51 @@
+package app.server.mock.impl
+{
+	import base.services.Content;
+	import base.services.mock.MockService;
+	import mx.rpc.events.ResultEvent;
+	import flash.utils.setTimeout;
+	import base.services.Response;
+	import base.services.ValueType;
+	import base.services.CommonKeys;
+	import base.services.MapArray;
+	import base.services.MapArrayHelper;
+	import base.services.ServiceConfig;
+
+	public class MockLoginService extends BaseMockService implements MockService
+	{
+		
+		
+		
+		public function call(content:Content, failureHandler:Function, resultHandler:Function):void
+		{
+
+			var user:String = content.DataMap.getValue("login.username.key") as String;
+			var pass:String = content.DataMap.getValue("login.password.key") as String;
+
+			var control:MapArray = new MapArray();
+			var data:MapArray = new MapArray();
+			var responseCode:int = 500;
+			
+			
+			if (user == pass) {
+
+				responseCode = 200;
+
+				control.add(CommonKeys.SESSION_ID_KEY, ValueType.STRING, "100");								
+									
+				
+			} else {
+				
+				responseCode = 500;
+				
+				control.add(CommonKeys.ERROR_MSG_KEY, ValueType.STRING, "Unknown username or invalid password.");
+				
+			}
+			
+			respond( responseCode, control, data, resultHandler );
+			
+
+		}
+		
+	}
+}

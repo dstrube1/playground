@@ -1,0 +1,42 @@
+package base.services.chain
+{ 
+	import base.services.ResponseChain;
+	import base.services.BaseResponseChain;
+	import base.services.Response;
+	import base.services.LenzServiceHelper;
+	import app.server.LenzServer;
+	import base.lenz.NotificationReport;
+	import base.event.EventDelegate;
+	import mx.core.Application;
+	import base.event.DataUpdateEvent;
+	import base.log.Logger;
+
+	public class NotificationInterceptorResponseChain extends BaseResponseChain implements ResponseChain
+	{
+
+		private var logger:Logger = Logger.getLogger("NotificationInterceptor");
+		
+		/**
+		 * Look for alarm-related keys in the control map, and deliver them to the alarm status object/system
+		 */
+		public override function subclassProcess(r:Response):void
+		{
+			
+			//logger.debug("Notification Interceptor called.");
+
+			var rep:NotificationReport = LenzServiceHelper.getNotificationReport(r);
+			
+			LenzServer.notificationReport.copy(rep);
+
+			//logger.debug("NotificationInterceptor dispatching DataUpdateEvent()");			
+			// tell everyone that the data has been updated.
+			Application.application.dispatchEvent(new DataUpdateEvent());
+			
+			
+			
+		}
+		
+
+		
+	}
+}

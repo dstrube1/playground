@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" 
+	horizontalGap="3"
+    height="28"
+    showEffect="fadeIn"
+    addedEffect="fadeIn"
+    removedEffect="fadeOut"
+    paddingBottom="3"
+    paddingTop="3"
+    paddingRight="3">
+    
+    <mx:Metadata>
+    	[Event(name="removeFunction", type="flash.events.Event")]
+    </mx:Metadata>
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var hasRemoveBtn:Boolean = true;
+			
+			private function removeThis():void {
+				dispatchEvent(new Event('removeFunction'));
+			}
+		]]>
+	</mx:Script>
+	<mx:Parallel id="fadeIn">
+		<mx:Fade alphaFrom="0" alphaTo="1" duration="300"/>
+		<mx:Blur blurXFrom="50" blurXTo="0" blurYFrom="50" blurYTo="0" duration="300"/>
+	</mx:Parallel>
+	<mx:Parallel id="fadeOut">
+		<mx:Fade alphaFrom="1" alphaTo="0" duration="300"/>
+		<mx:Blur blurXFrom="0" blurXTo="50" blurYFrom="0" blurYTo="50" duration="300"/>
+	</mx:Parallel>
+	<mx:LinkButton id="btnRemove" label="-" width="25" click="removeThis()"/>
+	<mx:TextInput id="startTime" width="70" />
+	<mx:TextInput id="endTime" width="70"/>
+	<mx:TextInput id="functionDesc" width="100"/>
+	<mx:TextInput id="numPeople" width="80"/>
+	<mx:TextInput id="setup" width="80"/>
+</mx:HBox>

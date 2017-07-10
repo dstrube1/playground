@@ -1,0 +1,24 @@
+/* CSS file */
+
+@font-face {
+	font-family: "Lucida Grande";
+	src:url("fonts/lucidaGrande.swf");  
+}
+
+Application {
+   backgroundColor: #ffffff;
+	color: #000000;
+	fontFamily: "Lucida Grande";
+	fontSize: 12;
+}
+
+/*
+.testStyle {
+	fontFamily: "Times New Roman";
+	fontSize: 20;
+}
+testStyle {
+	fontFamily: "Jokerman";
+	fontSize: 40;
+}
+*/

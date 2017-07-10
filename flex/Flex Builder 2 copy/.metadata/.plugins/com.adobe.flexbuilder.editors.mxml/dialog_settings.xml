@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="com.adobe.flexbuilder.editors.mxml.views.inspector.view.PropertiesView">
+		<item key="TreeGridImpl.ColumnZeroWidth" value="130"/>
+		<item key="TreeGridImpl.TopAttribute" value=""/>
+		<item key="Style" value="true"/>
+		<item key="ViewOption" value="1"/>
+		<item key="TreeGridImpl.ColumnOneWidth" value="78"/>
+		<item key="TreeGridImpl.TopCategory" value="Common"/>
+		<item key="Common" value="true"/>
+		<item key="Layout" value="true"/>
+		<list key="CategoryExpanded">
+			<item value="true"/>
+			<item value="false"/>
+			<item value="false"/>
+			<item value="false"/>
+			<item value="false"/>
+			<item value="true"/>
+			<item value="false"/>
+		</list>
+		<list key="CategoryNames">
+			<item value="Common"/>
+			<item value="Effects"/>
+			<item value="Events"/>
+			<item value="Layout Constraints"/>
+			<item value="Size"/>
+			<item value="Styles"/>
+			<item value="Other"/>
+		</list>
+	</section>
+	<section name="com.adobe.flexbuilder.editors.mxml.design.MXMLDesignEditor">
+		<item key="PlayerLoadLimit" value="4"/>
+	</section>
+</section>

@@ -1,0 +1,32 @@
+package base.util
+{ 
+	import mx.collections.ArrayCollection;
+	
+	public class ServiceUtils
+	{
+		
+		public static function arrayCollection(o:Object):* {
+			
+			if (o is ArrayCollection) {
+				return o;
+			}
+
+
+			var a:ArrayCollection = null;			
+			
+			if (o is Array) {
+				
+				a = new ArrayCollection( o as Array );
+				
+			} else {
+			
+				a = new ArrayCollection();
+				a.addItem(o);
+			}
+			
+			return a;
+			
+		}
+		
+	}
+}

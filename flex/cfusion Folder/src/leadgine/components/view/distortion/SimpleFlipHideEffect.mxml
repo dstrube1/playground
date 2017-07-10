@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:sides="view.sides.*"
+	xmlns:mxeffects="com.adobe.ac.mxeffects.*">
+
+	<mxeffects:CubeRotate 
+		id="flipIn" 
+		target="{ login }" siblings="{ [ registration ] }" 
+		direction="RIGHT" duration="1000"/>
+	<mxeffects:CubeRotate 
+		id="flipBack" 
+		target="{ registration }" siblings="{ [ login ] }" 
+		direction="LEFT" duration="1000"/>
+
+	<mx:ViewStack id="loginViewStack">
+	
+		<sides:Login 
+			id="login" 
+			title="Login" 
+			hideEffect="{ flipIn }" 
+			change="loginViewStack.selectedChild = registration;"/>
+		<sides:Registration 
+			id="registration" 
+			title="Registration" 			
+			hideEffect="{ flipBack }" 
+			change="loginViewStack.selectedChild = login;"/>
+	
+	</mx:ViewStack>
+	
+</mx:VBox>

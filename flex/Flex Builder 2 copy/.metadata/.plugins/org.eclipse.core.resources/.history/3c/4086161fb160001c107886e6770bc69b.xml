@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100" height="150" 
+ 	
+	click="callClickFunction()"   mouseOut="mouseOut(event)" mouseOver="mouseOver(event)" ><!-- backgroundColor="red" alpha="0.5" -->
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import base.event.SelectLenzEvent;
+			import base.util.ModalWait;
+				import base.log.Logger;
+				
+				
+			private var _clickFunction:Function;
+			private var _varList:Object;
+			
+			[Bindable]
+			public var imgSource:Object;
+			
+			
+			protected var logger:Logger = Logger.getLogger('GlobalNavigationItem');
+			
+			private function selectLenz( data:Array):void {
+				
+				var ev:Event = new SelectLenzEvent(data[0]);
+				
+				this.dispatchEvent(ev);
+				
+			}
+			
+		    public function set clickFunction(varList:Object):void{
+		    	_clickFunction = selectLenz;
+		    	_varList = varList;
+		    }
+		    private function callClickFunction():void{
+		    	if(_clickFunction != null) {
+		    		ModalWait.start();
+		    		
+					logger.debug("Clicking function? "+ _clickFunction);
+			
+					_clickFunction(_varList);		     
+		     	}
+		    }
+		    
+		    			
+		
+
+		    
+		]]>
+	</mx:Script>
+	<mx:String id="title"/>
+		
+	<mx:Image id="iconImage" y="0" source="{imgSource}"  horizontalCenter="0"  />
+	
+<mx:Text id="description" text="{title}" y="70" height="37" width="100%"  color="#FFFFFF" textAlign="center" horizontalCenter="0"  />
+
+</mx:Canvas>

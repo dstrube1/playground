@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+<mx:Script>
+<![CDATA[
+      
+import mx.collections.ArrayCollection;
+import mx.rpc.events.ResultEvent;
+         
+[Bindable] private var rssFeedData:ArrayCollection;
+private function rssHandler(event:ResultEvent):void
+{
+  rssFeedData = event.result.RDF.item;
+}
+]]>
+</mx:Script>
+<mx:HTTPService id="RssService" url="http://weblogs.macromedia.com/mxna/xml/rss.cfm?query=byMostRecent" 
+result="rssHandler(event)"/>
+
+<mx:TabNavigator 
+   id="ContentNavigator"
+   width="860" height="540" 
+   x="10" y="10" paddingTop="5" paddingRight="5" paddingBottom="5" paddingLeft="5">
+   
+   <mx:VBox label="Articles" 
+      width="100%" height="100%"
+      verticalGap="0" paddingTop="10" paddingRight="10" paddingBottom="10" paddingLeft="10">
+      <mx:Box width="100%" height="33" 
+         backgroundColor="#B8AF9C" cornerRadius="15" paddingBottom="5" paddingLeft="10" paddingRight="5" paddingTop="5">
+         <mx:Button label="Fetch RSS" click="RssService.send();RssLoader.height=30"/>
+      </mx:Box>
+      <mx:Box id="RssLoader" 
+         width="100%" height="0" 
+         backgroundColor="#B8AF9C" paddingTop="6" paddingRight="10" paddingBottom="5" paddingLeft="10">
+         <mx:ProgressBar id="rssProgress" 
+            indeterminate="true" 
+            barColor="#B8AF9C"
+            width="100%" 
+            labelPlacement="center" 
+            label="loading feed"/>
+      </mx:Box>               
+      <mx:TileList id="FeedDisplay"
+         width="100%" height="100%"
+         maxColumns="1"
+         rowHeight="120" columnWidth="810"
+         itemRenderer="myFirstAIRRenderer"
+         dataProvider="{rssFeedData}"/>
+   </mx:VBox>
+   
+ </mx:TabNavigator>
+	
+</mx:Application>

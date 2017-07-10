@@ -1,0 +1,11 @@
+package base.util
+{
+	public class Breadcrumb
+	{
+		
+		public var label:String;
+		public var type:String;
+		public var click:Function;
+		
+	}
+}

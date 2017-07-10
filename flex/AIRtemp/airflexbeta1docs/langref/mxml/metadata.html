@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- saved from url=(0014)about:internet -->
+
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<title></title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+
+				asdocTitle = 'Flex 3 Language Reference';
+
+				var baseRef = '../';
+
+				window.onload = configPage;
+
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a href="../language-elements.html">Language&nbsp;Elements</a>&nbsp;| <a onclick="loadClassListFrame('../index-list.html')" href="../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../index.html?mxml/mxml/metadata.html&amp;mxml-tags.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">&nbsp;</td><td align="right" id="subNav" class="titleTableSubNav"></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle(""); titleBar_setSubNav(false,false,false,false,false,false,false,false,false,false,false,false,false,false);}
+
+--></script>
+<div class="MainContent">
+        <div style="height:20px;" width="100%"></div>
+        <h1>Metadata</h1>
+        <br />
+        <h3>&lt;mx:Metadata> tag implemented by the compiler</h3>
+        <hr />
+
+        <p>You use the <code>&lt;mx:Metadata&gt;</code> tag to insert metadata tags in an MXML file. Metadata tags provide information to the Flex compiler that describes how your MXML components are used in a Flex application. Metadata tags do not get compiled into executable code, but provide information to control how portions of your code get compiled.</p>
+        
+        <p>Note that you can only insert metadata tags in the <code>&lt;mx:Metadata&gt;</code> 
+        block; you cannot insert MXML or ActionScript code.</p>
+
+        <p>For example, you may create an MXML component that defines a new event. To make that event known to the Flex compiler so that you can reference it in MXML, you insert the [Event] metadata tag into your component, as the following example shows:</p>
+<pre>
+&lt;mx:Metadata&gt;
+  [Event("darken")]
+&lt;/mx:Metadata&gt;
+</pre>
+
+        <p>In this example, you use metadata to make the <code>darken</code> event available to the MXML compiler. Metadata tags include [Event], [Effect], [Style], [Inspectable], and others. For more information, see the <i>Using Metadata Tags</i> chapter in the <i>Creating and Extending Flex Components</i> book.</p>
+
+        <p>When using metadata tags in ActionScrip class files, you insert the metadata tag directly into the class definition; you do not use the <code>&lt;mx:Metadata&gt;</code> tag.</p>
+
+        <p>In an MXML file, you insert the metadata tags either in an <code>&lt;mx:Script&gt;</code> block along with your ActionScript code, or in an </code>&lt;mx:Metadata&gt;</code> block, as the following example shows:</p>
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;mx:TextArea xmlns:mx="http://www.adobe.com/2006/mxml"&gt;
+
+  &lt;mx:Metadata&gt;
+    [Event("enableChange")]
+  &lt;/mx:Metadata&gt;
+
+  &lt;mx:Script&gt;
+    &lt;![CDATA[
+        
+      // Import Event class.
+      import flash.events.Event;
+
+      // Define class properties/methods
+      private var _enableTA:Boolean;
+
+      // Add the [Inspectable] metadata tag before the individual property.
+      [Inspectable(defaultValue="false")]
+      public function set enableTA(val:Boolean):void {
+        _enableTA = val;
+        this.enabled = val;
+    
+        // Define event object, initialize it, then dispatch it. 
+        var eventObj:Event = new Event("enableChange");
+        dispatchEvent(eventObj);
+      }
+    ]]&gt;
+  &lt;/mx:Script&gt;
+&lt;/mx:TextArea&gt;
+</pre>
+
+<p><b>MXML Syntax</b></p>
+<p>The &lt;mx:Metadata&gt; tag has the following syntax:</p>
+<p><pre>
+  &lt;mx:Metadata&gt; 
+    &lt;!-- Metadata tags go here. --&gt;
+  &lt;/mx:Metadata&gt; 
+</pre>
+</p>
+    <hr />
+    <br />
+    <div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mxml/metadata.html','');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:52 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:52 AM GMT-04:00 -->

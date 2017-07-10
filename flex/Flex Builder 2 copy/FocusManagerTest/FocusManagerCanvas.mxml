@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" 
+	preinitialize="onPreInit()"
+	implements="mx.managers.IFocusManagerGroup,mx.managers.IFocusManagerContainer">
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.FocusManager;
+			/* import mx.managers.IFocusManagerGroup;
+			import mx.managers.IFocusManagerContainer;
+			mx.managers.IFocusManagerContainer
+			mx.managers.IFocusManagerGroup */
+						
+			private var _groupName:String = "";
+			private var _selected:Boolean = false;
+			
+			private function onPreInit():void
+			{
+			}
+			
+			[Bindable]
+			public function get groupName():String
+			{
+				return _groupName;
+			}
+			
+			public function set groupName(value:String):void
+			{
+				_groupName = value;
+			}
+			
+			
+			[Bindable]
+			public function get selected():Boolean
+			{
+				return _selected;
+			}
+			
+			public function set selected(value:Boolean):void
+			{
+				_selected = value;
+			}
+		
+			
+		]]>
+	</mx:Script>
+</mx:Canvas>

@@ -1,0 +1,100 @@
+package lenz.intro
+{
+	import base.lenz.Lenz;
+	import base.lenz.BaseLenz;
+	import base.lenz.panel.PanelBuilder;
+	import lenz.intro.panel.IntroLenzPanel;
+	import mx.core.BitmapAsset;
+	import flash.display.Bitmap;
+	import mx.controls.Image;
+	import base.log.Logger;
+	import mx.controls.SWFLoader;
+	import mx.states.AddChild;
+	import base.lenz.panel.BaseLenzPanel;
+
+	public class IntroLenz extends BaseLenz implements Lenz
+	{ 
+		
+		public static const LENZ_ID:String = "IntroLenz";
+		
+		[Embed(source='/resources/_images/covers/IntroCover.png')]
+		[Bindable]
+		private var myCover:Class;
+		
+		
+		private var introLenzPanel:IntroLenzPanel = null;
+		
+		
+		
+//		private var logger:Logger = Logger.getLogger("IntroLenz");
+		
+		
+		public function IntroLenz():void {			
+			
+			// do this first.			
+			super();
+
+			logger.debug("IntroLenz: constructor()");
+			
+			lenzCreationComplete();
+			
+		}
+		
+		
+		public override function getLenzId():String {
+			return LENZ_ID;
+		}
+		
+		
+		public override function activate():void {
+			
+			logger.debug("activate() on IntroLenz");
+			
+			
+			if (introLenzPanel == null) {
+				
+				introLenzPanel = PanelBuilder.build( IntroLenzPanel, this) as IntroLenzPanel;
+								
+			}
+			
+
+			setPanel(introLenzPanel);
+						
+			super.activate();
+
+			var rss:SWFLoader = new SWFLoader();
+			rss.source = "resources/swf/rss.swf";
+			rss.y = 580;
+			rss.x = 60;
+			rss.alpha = 1;
+			//<mx:SWFLoader id="rss" source="resources/swf/rss.swf" y="580" x="60" alpha="1" />
+			BaseLenzPanel( getCurrentPanel() ).addChild( rss );
+		
+		}
+		
+		
+		public override function fetchInitialData(handler:Function):void {
+			
+			logger.debug("IntroLenz: fetch Initial Data");
+			
+			handler();
+		}
+		
+		
+		public override function getNotificationClickHandler():Function{
+			return null;
+		}
+		
+		
+		public override function getCover():Image {
+			
+			logger.debug("IntroLenz: getCover()");
+			
+			var tmp:Image = new Image();
+			tmp.source = myCover;
+			
+			return tmp;
+		}
+		
+	}
+}

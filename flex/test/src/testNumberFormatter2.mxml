@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   initialize="init(event)">
+	<fx:Script>
+		<![CDATA[
+			import flash.globalization.NumberFormatter;
+			import flash.globalization.NumberParseResult;
+			
+			import mx.events.FlexEvent;
+			
+			import spark.formatters.NumberFormatter;
+			
+			[Bindable] protected var formatted:String;
+			
+			protected function init(event:FlexEvent):void
+			{
+				var formatter:spark.formatters.NumberFormatter = new spark.formatters.NumberFormatter();
+				var nf2:flash.globalization.NumberFormatter = new flash.globalization.NumberFormatter("");
+				
+				formatter.decimalSeparator = nf2.decimalSeparator;
+				formatter.groupingSeparator = nf2.groupingSeparator;
+				formatter.fractionalDigits = 2;
+				formatter.trailingZeros = true;
+				
+				//formatted = formatter.format("5558049.90360013");
+				
+				var valueIn:String = "5558049.90360013";
+				var numberParseResult:NumberParseResult = formatter.parse(valueIn); 
+				var addend:Number = 0;
+				//addend = numberParseResult.value; //5384253
+				//addend = formatter.parseNumber(valueIn); //NaN
+				addend = parseFloat(valueIn);
+				formatted = formatter.format(addend);//addend.toString();
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:Label text="{formatted}" />
+</s:Application>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base.lenz.panel:BaseLenzPanel xmlns:base.lenz.panel="base.lenz.panel.*" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	creationComplete="onCreationComplete()" 
+	implements="base.lenz.panel.LenzPanel"
+	title="PharmaLenz" scaleX=".5" scaleY=".5" x="{(this.width/3)-25}" y="{(this.height/3)+10}" >
+ 
+	<mx:Script>
+		<![CDATA[
+			import mx.core.UIComponent;
+			import mx.containers.Canvas;
+			import base.event.AppModeEvent;
+			import flash.utils.setTimeout;
+			import base.util.ModalWait;
+			import mx.core.Application;
+			
+			protected  function onCreationComplete():void {
+				
+				logger.debug("LoginLenzPanel: onCreationComplete()");
+				
+				lenzId = "LoginPanel";
+		
+				
+				_form = new LoginPanelForm();
+				super.completePanel(_form);
+				
+				zoom.play([this]);
+
+				ready();
+
+				
+			}
+			
+			
+			public override function actionTaken( data:*):void {
+				
+				
+				ModalWait.start();
+				
+				retract.play();
+				
+				// we have to give the retract animation time to play.
+
+				setTimeout(loginSuccess, 1000);
+								
+				
+			}
+			
+			private function loginSuccess():void {
+				
+				var e:Event = new AppModeEvent(AppModeEvent.LOGIN_SUCCESS);
+				
+				this.dispatchEvent(e);
+			}
+			
+			
+		]]>
+	</mx:Script>
+	<mx:Zoom id="zoom" zoomWidthTo="1" zoomHeightTo="1" zoomHeightFrom=".5" zoomWidthFrom=".5"/>
+	
+</base.lenz.panel:BaseLenzPanel>

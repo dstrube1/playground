@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" 
+	height="100%" 
+	horizontalScrollPolicy="off"
+	verticalScrollPolicy="off"
+	xmlns:components="leadgine.components.*"
+	initialize="{navFooter.nextButton.enabled=true}">
+	
+	<mx:Metadata>
+		[Event("prevSection", type="mx.events.Event")]
+		[Event("nextSection", type="mx.events.Event")]
+	</mx:Metadata>
+	
+	<mx:Script>
+		<![CDATA[
+			import leadgine.components.dto.FullServiceReferral;
+			[Bindable]
+			public var myTitle:String;
+			[Bindable]
+			public var myDTO:FullServiceReferral;
+			[Bindable]
+			public var day1:String;
+			[Bindable]
+			public var day2:String;
+			[Bindable]
+			public var day3:String;
+			[Bindable]
+			public var day4:String;
+			[Bindable]
+			public var day5:String;
+			[Bindable]
+			public var day6:String;
+			[Bindable]
+			public var day7:String;
+			
+			//TODO Fix removal of items
+			//TODO Add time range components to items
+		]]>
+	</mx:Script>
+
+	<mx:VBox styleName="containerStyle" width="100%" height="100%">	
+		<mx:Label text="{myTitle}" styleName="secTitle" />
+		<mx:VBox id="funcArea" width="790" height="350" paddingLeft="20">
+		<mx:Label text="{myDTO.startDate as String}" />
+			<components:FunctionDate myDate="{day1}"  />
+			<components:FunctionDate myDate="{day2}" />
+			<components:FunctionDate myDate="{day3}" />
+			<components:FunctionDate myDate="{day4}" />
+			<components:FunctionDate myDate="{day5}" />
+			<components:FunctionDate myDate="{day6}" />
+			<components:FunctionDate myDate="{day7}" />
+		</mx:VBox>
+		
+		<mx:Spacer height="100%" />
+		<components:NavigationFooter id="navFooter"
+			prevSection="dispatchEvent( new Event( 'prevSection' ) );"
+			nextSection="dispatchEvent( new Event( 'nextSection' ) );"
+		/>
+	</mx:VBox>
+	
+</mx:VBox>

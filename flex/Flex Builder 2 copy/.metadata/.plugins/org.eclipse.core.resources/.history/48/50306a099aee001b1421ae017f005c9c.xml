@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="onCreateComplete()">
+
+	<mx:Script> 
+		<![CDATA[
+			import base.db.MemDB;
+			import base.db.BaseMemDB;
+			import mx.controls.Alert;
+			import base.log.Logger;
+			
+			
+		
+			private var _db:BaseMemDB = new BaseMemDB();
+			
+			
+			[Bindable]
+			private var alarms:Array;
+			[Bindable]
+			private var alerts:Array;
+			[Bindable]
+			private var notifications:Array;
+			
+			
+			private var alarmCount:int = 1;
+			private var logger:Logger = Logger.getLogger('AlarmBoxExample');
+			
+			public function onCreateComplete():void {
+
+				
+				logger.debug("AlarmBoxExample: onCreationComplete");		
+					
+				addSet( _db, 1);
+													
+				updateReport( _db);					
+													
+			}
+			
+			private function addAlarm():void {
+				
+				alarmCount++;
+				
+				addSet( _db, alarmCount );				
+
+				updateReport( _db);
+				
+			}
+			
+			
+			private function updateReport( db:MemDB):void {
+			
+			}
+			
+			private function addSet( db:MemDB, count:int ):void {
+			
+				db.add( { type: "alarm", label: "Alarm "+count } );
+				db.add( { type: "alert", label: "Alert "+count } );
+				db.add( { type: "notification", label: "Note "+count } );
+									
+			}			
+			
+		]]>
+	</mx:Script>
+
+
+	<mx:Accordion x="10" y="10" width="200" height="200">
+		<mx:Canvas label="Alarms" width="100%" height="100%">
+			<mx:List  columnCount="1"  click="Alert.show('Clicked on alarm x');">
+				
+			</mx:List>
+		</mx:Canvas>
+		<mx:Canvas label="Alerts" width="100%" height="100%">
+			<mx:List>
+				
+			</mx:List>
+		</mx:Canvas>
+		<mx:Canvas label="Notifications" width="100%" height="100%">
+			<mx:List dataProvider="{notifications}">
+				
+			</mx:List>
+		</mx:Canvas>
+	</mx:Accordion>
+	<mx:HBox x="10" y="218" width="100%">
+	
+		<mx:Button label="addAlarm" click="addAlarm()" />
+	
+	</mx:HBox>
+	
+
+	
+</mx:Application>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" 
+	height="100%"
+	xmlns:components="leadgine.components.*">
+	
+	<mx:Metadata>
+		[Event("prevSection", type="mx.events.Event")]
+		[Event("nextSection", type="mx.events.Event")]
+		[Event("formSubmit", type="mx.events.Event")]
+	</mx:Metadata>
+	
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var myTitle:String;
+			
+		]]>
+	</mx:Script>
+	<mx:VBox styleName="containerStyle" width="100%" height="100%">
+		<mx:Label text="{myTitle}" styleName="secTitle" />
+		<mx:VBox width="800" height="300" paddingLeft="20" paddingRight="20">
+			<mx:Label text="Special Comments:" />
+			<mx:TextArea width="100%" height="120" id="commentsText" />
+			<mx:Label text="Requests, History, Alternate Dates, etc.:" />
+			<mx:TextArea width="100%" height="120" id="requestsText"/>
+		</mx:VBox>
+		
+		<mx:Spacer height="100%" />
+		<mx:HBox width="100%" paddingRight="20">
+			<components:NavigationFooter hasNextBtn="false" 
+				prevSection="dispatchEvent( new Event( 'prevSection' ) );"
+				nextSection="dispatchEvent( new Event( 'nextSection' ) );"
+			/>
+			<mx:Spacer width="100%" />
+			<mx:VBox paddingTop="20">
+				<mx:Button label="Submit" click="dispatchEvent( new Event( 'formSubmit' ) );"/>					
+			</mx:VBox>		
+		</mx:HBox>
+	</mx:VBox>
+</mx:VBox>

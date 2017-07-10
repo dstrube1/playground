@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="700" height="450"
+			implements="base.form.LenzForm" xmlns:panel="lenz.main.study_mgr.panel.*"
+			styleName="studyManagerMainForm" horizontalCenter="0" creationComplete="onCreationComplete()">
+	 
+	<mx:Script>
+		<![CDATA[
+			import base.db.MemDB;
+			import base.lenz.NotificationReport;
+			import app.server.LenzServer;
+			import lenz.main.study_mgr.controller.StudyClickManager;
+			import mx.controls.Alert;
+			import base.lenz.panel.LenzPanel;
+			import base.log.Logger;
+			
+			private var logger:Logger = Logger.getLogger("StudyManagerPRForm");
+			
+			private var _parent:LenzPanel = null;
+			
+			[Bindable]
+			private var high:Array = null;
+			private var medium:Array = null;
+			private var low:Array = null;
+			
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+				//lenz2Fade.play();
+			}
+			
+			protected function onCreationComplete():void {
+				logger.debug("StudyManagerPRForm: onCreateComplete");
+				
+				var notifications:MemDB = LenzServer.notificationReport.notificationDb;
+				high = notifications.fetch({"severity":"1"});				
+				
+			}
+			
+			public function initializeForm():void {
+				onCreationComplete();
+			}			
+			
+			public function populateResources(data:Object):void {
+				
+				
+			}
+			
+			public function showResults(resolutionId:String):void {
+				
+				var clickMgr:StudyClickManager = new StudyClickManager();
+	 			clickMgr.processAction( {"currentLenzId":_parent.getParent().getLenzId(), "actionName":"displayPRView", "targetId":"results", "actionParams":{viewId: "PR", filter: null}} );
+			}
+			
+			public function showResolutions(alarmId:String):void {
+				var clickMgr:StudyClickManager = new StudyClickManager();
+	 			clickMgr.processAction( {"currentLenzId":_parent.getParent().getLenzId(), "actionName":"displayPRView", "targetId":"resolutions", "actionParams":{viewId: "Metric", filter: null}} );
+			}
+			
+			
+		]]>
+	</mx:Script>
+	
+	<mx:HBox>
+
+		<mx:VBox width="480" height="450">
+			
+			<mx:Label id="studyName" text="Study Name" fontThickness="200" fontSize="18" x="3" y="0"/>
+			
+			<mx:VBox id="main" width="480" height="410" 
+					borderStyle="solid" borderColor="#5E5E5E" cornerRadius="8" 
+					backgroundColor="#595959" backgroundAlpha="0.3">
+				
+				<mx:Label id="PR1" text="Resolution 1" color="#000000" click="showResults('this.text')" />
+				<mx:Label id="PR2" text="Resolution 2" color="#000000" click="showResults('this.text')" />
+				<mx:Label id="PR3" text="Resolution 3" color="#000000" click="showResults('this.text')" />
+				
+			</mx:VBox>
+			 
+		
+		</mx:VBox>
+		
+		<mx:VBox id="rightBox" width="200" height="450">
+			
+			<mx:Label id="dummyText" text=" " fontThickness="200" fontSize="18" x="3" y="0"/>
+			
+			<mx:VBox id="alarmsBox" width="100%" borderStyle="solid" borderColor="#5E5E5E" backgroundColor="#595959" cornerRadius="8"
+						paddingLeft="10" paddingRight="10">
+				
+				<!--mx:List dataProvider="{alarmsList.alarm}" editable="false" borderStyle="none" backgroundAlpha="0.0" selectable="false" fontSize="8" width="100%"/-->
+		
+				<mx:Accordion id="alarms" width="180" height="180" textRollOverColor="#808080" color="#000000">
+					<mx:Form id="acc1" label="Alarms">
+						<!--mx:Label id="top1" text="Alarm 1" click="showResolutions('this.text')" color="#000000"/-->
+						<mx:List dataProvider="{high}" editable="false" selectable="false" fontSize="8" wordWrap="true"/>
+						
+					</mx:Form>
+					<mx:Form id="acc2" label="Alerts" color="black">
+						<mx:Label id="med1" text="Alert 1" color="#000000"/>
+					</mx:Form>
+					<mx:Form id="acc3" label="Warnings">
+						<mx:Label id="low1" text="Warning 1" color="#000000"/>
+					</mx:Form>					
+				</mx:Accordion>
+			
+			</mx:VBox>
+		</mx:VBox>
+		
+	</mx:HBox>		
+	 
+</mx:Canvas>
+

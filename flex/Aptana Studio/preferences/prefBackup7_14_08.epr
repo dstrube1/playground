@@ -1,0 +1,24 @@
+#Mon Jul 14 11:04:22 EDT 2008
+/instance/com.aptana.ide.framework.jaxer/JAXER_SERVER_LOCAL_PATH_KEY=/Applications/Aptana Studio/plugins/com.aptana.ide.framework.jaxer.server.macosx_1.1.0.007007/jam/jaxer/
+@org.eclipse.update.core=3.2.3.R32x_v20070118
+/instance/com.aptana.ide.framework.jaxer/JAXER_INTERNAL_SERVER_LOCAL_PATH_KEY=/Applications/Aptana Studio/plugins/com.aptana.ide.framework.jaxer.server.macosx_1.1.0.007007/jam/jaxer/
+/instance/org.eclipse.core.resources/encoding=UTF-8
+@com.aptana.ide.framework.jaxer=1.1.0.007007
+/instance/com.aptana.ide.core.ui/com.aptana.ide.core.ui.WEB_PERSPECTIVE_LAST_VERSION=59
+\!/=
+/instance/org.eclipse.ui.ide/platformState=1216047023224
+@com.aptana.ide.server=1.1.0.007007
+/configuration/org.eclipse.ui.ide/SHOW_WORKSPACE_SELECTION_DIALOG=false
+/instance/com.aptana.ide.core.ui/com.aptana.ide.core.ui.PREF_KEY_FIRST_STARTUP=true
+/instance/org.eclipse.core.resources/version=1
+/instance/com.aptana.ide.server/serverManager.serverCount=2
+/instance/org.eclipse.update.core/org.eclipse.update.core.updateVersions=compatible
+@org.eclipse.core.resources=3.2.2.R32x_v20061218
+@org.eclipse.ui.ide=3.2.1.M20060915-1030
+/configuration/org.eclipse.ui.ide/RECENT_WORKSPACES_PROTOCOL=2
+/configuration/org.eclipse.ui.ide/MAX_RECENT_WORKSPACES=5
+@com.aptana.ide.core.ui=1.1.0.007007
+/configuration/org.eclipse.ui.ide/RECENT_WORKSPACES=/Users/davy/Documents/Aptana Studio
+/instance/org.eclipse.ui.editors/overviewRuler_migration=migrated_3.1
+file_export_version=3.0
+@org.eclipse.ui.editors=3.2.1.r321_v20060721

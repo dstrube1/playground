@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="com.adobe.flexbuilder.debug.launchConfigurationType.flash">
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_APPLICATION" value="myFirstAIR.mxml"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_RUN_URL" value="file:/Users/davy/Documents/Flex%20Builder%202/test/bin/testKeyHandler.html"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_DEBUG_URL" value="file:/Users/davy/Documents/Flex%20Builder%202/test/bin/testKeyHandler-debug.html"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_PROJECT" value="test"/>
+<booleanAttribute key="com.adobe.flexbuilder.debug.ATTR_USE_DEFAULT_URLS" value="true"/>
+</launchConfiguration>

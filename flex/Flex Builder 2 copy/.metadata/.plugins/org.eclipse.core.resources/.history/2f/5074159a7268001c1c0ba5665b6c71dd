@@ -1,0 +1,18 @@
+package base.form
+{
+	import base.lenz.panel.LenzPanel;
+	
+	public interface LenzForm
+	{
+	 
+		function setLenzPanel( _panel:LenzPanel):void;
+		function animate():void;
+		function populateResources(data:Object):void;
+		function initializeForm():void;
+		/**
+		 * Do clean up, before disposing form
+		 **/
+		function destroy():void;
+
+	}
+}

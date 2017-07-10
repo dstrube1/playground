@@ -1,0 +1,19 @@
+package base.notification
+{
+	public class NotificationViewModel
+	{
+
+		[Bindable]		
+		public var topLevelAlarms:Array;
+		
+		[Bindable]		
+		public var filteredAlarms:Array;
+		
+		[Bindable]		
+		public var filteredAlerts:Array;
+		 
+		[Bindable]		
+		public var filteredNotifications:Array;
+		
+	}
+}

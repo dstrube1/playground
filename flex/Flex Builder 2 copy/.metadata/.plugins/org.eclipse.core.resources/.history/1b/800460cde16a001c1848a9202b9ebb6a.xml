@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base.lenz.frame:BaseLenzFrame xmlns:base.lenz.frame="base.lenz.frame.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml"  
+	xmlns="base.lenz.frame.*"  
+	implements="base.lenz.frame.LenzFrame"
+	styleName="lenzFrame">
+
+	
+		
+	<mx:Script>
+		<![CDATA[
+
+			import base.util.ModalWait;
+			import mx.controls.Image;
+//			import lenz.main.investigator.InvestigatorLenz;
+//			import lenz.main.investigator.panel.InvestigatorLenzPanel;
+//			import lenz.main.monitor.MonitorLenz;
+//			import lenz.main.monitor.panel.MonitorLenzPanel;
+//			import lenz.main.monitor.panel.MonitorLenzPanelB;
+//			import lenz.main.study_mgr.StudyManagerLenz;
+			import lenz.main.site_select.SiteSelectionLenz;
+			import base.blade.BladeItem;
+			import app.config.BladeFactory;
+			import base.event.LenzClosedEvent;
+//			import lenz.main.welcome.WelcomeLenz;
+//			import lenz.main.my_pharma.MyPharmaLenz;
+			import app.config.LenzFactory;
+			import base.lenz.Lenz;
+			import base.lenz.panel.LenzPanel;
+			import base.lenz.panel.PanelBuilder;
+			import base.blade.Blade;
+			import mx.controls.Alert;
+			import base.event.SelectLenzEvent;
+			import mx.core.Application;
+
+			
+			[Bindable]
+			private var leftBlade:Blade;
+			[Bindable]
+			private var rightBlade:Blade;
+			[Bindable]
+			private var right2Blade:Blade;
+			[Bindable]
+			private var topBlade:Blade;
+			[Bindable]
+			private var bottomBlade:Blade;
+			
+			public var siteSelectionLenz:Lenz = null;
+			//public var welcomeLenz:Lenz = null;
+			//public var studyMgrLenz:Lenz = null;
+			//public var myPharmaLenz:Lenz = null;
+			
+			//@SMELL this would be better if it wasn't a global variable.
+			public var lenzToOpen:Lenz = null;
+			
+
+			public override function onFrameCreationComplete():void {
+				
+				logger.debug(title+" onFrameCreationComplete()");
+				
+				addSiteSelectionLenz();
+				//addWelcomeLenz();			
+				//addStudyMgrLenz();
+				//addMyPharmaLenz();
+				addLenzEventListener();
+				//currentLenz.initialize();
+				
+			}
+			
+			protected override function activateFrame():void {
+				logger.debug(title+" activateFrame()");
+				
+				//addBlades();
+			}
+
+
+			
+			private function addSiteSelectionLenz():void {
+
+				siteSelectionLenz = LenzFactory.getLenz(SiteSelectionLenz.LENZ_ID);
+				
+				setupCurrentLenz(siteSelectionLenz);				
+								
+			}
+			
+			/*
+			private function addWelcomeLenz():void {
+
+				welcomeLenz = LenzFactory.getLenz(WelcomeLenz.LENZ_ID);
+				
+				setupCurrentLenz(welcomeLenz);				
+								
+			}
+			private function addStudyMgrLenz():void {
+				
+
+				studyMgrLenz = LenzFactory.getLenz(StudyManagerLenz.LENZ_ID);
+				
+				setupCurrentLenz(studyMgrLenz);				
+				
+								
+			}
+			
+			private function addMyPharmaLenz():void{
+				myPharmaLenz = LenzFactory.getLenz(MyPharmaLenz.LENZ_ID);
+				
+				setupCurrentLenz(myPharmaLenz);
+			}
+			*/
+
+			private function addLenzEventListener():void {
+
+
+				// when the user selects a lenz, this is fired, to start the process of hiding the existing
+				// lenz and showing the new one.
+				addEventListener(SelectLenzEvent.SELECT_LENZ_EVENT_BASE, onSelectLenzEvent,false,0,true);
+				addEventListener(LenzClosedEvent.EVENT_CODE, onLenzClosedEvent,false,0,true);
+
+			}
+
+
+
+
+
+
+			private function onSelectLenzEvent(ev:SelectLenzEvent):void {
+				
+				
+				currentLenz.close();
+				currentLenz = null;
+
+
+				var lenz:Lenz = LenzFactory.getLenz(ev.getLenz());
+				
+				if (null == lenz) {
+					throw new Error("Unable to locate lenz with id: "+ev.getLenz());
+				} else {
+					
+					lenzToOpen = lenz;					
+				}
+				
+				
+			}
+
+
+			private function onLenzClosedEvent(ev:LenzClosedEvent):void {
+
+				// now that the old lenz is closed, we can open the new lenz
+				
+				if (lenzToOpen != null) {	
+				
+					setupCurrentLenz(lenzToOpen);  // side effect is to set currentLenz to lenzToOpen
+
+					currentLenz.initialize();
+				}
+				
+			}
+
+
+			private function setupCurrentLenz( pLenz:Lenz):void {
+				
+				logger.debug("Setting up new lenz: "+pLenz.getLenzId());
+				
+				currentLenz = pLenz;
+
+				currentLenz.setLenzFrame(this);
+				
+				
+//				currentLenz.initialize();
+
+			}
+
+
+			private function currentLenzRetracted( lenzId:String):void {
+/*
+				var ev:ActivateLenzEvent = new ActivateLenzEvent(lenzId);
+				
+				this.dispatchEvent(ev);
+*/				
+			}
+
+
+/*			
+			private function onActivateLenzEvent(ev:ActivateLenzEvent):void {
+ 				if (ev.getLenz() == LenzApp.SITE_SELECT) {
+					
+					// turned this off, the siteSelectPanel isn't initialized in time to do this right.
+//					changePanel(siteSelectPanel);
+
+					setCurrentPanel(siteSelectPanel);
+					
+
+				} else if (ev.getLenz() == LenzApp.STUDY_MANAGER) {
+					
+					setCurrentPanel(studyMgrPanel);
+					
+				} else if (ev.getLenz() == LenzApp.MONITOR) {
+					
+					
+					setCurrentPanel(monitorPanel);
+				} else {
+					Alert.show("Unkonwn lenz type: "+ev.getLenz());
+				}		
+		
+//				setTimeout(currentLenzReadyToExpose, 250);			// SMELL: this is a hack, replace with a better event
+				
+				
+			}
+*/			
+
+
+/*
+			private function onLenzReadyEvent(ev:LenzReadyEvent):void {			
+				
+				logger.debug(title+" received onLenzReadyEvent()");
+							
+				getCurrentPanel().exposePanel = true;
+
+			}
+*/
+
+
+
+			
+			
+			
+			
+			
+			private var bladeProps:Object = { height: 280, width: 700 };
+			
+			
+			private function addBlades():void {
+				
+				
+				logger.debug("adding Blades");
+				
+				// urg. hardcoded values for the various blade configurations.  Ideally this will be pulled from 
+				// a properties file of some sort.
+				
+				[Embed(source="/resources/images/user_preferences.jpg")]
+	            var leftBladeIcon:Class; 
+				[Embed(source="/resources/images/tools.jpg")]
+	            var rightBladeIcon:Class;
+				[Embed(source="/resources/images/communications.jpg")]
+	            var right2BladeIcon:Class;
+				[Embed(source="/resources/images/global_navigation.jpg")]
+	            var topBladeIcon:Class;
+				[Embed(source="/resources/images/advisor.jpg")]
+	            var bottomBladeIcon:Class;
+			
+			/*	
+				leftBlade = Blade.place(this, { height:bladeProps.height, width:bladeProps.width, icon:leftBladeIcon, alpha:0.1,
+												y:((height - bladeProps.height)/2)-3, x:0, title:"User Preferences", orientation:"left"});
+			*/
+				//logger.debug("height="+height.toString());
+				//logger.debug("bladeProps.height="+bladeProps.height.toString());
+				//logger.debug("leftBlade y="+(((height - bladeProps.height)/2)-3).toString());
+												
+				//rightBlade = Blade.place(this, { height:bladeProps.height, width:bladeProps.width, icon:rightBladeIcon,alpha:0.1,
+				//								y:113, x:(width - bladeProps.width), title:"Tools", orientation:"right"}	);
+				//								
+				//right2Blade = Blade.place(this, { height:bladeProps.height, width:bladeProps.width, icon:right2BladeIcon,alpha:0.1,
+				//								y:418, x:(width - bladeProps.width), title:"Communications", orientation:"right"}	);
+			
+			/*									
+				topBlade = Blade.place(this, { height:bladeProps.height, width:bladeProps.width, icon:topBladeIcon,alpha:0.1,
+												y:0, x:((width - bladeProps.width)/2)+2, title:"Global Navigation", orientation:"top", 
+												retractOnClick:"true"}	);
+												
+				bottomBlade = Blade.place(this, { height:bladeProps.height, width:bladeProps.width, icon:bottomBladeIcon,
+												y:(height - bladeProps.height), x:((width - bladeProps.width)/2)+2, 
+												alpha:0.1,
+												title:"Advisor", orientation:"bottom"}	);
+			*/
+
+
+				fadeInBlades.play();
+
+
+				/*
+				var siteSelectBladeItem:BladeItem = BladeFactory.getBladeItem("SiteSelection");
+				siteSelectBladeItem.setClickFunction( selectLenz, [SiteSelectionLenz.LENZ_ID]);
+				
+								
+				var studyManagerBladeItem:BladeItem = BladeFactory.getBladeItem("StudyManager");
+				studyManagerBladeItem.setClickFunction( selectLenz, [StudyManagerLenz.LENZ_ID]);
+				
+
+				var monitorBladeItem:BladeItem = BladeFactory.getBladeItem("Monitor");
+				monitorBladeItem.setClickFunction( selectLenz, [MonitorLenz.LENZ_ID]);
+
+
+				var investigatorBladeItem:BladeItem = BladeFactory.getBladeItem("Investigator");
+				investigatorBladeItem.setClickFunction( selectLenz, [InvestigatorLenz.LENZ_ID]);
+				
+
+				var rootLenzBladeItem:BladeItem = BladeFactory.getBladeItem("WelcomeLenz");
+				rootLenzBladeItem.setClickFunction( selectLenz, [WelcomeLenz.LENZ_ID]);
+				*/
+//				var energizerBladeItem:BladeItem = BladeFactory.getBladeItem("Energizer");
+//				energizerBladeItem.setClickFunction(ModalWait.start, null);
+//				var toolBladeItem:BladeItem = BladeFactory.getBladeItem("Tools");
+//				var commBladeItem:BladeItem = BladeFactory.getBladeItem("Communications");
+//				var advisorBladeItem:BladeItem = BladeFactory.getBladeItem("Advisor");
+
+/*
+				var bladeItemComponent:DefaultBladeItems = null;
+				if (null==bladeItemComponent["GlobalNav"])
+					Alert.show("global nav blade item is null");
+				else
+					Alert.show("global nav blade item is not null");
+*/
+//				var globalNavBladeItem:BladeItem = BladeFactory.getBladeItem("GlobalNav");
+//				globalNavBladeItem.initialize()
+
+//				var userPrefBladeItem:BladeItem = BladeFactory.getBladeItem("UserPreferences");
+				/*
+				topBlade.addBladeItem( siteSelectBladeItem );
+				topBlade.addBladeItem( studyManagerBladeItem );
+				topBlade.addBladeItem( monitorBladeItem );
+				topBlade.addBladeItem( investigatorBladeItem );
+				topBlade.addBladeItem( rootLenzBladeItem );
+				*/
+//				topBlade.addBladeItem(globalNavBladeItem);
+				
+//				rightBlade.addBladeItem( toolBladeItem );
+//				right2Blade.addBladeItem( commBladeItem );
+//				bottomBlade.addBladeItem(advisorBladeItem);
+//				leftBlade.addBladeItem(userPrefBladeItem );
+
+				/*
+				Application.application.defaultBladeItems.SiteSelection.setClickFunction( LenzActions.launchLenz, [ LenzApp.SITE_SELECT ]);
+				Application.application.defaultBladeItems.StudyManager.setClickFunction( LenzActions.launchLenz, [ LenzApp.STUDY_MANAGER ]);
+				Application.application.defaultBladeItems.Monitor.setClickFunction( LenzActions.launchLenz, [ LenzApp.MONITOR ]);
+				
+				*/
+				
+			}
+			
+			
+			
+		]]>
+	</mx:Script>
+
+
+
+	<mx:Fade id="fadeInBlades" alphaFrom="0.1" alphaTo="1.0" duration="2500" targets="{[ topBlade, bottomBlade, leftBlade, rightBlade, right2Blade]}">
+		
+	</mx:Fade>
+
+	
+	
+
+	
+</base.lenz.frame:BaseLenzFrame>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Services/Controller configuration file for ReviewTube -->
+
+<LenzConfiguration xmlns="app.config.*" 
+	serviceHostPort="http://127.0.0.1:8080" 
+	serviceWSDLPath="/LenzServer/services/CCISOAP?wsdl"
+	servicePortPath="/LenzServer/services/CCISOAP" 
+	testMode="{Boolean(false)}"  >
+	
+	<!--
+	creationComplete="controller=controllerImpl"
+	-->
+	
+           
+<!--
+    <CommentService id="commentService" urlPrefix="http://rt.morrisalumni.com/flex/"/>
+    <controller:Controller id="controllerImpl" mediaService="{mediaService}" commentService="{commentService}"/>
+-->  
+  
+    
+</LenzConfiguration>

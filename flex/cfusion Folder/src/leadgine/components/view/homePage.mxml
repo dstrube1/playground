@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GradientCanvas xmlns="com.*" xmlns:mx="http://www.adobe.com/2006/mxml"
+		colorsConfiguration = "[4,3]"
+		gradientType = "linear,radial"
+		fillColors = "[#3300, #FF00, #6600, #3300,#3300, #3300, #3300]"
+		fillAlphas = "[1,1,1,1,1,0,0.39]"
+		gradientRatio = "[101,159,169,251,32,140,205]"
+		angle = "82,0"
+		offsetX = "0,50"
+		offsetY = "0,179"
+		spreadMethod = "pad,reflect"
+		interpolationMethod = "rgb,rgb"
+		focalPointRatio = "-0.01,0.42"
+		 borderStyle="none"
+		 horizontalScrollPolicy="off"
+		 verticalScrollPolicy="off" borderAlphas="0"
+>
+
+<mx:Script>
+	<![CDATA[
+					import mx.core.Application;
+	]]>
+</mx:Script>
+<mx:HBox width="100%" paddingTop="0" paddingBottom="0">
+	<mx:VBox width="100%" paddingTop="0" paddingBottom="0">
+		<mx:Label text="Welcome to RevPAR Suite 2.1!" paddingLeft="30" paddingTop="0" color="#ffffff" fontSize="18" fontFamily="Verdana">
+			<mx:filters>
+		        <mx:DropShadowFilter color="#000000" distance="2" angle="45"/>
+		    </mx:filters>
+		</mx:Label>
+		<mx:Label id="lblClientName" fontStyle="italic" paddingLeft="30" fontSize="12" color="#ffffff">
+			<mx:filters>
+		        <mx:DropShadowFilter color="#000000" distance="2" angle="45"/>
+		    </mx:filters>
+		</mx:Label>
+	</mx:VBox>
+	<mx:VBox width="100%" horizontalAlign="right" paddingTop="0" >
+		<mx:Label id="lblWelcome" color="#ffffff" paddingRight="30">
+			<mx:filters>
+		        <mx:DropShadowFilter color="#000000" distance="2" angle="45"/>
+		    </mx:filters>
+		</mx:Label>
+		<mx:Label id="lblHotelName" color="#ffffff" paddingRight="30">
+			<mx:filters>
+		        <mx:DropShadowFilter color="#000000" distance="2" angle="45"/>
+		    </mx:filters>
+		</mx:Label>
+		<mx:Label id="lblLastLogin" color="#ffffff" paddingRight="30">
+			<mx:filters>
+		        <mx:DropShadowFilter color="#000000" distance="2" angle="45"/>
+		    </mx:filters>
+		</mx:Label>
+	</mx:VBox>
+</mx:HBox>
+	<mx:Canvas borderThickness="1" borderColor="#ffffff" 
+		backgroundColor="#ffffff" backgroundAlpha=".25" 
+		cornerRadius="10" borderStyle="solid" 
+		top="80" bottom="20" right="20" left="20" 
+		paddingLeft="10" paddingRight="10" 
+		verticalScrollPolicy="auto" horizontalScrollPolicy="off" >
+		<mx:VBox height="100%" width="100%">
+			<mx:HBox horizontalAlign="center" width="100%" height="120" verticalAlign="middle" paddingLeft="30" paddingRight="30" verticalScrollPolicy="off" horizontalScrollPolicy="off" >
+				<mx:Image source="images/handshake_small.png" click="{ Application.application.tabNavigator.selectedIndex=1 }" verticalCenter="0" useHandCursor="true" buttonMode="true">
+					<mx:filters>
+						<mx:GlowFilter color="#00ff00" blurX="26" blurY="26"/>
+					</mx:filters>
+				</mx:Image>
+				<mx:Canvas borderStyle="solid" borderColor="#666666" borderThickness="1"
+					cornerRadius="20" 
+					backgroundColor="#FFFFFF" alpha="0.8" 
+					height="100" width="100%" 
+					verticalScrollPolicy="off" horizontalScrollPolicy="off">
+					<mx:VBox width="100%" height="100%">
+						<mx:Label fontFamily="myChlorine" color="#00ff00" text="leadgine" fontSize="18" paddingLeft="10" paddingTop="5" paddingBottom="0" height="37">
+							<mx:filters>
+					            <mx:DropShadowFilter color="#000000" distance="2" angle="45"/>
+					        </mx:filters>
+					    </mx:Label>
+						<mx:Text width="100%" paddingTop="0" text="Have a lead you can't accomodate?  Refer it to other hotels to earn big Cash Bonuses!" paddingLeft="10" paddingRight="10" height="80" fontSize="14" color="#000000" fontFamily="Verdana"/>
+					</mx:VBox>
+				</mx:Canvas>
+			</mx:HBox>
+			<mx:HBox horizontalAlign="center" width="100%" height="120" verticalAlign="middle" paddingLeft="30" paddingRight="30" verticalScrollPolicy="off" horizontalScrollPolicy="off" >
+				<mx:Canvas borderStyle="solid" borderColor="#666666" borderThickness="1"
+					cornerRadius="20" 
+					backgroundColor="#FFFFFF" alpha="0.8" 
+					height="100" width="100%" 
+					verticalScrollPolicy="off" horizontalScrollPolicy="off">
+					<mx:VBox width="100%" height="100%">
+						<mx:Label fontFamily="myChlorine" color="#00ff00" text="marketeer" fontSize="18" paddingLeft="10" paddingTop="0" height="37">
+							<mx:filters>
+					            <mx:DropShadowFilter color="#000000" distance="2" angle="45"/>
+					        </mx:filters>
+					    </mx:Label>
+						<mx:Text width="100%" paddingTop="0" text="Powerful Market Planning system: Flexible and intuitive, Marketeer allows you to create and work a living, breathing marketing plan throughout the year.  Coming Soon!" paddingLeft="10" paddingRight="10" height="80" fontSize="14" color="#000000" fontFamily="Verdana"/>
+					</mx:VBox>
+				</mx:Canvas>
+				<mx:Image source="images/money_small.png" verticalCenter="0">
+					<mx:filters>
+						<mx:GlowFilter color="#00ff00" blurX="26" blurY="26"/>
+					</mx:filters>
+				</mx:Image>
+			</mx:HBox>
+			<mx:HBox horizontalAlign="center" width="100%" height="120" verticalAlign="middle" paddingLeft="30" paddingRight="30" verticalScrollPolicy="off" horizontalScrollPolicy="off" >
+				<mx:Image source="images/registration_small.png" verticalCenter="0">
+					<mx:filters>
+						<mx:GlowFilter color="#00ff00" blurX="26" blurY="26"/>
+					</mx:filters>
+				</mx:Image>
+				<mx:Canvas borderStyle="solid" borderColor="#666666" borderThickness="1"
+					cornerRadius="20" 
+					backgroundColor="#FFFFFF" alpha="0.8" 
+					height="100" width="100%" 
+					verticalScrollPolicy="off" horizontalScrollPolicy="off">
+					<mx:VBox width="100%" height="100%">
+						<mx:Label fontFamily="myChlorine" color="#00ff00" text="group pacer" fontSize="18" paddingLeft="10" paddingTop="0" height="37">
+							<mx:filters>
+					            <mx:DropShadowFilter color="#000000" distance="2" angle="45"/>
+					        </mx:filters>
+					    </mx:Label>
+						<mx:Text width="100%" paddingTop="0" text="Compare month over month, year over year group booking pace by segment.  Coming Soon!" paddingLeft="10" paddingRight="10" height="80" fontSize="14" color="#000000" fontFamily="Verdana"/>
+					</mx:VBox>
+				</mx:Canvas>
+			</mx:HBox>
+			<mx:HBox horizontalAlign="center" width="100%" height="120" verticalAlign="middle" paddingLeft="30" paddingRight="30" verticalScrollPolicy="off" horizontalScrollPolicy="off" >
+				<mx:Canvas borderStyle="solid" borderColor="#666666" borderThickness="1"
+					cornerRadius="20" 
+					backgroundColor="#FFFFFF" alpha="0.8" 
+					height="100" width="100%" 
+					verticalScrollPolicy="off" horizontalScrollPolicy="off">
+					<mx:VBox width="100%" height="100%">
+						<mx:Label fontFamily="myChlorine" color="#00ff00" text="cater pacer" fontSize="18" paddingLeft="10" paddingTop="0" height="37">
+							<mx:filters>
+					            <mx:DropShadowFilter color="#000000" distance="2" angle="45"/>
+					        </mx:filters>
+					    </mx:Label>
+						<mx:Text width="100%" paddingTop="0" text="Compare month over month, year over year catering booking pace by segment.  Coming Soon!" paddingLeft="10" paddingRight="10" height="80" fontSize="14" color="#000000" fontFamily="Verdana"/>
+					</mx:VBox>
+				</mx:Canvas>
+				<mx:Image source="images/banquet_small.png" verticalCenter="0">
+					<mx:filters>
+						<mx:GlowFilter color="#00ff00" blurX="26" blurY="26"/>
+					</mx:filters>
+				</mx:Image>
+			</mx:HBox>
+			<!--<mx:Spacer height="20"/>
+			<mx:HBox horizontalAlign="right" width="100%">
+				<mx:VBox horizontalAlign="right">
+					<mx:Image source="images/mpi_small.png" verticalCenter="0">
+						<mx:filters>
+							<mx:GlowFilter color="#00ff00" blurX="26" blurY="26"/>
+						</mx:filters>
+					</mx:Image>
+					<mx:Label fontStyle="italic" text="proud member of Meeting Planners, International" paddingLeft="30" fontSize="12" color="#ffffff">
+						<mx:filters>
+					        <mx:DropShadowFilter color="#000000" distance="2" angle="45"/>
+					    </mx:filters>
+					</mx:Label>
+				</mx:VBox>
+	
+			</mx:HBox>-->
+		</mx:VBox>
+
+	</mx:Canvas>
+		<!--<mx:Canvas borderStyle="solid" borderColor="#666666" cornerRadius="20" backgroundColor="#FFFFFF" borderThickness="1" alpha="0.8" left="410" right="100" top="100" bottom="100">
+				<mx:Text text="Have a lead you can't accomodate?  Refer it to other hotels to earn big Cash Bonuses!" left="20" right="20" top="20" bottom="20" fontSize="14" color="#777777" fontFamily="Verdana"/>
+		</mx:Canvas>-->
+
+
+</GradientCanvas>

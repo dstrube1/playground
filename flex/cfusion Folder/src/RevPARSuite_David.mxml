@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+	backgroundGradientAlphas="[1.0, 1.0]" 
+	backgroundGradientColors="[#FFFFFF, #999999]"
+	xmlns:ext="nl.wv.extenders.panel.*"
+	applicationComplete="init()"
+	xmlns:view="leadgine.components.view.*" xmlns:components="leadgine.components.*">
+	<!--
+	commented out for David's build:
+	applicationComplete="displayLogin()"
+	-->
+
+<mx:Style source="css/aeon/AeonGraphical.css" />
+
+<mx:Script>
+<![CDATA[
+	import mx.containers.Panel;
+	import leadgine.events.TabEvent;
+
+	
+	///////////////////////////////////////////////////////////////////////////////////// BEGIN cube transition 
+	import mx.containers.TitleWindow;
+	import org.papervision3d.view.Viewport3D;
+	import mx.graphics.ImageSnapshot;
+	import org.papervision3d.materials.BitmapMaterial;
+	import org.papervision3d.materials.utils.MaterialsList;
+	import org.papervision3d.objects.primitives.Cube;
+	import caurina.transitions.Tweener;
+	import org.papervision3d.scenes.Scene3D;
+	import mx.core.UIComponent;
+	import org.papervision3d.cameras.Camera3D;
+	import org.papervision3d.render.BasicRenderEngine;
+	import leadgine.components.view.sides.*;
+	import leadgine.components.*;
+
+	[Bindable]
+	public var myFullServiceReferral:FullServiceReferral = new FullServiceReferral();
+	
+	[Bindable] private var dialogIndex:uint;
+	
+	private var dialogs:Array = [
+		ContactInfo,
+		RoomBlockInfoUnlimited,
+		FunctionType,
+		PropertySelection,
+		AdditionalInfo,
+		ReferralSummary
+	];
+	private var popups:Array;
+	private var viewport:Viewport3D;
+	private var scene:Scene3D;
+	private var camera:Camera3D;
+	private var renderer:BasicRenderEngine;
+
+	private const ANIMATION_TIME:Number = 1;
+	private const ANIMATION_TRANSITION:String = "easeInOutQuad";
+	[Bindable] private var SUPER_PANEL_HEIGHT:uint;
+	[Bindable] private var SUPER_PANEL_WIDTH:uint;
+	[Bindable] private var SUPER_PANEL_ROW1_Y:uint;
+	[Bindable] private var SUPER_PANEL_ROW2_Y:uint;
+	[Bindable] private var SUPER_PANEL_COL1_X:uint;
+	[Bindable] private var SUPER_PANEL_COL2_X:uint;
+	[Bindable] private var SUPER_PANEL_COL3_X:uint;
+	
+	private function init():void{
+		initDimensions();
+		initTransitions();
+		//addEventListener(TabEvent.TAB_MOUSE_ACTIVITY, tabEventMouseHandler);
+	}
+	private function initTransitions():void {
+		popups = new Array();
+		dialogIndex = 0;
+		setup3D();
+		stage.addEventListener(Event.ENTER_FRAME, loop);
+	}
+	private function setup3D():void{
+		scene = new Scene3D();				
+		viewport = new Viewport3D(1, 1, true);
+		
+		var nestedView:UIComponent = new UIComponent();
+		nestedView.addChild(viewport);
+		this.addChild(nestedView);
+		
+		camera = new Camera3D();
+		camera.z = -800;
+		//originally -550; works with this value in original example code, not here
+		
+		renderer = new BasicRenderEngine();
+	}
+	private function loop(evt:Event):void{
+		renderer.renderScene(scene, camera, viewport);
+	}
+	
+	public function showReferralDialog(setIndex:Boolean = false, index:uint=0):void{
+		if (setIndex){
+			dialogIndex = index;
+		}
+		var dialogClass:Class = dialogs[dialogIndex];
+		var popup:TitleWindow = PopUpManager.createPopUp(this, dialogClass) as TitleWindow;
+		//var popup:SuperPanel = PopUpManager.createPopUp(this, dialogClass) as SuperPanel;
+		
+		//handling position of popups in the popups
+		//PopUpManager.centerPopUp(popup);
+		
+		popups.push(popup);
+	}
+	private function hideReferralDialog():void{
+		PopUpManager.removePopUp(popups[popups.length - 1]);
+		
+		popups.pop();
+	}
+	private function removeCube(cube:Cube):void{
+		scene.removeChild(cube);
+		showReferralDialog();
+	}
+
+
+	public function toggleDialog(direction:int):void{
+		var windowCurrent:TitleWindow = popups[0];
+		//var windowCurrent:SuperPanel = popups[0];
+		
+		viewport.x = windowCurrent.x - stage.stageWidth / 2 + windowCurrent.width / 2;
+		viewport.y = windowCurrent.y - stage.stageHeight / 2 + windowCurrent.height / 2;
+				
+		var bitmapCurrent:BitmapData = ImageSnapshot.captureBitmapData(windowCurrent);
+		
+		dialogIndex += direction;
+		showReferralDialog();
+		
+		(popups[1] as TitleWindow).validateNow();
+		//(popups[1] as SuperPanel).validateNow();
+		
+		var bitmapNew:BitmapData = ImageSnapshot.captureBitmapData(popups[1]);
+		
+		hideReferralDialog();
+		
+		
+		var materialCurrent:BitmapMaterial = new BitmapMaterial(bitmapCurrent);
+		var materialNew:BitmapMaterial = new BitmapMaterial(bitmapNew);
+		
+		var materialAssignment:Object = {
+			back: materialCurrent
+		};
+		
+		switch(direction){
+			case 1:
+				materialAssignment.right = materialNew;
+				break;
+			case -1:
+				materialAssignment.left = materialNew;
+				break;
+		}
+		
+		var cubeMaterials:MaterialsList = new MaterialsList(materialAssignment);
+		var cube:Cube = new Cube(cubeMaterials, windowCurrent.width, windowCurrent.width, 
+								windowCurrent.height, 10, 10, 10, Cube.NONE, Cube.NONE);
+		
+		scene.addChild(cube);
+		
+		hideReferralDialog();
+		
+		Tweener.addTween(cube, {
+				rotationY: direction == 1 ? 90 : -90,
+				time: ANIMATION_TIME,
+				transition: ANIMATION_TRANSITION,
+				onComplete: removeCube,
+				onCompleteParams: [cube]
+			}
+		);
+	}
+	public function resetDialogs():void{
+		popups = new Array();
+		dialogIndex = 0;
+		pnl1.pnl1Button.enabled=true;
+	}
+
+	///////////////////////////////////////////////////////////////////////////////////// END  cube transition 
+
+	import mx.events.ItemClickEvent;
+	import com.login.login
+	import leadgine.components.dto.FullServiceReferral;
+	import mx.styles.StyleManager;
+	import mx.controls.Menu;
+	import mx.core.IUIComponent;
+	import mx.events.MenuEvent;
+	
+	public var adminRole:String = "";
+	
+	
+	
+//////////////////////////////////////////////////////////////  SET TO "" FOR PRODUCTION   //////////////////////////////////////////////	
+	public var userID:String = "2"; 
+//////////////////////////////////////////////////////////////  SET TO "" FOR PRODUCTION   //////////////////////////////////////////////	
+
+
+
+////////////////////////////////////////////////////////////// REMOVE FOR PRODUCTION!!!! ////////////////////////////////////////////////
+	public var hotelname:String = "CP - Atlanta Ravinia, Atlanta, GA";
+	public var hotel:String = "1";
+	public var clientID:String = "1";
+	public var clientName:String = "Pineapple Hospitality Group, LLC";
+	public var userfirst:String = "Curtis";
+	public var role:String = "ADMIN";
+	public var email:String = "cfoster@nestedtechnologies.com";
+	public var admin:String;
+	public var lastlogin:String = "September 1, 2009";
+	public var referralID:String = "1";
+////////////////////////////////////////////////////////////// REMOVE FOR PRODUCTION!!!! ////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
+	//public var scheduler:SchedulerContent;
+	
+	//commented out for David's build; is this necessary?:
+    //import com.adobe.leadgine.action.ART; 
+	import mx.collections.ArrayCollection;
+	import mx.controls.Alert;
+	import mx.managers.PopUpManager;
+	//import leadgine.components.frmReferral;
+	//import leadgine.components.frmMyReferrals;
+
+	[Embed(source="images/revpar_suite2.png")]
+    [Bindable]
+    public var imgCls:Class;
+   
+	private function initDimensions():void{
+		//too small
+		SUPER_PANEL_HEIGHT = (leadgineCanvas.height / 2)-6;
+		SUPER_PANEL_WIDTH = (leadgineCanvas.width / 3)-6;
+		SUPER_PANEL_ROW1_Y = 0;
+		SUPER_PANEL_ROW2_Y = (SUPER_PANEL_HEIGHT) + 10;
+		SUPER_PANEL_COL1_X = 0;
+		SUPER_PANEL_COL2_X = SUPER_PANEL_WIDTH + 10;
+		SUPER_PANEL_COL3_X = (SUPER_PANEL_WIDTH * 2) +20;
+		validatePanels();
+	}
+	private function validatePanels():void{
+		//none of the validate functions for each panel worked
+		if (pnl1 != null){
+			pnl1.positionChildren();
+			pnl2.positionChildren();
+			pnl3.positionChildren();
+			pnl4.positionChildren();
+			pnl5.positionChildren();
+			pnl6.positionChildren();
+		}
+	}
+
+    [Bindable]
+     public var expenses:ArrayCollection = new ArrayCollection([
+        {Month:"Jan", Profit:2000, Expenses:1500, Amount:450},
+        {Month:"Feb", Profit:1000, Expenses:200, Amount:600},
+        {Month:"Mar", Profit:1500, Expenses:500, Amount:300}
+     ]);
+
+        public function itemClickHandler(event:MenuEvent):void {
+            event.currentTarget.label= "leadgine section: " + event.label;
+            if (event.label == "send referrals")
+            {
+            	 launchRefer();
+            }
+            else if (event.label == "my referrals")
+            {
+            	 launchMyReferrals();
+            }
+            else
+            {
+            	Alert.show(event.label as String);
+            }
+        }
+        
+		[Bindable] 
+        public var menuData:Array = [
+            {label: "how it works", data: "how"},
+            {label: "top referrers", data: "top"}, 
+            {label: "send referrals", data: "send"},
+            {label: "get referrals", data: "get"},
+            {label: "my referrals", data: "referrals"},
+            {label: "my commissions", data: "commissions"},
+            {label: "hotels", data: "hotels"}
+        ];
+
+	
+	private function displayLogin():void {
+		var loginTW:login = login(PopUpManager.createPopUp(this, login, true));
+	}
+	
+
+	public function applyRuntimeStyleSheet():void {
+        StyleManager.loadStyleDeclarations("css/rprdash_styles.swf")
+    }
+
+	
+	private function launchRefer():void {
+		//var leadgineApp:frmReferral = frmReferral(PopUpManager.createPopUp(this, frmReferral, true));
+		//PopUpManager.createPopUp(this, frmReferral, true);
+		showReferralDialog();
+	}
+	
+	private function launchMyReferrals():void {
+		//var leadgineMyReferrals:frmMyReferrals = frmMyReferrals(PopUpManager.createPopUp(this, frmMyReferrals, true));
+	}
+
+
+	private function myReferralsButtonBarClick(event:ItemClickEvent):void{
+		var action:String = event.label;
+		var dialogs:Array = [
+			help,
+			myAccount
+		];
+		var dialogClass:Class;
+		if (action == "my account"){
+			dialogClass = dialogs[1];
+		}else if (action == "admin"){
+			
+		}else if (action == "help"){
+			//dialogClass = dialogs[0];
+			//this is a little more complicated:
+			handleHelpClick();
+		}else{
+			//logout
+		}
+		var popup:TitleWindow = PopUpManager.createPopUp(this, dialogClass) as TitleWindow;
+		
+	}
+	public var ticket1:TitleWindow = new TitleWindow();
+	public var help1:TitleWindow = new TitleWindow();
+	private function handleHelpClick():void{
+		var dialogClass:Class = ticket;
+		ticket1 = PopUpManager.createPopUp(this, dialogClass) as TitleWindow;
+		dialogClass = help;
+		help1 = PopUpManager.createPopUp(this, dialogClass) as TitleWindow;
+		
+	}
+    
+    [Bindable]private var myGridData:ArrayCollection = new ArrayCollection();
+    /**
+     * @private
+     * This Is a Dummy Variaiable, You MUST Include it otherwise Flex
+     *Will not Compile the Class and You will get an Error of
+     * [RPC Fault faultString="Error during update: The OLDBEAN argument passed to the update 
+     * function is not of type foo." faultCode="null" faultDetail="null"]
+     */             
+    
+	//not used:
+	private function createAndSendNewReferral():void{
+		pnl1.removeAllChildren();
+		pnl1.normalMaxClickHandler(null);
+		var contactInfo:ContactInfo = new ContactInfo();
+		pnl1.addChild(contactInfo);
+	}
+	/*
+	[Bindable]
+	[Embed(source="assets/img/tab_home_on.gif")]
+	private var homeOn:Class;
+	[Bindable]
+	[Embed(source="assets/img/tab_home.gif")]
+	private var home:Class;
+	
+	tab_leadgine.gif
+	tab_cater_pacer.gif
+	tab_marketeer.gif
+	tab_top_accounts.gif
+	*/
+	/*
+	private function tabEventMouseHandler(event:TabEvent):void{
+		var mouseEvent:MouseEvent = event.event as MouseEvent;
+		var mouseEventType:String = mouseEvent.type;
+		var meLabel:String = Button(mouseEvent.target).label;
+	}
+	private function test1(event:Event):void{
+		var canvas:Canvas = event.target as Canvas;
+		canvas.icon = homeOn;
+	}
+	private function test2(event:Event):void{
+		var canvas:Canvas = event.target as Canvas;
+		canvas.icon = home;
+	}
+	*/
+]]>
+</mx:Script>
+	
+    <!--<mx:DataService id="myDataService" destination="cfartgalleryDS" autoCommit="true" />-->
+	
+	<mx:ApplicationControlBar height="101" fillAlphas="[1.0, 1.0]" fillColors="[#CCCCCC, #FFFFFF]" right="10" left="10" top="5" dock="false">
+		<mx:Canvas width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off" >
+			<mx:Image source="{imgCls}" x="0" y="-1"/>
+			<mx:VBox height="100%" right="0" top="0" horizontalAlign="right">
+				<mx:ButtonBar id="myReferralsButtonBar"
+					buttonHeight="32" itemClick="myReferralsButtonBarClick(event)">
+					<mx:dataProvider>
+		                <mx:Array>
+		                    <mx:String>my account</mx:String>
+		                    <mx:String>admin</mx:String>
+		                    <mx:String>help</mx:String>
+		                    <mx:String>logout</mx:String>
+		                </mx:Array>
+		            </mx:dataProvider>
+		        </mx:ButtonBar>
+			
+			
+			
+				<!--<mx:MenuBar id="myMenuBar" labelField="@label" cornerRadius="3">
+				       <mx:XMLList>
+				           <menuitem label="my account">
+				               <menuitem label="SubMenuItem A-1" enabled="false"/>
+				               <menuitem label="SubMenuItem A-2"/>
+				           </menuitem>
+				           <menuitem label="|" enabled="false"/>
+				           <menuitem label="manage users"/>
+				           <menuitem label="|" enabled="false"/>
+				           <menuitem label="help">
+				               <menuitem label="email" 
+				                   type="radio" groupName="one"/>
+				               <menuitem label="phone: 1-800-555-8757" 
+				                   type="radio" groupName="one" enabled="false"/>
+				               <menuitem label="online" 
+				                   type="radio" groupName="one"
+				                   selected="true"/>
+				           </menuitem>
+				           <menuitem label="|" enabled="false"/>
+				           <menuitem label="logout"/>
+				       </mx:XMLList>
+				   </mx:MenuBar>-->
+				<mx:Spacer height="15" width="15"/>
+				<mx:Label id="lblWelcome"/>
+				<mx:Label id="lblLastLogin"/>
+			</mx:VBox>
+
+		</mx:Canvas>
+	</mx:ApplicationControlBar>
+	<components:ExtendedTabNavigator fontSize="14" paddingLeft="10" paddingBottom="10" paddingRight="10" cornerRadius="10" 
+		id="tabNavigator" 
+		right="10" left="10" top="115" bottom="20" backgroundColor="#DDEED5" backgroundAlpha="0.39">
+		<!--<mx:Canvas width="100%" height="100%" label="home" cornerRadius="7">
+		</mx:Canvas>-->
+		
+		<mx:Canvas label="leadgine" width="100%" height="100%" cornerRadius="10" id="leadgineCanvas"
+			resize="initDimensions()">
+
+			<view:newReferralPanel id="pnl1" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10"
+				x="{SUPER_PANEL_COL1_X}" y="{SUPER_PANEL_ROW1_Y}" width="{SUPER_PANEL_WIDTH}" height="{SUPER_PANEL_HEIGHT}" 
+				layout="absolute" showControls="true" enableResize="true" 
+				title="new referral" 
+				horizontalScrollPolicy="off" verticalScrollPolicy="off" styleName="rprPanel" />
+			
+			<view:myReferralsPanel id="pnl2" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10"
+				x="{SUPER_PANEL_COL2_X}" y="{SUPER_PANEL_ROW1_Y}" width="{SUPER_PANEL_WIDTH}" height="{SUPER_PANEL_HEIGHT}" 
+				layout="absolute" showControls="true" enableResize="true" 
+				title="my referrals" 
+				horizontalScrollPolicy="off" verticalScrollPolicy="off" styleName="rprPanel" />
+			<view:hotelReferralsPanel id="pnl3" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10"
+				x="{SUPER_PANEL_COL3_X}" y="{SUPER_PANEL_ROW1_Y}" width="{SUPER_PANEL_WIDTH}" height="{SUPER_PANEL_HEIGHT}" 
+				layout="absolute" showControls="true" enableResize="true" 
+				title="hotel referrals" 
+				horizontalScrollPolicy="off" verticalScrollPolicy="off" styleName="rprPanel"/>
+			
+			<view:searchReferralsPanel id="pnl4" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10"
+				x="{SUPER_PANEL_COL1_X}" y="{SUPER_PANEL_ROW2_Y}" width="{SUPER_PANEL_WIDTH}" height="{SUPER_PANEL_HEIGHT}" 
+				layout="absolute" showControls="true" enableResize="true" 
+				title="search" 
+				horizontalScrollPolicy="off" verticalScrollPolicy="off" styleName="rprPanel"/>
+			<view:myStatsPanel id="pnl5" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10"
+				x="{SUPER_PANEL_COL2_X}" y="{SUPER_PANEL_ROW2_Y}" width="{SUPER_PANEL_WIDTH}" height="{SUPER_PANEL_HEIGHT}" 
+				layout="absolute" showControls="true" enableResize="true" 
+				title="my stats" 
+				horizontalScrollPolicy="off" verticalScrollPolicy="off" styleName="rprPanel"/>
+			<view:ourHotelsPanel id="pnl6" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10"
+				x="{SUPER_PANEL_COL3_X}" y="{SUPER_PANEL_ROW2_Y}" width="{SUPER_PANEL_WIDTH}" height="{SUPER_PANEL_HEIGHT}" 
+				layout="absolute" showControls="true" enableResize="true" 
+				title="our hotels" 
+				horizontalScrollPolicy="off" verticalScrollPolicy="off" styleName="rprPanel"/>
+		</mx:Canvas>
+		<mx:HBox label="sales bonuses" width="100%" height="100%" cornerRadius="7">
+		</mx:HBox>
+		<mx:HBox label="group pace" width="100%" height="100%" cornerRadius="7">
+		</mx:HBox>
+		<mx:HBox label="catering pace" width="100%" height="100%" cornerRadius="7">
+		</mx:HBox>
+		<mx:HBox label="marketing plan" width="100%" height="100%" cornerRadius="7">
+		</mx:HBox>
+		<mx:HBox label="action plans" width="100%" height="100%" cornerRadius="7">
+		</mx:HBox>
+		<mx:HBox label="top accounts" width="100%" height="100%" cornerRadius="7">
+		</mx:HBox>
+	</components:ExtendedTabNavigator>
+	<mx:Style source="css/rprdash_styles.css"/>
+
+	
+</mx:Application>

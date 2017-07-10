@@ -1,0 +1,57 @@
+package app.server.mock.impl
+{
+	import base.services.Content;
+	import base.services.mock.MockService;
+	import base.services.MapArray;
+	import base.services.ValueType;
+	import base.services.CommonKeys;
+	import mx.controls.Alert;
+
+	public class MockGetStudyOverviewService extends BaseMockService implements MockService
+	{
+		private var _studyName:String;
+		private var _siteDb:String;
+		private var _stateGraphUrl:String;
+		private var _budgetGraphUrl:String;
+		private var _notificationXML:String;
+		
+		public function call(content:Content, failureHandler:Function, resultHandler:Function):void
+		{
+			
+			var control:MapArray = new MapArray();
+			var data:MapArray = new MapArray();
+			var responseCode:int = 200;
+			data.add("study.name", ValueType.STRING, _studyName);
+			data.add("panel", ValueType.STRING, "Main");
+			data.add("patient.db", ValueType.XML, _siteDb);
+			data.add("geographic.map.url", ValueType.URL, _stateGraphUrl);
+			data.add("budget.graph.url", ValueType.URL, _budgetGraphUrl);
+			control.add(CommonKeys.NOTIFY_XML_DB, ValueType.XML, _notificationXML);
+			
+			respond( responseCode, control, data, resultHandler);
+
+		}
+		
+		public function setStudyName( s:String):void {
+			_studyName = s;
+		}
+		
+		public function setSiteDb( s:String):void {
+			_siteDb = s;
+		}
+		
+		public function setStateGraphUrl( u:String):void {
+			_stateGraphUrl = u;
+		}
+		
+		public function setBudgetGraphUrl( u:String):void {
+			_budgetGraphUrl = u;
+		}
+		
+		public function setNotificationXML( xml:String ):void {
+			_notificationXML = xml;
+		}
+
+		
+	}
+}

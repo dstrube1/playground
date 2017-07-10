@@ -1,0 +1,88 @@
+package base.services
+{
+	
+	
+	/**
+	 * @deprecated - use ContentChain and ResponseChain 
+	 */ 
+	public class FilterChain
+	{
+		private var nextFilter:FilterChain = null;
+		private var nextFunction:Function = null;
+
+		
+		public function FilterChain( next:* ):void {
+			
+
+			if (next is FilterChain) {
+				
+				nextFilter = next;
+				
+			} else if (next is Function) {
+				
+				nextFunction = next;
+			}
+
+			
+		}
+		
+		
+		public function processContent( c:Content):void {
+			
+			// Your logic goes here.
+
+			nextContent(c);
+			
+			
+		}
+		
+		
+		public function processResponse( r:Response):void {
+			
+			// your logic goes here
+			
+			nextResponse(r);
+			
+		}
+		
+		
+		private function nextContent( c:Content):void {
+			
+			
+			
+			
+			if (nextFilter != null) {
+				
+				nextFilter.processContent(c);
+				
+			} else if nextFunction != null) {
+				
+				nextFunction(c);
+				
+			} else {
+				//logger.error("No next filter or function defined in filter chain.  Last is: "+this.toString());
+			}	
+
+			
+		}
+		
+		
+		private function nextResponse( r:Response):void {
+			
+			
+			if (nextFilter != null) {
+				
+				nextFilter.processResponse(r);
+				
+			} else if (nextFunction != null) {
+
+				nextFunction(r);				
+			} else {
+				logger.error("No next filter or function defined in filter chain.  Last is: "+this.toString());
+			}
+			
+		}
+		
+		
+	}
+}

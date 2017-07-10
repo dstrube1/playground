@@ -1,0 +1,26 @@
+package app.server.calls
+{
+	import base.services.calls.ServiceCall;
+	import base.services.Content;
+	import app.server.LenzServer;
+	import base.services.LenzServiceHelper;
+	import base.services.ValueType;
+	import base.services.CommonKeys;
+
+	public class GetStudyOverviewCall implements ServiceCall
+	{
+		public function call(name:String, params:Object):void
+		{
+
+			var content:Content = LenzServiceHelper.createResourceCall("getStudyOverview");
+			
+			if (params != null) {			
+				content.DataMap.add(CommonKeys.STUDY_ID_KEY, ValueType.STRING, params["studyId"]);
+			}
+			
+			LenzServer.getSvc( content, params["failure"], params["result"]);											
+
+		}
+		
+	}
+}

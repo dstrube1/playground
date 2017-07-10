@@ -1,0 +1,101 @@
+package base.renderer
+{
+    
+    import flash.display.*;
+    import flash.geom.*;
+    import flash.utils.*;
+    
+    import mx.core.EdgeMetrics;
+    import mx.skins.halo.HaloBorder;
+    import mx.utils.ColorUtil;
+    import mx.utils.GraphicsUtil;
+    
+    public class HfGradientBorder extends HaloBorder 
+    {
+        
+        private var topCornerRadius:Number;        // top corner radius
+        private var bottomCornerRadius:Number;    // bottom corner radius
+        private var fillColors:Array;            // fill colors (two)
+        private var defaultFillColors:Array;            // fill colors (two)
+        private var setup:Boolean;
+        private var offset:int = 2;
+        private var headerHeight:Number = 2;
+        private var footerHeight:Number = 2;
+        
+        // ------------------------------------------------------------------------------------- //
+        
+        private function setupStyles():void
+        {
+            fillColors = getStyle("fillColors") as Array;
+            defaultFillColors = [getStyle("backgroundColor"), getStyle("backgroundColor")];
+            if (!fillColors) fillColors = defaultFillColors;
+            
+            topCornerRadius = getStyle("cornerRadius") as Number;
+            if (!topCornerRadius) topCornerRadius = 0;    
+            
+            bottomCornerRadius = getStyle("bottomCornerRadius") as Number;
+            if (!bottomCornerRadius) bottomCornerRadius = topCornerRadius;
+                
+            headerHeight = getStyle("headerHeight") as Number;
+            if (!headerHeight) headerHeight = topCornerRadius;
+            
+            footerHeight = getStyle("footerHeight") as Number;
+            if (!footerHeight) footerHeight = topCornerRadius;
+             
+        
+        }
+        
+        // ------------------------------------------------------------------------------------- //
+        
+        override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+        {
+            super.updateDisplayList(unscaledWidth, unscaledHeight);    
+            
+            setupStyles();
+            
+            var g:Graphics = graphics;
+            var b:EdgeMetrics = borderMetrics;
+            var w:Number = unscaledWidth - b.left - b.right;
+            var h:Number = unscaledHeight - b.top - b.bottom;
+            var m:Matrix = verticalGradientMatrix(0, 0, w, h);
+           
+        
+            g.beginGradientFill("linear", fillColors, [1, 1], [0, 255], m);
+            
+            var tr:Number = Math.max(topCornerRadius-2, 0);
+            var br:Number = Math.max(bottomCornerRadius-2, 0);
+            
+            GraphicsUtil.drawRoundRectComplex(g, b.left, b.top, w, h, tr, tr, br, br);
+            
+            g.endFill();
+            
+            var m2:Matrix = verticalGradientMatrix((offset/2), (offset/2), w-offset,h-offset);
+            g.beginGradientFill("linear", defaultFillColors, [1, 1], [0, 255], m2);
+            GraphicsUtil.drawRoundRectComplex(g, b.left+(offset/2), b.top+(offset/2), w-offset, h-offset, tr, tr, br, br);
+         	g.endFill();
+         	
+         
+            g.beginFill(getStyle("headerColor"),1.0);
+            GraphicsUtil.drawRoundRectComplex(g, b.left+(offset/2), b.top+(offset/2), w-(offset), headerHeight, tr, tr, 0, 0);
+             g.endFill();
+             
+             
+           
+          	g.beginFill(getStyle("footerColor"),1.0);
+            GraphicsUtil.drawRoundRectComplex(g, b.left+(offset/2), ((h-footerHeight)-b.top)+(offset/2), w-(offset), footerHeight, 0, 0, br, br);
+           
+            g.endFill();
+           
+            
+            g.lineStyle(1,0x4B4B4B,100)
+           	// g.beginFill(0x717171,1.0);
+            g.moveTo(0,b.top+(offset/2) + headerHeight);
+            g.lineTo(0,b.top+(offset/2) + headerHeight);
+            g.lineTo(b.left+(offset/2)+w-(offset/2),b.top+(offset/2) + headerHeight);
+           
+            // g.endFill();
+                
+        }
+        
+    }
+}

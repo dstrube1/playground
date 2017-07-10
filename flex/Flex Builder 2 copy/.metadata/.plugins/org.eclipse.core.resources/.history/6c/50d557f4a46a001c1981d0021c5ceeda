@@ -1,0 +1,39 @@
+package app
+{
+	import base.Context;
+	import app.config.AppContext;
+	import app.config.DefaultBladeItems;
+	
+	public class App
+	{
+		public static const INTRO:String = "IntroLenz";
+		public static const WELCOME:String = "WelcomeLenz";
+		public static const MY_PHARMALENZ:String = "MyPharmaLenz";
+		public static const SITE_SELECT:String = "SiteSelect";
+		public static const STUDY_MANAGER:String = "StudyManager";
+		public static const MONITOR:String = "Monitor";
+		public static const INVESTIGATOR:String = "Investigator";
+		public static const MONITORB:String = "MonitorB";
+		//public static const COUNTRY_ALLOCATION:String = "CountryAllocation";
+		
+		public static const LENZ_PANEL_WIDTH:int = 850;
+		public static const LENZ_PANEL_HEIGHT:int = 600;
+		
+		public static const LENZ_PANEL_CONTENT_HEIGHT:int = 480;
+		
+		
+		public static var globalContext:AppContext = new AppContext();
+		
+		
+		
+		public static const DEFAULT_WAIT_TIMEOUT:int = 30;  // seconds
+		
+		
+		public static function getContext():AppContext {
+			return(globalContext);
+		}
+		
+		
+		
+	}
+}

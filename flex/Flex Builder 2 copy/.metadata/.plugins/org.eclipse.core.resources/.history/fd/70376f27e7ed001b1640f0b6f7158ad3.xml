@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="740" height="450"
+	implements="base.form.LenzForm" 
+	xmlns:panel="lenz.main.study_mgr.panel.*"
+	xmlns:notification="base.notification.*" 			
+	styleName="studyManagerMainForm" 
+	horizontalCenter="0" 
+	creationComplete="onCreateComplete()">
+	 
+	<mx:Script>
+		<![CDATA[
+			import base.event.SelectLenzEvent;
+			import lenz.main.study_mgr.StudyManagerLenz;
+			import base.db.MemDB;
+			import base.db.MemDbHelper;
+			import mx.collections.ArrayCollection;
+			import base.log.Logger;
+			import base.services.MapArray;
+			import base.lenz.funnel.PatientFunnel;
+			import lenz.main.study_mgr.controller.StudyClickManager;
+			import mx.controls.Alert;
+			import base.lenz.panel.LenzPanel;
+			import base.notification.ProblemResolutionViewModel;
+			import base.util.ModalWait;
+			
+			import app.server.LenzServer;
+			import app.App;
+			
+			import mx.containers.TitleWindow;
+            import mx.managers.PopUpManager;
+            import mx.controls.Button;
+            import mx.controls.Label;
+            import mx.controls.TextInput;
+            import mx.core.IFlexDisplayObject;
+			
+			private var logger:Logger = Logger.getLogger("StudyManagerPRForm2");
+			
+			private var _parent:LenzPanel = null;
+			
+			[Bindable]
+			private var sName:String = "";
+			[Bindable] 
+			private var model:ProblemResolutionViewModel = new ProblemResolutionViewModel();			
+			[Bindable]
+			private var currForecast:Array = new Array("Current Forecast");
+			
+			[Bindable]
+			private var currentGraphUrl:String;
+			
+			public var myTitleWindow:TitleWindow = new TitleWindow();
+			
+			private var patientFunnel:PatientFunnel = new PatientFunnel();
+			
+
+			private function onCreateComplete():void {
+				logger.debug("StudyManagerPRForm2: onCreateComplete");
+				model = LenzServer.planData;
+				addPatientFunnel(this.funnelImg, null);	
+								
+				/* planNames = new Array(model.plans.length + 1);
+				for (var i=0; i < model.plans.length; i++) {
+					planNames[i] = model.plans[i].description.toString();
+					
+				}
+				planNames[planNames.length-1] = "Current Forecast"; */
+			}
+			
+			public function addPatientFunnel(can:Canvas, funnelStr:Object):void {
+				//can.removeAllChildren() also does the same thing.
+				for(var itr:int = 0; itr < can.getChildren().length; itr++) {
+					can.removeChildAt(itr);
+				}
+				var funnel:DisplayObject =  can.addChild(patientFunnel);
+				
+			}
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+				//lenz2Fade.play();
+			}
+			
+			public function initializeForm():void {
+				logger.debug("initializeForm on StudyManagerPRForm2");
+				nv.setClickHandler(_parent.getParent().getNotificationClickHandler());
+				onCreateComplete();
+			}
+						
+			public function populateResources(data:Object):void {
+				sName = (data as MapArray).getValue("study.name") as String;
+				
+				var url1:String = (data as MapArray).getValue("forecast.graph.url.current") as String;
+				currentGraphUrl = url1;
+								
+				var url2:String = (data as MapArray).getValue("forecast.graph.url.2") as String;
+				var graphUrl2:String = "resources/swf/RoundMovie.swf?movieName="+url2;
+				
+				displayedGraph.load(url1);
+				backgroundGraph.load(graphUrl2);
+				
+				var o:Object = LenzServer.patientXml;
+				var funnelXml:XML = new XML(o);
+				var db:MemDB = MemDbHelper.convert(funnelXml, MemDbHelper.FUNNEL);				
+				patientFunnel.refreshFunnel(db);
+				addPatientFunnel(this.funnelImg, null);
+				
+				this.acceptPlan.enabled = false;
+				//this.currF.selectedIndex = 1;
+			}
+			
+			public function showResults(resolutionId:String):void {
+				
+				var clickMgr:StudyClickManager = new StudyClickManager();
+	 			clickMgr.processAction( {"currentLenzId":_parent.getParent().getLenzId(), "actionName":"displayPRView", "actionParams":{targetId:"results"}} );
+			}
+			
+			public function showResolutions(alarmId:String):void {
+				var clickMgr:StudyClickManager = new StudyClickManager();
+	 			clickMgr.processAction( {"currentLenzId":_parent.getParent().getLenzId(), "actionName":"displayPRView", "actionParams":{targetId:"resolutions"}} );
+			}
+			
+			public function displayForecast(ev:Event):void {
+				var data:Object = ev.currentTarget.selectedItem;
+				var url:String = "";
+				
+				for (var i:int = 0; i < model.plans.length; i++) {
+					if (model.plans[i].id[0] == data.id[0]) {
+						var key:String = "forecast.graph.url." + data.id[0];
+						url = model.graphUrls.getValue(key) as String;
+					}
+				}
+				
+				if (displayedGraph.alpha == 1.0) {
+					backgroundGraph.source = url;
+				} else {
+					displayedGraph.source = url;
+				}
+				
+				if (displayedGraph.alpha == 1.0) {
+					changeGraph.play();
+				} else {
+					changeAltGraph.play();					
+				}
+				
+				if (data.description[0] == "Add more monitors") {
+					this.acceptPlan.enabled = true;
+				} else {
+					this.acceptPlan.enabled = false;
+				}
+				this.currF.selectedItem = null;
+			}
+			
+			private function displayCurrentForecast():void {
+				if (displayedGraph.alpha == 1.0) {
+					//backgroundGraph.source = "resources/swf/CurrentForecast.swf";
+					backgroundGraph.source = currentGraphUrl;
+				} else {
+					//displayedGraph.source = "resources/swf/CurrentForecast.swf";
+					displayedGraph.source = currentGraphUrl;
+				}
+				
+				if (displayedGraph.alpha == 1.0) {
+					changeGraph.play();
+				} else {
+					changeAltGraph.play();					
+				}
+				this.planList.selectedItem = null;
+				this.acceptPlan.enabled = false;
+				
+			}
+			
+			public function goBack():void {
+				(this._parent.getParent() as StudyManagerLenz).changePanel(LenzServer.data);
+			}
+			
+			public function onAcceptPlan():void {
+				myTitleWindow = new TitleWindow();
+                myTitleWindow.title = "Plan Parameters";
+                myTitleWindow.width= 220;
+                myTitleWindow.height= 150;
+                myTitleWindow.move(300, 300);
+                populateWindow();
+                PopUpManager.addPopUp(myTitleWindow, this, true);
+			}
+			
+			public function populateWindow():void {
+				var lab:Label = new Label();
+				lab.text = "Number of Monitors to Add";
+				myTitleWindow.addChild(lab);
+				
+				var textInput:TextInput = new TextInput();
+				textInput.text = "3";
+				myTitleWindow.addChild(textInput);
+				
+                var btn1:Button = new Button();
+                btn1.label="Submit";
+                btn1.addEventListener(MouseEvent.CLICK, closeTitleWindow);
+                myTitleWindow.addChild(btn1);   
+            }
+            
+            public function closeTitleWindow(event:MouseEvent):void {
+                PopUpManager.removePopUp(event.currentTarget.parent);
+                var ev:Event = new SelectLenzEvent(StudyManagerLenz.LENZ_ID);
+				ModalWait.start();
+				this.dispatchEvent(ev);
+            }
+			
+			private function createPlanLabel( o:Object ):String {
+				
+				return o.description;
+			}
+			
+		]]>
+	</mx:Script>
+
+
+	<mx:Label x="0" y="5" color="#000000" id="studyName" maxHeight="30" text="{sName}" fontThickness="200" fontSize="18" click="Alert.show('List of open studies here')" />
+
+	<mx:Canvas x="10" y="45" id="main" 
+		height="390" width="470"
+		borderStyle="solid" borderColor="#5E5E5E" cornerRadius="8" 
+		backgroundColor="#595959" backgroundAlpha="0.3">
+		
+		<mx:SWFLoader id="displayedGraph" source="" scaleContent="true" x="8"
+	 					width="450" height="250" alpha="1.0" verticalAlign="middle" horizontalAlign="center"/>
+	 	<mx:SWFLoader id="backgroundGraph" source="" scaleContent="true" x="8"
+	 					width="450" height="250" alpha="0.0" verticalAlign="middle" horizontalAlign="center"/>
+	 	
+	 	<!--<mx:LinkBar 
+	 		y="340"
+	        horizontalAlign="center" 
+    	    borderStyle="none" 
+        	itemClick="displayForecast(event)" dataProvider="{planNames}" 
+        	labelField="createPlanLabel"> 
+		</mx:LinkBar> -->
+		
+		<mx:HorizontalList
+			id="planList"
+	 		y="265"
+	 		height="60"
+	 		columnCount="2"
+	 		columnWidth="175"
+			horizontalCenter="0"
+			backgroundAlpha="0.0"
+    	    borderStyle="none"
+        	itemClick="displayForecast(event)" 
+        	dataProvider="{model.plans}" 
+        	labelFunction="createPlanLabel"> 
+		</mx:HorizontalList>
+		
+		<mx:HorizontalList id="currF" 
+				y="300" horizontalCenter="0"
+				height="60"
+				columnCount="1"
+				columnWidth="150"
+				backgroundAlpha="0.0"
+				borderStyle="none"
+				dataProvider="{currForecast}"
+				itemClick="displayCurrentForecast()"
+				/>
+		
+		<mx:HBox  horizontalAlign="center" x="160" y="340">
+			<mx:Button id="back" label="Back" click="goBack()" />
+			<mx:Button id="acceptPlan" label="Accept Plan" click="onAcceptPlan()" />			
+		</mx:HBox>
+		
+	</mx:Canvas>
+
+
+	<notification:NotificationView x="490" y="35" id="nv" 
+		context="{App.getContext()}"    
+		notificationReport="{LenzServer.getNotificationReport()}" 
+		width="240" height="180" />
+	
+	<mx:Canvas x="500" y="228" id="funnelImg" 
+		backgroundAlpha="0.0" width="240" height="212" cornerRadius="0"/>
+	
+	
+	<mx:Parallel id="changeGraph">
+		<mx:Fade id="fadeIn" target="{backgroundGraph}" alphaFrom="0.0" alphaTo="1.0" duration="1000" />
+		<mx:Fade id="fadeOut" target="{displayedGraph}" alphaFrom="1.0" alphaTo="0.0" duration="1000" />
+	</mx:Parallel>
+	
+	<mx:Parallel id="changeAltGraph">
+		<mx:Fade id="fadeOut1" target="{backgroundGraph}" alphaFrom="1.0" alphaTo="0.0" duration="1000" />
+		<mx:Fade id="fadeIn1" target="{displayedGraph}" alphaFrom="0.0" alphaTo="1.0" duration="1000" />
+	</mx:Parallel>		
+	 
+</mx:Canvas>
+

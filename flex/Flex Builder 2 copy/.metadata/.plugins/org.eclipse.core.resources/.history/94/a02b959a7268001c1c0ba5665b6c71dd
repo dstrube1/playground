@@ -1,0 +1,16 @@
+package base.services
+{
+	import mx.rpc.soap.WebService;
+	import base.services.Content;
+	
+	public interface LenzService 
+	{
+		
+		
+		function getSvc( content:Content, faultListener:Function, resultListener:Function):void;
+
+		function postSvc( content:Content, faultListener:Function, resultListener:Function):void;		
+		
+		function setWebService( ws:WebService):void;
+	}
+}

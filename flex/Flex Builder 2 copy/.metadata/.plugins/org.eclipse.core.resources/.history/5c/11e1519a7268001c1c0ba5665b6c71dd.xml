@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	This Log Window component is based on and example by Jesse Warden
+-->
+<mx:TitleWindow 
+	xmlns:mx="http://www.adobe.com/2006/mxml"  
+	layout="absolute" 
+	width="800" 
+	height="400" 
+	
+	title="Log Window" creationComplete="init();" show="onShow()">
+	
+	<mx:Script>
+		<![CDATA[
+		
+			import flash.system.System;
+		
+			[Bindable]
+			private var currentMem:uint = 0;
+			[Bindable]
+			private var lastMem:uint = 0;
+			
+			public function init():void{
+				this.move(200,200);				
+			}
+		
+						
+			private function clear():void
+			{
+				debug_ta.text = "";
+			}
+			
+			public function getTextArea():TextArea {
+				return(debug_ta);
+			}
+			
+			//hack
+			public function triggerGC():void {
+				try {
+				   new LocalConnection().connect('foo');
+				   new LocalConnection().connect('foo');
+				} catch (e:*) {}
+				readMem();
+			}	
+			
+			private function onShow():void {
+				readMem();
+			}	
+					
+			private function readMem():void {
+				lastMem = currentMem;
+				currentMem = System.totalMemory;
+			}
+			
+		]]>
+	</mx:Script>
+	
+	<mx:TextArea id="debug_ta" width="760" height="284" y="66" verticalScrollPolicy="on" x="10"/>
+	<mx:Button x="10" y="10" label="Clear" click="clear();"/>
+	<mx:Button x="73" y="10" label="Hide" click="visible=false;"/>
+	<mx:Button x="147" y="10" label="GC" click="triggerGC()" width="62"/>
+	<mx:Label x="217" y="12" text="Current Memory(bytes):" width="140"/>
+	<mx:Label x="354" y="12" text="{currentMem}" width="134" textAlign="right"/>
+	<mx:Label x="217" y="25" text="Last:" width="47"/>
+	<mx:Label x="354" y="25" text="{lastMem}" width="134" textAlign="right"/>
+	<mx:Label x="217" y="40" text="Current-Last:" width="129"/>
+	<mx:Button x="147" y="38" label="Refresh" width="62" click="readMem()"/>
+	<mx:Label x="354" y="40" text="{currentMem-lastMem}" textAlign="right" width="134"/>
+	
+</mx:TitleWindow>

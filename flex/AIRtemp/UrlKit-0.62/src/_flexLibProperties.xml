@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flexLibProperties version="1">
+  <includeClasses>
+    <classEntry path="urlkit.rules.IUrlApplicationState"/>
+    <classEntry path="urlkit.rules.IUrlRule"/>
+    <classEntry path="urlkit.rules.StateNotAvailableError"/>
+    <classEntry path="urlkit.rules.UrlBaseRule"/>
+    <classEntry path="urlkit.rules.UrlBrowserManager"/>
+    <classEntry path="urlkit.rules.UrlDelegateRule"/>
+    <classEntry path="urlkit.rules.UrlNavigatorRule"/>
+    <classEntry path="urlkit.rules.UrlRuleContainer"/>
+    <classEntry path="urlkit.rules.UrlRuleSet"/>
+    <classEntry path="urlkit.rules.UrlValueRule"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests>
+    <namespaceManifestEntry namespace="http://www.allurent.com/2006/urlkit" manifest="urlkit-manifest.xml"/>
+  </namespaceManifests>
+</flexLibProperties>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="750" 
+	height="100%"
+	verticalScrollPolicy="off"
+	horizontalScrollPolicy="off" 
+	paddingBottom="20"
+	xmlns:components="leadgine.components.*" 
+	creationComplete="init();populateSavedValues()"
+	click="debug()">
+	
+<mx:Script>
+<![CDATA[
+	import mx.collections.ArrayCollection;
+	//import mx.controls.Alert;
+	import leadgine.components.*;
+	import leadgine.components.dto.FullServiceReferral;
+	import mx.core.Application;
+	
+	//private var itemToRemove:DisplayObject;
+	[Bindable] public var myDate:String;
+	public var myFunctionArray:ArrayCollection;
+	[Bindable] public var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	[Bindable] public var readOnly:Boolean = false;
+	
+	private function debug():void{
+		var i:uint=0;//breakpoint here
+	}
+	
+	private function init():void{
+		myFunctionArray = myDTO.functionArray;
+		if (myFunctionArray == null){
+			myFunctionArray = new ArrayCollection();
+			Application.application.myFullServiceReferral.functionArray = myFunctionArray;
+			//return;
+		}
+	}
+	private function populateSavedValues():void{
+		if (myDTO.savedFunctionDates.contains(myDate)){
+			itemGroup.removeAllChildren();
+			//for each (var o:Object in myFunctionArray){
+			for each (var item:Item in myFunctionArray){
+				if (item.myDate == myDate){
+					item.readOnly = readOnly;
+					addItemToView(item);
+				}
+			}
+		}else{
+			updateItem(firstItem);
+		}
+	}
+
+	private function addItemToView(item:Item=null):void {
+		var newFunc:Item = new Item();
+		newFunc.myDate = myDate;
+		if (item==null){
+			var count:uint=1;
+			for each (var arrayItem:Item in myFunctionArray){
+				if (arrayItem.myDate == myDate){
+					count++;
+				}
+			}
+			newFunc.myID = myDate +"-"+ count.toString();
+		}else{
+			newFunc.myID			 = item.myID;
+			newFunc.isFirstItem		 = item.isFirstItem;
+			newFunc.myDate			 = myDate;
+			newFunc.startTime		 = item.startTime;
+			newFunc.endTime			 = item.endTime;
+			newFunc.functionDesc	 = item.functionDesc;
+			newFunc.numPeople		 = item.numPeople;
+			newFunc.setup			 = item.setup;
+			newFunc.foodBevComment	 = item.foodBevComment;
+		}
+		newFunc.myFunctionArray = myFunctionArray;
+		newFunc.readOnly = readOnly;
+		updateItem(newFunc);
+		//can't have this line, because populate calls addItem based on the size of myFunctionArray:
+		//myFunctionArray.addItem(newFunc);
+		var nf:DisplayObject = itemGroup.addChild(newFunc);
+		nf.addEventListener("removeItem", onRemoveItem);
+		newFunc.setStyle("backgroundColor","0xDDE8EE");
+	}
+	private function onRemoveItem(e:Event):void {
+		e.currentTarget.setStyle("backgroundColor","red");
+		itemGroup.removeChild(e.currentTarget as DisplayObject);
+		itemGroup.invalidateDisplayList();
+	}
+	private function onClearItem(e:Event):void {
+		var currItem:DisplayObject = e.currentTarget as DisplayObject;
+	
+	}
+	public function setItemArray():void{
+		for each (var item:Item in itemGroup.getChildren()){
+			//item.updateItem();
+			updateItem(item);
+		}
+		//Application.application.myFullServiceReferral.functionArray = myFunctionArray;
+	}
+	public function getContent():String{
+		var result:String = "";
+		for each (var item:Item in itemGroup.getChildren()){
+			result += item.getContent();
+		}
+		return result;
+	}
+	private function updateItem(item:Item):void{
+		for (var i:uint=0; i<myFunctionArray.length; i++){
+			var arrayItem:Item = myFunctionArray[i] as Item;
+			if (arrayItem.myID == item.myID){
+				myFunctionArray[i] = item;
+				return;
+			}
+		}
+		//if not found,
+		myFunctionArray.addItem(item);
+	}
+]]>
+</mx:Script>
+
+	<mx:HBox horizontalGap="3">
+		<mx:Spacer width="110" />
+		<mx:Label text="Start Time" textAlign="center" width="70"/>
+		<mx:Label text="End Time" textAlign="center" width="70"/>
+		<mx:Label text="Function" textAlign="center" width="100"/>
+		<mx:Label text="# People" textAlign="center" width="78"/>
+		<mx:Label text="Setup" textAlign="center" width="80"/>
+		<mx:Label text="Food/Bev Comments" textAlign="center" width="180"/>
+	</mx:HBox>
+	<mx:HBox horizontalGap="3">
+		<mx:VBox horizontalAlign="right" width="80">
+			<mx:Label width="80" id="funcDate" text="{myDate}" textAlign="left" fontWeight="bold"/>
+		</mx:VBox>
+		<mx:VBox horizontalAlign="right">
+			<mx:VBox id="itemGroup" verticalGap="3">
+				<components:Item removeItem="onClearItem(event)" toolText="Clear This" backgroundColor="0xDDE8EE" 
+					isFirstItem="true" id="firstItem" readOnly="{readOnly}"
+					myDate="{myDate}" myID="{myDate}-1" />
+			</mx:VBox>
+			<mx:LinkButton label="+  New Function" click="addItemToView()" visible="{!readOnly}" />
+		</mx:VBox>
+	</mx:HBox>
+	<mx:Spacer height="1" />
+	<mx:HBox width="100%">
+		<mx:Spacer width="100%"/>
+		<mx:Button label="Set" click="setItemArray()" visible="false" />
+		<!--
+		visible="{!readOnly}" 
+		-->
+	</mx:HBox>
+	<mx:HRule width="740" alpha=".5"  />
+</mx:VBox>

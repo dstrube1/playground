@@ -1,0 +1,162 @@
+package base.util
+{
+	public class BreadcrumbStack
+	{
+		private var bcStack:Array = [];
+
+		private var listeners:Array = [];
+
+
+		// should I be using a public event for this?  I'm concerned that I won't be able to bubble it out
+		// properly w/out violating encapsulation of the breadcrumb code.
+		public function registerListener( l:BreadcrumbStackListener ):void {
+			listeners.push(l);
+			
+			l.update(this);
+			
+		}
+
+
+		public function getCrumbArray():Array {
+			return bcStack;
+		}
+
+	
+		public function addBreadcrumb( name:String, type:String, click:Function=null):void {
+
+
+			var myBreadcrumb:Breadcrumb = new Breadcrumb();
+			myBreadcrumb.label = name;
+			myBreadcrumb.type  = type;
+			myBreadcrumb.click = click;
+				
+
+			add(myBreadcrumb);
+				
+			
+		}
+
+
+
+		public function add( bc:Breadcrumb):void {
+				
+			// scan through the existing breadcrumb trail to find an equivalent type match.  If we hit a match,
+			// remove the existing element and everything after it, and put this one in its place.
+			
+			// if we don't find a match, append this one to the end.
+			
+
+			// find any existing crumb of the same type, and rememeber the index
+
+			
+
+
+			var lastIndex:int = lastIndexOfType( bc.type );
+
+
+
+			clearTo(lastIndex, [ bcStack ]);
+							
+							
+			
+
+			bcStack.push(bc);
+
+
+			updateListeners(listeners);
+
+		}
+
+
+		public function hasBreadcrumbOfType( type:String ):Boolean {
+			
+			return(bcStack.some( 
+			
+				function( el:Breadcrumb, index:int, arr:Array ):Boolean {
+				
+				return (el.type == type);
+				
+			}));
+			
+		}
+
+
+
+		public function retreatTo( type:String):void {
+				
+			var index:int = lastIndexOfType(type);
+				
+			clearTo(index+1, [ bcStack  ]);	
+				
+		}
+		
+		
+		// remove everything past this item, and also remove this item from the trail as well.
+		public function retreatPast( type:String):void {
+			
+			var index:int = lastIndexOfType(type);
+				
+			clearTo(index, [ bcStack  ]);	
+			
+			updateListeners(listeners);
+			
+		}
+		
+			
+			
+			private function lastIndexOfType( type:String): int {
+				
+				var lastIndex:int = -1;
+				
+				for (var i:int = 0; i < bcStack.length; i++) {
+					
+					var b:Breadcrumb = bcStack[i];
+					
+					if (b.type == type) {
+						
+						lastIndex = i;
+						
+					}
+					
+				}
+
+				return(lastIndex);
+
+			}
+			
+			
+			private function clearTo( lastIndex:int, arrayOfStacks:Array):void {
+				
+				// truncate everything to the right of the index, and also the index itself.				
+				if (lastIndex > -1) {
+				
+					var targetLength:int = lastIndex;  
+
+					var first:Array = arrayOfStacks[0];
+					
+					while (first.length > targetLength) {
+						
+						for each ( var a:Array in arrayOfStacks) {
+							a.pop();
+						}
+					
+					}
+						
+					
+				}
+				
+				
+			}
+			
+			
+		private function updateListeners( lArray:Array ):void {
+			for each ( var l:BreadcrumbStackListener in lArray) {
+				
+				l.update(this);
+				
+			}
+		}			
+
+
+	}
+}

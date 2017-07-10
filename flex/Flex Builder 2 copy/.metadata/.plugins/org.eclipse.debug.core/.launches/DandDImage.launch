@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="com.adobe.flexbuilder.debug.launchConfigurationType.flash">
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_APPLICATION" value="DandDImage.mxml"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_RUN_URL" value="file:/Users/davy/Documents/Flex%20Builder%202/DragAndDrop/bin/DandDImage.html"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_DEBUG_URL" value="file:/Users/davy/Documents/Flex%20Builder%202/DragAndDrop/bin/DandDImage-debug.html"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_PROJECT" value="DragAndDrop"/>
+<booleanAttribute key="com.adobe.flexbuilder.debug.ATTR_USE_DEFAULT_URLS" value="true"/>
+</launchConfiguration>

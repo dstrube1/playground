@@ -1,0 +1,20 @@
+package base.event
+{ 
+	import flash.events.Event;
+
+	public class LenzActiveEvent extends BaseLenzEvent
+	{
+		
+		public static const EVENT_CODE = LENZ_ACTIVE_EVENT_BASE;		
+		
+		public static const LENZ_ACTIVE_EVENT_BASE:String = "LenzActiveEvent_BASE";
+		
+		public function LenzActiveEvent( lenz:String) {
+			
+			super(EVENT_CODE, lenz);
+		}
+		
+		
+		
+	}
+}

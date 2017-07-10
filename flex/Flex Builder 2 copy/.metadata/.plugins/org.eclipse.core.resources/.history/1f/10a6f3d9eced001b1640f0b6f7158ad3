@@ -1,0 +1,152 @@
+package lenz.main.study_mgr
+{
+	import app.App;
+	
+	import base.controller.ClickManager;
+	import base.lenz.BaseLenz;
+	import base.lenz.Lenz;
+	import base.lenz.frame.LenzFrame;
+	import base.lenz.panel.BaseLenzPanel;
+	import base.lenz.panel.LenzPanel;
+	import base.lenz.panel.PanelBuilder;
+	import base.renderer.*;
+	import base.services.LenzServiceHelper;
+	import base.services.MapArray;
+	import base.services.Response;
+	
+	import lenz.main.study_mgr.controller.StudyClickManager;
+	import lenz.main.study_mgr.panel.StudyManagerGeoPanel;
+	import lenz.main.study_mgr.panel.StudyManagerLenzPanel;
+	import lenz.main.study_mgr.panel.StudyManagerMetricsPanel;
+	
+	import mx.controls.Alert;
+	import mx.rpc.events.FaultEvent;
+
+
+	public class StudyManagerLenz extends BaseLenz implements Lenz
+	{
+
+		// @SMELL - this low level component shouldn't care about the high level component's values,
+		// 
+		public static const LENZ_ID:String = App.STUDY_MANAGER;
+		
+		private var geoPanel:LenzPanel = null;
+		private var metricsPanel:LenzPanel = null;
+		private var prPanel:LenzPanel = null;
+		
+		private var _clickManager:ClickManager = new StudyClickManager();
+		
+		
+		
+		public function StudyManagerLenz():void {
+			
+			super();			
+			
+			lenzCreationComplete();
+		}
+
+
+		public override function getLenzId():String {
+			return LENZ_ID;
+		}
+		
+		
+		public override function activate():void {
+			
+			if (geoPanel == null) {
+				geoPanel = PanelBuilder.build( StudyManagerGeoPanel, this);
+			}
+	
+			// this seems to cause the geo panel to be created twice.		
+//			super.setPanel(PanelBuilder.build( lenz.main.study_mgr.panel.StudyManagerGeoPanel, this ));
+
+			super.setPanel( geoPanel );			
+			
+			super.activate();
+			
+		}
+		
+		public function changePanel(data:Object):void {
+			
+			var tmp:LenzPanel = null;
+			var panel:String = (data as MapArray).getValue("panel") as String;
+			
+			
+			if (panel == "Main") {
+
+				if (geoPanel == null) {
+
+					geoPanel = PanelBuilder.build( StudyManagerGeoPanel, this);
+				}
+				tmp = geoPanel;
+
+			}
+			
+			
+
+
+
+				setPanel(tmp);
+				
+				
+				
+				var f:String = (data as MapArray).getValue("form") as String;
+				tmp.setFormType(f);
+				tmp.initializePanel();
+				
+
+				
+				tmp.getCurrentForm().populateResources(data);
+				tmp.open();
+									
+			
+
+//			setPanel(tmp);
+
+//			tmp.open();
+			
+		}
+		
+
+		override public function fetchInitialData( completionHandler:Function):void {
+			// get initial study overview data
+			
+			// after we get it, call the completionHandler
+			
+			// @SMELL - this code is frustratingly awkward and hard to follow, but basically you provide
+			// your logic within the result handler, and then call the completionHandler at the end
+			// to finish all of the higher level animation and window cleanup code.
+			
+			LenzServiceHelper.callAction("getStudyOverview", {
+				studyId: "2",
+				failure: serviceFailureHandler, 
+				result:  function(r:Response):void {
+
+					renderInitialView(r);
+					
+					completionHandler();
+					
+				}
+				
+								
+			} );  // we don't know what the default study is yet.
+			
+		}
+		
+		private function renderInitialView(r:Response):void {
+			var panelToShow:Object = r.DataMap.getValue("panel").toString();
+			
+		}
+		
+		
+		private function serviceFailureHandler(ev:FaultEvent):void {
+			Alert.show("Unable to fetch study overview data from server.");
+		}
+		
+		
+		override public function getClickManager():ClickManager {
+			return _clickManager;
+		}
+		
+	}
+}

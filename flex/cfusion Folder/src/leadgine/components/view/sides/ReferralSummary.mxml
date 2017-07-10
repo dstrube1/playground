@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow showCloseButton="true"
+	close="handleClose(event)"
+	styleName="rprPanel"   
+	horizontalAlign="center" 
+	x = "{myDTO.referralFormX}"
+	y = "{myDTO.referralFormY}"
+	width = "{myDTO.referralFormWidth}"
+	height = "{myDTO.referralFormHeight}"
+	title="Referral Summary" 
+	horizontalScrollPolicy="off"
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:components="leadgine.components.*"
+	xmlns:sides="leadgine.components.view.sides.*" 
+	>
+<!--
+	width="{Application.application.leadgineCanvas.width}" 
+	height="{Application.application.leadgineCanvas.height}"
+<panel:SuperPanel xmlns:panel="nl.wv.extenders.panel.*"
+-->
+
+<mx:Script>
+<![CDATA[
+	import leadgine.components.dto.FullServiceReferral;
+	import mx.events.CloseEvent;
+	import mx.controls.Alert;
+	import mx.core.Application;
+	import mx.managers.PopUpManager;
+	
+	[Bindable] public var myTitle:String;
+	[Bindable] private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	
+	private function handleClose(event:CloseEvent):void{
+		//must reset the application's dialog index,
+		//else { if user views the summary before entering data, then tries to enter data, user will get blank summary screen again}
+		//Application.application.dialogIndex = 0;
+		//DS 20090905: Nevermind, this is handled in the new function below:
+		Application.application.resetDialogs();
+		//Application.application.pnl1.pnl1Button.enabled=true;
+		myDTO.referralFormX = this.x;
+		myDTO.referralFormY = this.y;
+
+		PopUpManager.removePopUp(this);
+	}
+	private function nextSection():void {
+		//invalid here
+		//Application.application.toggleDialog(1);
+	}
+	private function gotoSection(i:int):void{
+		myDTO.referralFormX = this.x;
+		myDTO.referralFormY = this.y;
+
+		Application.application.toggleDialog(i);
+	}
+	private function prevSection():void {
+		gotoSection(-1);
+	}
+	private function saveOnly():void{
+		var text:String = "Are you sure you wish to save this referral WITHOUT sending to any of the selected hotels?  (You can always send to hotels later.)";
+		Alert.show(text,"Confirm",Alert.YES|Alert.NO,this,handleSaveOnly);
+	}
+	
+	private function saveAndSend():void{
+		var text:String = "Are you sure you wish to save this referral AND send to all of the selected hotels?  (You will be able to send to additional hotels later.)";
+		Alert.show(text,"Confirm",Alert.YES|Alert.NO,this,handleSaveAndSend);
+	}
+	private function handleSaveOnly(event:CloseEvent):void {
+		if (event.detail == Alert.YES) {
+			myDTO.resetAll();
+			handleClose(null);
+		} else if (event.detail == Alert.NO) {
+			//
+		}
+	}
+	private function handleSaveAndSend(event:CloseEvent):void {
+		if (event.detail == Alert.YES) {
+			Alert.show(
+				contactContent.content+
+				roomBlockContent.content+
+				functionContent.content+
+				propertyContent.content+
+				additionalContent.content);
+			myDTO.resetAll();
+			handleClose(null);
+		} else if (event.detail == Alert.NO) {
+			//Alert.show("you clicked no SaveAndSend");
+		}
+	}
+	private function handleMouseOver(event:MouseEvent):void{
+		if (event.target.hasOwnProperty("width")){
+			this.title = event.target.width;
+		}
+	}
+
+]]>
+</mx:Script>
+<!--
+	<mx:Metadata>
+		[Event("formSubmit", type="mx.events.Event")]
+	</mx:Metadata>
+-->
+
+		<mx:VBox id="containerVBox" styleName="containerStyle" width="100%" height="100%" >
+		<mx:Label text="Full Service Referral Form" styleName="mainTitle" />
+			<!--
+			 maxHeight="{parentVBox.height}"
+			 height="100%"
+-->				
+			<mx:HBox width="95%" id="contactHBox" >
+				<mx:Label text="Contact Info" id="contactInfoLabel" />
+				<mx:Spacer width="100%"/>
+				<mx:Button label="Edit" click="gotoSection(-5)"/>
+			</mx:HBox>
+			<sides:ContactContent id="contactContent" width="100%" height="340"  />
+			<mx:HBox width="95%" >
+				<mx:Label text="Room Block Info"/>
+				<mx:Spacer width="100%"/>
+				<mx:Button label="Edit" click="gotoSection(-4)"/>
+			</mx:HBox>
+			<sides:RoomBlockContent width="100%" id="roomBlockContent" />
+			<mx:HBox width="95%" >
+				<mx:Label text="Functions"/>
+				<mx:Spacer width="100%"/>
+				<mx:Button label="Edit" click="gotoSection(-3)"/>
+			</mx:HBox>
+			<sides:FunctionContent width="100%" id="functionContent" />
+			<mx:HBox width="95%">
+				<mx:Label text="Property Selection"/>
+				<mx:Spacer width="100%"/>
+				<mx:Button label="Edit" click="gotoSection(-2)"/>
+			</mx:HBox>
+			<sides:PropertyContent width="100%" id="propertyContent" />
+			<mx:HBox width="95%" >
+				<mx:Label text="Additional Info"/>
+				<mx:Spacer width="100%"/>
+				<mx:Button label="Edit" click="gotoSection(-1)"/>
+			</mx:HBox>
+			<sides:AdditionalContent id="additionalContent" />
+
+			<mx:HBox width="95%" paddingBottom="1">
+				<mx:Button label="Previous" click="prevSection()" />
+				<!--
+				<components:NavigationFooter hasNextBtn="false"
+					prevSection="prevSection()"
+					nextSection="nextSection()"
+				/>
+				<mx:Button label="Submit" click="dispatchEvent( new Event( 'formSubmit' ) );"/>					
+				-->
+				<mx:Spacer width="100%"/>
+				<mx:Button label="Save Only" click="saveOnly()"/>
+				<mx:Button label="Save and Send" click="saveAndSend()"/>
+			</mx:HBox>
+		</mx:VBox>
+</mx:TitleWindow>

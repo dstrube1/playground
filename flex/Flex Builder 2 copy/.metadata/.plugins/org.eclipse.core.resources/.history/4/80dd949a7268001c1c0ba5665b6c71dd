@@ -1,0 +1,21 @@
+package base.services
+{
+	public class Content
+	{
+		 
+		public var sessionId:String;
+		
+		public var ControlMap:MapArray = new MapArray();
+		public var DataMap:MapArray = new MapArray();
+		
+		
+		public function encode( helper:MapArrayHelper):void {
+			
+			helper.encode(ControlMap);
+			helper.encode(DataMap);
+			
+			
+		}
+		
+	}
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<app:App
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:app="com.*"
+	layout="absolute"
+	width="522" height="400" 
+	backgroundGradientAlphas="[1.0, 1.0]" 
+	backgroundGradientColors="[#F4F4F4, #E0E0E0]"
+	paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"
+	verticalScrollPolicy="on" horizontalScrollPolicy="off">
+	<!-- download AIR link:
+	http://labs.adobe.com/downloads/air.html
+	-->
+	<mx:Script>
+		<![CDATA[
+		]]>
+	</mx:Script>
+	
+	<mx:Canvas width="200" height="92" id="myCanvas" x="176" y="10">
+	</mx:Canvas>
+	
+	<!--
+	Problem with using a HBox or VBox- cannot have objects in rows AND columns
+	-->
+	<mx:HBox id="files_vb" 
+		width="246" height="186" 
+		backgroundColor="#FFFFFF" 
+		horizontalScrollPolicy="off" 
+		paddingBottom="5" paddingLeft="5" 
+		paddingRight="5" paddingTop="5" 
+		borderColor="#ABABAB" borderStyle="inset" 
+		x="129" y="110">
+	</mx:HBox>
+	<!--
+	Problem with using TileList or Repeater: They rely on a dataprovider, like an Array;
+	An Array does not have method addChild; this is essential to the FileComponent object
+	getting its data at runtime.
+	
+	<mx:Panel width="10%" height="10%" 
+        paddingTop="10" paddingLeft="10" paddingRight="10" paddingBottom="10" x="176" y="110">
+  
+        <mx:Tile direction="horizontal" borderStyle="inset" 
+            horizontalGap="10" verticalGap="15"
+            paddingLeft="10" paddingTop="10" paddingBottom="10" paddingRight="10">
+        
+            <mx:Repeater id="rp" dataProvider="{files_vb}" >
+                <app:FileComponent file_lb="{rp.currentItem}"/>
+            </mx:Repeater>    
+        </mx:Tile>
+  
+    </mx:Panel> 
+	
+	<mx:TileList height="190" width="290" itemRenderer="com.FileComponent" 
+	    maxColumns="3" rowHeight="80" columnWidth="80" 
+	    dataProvider="{files_vb}" x="76" y="110"/>
+	-->
+	
+	<mx:Button id="clear_btn" label="Clear" x="10"/>
+	<mx:Button id="show_btn" label="Show Files" x="10" y="30"/>
+	<mx:Button id="upload_btn" label="Upload Files" x="10" y="60"/>
+	<mx:Button x="10" y="90" label="Browse" id="browse_btn"/>
+
+</app:App>

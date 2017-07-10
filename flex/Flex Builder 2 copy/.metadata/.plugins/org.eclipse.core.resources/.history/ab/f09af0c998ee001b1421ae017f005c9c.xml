@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="750" height="470" horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm" horizontalScrollPolicy="off" verticalScrollPolicy="off" color="0x000000">
+	 
+	<mx:Script>
+		<![CDATA[
+			
+			import base.lenz.panel.LenzPanel;
+			import lenz.main.site_select.SiteSelectionLenz;
+			
+			private var _parent:LenzPanel = null;
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+			}
+			
+			private function launchApp( appId:int):void {
+				
+				
+				
+			}
+			
+			public function initializeForm():void {
+				
+		
+			}
+			
+			
+			public function populateResources(data:Object):void { }
+			
+		]]>
+	</mx:Script>
+	
+	<mx:Label x="0" y="5" color="#000000" maxHeight="30" text="Country Allocation Site Profiling: Ideal Site" 
+		fontThickness="200" fontSize="18"  />
+
+	<mx:Label y="70" left="10" fontSize="16" fontWeight="bold" height="44">
+		<mx:text><![CDATA[Based on review of 30 similar studies,the minimum criteria for
+successful site qualifications include:]]></mx:text>
+	</mx:Label>
+	<mx:Canvas x="10" y="142" width="465" height="44" cornerRadius="4" borderStyle="solid" backgroundColor="#dfdfdf">
+		<mx:Label x="75" y="10" text="Clinical Research Experience:" fontWeight="bold" fontSize="12"/>
+		<mx:TextInput x="386" y="10" width="57"/>
+	</mx:Canvas>
+	<mx:Canvas x="10" y="190" width="465" height="44" cornerRadius="4" borderStyle="solid" backgroundColor="#dfdfdf">
+		<mx:Label x="46" y="10" text="Prior Therapeutic Area Experience:" fontWeight="bold" fontSize="12"/>
+		<mx:TextInput x="386" y="10" width="57"/>
+	</mx:Canvas>
+	<mx:Canvas x="10" y="238" width="465" height="44" cornerRadius="4" borderStyle="solid" backgroundColor="#dfdfdf">
+		<mx:Label x="39" y="10" text="Prior Disease Indication Experience:" fontWeight="bold" fontSize="12"/>
+		<mx:TextInput x="386" y="10" width="57"/>
+	</mx:Canvas>
+	<mx:Canvas x="10" y="286" width="465" height="44" cornerRadius="4" borderStyle="solid" backgroundColor="#dfdfdf">
+		<mx:Label x="70" y="10" text="# of Phase II Studies Conducted:" fontWeight="bold" fontSize="12"/>
+		<mx:TextInput x="386" y="10" width="57"/>
+	</mx:Canvas>
+	<mx:Canvas x="10" y="334" width="465" height="44" cornerRadius="4" borderStyle="solid" backgroundColor="#dfdfdf">
+		<mx:Label x="156" y="10" text="Adjust Criteria?" fontWeight="bold" fontSize="12"/>
+		<mx:Button x="386" y="10" label="Yes" width="57"/>
+	</mx:Canvas>
+	<mx:Button label="Submit" width="150" height="30" right="50" bottom="0" id="submitBtn"
+		click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('Site')"/>
+	
+</mx:Canvas>

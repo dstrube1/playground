@@ -1,0 +1,11 @@
+package base.renderer
+{
+	public import lenz.main.study_mgr.StudyManagerLenz;
+	
+	public interface Renderer
+	{
+		function render (lenzId:String, data:Object, changePanel:Boolean):void;
+	} 
+	
+	
+}

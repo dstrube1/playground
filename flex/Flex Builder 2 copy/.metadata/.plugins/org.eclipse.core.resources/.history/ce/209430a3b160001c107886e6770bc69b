@@ -1,0 +1,329 @@
+package lenz.main.site_select.controller
+{
+	import app.config.LenzFactory;
+	import app.model.CountryAllocation.*;
+	
+	import base.db.MemDB;
+	import base.db.MemDbHelper;
+	import base.form.*;
+	import base.services.LenzService;
+	import base.services.LenzServiceHelper;
+	import base.services.Response;
+	import base.util.ModalWait;
+	
+	import flash.net.URLRequest;
+	import flash.net.navigateToURL;
+	
+	import lenz.main.site_select.*;
+	import lenz.main.site_select.model.ProposedScenario;
+	import lenz.main.site_select.model.StudyProposal;
+	import lenz.main.site_select.panel.*;
+	import lenz.main.site_select.util.CountryProjectionDeserializer;
+	import lenz.main.site_select.util.StudyProposalDeserializer;
+	
+	import mx.collections.ArrayCollection;
+	import mx.controls.Alert;
+	import mx.rpc.events.FaultEvent;
+
+	public class SiteSelectionController
+	{
+	    [Embed(source="/resources/_images/alert_icon.png")] 
+        public static var alertIcon:Class; 
+	
+		public static function  processAction( params:Object ):void
+		{
+			var actionId:String = params["actionId"];
+			var userId:String = params["userId"];
+			var studyId:String = params["studyId"];
+			var scenarioName:String;
+			var sequenceId:String;
+			
+			if ( actionId == "getAllRegions" ) {
+			
+				var viewId:String = params["viewId"];
+				var actionParams:String = params["actionParams"];
+			
+				LenzServiceHelper.callResource( "siteSelectionLenzServerAction", { studyId: studyId, actionId: actionId, viewId: viewId, actionParams: actionParams, failure: serviceFailureHandler, result: serviceResponseHandler} );
+			
+			} else if ( actionId == "fetchProposals" ) {
+				ModalWait.start();
+				LenzServiceHelper.callResource( "siteSelectionLenzServerAction", { userId: userId, actionId: actionId, failure: serviceFailureHandler, result: fetchProposalsServiceResponseHandler} );
+								
+			} else if ( actionId == "getProposalData" ) {
+				
+				ModalWait.start();
+				LenzServiceHelper.callAction( "siteSelectionLenzServerAction", { actionId: actionId, studyId: studyId, failure: serviceFailureHandler, result: getProposalDataServiceResponseHandler} );
+			
+			} else if ( actionId == "postProposal" ) {
+				ModalWait.start();
+				var proposalXml:String = params["proposalXml"];
+				scenarioName = params["scenarioName"];
+				LenzServiceHelper.callAction( "siteSelectionLenzServerAction", { actionId: actionId, scenarioName: scenarioName, proposalXml: proposalXml, failure: serviceFailureHandler, result: postProposalServiceResponseHandler} );
+			
+			} else if ( actionId == "getSequenceDetails" ) {
+				ModalWait.start();
+				scenarioName = params["scenarioName"];
+				sequenceId = params["sequenceId"];
+				LenzServiceHelper.callResource( "siteSelectionLenzServerAction", { actionId: actionId, studyId: studyId, scenarioName: scenarioName, sequenceId: sequenceId, failure: serviceFailureHandler, result: getSequenceDataServiceResponseHandler} );
+			
+			} else if ( actionId == "commitScenario" ) {
+				ModalWait.start();
+				scenarioName = params["scenarioName"];
+				sequenceId = params["sequenceId"];
+				LenzServiceHelper.callResource( "siteSelectionLenzServerAction", { actionId: actionId, studyId: studyId, scenarioName: scenarioName, sequenceId: sequenceId, failure: serviceFailureHandler, result: commitScenarioServiceResponseHandler} );
+			
+			} else if ( actionId == "deleteProposal" ) {
+				ModalWait.start();
+				LenzServiceHelper.callResource( "siteSelectionLenzServerAction", { actionId: actionId, studyId: studyId, failure: serviceFailureHandler, result: deleteProposalServiceResponseHandler} );
+			
+			} else if ( actionId == "exportCountryAllocations" ) {
+				ModalWait.start();
+				LenzServiceHelper.callResource( "siteSelectionLenzServerAction", { actionId: actionId, studyId: studyId, failure: serviceFailureHandler, result: exportCountryAllocationsServiceResponseHandler} );
+			}
+		}
+
+		public static function gotErrorCode( r:Response ):Boolean 
+		{			
+			if( r.ResponseCode == 500 ) {				
+				Alert.show( "Operation Failed \""+r.ControlMap.getValue( "error.msg" ), 
+					"Remote operation Failed!", 
+					Alert.OK, null, null, alertIcon, Alert.CANCEL).styleName="rightPanel";	
+				ModalWait.stop();								
+				return true;
+			}
+			return false;
+		}
+		
+		public static function serviceFailureHandler( ev:FaultEvent ):void 
+		{			
+			ModalWait.stop();
+			Alert.show("Get View Failed! " + ev.message);
+			var siteSelectionLenz:SiteSelectionLenz = LenzFactory.getLenz(SiteSelectionLenz.LENZ_ID) as SiteSelectionLenz;
+			
+			if (siteSelectionLenz.proposal == null) {
+				//siteSelectionLenz.simulateExternalClick('ProposalBrowser');
+			} else {
+				if (siteSelectionLenz.proposal.id == null) {
+					siteSelectionLenz.proposal.scenarios == null;
+					siteSelectionLenz.simulateExternalClick('NewProposal');
+				} else {
+					var params:Object = {
+					userId: "user",
+					studyId: siteSelectionLenz.proposal.id,
+					actionId: "getProposalData"	
+				};
+				processAction( params );
+				
+				siteSelectionLenz.simulateExternalClick('UpdateProposal');
+				}
+			}
+			
+		}
+			
+		public static function serviceResponseHandler( r:Response ):void 
+		{
+			if( gotErrorCode( r ) ) return;
+			
+			if( r.DataMap.Key.indexOf("allRegions") != -1 )
+			{
+				processAllRegions( r );
+			}
+		}
+		
+			
+		public static function fetchProposalsServiceResponseHandler( r:Response ):void 
+		{
+			if( gotErrorCode( r ) ) return;
+			
+			var siteSelectionLenz:SiteSelectionLenz = LenzFactory.getLenz(SiteSelectionLenz.LENZ_ID) as SiteSelectionLenz;
+			
+			var proposalsXmlString:String = r.DataMap.getValue("proposals.xml") as String;
+			var memdb:MemDB = MemDbHelper.convert(new XML(proposalsXmlString), MemDbHelper.PROPOSAL);
+			var theForm:CA_ProposalBrowserForm = siteSelectionLenz.proposalBrowserPanel.getCurrentForm() as CA_ProposalBrowserForm;
+			theForm.proposals = memdb.fetch(null);
+			ModalWait.stop();
+		}
+		
+		public static function getProposalDataServiceResponseHandler( r:Response ):void
+		{
+			if( gotErrorCode( r ) ) return;
+
+			var siteSelectionLenz:SiteSelectionLenz = LenzFactory.getLenz(SiteSelectionLenz.LENZ_ID) as SiteSelectionLenz;
+			siteSelectionLenz.proposal = null;
+			
+			var proposalXML:XML = new XML(r.DataMap.getValue("proposal.xml") as String);
+			siteSelectionLenz.proposal = StudyProposalDeserializer.getProposalStudy(proposalXML);
+			if (siteSelectionLenz.proposal.scenarios.length > 0) {
+				
+				var scenario:ProposedScenario = siteSelectionLenz.proposal.getScenarioByNumber(siteSelectionLenz.proposal.getLastScenarioNumber());
+				
+				if (scenario != null) {
+				
+					siteSelectionLenz.proposal.lastScenarioName = scenario.name;
+					//already set when deserialized
+					//siteSelectionLenz.proposal.currentScenarioName  = scenario.name;
+				} else {
+					siteSelectionLenz.proposal.lastScenarioName = "";
+				}
+			}
+			ModalWait.stop();
+			siteSelectionLenz.simulateExternalClick('UpdateProposal');
+		}
+		
+		public static function postProposalServiceResponseHandler( r:Response ):void 
+		{
+			if( gotErrorCode( r ) ) return;
+			
+			var projectionsXmlString:String = r.DataMap.getValue("projections.xml") as String;
+			var projectionsDb:MemDB = CountryProjectionDeserializer.getCountryProjection(new XML(projectionsXmlString));
+			
+			var siteSelectionLenz:SiteSelectionLenz = LenzFactory.getLenz(SiteSelectionLenz.LENZ_ID) as SiteSelectionLenz;
+			
+			if (projectionsDb == null || projectionsDb.fetch(null) == null || projectionsDb.fetch(null).length == 0) {
+				ModalWait.stop();
+				Alert.show("Sorry, no results were obtained for the specified parameters. Please modify the study parameters and try again!");
+			
+			} else {
+				var oldLastScenarioName:String = siteSelectionLenz.proposal.lastScenarioName;
+				siteSelectionLenz.proposal = null;
+				
+				var proposalXML:XML = new XML(r.DataMap.getValue("proposal.xml") as String);
+				siteSelectionLenz.proposal = StudyProposalDeserializer.getProposalStudy(proposalXML);
+				if (siteSelectionLenz.proposal.scenarios.length > 0) {
+					siteSelectionLenz.proposal.lastScenarioName = siteSelectionLenz.proposal.getScenarioByNumber(siteSelectionLenz.proposal.getLastScenarioNumber()).name;
+					if (siteSelectionLenz.proposal.getScenarioByName(oldLastScenarioName) != null)
+						siteSelectionLenz.proposal.lastScenarioName = oldLastScenarioName;
+				}
+				
+				siteSelectionLenz.projections = CountryProjectionDeserializer.getCountryProjection(new XML(projectionsXmlString));
+				
+				siteSelectionLenz.proposal.sequence1BudgetGraph = r.DataMap.getValue("sequence.budget.url.1") as String;
+				siteSelectionLenz.proposal.sequence2BudgetGraph = r.DataMap.getValue("sequence.budget.url.2") as String;
+				siteSelectionLenz.proposal.sequence3BudgetGraph = r.DataMap.getValue("sequence.budget.url.3") as String;
+				siteSelectionLenz.proposal.sequence1TimelineGraph = r.DataMap.getValue("sequence.timeline.url.1") as String;
+				siteSelectionLenz.proposal.sequence2TimelineGraph = r.DataMap.getValue("sequence.timeline.url.2") as String;
+				siteSelectionLenz.proposal.sequence3TimelineGraph = r.DataMap.getValue("sequence.timeline.url.3") as String;
+				
+				var countryScoresXmlString:String = r.DataMap.getValue("country.scores.xml") as String;
+				var scoredb:MemDB = MemDbHelper.convert(new XML(countryScoresXmlString), MemDbHelper.COUNTRY_SCORE);
+				siteSelectionLenz.countryScores = scoredb;
+				
+				var memdb:MemDB;
+				
+				var timesForSequencesXMLString:String = r.DataMap.getValue("sequence.times.xml") as String;
+				memdb = MemDbHelper.convert(new XML(timesForSequencesXMLString), MemDbHelper.SEQUENCE_LABEL);
+				siteSelectionLenz.proposal.sequenceTimes = null;
+				siteSelectionLenz.proposal.sequenceTimes = memdb;
+				
+				var budgetsForSequencesXMLString:String = r.DataMap.getValue("sequence.budgets.xml") as String;
+				memdb = MemDbHelper.convert(new XML(budgetsForSequencesXMLString), MemDbHelper.SEQUENCE_LABEL);
+				siteSelectionLenz.proposal.sequenceBudgets = null;
+				siteSelectionLenz.proposal.sequenceBudgets = memdb;
+				
+				ModalWait.stop();
+				siteSelectionLenz.simulateExternalClick('SequenceBrowser');
+				
+				var alertMsg:String = r.DataMap.getValue("alert.msg") as String;
+				
+				if (alertMsg != null) {
+					Alert.show( alertMsg, "Alert", Alert.OK, null, null, alertIcon, Alert.CANCEL).styleName="rightPanel";
+				}
+			}
+		}
+		
+		public static function getSequenceDataServiceResponseHandler( r:Response ):void 
+		{
+			if( gotErrorCode( r ) ) return;
+			
+			var siteSelectionLenz:SiteSelectionLenz = LenzFactory.getLenz(SiteSelectionLenz.LENZ_ID) as SiteSelectionLenz;
+			
+			var countriesInSequenceXMLString:String = r.DataMap.getValue("sequence.countries.xml") as String;
+			var memdb:MemDB = MemDbHelper.convert(new XML(countriesInSequenceXMLString), MemDbHelper.SEQUENCE_COUNTRY);
+			siteSelectionLenz.proposal.sequenceCountries = memdb.fetch(null);
+			
+			siteSelectionLenz.proposal.sequenceStandardTimelineUrl = r.DataMap.getValue("sequence.standardTimeline.url") as String;
+			siteSelectionLenz.proposal.sequenceStandardTimelineTime = r.DataMap.getValue("sequence.standardTimeline.time") as String;
+			
+			siteSelectionLenz.proposal.countryMapUrl = r.DataMap.getValue("sequence.map.url") as String;
+			
+			siteSelectionLenz.proposal.selectedSequence = r.DataMap.getValue("sequence.id") as String;
+			ModalWait.stop();
+			siteSelectionLenz.simulateExternalClick('SequenceCloseup');
+		}
+		
+		public static function commitScenarioServiceResponseHandler( r:Response ):void 
+		{
+			if( gotErrorCode( r ) ) return;
+
+			var proposalXML:XML = new XML(r.DataMap.getValue("proposal.xml") as String);
+			var siteSelectionLenz:SiteSelectionLenz = LenzFactory.getLenz(SiteSelectionLenz.LENZ_ID) as SiteSelectionLenz;
+			siteSelectionLenz.proposal = StudyProposalDeserializer.getProposalStudy(proposalXML);
+			ModalWait.stop();
+			
+			siteSelectionLenz.simulateExternalClick("ScenarioCommitted");
+		}
+		
+		public static function deleteProposalServiceResponseHandler( r:Response ):void 
+		{
+			if( gotErrorCode( r ) ) return;
+						
+			var siteSelectionLenz:SiteSelectionLenz = LenzFactory.getLenz(SiteSelectionLenz.LENZ_ID) as SiteSelectionLenz;
+			var proposalsXmlString:String = r.DataMap.getValue("proposals.xml") as String;
+			var memdb:MemDB = MemDbHelper.convert(new XML(proposalsXmlString), MemDbHelper.PROPOSAL);
+			
+			ModalWait.stop();
+			
+			var theForm:CA_ProposalBrowserForm = siteSelectionLenz.proposalBrowserPanel.getCurrentForm() as CA_ProposalBrowserForm;
+			theForm.proposals = memdb.fetch(null);
+		}
+		
+		
+		public static function exportCountryAllocationsServiceResponseHandler( r:Response ):void {
+			if( gotErrorCode( r ) ) return;
+					
+			ModalWait.stop();
+			var excelUrl:String = r.DataMap.getValue("excel.url") as String;
+			var request:URLRequest = new URLRequest(excelUrl);
+			navigateToURL(request, "_blank");
+		}
+		
+		private static function processAllRegions( r:Response ):void
+		{
+			if( gotErrorCode( r ) ) return;
+			
+			var siteSelectionLenz:SiteSelectionLenz = LenzFactory.getLenz(SiteSelectionLenz.LENZ_ID) as SiteSelectionLenz;
+
+			var allRegionsXmlString:String = r.DataMap.getValue("allRegions") as String;
+			if( allRegionsXmlString != null && allRegionsXmlString.length > 10 )
+			{
+				var rootRegions:XML = new XML( allRegionsXmlString );
+				var allRegions:XMLList = rootRegions.region;
+				var allRegionsRet:Array = new Array();
+	
+				for(var i:int=0;i<allRegions.length(); i++)
+				{
+					var regionId:String = allRegions[i].@id;
+					var regionName:String = allRegions[i].@name;			
+					var regionRet:Region = new Region( regionId, regionName, GeographicalLocation.AVAILABLE );				
+					allRegionsRet.push( regionRet );
+					var regionCountries:XMLList = allRegions[i].country;
+					for(var c:int=0; c<regionCountries.length(); c++)
+					{ 
+						var countryId:String = regionCountries[c].@id;
+						var countryName:String = regionCountries[c].@name;
+						var ctry:Country = new Country(countryId, countryName, GeographicalLocation.AVAILABLE);
+						//ctry.regionId = regionId;
+						//ctry.regionName = regionName;
+						regionRet.addCountry( ctry );
+					}
+				}
+				
+				var theForm:CA_CountryRegionSelectionForm = siteSelectionLenz.countryRegionSelectionPanel.getCurrentForm() as CA_CountryRegionSelectionForm;
+				theForm.countryRegionSelection.allRegions = allRegionsRet;
+				theForm.initUIDataProviders();
+			}					
+		}
+	}
+}
+
+			

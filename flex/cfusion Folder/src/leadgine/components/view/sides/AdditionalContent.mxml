@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="90%" 
+	creationComplete="init()">
+<mx:Script>
+<![CDATA[
+	import mx.core.Application;
+	import leadgine.components.dto.FullServiceReferral;
+	
+	[Bindable] private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	
+	public var content:String = "";
+	
+	private function init():void{
+		//commentsText.text = myDTO.commentsText;
+		//requestsText.text = myDTO.requestsText;
+		setContent();
+	}
+	private function setContent():void{
+		content += "Additional Info\n";
+		content += "Special Comments: " + commentsText.text + "\n";
+		content += "Requests, History, Alternate Dates, etc.: " + requestsText.text;
+	}
+]]>
+</mx:Script>
+		<mx:Label text="Special Comments:" />
+		<mx:TextArea width="90%" height="120" id="commentsText" text="{myDTO.commentsText}" editable="false" />
+		<mx:Label text="Requests, History, Alternate Dates, etc.:" />
+		<mx:TextArea width="90%" height="120" id="requestsText" text="{myDTO.requestsText}" editable="false" />
+				
+	
+</mx:VBox>

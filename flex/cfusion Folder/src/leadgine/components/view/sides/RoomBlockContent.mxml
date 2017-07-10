@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" 
+	creationComplete="init()">
+<mx:Script>
+<![CDATA[
+	import mx.collections.ArrayCollection;
+	import mx.core.Application;
+	import leadgine.components.dto.FullServiceReferral;
+	
+	[Bindable] private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	[Bindable] private var myRowsArray:ArrayCollection;
+	
+	public var content:String = "";
+	
+	private function init():void{
+		myRowsArray = myDTO.roomRowArray;
+		for each (var r:RoomRow in myRowsArray){
+			r.readOnly = true;
+			r.calcTotal();
+   			roomRows.addChild(r);
+   		}
+   		calcTotals();
+   		setContent();
+	}
+	private function setContent():void{
+		content += "Room Block Info:\n";
+		for each (var roomRow:RoomRow in myRowsArray){
+			content += roomRow.roomDate.text + "; ";
+			content += roomRow.single.text + "; ";
+			content += roomRow.double.text + "; ";
+			content += roomRow.rowTotal.text + "; ";
+			content += roomRow.rate.text + "; ";
+			content += roomRow.revenue.text + "\n";
+		}
+		content += totalSingles.text + "; "; 
+		content += totalDoubles.text + "; "; 
+		content += totalTotals.text + "; "; 
+		content += totalRevenue.text + "\n"; 
+		content += "\n";
+	}
+	private function calcTotals():void{
+    	var singles:uint = 0;
+    	var doubles:uint = 0;
+    	var totals:uint = 0;
+    	var revenue:Number = 0;
+    	for each(var roomRow:RoomRow in myRowsArray){
+    		singles += Number(roomRow.single.text);
+    		doubles +=  Number(roomRow.double.text);
+    		totals += Number(roomRow.rowTotal.text);
+    		revenue += Number(roomRow.revenue.text.replace("$",""));
+    	}
+    	totalSingles.text = singles.toString();
+    	totalDoubles.text = doubles.toString();
+    	totalTotals.text = totals.toString();
+    	totalRevenue.text = "$"+revenue.toFixed(2);
+    }
+]]>
+</mx:Script>
+	<!--
+	<mx:DateField id="startDate" width="100" selectedDate="{myDTO.startDate}" enabled="false" visible="false"/>
+	<mx:NumericStepper textAlign="right" width="100" id="numDays" enabled="false"
+		minimum="0" maximum="100" value="{myRowsArray.length}" visible="false"/>
+		-->
+	<mx:HBox id="roomRowsHeader" width="{roomRows.width}">
+		<mx:Text id="header1" text="Date"/>
+		<mx:Spacer width="100%"/>
+		<mx:Text id="header2" text="Singles"/> 
+		<mx:Spacer width="100%"/>
+		<mx:Text id="header3" text="Doubles"/> 
+		<mx:Spacer width="100%"/>
+		<mx:Text id="header4" text="Total"/> 
+		<mx:Spacer width="100%"/>
+		<mx:Text id="header5" text="Rate"/> 
+		<mx:Spacer width="100%"/>
+		<mx:Text id="header6" text="Revenue"/> 
+	</mx:HBox>
+	<mx:VBox id="roomRows" maxHeight="247" />
+	<mx:HBox id="roomTotals" width="{roomRows.width}">
+		<mx:Text text="Totals"/> 
+		<mx:Spacer width="100%"/>
+		<mx:Text id="totalSingles" text=""/> 
+		<mx:Spacer width="100%"/>
+		<mx:Text id="totalDoubles" text=""/> 
+		<mx:Spacer width="100%"/>
+		<mx:Text id="totalTotals" text=""/> 
+		<mx:Spacer width="100%"/>
+		<mx:Text id="totalBlank" text=""/> 
+		<mx:Spacer width="100%"/>
+		<mx:Text id="totalRevenue" text=""/> 
+	</mx:HBox>
+				
+</mx:VBox>

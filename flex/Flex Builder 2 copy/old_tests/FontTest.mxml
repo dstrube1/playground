@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	initialize="initializeStyles()"  xmlns:local="*">
+	<!--
+	from: 
+http://livedocs.adobe.com/flex/2/docs/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&file=00000771.html
+	initialize="initializeStyles()" 
+	<mx:Style source="styles/FontTest.css" />
+-->
+	<mx:Script>
+		<![CDATA[
+			import mx.styles.StyleManager;
+			public function initializeStyles():void{
+				[Embed(source="fonts/interstate.ttf",fontName="interstate")]
+				var font:Class;
+				Font.registerFont(font);
+				StyleManager.getStyleDeclaration("global").setStyle("fontFamily","interstate");
+			}
+		]]>
+	</mx:Script>
+	<mx:Panel backgroundColor="black" width="500" height="250" verticalCenter="0" horizontalCenter="0" layout="absolute">
+	
+		<mx:TextInput x="177" y="16" width="200" height="30" cornerRadius="5" id="username" color="black" />
+	        <mx:Label text="user name"  x="385" y="19" fontSize="11"/>
+	
+		<mx:TextInput x="177" y="54" width="200" height="30" cornerRadius="5" id="password" displayAsPassword="true" />        
+	        <mx:Label text="password"  x="385" y="57" fontSize="11"/>
+	
+		<mx:CheckBox id="two_factor" label="2 Factor Authentication"
+			color="white" x="177" y="92" fontSize="12" themeColor="red" />
+		    
+	    <mx:Button x="325" y="172" label="2 Factor Authentication" color="white" width="145" height="28" fontSize="11"  styleName="Lenz" fontFamily="interstate"/>
+	
+	</mx:Panel>
+	<local:myToday/>
+	
+</mx:Application>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas  xmlns:mx="http://www.adobe.com/2006/mxml"  width="100%" height="100%" styleName="introForm" 
+	implements="base.form.LenzForm" verticalCenter="0" horizontalCenter="0" xmlns:rss="components.rss.*" >
+ 
+
+	<mx:Script>
+		<![CDATA[
+			import base.log.Logger;
+			import app.server.LenzServer;
+			import base.services.ServiceConfig;
+			import base.services.Response;
+			import mx.controls.Alert;
+			import mx.rpc.events.ResultEvent;
+			import mx.rpc.events.FaultEvent;
+			import base.services.LenzServiceHelper;
+			import base.services.ValueType;
+			import base.services.CommonKeys;
+			import base.services.Content;
+			import base.lenz.panel.LenzPanel;
+			import app.App;
+			import app.config.*;
+
+			private var panel:LenzPanel = null;
+
+			private var logger:Logger = Logger.getLogger("IntroPanelForm");
+
+			
+			 
+			public function initializeForm():void {
+				logger.debug("initializeForm()");
+		
+			}
+
+			
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				panel = newParent;
+				
+			}
+			
+			
+			public function animate():void {
+				// do nothing
+			}
+			
+			
+			public function populateResources(data:Object):void {
+				
+			}
+			
+			/**
+			* Form clean up logic 
+			*/
+			public function destroy():void {
+				
+			}
+		]]>
+	</mx:Script>
+
+
+	<mx:SWFLoader source="resources/swf/SkyBar.swf" x="1" y="34" width="100%"/>	
+	
+	
+	
+	<mx:Label text="Today On" x="535" y="60"  fontSize="24" color="#fdfdfd"/>
+	<mx:Label text="PharmaLenz" x="535" y="90" fontSize="24" color="#fdfdfd"/>		
+
+<!--
+	<mx:SWFLoader source="resources/swf/FlashTicker.swf" x="1" y="100" width="500" height="300" id="ticker" />
+	<mx:SWFLoader source="resources/swf/rssReaderFT.swf" x="1" y="1" visible="false" id="rss" />
+
+
+
+
+	<mx:SWFLoader source="resources/swf/rss.swf" x="10" y="470" alpha="1" height="75%" width="75%"  />	
+-->	
+	
+	<mx:Style source="/components/rss/RSSStyle.css"/>
+
+	 
+	<rss:RSSReader timeStep="100" spacingY="15" x="1" y="158" width="{parent.width - 5}" height="340" rssProxyURL="{LenzConfiguration.instance.serviceHostPort+'/LenzServer/rssproxy'}" 
+		rssurls="http://www.medicalnewstoday.com/rss/clinicaltrials.xml,http://www.medicalnewstoday.com/rss/compliance.xml"
+		 >
+	</rss:RSSReader>
+
+	
+</mx:Canvas>

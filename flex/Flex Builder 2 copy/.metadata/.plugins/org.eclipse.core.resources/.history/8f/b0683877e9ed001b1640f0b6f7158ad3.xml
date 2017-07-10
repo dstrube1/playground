@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm">
+	 
+		<mx:Script>
+		<![CDATA[
+			import base.lenz.panel.LenzPanel;
+			import mx.rpc.events.ResultEvent;
+			import mx.controls.Alert;
+
+			private var _parent:LenzPanel = null;
+
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			
+			public function animate():void {
+			}
+			
+			private function launchApp( appId:int):void {
+								
+			}
+			
+			public function initializeForm():void {
+				
+		
+			}
+			
+			public function populateResources(data:Object):void {
+				
+			}
+			
+		]]>
+	</mx:Script>
+
+	
+	<mx:Label  text="Site Selection Start Page" width="100%" horizontalCenter="0" textAlign="center" verticalCenter="-72.5" fontSize="24"/>
+	
+	
+	
+	
+</mx:Canvas>

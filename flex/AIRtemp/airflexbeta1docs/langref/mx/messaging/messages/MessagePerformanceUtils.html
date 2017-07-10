@@ -1,0 +1,595 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="MessagePerformanceUtils,mx.messaging.messages.MessagePerformanceUtils,ERROR_HINT_HEADER,operation,source,CONTENT_TYPE_XML,CONTENT_TYPE_FORM,CONTENT_TYPE_SOAP_XML,POST_METHOD,GET_METHOD,PUT_METHOD,HEAD_METHOD,DELETE_METHOD,OPTIONS_METHOD,TRACE_METHOD,contentType,httpHeaders,recordHeaders,url,method,SUBTOPIC_HEADER,correlationId,SOAP_ACTION_HEADER,SUBSCRIBE_OPERATION,UNSUBSCRIBE_OPERATION,POLL_OPERATION,CLIENT_SYNC_OPERATION,CLIENT_PING_OPERATION,CLUSTER_REQUEST_OPERATION,LOGIN_OPERATION,LOGOUT_OPERATION,SUBSCRIPTION_INVALIDATE_OPERATION,MULTI_SUBSCRIBE_OPERATION,UNKNOWN_OPERATION,AUTHENTICATION_MESSAGE_REF_TYPE,SELECTOR_HEADER,PRESERVE_DURABLE_HEADER,NEEDS_CONFIG_HEADER,ADD_SUBSCRIPTIONS,REMOVE_SUBSCRIPTIONS,SUBTOPIC_SEPARATOR,POLL_WAIT_HEADER,operation,DESTINATION_CLIENT_ID_HEADER,ENDPOINT_HEADER,FLEX_CLIENT_ID_HEADER,REMOTE_CREDENTIALS_HEADER,REQUEST_TIMEOUT_HEADER,body,clientId,destination,headers,messageId,timestamp,timeToLive,totalTime,serverProcessingTime,serverPrePushTime,networkRTT,serverSendTime,clientReceiveTime,messageSize,responseMessageSize,pushedMessageFlag,totalPushTime,pushOneWayTime,originatingMessageSentTime,originatingMessageSize,MESSAGE_DELIVERY_IN_DOUBT,RETRYABLE_HINT_HEADER,faultCode,faultString,faultDetail,rootCause,extendedData,body,clientId,destination,headers,messageId,timestamp,timeToLive,getSOAPAction,toString,getOperationAsString,toString,prettyPrint,toString" name="keywords">
+<title>mx.messaging.messages.MessagePerformanceUtils (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'MessagePerformanceUtils - Flex 3 Language Reference';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../../index.html?mx/messaging/messages/MessagePerformanceUtils.html&amp;mx/messaging/messages/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;MessagePerformanceUtils</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class MessagePerformanceUtils"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.messaging.messages</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  MessagePerformanceUtils</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">MessagePerformanceUtils  <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../../../Object.html">Object</a></td>
+</tr>
+</table>
+<p></p>
+<p></p> 
+     The MessagePerformanceUtils utility class is used to retrieve various metrics about
+     the sizing and timing of a message sent from a client to the server and its 
+     response message, as well as pushed messages from the server to the client.  
+     Metrics are gathered when corresponding properties on the channel used are enabled:
+     &lt;record-message-times&gt; denotes capturing of timing information,
+     &lt;record-message-sizes&gt; denotes capturing of sizing information.
+     
+     <p>You can then use methods of this utility class to retrieve various performance information
+     about the message that you have just received.</p>
+     
+     <p>When these metrics are enabled an instance of this class should be created from 
+     a response, acknowledgement, or message handler via something like: </p>
+     <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#clientReceiveTime">clientReceiveTime</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">[read-only] 
+         Timestamp in milliseconds since epoch of when the client received response message from
+         the server
+         
+         </div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../Object.html#constructor">constructor</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  A reference to the class object or constructor function for a given object instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#messageSize">messageSize</a> : <a href="../../../int.html">int</a>
+<div class="summaryTableDescription">[read-only] 
+         The size of the original client message as measured during deserialization by the server
+         endpoint
+         
+         </div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#networkRTT">networkRTT</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">[read-only] 
+         The network round trip time for a client message and the server response to it,
+         calculated by the difference between total time and server processing time
+         
+         </div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#originatingMessageSentTime">originatingMessageSentTime</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">[read-only] 
+         Only populated in the case of a pushed message, timestamp in milliseconds since epoch of 
+         when the client that caused a push message sent its message.</div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#originatingMessageSize">originatingMessageSize</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">[read-only] 
+         Only populated in the case of a pushed message, size in Bytes of the message that originally
+         caused this pushed message
+         
+         </div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../Object.html#prototype">prototype</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription">[static] 
+  A reference to the prototype object of a class or function object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#pushedMessageFlag">pushedMessageFlag</a> : <a href="../../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">[read-only] 
+         Returns true if message was pushed to the client and is not a response to a message that
+         originated on the client
+         
+         </div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#pushOneWayTime">pushOneWayTime</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">[read-only] 
+         Only populated in the case of a pushed message, this is the network time between
+         the server pushing the message and the client receiving it.</div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#responseMessageSize">responseMessageSize</a> : <a href="../../../int.html">int</a>
+<div class="summaryTableDescription">[read-only] 
+         The size of the response message sent to the client by the server as measured during serialization
+         at the server endpoint
+         
+         </div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#serverPrePushTime">serverPrePushTime</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">[read-only] 
+         Time between server receiving the client message and the server beginning to push
+         messages out to other clients as a result of the original message.</div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#serverProcessingTime">serverProcessingTime</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">[read-only] 
+         Time between server receiving the client message and the server sending out 
+         a response to the message
+         
+         </div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#serverSendTime">serverSendTime</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">[read-only] 
+         Timestamp in milliseconds since epoch of when the server sent a response message back
+         to the client
+         
+         </div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#totalPushTime">totalPushTime</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">[read-only] 
+         Only populated in the case of a pushed message, this is the time between the push causing client
+         sending its message and the push receving client receiving it.</div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#totalTime">totalTime</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">[read-only] 
+         Time between this client sending a message and receiving a response
+         for it from the server
+         
+         </div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#MessagePerformanceUtils()">MessagePerformanceUtils</a>(message:<a href="../../../Object.html">Object</a>)</div>
+<div class="summaryTableDescription">
+         Constructor
+         
+         Creates an MPUtils instance with information from the MPI headers
+         of the passed in message
+         
+         </div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">hasOwnProperty</a>(name:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an object has a specified property defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">isPrototypeOf</a>(theClass:<a href="../../../Object.html">Object</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an instance of the Object class is in the prototype chain of the object specified 
+  as the parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#prettyPrint()">prettyPrint</a>():<a href="../../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+         Method returns a summary of all information available in MPI.</div>
+</td><td class="summaryTableOwnerCol">MessagePerformanceUtils</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">propertyIsEnumerable</a>(name:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether the specified property exists and is enumerable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#setPropertyIsEnumerable()">setPropertyIsEnumerable</a>(name:<a href="../../../String.html">String</a>, isEnum:<a href="../../../Boolean.html">Boolean</a> = true):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+     Sets the availability of a dynamic property for loop operations.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#toString()">toString</a>():<a href="../../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the string representation of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#valueOf()">valueOf</a>():<a href="../../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the primitive value of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="clientReceiveTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">clientReceiveTime</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>clientReceiveTime:<a href="../../../Number.html">Number</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+         Timestamp in milliseconds since epoch of when the client received response message from
+         the server
+         
+         </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get clientReceiveTime():<a href="../../../Number.html">Number</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="messageSize"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">messageSize</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>messageSize:<a href="../../../int.html">int</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+         The size of the original client message as measured during deserialization by the server
+         endpoint
+         
+         </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get messageSize():<a href="../../../int.html">int</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="networkRTT"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">networkRTT</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>networkRTT:<a href="../../../Number.html">Number</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+         The network round trip time for a client message and the server response to it,
+         calculated by the difference between total time and server processing time
+         
+         </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get networkRTT():<a href="../../../Number.html">Number</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="originatingMessageSentTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">originatingMessageSentTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>originatingMessageSentTime:<a href="../../../Number.html">Number</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+         Only populated in the case of a pushed message, timestamp in milliseconds since epoch of 
+         when the client that caused a push message sent its message.
+         
+         </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get originatingMessageSentTime():<a href="../../../Number.html">Number</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="originatingMessageSize"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">originatingMessageSize</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>originatingMessageSize:<a href="../../../Number.html">Number</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+         Only populated in the case of a pushed message, size in Bytes of the message that originally
+         caused this pushed message
+         
+         </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get originatingMessageSize():<a href="../../../Number.html">Number</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="pushedMessageFlag"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pushedMessageFlag</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>pushedMessageFlag:<a href="../../../Boolean.html">Boolean</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+         Returns true if message was pushed to the client and is not a response to a message that
+         originated on the client
+         
+         </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get pushedMessageFlag():<a href="../../../Boolean.html">Boolean</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="pushOneWayTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pushOneWayTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>pushOneWayTime:<a href="../../../Number.html">Number</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+         Only populated in the case of a pushed message, this is the network time between
+         the server pushing the message and the client receiving it.  Note that the server
+         and client clocks must be in sync for this to be meaningful.
+         
+         </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get pushOneWayTime():<a href="../../../Number.html">Number</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="responseMessageSize"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">responseMessageSize</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>responseMessageSize:<a href="../../../int.html">int</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+         The size of the response message sent to the client by the server as measured during serialization
+         at the server endpoint
+         
+         </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get responseMessageSize():<a href="../../../int.html">int</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="serverPrePushTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">serverPrePushTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>serverPrePushTime:<a href="../../../Number.html">Number</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+         Time between server receiving the client message and the server beginning to push
+         messages out to other clients as a result of the original message.  This value will always
+         be less than or equal to serverProcessingTime
+         
+         </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get serverPrePushTime():<a href="../../../Number.html">Number</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="serverProcessingTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">serverProcessingTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>serverProcessingTime:<a href="../../../Number.html">Number</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+         Time between server receiving the client message and the server sending out 
+         a response to the message
+         
+         </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get serverProcessingTime():<a href="../../../Number.html">Number</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="serverSendTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">serverSendTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>serverSendTime:<a href="../../../Number.html">Number</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+         Timestamp in milliseconds since epoch of when the server sent a response message back
+         to the client
+         
+         </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get serverSendTime():<a href="../../../Number.html">Number</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="totalPushTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">totalPushTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>totalPushTime:<a href="../../../Number.html">Number</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+         Only populated in the case of a pushed message, this is the time between the push causing client
+         sending its message and the push receving client receiving it.  Note that the two clients'
+         clocks must be in sync for this to be meaningful.
+         
+         </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get totalPushTime():<a href="../../../Number.html">Number</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="totalTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">totalTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>totalTime:<a href="../../../Number.html">Number</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+         Time between this client sending a message and receiving a response
+         for it from the server
+         
+         </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get totalTime():<a href="../../../Number.html">Number</a></code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor Detail</div>
+<a name="MessagePerformanceUtils()"></a><a name="MessagePerformanceUtils(Object)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">MessagePerformanceUtils</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function MessagePerformanceUtils(message:<a href="../../../Object.html">Object</a>)</code>
+<p></p><p>
+         Constructor
+         
+         Creates an MPUtils instance with information from the MPI headers
+         of the passed in message
+         
+         </p><span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">message</span>:<a href="../../../Object.html">Object</a></code> &mdash; The message whose MPI headers will be used in retrieving
+         MPI information  
+         </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method Detail</div>
+<a name="prettyPrint()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">prettyPrint</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function prettyPrint():<a href="../../../String.html">String</a></code>
+<p></p><p>
+         Method returns a summary of all information available in MPI.  A suggested use of this
+         is something like,
+         </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../../String.html">String</a></code> &mdash; String containing a summary of all information available in MPI
+         </td>
+</tr>
+</table>
+<br>
+<span class="label"> Example </span>
+<br>
+<div class="detailBody">         <div class="listing" version="3.0"><pre>
+              var mpiutil:MessagePerformanceUtils = new MessagePerformanceUtils(message);                     
+              Alert.show(mpiutil.prettyPrint(), "MPI Output", Alert.NONMODAL);
+         </pre></div>            
+         
+         </div>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/messaging/messages/MessagePerformanceUtils.html','mx/messaging/messages/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base.lenz.panel:BaseLenzPanel xmlns:base.lenz.panel="base.lenz.panel.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	creationComplete="onCreationComplete()" 
+	implements="base.lenz.panel.LenzPanel"
+	title="PharmaLenz" 
+	x="{(this.width/3)-25}" y="{(this.height/3)+10}">
+	<!--
+	scaleX=".8" scaleY=".8" x="{(this.width/3)-25}" y="{(this.height/3)+10}" >
+ -->
+	<mx:Script>
+		<![CDATA[
+			import mx.core.UIComponent;
+			import mx.containers.Canvas;
+			import base.event.AppModeEvent;
+			import flash.utils.setTimeout;
+			import base.util.ModalWait;
+			import mx.core.Application;
+				
+			
+			protected  function onCreationComplete():void {
+				
+				//logger.debug("IntroLenzPanel: onCreationComplete()");
+				
+				lenzId = "IntroPanel";
+		
+				
+				_form = new IntroPanelForm();
+				super.completePanel(_form);
+
+				zoom.play([this]);
+				ready();
+
+				
+			}
+			
+			
+			public override function actionTaken( data:*):void {
+				
+				
+				ModalWait.start();
+				
+				retract.play();
+				
+				// we have to give the retract animation time to play.
+
+				setTimeout(introSuccess, 1000);
+								
+				
+			}
+			
+			private function introSuccess():void {
+				
+				var e:Event = new AppModeEvent(AppModeEvent.INTRO_SUCCESS);
+				
+				//logger.debug("Sending introSuccess Event");
+				
+				this.dispatchEvent(e);
+			}
+			
+			
+		]]>
+	</mx:Script>
+	<mx:Zoom id="zoom" zoomWidthTo="1" zoomHeightTo="1" zoomHeightFrom=".8" zoomWidthFrom=".8"/>
+
+	
+</base.lenz.panel:BaseLenzPanel>

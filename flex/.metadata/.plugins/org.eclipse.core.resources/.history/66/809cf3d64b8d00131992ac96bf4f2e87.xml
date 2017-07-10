@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600"
+			   creationComplete="init()">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<mx:HBox height="100%" width="100%" >
+		
+	<s:CheckBox label="Stage 2" id="stage2" click="checkbox1_clickHandler(event)"/>
+	<s:TextArea id="fzbzTxt33" enabled="true" height="100%" width="100%" editable="false"/>
+	<s:TextArea id="fzbzTxt66" enabled="true" height="100%" width="100%" editable="false"/>
+	<s:TextArea id="fzbzTxt100" enabled="true" height="100%" width="100%" editable="false"/>
+	</mx:HBox>
+	<fx:Script>
+		<![CDATA[
+			private function init():void{
+				//It has begun
+				fzbzTxt33.text="";
+				fzbzTxt66.text="";
+				fzbzTxt100.text="";
+				
+				setFizzesAndBuzzes(1,33,fzbzTxt33);
+				setFizzesAndBuzzes(34,66,fzbzTxt66);
+				setFizzesAndBuzzes(67,100,fzbzTxt100);
+			}
+			private function setFizzesAndBuzzes(begin:int, end:int, ta:TextArea):void{
+				for (var i:int=begin; i <= end; i++){
+					
+					var isFizz:Boolean =isFizz(i);
+					var isBuzz:Boolean =isBuzz(i);
+					
+					if (isFizz && isBuzz)
+						ta.text+="FizzBuzz\n";
+					else if (isFizz)
+						ta.text+="Fizz\n";
+					else if (isBuzz)
+						ta.text+="Buzz\n";
+					else //(!isFizz && !isBuzz)
+						ta.text+=i+"\n";
+				}
+			}
+			private function isFizz(i:int):Boolean{
+				var s:String = String(i);
+				if (i % 3 == 0 || (stage2.selected && s.indexOf("3") != -1))
+					return true;
+				return false;
+			}
+			private function isBuzz(i:int):Boolean{
+				var s:String = String(i);
+				if (i % 5 == 0  || (stage2.selected && s.indexOf("5") != -1))
+					return true;
+				return false;
+			}
+			
+			protected function checkbox1_clickHandler(event:MouseEvent):void
+			{
+				init();
+				
+			}
+			
+		]]>
+	</fx:Script>
+</s:Application>

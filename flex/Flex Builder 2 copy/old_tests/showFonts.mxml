@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:local="*" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute"  xmlns:triangle="triangle.*"
+	creationComplete="onCreateComplete()">
+<mx:Script>
+	<![CDATA[
+		import mx.controls.Alert;
+		import flash.text.Font;
+		
+		public var holder:String = "The quick brown fox jumped over the lazy dog.\n";
+		[Bindable]
+		public var holder_t:Text = new Text();
+		public var f:Font = null;
+		private var a:Array = Font.enumerateFonts(true);
+		
+		private function onCreateComplete():void{
+			var limit:int = a.length;
+			
+			holder_t.text = holder;
+			a.sortOn("fontName", Array.CASEINSENSITIVE);
+
+			for (var i:int = 0; i<limit/3; i++){
+				f = a[i] as Font;
+				fonts.text +=  i+ f.fontName+ "\n";
+			}
+			
+			for (var j:int = limit/3; j<2*(limit/3); j++){
+				f = a[j] as Font;
+				fonts2.text += j+ f.fontName+ "\n";
+			}
+			for (var k:int = 2*(limit/3); k<limit; k++){
+				f = a[k] as Font;
+				fonts3.text += k+ f.fontName+ "\n";
+			}
+			
+			f = a[91] as Font
+			holder_t.setStyle("fontFamily", f);
+			holder_t.text += "Enter a number between 0 and "+limit;
+
+			
+		}
+		
+		public function bClick():void{
+			var i:Number = Number(ti.text);
+			f = a[i] as Font;
+//			holder_t.setStyle("fontName",f);
+			f1.setStyle("fontName",f);
+//			Alert.show(i.toString());
+		}
+	
+	]]>
+</mx:Script>
+<!--
+<mx:Text id="TNR" text="{holder}" fontSize="40" x="100" y="100"
+	fontFamily="Times New Roman"/>
+<mx:Text id="assigned" text="{holder}" fontSize="40" x="100" y="200"
+	fontFamily="{f}"/>
+<mx:Text id="arial" text="{holder}" fontSize="40" x="100" y="300"
+	fontFamily="Arial"/>
+	-->
+	<mx:Style source="styles/Delaware.css" />
+	<mx:Text id="fonts" />
+	
+	<mx:Text id="fonts2" x="200" styleName="testStyle" />
+	
+	<mx:Text id="fonts3" x="400" />
+	
+	<mx:Text id="f1" x="600" text="{holder_t.text}" fontFamily="Wingdings" />
+	
+	<mx:TextInput id="ti" text="" x="600" y="40" />
+	
+	<mx:Button id="b" label="set font" click="bClick()" x="600" y="80" />
+	
+</mx:Application>

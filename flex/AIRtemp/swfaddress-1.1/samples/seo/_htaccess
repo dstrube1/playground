@@ -1,0 +1,82 @@
+<IfModule mod_rewrite.c>
+
+# Enables mod_rewrite
+RewriteEngine on
+
+# Sets the base folder of the Flash content
+RewriteBase  /swfaddress/samples/seo/
+
+# Detects the major search engines
+RewriteCond  %{HTTP_USER_AGENT}     Googlebot|Msnbot|Slurp|Jeeves                                    [NC]
+# Excludes real files and folders from rewriting
+RewriteCond  %{REQUEST_FILENAME}    !-f
+RewriteCond  %{REQUEST_FILENAME}    !-d
+# Matches the root folder and ensures that rewriting won't be executed on /swfaddress/samples/seo
+RewriteCond  %{REQUEST_URI}         /swfaddress/samples/seo/                                         [NC]
+# Matches the query parameters
+RewriteCond  %{QUERY_STRING}        (.*)
+# Matches SWFAddress values and transforms them to a format that can be used by a serverside language
+RewriteRule  ^(.+[^/])(/?)$         ?swfaddress=/$1/&%1                                              [NE,L]
+
+# Detects Internet Explorer
+RewriteCond  %{HTTP_USER_AGENT}     MSIE                                                             [NC]
+# Excludes real files and folders from rewriting
+RewriteCond  %{REQUEST_FILENAME}    !-f
+RewriteCond  %{REQUEST_FILENAME}    !-d
+# Matches the root folder and ensures that rewriting won't be executed on /swfaddress/samples/seo
+RewriteCond  %{REQUEST_URI}         /swfaddress/samples/seo/                                         [NC]
+# Matches the query parameters
+RewriteCond  %{QUERY_STRING}        (.+)
+# Matches SWFAddress values and transforms them to a format that will be used by the browser
+RewriteRule  ^(.+[^/])(/?)$         ?/$1/?%1                                                         [R,NE,L]
+
+# Detects Internet Explorer
+RewriteCond  %{HTTP_USER_AGENT}     MSIE                                                             [NC]
+# Excludes real files and folders from rewriting
+RewriteCond  %{REQUEST_FILENAME}    !-f
+RewriteCond  %{REQUEST_FILENAME}    !-d
+# Matches the root folder and ensures that rewriting won't be executed on /swfaddress/samples/seo
+RewriteCond  %{REQUEST_URI}         /swfaddress/samples/seo/                                         [NC]
+# Matches the query parameters
+RewriteCond  %{QUERY_STRING}        !(.+)
+# Matches SWFAddress values and transforms them to a format that will be used by the browser
+RewriteRule  ^(.+[^/])(/?)$         ?/$1/                                                            [R,NE,L]
+
+# Excludes real files and folders from rewriting
+RewriteCond  %{REQUEST_FILENAME}    !-f
+RewriteCond  %{REQUEST_FILENAME}    !-d
+# Matches the root folder and ensures that rewriting won't be executed on /swfaddress/samples/seo
+RewriteCond  %{REQUEST_URI}         /swfaddress/samples/seo/                                         [NC]
+# Matches SWFAddress values and transforms them to a format that will be used by the browser
+RewriteRule  ^(.+[^/])(/?)$         #/$1/                                                            [R,NE,L]
+
+
+
+# Rewriting for content placed in the root of the domain
+# Uncomment and use only the following lines
+
+# RewriteBase  /
+
+# RewriteCond  %{HTTP_USER_AGENT}     Googlebot|Msnbot|Slurp|Jeeves                                    [NC]
+# RewriteCond  %{REQUEST_FILENAME}    !-f
+# RewriteCond  %{REQUEST_FILENAME}    !-d
+# RewriteCond  %{QUERY_STRING}        (.*)
+# RewriteRule  ^(.+[^/])(/?)$         ?swfaddress=/$1/&%1                                              [NE,L]
+
+# RewriteCond  %{HTTP_USER_AGENT}     MSIE                                                             [NC]
+# RewriteCond  %{REQUEST_FILENAME}    !-f
+# RewriteCond  %{REQUEST_FILENAME}    !-d
+# RewriteCond  %{QUERY_STRING}        (.+)
+# RewriteRule  ^(.+[^/])(/?)$         ?/$1/?%1                                                         [R,NE,L]
+
+# RewriteCond  %{HTTP_USER_AGENT}     MSIE                                                             [NC]
+# RewriteCond  %{REQUEST_FILENAME}    !-f
+# RewriteCond  %{REQUEST_FILENAME}    !-d
+# RewriteCond  %{QUERY_STRING}        !(.+)
+# RewriteRule  ^(.+[^/])(/?)$         ?/$1/                                                            [R,NE,L]
+
+# RewriteCond  %{REQUEST_FILENAME}    !-f
+# RewriteCond  %{REQUEST_FILENAME}    !-d
+# RewriteRule  ^(.+[^/])(/?)$         #/$1/                                                            [R,NE,L]
+
+</IfModule>

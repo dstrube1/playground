@@ -1,0 +1,17 @@
+package base.event
+{ 
+	import base.event.BaseLenzEvent;
+	
+	public class LenzClosedEvent extends BaseLenzEvent
+	{
+		
+		public static const LENZ_CLOSED_EVENT_BASE:String = "LenzClosedEvent_BASE";
+	
+		public static const EVENT_CODE:String = LENZ_CLOSED_EVENT_BASE;
+		
+		public function LenzClosedEvent( lenz:String) {
+			super(EVENT_CODE, lenz);
+		}
+		
+	}
+}

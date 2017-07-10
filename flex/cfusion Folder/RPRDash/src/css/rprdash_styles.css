@@ -1,0 +1,66 @@
+/* CSS file */
+@font-face {
+    src: url("fonts/DF66C___.TTF");
+    fontFamily: myChlorine;
+}
+
+	
+TabNavigator {
+   	cornerRadius: 10;
+   	horizontalGap: -1;
+   	horizontalAlign: center;
+   	paddingLeft: 10;
+   	borderStyle: solid;
+   	dropShadowEnabled: true;
+   	shadowDirection: center;
+   	shadowDistance: 2;
+   	dropShadowColor: #000000;
+   	tabStyleName: "myTabs";
+   	firstTabStyleName: "myTabs";
+   	lastTabStyleName: "myTabs";
+   	selectedTabTextStyleName: "mySelectedTabs";
+   	fontStyle: normal;
+   	fontWeight: normal;
+   	color: #000000;
+}
+
+.myTabs {
+    fontStyle: normal;
+   	cornerRadius: 7;
+   	themeColor: #00ff00;
+   	fontFamily: myChlorine;
+	fontWeight: normal;
+	color: #000000;
+}
+
+.mySelectedTabs {
+   	fontStyle: normal;
+   	fontFamily: myChlorine;
+   	color: #ffffff;
+}
+.mypanelTitle {
+   fontFamily: myChlorine;
+   fontStyle: normal;
+   fontWeight: normal;
+   color: #000000;
+}
+.popMenuItems {
+	fontStyle: normal;
+	fontFamily: Verdana;
+	fontWeight: normal;
+	fontSize: 12;
+	textAlign: left;	
+	color: #000000;
+}
+Panel.rprPanel
+{
+	borderAlpha: .5;
+	borderColor: #30422E;
+	borderThicknessBottom: 10;
+	cornerRadius: 10;
+	fontStyle: normal;
+	fontWeight: normal;
+	roundedBottomCorners: true;
+	shadowDistance: 5;
+	titleStyleName: mypanelTitle;
+}

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+	backgroundGradientAlphas="[1.0, 1.0]" 
+	backgroundGradientColors="[#FFFFFF, #999999]"
+	creationComplete="initApp(); applyRuntimeStyleSheet();"  xmlns:ns1="com.fusioncharts.components.*">
+	
+
+
+	<mx:Script>
+		<![CDATA[
+			import mx.styles.StyleManager;
+			import mx.controls.Menu;
+			import mx.core.IUIComponent;
+			import mx.events.MenuEvent;
+			
+            import com.adobe.leadgine.Referrals; 
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+		     
+		    [Bindable]
+		     public var expenses:ArrayCollection = new ArrayCollection([
+		        {Month:"Jan", Profit:2000, Expenses:1500, Amount:450},
+		        {Month:"Feb", Profit:1000, Expenses:200, Amount:600},
+		        {Month:"Mar", Profit:1500, Expenses:500, Amount:300}
+		     ]);
+
+	            public function itemClickHandler(event:MenuEvent):void {
+	                event.currentTarget.label= "leadgine section: " + event.label;
+	            }
+	            
+				[Bindable] 
+	            public var menuData:Array = [
+	                {label: "how it works", data: "how"},
+	                {label: "top referrers", data: "top"}, 
+	                {label: "send referrals", data: "send"},
+	                {label: "get referrals", data: "get"},
+	                {label: "my referrals", data: "referrals"},
+	                {label: "my commissions", data: "commissions"},
+	                {label: "hotels", data: "hotels"}
+	            ];
+	
+			public function applyRuntimeStyleSheet():void {
+	            StyleManager.loadStyleDeclarations("css/rprdash_styles.swf")
+	        }
+	
+	
+	
+	
+
+            
+            [Bindable]private var myGridData:ArrayCollection = new ArrayCollection();
+            /**
+             * @private
+             * This Is a Dummy Variaiable, You MUST Include it otherwise Flex
+             * 
+             *Will not Compile the Class and You will get an Error of
+             * [RPC Fault faultString="Error during update: The OLDBEAN argument passed to the update 
+             * function is not of type foo." faultCode="null" faultDetail="null"]
+             */             
+            
+             private var dummyVariableToCompile:Referrals = new Referrals();
+             private function initApp():void {
+             	//Alert.show("Here!");
+                 myDataService.fill(myGridData);                 
+             } 
+	
+	
+	
+	
+	
+	
+	
+		]]>
+	</mx:Script>
+	
+    <mx:DataService id="myDataService" destination="cfreferrals" autoCommit="true" />
+	
+	<mx:ApplicationControlBar height="101" fillAlphas="[1.0, 1.0]" fillColors="[#CCCCCC, #FFFFFF]" right="10" left="10" top="5" dock="false">
+		<mx:Canvas width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off" >
+			<mx:Image source="images/revpar_suite2.png" x="0" y="-1"/>
+			<mx:VBox height="100%" right="0" top="0" horizontalAlign="right">
+				<mx:MenuBar id="myMenuBar" labelField="@label" cornerRadius="3">
+				       <mx:XMLList>
+				           <menuitem label="my account">
+				               <menuitem label="SubMenuItem A-1" enabled="false"/>
+				               <menuitem label="SubMenuItem A-2"/>
+				           </menuitem>
+				           <menuitem label="|" enabled="false"/>
+				           <menuitem label="manage users"/>
+				           <menuitem label="|" enabled="false"/>
+				           <menuitem label="help">
+				               <menuitem label="email" 
+				                   type="radio" groupName="one"/>
+				               <menuitem label="phone: 1-800-555-8757" 
+				                   type="radio" groupName="one" enabled="false"/>
+				               <menuitem label="online" 
+				                   type="radio" groupName="one"
+				                   selected="true"/>
+				           </menuitem>
+				           <menuitem label="|" enabled="false"/>
+				           <menuitem label="logout"/>
+				       </mx:XMLList>
+				   </mx:MenuBar>
+				<mx:Spacer height="15" width="15"/>
+				<mx:Label text="welcome Curtis!"/>
+				<mx:Label text="last login:  November 4, 2008"/>
+			</mx:VBox>
+
+		</mx:Canvas>
+	</mx:ApplicationControlBar>
+	<mx:TabNavigator paddingLeft="10" paddingBottom="10" paddingRight="10" cornerRadius="10" 
+		right="10" left="10" top="115" bottom="20" dropShadowEnabled="true" horizontalAlign="center" fontSize="14" fontFamily="myChlorine" fontWeight="normal" backgroundColor="#7BA676" backgroundAlpha=".2" shadowDistance="3">
+		<mx:Canvas label="home" width="100%" height="100%">
+		</mx:Canvas>
+		<mx:Canvas label="leadgine" width="100%" height="100%" cornerRadius="10">
+
+			<mx:Panel x="10" y="41" width="411" height="222" 
+				layout="absolute" 
+				title="monthly referrals" 
+				horizontalScrollPolicy="off" verticalScrollPolicy="off" styleName="rprPanel">
+				
+				<mx:LineChart id="myChart" 
+			        dataProvider="{expenses}" 
+			        showDataTips="true" width="319" height="100%">
+			        <mx:horizontalAxis>
+			           <mx:CategoryAxis 
+			                dataProvider="{expenses}" 
+			                categoryField="Month"
+			            />
+			        </mx:horizontalAxis>
+			        <mx:series>
+			           <mx:LineSeries 
+			                yField="Profit" 
+			                displayName="Profit">
+			                <mx:lineStroke>
+				                <mx:Stroke 
+				                    color="#660000" 
+				                    weight="5" 
+				                    alpha="1.0"
+				                />
+				            </mx:lineStroke>
+			           </mx:LineSeries>
+
+			           <mx:LineSeries 
+			                yField="Expenses" 
+			                displayName="Expenses">
+			                <mx:lineStroke>
+				                <mx:Stroke 
+				                    color="#000066" 
+				                    weight="5" 
+				                    alpha="1.0"
+				                />
+				            </mx:lineStroke>
+			           </mx:LineSeries>
+			        </mx:series>
+			     </mx:LineChart>
+			     <mx:Legend dataProvider="{myChart}" x="318" y="0"/>
+
+			</mx:Panel>
+			
+			<mx:PopUpMenuButton id="p1" 
+		        showRoot="true" 
+		        dataProvider="{menuData}" 
+		        y="0" label="launch leadgine" width="350" height="33" cornerRadius="4" 
+		        horizontalCenter="0"
+		        itemClick="itemClickHandler(event);" fontFamily="myChlorine" fontWeight="normal" fontSize="14" themeColor="#2AFE00" popUpStyleName="popMenuItems"/>
+			
+			
+			<mx:Panel x="429" y="41" width="411" height="222" 
+				layout="absolute" 
+				title="monthly referrals" 
+				horizontalScrollPolicy="off" verticalScrollPolicy="off" styleName="rprPanel">
+				<ns1:FusionCharts x="0" y="0" FCChartType="Column3D" FCDataURL="Data.xml" width="391" height="178"/>
+				
+
+			</mx:Panel>
+			<mx:DataGrid dataProvider="{myGridData}" x="848" y="41" width="463" height="232">
+				<mx:columns>
+					<mx:DataGridColumn dataField="ID" headerText="ID"/>
+					<mx:DataGridColumn dataField="Company" headerText="Company"/>
+					<mx:DataGridColumn dataField="myEvent" headerText="Event"/>
+				</mx:columns>
+			</mx:DataGrid>
+        
+		</mx:Canvas>
+		
+		<mx:HBox label="sales bonuses" width="100%" height="100%" cornerRadius="7">
+		</mx:HBox>
+		<mx:HBox label="group pace" width="100%" height="100%" cornerRadius="7">
+		</mx:HBox>
+		<mx:HBox label="catering pace" width="100%" height="100%" cornerRadius="7">
+		</mx:HBox>
+		<mx:HBox label="marketing plan" width="100%" height="100%" cornerRadius="7">
+		</mx:HBox>
+		<mx:HBox label="action plans" width="100%" height="100%" cornerRadius="7">
+		</mx:HBox>
+		<mx:HBox label="top accounts" width="100%" height="100%" cornerRadius="7">
+		</mx:HBox>
+	</mx:TabNavigator>
+	<mx:Style source="css/rprdash_styles.css"/>
+
+	
+</mx:Application>

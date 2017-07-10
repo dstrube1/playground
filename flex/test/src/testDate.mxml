@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600">
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			private var beginDateText:String = "click the button";
+			
+			[Bindable]
+			private var endDateText:String = "click the button";
+			
+			
+			protected function changeDates_clickHandler(event:MouseEvent):void
+			{
+				var currentDate:Date = new Date();
+				var beginningOfThisMonth:Date = new Date(currentDate.fullYear, currentDate.month, 1);
+				var endOfLastMonth:Date = addDays(beginningOfThisMonth, -1);
+				var beginOffset:Number = beginningOfThisMonth.getTimezoneOffset(); //if utc london=-60; if plain utc=0; if EST=240
+				var endOffset:Number = endOfLastMonth.getTimezoneOffset();//if utc london=0; if plain utc=0; if EST=240
+				if (beginOffset == endOffset){/* no problem */}
+				else {
+					//problem
+					var offsetMilliseconds:Number = beginningOfThisMonth.getTimezoneOffset() * 60 * 1000;
+					endOfLastMonth.setTime(beginningOfThisMonth.getTime() + offsetMilliseconds);
+				}
+				
+				beginDateText = beginningOfThisMonth.toDateString();
+				endDateText = endOfLastMonth.toDateString();
+				
+				//changeDates.enabled = false;
+			}
+			
+			private function addDays(date:Date, days:Number):Date{
+				return addHours(date, days*24);
+			}
+			
+			private function addHours(date:Date, hrs:Number):Date{
+				return addMinutes(date, hrs*60);
+			}
+			
+			private function addMinutes(date:Date, mins:Number):Date{
+				return addSeconds(date, mins*60);
+			}
+			
+			private function addSeconds(date:Date, secs:Number):Date{
+				var mSecs:Number = secs * 1000;
+				var sum:Number = mSecs + date.getTime();
+				return new Date(sum);
+			}
+			
+		]]>
+	</fx:Script>
+	<mx:VBox>
+		
+		<mx:HBox>
+			<s:Label text="Beginning of this month: "/> <mx:Text id="beginDate" text="{beginDateText}"/>
+		</mx:HBox>
+		
+		<mx:HBox>
+			<s:Label text="End of last month: "/> <mx:Text id="endDate" text="{endDateText}"/>
+		</mx:HBox>
+		
+		<mx:Button id="changeDates" click="changeDates_clickHandler(event)" label="Set texts"/>
+		
+	</mx:VBox>
+</s:Application>

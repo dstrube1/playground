@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="stuff()">
+	<mx:Script>
+		<![CDATA[
+			public function stuff():void{
+				var day:Date = new Date();
+				t1.text = day.toString()+"\nblah\n";
+				try{
+					//t1.text += stream.readByte(); ==error
+					/*
+					var numx:Number = new Number();
+					var numy:Number = new Number();
+					numx=24.0;
+					numy=30.0;
+					t1.text += "01.";
+					t1.text += (Math.pow(numy,2))-numx;
+					t1.text += ".";
+					t1.text += Math.pow(numy,2)-100;
+					t1.text += "x10\n";
+					t1.text += 5+5+"5"+5+5+"5\n";
+					t1.text += numx++ +"\n";
+					t1.text += numx+"\n";
+					//(numx++)--; ERROR
+					*/
+					var myObj:Object = {x:20, y:30};
+					//myObj += {z:42}; ERROR
+					t1.text += "'for' example\n";
+					for (var i:String in myObj) {
+					    t1.text += (i + ": " + myObj[i])+'\n';
+					}
+					t1.text += "'for each' example\n";
+					for each (var num:int in myObj) {
+						t1.text += num+'\n';
+					}
+
+					t1.text += "flash.system.Capabilities.hasIME = "+flash.system.Capabilities.hasIME+'\n';
+					flash.system.Capabilities.hasIME = true;
+					t1.text += "flash.system.IME.conversionMode = "+flash.system.IME.conversionMode+'\n';
+				}
+				catch (err:Error){
+					t1.text+="Error caught: "+err.toString();
+				}
+			}
+		]]>
+	</mx:Script>
+	<mx:Label x="107" y="45" text="Label" width="232" height="186" id="t1"/>
+</mx:Application>

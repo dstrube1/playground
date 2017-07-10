@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:components="leadgine.components.*"
+	showCloseButton="true" 
+	styleName="rprPanel"  
+	width="900" height="550" 
+	horizontalAlign="center" 
+	title="Referral Form" >
+
+<mx:Script>
+<![CDATA[
+	import mx.core.Application;
+	
+	private function nextSection():void {
+		Application.application.toggleDialog(1);
+	}
+	private function prevSection():void {
+		Application.application.toggleDialog(-1);
+	}
+]]>
+</mx:Script>
+	<mx:Metadata>
+		[Event("formSubmit", type="mx.events.Event")]
+	</mx:Metadata>
+	<mx:VBox>
+
+		<mx:HBox verticalAlign="bottom" id="headerArea" width="800" styleName="headerStyle">
+			<mx:Label text="Full Service Referral Form" styleName="mainTitle" />
+			<mx:Spacer width="100%" />
+		</mx:HBox>	
+		<mx:VBox 
+			width="100%" 
+			height="100%"
+			creationComplete="fill()">
+	
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var myTitle:String;
+			
+			import mx.controls.Alert;
+
+			import mx.collections.ArrayCollection;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.collections.XMLListCollection;
+			import mx.collections.ListCollectionView;
+			import mx.utils.ArrayUtil;
+			import mx.controls.dataGridClasses.DataGridItemRenderer;
+			import mx.managers.CursorManager;
+			import mx.formatters.DateFormatter;
+			import mx.rpc.events.ResultEvent;
+			import mx.utils.ObjectUtil;
+			import mx.utils.ObjectProxy;								
+		    import mx.collections.GroupingField;
+	        import mx.collections.Grouping;
+	        import mx.collections.GroupingCollection;
+
+	                  
+			[Bindable] private var oldIndex:Number = -1;
+			[Bindable] private var selectedViewIndex:Number = 0;					
+			[Bindable] private var _selectedIndex:Number = -1;				
+			[Bindable] private var userid:Number = 1;
+			[Bindable] private var listReferrals:XMLListCollection;
+			//[Bindable] private var dataMyReferrals:ArrayCollection;
+			//[Bindable] private var dataFields:ArrayCollection;			
+	        [Bindable] public var myGColl:GroupingCollection = new GroupingCollection();
+	        
+	        private var myGrp:Grouping = new Grouping();
+			private var AlertMsgSuccess:String;
+			private var AlertMsgSuccessTitle:String;
+			private var AlertMsgFail:String;
+			private var AlertMsgFailTitle:String;
+			private var waitCursorSymbol:Class;			
+
+
+			public function resultHandlerReferrals(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.allLeads.children();	
+			    
+				listReferrals = new XMLListCollection(xmlList);
+				trace(listReferrals);
+			}
+			
+			public function faultHandler():void {
+				this.datReferrals.showBusyCursor = false;
+			}
+			
+			private function set selectedIndex(n:Number):void {
+				// Make sure we are within range of dataProvider.
+				if (n < 0)
+					n = listReferrals.length - 1;
+				else if (n > (listReferrals.length - 1))
+					n = 0;
+
+				_selectedIndex = n;
+			}
+			
+			private function get selectedIndex():Number {
+				return _selectedIndex;
+			}
+			
+			public function fill():void {
+				
+				datReferrals.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				datReferrals.addEventListener(ResultEvent.RESULT,resultHandlerReferrals);
+				datReferrals.method = "POST";
+				datReferrals.cancel();
+				datReferrals.send(); 
+			}
+
+			public function insertItemHandler(event:ResultEvent):void {	
+				//fill();
+			}						
+			
+			private function sortNumeric(obj1:Object, obj2:Object):int {
+				var value1:Number = (obj1.rooms == '' || obj1.rooms == null) ? null : new Number(obj1.rooms);
+				var value2:Number = (obj2.rooms == '' || obj2.rooms == null) ? null : new Number(obj2.rooms);
+				
+				if (value1 < value2) {
+					return -1;
+				} else if (value1 > value2) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+						
+
+			private function date_sort_Begin_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.begin));
+                var dateB:Date = new Date(Date.parse(itemB.begin));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+
+
+			private function date_sort_End_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.end));
+                var dateB:Date = new Date(Date.parse(itemB.end));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+
+	        private function initDG():void {     
+	
+	            // Initialize the GroupingCollection instance.
+	            myGColl.source = listReferrals;
+	                        
+	            // The Grouping instance defines the grouping fields
+	            // in the collection, and the order of the groups 
+	            // in the hierarchy.
+	            myGrp.fields = [new GroupingField("company")]; //new GroupingField("reg_mgr_name"), 
+	            
+	            // The grouping property contains a Grouping instance.
+	            myGColl.grouping = myGrp;
+	
+	            // Specify the GroupedCollection as the data provider for 
+	            // the AdvancedDataGrid control.
+	            //dataReferrals.dataProvider=myGColl;
+	            
+	            // Refresh the display.
+	            myGColl.refresh();
+
+	        } 
+										
+		
+		]]>
+	</mx:Script>
+				
+	
+				<mx:HTTPService id="datReferrals" url="http://www.ihghps.com/rpr/ref/my_referrals.asp" 
+					result="resultHandlerReferrals(event)"
+					fault="faultHandler()"
+					resultFormat="e4x"
+			        useProxy="false" 
+			        showBusyCursor="true"/>
+	
+				
+				<!-- commenting out by David so I can run this since I don't have the premium version of Flex 3 -->
+				<mx:DataGrid id="dataReferrals" 
+					width="100%" height="100%" 
+			        selectedIndex="{_selectedIndex}"
+			        dataProvider="{listReferrals}"
+			        itemClick="selectedIndex=AdvancedDataGrid(event.currentTarget).selectedIndex;" creationComplete="initDG();">
+
+						<mx:columns>
+								<mx:DataGridColumn headerText="Status" dataField="myStatus"/>
+								<mx:DataGridColumn headerText="Company" dataField="company"/>
+								<mx:DataGridColumn headerText="Event" dataField="myEvent"/>
+								<mx:DataGridColumn headerText="Arrival" dataField="date1"/>
+								<mx:DataGridColumn headerText="Rm Nts"	dataField="totalTotal"/>
+								<mx:DataGridColumn headerText="Revenue" dataField="ttlRevenue"/>
+								<mx:DataGridColumn headerText="Bonus" dataField="bonus"/>
+								<mx:DataGridColumn headerText="Referred" dataField="sentDate"/>
+						</mx:columns>
+				</mx:DataGrid>
+			
+		</mx:VBox>
+	</mx:VBox>
+</mx:TitleWindow>

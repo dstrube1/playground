@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:local="*" 
+	creationComplete="stuff()" backgroundGradientColors="[#ffffff, #ffffff]" viewSourceURL="srcview/index.html">
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import URLStreamExample.URLStreamExample;
+			import flash.net.URLRequest;
+		    import flash.net.URLStream;
+
+			public function stuff():void{
+				var stream:URLStream = new URLStream();
+				var request:URLRequest = new URLRequest("http://www.yahoo.com");
+				stream.load(request);
+				//const ZLIB_CODE:String = "CWS";
+
+				try{
+					t1.text = "request.url = "+request.url+'\n';
+					t1.text += "request.contentType = "+request.contentType+'\n';
+					t1.text += "request.data = "+request.data+'\n';
+					t1.text += "stream.bytesAvailable = "+stream.bytesAvailable+'\n';
+					t1.text += "stream.connected = "+stream.connected+'\n';
+					//t1.text += "stream.readBoolean() = "+stream.readBoolean()+'\n'; ==Error
+					//t1.text = "";
+					//var u:URLStreamExample = new URLStreamExample();
+					//t1.text += u.completeHandler();==Error
+				}
+				catch (err:Error){
+					t1.text+="Error caught: "+err.toString();
+				}
+				//trace("blah");
+			}
+		]]> 
+	</mx:Script><!--  -->
+	<mx:Label x="56" y="30" id="t1" text="Label" height="277" width="462"/>
+	<mx:Button 
+		label="Say Hello" 
+		width="112" height="92" 
+		horizontalCenter="-10.5" verticalCenter="10"
+		click="Alert.show('you clicked?')"/>
+	
+</mx:Application>

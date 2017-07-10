@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectMetadata>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DragAndDrop.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DragAndDrop-debug.swf" height="100%" pageTitle="" width="100%"/>
+<generatedHTMLResources/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/Example.swf" height="620" pageTitle="" width="500"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/Example-debug.swf" height="620" pageTitle="" width="500"/>
+<swf bgcolor="ffffff" fullPath="/DragAndDrop/bin/DandDCanvas.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="ffffff" fullPath="/DragAndDrop/bin/DandDCanvas-debug.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DandDImage.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DandDImage-debug.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DandDImageCopyMove.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DandDImageCopyMove-debug.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DandDImageProxy.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DandDImageProxy-debug.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DandDListToDG.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DandDListToDG-debug.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DandDListToListCopy.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DandDListToListCopy-debug.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DandDListToListShowFeedback.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/DandDListToListShowFeedback-debug.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/SimpleDGToDG.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/SimpleDGToDG-debug.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/SimpleDGToDGAlert.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/SimpleDGToDGAlert-debug.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/SimpleListToList.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/SimpleListToList-debug.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/SimpleListToListMove.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/SimpleListToListMove-debug.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/SimpleTreeSelf.swf" height="100%" pageTitle="" width="100%"/>
+<swf bgcolor="869ca7" fullPath="/DragAndDrop/bin/SimpleTreeSelf-debug.swf" height="100%" pageTitle="" width="100%"/>
+</projectMetadata>

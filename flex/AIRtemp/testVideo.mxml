@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	
+<!--
+
+remove unused containers from automation heirarchy:
+
+showInAutomationHierarchy="false"
+
+<mx:TabNavigator height="100%" width="100%" >
+-->
+
+
+	
+
+<mx:Script>
+
+	<![CDATA[
+
+		import mx.managers.FocusManager;
+
+		import mx.managers.SystemManager;
+
+		import mx.controls.VideoDisplay;
+	import flash.utils.Timer;
+	import flash.events.TimerEvent;
+
+		private var myTimer:Timer;
+		
+
+		public function playVid(vd:VideoDisplay):void{
+			this.myTimer = new Timer( 1000 , 0 );
+			this.myTimer.addEventListener( "timer" , updateTime );
+			this.myTimer.start();
+			
+			vd.play();
+
+			/*
+
+			
+
+			System.totalMemory
+
+			System.vmVersion
+
+			System.setClipboard("blah");
+
+			SystemManager.getSWFRoot(this);
+
+			var fm:FocusManager = new FocusManager(this, true);
+
+			*/
+
+			
+
+		}
+
+		public function pauseVid(vd:VideoDisplay):void{
+
+			vd.pause();
+			
+
+		}
+
+		public function stopVid(vd:VideoDisplay):void{
+
+			vd.stop();
+
+		}
+
+		public function toHalfVid(vd:VideoDisplay):void{
+
+			vd.playheadTime = vd.totalTime / 2;
+
+		}
+		private function slide(event:Event):void{
+			test1.playheadTime = event.target.value;
+			var localV:uint = event.target.value;
+			var s:uint = localV % 60;
+			var m:uint = localV / 60;
+			time.text = "Time: h: "+0+" m: "+m+" s: "+s;
+		}
+		
+		private function updateTime(event:TimerEvent):void{
+			var localV:uint = test1.playheadTime;
+			var s:uint = localV % 60;
+			var m:uint = localV / 60;
+			time.text = "Time: h: "+0+" m: "+m+" s: "+s;
+		}
+
+	]]>
+
+</mx:Script>
+
+
+<!--
+<mx:VBox label="1" >
+
+this event of the VideoDisplay doesn't seem to work:
+progress="updateTime(event)"
+-->
+	
+
+<mx:VideoDisplay id="test1" width="300" height="300" source="1197162801111.flv" autoPlay="false" />
+
+<mx:HSlider id="slider" value="0" minimum="0" maximum="{test1.totalTime}" x="10" y="338" width="290"
+	change="slide(event)"/>
+
+<mx:Button id="play" click="playVid(test1)" label="play" x="10" y="308"/>
+<mx:Button id="pause" click="pauseVid(test1)" label="pause" x="68" y="308"/>
+
+<mx:Button id="stop" click="stopVid(test1)" label="stop"  x="136" y="308"/>
+
+<mx:Button id="toHalf" click="toHalfVid(test1)" label="Go to Halfway"  x="195" y="308"/>
+	<mx:Label id="time" x="10" y="358" text="Time: "/>
+<!--
+
+
+</mx:VBox> 
+
+
+</mx:TabNavigator>
+-->
+</mx:WindowedApplication>

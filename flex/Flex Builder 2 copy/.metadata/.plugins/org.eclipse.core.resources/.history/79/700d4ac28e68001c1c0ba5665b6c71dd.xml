@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="750" height="470" 
+	horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm" 
+	horizontalScrollPolicy="off" verticalScrollPolicy="off"
+	creationComplete="onCreationComplete()" >
+	
+	 
+	<mx:Script> 
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			import mx.collections.ArrayCollection;
+			import mx.collections.SortField;
+			import mx.events.DataGridEvent;
+			import mx.collections.Sort;
+			import mx.collections.SortField;
+			
+			import base.lenz.panel.LenzPanel;
+			import base.util.ModalWait;
+			import lenz.main.site_select.SiteSelectionLenz;
+			import lenz.main.site_select.controller.SiteSelectionController;
+			
+			import mx.controls.Alert;
+            import mx.events.CloseEvent;
+
+	
+	        [Embed(source="/resources/images/alert_icon.png")] 
+            [Bindable]
+            public var alertIcon:Class; 
+
+			
+			private var _parent:LenzPanel = null;
+			
+			[Bindable]	
+			public var proposals:Array;
+			
+			[Bindable]
+			public var selectedProposal:Object = null;
+			
+			[Bindable]
+			private var descSummary:String = '<i>Search Name</i> - The sponsor name for this search.<br><br>' 
+			+'<i>Therapeutic Area</i> - The medical specialty of interest for a given clinical trial. <br><br>'
+			+'<i>Indication Type</i> - The disease or condition being studied in the clinical trial. <br><br>'
+			+'<i>Phase</i> - The drug development phase (I, II, III, IV) for the specific study of interest. <br><br>'		
+			+'<i>#Enrolled</i> - The Planned Enrollment goal for the study.'		
+			;
+			
+			public function onCreationComplete():void {
+				var params:Object = {
+					userId: "user",
+					actionId: "fetchProposals"	
+				};
+				SiteSelectionController.processAction( params );
+				
+				this.rightPanel.title = "Terms Explained";
+				this.explanations.htmlText = descSummary;
+			}
+			
+			public function setExplanationText(event:DataGridEvent):void {
+				this.rightPanel.title = "Terms Explained";
+				this.explanations.htmlText = descSummary;
+			}
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+			}
+			
+			private function launchApp( appId:int):void {
+				
+			}
+			
+			public function initializeForm():void {
+				
+			}
+			
+			public function populateResources(data:Object):void {
+				onCreationComplete();
+			}
+
+			/**
+			* Form clean up logic 
+			*/
+			public function destroy():void {
+				
+			}			
+			
+			public function createProposalLabel(o:Object):String {
+				return o.name;
+			}
+			
+			private function onProposalSelected(ev:Event):void {
+				if (ev.currentTarget.selectedItem == null)
+					return;
+				
+				this.selectedProposal = ev.currentTarget.selectedItem;
+				
+				this.rightPanel.title = "Search Description";
+				if (this.selectedProposal.description != null) {
+					this.explanations.text = this.selectedProposal.description;
+				} else {
+					this.explanations.text = "";
+				}
+			}
+			
+			private function sortNumeric(obj1:Object, obj2:Object):int {
+				var value1:Number = (obj1.subjectContribution == "" || obj1.subjectContribution == null) ? null : new Number(obj1.subjectContribution);
+				var value2:Number = (obj2.subjectContribution == "" || obj2.subjectContribution == null) ? null : new Number(obj2.subjectContribution);
+				
+				if (value1 < value2) {
+					return -1;
+				} else if (value1 > value2) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+			
+			private function sortAlphabetical(obj1:Object, obj2:Object):int {
+				if (String(obj1.name).toLowerCase() < String(obj2.name).toLowerCase()) {
+					return -1;
+			 	} else if (String(obj1.name).toLowerCase() > String(obj2.name).toLowerCase()) {
+			 		return 1;
+			 	} else {
+			 		return 0;
+			 	}
+			}
+			
+			public function goBack():void {
+				(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('');
+			}
+			
+			public function modifyStudy():void {
+				if (this.selectedProposal == null) {
+					
+					Alert.show( "Please select the search to be modified!", 
+					"Search is not selected!", 
+					Alert.OK , this, null, alertIcon, Alert.CANCEL).styleName="rightPanel";									
+
+				} else {
+					var params:Object = {
+						userId: "user",
+						studyId: this.selectedProposal.id,
+						actionId: "getProposalData"	
+					};
+					
+					// clear out the this.selectedProposal so it goes away?
+					this.selectedProposal = null;
+					
+					SiteSelectionController.processAction( params );
+				}
+			}
+			
+			public function deleteStudy():void {
+				if (this.selectedProposal == null) {
+					
+					return;
+				} else {
+					var params:Object = {
+						userId: "user",
+						studyId: this.selectedProposal.id,
+						actionId: "deleteProposal"	
+					};
+					
+					// clear out the this.selectedProposal so it goes away?
+					this.selectedProposal = null;
+					
+					SiteSelectionController.processAction( params );
+				}
+			}
+			
+			public function deleteStudyWithAlert():void {				
+				if( this.selectedProposal != null ) {
+					Alert.show( "Delete study \""+this.selectedProposal.name+"\"", 
+					"Delete Search?", 
+					Alert.OK | Alert.CANCEL, this, deleteDialogListener, alertIcon, Alert.CANCEL).styleName="rightPanel";						
+				} else {
+					Alert.show( "Please select the search to be deleted!", 
+					"Search is not selected!", 
+					Alert.OK , this, null, alertIcon, Alert.CANCEL).styleName="rightPanel";									
+				}				
+			}
+			
+			private function deleteDialogListener(eventObj:CloseEvent):void {
+				if ( eventObj.detail==Alert.OK) {
+	                    deleteStudy(); 
+	            }
+			}
+			
+			
+			private function createProposalTip( item:Object ):String 
+			{
+				return item.name + ( item.description==null?"":" - " + item.description );
+			}
+			
+		]]>
+	</mx:Script>
+
+
+	<mx:Label x="10" y="10" color="#000000" maxHeight="30" text="Country Allocation" fontThickness="200" fontSize="18"  />
+	
+	<!--mx:Panel id="surveyContent" styleName="CAStudiesPanel" width="522" x="10" layout="absolute" bottom="7" top="46" -->
+	
+	<mx:VBox styleName="filledRight" id="vb1" y="46" width="522" x="10"   height="414" backgroundAlpha="0.5">
+		<mx:Canvas width="100%" height="100%" >
+		
+			<!--mx:List id="proposalsList" dataProvider="{proposals}" color="black" labelFunction="createProposalLabel" y="10" x="10" width = "100%" click="onProposalSelected(event)"  height="245"/-->
+			
+			<mx:DataGrid id="dGrid" styleName="IIDataGrid" width="502" height="356" dataProvider="{proposals}" showDataTips="true" dataTipFunction="createProposalTip" click="onProposalSelected(event)" headerRelease="setExplanationText(event)" horizontalScrollPolicy="off" x="10" y="10">
+				<mx:columns>
+					<mx:DataGridColumn headerText="Search Name" dataField="name" editable="false" width="100" sortCompareFunction="sortAlphabetical"/>
+					<mx:DataGridColumn headerText="Therapeutic Area" dataField="therapeuticArea" editable="false" width="110" />
+					<mx:DataGridColumn headerText="Indication Type" dataField="indication" editable="false" width="100"  />
+					<mx:DataGridColumn headerText="Phase" dataField="phase" editable="false" width="47" />
+					<mx:DataGridColumn headerText="#Enrolled" dataField="subjectContribution" sortCompareFunction="sortNumeric" editable="false" width="70" />				
+				</mx:columns>
+			</mx:DataGrid>
+		</mx:Canvas>
+		<mx:Canvas width="100%" height="32" >			
+			<mx:Button styleName="IIButton" label="Back" click="goBack()" bottom="8" x="10" />			
+			<mx:Button styleName="IIButton" id="modifyBtn" label="Modify Search" bottom="8" right="9" click="modifyStudy()"/>
+			<mx:Button styleName="IIButton" id="deleteBtn" label="Delete Search" bottom="8" right="117" click="deleteStudyWithAlert()"/>
+		</mx:Canvas>
+				
+	</mx:VBox>
+		
+	<mx:Panel id="rightPanel" styleName="rightPanel" title="Terms Explained" x="540" width="200" height="371" layout="absolute" cornerRadius="10" roundedBottomCorners="true" borderThickness="0" paddingLeft="0" paddingRight="0" paddingTop="0" paddingBottom="0" top="46" >
+		<mx:TextArea editable="false" styleName="rightTextArea" id="explanations" width="180" htmlText="{descSummary}" fontSize="11"  borderThickness="0" x="0" horizontalScrollPolicy="off" verticalScrollPolicy="off" top="0" bottom="10"/>	
+	</mx:Panel>
+	
+	<mx:VBox styleName="filledRight" x="540" y="425" width="200" height="35"  >
+		<mx:Canvas width="100%" height="100%" >
+			<mx:Button styleName="IIButton" label="New Search" id="submitBtn" 
+				click="ModalWait.start();(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('NewProposal')"  width="100" height="22" horizontalCenter="0" verticalCenter="0"/>		
+		</mx:Canvas>
+	</mx:VBox>
+	
+</mx:Canvas>

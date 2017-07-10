@@ -1,0 +1,111 @@
+package app
+{
+	import app.config.LenzFactory;
+	import app.server.LenzServer;
+
+	import base.lenz.panel.PanelBuilder;
+	import base.log.LogWindow;
+	import base.services.LenzService;
+	import base.services.ServiceBuilder;
+	import base.services.SimpleLenzService;
+	
+	import lenz.login.LoginLenz;
+	import lenz.main.study_mgr.StudyManagerLenz;
+	import lenz.main.welcome.WelcomeLenz;
+	
+	import mx.core.ClassFactory;
+	
+	public class Init
+	{
+		
+		private var config:Object = null;
+
+		
+		
+		
+		public function Init( configParams:Object):void {
+			
+			config = configParams;
+			
+			// all the configuration for the base code goes here, or in sub methods of this.
+
+			
+			registerLenzes();
+			
+			configPanelBuilder();
+						
+		}
+		
+		
+		public function phase2( ):void {
+			configureServer( config );
+			
+			
+		}
+		
+		
+		private function registerLenzes():void {
+			
+			LenzFactory.registerLenz( App.STUDY_MANAGER, StudyManagerLenz);
+			LenzFactory.registerLenz( LoginLenz.LENZ_ID, LoginLenz);
+			LenzFactory.registerLenz( WelcomeLenz.LENZ_ID, WelcomeLenz);
+			
+			
+		}
+		
+		
+		
+		
+		private function configPanelBuilder():void {
+			
+			PanelBuilder.setContentHeight(App.LENZ_PANEL_CONTENT_HEIGHT);
+			
+		}
+		
+		
+		
+		
+		private function configureServer( config:Object ):void {
+			
+			var url:String = config["svcUrl"];
+			var wsdlPath:String = config["wsdlPath"];
+			var portPath:String = config["portPath"];
+
+			var baseService:LenzService = null;			
+			var visibleService:LenzService = null;
+
+			if (config["testMode"]) {
+
+
+				
+				var plansXML:XML = <db>
+								<plan id="1" name="Plan1" description="Hold a Rejuvenation Meeting" />
+								<plan id="2" name="Plan2" description="Add more monitors" />
+							</db>
+
+				
+			
+				
+			} else {
+				
+				var builder:ServiceBuilder = new ServiceBuilder();
+				
+				builder.setUrl(url);
+				builder.setWsdlPath(wsdlPath);
+				builder.setPortPath(portPath);
+				baseService = new SimpleLenzService();
+				
+				builder.build( baseService );
+				
+				
+			}
+			
+			
+			
+			LenzServer.init(visibleService);
+						
+			
+		}
+		
+	}
+}

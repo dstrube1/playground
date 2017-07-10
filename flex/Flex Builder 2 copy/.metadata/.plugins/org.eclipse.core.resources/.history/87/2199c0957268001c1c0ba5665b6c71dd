@@ -1,0 +1,23 @@
+package app.model.CountryAllocation
+{
+	public class GeographicalLocation
+	{
+		public static const DESELECTED:int = 0;
+		public static const AVAILABLE:int = 1;
+		public static const SELECTED:int = 2;
+		
+		public function GeographicalLocation( id:String, name:String, selectionStatus:int ):void
+		{
+			this.id = id;
+			this.name = name;
+			this.selectionStatus = selectionStatus;
+		}
+		public var type:String = "GeographicalLocation";
+		public var id:String = "UNDEFINED";
+		public var name:String = "UNDEFINED";
+		//public var regionId:String = "UNDEFINED";
+		//public var regionName:String = "UNDEFINED";
+		public var selectionStatus:int = 1;	// 0-deselected, 1-available, 2-selected
+		public var parent:GeographicalLocation;			
+	}
+}

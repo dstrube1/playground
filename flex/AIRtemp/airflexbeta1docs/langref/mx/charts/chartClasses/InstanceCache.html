@@ -1,0 +1,458 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="InstanceCache,mx.charts.chartClasses.InstanceCache,baseline,chartDataProvider,displayName,title,unitSize,dataTransform,displayName,filterData,interactive,legendData,renderData,transitionRenderData,selectable,selectedIndex,selectedIndices,selectedItem,selectedItems,items,axes,elements,cursor,chart,chartDataProvider,dataProvider,dataTransform,labelContainer,aspectRatio,element,label,marker,bounds,cache,elementBounds,filteredCache,visibleRegion,length,angularAxis,radialAxis,dataRegion,includeInRanges,verticalAxis,horizontalAxis,chartDataProvider,displayName,title,unitSize,lowerMargin,upperMargin,value,data,closeField,columnWidthRatio,highField,items,itemType,lowField,maxColumnWidth,offset,openField,renderDataType,verticalAxis,horizontalAxis,xField,legendData,renderData,internalStyleName,columnWidthRatio,maxColumnWidth,offset,axis,gutters,heightLimit,horizontal,minorTicks,otherAxes,placement,ticks,totalsByPrimaryAxis,stackedMaximum,verticalAxis,horizontalAxis,series,type,maxTipWidth,data,HORIZONTAL_AXIS,VERTICAL_AXIS,pixelWidth,pixelHeight,assignedMaximum,assignedMinimum,baseAtZero,computedInterval,computedMaximum,computedMinimum,labelCache,labelMaximum,labelMinimum,minorTickCache,autoAdjust,labelFunction,baseline,minorTicks,padding,parseFunction,requiredDescribedFields,ticks,dataDescriptions,horizontalAxisRatio,verticalAxisRatio,selectedChartItems,dataRegion,computedGutters,horizontalAxis,horizontalAxisRenderer,secondDataProvider,secondHorizontalAxis,secondHorizontalAxisRenderer,secondSeries,secondVerticalAxis,secondVerticalAxisRenderer,verticalAxis,verticalAxisRenderer,verticalAxisRenderers,horizontalAxisRenderers,REQUIRED_BOUNDED_VALUES,REQUIRED_MIN_INTERVAL,REQUIRED_MIN_MAX,REQUIRED_PADDING,boundedValues,max,min,minInterval,padding,accurate,labels,minorTicks,ticks,NONE,PREPARING_TO_HIDE_DATA,HIDING_DATA,PREPARING_TO_SHOW_DATA,SHOWING_DATA,creationCallback,discard,hide,remove,count,factory,format,insertPosition,instances,properties,RADIAL_AXIS,ANGULAR_AXIS,radius,origin,chartDataProvider,dataTransform,labelContainer,stacker,stackTotals,barWidthRatio,maxBarWidth,offset,allElements,labelElements,HORIZONTAL,VERTICAL,dataTipFunction,mouseSensitivity,annotationElements,backgroundElements,chartState,clipContent,dataProvider,dataRegion,dataTipLayerIndex,dataTipMode,description,legendData,series,seriesFilters,showDataTips,transforms,selectionMode,selectedChartItem,selectedChartItems,dragEnabled,dropEnabled,dragImage" name="keywords">
+<title>mx.charts.chartClasses.InstanceCache (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'InstanceCache - Flex 3 Language Reference';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../../index.html?mx/charts/chartClasses/InstanceCache.html&amp;mx/charts/chartClasses/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;InstanceCache</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class InstanceCache"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<div class="annotation">(Adobe Flex Charting 3 components only)</div>
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.charts.chartClasses</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  InstanceCache</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">InstanceCache  <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../../../Object.html">Object</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  InstanceCache is a utilty that governs the task of creating and managing
+  a set of <i>n</i> object instances, where <i>n</i> changes frequently.
+ <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../Object.html#constructor">constructor</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  A reference to the class object or constructor function for a given object instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#count">count</a> : <a href="../../../int.html">int</a>
+<div class="summaryTableDescription">
+      The number of items currently required in the cache.</div>
+</td><td class="summaryTableOwnerCol">InstanceCache</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#creationCallback">creationCallback</a> : <a href="../../../Function.html">Function</a>
+<div class="summaryTableDescription">
+      A callback invoked when new instances are created.</div>
+</td><td class="summaryTableOwnerCol">InstanceCache</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#discard">discard</a> : <a href="../../../Boolean.html">Boolean</a> = false<div class="summaryTableDescription"> 
+      Determines if unneeded instances are discarded.</div>
+</td><td class="summaryTableOwnerCol">InstanceCache</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#factory">factory</a> : <a href="../../../mx/core/IFactory.html">IFactory</a>
+<div class="summaryTableDescription">
+      A factory that generates the type of object to cache.</div>
+</td><td class="summaryTableOwnerCol">InstanceCache</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#format">format</a> : <a href="../../../flash/text/TextFormat.html">TextFormat</a>
+<div class="summaryTableDescription">
+      A TextFormat to apply to any instances created.</div>
+</td><td class="summaryTableOwnerCol">InstanceCache</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#hide">hide</a> : <a href="../../../Boolean.html">Boolean</a> = true<div class="summaryTableDescription">
+      Determines if unneeded instances should be hidden.</div>
+</td><td class="summaryTableOwnerCol">InstanceCache</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#insertPosition">insertPosition</a> : <a href="../../../int.html">int</a>
+<div class="summaryTableDescription">[write-only]  
+      The position of the instance in the parent's child list.</div>
+</td><td class="summaryTableOwnerCol">InstanceCache</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#instances">instances</a> : <a href="../../../Array.html">Array</a>
+<div class="summaryTableDescription">[read-only] 
+      The Array of cached instances.</div>
+</td><td class="summaryTableOwnerCol">InstanceCache</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#properties">properties</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription">
+      A hashmap of properties to assign to new instances.</div>
+</td><td class="summaryTableOwnerCol">InstanceCache</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../Object.html#prototype">prototype</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription">[static] 
+  A reference to the prototype object of a class or function object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#remove">remove</a> : <a href="../../../Boolean.html">Boolean</a> = false<div class="summaryTableDescription">
+      Determines if unneeded instances should be removed from their parent.</div>
+</td><td class="summaryTableOwnerCol">InstanceCache</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#InstanceCache()">InstanceCache</a>(type:<a href="../../../Object.html">Object</a>, parent:<a href="../../../Object.html">Object</a> = null, insertPosition:<a href="../../../int.html">int</a> = -1)</div>
+<div class="summaryTableDescription">
+      Constructor.</div>
+</td><td class="summaryTableOwnerCol">InstanceCache</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">hasOwnProperty</a>(name:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an object has a specified property defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">isPrototypeOf</a>(theClass:<a href="../../../Object.html">Object</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an instance of the Object class is in the prototype chain of the object specified 
+  as the parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">propertyIsEnumerable</a>(name:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether the specified property exists and is enumerable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#setPropertyIsEnumerable()">setPropertyIsEnumerable</a>(name:<a href="../../../String.html">String</a>, isEnum:<a href="../../../Boolean.html">Boolean</a> = true):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+     Sets the availability of a dynamic property for loop operations.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#toString()">toString</a>():<a href="../../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the string representation of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#valueOf()">valueOf</a>():<a href="../../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the primitive value of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="count"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">count</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>count:<a href="../../../int.html">int</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      The number of items currently required in the cache.
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get count():<a href="../../../int.html">int</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set count(value:<a href="../../../int.html">int</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="creationCallback"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">creationCallback</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var creationCallback:<a href="../../../Function.html">Function</a></code>
+<p></p><p>
+      A callback invoked when new instances are created.
+      This callback has the following signature:
+      <pre>
+      function creationCallback(<i>newInstance</i>:Object, <i>cache</i>:InstanceCache):void;
+      </pre>
+     </p></div>
+<a name="propertyDetail"></a><a name="discard"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">discard</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var discard:<a href="../../../Boolean.html">Boolean</a> = false</code>
+<p></p><p> 
+      Determines if unneeded instances are discarded.
+      If set to <code>true</code>, extra elements are discarded
+      when the cache count is reduced.
+      Otherwise, extra elements are kept in a separate cache
+      and reused when the count is increased.
+     </p></div>
+<a name="propertyDetail"></a><a name="factory"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">factory</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>factory:<a href="../../../mx/core/IFactory.html">IFactory</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      A factory that generates the type of object to cache.
+      Assigning to this discards all current instances
+      and recreate new instances of the correct type.
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get factory():<a href="../../../mx/core/IFactory.html">IFactory</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set factory(value:<a href="../../../mx/core/IFactory.html">IFactory</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="format"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">format</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>format:<a href="../../../flash/text/TextFormat.html">TextFormat</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      A TextFormat to apply to any instances created.
+      If set, this format is applied as the current and default format
+      for the contents of any instances created.
+      This property is only relevant if the factory
+      generates TextField instances.  
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get format():<a href="../../../flash/text/TextFormat.html">TextFormat</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set format(value:<a href="../../../flash/text/TextFormat.html">TextFormat</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="hide"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hide</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var hide:<a href="../../../Boolean.html">Boolean</a> = true</code>
+<p></p><p>
+      Determines if unneeded instances should be hidden.
+      If <code>true</code>, the <code>visible</code> property
+      is set to <code>false</code> on each extra element
+      when the cache count is reduced, and set to <code>true</code>
+      when the count is increased.
+      
+      <p>This property is only relevant when the factory
+      generates DisplayObjects.
+      Setting this property to <code>true</code> for other factory types
+      generates a run-time error.</p>
+     </p></div>
+<a name="propertyDetail"></a><a name="insertPosition"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">insertPosition</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>insertPosition:<a href="../../../int.html">int</a></code>&nbsp;&nbsp;[write-only] <p></p><p> 
+      The position of the instance in the parent's child list. 
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set insertPosition(value:<a href="../../../int.html">int</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="instances"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">instances</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>instances:<a href="../../../Array.html">Array</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+      The Array of cached instances.
+      There may be more instances in this Array than currently requested.
+      You should rely on the <code>count</code> property
+      of the instance cache rather than the length of this Array.
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get instances():<a href="../../../Array.html">Array</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="properties"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">properties</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>properties:<a href="../../../Object.html">Object</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      A hashmap of properties to assign to new instances.
+      Each key/value pair in this hashmap is assigned
+      to each new instance created.
+      The property hashmap is assigned to any existing instances when set.
+      
+      <p>The values in the hashmap are not cloned;
+      object values are shared by all instances.</p>
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get properties():<a href="../../../Object.html">Object</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set properties(value:<a href="../../../Object.html">Object</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="remove"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">remove</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var remove:<a href="../../../Boolean.html">Boolean</a> = false</code>
+<p></p><p>
+      Determines if unneeded instances should be removed from their parent.
+      If <code>true</code>, the <code>removeChild()</code> method
+      is called on the parent for each extra element
+      when the cache count is reduced.
+      
+      <p>This property is only relevant when the factory
+      generates DisplayObjects.
+      Setting this property to <code>true</code> for other factory types
+      generates a run-time error.</p>
+     </p></div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor Detail</div>
+<a name="InstanceCache()"></a><a name="InstanceCache(Object,Object,int)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">InstanceCache</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function InstanceCache(type:<a href="../../../Object.html">Object</a>, parent:<a href="../../../Object.html">Object</a> = null, insertPosition:<a href="../../../int.html">int</a> = -1)</code>
+<p></p><p>
+      Constructor.
+           </p><span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:<a href="../../../Object.html">Object</a></code> &mdash; The type of object to construct.
+      This can be either a Class or an IFactory.
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">parent</span>:<a href="../../../Object.html">Object</a></code> (default = <code>null</code>)<code></code> &mdash; An optional DisplayObject to add new instances to.
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">insertPosition</span>:<a href="../../../int.html">int</a></code> (default = <code>-1</code>)<code></code> &mdash; Where in the parent's child list
+      to insert instances. Set to -1 to add the children to the end of the child list.
+     </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/charts/chartClasses/InstanceCache.html','mx/charts/chartClasses/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

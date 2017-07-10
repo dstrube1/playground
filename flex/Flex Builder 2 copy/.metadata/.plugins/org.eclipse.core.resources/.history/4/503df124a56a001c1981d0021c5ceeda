@@ -1,0 +1,68 @@
+package base.event
+{
+	import mx.core.Application;
+	import base.log.Logger; 
+	import base.util.FunctionUtils;
+	import flash.events.Event;
+	
+	public class EventDelegate
+	{
+		
+		private static var _instance:EventDelegate = null;
+		
+		private var logger:Logger = Logger.getLogger("EventDelegate");
+		
+
+		
+		/**
+		 *  We have to have a singleton model here because much of the event system can't handle 
+		 * static methods, or so I am told.  Don't shoot the messenger. 
+		 */
+		public function EventDelegate():void {
+			
+			if (_instance != null) {
+				throw new Error("Only create one instance of EventDelegate");
+			}
+			
+		}
+		
+		
+		public static function instance():EventDelegate {
+			
+			if (_instance == null) {
+				_instance = new EventDelegate();
+			}
+			
+			return(_instance);
+			
+		}
+		
+		
+		public function register( eventType:String, callback:Function):void {
+						
+						
+			//logger.debug("Registering callback: "+callback+" for event: "+eventType);			
+						
+			var traceableCallback:Function = createTraceableCallback( callback );
+			
+			Application.application.addEventListener(eventType, traceableCallback,false,0,true);
+			
+		}
+		
+		
+		private function createTraceableCallback( callback:Function ):Function {
+			
+			return function( ev:Event):void {
+				
+				//logger.debug("EventDelegate: Event :"+ev.type+" delegated to callback function: "+callback);
+				
+				callback(ev);
+				
+			}
+			
+			
+		}
+		
+		
+	}
+}

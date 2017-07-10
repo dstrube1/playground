@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.IFocusManagerComponent;
+			import mx.managers.IFocusManager;
+			private function doFocus():void{
+				//var focus_obj:IFocusManager = foo.focusManager(); ==error
+				//foo.focusManager();
+				//IFocusManager.focusPane();
+				//focus_obj.focusPane()
+				//foo.setFocus(); //doesnt't work
+				var o:IFocusManagerComponent = IFocusManagerComponent(foo.getFocus());
+				blah.focusManager.setFocus(o);
+		}
+		]]>
+	</mx:Script>
+	<mx:Panel x="10" y="10" width="686" height="282" layout="absolute" title="Page 1">
+	<!--
+		<mx:Button x="82" y="76" label="Go to Page 2" id="bGo" click="BlogReader"/>
+		-->
+		<mx:TabNavigator id="tn1"	x="10" y="10" width="200" height="200" tabIndex="2">
+			<mx:Canvas label="Tab 1" width="100%" height="100%" id="tab1">
+				<mx:TextArea x="10" y="58" id="ta1"/>
+				<mx:Label x="10" y="32" text="text area 1"/>
+				<!--blah.getFocus(), blah.setFocus() -->
+			</mx:Canvas>
+			<mx:Canvas label="blah" width="100%" height="100%" id="blah" tabIndex="4">
+				<mx:TextArea x="10" y="64" id="ta2"/>
+				<mx:Label x="10" y="38" text="text area 2"/>
+			</mx:Canvas>
+		</mx:TabNavigator>
+		<mx:Accordion x="456" y="10" width="200" height="200">
+			<mx:Canvas label="Accordion Pane 1" width="100%" height="100%" id="pain1" tabIndex="2">
+				<mx:TextArea x="10" y="55" text="text area 3" id="ta3"/>
+				<mx:TextInput x="18" y="27" width="123" height="20" text="text input1" id="ti1"/>
+			</mx:Canvas>
+			<mx:Container label="foo" width="100%" height="100%" id="foo" tabIndex="3">
+				<mx:Label x="36" y="68" text="Label1" width="98" height="20" id="l1"/>
+				<mx:Text x="36" y="48" text="Text 1" id="t1" width="105" height="20"/>
+			</mx:Container>
+		</mx:Accordion>
+		<mx:Button x="218" y="41" label="Button1" id="b1" click="tab1.setFocus()"/>
+		<mx:Button x="218" y="120" label="Button2" id="b2" click="ta2.setFocus()"/>
+		<mx:Button x="383" y="41" label="Button3" id="b3" click="ta3.setFocus()"/>
+		<mx:Button x="383" y="71" label="Button4" id="b4" click="t1.setFocus()"/>
+		<mx:Button x="383" y="101" label="Button5" id="b5" click="ti1.setFocus()"/>
+		<mx:Button x="383" y="131" label="Button6" id="b6" click="l1.setFocus()"/>
+	</mx:Panel>
+	<mx:Panel x="24" y="333" width="476" height="297" layout="absolute" title="bottom" visible="true">
+		<mx:Panel x="10" y="10" width="436" height="237" layout="absolute" title="middle" visible="true">
+			<mx:Panel x="0" y="0" width="416" height="187" layout="absolute" title="top" visible="true">
+			<mx:Image source="http://www.google.com/images/logo_sm.gif" />
+			<mx:LinkButton x="27" y="115" label="LinkButton" click="&quot;BlogReader.html&quot;"/>
+			<mx:VideoDisplay x="140" y="92" autoPlay="false">
+				<mx:source>http://www.t-mobilepictures.com/photos/photo08/a7/51/804e40676a7d.3gp</mx:source>
+			</mx:VideoDisplay>
+			</mx:Panel>
+		</mx:Panel>
+	</mx:Panel>
+	
+
+</mx:Application>

@@ -1,0 +1,98 @@
+package base.db
+{
+	import base.log.Logger;
+	
+	public class MemDbHelper
+	{
+		
+		private static var logger:Logger = Logger.getLogger("MemDbHelper");
+		
+		public static const NOTIFICATION:String = "notification";
+		public static const FUNNEL:String = "funnel";
+		public static const PLAN:String = "plan";
+		public static const NOTIFICATION_DETAILS:String = "notification_details";
+		
+		public static const PROPOSAL:String = "proposal";
+		public static const PROJECTION:String = "projection";
+		public static const SEQUENCE_LABEL:String = "sequence";
+		public static const SEQUENCE_COUNTRY:String = "country";
+		public static const COUNTRY_SCORE:String = "score";
+		
+		//StudyManager stuff
+		private static const attributesNotification:Array = [ "id", "type", "priority", "severity", "text", "area", "region", "country", "monitor", "site" ];
+		private static const attributesFunnel:Array = ["id", "count", "severity", "startCount"];
+		private static const attributesPlan:Array = ["id", "type", "name", "description", "value"];
+		private static const attributesNotificationDetails:Array = ["type", "name", "description"];
+		
+		//CountryAllocation stuff
+		private static const attributesProposals:Array = ["id", "name", "description", "therapeuticArea", "indication", "phase", "subjectContribution"];
+		private static const attributesProjection:Array = ["scenarioName", "scenarioSequence", "countryId", "countryName", "countryRank", "enrolledSubjects", "studyInitTime", "studyExecutionTime", "studyBudget"];
+		private static const attributesSequenceLabels:Array = ["id", "value"];
+		private static const attributesSequenceCountry:Array = ["key", "name", "url", "totalTime", "budget", "subject"];
+		private static const attributesCountryScore:Array = ["countryId", "value"];
+		
+		public static function convert( xml:XML, type:String):MemDB {
+			
+			var attr:Array = null;
+			var tagParse:Boolean = false;
+			
+			if (type == NOTIFICATION) {
+				attr = attributesNotification;	
+			} else if (type == FUNNEL) {
+				attr = attributesFunnel;
+			} else if (type == PLAN) {
+				attr = attributesPlan;
+				tagParse = true;
+			} else if (type == NOTIFICATION_DETAILS) {
+				attr = attributesNotificationDetails;
+			} else if (type == PROPOSAL) {
+				attr = attributesProposals;
+				tagParse = true;
+			} else if (type == PROJECTION) {
+				attr = attributesProjection;
+			} else if (type == SEQUENCE_LABEL) {
+				attr = attributesSequenceLabels;
+			} else if (type == SEQUENCE_COUNTRY) {
+				attr = attributesSequenceCountry;
+			} else if (type == COUNTRY_SCORE) {
+				attr = attributesCountryScore;
+			}
+			
+			var db:BaseMemDB = new BaseMemDB();
+			
+			if (tagParse) {
+				for each ( var rec1:XML in xml.child(type)) {
+					var o1:Object = convertRecord(rec1, attr);
+					db.add(o1);
+				}
+			} else {
+				for each ( var rec:XML in xml.children()) {
+					var o:Object = convertRecord(rec, attr);
+					db.add(o);
+				}				
+			}
+			
+			return(db);
+			
+			
+		}
+		
+		
+		private static function convertRecord( rec:XML, attr:Array):Object {
+			
+			var o:Object = {};
+			
+			
+			for each (var key:String in attr) {
+																
+				o[key] = rec.attribute(key);
+				
+			}
+
+			return(o);			
+			
+			
+		}
+		
+	}
+}

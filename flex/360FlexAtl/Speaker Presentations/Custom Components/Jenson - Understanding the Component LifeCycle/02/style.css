@@ -1,0 +1,17 @@
+
+
+Application {
+   backgroundColor: #869ca7;
+   backgroundGradientColors: #00ccff, #ffffff;
+}
+
+@font-face {
+    font-family: libel;
+    src: url("assets/fonts/libel.ttf");
+    font-weight: normal;
+}     	
+.libel { 
+	font-family: libel; 
+	color: #FFFFFF; 
+	fontSize: 16px;
+}

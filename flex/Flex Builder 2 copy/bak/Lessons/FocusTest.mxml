@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" >
+<mx:Script>
+<![CDATA[
+import mx.controls.TextArea;
+
+private function changeFocus():void{
+	if (ta2){
+	ta1.setFocus();
+	}
+	else
+	ta2.setFocus();
+}
+]]>
+</mx:Script>
+
+<!--<mx:HBox id="hbx1">
+<mx:Label text="ta1:" />
+<mx:TextArea id="ta1" />
+</mx:HBox>-->
+
+<!--<mx:HBox id="hbx2">
+<mx:Label text="ta2:" />
+</mx:HBox>-->
+	<mx:Button label="Button" id="b1" click="ta1.setFocus()"/>
+	<mx:Button label="Button" id="b2" click="ta2.setFocus()"/>
+	
+	<mx:Canvas width="218" height="55" id="hbx1">
+	<mx:Label text="ta1:" />
+	<mx:TextArea id="ta1" />
+	</mx:Canvas>
+	
+	<mx:Canvas width="214" height="57" id="hbx2">
+	<mx:Label text="ta2:" />
+	<mx:TextArea id="ta2" text="I should have focus."/>
+	</mx:Canvas>
+</mx:Application>

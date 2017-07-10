@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SuperPanel xmlns="nl.wv.extenders.panel.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:com="com.*"
+	xmlns:utils="com.utils.*"
+	endMaximize="onEndMaximize()" endRestore="onEndRestore()">
+	
+<mx:Script>
+<![CDATA[
+	import mx.containers.Form;
+
+			[Bindable] private var _selectedIndexMessages:Number = -1;				
+			[Bindable] private var listMessages:XMLListCollection;
+			[Bindable] private var listData:XMLListCollection;
+			
+			import mx.core.Application;
+			import mx.events.ItemClickEvent;
+			import mx.collections.ArrayCollection;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.collections.XMLListCollection;
+			import mx.collections.ListCollectionView;
+			import mx.utils.ArrayUtil;
+			import mx.controls.dataGridClasses.DataGridItemRenderer;
+			import mx.managers.CursorManager;
+			import mx.formatters.DateFormatter;
+			import mx.rpc.events.ResultEvent;
+			import mx.utils.ObjectUtil;
+			import mx.utils.ObjectProxy;
+			import mx.controls.Alert;
+			import mx.containers.TitleWindow;
+			import mx.managers.PopUpManager;
+			import com.GradientCanvas;
+			import com.ComboBox2;
+	
+			import leadgine.components.dto.FullServiceReferral;
+
+			private var params:Object = new Object();
+			private var selectedMessageID:Number = 0;
+			private var myURL:String = "";
+			private var myNewMessage:Boolean=false;
+			
+			private var AlertMsgSuccess:String;
+			private var AlertMsgSuccessTitle:String;
+			private var AlertMsgFail:String = "Message data could not be loaded.  Please click the 'Refresh' button to try again.";
+			private var AlertMsgFailTitle:String = "Load Problem";
+
+			public function resultHandlerMessages(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listMessages = new XMLListCollection(xmlList);
+				}
+			}
+			
+			public function faultHandler():void {
+				this.messagesService.showBusyCursor = false;
+			}
+
+			private function set selectedIndexMessages(n:Number):void {
+				// Make sure we are within range of dataProvider.
+				if (n < 0)
+					n = listMessages.length - 1;
+				else if (n > (listMessages.length - 1))
+					n = 0;
+
+				_selectedIndexMessages = n;
+
+			}
+			
+			
+			private function get selectedIndexMessages():Number {
+				return _selectedIndexMessages;
+			}
+			
+			public function fill():void {
+				//Alert.show(searchService.url);
+				
+				messagesService.url="http://www.revparsuite.com/messagesEXE.asp?userid=" + Application.application.userID + "&myType=all";
+				messagesService.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				messagesService.addEventListener(ResultEvent.RESULT,resultHandlerMessages);
+				messagesService.method = "GET";
+				messagesService.cancel();
+				messagesService.send(); 
+
+			}
+
+			public function insertItemHandler(event:ResultEvent):void {	
+				//fill();
+			}						
+			
+
+			public function updateMessage():void{
+				if(myNewMessage==false){
+					selectedMessageID = dataMessages.selectedItem.id;
+				}else{
+					selectedMessageID = 0;
+				}
+				
+				myURL = "http://www.revparsuite.com/messagesEXE.asp?userid=" + Application.application.userID + "&myType=update&contactID=" + selectedMessageID;
+
+			    params = {
+			    "first": txtFirst.text,
+			    "last": txtLast.text,
+			    "company": txtCompany.text, 
+			    "title": txtTitle.text,
+			    "address1": txtAddress1.text,
+			    "address2": txtAddress2.text,
+			    "city": txtCity.text,
+			    "state": selStates.selectedItem.data,
+			    "zip": txtZip.text,
+			    "country": selCountries.selectedItem.data,
+			    "email1": txtEmail1.text,
+			    "email2": txtEmail2.text,
+			    "phone": txtPhone.text,
+			    "mobile": txtMobile.text,
+			    "fax": txtFax.text,
+			    "iata": txtIATA.text,
+			    "notes": txtNotes.text
+			    }; 
+				
+				updateService.cancel();
+				updateService.url = myURL;
+				updateService.method = "POST";
+				updateService.send(params);
+			}
+			
+			public function resultHandlerUpdate(event:ResultEvent):void {	
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					Alert.show(AlertMsgSuccess, AlertMsgSuccessTitle);
+					vsOurIncentives.selectedIndex=0
+					
+				}
+					refresh();
+			}
+			
+			public function refresh():void {
+				messagesService.send(); 
+			}			
+			
+			public function cancelMessage():void{
+				vsIncentives.selectedIndex = 1;
+				resetMessage();
+			}
+			public function resetMessage():void{
+			    txtFirst.text="";
+			    txtLast.text="";
+			    txtCompany.text="";
+			    txtTitle.text="";
+			    txtAddress1.text="";
+			    txtAddress2.text="";
+			    txtCity.text="";
+			    selStates.selectedIndex = 0;
+			    txtZip.text="";
+			    selCountries.selectedIndex = 0;
+			    txtEmail1.text="";
+			    txtEmail2.text="";
+			    txtPhone.text="";
+			    txtMobile.text="";
+			    txtFax.text="";
+			    txtIATA.text="";
+			    txtNotes.text="";
+
+			}
+			
+			public function newMessage():void{
+				resetMessage();
+				vsIncentives.selectedIndex=2;
+				myNewMessage=true;
+				AlertMsgSuccess = "Your Message has been sent.";
+				AlertMsgSuccessTitle = "Message Sent";
+				AlertMsgFail = "There was a problem sending your message.  Please try again.";
+				AlertMsgFailTitle = "Problem Sending";
+			}		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			private function sortNumeric(obj1:Object, obj2:Object):int {
+				var value1:Number = (obj1.rooms == '' || obj1.rooms == null) ? null : new Number(obj1.rooms);
+				var value2:Number = (obj2.rooms == '' || obj2.rooms == null) ? null : new Number(obj2.rooms);
+				
+				if (value1 < value2) {
+					return -1;
+				} else if (value1 > value2) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+						
+
+			private function date_sort_Begin_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.begin));
+                var dateB:Date = new Date(Date.parse(itemB.begin));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+
+
+			private function date_sort_End_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.end));
+                var dateB:Date = new Date(Date.parse(itemB.end));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+	private function onEndMaximize():void{
+		fill();
+		vsIncentives.selectedIndex = 1;
+	}
+	private function onEndRestore():void{
+		vsIncentives.selectedIndex = 0;
+	}
+	private function preValidate():void{
+		if(txtFirst.text != ""){
+			btnSave.enabled=true;
+		}
+				
+		AlertMsgSuccess = "Your Contact\'s info has been succussfully updated.";
+		AlertMsgSuccessTitle = "Contact Updated";
+		AlertMsgFail = "There was a problem updating your Contact\'s information.  Please try again.";
+		AlertMsgFailTitle = "Problem Updating";
+	}
+	
+	private function deleteMessage():void{
+		AlertMsgSuccess = "Your Message has been deleted.";
+		AlertMsgSuccessTitle = "Message Deleted";
+		AlertMsgFail = "There was a deleting this Message.  Please try again.";
+		AlertMsgFailTitle = "Problem Deleting";
+		
+		myURL = "http://www.revparsuite.com/messagesEXE.asp?userid=" + Application.application.userID + "&myType=delete&contactID=" + selectedMessageID;
+
+		updateService.cancel();
+		updateService.url = myURL;
+		updateService.method = "POST";
+		updateService.send(params);
+		resetMessage();
+		vsIncentives.selectedIndex=1;
+		myNewMessage=false;
+	}
+	
+]]>
+</mx:Script>
+
+
+<mx:HTTPService id="messagesService" url="http://www.revparsuite.com/messagesEXE.asp?userid={ Application.application.userID }&amp;myType=all" 
+	result="resultHandlerMessages(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:HTTPService id="updateService" url="http://www.revparsuite.com/messagesEXE.asp?userid={ Application.application.userID }&amp;myType=update&amp;contactID={ selectedMessageID }" 
+	result="resultHandlerUpdate(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+		
+<mx:ViewStack id="vsIncentives" width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+<com:GradientCanvas 
+	width="100%" height="100%" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.myFillColors4 }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90" 
+		interpolationMethod = "linearRGB" borderAlphas="0" 
+		click="{this.normalMaxClickHandler(null)}">
+		<mx:Canvas borderStyle="solid" borderColor="#666666" cornerRadius="20" backgroundColor="#FFFFFF" borderThickness="1" alpha="0.8" left="130" right="10" top="10" bottom="10">
+				<mx:Text text="Here are all of the Contacts that you've referred in the past." left="20" right="20" top="20" bottom="20" styleName="myPanelCaption">
+					<mx:filters>
+				        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+				    </mx:filters>
+				</mx:Text>
+		</mx:Canvas>
+		<mx:Image source="assets/img/icons/grey_circle/mobile_phone.png" verticalCenter="0" left="30"/>
+
+</com:GradientCanvas>
+
+				<mx:VBox width="100%" height="100%" label="messages"
+					verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+
+							<mx:Button label="Draft New Message" width="200" height="50" click="newMessage()"/>
+
+						<mx:Text text="Below are your Leadgine messages.  Click a column header to sort." y="8" right="-307" left="188"/>
+						<mx:DataGrid id="dataMessages" 
+							width="100%" height="100%" 
+					        selectedIndex="{_selectedIndexMessages}"
+					        dataProvider="{listMessages}" 
+					        doubleClickEnabled="true"
+					        itemDoubleClick="selectedMessageID=dataMessages.selectedItem.id;vsIncentives.selectedIndex=2"
+							>
+							
+							<mx:columns>
+								<mx:DataGridColumn visible="false" dataField="id"/>
+								<mx:DataGridColumn visible="false" dataField="program"/>
+								<mx:DataGridColumn headerText="First" dataField="first_name"/>
+								<mx:DataGridColumn headerText="Last" dataField="last_name"/>
+								<mx:DataGridColumn headerText="Company" dataField="company"/>
+								<mx:DataGridColumn headerText="Title" dataField="myTitle"/>
+								<mx:DataGridColumn headerText="Address 1" dataField="address1"/>
+								<mx:DataGridColumn headerText="Address 2" dataField="address2"/>
+								<mx:DataGridColumn headerText="City" dataField="city"/>
+								<mx:DataGridColumn headerText="State" dataField="state"/>
+								<mx:DataGridColumn headerText="Postal Code" dataField="zip"/>
+								<mx:DataGridColumn headerText="Country" dataField="country"/>
+								<mx:DataGridColumn headerText="Office Phone" dataField="phone"/>
+								<mx:DataGridColumn headerText="Mobile" dataField="mobile"/>
+								<mx:DataGridColumn headerText="Primary Email" dataField="email1"/>
+								<mx:DataGridColumn headerText="Secondary Email" dataField="email2"/>
+								<mx:DataGridColumn headerText="Fax" dataField="fax"/>
+								<mx:DataGridColumn headerText="IATA #" dataField="iata"/>
+								<mx:DataGridColumn headerText="Notes" dataField="Notes"/>
+							</mx:columns>
+						</mx:DataGrid>
+				</mx:VBox>
+				<mx:VBox width="100%" height="100%" label="edit"
+					icon="@Embed('assets/img/icons/edit.png')"
+					paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" 
+					 horizontalAlign="center"
+					verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+
+							<mx:Form id="frmContact"
+									defaultButton="{btnSave}"
+									>	
+								<mx:Text width="400" text="Keep your Contacts' information up-to-date below.  Be sure to Save your changes:"/>
+								<mx:FormItem label="First Name:" required="true">
+									<mx:TextInput id="txtFirst" text="{ dataMessages.selectedItem.first_name }" creationComplete="preValidate()" width="300" maxChars="50"/>
+								</mx:FormItem>
+								<mx:FormItem label="Last Name:" required="true">
+									<mx:TextInput id="txtLast" text="{ dataMessages.selectedItem.last_name }" width="300" maxChars="50"/>
+								</mx:FormItem>
+								<mx:FormItem label="Company:" required="false">
+									<mx:TextInput id="txtCompany" text="{ dataMessages.selectedItem.company }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Job Title:" required="false">
+									<mx:TextInput id="txtTitle" text="{ dataMessages.selectedItem.myTitle }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Address 1:" required="false">
+									<mx:TextInput id="txtAddress1" text="{ dataMessages.selectedItem.address1 }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Address 2:" required="false">
+									<mx:TextInput id="txtAddress2" text="{ dataMessages.selectedItem.address2 }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="City:" required="false">
+									<mx:TextInput id="txtCity" text="{ dataMessages.selectedItem.city }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="State:" required="false">
+									<com:ComboBox2 width="300" textAlign="left" id="selStates" selectedValue="{ dataMessages.selectedItem.state }" dataProvider="{FullServiceReferral.STATES}" />
+								</mx:FormItem>
+								<mx:FormItem label="Postal Code:" required="false">
+									<mx:TextInput id="txtZip" text="{ dataMessages.selectedItem.zip }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Country:" required="false">
+									<com:ComboBox2 width="300" textAlign="left" id="selCountries" selectedValue="{ dataMessages.selectedItem.country }" dataProvider="{FullServiceReferral.COUNTRIES}" />
+								</mx:FormItem>
+								<mx:FormItem label="Office Phone:" required="false">
+									<mx:TextInput id="txtPhone" text="{ dataMessages.selectedItem.phone }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Mobile Phone:" required="false">
+									<mx:TextInput id="txtMobile" text="{ dataMessages.selectedItem.mobile }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Primary Email:" required="false">
+									<mx:TextInput id="txtEmail1" text="{ dataMessages.selectedItem.email1 }" width="300" maxChars="100"/>
+								</mx:FormItem>
+								<mx:FormItem label="Secondary Email:" required="false">
+									<mx:TextInput id="txtEmail2" text="{ dataMessages.selectedItem.email2 }" width="300" maxChars="100"/>
+								</mx:FormItem>								
+								<mx:FormItem label="Fax" required="false">
+									<mx:TextInput id="txtFax" text="{ dataMessages.selectedItem.fax }" width="300" maxChars="20"/>
+								</mx:FormItem>
+								<mx:FormItem label="IATA Number" required="false">
+									<mx:TextInput id="txtIATA" text="{ dataMessages.selectedItem.iata }" width="300" maxChars="20"/>
+								</mx:FormItem>
+								<mx:FormItem label="Notes" required="false">
+									<mx:TextArea id="txtNotes" text="{ dataMessages.selectedItem.notes }" width="400" height="100" maxChars="1000"/>
+								</mx:FormItem>
+							</mx:Form>
+						    <mx:ControlBar horizontalAlign="right" paddingTop="3" paddingBottom="3" paddingRight="10">
+						        <mx:Button label="Cancel" click="cancelMessage()" />
+						        <mx:Button label="Delete" click="deleteMessage()" />
+						        <mx:Button label="Save" id="btnSave" enabled="false" click="updateMessage()" />
+						    </mx:ControlBar>
+
+				
+				</mx:VBox>
+	<!--</mx:TabNavigator>-->
+</mx:ViewStack>
+
+</SuperPanel>

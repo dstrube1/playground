@@ -1,0 +1,18 @@
+package base.lenz.funnel
+{
+	public class FunnelStage
+	{
+		private var _patients:uint;
+		private var _severity:String; 
+		public function FunnelStage(p:int=0, s:String=null):void{
+			_patients = p;
+			_severity = s;
+		}
+		public function get patients():uint{
+			return _patients;
+		}
+		public function get severity():String{
+			return _severity;
+		}
+	}
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flexLibProperties version="1">
+<includeClasses>
+<classEntry path="app.server.calls.GetViewCall"/>
+<classEntry path="app.frame.LoginLenzFrame"/>
+<classEntry path="app.config.LenzFactory"/>
+<classEntry path="app.server.calls.LoginCall"/>
+<classEntry path="app.model.CountryAllocation.GeographicalLocation"/>
+<classEntry path="app.config.LenzConfiguration"/>
+<classEntry path="app.server.calls.UpdateDataCall"/>
+<classEntry path="app.frame.IntroLenzFrame"/>
+<classEntry path="app.config.AppContext"/>
+<classEntry path="app.server.mock.impl.MockLoginService"/>
+<classEntry path="app.server.calls.GetStudyOverviewCall"/>
+<classEntry path="app.server.calls.DatabaseResetCall"/>
+<classEntry path="app.model.CountryAllocation.Country"/>
+<classEntry path="app.server.mock.impl.MockGetViewService"/>
+<classEntry path="app.server.mock.impl.BaseMockService"/>
+<classEntry path="app.model.CountryAllocation.Region"/>
+<classEntry path="app.Init"/>
+<classEntry path="app.server.calls.SiteSelectionLenzServerCall"/>
+<classEntry path="app.model.CountryAllocation.CountryRegionSelection"/>
+<classEntry path="app.config.PharmaLenzConfiguration"/>
+<classEntry path="app.server.mock.impl.MockGetStudyOverviewService"/>
+<classEntry path="app.frame.MainLenzFrame"/>
+<classEntry path="app.config.GlobalNavigationItem"/>
+<classEntry path="app.frame.ShutdownLenzFrame"/>
+<classEntry path="app.config.DefaultBladeItems"/>
+<classEntry path="app.server.LenzServer"/>
+<classEntry path="app.config.BladeFactory"/>
+<classEntry path="app.server.mock.MockLenzService"/>
+</includeClasses>
+<includeResources/>
+<namespaceManifests/>
+</flexLibProperties>

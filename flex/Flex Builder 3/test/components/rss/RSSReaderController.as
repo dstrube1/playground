@@ -1,0 +1,127 @@
+package components.rss
+{
+	import mx.core.UIComponent;
+	import mx.containers.Canvas;
+ 	import flash.utils.Timer;
+	import flash.events.TimerEvent;
+  	import mx.collections.ArrayCollection;
+  	import mx.events.FlexEvent;
+	import mx.rpc.http.HTTPService;
+	import mx.rpc.events.ResultEvent;
+	import mx.controls.Alert;
+	import mx.rpc.events.FaultEvent;
+	
+	public class RSSReaderController extends Canvas
+	{
+		private var scrollTimer:Timer = null;
+		
+		[Bindable]
+		public var timeStep:int;
+		
+		[Bindable]
+		public var yStep:int = 1;
+		
+		[Bindable]
+		public var spacingY:int = 10;
+
+		[Bindable]
+		public var shiftFunction:Function;
+
+		private var nextItemIndex:int = 0;
+	
+		[Bindable]
+		private var rssItems:ArrayCollection = new ArrayCollection(); 
+
+		[Bindable]
+		public var rssurls:String;
+
+//		[Bindable]
+//		public var rssProxyURL:String = "";
+
+		private var rssURLs:ArrayCollection = new ArrayCollection();
+
+		private var i:int = 0;
+
+		
+
+		public function RSSReaderController() {
+            super();
+            
+            this.addEventListener( FlexEvent.CREATION_COMPLETE, this.onCreationComplete );           
+        }
+ 
+		private function onTimer( event:TimerEvent ):void {
+      		shiftFunction( getNextRSSItem() );
+     	}       
+        
+        private function getNextRSSItem():Object {		
+ 			if( rssItems.length > nextItemIndex ) {
+ 				var item:Object = rssItems.getItemAt( nextItemIndex );
+ 				nextItemIndex +=1;
+ 				if( nextItemIndex == rssItems.length ) nextItemIndex = 0;
+ 				return item;
+ 			}		
+ 			return null;
+ 		}
+        
+        private function onCreationComplete(event:Event):void {
+        	initRSSURLs();
+        	fetchRSSContent();
+        	initTimer();
+        }
+        
+        private function initTimer():void {
+            scrollTimer = new Timer(timeStep, 0);
+            scrollTimer.addEventListener(TimerEvent.TIMER, onTimer);
+            scrollTimer.start();	       	
+        }
+        
+        private function initRSSURLs():void {
+        	if(rssurls != null) {
+        		var urls:Array = rssurls.split(',');
+        		if( urls != null ) {
+        			for each( var url:String in urls ) {
+ 						rssURLs.addItem( url );
+ 					}       
+        		}
+        	}
+        }
+        
+        private function fetchRSSContent():void {
+        	//for now just start all - could be a performance issue
+        	for each( var url:String in rssURLs ) {
+ 				fetchRSSContentFor( url );
+ 			}            	
+        }
+   
+        private function fetchRSSContentFor(url:String):void {
+            var service:HTTPService = new HTTPService();
+        	//service.url = rssProxyURL+"?rss="+url;
+        	service.url = url;
+        	service.useProxy = false;
+        	service.resultFormat = "object";
+        	service.addEventListener(ResultEvent.RESULT, updateRSSContent );  	
+        	service.addEventListener(FaultEvent.FAULT, onError ); 	
+        	service.send();
+        }
+
+		private function updateRSSContent( event:ResultEvent ):void {
+			var xmlObj:Object = event.result;
+			if( xmlObj != null ) {
+				for each ( var itemObj:Object in xmlObj.rss.channel.item ) {
+					rssItems.addItem( {title:itemObj.title, link:itemObj.link, body:itemObj.description} );
+           		}				
+			}		
+		}
+
+	
+  		private function onError( event:FaultEvent ):void {
+  		    Alert.show( "Error fetching RSS:"+event.message );
+  		} 
+
+        
+	}
+
+
+
+}

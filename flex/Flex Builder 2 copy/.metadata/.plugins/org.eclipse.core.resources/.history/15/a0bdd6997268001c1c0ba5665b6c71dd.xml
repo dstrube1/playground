@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100" height="200" creationComplete="onCreationComplete()" 
+		verticalCenter="0" styleName="bladeItem" click="callClickFunction()"  >
+
+	<mx:Metadata>		
+		[DefaultProperty("subComponents")]
+	</mx:Metadata>
+	
+	<mx:Canvas id="content">
+		
+	</mx:Canvas>
+
+
+	<mx:Script>
+		<![CDATA[
+			
+			//-----------------------------whi-------------------------------------------
+			// component template stuff
+			//
+		    private var _components:Array;
+	     
+	     
+	     	public function onCreationComplete():void {
+	     		addComponents();
+	     	}
+	     
+		    public function set subComponents( a:Array ) : void
+	     	{
+	        	 _components = a;
+	     	}
+	     	 
+		     private function addComponents() : void 
+		     {
+		          content.removeAllChildren();
+		          
+		          if (_components != null) {
+			          for(var i:int=0; i < _components.length; i++) {
+			               content.addChild( _components[i] );
+			          }
+			      }
+		     }
+		     
+		     
+		     private var _clickFunction:Function;
+		     private var _varList:Array;
+		     
+		     public function setClickFunction( func:Function, varList:Array):void {
+		     	_clickFunction = func;
+		     	_varList = varList;
+		     }
+		     
+		     
+		     protected function callClickFunction():void {
+		     	if(_clickFunction != null) {
+					_clickFunction(_varList);		     
+		     	}
+		     }
+
+	
+
+		]]>
+	</mx:Script>
+	
+</mx:Canvas>

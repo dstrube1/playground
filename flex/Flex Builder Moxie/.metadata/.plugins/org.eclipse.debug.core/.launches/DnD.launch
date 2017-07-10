@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="com.adobe.flexbuilder.debug.launchConfigurationType.apollo">
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_APPLICATION" value="DnD.mxml"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_RUN_URL" value="file:/C:/Documents%20and%20Settings/Davy/My%20Documents/Flex%20Builder%20Moxie/DragAndDrop/bin/DnD-app.xml"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_DEBUG_URL" value="file:/C:/Documents%20and%20Settings/Davy/My%20Documents/Flex%20Builder%20Moxie/DragAndDrop/bin/DnD-app-debug.xml"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_PROJECT" value="DragAndDrop"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_APOLLO_SECURITY_POLICY_FILE" value="security-policies/default.xml"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_PROFILE_URL" value="file:/C:/Documents%20and%20Settings/Davy/My%20Documents/Flex%20Builder%20Moxie/DragAndDrop/bin/DnD-app-profile.xml"/>
+<booleanAttribute key="com.adobe.flexbuilder.debug.ATTR_USE_DEFAULT_URLS" value="true"/>
+</launchConfiguration>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" 
+	height="100%" 
+	xmlns:components="leadgine.components.*"
+	xmlns:sides="leadgine.components.view.sides.*">
+	
+	<mx:Metadata>
+		[Event("prevSection", type="mx.events.Event")]
+		[Event("nextSection", type="mx.events.Event")]
+	</mx:Metadata>
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.formatters.DateFormatter;
+			import mx.controls.Alert;
+			import leadgine.components.dto.FullServiceReferral;
+			import leadgine.components.view.sides.RoomRow;
+			
+			[Bindable]
+			public var myTitle:String;
+			[Bindable]
+			public var myDTO:FullServiceReferral;
+			[Bindable]
+			public var myStartDate:String;
+			[Bindable]
+			public var myRow:RoomRow;
+			[Bindable]
+			private var myNumRows:uint = 0;
+
+			//Calculate row totals-----
+			private function balanceRow(val1:int, val2:int, val3:int, val4:int, val5:int, val6:int, val7:int):String {
+				return (val1 + val2 + val3 + val4 + val5 + val6 + val7).toString();
+			}
+			
+			//Calculate column totals----
+			private function balanceCol(val1:int, val2:int):String {
+				return (val1 + val2).toString();
+			}
+			
+			public function onSelectDate():void {
+				//var myRow:RoomRow = new RoomRow();
+				//var myRow2:String;// = myRow.roomDate.text;
+
+				myDTO.startDate = startDate.selectedDate;
+				myStartDate = calcDate(startDate.selectedDate,0);
+				
+				//myRow2 = myStartDate;
+				
+				navFooter.nextButton.enabled = true;
+			}
+
+			//generate 6 subsequent days based on start date selected----
+			public static function calcDate(date:Date, days:Number):String {
+				var calculatedDate:Date = addDays(date, days);
+		        var myDateFormatter:DateFormatter = new DateFormatter();
+		        	myDateFormatter.formatString="MM/DD/YYYY";			
+				var formattedDate:String = myDateFormatter.format(calculatedDate);
+				return formattedDate;
+		    }
+		    public static function addDays(date:Date, days:Number):Date {
+		        return addHours(date, days*24);
+		    }
+		    public static function addHours(date:Date, hrs:Number):Date {
+		        return addMinutes(date, hrs*60);
+		    }
+		    public static function addMinutes(date:Date, mins:Number):Date {
+		        return addSeconds(date, mins*60);
+		    }
+		    public static function addSeconds(date:Date, secs:Number):Date {
+		        var mSecs:Number = secs * 1000;
+		        var sum:Number = mSecs + date.getTime();
+		        return new Date(sum);
+		    }
+		    private function onNextSection():void {
+		    	dispatchEvent( new Event( 'nextSection' ) );
+		    }
+		    private function updateNumRowsOnEnter(event:KeyboardEvent):void{
+		    	if (event.keyCode == Keyboard.ENTER){
+		    		updateNumRows();
+		    	}
+		    }
+		    private function updateNumRows():void{
+		    	//this function changes the number of rows displayed - one row per day
+		   		roomRows.removeAllChildren();
+		    	myNumRows = numDays.value;
+		    	for (var i:uint=0; i<myNumRows; i++){
+		    		var roomRow:RoomRow = new RoomRow();
+		    		roomRows.addChild(roomRow);
+		    	}
+		    }	
+		]]>
+	</mx:Script>
+	<mx:VBox styleName="containerStyle" width="100%" height="100%">
+		<!--SECTION LABEL IS PASSED IN FROM MAIN APPLICATION-->
+		<mx:Label text="{myTitle}" styleName="secTitle" />
+		
+		<mx:DateField id="startDate" width="100" change="onSelectDate()" />
+		<mx:NumericStepper textAlign="right" width="100" id="numDays" click="updateNumRows()"
+			keyDown="updateNumRowsOnEnter(event)" 
+			minimum="0" maximum="100"/>
+		<!--
+	<mx:NumberValidator id="numDaysValidator" source="{numDays}" allowNegative="false" domain="int" minValue="0" maxValue="100" required="true" />
+				<mx:TextInput textAlign="right" width="100" text="0" id="numDays" keyUp="updateNumRows()" />
+		
+		-->
+
+<!-- we want a repeater to have a variable number of the below component
+		<mx:Repeater id="myRepeater" count="{myNumRows}">
+		</mx:Repeater>
+			<sides:RoomRow />			
+		-->
+		<mx:VBox id="roomRows" />
+		
+		<!--NAVIGATION FOOTER-->
+		<mx:Spacer height="100%" />
+		<components:NavigationFooter id="navFooter"
+			prevSection="dispatchEvent( new Event( 'prevSection' ) );"
+			nextSection="onNextSection()"
+		/>
+	</mx:VBox>	
+</mx:VBox>

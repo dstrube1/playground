@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- saved from url=(0014)about:internet -->
+
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<title></title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+
+				asdocTitle = 'Flex 3 Language Reference';
+
+				var baseRef = '../';
+
+				window.onload = configPage;
+
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a href="../language-elements.html">Language&nbsp;Elements</a>&nbsp;| <a onclick="loadClassListFrame('../index-list.html')" href="../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../index.html?mxml/mxml/component.html&amp;mxml-tags.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">&nbsp;</td><td align="right" id="subNav" class="titleTableSubNav"></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle(""); titleBar_setSubNav(false,false,false,false,false,false,false,false,false,false,false,false,false,false);}
+
+--></script>
+<div class="MainContent">
+        <div style="height:20px;" width="100%"></div>
+        <h3>&lt;mx:Component&gt; tag implemented by the compiler</h3>
+        <hr />
+    
+        <p>You use the <code>&lt;mx:Component&gt;</code> tag to define an inline item renderer or item editor in an MXML file.</p>
+    
+        <p>The <code>&lt;mx:Component&gt;</code> tag defines a new scope within an MXML file, where the local scope of the item renderer or item editor is defined by the MXML code block delimited by the <code>&lt;mx:Component&gt;</code> and <code>&lt;/mx:Component&gt;</code> tags. To access elements outside of the local scope of the item renderer or item editor, you prefix the element name with the <code>outerDocument</code> keyword. </p>
+    
+        <p>For example, you define one variable named localVar in the scope of the main application, and another variable with the same name in the scope of the item renderer. From within the item renderer, you access the application's localVar by prefixing it with <code>outerDocument</code> keyword, as the following example shows:</p>
+    <pre>
+    &lt;?xml version="1.0"?&gt;
+    &lt;mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"&gt;
+        
+      &lt;mx:Script&gt;
+        &lt;![CDATA[
+            
+          // Variable in the Application scope.
+          [Bindable]
+          public var localVar:String="Application localVar";
+            
+          // Data includes URL to album cover.
+          private var initDG:Array = [
+            { Artist:'Pavement', Album:'Slanted and Enchanted', Price:11.99,
+              Cover:'http://localhost:8100/f15/slanted.jpg'},
+            { Artist:'Pavement', Album:'Brighten the Corners', Price:11.99,
+              Cover:'http://localhost:8100/f15/brighten.jpg'}
+          ];
+        ]]&gt;
+      &lt;/mx:Script&gt;
+    
+      &lt;mx:DataGrid id="myGrid" dataProvider="{initDG}"
+          variableRowHeight="true"&gt;  
+        &lt;mx:columns&gt;
+          &lt;mx:DataGridColumn dataField="Artist"/&gt;
+          &lt;mx:DataGridColumn dataField="Album"/&gt;
+          &lt;mx:DataGridColumn dataField="Cover"&gt;
+            &lt;mx:itemRenderer&gt;
+              &lt;mx:Component&gt;
+                &lt;mx:VBox&gt;
+                  &lt;mx:Script&gt;
+                    &lt;![CDATA[            
+                      // Variable in the renderer scope.
+                      public var localVar:String="Renderer localVar";       
+                    ]]&gt;
+                  &lt;/mx:Script&gt;
+    
+                  &lt;mx:Text id="albumName" width="100%" selectable="false" text="{data.Album}"/&gt;
+                  &lt;mx:Image id="albumImage" height="45" source="{data.Cover}"/&gt;
+                  &lt;mx:TextArea text="{'Renderer localVar= ' + localVar}"/&gt;
+                  &lt;mx:TextArea text="{'App localVar= ' + outerDocument.localVar}"/&gt;
+                &lt;/mx:VBox&gt;
+              &lt;/mx:Component&gt;
+            &lt;/mx:itemRenderer&gt;
+          &lt;/mx:DataGridColumn&gt;    
+          &lt;mx:DataGridColumn dataField="Price"/&gt;
+        &lt;/mx:columns&gt;     
+      &lt;/mx:DataGrid&gt;      
+    &lt;/mx:Application&gt;
+    </pre>
+    
+        <p>One use of the <code>outerDocument</code> keyword is to initialize the data provider of a control within the inline item editor. For example, you can use a web service, or other mechanism, to pass data into the application, such as the list of U.S. states. You can then initialize all ComboBox controls that are used as item editors from a single property of the application that contains the list of U.S. states.</p>
+    
+    <p><b>MXML Syntax</b></p>
+    <p>The &lt;mx:Component&gt; tag has the following syntax:</p>
+    <p><pre>
+      &lt;mx:Component
+        id=""
+        className=""
+      &gt;
+          ...
+          <i>child tags</i>
+          ...
+      &lt;/mx:Component&gt;</pre>
+    </p>
+    
+    <p>You cannot create an empty <code>&lt;mx:Component&gt;&lt;/mx:Component&gt;</code> tag; you must define at least one child tag within the <code>&lt;mx:Component&gt;&lt;/mx:Component&gt;</code> tags.</p>
+    
+    <p>The <code>id</code> property lets you specify an identifier for the inline component so that you can use it as the source for a data binding expression. </p>
+    
+    <p>The <code>className</code> property lets you specify the name of the class generated by Flex for the inline component so that you can reference the elements of the component in ActionScript. For more information, see the <i>Using Item Renderers and Item Editors</i> chapter in the <i>Developing Flex Applications</i> book.</p>
+    <hr />
+    <br />
+    <div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mxml/component.html','');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:52 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:52 AM GMT-04:00 -->

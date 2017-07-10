@@ -1,0 +1,14 @@
+package app.config
+{
+	import base.Context;
+	import base.model.ViewContext;
+
+	public class AppContext implements Context
+	{	
+		private var _viewContext:ViewContext = new ViewContext();
+
+		public function getViewContext():ViewContext {
+			return _viewContext;
+		}		
+	}
+}

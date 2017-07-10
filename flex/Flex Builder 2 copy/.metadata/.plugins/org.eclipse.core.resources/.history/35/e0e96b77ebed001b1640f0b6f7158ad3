@@ -1,0 +1,13 @@
+package base.form
+{
+	import base.lenz.panel.LenzPanel;
+	
+	public interface LenzForm
+	{
+	 
+		function setLenzPanel( _panel:LenzPanel):void;
+		function populateResources(data:Object):void;
+		function initializeForm():void;
+
+	}
+}

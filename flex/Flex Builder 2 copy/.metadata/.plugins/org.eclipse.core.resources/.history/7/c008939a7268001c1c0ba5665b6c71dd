@@ -1,0 +1,80 @@
+package base.renderer
+{
+	import app.App;
+	import app.config.LenzFactory;
+	
+	import base.form.LenzForm;
+	import base.lenz.BaseLenz; 
+	import base.lenz.Lenz;
+	import base.lenz.panel.BaseLenzPanel;
+	import base.lenz.panel.LenzPanel;
+	import base.util.ModalWait;
+	
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
+	import flash.utils.setTimeout;
+	
+	import lenz.main.study_mgr.StudyManagerLenz;
+	import lenz.main.study_mgr.panel.StudyManagerGeoForm;
+	import lenz.main.study_mgr.panel.StudyManagerGeoPanel;
+	
+	import mx.containers.Panel;
+	import mx.controls.Alert;
+	
+	public class GeoRenderer implements Renderer
+	{
+		private var url:String;
+		private var currentLenz:Lenz;
+		private var data:Object;
+		private var form:LenzForm;
+		
+		public function GeoRenderer():void {
+			 
+		}
+		
+		public function render(lenzId:String, data:Object, changePanel:Boolean):void {
+			this.data = data;
+			this.currentLenz = LenzFactory.getLenz(lenzId);
+			
+			ModalWait.stop();
+			
+			//slide down and up only if showing a new panel
+			
+			if (!changePanel) {
+			
+				changeResource();
+				form.setLenzPanel(this.currentLenz.getCurrentPanel()); 
+				
+				/* currentLenz.getCurrentPanel().exposePanel = false;
+				var panel:LenzPanel = currentLenz.getCurrentPanel();
+				
+	            var myTimer:Timer = new Timer(500, 1);
+	            myTimer.addEventListener(TimerEvent.TIMER_COMPLETE, timerHandler);
+	            myTimer.start(); */
+			
+			} else {
+				
+				
+				if (lenzId == App.STUDY_MANAGER) {
+					(this.currentLenz as StudyManagerLenz).changePanel(data);
+				}
+				
+			}
+			
+		}
+		
+		/* public function timerHandler(event:TimerEvent):void {
+			changeResource();
+			currentLenz.getCurrentPanel().exposePanel = true;
+			currentLenz.getCurrentPanel().animateContent();
+		} */
+		
+		private function changeResource():void {
+			form = this.currentLenz.getCurrentPanel().getCurrentForm(); 
+			//form as (this.currentLenz.getCurrentPanel().getDefaultFormClass());
+			
+			form.populateResources(this.data);
+
+		}
+	}
+}

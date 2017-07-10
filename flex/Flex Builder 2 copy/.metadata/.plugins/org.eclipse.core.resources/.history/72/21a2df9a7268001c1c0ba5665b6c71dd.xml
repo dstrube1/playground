@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="100" implements="base.util.BreadcrumbStackListener">
+	
+	<mx:String id="labelClass" />
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.core.Container;
+			import mx.core.UIComponent;
+			import mx.controls.Label;
+		
+		
+			private var labelStack:Array = [];
+		
+
+
+			public function replaceWith( bcStack:BreadcrumbStack):void {
+				
+				hbox.removeAllChildren();
+				labelStack = [];
+				
+				addAll(bcStack.getCrumbArray());
+				
+			}		
+		
+			public function addAll( bcArray:Array ):void {
+				
+				for each ( var bc:Breadcrumb in bcArray) {
+					add(bc);
+				}
+				
+				updateContainer(hbox, labelStack);
+				
+				
+			}
+		
+			
+			public function add( bc:Breadcrumb):void {
+				
+
+				var labelText:String = "";
+
+				if (labelStack.length == 0) {
+					
+					labelText = bc.label;
+					
+				} else {
+					labelText = " > "+bc.label; 
+				}
+
+
+				var label:Label = new Label();
+				label.text = labelText;
+				
+				label.styleName = labelClass;
+				
+				if (bc.click != null) {
+					label.addEventListener(MouseEvent.CLICK, bc.click,false,0,true);
+				}
+
+
+				labelStack.push(label);
+
+				
+			}
+			
+			public function refresh():void {
+				updateContainer( hbox, labelStack);
+			}
+			
+			
+			
+			
+			private function updateContainer( box:Container, labels:Array ):void {
+
+				// rebuild the box with the labels in the stack.
+				
+				box.removeAllChildren();
+				
+				for each (var l:Label in labels) {
+					
+					box.addChild(l);
+					
+				}				
+				
+			}
+			
+			
+			
+			public function update( stack:BreadcrumbStack ):void {
+				
+				replaceWith(stack);
+				
+			}
+			
+			
+		]]>
+	</mx:Script>
+	
+	
+	<mx:HBox height="100%" width="100%" paddingLeft="1" paddingRight="1" id="hbox" />
+	
+</mx:Canvas>

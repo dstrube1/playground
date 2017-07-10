@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import mx.core.UIComponent;
+			import mx.controls.Alert;
+			private function init():void{
+				var myCamera:Camera = Camera.getCamera();
+				if (myCamera == null){
+					Alert.show("Camera not found");
+					return;
+				}
+				var myVideo:Video = new Video();
+				myVideo.attachCamera(myCamera);
+				var videoHolder:UIComponent = new UIComponent();
+				videoHolder.addChild(myVideo);
+				this.addChild(videoHolder);
+			}
+		]]>
+	</mx:Script>
+</mx:Application>

@@ -1,0 +1,100 @@
+package app.model.CountryAllocation
+{
+	
+	public class CountryRegionSelection
+	{
+		import lenz.main.site_select.controller.*;
+
+		public function CountryRegionSelection( ):void
+		{
+			//initMock();		
+			initRegionsCountries();	
+		}
+		
+		private function initMock():void
+		{
+			var r1:Region = new Region("1", "North America",1);
+			r1.addCountry( new Country("1", "USA", 1) );
+			r1.addCountry( new Country("2", "Canada", 1) );
+			
+			this.allRegions.push( r1 );
+			
+			var r2:Region = new Region("2", "South America",1);
+			r2.addCountry( new Country("1", "Argentina", 1) );
+			r2.addCountry( new Country("2", "Brazil", 1) );
+			
+			allRegions.push( r2 );
+			
+			var r3:Region = new Region("3", "Europe",1);
+			r3.addCountry( new Country("1", "Spain", 1) );
+			r3.addCountry( new Country("2", "France", 1) );
+			r3.addCountry( new Country("3", "Israel", 1) );
+			r3.addCountry( new Country("4", "Germany", 1) );
+			allRegions.push( r3 );
+			
+			var r4:Region = new Region("4", "Africa",1);
+			r4.addCountry( new Country("1", "Somalia", 1) );
+			r4.addCountry( new Country("2", "Egypt", 1) );
+			allRegions.push( r4 );
+						
+			var r5:Region = new Region("5", "Asia Pacific",1);
+			r5.addCountry( new Country("1", "Korea", 1) );
+			r5.addCountry( new Country("2", "Taiwan", 1) );
+			allRegions.push( r5 );
+		}
+		
+		// gets all regions counntries from the server
+		public function initRegionsCountries():void
+		{
+			var params:Object = {
+				studyId: "any",
+				actionId: "getAllRegions"				
+			};
+						
+			SiteSelectionController.processAction( params );
+		
+		}
+		
+		private function deselectRegion( RegionName:String ):void
+		{
+			var region:Region = getRegionByName( RegionName );
+			if( region != null )
+			{
+				region.setSelected( 1 );
+			}
+		}
+		
+		public function getRegionByName(RegionName:String ):Region
+		{
+			for(var i:int=0;i<allRegions.length; i++)
+			{
+				if( allRegions[i].name == RegionName ) return allRegions[i];
+			}
+			return null;
+		}
+		
+		public function getRegionsBySelectionStatus( regionSelectionStatus:int, regionSelectionStatus2:int=-1 ):Array
+		{
+			var ret:Array = new Array();
+			for(var i:int=0;i<allRegions.length; i++)
+			{
+				if( allRegions[i].selectionStatus == regionSelectionStatus ) ret.push( allRegions[i] );
+				if(regionSelectionStatus2 != -1)
+				{
+					if( allRegions[i].selectionStatus == regionSelectionStatus2 ) ret.push( allRegions[i] );
+				}
+			}
+			
+			
+			
+			return ret;
+		}
+		
+		public function getAllRegions() : Array {
+			return allRegions;
+		}
+		
+		public var allRegions:Array = new Array();
+	}
+	 
+}

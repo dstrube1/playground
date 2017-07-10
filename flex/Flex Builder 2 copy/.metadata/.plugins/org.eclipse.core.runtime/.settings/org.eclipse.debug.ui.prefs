@@ -1,0 +1,13 @@
+#Wed Sep 05 15:32:40 EDT 2007
+org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8"?>\n<launchPerspectives>\n<launchPerspective configurationType\="com.adobe.flexbuilder.debug.launchConfigurationType.flash" mode\="debug" perspective\="com.adobe.flexbuilder.debug.ui.perspectives.debug"/>\n<launchPerspective configurationType\="com.adobe.flexbuilder.debug.launchConfigurationType.flash" mode\="run" perspective\="org.eclipse.debug.ui.DebugPerspective"/>\n<launchPerspective configurationType\="org.eclipse.ui.externaltools.ProgramLaunchConfigurationType" mode\="run" perspective\="perspective_none"/>\n<launchPerspective configurationType\="org.eclipse.ui.externaltools.ProgramBuilderLaunchConfigurationType" mode\="run" perspective\="perspective_none"/>\n</launchPerspectives>\n
+pref_state_memento.org.eclipse.debug.ui.VariableView=<?xml version\="1.0" encoding\="UTF-8"?>\n<VariablesViewMemento org.eclipse.debug.ui.SASH_DETAILS_PART\="315" org.eclipse.debug.ui.SASH_VIEW_PART\="684">\n<SHOW_COLUMNS IMemento.internal.id\="org.eclipse.debug.ui.VARIALBE_COLUMN_PRESENTATION" SHOW_COLUMNS\="false"/>\n</VariablesViewMemento>
+Console.highWaterMark=88000
+pref_state_memento.org.eclipse.debug.ui.ExpressionView=<?xml version\="1.0" encoding\="UTF-8"?>\n<VariablesViewMemento org.eclipse.debug.ui.SASH_DETAILS_PART\="316" org.eclipse.debug.ui.SASH_VIEW_PART\="683"/>
+org.eclipse.debug.ui.manage_view_perspectives=org.eclipse.debug.ui.DebugPerspective,
+org.eclipse.debug.ui.VariableView+org.eclipse.debug.ui.ShowTypesAction=true
+org.eclipse.debug.ui.VariableView+org.eclipse.debug.ui.ToggleObjectBrowsersAction=true
+org.eclipse.debug.ui.switch_perspective_on_suspend=always
+last_selected=Flex Application
+eclipse.preferences.version=1
+org.eclipse.debug.ui.save_dirty_editors_before_launch=always
+org.eclipse.debug.ui.user_view_bindings=<?xml version\="1.0" encoding\="UTF-8"?>\n<viewBindings>\n<view id\="org.eclipse.ui.console.ConsoleView">\n<perspective id\="com.adobe.flexbuilder.editors.mxml.ui.perspectives.development" userAction\="opened"/>\n</view>\n<view id\="org.eclipse.debug.ui.VariableView">\n<perspective id\="com.adobe.flexbuilder.debug.ui.perspectives.debug" userAction\="opened"/>\n</view>\n</viewBindings>\n

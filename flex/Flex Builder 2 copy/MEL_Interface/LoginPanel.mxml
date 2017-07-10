@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="400" height="300" 
+	xmlns:local="*" xmlns:service="service.*">
+	
+	<service:LoginService id="localLoginService"/>
+	
+		<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+		    import flash.net.navigateToURL;
+		    import app.App;
+		    
+		    public var memListPanel:MemListPanel;
+			
+			public function goURL( uri:String ):void
+		   {
+			    navigateToURL( new URLRequest( uri ) , "_self" )
+		   }
+		   
+		   private function loginClick():void{
+				localLoginService.useHttpService({'username':username.text,'password':password.text});
+		//why doesnt success work?
+		//		if (loginRequest.isSuccess()){
+		   			this.setVisible(false);
+				   	memListPanel.setVisible(true);
+		//		 }else{Alert.show("Invalid login. Try again");}
+		   }
+		   
+			public function logoutClick():void{
+				this.setVisible(true);
+				username.text = "";
+				password.text = "";
+		   }
+		]]>
+		</mx:Script>
+
+        <mx:Text x="10" y="14" text="Username" width="64"/>
+        <mx:TextInput x="82" y="10" id="username"/>
+        
+        <mx:Text x="10" y="40" text="Password" width="68"/>
+        <mx:TextInput x="82" y="40" id="password" displayAsPassword="true"/>
+        
+        <mx:Button x="82" y="70" id="login" label="Login" click="loginClick()"/>
+        <mx:Button x="168" y="70" label="Register" click="goURL(App.URL+'/mel/register.do')"/>
+
+
+</mx:Panel>

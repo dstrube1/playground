@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="506" height="160">
+<mx:DataGrid xmlns:mx="http://www.adobe.com/2006/mxml" horizontalCenter="42" top="3">
+	<mx:columns>
+		<mx:DataGridColumn headerText="Segment A" dataField="2"/>
+		<mx:DataGridColumn headerText="Segment B" dataField="3"/>
+		<mx:DataGridColumn headerText="Segment C" dataField="4"/>
+		<mx:DataGridColumn headerText="Segment D" dataField="5"/>
+	</mx:columns> 
+</mx:DataGrid>
+	<mx:LinkButton label="Product A" left="10" top="25"/>
+	<mx:LinkButton x="10" y="45" label="Product B"/>
+	<mx:LinkButton x="10" y="65" label="Product C"/>
+	<mx:LinkButton x="10" y="85" label="Product D"/>
+	<mx:LinkButton x="10" y="105" label="Product E"/>
+	<mx:LinkButton x="10" y="125" label="Product F"/>
+</mx:Canvas>

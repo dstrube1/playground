@@ -1,0 +1,42 @@
+package base.renderer
+{
+	import app.App;
+	import app.config.LenzFactory;
+	
+	import base.form.LenzForm;
+	import base.lenz.Lenz;
+	import base.lenz.panel.LenzPanel;
+	import base.util.ModalWait;
+	
+	import lenz.main.study_mgr.StudyManagerLenz;
+	
+	
+	public class PRRenderer implements Renderer
+	{
+		private var currentLenz:Lenz = null;
+		private var data:Object = null;
+		private var form:LenzForm;
+		
+		public function render (lenzId:String, data:Object, changePanel:Boolean):void 
+		{
+			this.currentLenz = LenzFactory.getLenz(lenzId);
+			this.data = data;
+			
+			if (changePanel) { 
+				ModalWait.stop();
+				var panel:LenzPanel = this.currentLenz.getCurrentPanel();
+				
+				if (lenzId == App.STUDY_MANAGER) {
+					(this.currentLenz as StudyManagerLenz).changePanel(data);
+				}
+				
+			} else {
+				
+				//changeResource();
+				//form.setLenzPanel(this.currentLenz.getCurrentPanel()); 
+			}
+			
+		}
+		
+	}
+}

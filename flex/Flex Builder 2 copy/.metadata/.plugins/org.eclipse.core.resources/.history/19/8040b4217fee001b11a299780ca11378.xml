@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="740" height="450"
+			implements="base.form.LenzForm" 
+			xmlns:panel="lenz.main.study_mgr.panel.*"
+			styleName="studyManagerMainForm" 
+			horizontalCenter="0" creationComplete="onCreationComplete()" 
+			xmlns:notification="base.notification.*" 
+			xmlns:funnel="base.lenz.funnel.*">
+	
+	<mx:Script>
+		<![CDATA[
+			import app.server.LenzServer;
+			import app.App;
+			
+			import base.db.MemDB;
+			import base.db.MemDbHelper;
+			import base.lenz.funnel.PatientFunnel;
+			import base.lenz.panel.LenzPanel;
+			import base.log.Logger;
+			import base.services.LenzServiceHelper;
+			import base.services.MapArray;
+			import base.util.ModalWait;
+
+			import lenz.main.study_mgr.controller.StudyClickManager;
+					
+			import mx.controls.Alert;			
+			import mx.collections.ArrayCollection;
+
+			private var _parent:LenzPanel = null;
+			
+			private var topLevelAlarms:Array = null;
+			private var high:Array = new Array();
+			private var medium:Array = new Array();
+			private var low:Array = new Array();
+			private var ac:ArrayCollection;
+			
+			
+			private var logger:Logger = Logger.getLogger("StudyManagerGeoForm");
+
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			protected function onCreationComplete():void {
+	
+				logger.debug("StudyManagerGeoForm: onCreationComplete");
+				
+			}
+			
+			public function initializeForm():void {
+				onCreationComplete();
+			}			
+			
+			 
+			public function animate():void {
+			}
+			
+			public function displayResults():void {
+			}
+			
+			public function showResolutions(alarmId:String):void {
+			}
+			
+			public function displayRadarChart():void {
+			}
+			
+			public function populateResources(data:Object):void {
+			}
+			
+			public function displayWorldView():void {
+			}
+			
+		]]>
+	</mx:Script>
+
+
+
+
+	
+</mx:Canvas>

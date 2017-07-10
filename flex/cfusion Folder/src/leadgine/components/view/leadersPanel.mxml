@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SuperPanel xmlns="nl.wv.extenders.panel.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:com="com.*"
+	xmlns:utils="com.utils.*"
+	endMaximize="onEndMaximize()" endRestore="onEndRestore()">
+	
+<mx:Script>
+<![CDATA[
+	import mx.containers.Form;
+
+			[Bindable] private var _selectedIndexLeaders:Number = -1;				
+			[Bindable] private var listLeadersMonth:XMLListCollection;
+			[Bindable] private var listLeadersQuarter:XMLListCollection;
+			[Bindable] private var listLeadersYear:XMLListCollection;
+			[Bindable] private var listData:XMLListCollection;
+			
+			import mx.core.Application;
+			import mx.events.ItemClickEvent;
+			import mx.collections.ArrayCollection;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.collections.XMLListCollection;
+			import mx.collections.ListCollectionView;
+			import mx.utils.ArrayUtil;
+			import mx.controls.dataGridClasses.DataGridItemRenderer;
+			import mx.managers.CursorManager;
+			import mx.formatters.DateFormatter;
+			import mx.rpc.events.ResultEvent;
+			import mx.utils.ObjectUtil;
+			import mx.utils.ObjectProxy;
+			import mx.controls.Alert;
+			import mx.containers.TitleWindow;
+			import mx.managers.PopUpManager;
+			import com.GradientCanvas;
+			import com.ComboBox2;
+			
+			import com.itemRenderers.firstPlace;
+	
+			import leadgine.components.dto.FullServiceReferral;
+
+			private var params:Object = new Object();
+			private var selectedLeaderID:Number = 0;
+			private var myURL:String = "";
+			private var myNewLeader:Boolean=false;
+			
+			private var AlertMsgSuccess:String;
+			private var AlertMsgSuccessTitle:String;
+			private var AlertMsgFail:String = "Leader data could not be loaded.  Please click the 'Refresh' button to try again.";
+			private var AlertMsgFailTitle:String = "Load Problem";
+
+			public function resultHandlerLeadersMonth(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listLeadersMonth = new XMLListCollection(xmlList);
+					leadersMonth();
+				}
+			}
+
+			public function resultHandlerLeadersQuarter(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listLeadersQuarter = new XMLListCollection(xmlList);
+					leadersQuarter();
+				}
+			}
+
+			public function resultHandlerLeadersYear(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listLeadersYear = new XMLListCollection(xmlList);
+					leadersYear();
+				}
+			}
+			
+			public function faultHandler():void {
+				this.leadersServiceMonth.showBusyCursor = false;
+				this.leadersServiceQuarter.showBusyCursor = false;
+				this.leadersServiceYear.showBusyCursor = false;
+			}
+
+			public function fill():void {
+				leadersServiceMonth.cancel();
+				leadersServiceMonth.url="http://www.revparsuite.com/leadgine/leadersEXE.asp?userid=" + Application.application.userID + "&clientID=" + Application.application.clientID + "&myType=thisMonth";
+				leadersServiceMonth.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				leadersServiceMonth.addEventListener(ResultEvent.RESULT,resultHandlerLeadersMonth);
+				leadersServiceMonth.method = "GET";
+				leadersServiceMonth.send(); 
+				
+				leadersServiceQuarter.cancel();
+				leadersServiceQuarter.url="http://www.revparsuite.com/leadgine/leadersEXE.asp?userid=" + Application.application.userID + "&clientID=" + Application.application.clientID + "&myType=thisQuarter";
+				leadersServiceQuarter.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				leadersServiceQuarter.addEventListener(ResultEvent.RESULT,resultHandlerLeadersQuarter);
+				leadersServiceQuarter.method = "GET";
+				leadersServiceQuarter.send(); 
+				
+				leadersServiceYear.cancel();
+				leadersServiceYear.url="http://www.revparsuite.com/leadgine/leadersEXE.asp?userid=" + Application.application.userID + "&clientID=" + Application.application.clientID + "&myType=thisYear";
+				leadersServiceYear.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				leadersServiceYear.addEventListener(ResultEvent.RESULT,resultHandlerLeadersYear);
+				leadersServiceYear.method = "GET";
+				leadersServiceYear.send(); 
+//trace(leadersServiceMonth.url);
+//trace(leadersServiceQuarter.url);
+//trace(leadersServiceYear.url);
+			}
+
+			public function insertItemHandler(event:ResultEvent):void {	
+				//fill();
+			}						
+
+
+			private function sortNumeric(obj1:Object, obj2:Object):int {
+				var value1:Number = (obj1.rooms == '' || obj1.rooms == null) ? null : new Number(obj1.rooms);
+				var value2:Number = (obj2.rooms == '' || obj2.rooms == null) ? null : new Number(obj2.rooms);
+				
+				if (value1 < value2) {
+					return -1;
+				} else if (value1 > value2) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+						
+
+			private function date_sort_Begin_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.begin));
+                var dateB:Date = new Date(Date.parse(itemB.begin));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+
+
+			private function date_sort_End_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.end));
+                var dateB:Date = new Date(Date.parse(itemB.end));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+	private function onEndMaximize():void{
+		fill();
+		vsIncentives.selectedIndex = 1;
+	}
+	private function onEndRestore():void{
+		vsIncentives.selectedIndex = 0;
+	}
+	
+	
+	
+	private function currencyLabel(item:Object, column:DataGridColumn):String
+    {
+        return fmtCurrency.format(item[column.dataField]);
+    }
+	
+	private function numberLabel(item:Object, column:DataGridColumn):String
+    {
+        return fmtNumber.format(item[column.dataField]);
+    }
+	
+	private function leadersMonth():void
+	{
+		dataLeadersMonth.selectedIndex = 0;
+		lblLeaderMonth.text = dataLeadersMonth.selectedItem.first_name + " " + dataLeadersMonth.selectedItem.last_name;
+
+		dataLeadersMonth.selectedIndex = 1;
+		lblRunnerMonth.text = dataLeadersMonth.selectedItem.first_name + " " + dataLeadersMonth.selectedItem.last_name;
+
+		dataLeadersMonth.selectedIndex = 2;
+		lblThirdMonth.text = dataLeadersMonth.selectedItem.first_name + " " + dataLeadersMonth.selectedItem.last_name;
+
+		dataLeadersMonth.selectedIndex = 0;
+
+		if (listLeadersMonth.length < 3){
+			lblThirdMonth.text = "Up for Grabs!";
+		}
+		if (listLeadersMonth.length < 2){
+			lblRunnerMonth.text = "Up for Grabs!";
+		}
+		if (listLeadersMonth.length < 1){
+			lblLeaderMonth.text = "Up for Grabs!";
+		}
+
+	}
+	
+	private function leadersQuarter():void
+	{
+		dataLeadersQuarter.selectedIndex = 0;
+		lblLeaderQuarter.text = dataLeadersQuarter.selectedItem.first_name + " " + dataLeadersQuarter.selectedItem.last_name;
+
+		dataLeadersQuarter.selectedIndex = 1;
+		lblRunnerQuarter.text = dataLeadersQuarter.selectedItem.first_name + " " + dataLeadersQuarter.selectedItem.last_name;
+
+		dataLeadersQuarter.selectedIndex = 2;
+		lblThirdQuarter.text = dataLeadersQuarter.selectedItem.first_name + " " + dataLeadersQuarter.selectedItem.last_name;
+
+		dataLeadersQuarter.selectedIndex = 0;
+
+		if (listLeadersQuarter.length < 3){
+			lblThirdQuarter.text = "Up for Grabs!";
+		}
+		if (listLeadersQuarter.length < 2){
+			lblRunnerQuarter.text = "Up for Grabs!";
+		}
+		if (listLeadersQuarter.length < 1){
+			lblLeaderQuarter.text = "Up for Grabs!";
+		}
+		
+	}
+	
+	private function leadersYear():void
+	{
+		dataLeadersYear.selectedIndex = 0;
+		lblLeaderYear.text = dataLeadersYear.selectedItem.first_name + " " + dataLeadersYear.selectedItem.last_name;
+
+		dataLeadersYear.selectedIndex = 1;
+		lblRunnerYear.text = dataLeadersYear.selectedItem.first_name + " " + dataLeadersYear.selectedItem.last_name;
+
+		dataLeadersYear.selectedIndex = 2;
+		lblThirdYear.text = dataLeadersYear.selectedItem.first_name + " " + dataLeadersYear.selectedItem.last_name;
+
+		dataLeadersYear.selectedIndex = 0;
+
+		if (listLeadersYear.length < 3){
+			lblThirdYear.text = "Up for Grabs!";
+		}
+		if (listLeadersYear.length < 2){
+			lblRunnerYear.text = "Up for Grabs!";
+		}
+		if (listLeadersYear.length < 1){
+			lblLeaderYear.text = "Up for Grabs!";
+		}
+		
+		
+		
+	}
+
+	
+	//private function ribbons(item:Object, column:DataGridColumn):void
+   // {
+
+
+    	//if (data.rank == 1 ){
+
+    		//column.itemRenderer = null;
+        	//return com.itemRenderers.firstPlace;
+     	//}
+    //}
+    
+]]>
+</mx:Script>
+
+
+<mx:HTTPService id="leadersServiceMonth" url="http://www.revparsuite.com/leadgine/leadersEXE.asp?userid={ Application.application.userID }&amp;clientID={ Application.application.clientID }&amp;myType=thisMonth" 
+	result="resultHandlerLeadersMonth(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+<mx:HTTPService id="leadersServiceQuarter" url="http://www.revparsuite.com/leadgine/leadersEXE.asp?userid={ Application.application.userID }&amp;clientID={ Application.application.clientID }&amp;myType=thisQuarter" 
+	result="resultHandlerLeadersQuarter(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+<mx:HTTPService id="leadersServiceYear" url="http://www.revparsuite.com/leadgine/leadersEXE.asp?userid={ Application.application.userID }&amp;clientID={ Application.application.clientID }&amp;myType=thisYear" 
+	result="resultHandlerLeadersYear(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:CurrencyFormatter id="fmtCurrency" precision="0" />
+<mx:NumberFormatter id="fmtNumber" useThousandsSeparator="true"/>
+
+<mx:ViewStack id="vsIncentives" width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+<com:GradientCanvas 
+	width="100%" height="100%" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.myFillColors4 }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90" 
+		interpolationMethod = "linearRGB" borderAlphas="0" 
+		click="{this.normalMaxClickHandler(null)}">
+		<mx:Canvas borderStyle="solid" borderColor="#666666" cornerRadius="20" backgroundColor="#FFFFFF" borderThickness="1" alpha="0.8" left="130" right="10" top="10" bottom="10">
+				<mx:Text text="Top Referrers...Are you listed here?" left="20" right="20" top="20" bottom="20" styleName="myPanelCaption">
+					<mx:filters>
+				        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+				    </mx:filters>
+				</mx:Text>
+		</mx:Canvas>
+		<mx:Image source="assets/img/icons/grey_circle/prize_winner.png" verticalCenter="0" left="30"/>
+
+</com:GradientCanvas>
+<com:GradientCanvas label="Results" width="100%" height="100%" 
+		paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off"
+		colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.topGradientColor }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="100">
+		
+	<mx:VBox width="100%" height="100%" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10">
+		<mx:TabNavigator id="tabLeaders" horizontalAlign="left" tabOffset="30" width="100%" height="100%" 
+			verticalScrollPolicy="auto" horizontalScrollPolicy="off" creationPolicy="all" backgroundColor="#ffffff" backgroundAlpha=".5">
+			
+				<mx:VBox width="100%" height="100%" label="This Month"
+					icon="@Embed('assets/img/icons/star.png')"
+					paddingLeft="10" paddingRight="10" paddingTop="0" paddingBottom="10" 
+					verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+					
+						<mx:HBox width="100%" verticalAlign="middle">
+							<mx:Image source="assets/img/icons/first_place.png"/>
+							<mx:VBox>
+								<mx:Text text="Current Leader:" fontSize="14" fontWeight="bold" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+								<mx:Text id="lblLeaderMonth" text="" fontSize="14" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							</mx:VBox>
+
+							<mx:Spacer width="50"/>
+							
+							<mx:Image source="assets/img/icons/second_place.png"/>
+							<mx:VBox>
+								<mx:Text text="Runner Up:" fontSize="14" fontWeight="bold" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+								<mx:Text id="lblRunnerMonth" text="" fontSize="14" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							</mx:VBox>
+							<mx:Spacer width="50"/>
+							
+							<mx:Image source="assets/img/icons/third_place.png"/>
+							<mx:VBox>
+								<mx:Text text="Third Place:" fontSize="14" fontWeight="bold" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+								<mx:Text id="lblThirdMonth" text="" fontSize="14"  color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							</mx:VBox>
+
+						</mx:HBox>
+						<mx:HRule width="100%"/>
+						
+						
+						<mx:Text text="Top Referrers This Month!" y="8" right="-307" left="188" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+						<mx:HBox width="100%" height="100%">
+							<mx:DataGrid id="dataLeadersMonth" 
+								width="100%" height="100%" 
+						        dataProvider="{listLeadersMonth}">					
+								<mx:columns>
+									<mx:DataGridColumn visible="false" dataField="userid"/>
+									<mx:DataGridColumn headerText="Rank" dataField="rank" textAlign="center" width="40"/>
+									<mx:DataGridColumn headerText="First" dataField="first_name" width="70"/>
+									<mx:DataGridColumn headerText="Last" dataField="last_name" width="100"/>
+									<mx:DataGridColumn visible="false" headerText="Title" dataField="myTitle" width="150"/>
+									<mx:DataGridColumn headerText="Hotel" dataField="hotel"/>
+									<mx:DataGridColumn headerText="Referrals" dataField="referrals" textAlign="right" width="70"/>
+									<mx:DataGridColumn headerText="Rooms" dataField="rooms" textAlign="right" labelFunction="numberLabel" width="70"/>
+									<mx:DataGridColumn headerText="Revenue" dataField="revenue" textAlign="right" labelFunction="currencyLabel" width="80"/>
+								</mx:columns>
+							</mx:DataGrid>
+							<mx:Image source="@Embed('assets/img/applause_opt.jpg')" />
+						</mx:HBox>
+				</mx:VBox>
+				<mx:VBox width="100%" height="100%" label="This Quarter"
+					icon="@Embed('assets/img/icons/star.png')"
+					paddingLeft="10" paddingRight="10" paddingTop="0" paddingBottom="10" 
+					verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+					
+						<mx:HBox width="100%" verticalAlign="middle">
+							<mx:Image source="assets/img/icons/first_place.png"/>
+							<mx:VBox>
+								<mx:Text text="Current Leader:" fontSize="14" fontWeight="bold" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+								<mx:Text id="lblLeaderQuarter" text="" fontSize="14" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							</mx:VBox>
+							<mx:Spacer width="50"/>
+							
+							<mx:Image source="assets/img/icons/second_place.png"/>
+							<mx:VBox>
+								<mx:Text text="Runner Up:" fontSize="14" fontWeight="bold" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+								<mx:Text id="lblRunnerQuarter" text="" fontSize="14" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							</mx:VBox>
+							<mx:Spacer width="50"/>
+							
+							<mx:Image source="assets/img/icons/third_place.png"/>
+							<mx:VBox>
+								<mx:Text text="Third Place:" fontSize="14" fontWeight="bold" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+								<mx:Text id="lblThirdQuarter" text="" fontSize="14" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							</mx:VBox>
+						</mx:HBox>
+						<mx:HRule width="100%"/>
+						
+						<mx:Text text="Top Referrers This Quarter!" y="8" right="-307" left="188" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+						<mx:HBox width="100%" height="100%">
+						<mx:DataGrid id="dataLeadersQuarter" 
+							width="100%" height="100%" 
+					        dataProvider="{listLeadersQuarter}">							
+								<mx:columns>
+									<mx:DataGridColumn visible="false" dataField="userid"/>
+									<mx:DataGridColumn headerText="Rank" dataField="rank" textAlign="center" width="40"/>
+									<mx:DataGridColumn headerText="First" dataField="first_name" width="70"/>
+									<mx:DataGridColumn headerText="Last" dataField="last_name" width="100"/>
+									<mx:DataGridColumn visible="false" headerText="Title" dataField="myTitle" width="150"/>
+									<mx:DataGridColumn headerText="Hotel" dataField="hotel"/>
+									<mx:DataGridColumn headerText="Referrals" dataField="referrals" textAlign="right" width="70"/>
+									<mx:DataGridColumn headerText="Rooms" dataField="rooms" textAlign="right" labelFunction="numberLabel" width="70"/>
+									<mx:DataGridColumn headerText="Revenue" dataField="revenue" textAlign="right" labelFunction="currencyLabel" width="80"/>
+								</mx:columns>
+						</mx:DataGrid>
+							<mx:Image source="@Embed('assets/img/applause_opt.jpg')" />
+						</mx:HBox>
+				</mx:VBox>
+				<mx:VBox width="100%" height="100%" label="This Year"
+					icon="@Embed('assets/img/icons/star.png')"
+					paddingLeft="10" paddingRight="10" paddingTop="0" paddingBottom="10" 
+					verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+					
+						<mx:HBox width="100%" verticalAlign="middle">
+							<mx:Image source="assets/img/icons/first_place.png"/>
+							<mx:VBox>
+								<mx:Text text="Current Leader:" fontSize="14" fontWeight="bold" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+								<mx:Text id="lblLeaderYear" text="" fontSize="14" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							</mx:VBox>
+							<mx:Spacer width="50"/>
+							
+							<mx:Image source="assets/img/icons/second_place.png"/>
+							<mx:VBox>
+								<mx:Text text="Runner Up:" fontSize="14" fontWeight="bold" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+								<mx:Text id="lblRunnerYear" text="" fontSize="14" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							</mx:VBox>
+							<mx:Spacer width="50"/>
+							
+							<mx:Image source="assets/img/icons/third_place.png"/>
+							<mx:VBox>
+								<mx:Text text="Third Place:" fontSize="14" fontWeight="bold" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+								<mx:Text id="lblThirdYear" text="" fontSize="14" color="#003300" styleName="myPanelCaption">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							</mx:VBox>
+
+						</mx:HBox>
+						<mx:HRule width="100%"/>
+						
+						<mx:Text text="Top Referrers This Year!" y="8" right="-307" left="188" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+						<mx:HBox width="100%" height="100%">
+						<mx:DataGrid id="dataLeadersYear" 
+							width="100%" height="100%" 
+					        dataProvider="{listLeadersYear}">							
+								<mx:columns>
+									<mx:DataGridColumn visible="false" dataField="userid"/>
+									<mx:DataGridColumn headerText="Rank" dataField="rank" textAlign="center" width="40"/>
+									<mx:DataGridColumn headerText="First" dataField="first_name" width="70"/>
+									<mx:DataGridColumn headerText="Last" dataField="last_name" width="100"/>
+									<mx:DataGridColumn visible="false" headerText="Title" dataField="myTitle" width="150"/>
+									<mx:DataGridColumn headerText="Hotel" dataField="hotel"/>
+									<mx:DataGridColumn headerText="Referrals" dataField="referrals" textAlign="right" width="70"/>
+									<mx:DataGridColumn headerText="Rooms" dataField="rooms" textAlign="right" labelFunction="numberLabel" width="70"/>
+									<mx:DataGridColumn headerText="Revenue" dataField="revenue" textAlign="right" labelFunction="currencyLabel" width="80"/>
+								</mx:columns>
+						</mx:DataGrid>
+							<mx:Image source="@Embed('assets/img/applause_opt.jpg')" />
+						</mx:HBox>
+				</mx:VBox>
+	</mx:TabNavigator>
+</mx:VBox>
+</com:GradientCanvas>
+</mx:ViewStack>
+
+</SuperPanel>

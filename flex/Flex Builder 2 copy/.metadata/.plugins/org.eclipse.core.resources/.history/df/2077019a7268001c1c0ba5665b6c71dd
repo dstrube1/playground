@@ -1,0 +1,18 @@
+package base.db
+{
+	public interface MemDB
+	{
+	
+		function add( o:Object):void;
+		
+		function addAll( a:Array):void;
+		
+		function fetch( filter:Object=null ):Array;
+		
+		function deleteRow( filter:Object ):int;
+	
+		function clear():void;
+	
+		
+	}
+}

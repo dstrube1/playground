@@ -1,0 +1,456 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
+<meta content="PopUpManager,mx.managers.PopUpManager,createToolTip,destroyToolTip,doDrag,acceptDragDrop,showFeedback,getFeedback,create,getExplicitOrMeasuredWidth,getExplicitOrMeasuredHeight,move,setActualSize,activate,deactivate,addFocusManager,removeFocusManager,getDefinitionByName,getSWFRoot,isTopLevel,isTopLevelWindow,isFontFaceEmbedded,validateProperties,validateSize,validateDisplayList,createPopUp,addPopUp,centerPopUp,removePopUp,bringToFront,invalidateProperties,invalidateSize,invalidateDisplayList,validateNow,validateClient,isInvalid,activate,deactivate,addFocusManager,removeFocusManager,create,getDefinitionByName,isTopLevel,isFontFaceEmbedded,setFocus,drawFocus,addFocusManager,removeFocusManager,activate,deactivate,getDefinitionByName,isTopLevel,isFontFaceEmbedded,getFocus,setFocus,showFocus,hideFocus,activate,deactivate,findFocusManagerComponent,getNextFocusManagerComponent,toString,getFocus,setFocus,showFocus,hideFocus,activate,deactivate,findFocusManagerComponent,getNextFocusManagerComponent,getInstance,showCursor,hideCursor,setCursor,removeCursor,removeAllCursors,setBusyCursor,removeBusyCursor,contains,initialize,register,unregister,save,saveState,loadState,toString,getInstance,invalidateProperties,invalidateSize,invalidateDisplayList,validateNow,validateClient,isInvalid" name="keywords">
+<title>mx.managers.PopUpManager (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'PopUpManager - Flex 3 Language Reference';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../index.html?mx/managers/PopUpManager.html&amp;mx/managers/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;PopUpManager</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class PopUpManager"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.managers</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  PopUpManager</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">PopUpManager  <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../Object.html">Object</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  The PopUpManager singleton class creates new top-level windows and
+  places or removes those windows from the layer on top of all other
+  visible windows.  See the SystemManager for a description of the layering.
+  It is used for popup dialogs, menus, and dropdowns in the ComboBox control 
+  and in similar components.
+ 
+  <p>The PopUpManager also provides modality, so that windows below the popup
+  cannot receive mouse events, and also provides an event if the user clicks
+  the mouse outside the window so the developer can choose to dismiss
+  the window or warn the user.</p>
+ 
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="PopUpManagerChildList.html" target="">PopUpManagerChildList</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable hideInheritedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#constructor">constructor</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  A reference to the class object or constructor function for a given object instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#prototype">prototype</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">[static] 
+  A reference to the prototype object of a class or function object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addPopUp()">addPopUp</a>(window:<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a>, parent:<a href="../../flash/display/DisplayObject.html">DisplayObject</a>, modal:<a href="../../Boolean.html">Boolean</a> = false, childList:<a href="../../String.html">String</a> = null):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">[static] 
+      Pops up a top-level window.</div>
+</td><td class="summaryTableOwnerCol">PopUpManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#bringToFront()">bringToFront</a>(popUp:<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">[static] 
+      Makes sure a popup window is higher than other objects in its child list
+      The SystemManager does this automatically if the popup is a top level window
+      and is moused on, 
+      but otherwise you have to take care of this yourself.</div>
+</td><td class="summaryTableOwnerCol">PopUpManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#centerPopUp()">centerPopUp</a>(popUp:<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">[static] 
+      Centers a popup window over whatever window was used in the call 
+      to the createPopUp() or addPopUp() method.</div>
+</td><td class="summaryTableOwnerCol">PopUpManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#createPopUp()">createPopUp</a>(parent:<a href="../../flash/display/DisplayObject.html">DisplayObject</a>, className:<a href="../../Class.html">Class</a>, modal:<a href="../../Boolean.html">Boolean</a> = false, childList:<a href="../../String.html">String</a> = null):<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a>
+</div>
+<div class="summaryTableDescription">[static] 
+      Creates a top-level window and places it above other windows in the
+      z-order.</div>
+</td><td class="summaryTableOwnerCol">PopUpManager</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">hasOwnProperty</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an object has a specified property defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">isPrototypeOf</a>(theClass:<a href="../../Object.html">Object</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an instance of the Object class is in the prototype chain of the object specified 
+  as the parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">propertyIsEnumerable</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether the specified property exists and is enumerable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removePopUp()">removePopUp</a>(popUp:<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">[static] 
+      Removes a popup window popped up by 
+      the createPopUp() or addPopUp() method.</div>
+</td><td class="summaryTableOwnerCol">PopUpManager</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#setPropertyIsEnumerable()">setPropertyIsEnumerable</a>(name:<a href="../../String.html">String</a>, isEnum:<a href="../../Boolean.html">Boolean</a> = true):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+     Sets the availability of a dynamic property for loop operations.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#toString()">toString</a>():<a href="../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the string representation of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#valueOf()">valueOf</a>():<a href="../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the primitive value of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method Detail</div>
+<a name="addPopUp()"></a><a name="addPopUp(mx.core.IFlexDisplayObject,flash.display.DisplayObject,Boolean,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addPopUp</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function addPopUp(window:<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a>, parent:<a href="../../flash/display/DisplayObject.html">DisplayObject</a>, modal:<a href="../../Boolean.html">Boolean</a> = false, childList:<a href="../../String.html">String</a> = null):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Pops up a top-level window.
+      It is good practice to call <code>removePopUp()</code> to remove popups
+      created by using the <code>createPopUp()</code> method.
+      If the class implements IFocusManagerContainer, the window will have its
+      own FocusManager so that, if the user uses the TAB key to navigate between
+      controls, only the controls in the window will be accessed.
+           <p><b>Example</b></p> 
+           <pre>var tw = new TitleWindow();
+        tw.title = "My Title";
+        mx.managers.PopUpManager.addPopUp(tw, pnl, false);</pre>
+           <p>Creates a popup window using the <code>tw</code> instance of the 
+      TitleWindow class and <code>pnl</code> as the Sprite for determining
+      where to place the popup.
+      It is defined to be a non-modal window.</p>
+      
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">window</span>:<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a></code> &mdash; The IFlexDisplayObject to be popped up.
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">parent</span>:<a href="../../flash/display/DisplayObject.html">DisplayObject</a></code> &mdash; DisplayObject to be used for determining which SystemManager's layers
+      to use and optionally  the reference point for centering the new
+      top level window.  It may not be the actual parent of the popup as all popups
+      are parented by the SystemManager.
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">modal</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>false</code>)<code></code> &mdash; If <code>true</code>, the window is modal which means that
+      the user will not be able to interact with other popups until the window
+      is removed.
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">childList</span>:<a href="../../String.html">String</a></code> (default = <code>null</code>)<code></code> &mdash; The child list in which to add the pop-up.
+      One of <code>PopUpManagerChildList.APPLICATION</code>, 
+      <code>PopUpManagerChildList.POPUP</code>, 
+      or <code>PopUpManagerChildList.PARENT</code> (default).
+           </td>
+</tr>
+</table>
+</p>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="PopUpManagerChildList.html" target="">PopUpManagerChildList</a>
+</div>
+</div>
+<a name="bringToFront()"></a><a name="bringToFront(mx.core.IFlexDisplayObject)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">bringToFront</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function bringToFront(popUp:<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Makes sure a popup window is higher than other objects in its child list
+      The SystemManager does this automatically if the popup is a top level window
+      and is moused on, 
+      but otherwise you have to take care of this yourself.
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">popUp</span>:<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a></code> &mdash; IFlexDisplayObject representing the popup.
+     </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="centerPopUp()"></a><a name="centerPopUp(mx.core.IFlexDisplayObject)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">centerPopUp</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function centerPopUp(popUp:<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Centers a popup window over whatever window was used in the call 
+      to the <code>createPopUp()</code> or <code>addPopUp()</code> method.
+           <p>Note that the position of the popup window may not
+      change immediately after this call since Flex may wait to measure and layout the
+      popup window before centering it.</p>
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">popUp</span>:<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a></code> &mdash; IFlexDisplayObject representing the popup.
+     </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="createPopUp()"></a><a name="createPopUp(flash.display.DisplayObject,Class,Boolean,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">createPopUp</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function createPopUp(parent:<a href="../../flash/display/DisplayObject.html">DisplayObject</a>, className:<a href="../../Class.html">Class</a>, modal:<a href="../../Boolean.html">Boolean</a> = false, childList:<a href="../../String.html">String</a> = null):<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a></code>
+<p></p><p>
+      Creates a top-level window and places it above other windows in the
+      z-order.
+      It is good practice to call the <code>removePopUp()</code> method 
+      to remove popups created by using the <code>createPopUp()</code> method.
+           If the class implements IFocusManagerContainer, the window will have its
+      own FocusManager so that, if the user uses the TAB key to navigate between
+      controls, only the controls in the window will be accessed.
+           <p><b>Example</b></p> 
+           <pre>pop = mx.managers.PopUpManager.createPopUp(pnl, TitleWindow, false); </pre>
+      
+      <p>Creates a popup window based on the TitleWindow class, using <code>pnl</code> as the MovieClip 
+      for determining where to place the popup. It is defined to be a non-modal window 
+      meaning that other windows can receive mouse events</p>
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">parent</span>:<a href="../../flash/display/DisplayObject.html">DisplayObject</a></code> &mdash; DisplayObject to be used for determining which SystemManager's layers
+      to use and optionally the reference point for centering the new
+      top level window.  It may not be the actual parent of the popup as all popups
+      are parented by the SystemManager.
+     
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">className</span>:<a href="../../Class.html">Class</a></code> &mdash; Class of object that is to be created for the popup.
+      The class must implement IFlexDisplayObject.
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">modal</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>false</code>)<code></code> &mdash; If <code>true</code>, the window is modal which means that
+      the user will not be able to interact with other popups until the window
+      is removed.
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">childList</span>:<a href="../../String.html">String</a></code> (default = <code>null</code>)<code></code> &mdash; The child list in which to add the popup.
+      One of <code>PopUpManagerChildList.APPLICATION</code>, 
+      <code>PopUpManagerChildList.POPUP</code>, 
+      or <code>PopUpManagerChildList.PARENT</code> (default).
+           </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a></code> &mdash; Reference to new top-level window.
+           </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="PopUpManagerChildList.html" target="">PopUpManagerChildList</a>
+</div>
+</div>
+<a name="removePopUp()"></a><a name="removePopUp(mx.core.IFlexDisplayObject)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removePopUp</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function removePopUp(popUp:<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Removes a popup window popped up by 
+      the <code>createPopUp()</code> or <code>addPopUp()</code> method.
+      
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">popUp</span>:<a href="../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a></code> &mdash; The IFlexDisplayObject representing the popup window.
+     </td>
+</tr>
+</table>
+</p>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/managers/PopUpManager.html','mx/managers/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

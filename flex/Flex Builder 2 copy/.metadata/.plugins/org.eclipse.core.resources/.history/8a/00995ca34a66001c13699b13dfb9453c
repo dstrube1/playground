@@ -1,0 +1,779 @@
+/* CSS file */
+
+/**
+
+Red Lt - DA0028
+Red dk - 92061C
+Green lt - 6A9E2C
+Green dk - 42621B
+yellow - E4E092
+orange - E4944E
+
+Gray dk - 4B4B4B
+Gray Lighter - 717171
+Gray Light - 969696
+
+*/
+
+/*Arial Regular */
+@font-face {
+	src:url("/resources/style/arial.ttf");
+	fontFamily: arial;
+	flashType: true;
+}
+
+/*Interstate Regular */
+@font-face {
+	src:url("/resources/style/Interstate.ttf");
+	fontFamily: interstate;
+	flashType: true;
+}
+
+/*Interstate Bold */
+@font-face {
+	src:url("/resources/style/InterstateBold_4.ttf");
+	fontFamily: interstateBold;
+	fontWeight: bold;
+	flashType: true;
+	
+}
+
+/*Interstate Italic */
+@font-face {
+	src:url("/resources/style/InterstateItalic.ttf");
+	fontFamily: interstate;
+	fontStyle: italic;
+	flashType: true;
+}
+
+/*Interstate Bold Italic */
+@font-face {
+	src:url("/resources/style/InterstateBoldItalic.ttf");
+	fontFamily: interstate;
+	fontStyle: italic;
+	fontWeight: bold;
+	flashType: true;
+}
+
+Application {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	background-color: #000000;
+	margin: 0px;
+	padding: 0px;
+	/*
+    background-image: Embed("/resources/images/background.png");
+    */
+}
+
+Panel
+{
+
+	borderThickness: 1;
+	roundedBottomCorners: true;
+	cornerRadius: 8;
+	backgroundColor: #acacac;
+	borderStyle:  solid;
+	borderColor: #fafafa;
+	backgroundAlpha: 0.5;
+	padding: 0px;
+	margin: 0px;
+
+}
+
+DataGrid
+{
+
+   alternatingItemColors: #888DA0, #626A80;
+   headerColors: #626A80, #626A80;
+   verticalGridLines: false;
+   verticalGridLineColor: #333333;
+   useRollOver: true;
+   rollOverColor: #ABB0BF;
+   text-roll-over-color: #000000;
+   borderThickness: 0;
+   borderColor: #333333;
+   selectionColor: #A8ADBC;
+   color: #cccccc;
+   textSelectedColor: #cccccc;
+
+    headerStyleName: "DataGridHeaderStyle";
+}
+.DataGridHeaderStyle
+{
+	color: #D3D5DD;
+   	fontWeight: bold;
+   	fontStyle: normal;
+   	textDecoration: none;
+}
+
+VBox
+{
+	backgroundAlpha: 0.5;
+	backgroundColor: #626A80;
+}
+
+/*
+.infoLinkHighlight{
+ 	cornerRadius: 6;
+ 	borderThickness: 0.35;
+ 	dropShadowEnabled: false;
+  
+  
+   shadowDistance: 0;
+   shadowDirection: right;
+   roundedBottomCorners: true;
+   backgroundAlpha: 0.35;
+   borderAlpha: 1;
+   headerColors: #FFFFFF;
+   backgroundColor: #FFFFFF;
+   borderColor: #333333;
+}
+
+.infoLink{
+	color: #000000;
+}
+*/
+
+.invisibleScrollbar {
+	alpha: 0.01;
+	background-alpha: 0.01;
+}
+
+invisibleScrollbar {
+	alpha: 0.01;
+	background-alpha: 0.01;
+}
+
+
+.lenzCanvas {
+	alpha: 0.9;
+   /* background-image: Embed("/resources/images/bg_green.png"); */
+}
+
+
+.lenzFrame {
+	alpha: 1.0;
+	backgroundImage: Embed("/resources/images/background.png");
+	padding-bottom: 1;
+	padding-top: 1;
+	padding-left: 1;
+	padding-right: 1;
+	/*
+	backgroundColor: #111111;
+	*/
+}
+
+/*
+.menuBlade {
+
+	backgroundImage: Embed("/resources/images/menu_tower.png");
+	
+}
+
+
+.filledHeader
+ {
+/* 	
+      borderStyle: solid;
+      border-style: solid;
+      border-thickness: 0;
+      border-skin: ClassReference("base.renderer.HfGradientBorder");
+      fill-colors: #FFFFFF, #000000;
+      color:#000000;
+      corner-radius: 10;
+      drop-shadow-enabled: true;
+      shadowDistance: 1;
+		shadowDirection: center;
+	  	backgroundColor: #969696;
+	  	paddingLeft: 10;
+	  	headerColor: #717171;
+	  	footerColor: #969696;
+	  	headerHeight: 20;
+*/	  	
+  }
+
+.filled
+        {
+/*            
+            border-style: solid;
+            border-thickness: 0;
+            border-skin: ClassReference("base.renderer.SimpleGradientBorder");
+            fill-colors: #FFFFFF, #000000;
+     
+            corner-radius: 10;
+            drop-shadow-enabled: true;
+            shadowDistance: 1;
+   			shadowDirection: center;
+       		backgroundColor: #969696;
+*/       		
+        }
+        
+.filledRight
+        {
+/*
+        	
+             border-style: solid;
+            border-thickness: 0;
+            border-skin: ClassReference("base.renderer.SimpleGradientBorder");
+            fillColors: #FFFFFF, #fafafa;
+            
+            corner-radius: 8;
+            drop-shadow-enabled: true;
+            shadowDistance: 1;
+   			shadowDirection: center;
+   	 	
+   backgroundAlpha: 0.5; 	
+alpha: 1.0;
+*/
+
+         	
+/*            
+            border-style: solid;
+            border-thickness: 0;
+            border-skin: ClassReference("base.renderer.SimpleGradientBorder");
+            fill-colors: #FFFFFF, #000000;
+            
+            corner-radius: 10;
+            drop-shadow-enabled: true;
+            shadowDistance: 1;
+   			shadowDirection: center;
+   			backgroundColor: #555555;
+*/
+        }
+        
+        
+.filledTone
+        {
+/*            
+            border-style: solid;
+            border-thickness: 0;
+            border-skin: ClassReference("base.renderer.SimpleGradientBorder");
+            fill-colors: #FFFFFF, #000000;
+            
+            corner-radius: 10;
+            drop-shadow-enabled: true;
+            shadowDistance: 1;
+   			shadowDirection: center;
+   			backgroundColor: #969696;
+   			altBackgroundColor: #555555;
+*/
+        }
+
+
+
+.rightPanel
+{
+
+
+	
+/*
+    border-style: solid;
+    border-thickness: 0;
+    border-skin: ClassReference("base.renderer.SimpleGradientBorder");
+    fill-colors: #FFFFFF, #000000;
+    
+    corner-radius: 10;
+    drop-shadow-enabled: true;
+    shadowDistance: 1;
+   	shadowDirection: center;
+   	backgroundColor: #555555;
+
+	title-style-name: "rightPanelTitleStyle"; 
+	*/
+
+}
+.rightPanelTitleStyle 
+{
+	/*
+	color: #FFFFFF;
+   	font-weight: bold;
+   	*/
+}
+
+.rightTextArea
+{
+	color: #FFFFFF;
+	backgroundAlpha: 0;
+	/*
+   	backgroundColor: #555555;
+	color: #cccccc;
+	*/
+}
+
+
+.lenzFormLabel {
+	/*
+	font-thickness: 200;
+	font-size: 16px;
+	color: #000000;	
+	*/
+}
+
+.studyManagerMainForm {
+	/*
+	padding-top: 10;
+	horizontalScrollPolicy:off;
+	verticalScrollPolicy:off;
+	headerHeight: 4;
+	y:13;
+	*/
+}
+
+
+.chartButtonLabel {
+	/*
+   cornerRadius: 4;
+   textIndent: 6;
+   paddingLeft: 20;
+   paddingTop: 1;
+   letterSpacing: 1;
+   highlightAlphas: 0, 0;
+   fillAlphas: 0.50, 0.50, 0.50, 0.50;
+   fillColors: #ffffff, #ffffff, #ffffff, #ffffff;
+   backgroundColor: #FFFFFF;
+   background-alpha: 0.6;
+   color: #ffffff;
+   borderColor: #ffffff;
+   themeColor: #ffffff;
+   fontWeight: normal;
+   */
+}
+
+
+.lenzForm {
+/*	
+	marginTop: 70;
+	*/
+}
+
+
+
+.introForm {
+	
+	horizontalScrollPolicy: off;
+	verticalScrollPolicy: off; 
+	verticalScrollBar: null;
+	horizontalScrollBar: null;
+	
+}
+
+.lenzPanel { 
+
+
+
+	cornerRadius: 8;
+	backgroundColor: #acacac;
+	borderStyle:  solid;
+	borderColor: #fafafa;
+	backgroundAlpha: 0.5;
+	padding: 0px;
+	margin: 0px;
+
+/*
+	background-alpha: 0.6;
+	borderAlpha: 1;
+	borderColor: #eeeeee;
+	borderStyle: solid;
+	borderThickness: 0;
+	color: #eeeeee;
+	cornerRadius: 08;
+	headerColors: #808080, #808080;
+	headerHeight: 4;
+	highlightAlphas: 0.2,0.2;
+	panelBorderStyle: default;
+	
+	horizontalScrollPolicy: off;
+	verticalScrollPolicy: off; 
+	verticalScrollBar: null;
+	horizontalScrollBar: null;
+	
+	/*
+	paddingTop: 50;
+	paddingBottom: 10;
+	paddingRight: 10;
+	paddingLeft: 20;
+	marginLeft: 50;
+	*/
+
+/*
+	rounded-bottom-corners: false;
+	roundedBottomCorners: false;
+	rounded-bottom-corners: 0;
+	roundedBottomCorners: 0;
+	rounded-bottom-corners: off;
+	shadowDistance: 0;
+	shadow-direction: right;
+	titleStyleName: "lenzPanelTitle";
+*/
+	
+
+}
+
+
+.bottomRight { 
+
+/*
+	background-alpha: 0.6;
+	backgroundColor: #333333;
+	borderAlpha: 1;
+	borderStyle: solid;
+	borderThickness: 0; 
+	color: #eeeeee;
+	cornerRadius: 8;
+	borderColor: #333333;
+	headerColors: #333333, #333333;
+	headerHeight: 4;
+	highlightAlphas: 0.2,0.2;
+	shadowDistance: 0;
+	shadow-direction: right;
+	titleStyleName: "lenzPanelTitle";
+	rounded-bottom-corners: true;
+	roundedBottomCorners: true;
+	rounded-top-corners: false;
+	roundedTopCorners: false;
+	*/
+}
+
+.lenzPanelTitle {
+	
+	color: #000000;
+	fontWeight: normal;
+	textAlign: center;
+}
+
+.loginForm {
+/*	
+	background-alpha: 0.9;
+	background-color: #8b9f83;  
+	border-color: #8b9f83;
+	border-alpha: 0.9;
+	color: #111111;
+	cornerRadius: 08;
+	headerColors: #8b9f83, #8b9f83;
+	rounded-bottom-corners: true;
+*/
+}
+
+.patientFunnel
+{
+	/*
+	backgroundGradientColors: #000000, #cccccc;
+	roundedBottomCorners: true;
+   cornerRadius: 0;
+   headerHeight: 0;
+   borderThickness: 0;
+   roundedBottomCorners: true;
+   textAlign: left;
+   borderAlpha: 0.49;
+   highlightAlphas: 0, 0;
+   borderStyle: none;
+   backgroundColor: #333333;
+   */
+}
+
+.blackPanel {
+	/* 
+		backgroundGradientColors: #000000, #cccccc;
+
+   cornerRadius: 10;
+   headerHeight: 15;
+   borderThickness: 0;
+   shadowDistance: 0;
+   roundedBottomCorners: true;
+   backgroundAlpha: 1;
+   borderAlpha: 1;
+   highlightAlphas: 0, 0;
+   borderStyle: solid;
+   backgroundColor: #333333;
+   titleStyleName: "blackPanelTitleStyle";
+   */
+} 
+
+.blackPanelTitleStyle {
+   color: #cccccc;
+   }
+
+.notificationPanel { 
+	/*
+   borderThickness: 0;
+   headerHeight: 23;
+   dropShadowEnabled: false;
+   backgroundAlpha: 1;
+   highlightAlphas: 0.26, 0.43;
+   fillColors: #333333, #000000, #cccccc, #333333;
+   themeColor: #000033;
+   backgroundColor: #333333;
+   color: #cccccc;
+   textRollOverColor: #ffffff;
+   textSelectedColor: #000000;
+   openDuration: 100;
+   borderStyle:solid;
+   borderColor: #333333;
+
+*/	
+}
+
+.notificationPanellist
+{
+	/*
+	 backgroundColor: #555555;
+	 */
+}
+	
+	
+.notificationOuterPanel
+{
+	/*
+	title-style-name: "IITermsPanelTitleStyle"; 
+
+
+   cornerRadius: 10;
+   headerHeight: 8;
+   
+   borderThicknessLeft: 2;
+   borderThicknessTop: 2;
+   borderThicknessBottom: 3;
+   borderThicknessRight: 2;
+   
+   
+   dropShadowEnabled: false;
+   shadowDistance: 0;
+   shadowDirection: right;
+   roundedBottomCorners: true;
+   backgroundAlpha: 1;
+   borderAlpha: 1;
+   headerColors: #333333, #333333;
+   backgroundColor: #333333;
+   borderColor: #333333;
+   titleStyleName: "notificationOuterPanelTitleStyle";
+   */
+} 
+
+.notificationOuterPanelTitleStyle 
+{
+	/*
+   color: #cccccc;
+   font-weight: bold;
+   */
+}	
+	
+.welcomeForm{
+	/*
+	height: 440;
+	horizontal-center: 0;
+	vertical-center: 0;
+	width: 700;
+	horizontalScrollPolicy: off;
+	verticalScrollPolicy: off; 
+	verticalScrollBar: null;
+	horizontalScrollBar: null;
+	*/
+}
+
+
+.noscrollbars { 
+	horizontalScrollPolicy: off;
+	verticalScrollPolicy: off; 
+	hScrollPolicy:off;
+	vScrollPolicy:off;
+	horizontal-center: 0;
+	vertical-center: 0;
+
+	
+}
+
+
+/* CSS file */
+
+HScrollBar 
+{
+	/*
+   cornerRadius: 0;
+   fillAlphas: 1, 1, 0.75, 0.65;
+   fillColors: #333333, #666666, #999999, #cccccc;
+   themeColor: #cccccc;
+   */
+}
+
+VScrollBar
+{
+	/*
+   cornerRadius: 0;
+   fillAlphas: 1, 1, 0.75, 0.65;
+   fillColors: #333333, #666666, #999999, #cccccc;
+   themeColor: #cccccc;
+   */
+}
+/*
+.IIDataGrid 
+{
+
+   alternatingItemColors: #555555, #333333;
+   headerColors: #333333, #333333;
+   verticalGridLines: false;
+   verticalGridLineColor: #333333;
+   useRollOver: true;
+   rollOverColor: #cccccc;
+   textRollOverColor: #666666;
+   borderThickness: 0;
+   borderColor: #333333;
+   selectionColor: #999999;
+   color: #cccccc;
+   textSelectedColor: #cccccc;
+    headerStyleName: "IIDataGridHeaderStyle";
+}
+.IIDataGridHeaderStyle
+{
+	color: #999999;
+   	fontWeight: bold;
+   	fontStyle: normal;
+   	textDecoration: none;
+}
+
+.IIKPIDataGrid 
+{
+
+   alternatingItemColors: #666666, #333333;
+   headerColors: #333333, #333333;
+   verticalGridLines: false;
+   verticalGridLineColor: #333333;
+   useRollOver: false;
+   rollOverColor: #333333;
+   textRollOverColor: #666666;
+   borderThickness: 0;
+   borderColor: #333333;
+   selectionColor: #999999;
+   color: #cccccc;
+   textSelectedColor: #cccccc;
+   headerStyleName : "headerStyleIIKPIDataGrid";
+}
+
+.headerStyleIIKPIDataGrid
+{
+	headerHeight: 0;
+}
+
+
+
+.IIStudiesPanel 
+{ 
+	
+   cornerRadius: 10;
+   headerHeight: 8;
+   borderThickness: 0;
+   dropShadowEnabled: false;
+   shadowDistance: 0;
+   shadowDirection: right;
+   roundedBottomCorners: true;
+   backgroundAlpha: 1;
+   borderAlpha: 1;
+ 	borderThicknessLeft: 5; 
+	borderThicknessRight: 0; 
+	borderThicknessTop: 0;
+  
+   headerColors: #333333, #333333;
+   backgroundColor: #333333;
+
+   borderColor: #333333;
+   titleStyleName: "IITermsPanelTitleStyle";
+}
+
+.IITermsPanel 
+{ 
+	title-style-name: "IITermsPanelTitleStyle"; 
+
+
+   cornerRadius: 10;
+   headerHeight: 35;
+   borderThickness: 0;
+   dropShadowEnabled: false;
+   shadowDistance: 0;
+   shadowDirection: right;
+   roundedBottomCorners: true;
+   backgroundAlpha: 1;
+   borderAlpha: 1;
+   headerColors: #333333, #333333;
+   backgroundColor: #333333;
+   borderColor: #333333;
+   titleStyleName: "IITermsPanelTitleStyle";
+} 
+
+.IITermsPanelTitleStyle 
+{
+   color: #999999;
+   font-weight: bold;
+}
+
+.IIKPIPanel
+{ 
+	title-style-name: "IITermsPanelTitleStyle"; 
+
+
+   cornerRadius: 10;
+   headerHeight: 10;
+   borderThickness: 0;
+   dropShadowEnabled: false;
+   shadowDistance: 0;
+   shadowDirection: right;
+   roundedBottomCorners: true;
+   backgroundAlpha: 1;
+   borderAlpha: 1;
+   headerColors: #333333, #333333;
+   backgroundColor: #333333;
+   borderColor: #333333;
+   titleStyleName: "IIKPIPanelTitleStyle";
+} 
+.IIKPIPanelTitleStyle 
+{
+   color: #cccccc;
+   font-weight: bold;
+}
+
+
+.IITermsTextArea
+{ 
+	borderAlpha: 1;
+	borderThickness: 0;
+	
+	horizontalScrollPolicy: off;
+	verticalScrollPolicy: off; 
+	letterSpacing: 0; 
+	editable: false; 
+	wordWrap: true;  
+	color: #cccccc; 
+	backgroundColor: #333333;
+} 
+
+.IICountriesList
+{ 
+	backgroundAlpha: 0.56;
+   backgroundColor: #666666;
+   alternatingItemColors: #999999, #cccccc;
+   rollOverColor: #ffffcc;
+   borderStyle: solid;
+   borderColor: #666666;
+   selectionColor: #ffffff;
+   dropShadowEnabled: true;
+   dropShadowColor: #333333;
+
+} 
+
+.IIButton
+{
+   fillAlphas: 0.16, 0.75, 0.75, 0.65;
+   fillColors: #006600, #006600, #ffffff, #006600;
+	
+	cornerRadius: 8;
+   	highlightAlphas: 0.3, 0;
+
+    color: #cccccc;
+   	themeColor: #003366;
+}
+
+.IILabel
+{
+	color: #cccccc;
+	 fontWeight: bold;
+}
+*/

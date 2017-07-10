@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" 
+	height="100%" xmlns:components="leadgine.components.*">
+	
+	<mx:Metadata>
+		[Event("prevSection", type="mx.events.Event")]
+		[Event("nextSection", type="mx.events.Event")]
+	</mx:Metadata>
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.formatters.DateFormatter;
+			import mx.controls.Alert;
+			import leadgine.components.dto.FullServiceReferral;
+			
+			[Bindable]
+			public var myTitle:String;
+			[Bindable]
+			public var myDTO:FullServiceReferral;
+			[Bindable]
+			public var myStartDate:String;
+
+			//Calculate row totals-----
+			private function balanceRow(val1:int, val2:int, val3:int, val4:int, val5:int, val6:int, val7:int):String {
+				return (val1 + val2 + val3 + val4 + val5 + val6 + val7).toString();
+			}
+			
+			//Calculate column totals----
+			private function balanceCol(val1:int, val2:int):String {
+				return (val1 + val2).toString();
+			}
+			
+			private function onSelectDate():void {
+				myDTO.startDate = startDate.selectedDate;
+				myStartDate = calcDate(startDate.selectedDate,0);
+				navFooter.nextButton.enabled = true;
+			}
+
+			//generate 6 subsequent days based on start date selected----
+			public static function calcDate(date:Date, days:Number):String {
+				var calculatedDate:Date = addDays(date, days);
+		        var myDateFormatter:DateFormatter = new DateFormatter();
+		        	myDateFormatter.formatString="MM/DD/YYYY";			
+				var formattedDate:String = myDateFormatter.format(calculatedDate);
+				return formattedDate;
+		    }
+		    public static function addDays(date:Date, days:Number):Date {
+		        return addHours(date, days*24);
+		    }
+		    public static function addHours(date:Date, hrs:Number):Date {
+		        return addMinutes(date, hrs*60);
+		    }
+		    public static function addMinutes(date:Date, mins:Number):Date {
+		        return addSeconds(date, mins*60);
+		    }
+		    public static function addSeconds(date:Date, secs:Number):Date {
+		        var mSecs:Number = secs * 1000;
+		        var sum:Number = mSecs + date.getTime();
+		        return new Date(sum);
+		    }
+		    private function onNextSection():void {
+		    	dispatchEvent( new Event( 'nextSection' ) );
+		    }	
+		]]>
+	</mx:Script>
+	
+	<mx:VBox styleName="containerStyle" width="100%" height="100%">
+		<!--SECTION LABEL IS PASSED IN FROM MAIN APPLICATION-->
+		<mx:Label text="{myTitle}" styleName="secTitle" />
+		<mx:Grid width="100%" paddingLeft="20" horizontalGap="3" verticalGap="3">
+		<!--DATE ROW-->
+			<mx:GridRow width="100%" height="100%">
+				<mx:GridItem width="80" height="30" horizontalAlign="right"><mx:Label text="Start Date:" textAlign="right" /></mx:GridItem>
+				<mx:GridItem width="100" height="100%"><mx:DateField id="startDate" width="100" change="onSelectDate()" /></mx:GridItem>
+				<!-- TO LIMIT DATE SELECTION: selectableRange="{{rangeStart : new Date()}}"-->
+				<mx:GridItem width="80"><mx:TextInput textAlign="right" id="day2" width="80" 
+					text="{calcDate(startDate.selectedDate,1)}" editable="false" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput textAlign="right" id="day3" width="80" 
+					text="{calcDate(startDate.selectedDate,2)}" editable="false" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput textAlign="right" id="day4" width="80" 
+					text="{calcDate(startDate.selectedDate,3)}" editable="false" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput textAlign="right" id="day5" width="80" 
+					text="{calcDate(startDate.selectedDate,4)}" editable="false" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput textAlign="right" id="day6" width="80" 
+					text="{calcDate(startDate.selectedDate,5)}" editable="false" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput textAlign="right" id="day7" width="80" 
+					text="{calcDate(startDate.selectedDate,6)}" editable="false" /></mx:GridItem>
+			</mx:GridRow>
+		<!--END DATE ROW-->
+		
+		<!--SINGLE ROW-->
+			<mx:GridRow width="100%" height="100%">
+				<mx:GridItem width="80" height="30" horizontalAlign="right"><mx:Label text="Single:" textAlign="right"/></mx:GridItem>
+				<mx:GridItem width="100"><mx:TextInput restrict="0-9" textAlign="right" width="100" text="0" id="single1" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput restrict="0-9" textAlign="right" width="80" text="0" id="single2" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput restrict="0-9" textAlign="right" width="80" text="0" id="single3" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput restrict="0-9" textAlign="right" width="80" text="0" id="single4" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput restrict="0-9" textAlign="right" width="80" text="0" id="single5" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput restrict="0-9" textAlign="right" width="80" text="0" id="single6" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput restrict="0-9" textAlign="right" width="80" text="0" id="single7" /></mx:GridItem>
+				<!--SINGLE ROW TOTAL-->
+				<mx:GridItem width="80">
+					<mx:TextInput restrict="0-9" editable="false" styleName="totalRow" textAlign="right" width="80" 
+						text="{balanceRow(parseInt(single1.text),parseInt(single2.text),parseInt(single3.text),parseInt(single4.text),parseInt(single5.text),parseInt(single6.text),parseInt(single7.text))}" 
+						id="singleTotal" />
+				</mx:GridItem>
+			</mx:GridRow>
+		<!--END SINGLE ROW-->
+		
+		<!--DOUBLE ROW-->
+			<mx:GridRow width="100%" height="100%">
+				<mx:GridItem width="80" height="30" horizontalAlign="right"><mx:Label text="Double:" textAlign="right" /></mx:GridItem>
+				<mx:GridItem width="100"><mx:TextInput restrict="0-9" textAlign="right" width="100" text="0" id="double1" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput restrict="0-9" textAlign="right" width="80" text="0" id="double2" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput restrict="0-9" textAlign="right" width="80" text="0" id="double3" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput restrict="0-9" textAlign="right" width="80" text="0" id="double4" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput restrict="0-9" textAlign="right" width="80" text="0" id="double5" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput restrict="0-9" textAlign="right" width="80" text="0" id="double6" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput restrict="0-9" textAlign="right" width="80" text="0" id="double7" /></mx:GridItem>
+				<!--DOUBLE ROW TOTAL-->
+				<mx:GridItem width="80">
+					<mx:TextInput restrict="0-9" editable="false" styleName="totalRow" textAlign="right" width="80" 
+						text="{balanceRow(parseInt(double1.text),parseInt(double2.text),parseInt(double3.text),parseInt(double4.text),parseInt(double5.text),parseInt(double6.text),parseInt(double7.text))}" 
+						id="doubleTotal" />
+				</mx:GridItem>
+			</mx:GridRow>
+		<!--END DOUBLE ROW-->
+		
+		<!--TOTALS ROW-->
+			<mx:GridRow width="100%" height="100%">
+				<mx:GridItem width="80" height="30" horizontalAlign="right"><mx:Label text="Total:" textAlign="right" /></mx:GridItem>
+				<mx:GridItem width="100"><mx:TextInput editable="false" styleName="totalRow" restrict="0-9" textAlign="right" width="100" 
+					text="{balanceCol(parseInt(single1.text),parseInt(double1.text))}" id="total1" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput editable="false" styleName="totalRow" restrict="0-9" textAlign="right" width="80" 
+					text="{balanceCol(parseInt(single2.text),parseInt(double2.text))}" id="total2" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput editable="false" styleName="totalRow" restrict="0-9" textAlign="right" width="80" 
+					text="{balanceCol(parseInt(single3.text),parseInt(double3.text))}" id="total3" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput editable="false" styleName="totalRow" restrict="0-9" textAlign="right" width="80" 
+					text="{balanceCol(parseInt(single4.text),parseInt(double4.text))}" id="total4" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput editable="false" styleName="totalRow" restrict="0-9" textAlign="right" width="80" 
+					text="{balanceCol(parseInt(single5.text),parseInt(double5.text))}" id="total5" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput editable="false" styleName="totalRow" restrict="0-9" textAlign="right" width="80" 
+					text="{balanceCol(parseInt(single6.text),parseInt(double6.text))}" id="total6" /></mx:GridItem>
+				<mx:GridItem width="80"><mx:TextInput editable="false" styleName="totalRow" restrict="0-9" textAlign="right" width="80" 
+					text="{balanceCol(parseInt(single7.text),parseInt(double7.text))}" id="total7" /></mx:GridItem>
+				<!--FINAL TOTAL-->
+				<mx:GridItem width="80">
+					<mx:TextInput restrict="0-9" editable="false" styleName="totalRow" textAlign="right" width="80" 
+						text="{balanceRow(parseInt(total1.text),parseInt(total2.text),parseInt(total3.text),parseInt(total4.text),parseInt(total5.text),parseInt(total6.text),parseInt(total7.text))}" 
+						id="totalTotal" />
+				</mx:GridItem>
+			</mx:GridRow>
+		<!--END TOTALS ROW-->
+		</mx:Grid>
+		
+		<!--NAVIGATION FOOTER-->
+		<mx:Spacer height="100%" />
+		<components:NavigationFooter id="navFooter"
+			prevSection="dispatchEvent( new Event( 'prevSection' ) );"
+			nextSection="onNextSection()"
+		/>
+	</mx:VBox>	
+</mx:VBox>

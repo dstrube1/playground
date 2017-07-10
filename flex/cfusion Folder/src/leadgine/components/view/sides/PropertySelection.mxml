@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow showCloseButton="true"
+	close="handleClose(event)"
+	styleName="rprPanel"  
+	horizontalAlign="center" 
+	x = "{myDTO.referralFormX}"
+	y = "{myDTO.referralFormY}"
+	width = "{myDTO.referralFormWidth}"
+	height = "{myDTO.referralFormHeight}"
+	title="Referral Form" 
+	creationComplete="init()"
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:components="leadgine.components.*"
+	xmlns:ns1="http://www.sephiroth.it/2006/mxml" 
+	xmlns:view="leadgine.components.view.*" 
+	>
+<!--
+<panel:SuperPanel xmlns:panel="nl.wv.extenders.panel.*"
+-->
+<mx:Script>
+<![CDATA[
+	import mx.rpc.events.ResultEvent;
+	import mx.core.Application;
+	import mx.collections.*;
+	import leadgine.components.*;
+	import leadgine.components.dto.FullServiceReferral;
+	import mx.events.CloseEvent;
+	import mx.managers.PopUpManager;
+	
+	[Bindable] public var myTitle:String;
+	private var folderCollection:XMLListCollection = new XMLListCollection();
+	[Bindable] private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	[Bindable] private var myUrl:String;
+		
+	private function handleClose(event:CloseEvent):void{
+		Application.application.resetDialogs();
+		PopUpManager.removePopUp(this);
+	}
+	private function resultHandlerSearch(event:ResultEvent):void {
+		var result:XML = XML(event.result);  
+		var xmlList:XMLList = XMLList(result.children()); //remove the All level
+		myDTO.folderCollection = new XMLListCollection(xmlList);
+		populateSavedValues();
+		myDTO.savedPropertySelection = true;
+		
+	}
+	private function faultHandler():void{
+		
+	}
+	private function init():void{
+		if (!myDTO.savedPropertySelection){
+			myUrl = "http://www.revparsuite.com/leadgine/hotelsEXE2.asp?clientid="+Application.application.clientID+
+				"&userid="+Application.application.userID+"&hotel="+Application.application.hotel;
+			searchService.method = "GET";
+			searchService.cancel();
+			searchService.send(); 
+		}else{
+			populateSavedValues();
+		}
+	}
+	private function populateSavedValues() : void
+	{
+		if (myDTO.savedPropertySelection){
+			folderCollection = myDTO.folderCollection;
+		}
+		
+		checkTree.dataProvider = folderCollection;
+		checkTree.expandItem(checkTree.root, true, true);
+	}
+	private function nextSection():void {
+		updateDataStore();
+		Application.application.toggleDialog(1);
+	}
+	private function prevSection():void {
+		updateDataStore();
+		Application.application.toggleDialog(-1);
+	}
+	private function updateDataStore():void{
+		myDTO.referralFormX = this.x;
+		myDTO.referralFormY = this.y;
+
+		myDTO.savedPropertySelection = true;
+		myDTO.folderCollection = folderCollection;
+	}
+	private function catchClick():void{
+		for (var i:uint=0; i<folderCollection.length; i++){
+			//how to parse?
+			//nevermind, no need at this time
+		}
+	}
+	private var folderList:XMLList = new XMLList();;
+]]>
+</mx:Script>
+<mx:HTTPService id="searchService" 
+	url="{myUrl}" 
+	result="resultHandlerSearch(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+    
+	<mx:VBox width="100%" height="100%">
+
+		<mx:HBox verticalAlign="bottom" id="headerArea" width="800" styleName="headerStyle">
+			<mx:Label text="Full Service Referral Form" styleName="mainTitle" />
+			<mx:Spacer width="100%" />
+		</mx:HBox>
+		<mx:VBox 
+			width="100%" 
+			height="100%" 
+			initialize="{navFooter.nextButton.enabled=true}"
+			 >		
+			<mx:VBox styleName="containerStyle" width="100%" height="100%">
+				<mx:Label text="{myTitle}" styleName="secTitle" />
+				<mx:HBox width="100%" height="100%" paddingLeft="20" paddingRight="20">
+					<mx:Tree
+							id="checkTree"
+							itemRenderer="leadgine.components.CheckTreeRenderer"
+							labelField="@label"
+				 			width="100%" height="100%"
+				 			showRoot="true" 
+				 			click="catchClick()"
+				 			 >
+				 	</mx:Tree>
+				</mx:HBox>
+				<components:NavigationFooter id="navFooter"
+					prevSection="prevSection()"
+					nextSection="nextSection()"
+				/>
+			</mx:VBox>
+		</mx:VBox>
+	</mx:VBox>
+<!--
+</panel:SuperPanel>
+-->
+</mx:TitleWindow>

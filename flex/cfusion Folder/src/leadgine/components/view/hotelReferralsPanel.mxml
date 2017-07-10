@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SuperPanel xmlns="nl.wv.extenders.panel.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:com="com.*" 
+	endMaximize="onEndMaximize()" endRestore="onEndRestore()">
+<mx:Script>
+<![CDATA[
+	import mx.core.Application;
+	import mx.events.ItemClickEvent;
+	import leadgine.components.dto.FullServiceReferral;
+	
+	private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+
+	private function incomingButtonBarClick(event:ItemClickEvent):void{
+		incomingViewStack.selectedIndex = event.target.selectedIndex;
+	}
+	private function outgoingButtonBarClick(event:ItemClickEvent):void{
+		outgoingViewStack.selectedIndex = event.target.selectedIndex;
+	}
+	private function incomingGridItemClick():void{
+		myDTO.middlize();
+		Application.application.showReferralDialog(true,5);
+	}
+	private function outgoingGridItemClick():void{
+		myDTO.middlize();
+		Application.application.showReferralDialog(true,5);
+	}
+
+	
+			[Bindable]
+			public var myTitle:String;
+			
+			import mx.controls.Alert;
+			import mx.charts.HitData;
+			import mx.collections.ArrayCollection;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.collections.XMLListCollection;
+			import mx.collections.ListCollectionView;
+			import mx.utils.ArrayUtil;
+			import mx.controls.dataGridClasses.DataGridItemRenderer;
+			import mx.managers.CursorManager;
+			import mx.formatters.DateFormatter;
+			import mx.rpc.events.ResultEvent;
+			import mx.utils.ObjectUtil;
+			import mx.utils.ObjectProxy;								
+		    import mx.collections.GroupingField;
+	        import mx.collections.Grouping;
+	        import mx.collections.GroupingCollection;
+	import com.GradientCanvas;
+	
+			[Bindable] private var _selectedIndexIncoming:Number = -1;				
+			[Bindable] private var _selectedIndexOutgoing:Number = -1;				
+			[Bindable] private var listIncoming:XMLListCollection;
+			[Bindable] private var listOutgoing:XMLListCollection;
+			[Bindable] private var listChartIncoming:XMLListCollection;
+			[Bindable] private var listChartOutgoing:XMLListCollection;
+			[Bindable] private var listSummaryDataIncoming:XMLListCollection;
+			
+	        [Bindable] public var myGColl:GroupingCollection = new GroupingCollection();
+	        
+	        private var myGrp:Grouping = new Grouping();
+	        
+			private var AlertMsgSuccess:String;
+			private var AlertMsgSuccessTitle:String;
+			private var AlertMsgFail:String = "Hotel data could not be loaded.  Please click the 'Refresh' button to try again.";
+			private var AlertMsgFailTitle:String = "Load Problem";
+			
+			private var waitCursorSymbol:Class;			
+
+
+			public function resultHandlerIncoming(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listIncoming = new XMLListCollection(xmlList);
+				}
+			}
+
+			public function resultHandlerChartIncoming(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listChartIncoming = new XMLListCollection(xmlList);
+				}
+			}
+
+			public function resultHandlerOutgoing(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listOutgoing = new XMLListCollection(xmlList);
+				}
+			}
+
+			public function resultHandlerChartOutgoing(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listChartOutgoing = new XMLListCollection(xmlList);
+				}
+			}
+			public function resultHandlerSummaryDataIncoming(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listSummaryDataIncoming = new XMLListCollection(xmlList);
+					myDTO.setSummary(listSummaryDataIncoming);
+				}
+
+			}
+			public function faultHandler():void {
+				this.datIncoming.showBusyCursor = false;
+				this.datOutgoing.showBusyCursor = false;
+				this.datChartIncoming.showBusyCursor = false;
+				this.datChartOutgoing.showBusyCursor = false;
+			}
+			
+			private function set selectedIndexIncoming(n:Number):void {
+				// Make sure we are within range of dataProvider.
+				if (n < 0)
+					n = listIncoming.length - 1;
+				else if (n > (listIncoming.length - 1))
+					n = 0;
+
+				_selectedIndexIncoming = n;
+			}
+			
+			private function set selectedIndexOutgoing(n:Number):void {
+				// Make sure we are within range of dataProvider.
+				if (n < 0)
+					n = listOutgoing.length - 1;
+				else if (n > (listOutgoing.length - 1))
+					n = 0;
+
+				_selectedIndexOutgoing = n;
+			}
+			
+			private function get selectedIndexIncoming():Number {
+				return _selectedIndexIncoming;
+			}
+			
+			private function get selectedIndexOutgoing():Number {
+				return _selectedIndexOutgoing;
+			}
+			
+			public function fill():void {
+				datIncoming.cancel();
+				datIncoming.url="http://www.revparsuite.com/leadgine/incomingEXE.asp?myType=table&userid=" + Application.application.userID + "&hotel=" + Application.application.hotel;
+				datIncoming.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				datIncoming.addEventListener(ResultEvent.RESULT,resultHandlerIncoming);
+				datIncoming.method = "POST";
+				datIncoming.send(); 
+				
+				datChartIncoming.cancel();
+				datChartIncoming.url="http://www.revparsuite.com/leadgine/incomingEXE.asp?myType=chart&userid=" + Application.application.userID + "&hotel=" + Application.application.hotel;
+				datChartIncoming.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				datChartIncoming.addEventListener(ResultEvent.RESULT,resultHandlerChartIncoming);
+				datChartIncoming.method = "POST";
+				datChartIncoming.send(); 
+				
+				datOutgoing.cancel();
+				datOutgoing.url="http://www.revparsuite.com/leadgine/outgoingEXE.asp?myType=table&userid=" + Application.application.userID + "&hotel=" + Application.application.hotel;
+				datOutgoing.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				datOutgoing.addEventListener(ResultEvent.RESULT,resultHandlerOutgoing);
+				datOutgoing.method = "POST";
+				datOutgoing.send(); 
+				
+				datChartOutgoing.cancel();
+				datChartOutgoing.url="http://www.revparsuite.com/leadgine/outgoingEXE.asp?myType=chart&userid=" + Application.application.userID + "&hotel=" + Application.application.hotel;
+				datChartOutgoing.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				datChartOutgoing.addEventListener(ResultEvent.RESULT,resultHandlerChartOutgoing);
+				datChartOutgoing.method = "POST";
+				datChartOutgoing.send(); 
+				
+				summaryDataIncoming.cancel();
+				summaryDataIncoming.method = "POST";
+				summaryDataIncoming.send(); 
+				
+			}
+
+			public function insertItemHandler(event:ResultEvent):void {	
+				//fill();
+			}						
+			
+			private function sortNumeric(obj1:Object, obj2:Object):int {
+				var value1:Number = (obj1.rooms == '' || obj1.rooms == null) ? null : new Number(obj1.rooms);
+				var value2:Number = (obj2.rooms == '' || obj2.rooms == null) ? null : new Number(obj2.rooms);
+				
+				if (value1 < value2) {
+					return -1;
+				} else if (value1 > value2) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+						
+
+			private function date_sort_Begin_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.begin));
+                var dateB:Date = new Date(Date.parse(itemB.begin));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+
+
+			private function date_sort_End_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.end));
+                var dateB:Date = new Date(Date.parse(itemB.end));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+	private function onEndMaximize():void{
+		fill();
+		vsIncentives.selectedIndex = 1;
+	}
+	private function onEndRestore():void{
+		vsIncentives.selectedIndex = 0;
+	}
+
+	public function dtFunc(hd:HitData):String {
+        return "<B>" + hd.item.myMonth + "</B>:  " +
+            hd.item.myCount + " referral(s)";
+     }
+	
+	private function currencyLabel(item:Object, column:DataGridColumn):String
+    {
+        return fmtCurrency.format(item[column.dataField]);
+    }
+	
+	private function numberLabel(item:Object, column:DataGridColumn):String
+    {
+        return fmtNumber.format(item[column.dataField]);
+    }
+	
+
+]]>
+</mx:Script>
+
+<mx:HTTPService id="datIncoming" url="http://www.revparsuite.com/leadgine/incomingEXE.asp?myType=table&amp;userid={ Application.application.userID }&amp;hotel={ Application.application.hotel }"
+	result="resultHandlerIncoming(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:HTTPService id="datChartIncoming" url="http://www.revparsuite.com/leadgine/incomingEXE.asp?myType=chart&amp;userid={ Application.application.userID }&amp;hotel={ Application.application.hotel }"
+	result="resultHandlerChartIncoming(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:HTTPService id="datOutgoing" url="http://www.revparsuite.com/leadgine/outgoingEXE.asp?myType=table&amp;userid={ Application.application.userID }&amp;hotel={ Application.application.hotel }" 
+	result="resultHandlerOutgoing(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:HTTPService id="datChartOutgoing" url="http://www.revparsuite.com/leadgine/outgoingEXE.asp?myType=chart&amp;userid={ Application.application.userID }&amp;hotel={ Application.application.hotel }" 
+	result="resultHandlerChartOutgoing(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+    
+<mx:HTTPService id="summaryDataIncoming" 
+	url="http://www.revparsuite.com/leadgine/singleReferralEXE.asp?id={ Application.application.referralID }" 
+	result="resultHandlerSummaryDataIncoming(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:CurrencyFormatter id="fmtCurrency" precision="0" />
+<mx:NumberFormatter id="fmtNumber" useThousandsSeparator="true"/>
+
+<mx:SeriesSlide id="slideIn" duration="1000" direction="up"/>
+
+<mx:ViewStack id="vsIncentives" width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+<com:GradientCanvas 
+	width="100%" height="100%" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.myFillColors3 }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="0"
+		click="{this.normalMaxClickHandler(null)}">
+
+		<mx:Canvas borderStyle="solid" borderColor="#666666" cornerRadius="20" backgroundColor="#FFFFFF" borderThickness="1" alpha="0.8" left="130" right="10" top="10" bottom="10">
+				<mx:Text text="All referrals from all managers at your hotel are listed here." left="20" right="20" top="20" bottom="20" styleName="myPanelCaption">
+					<mx:filters>
+				        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+				    </mx:filters>
+				</mx:Text>
+		</mx:Canvas>
+		<mx:Image source="assets/img/icons/grey_circle/users.png" verticalCenter="0" left="30"/>
+
+</com:GradientCanvas>
+<com:GradientCanvas label="Results" width="100%" height="100%" 
+		paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off"
+		colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.topGradientColor }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="100">
+	<mx:VBox width="100%" height="100%" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10">
+
+		<!--////////////////////////////////////////////////////////  
+			Tabs for "incoming referrals" and "outgoing referrals" options 
+		////////////////////////////////////////////////////////////-->
+
+			<mx:TabNavigator id="hotelReferralsMainButtonBar" backgroundColor="#ffffff" backgroundAlpha=".5" horizontalAlign="left" tabOffset="30" width="100%" height="100%" paddingBottom="10" paddingRight="10" >
+
+		<!--////////////////////////////////////////////////////////  
+							"incoming referrals" page 
+		////////////////////////////////////////////////////////////-->
+
+			<mx:VBox width="100%" height="100%" label="incoming"
+				icon="@Embed('assets/img/icons/left.png')">
+				<mx:Canvas width="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+					<mx:ToggleButtonBar id="incomingButtonBar"
+						left="0"
+						dataProvider="{incomingViewStack}"
+						buttonHeight="32" itemClick="incomingButtonBarClick(event)"/>
+						
+				</mx:Canvas>
+
+				<mx:ViewStack id="incomingViewStack" width="100%" height="100%">
+					
+					<mx:VBox label="Chart" width="100%" height="100%"
+						icon="@Embed('assets/img/icons/pie_chart.png')">
+						<mx:Text text="Here are referrals your hotel has received by month:" y="8" right="-307" left="188" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+						<mx:ColumnChart id="incomingChart" dataProvider="{listChartIncoming}" showDataTips="true"  dataTipFunction="dtFunc" width="100%" height="100%">
+							<mx:filters>
+					           <mx:DropShadowFilter 
+					                distance="10" 
+					                color="0x666666"
+					                alpha=".8"
+					           />
+							</mx:filters>
+					        <mx:horizontalAxis>
+					           <mx:CategoryAxis 
+					           		id="hAxis"
+					                dataProvider="{listChartIncoming}" 
+					                categoryField="myMonth"
+					           />
+					        </mx:horizontalAxis>
+					        <mx:verticalAxis>
+					           <mx:LinearAxis 
+					           		id="vAxis"
+					           />
+					        </mx:verticalAxis>
+					        
+					        <mx:horizontalAxisRenderers>
+					       		<mx:AxisRenderer axis="{hAxis}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:horizontalAxisRenderers>
+					        
+					        <mx:verticalAxisRenderers>
+					       		<mx:AxisRenderer axis="{vAxis}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:verticalAxisRenderers>
+					        
+					        <mx:series>
+					           <mx:ColumnSeries 
+					                xField="myMonth" 
+					                yField="myCount" 
+					                displayName="Referrals"
+					                showDataEffect="{slideIn}">
+									<mx:filters>
+							           <mx:BevelFilter shadowAlpha=".1" angle="45" distance="5" strength="1" quality="50" highlightColor="#B2DC32" />
+							           <!--<mx:GlowFilter color="#a2d0fb" strength="3" alpha=".5" quality="50" />-->
+									</mx:filters>
+									<mx:fill>
+							           <mx:LinearGradient>
+							            <mx:entries>
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio="0" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#B2DC32" 
+							                    ratio=".33" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio=".80" 
+							                    alpha="1"
+							                />
+							            </mx:entries>
+							           </mx:LinearGradient>
+							        </mx:fill>
+								</mx:ColumnSeries>
+					        </mx:series>
+					     </mx:ColumnChart>
+					     <mx:Legend dataProvider="{incomingChart}"/>
+
+					</mx:VBox>
+					
+					<mx:VBox label="Data"
+						width="100%" height="100%"
+						icon="@Embed('assets/img/icons/table.png')">
+					<mx:Text text="Below are your hotel's inbound referrals.  Click a column header to sort." y="8" right="-307" left="188" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							<mx:DataGrid id="dataIncoming" 
+								width="100%" height="100%" 
+						        selectedIndex="{_selectedIndexIncoming}"
+						        dataProvider="{listIncoming}" 
+						        doubleClickEnabled="true"
+						        itemDoubleClick="incomingGridItemClick()">
+						        <!--
+						        itemClick="selectedIndex=DataGrid(event.currentTarget).selectedIndex;" -->
+								<mx:columns>
+									<mx:DataGridColumn headerText="Status" dataField="myStatus"/>
+									<mx:DataGridColumn headerText="Company" dataField="company"/>
+									<mx:DataGridColumn headerText="Event" dataField="myEvent"/>
+									<mx:DataGridColumn headerText="Arrival" dataField="arrival"/>
+									<mx:DataGridColumn headerText="Rm Nts" textAlign="right" labelFunction="numberLabel"	dataField="totalTotal"/>
+									<mx:DataGridColumn headerText="Revenue" textAlign="right" labelFunction="currencyLabel" dataField="ttlRevenue"/>
+									<mx:DataGridColumn headerText="Bonus" textAlign="right" labelFunction="currencyLabel" dataField="bonus"/>
+									<mx:DataGridColumn headerText="Referred" dataField="sentDate"/>
+								</mx:columns>
+							</mx:DataGrid>
+							
+							<mx:HBox width="100%" verticalAlign="bottom">
+								<mx:HBox width="100%" horizontalAlign="left">
+									<mx:Image source="@Embed('assets/img/hotel_room3_grn.jpg')"/>
+								</mx:HBox>
+								<mx:HBox width="100%" horizontalAlign="right" verticalAlign="bottom">
+									<mx:Button label="Refresh" width="240" height="50" click="fill()" icon="@Embed('assets/img/icons/refresh.png')"/>
+								</mx:HBox>
+							</mx:HBox>
+							
+					</mx:VBox>
+
+				</mx:ViewStack>
+			</mx:VBox>
+			
+			
+			
+			
+			
+		<!--////////////////////////////////////////////////////////  
+							"outgoing referrals" page 
+		////////////////////////////////////////////////////////////-->
+			
+			<mx:VBox width="100%" height="100%" label="outgoing"
+				icon="@Embed('assets/img/icons/right.png')">
+				<mx:Canvas width="100%">
+					<mx:ToggleButtonBar id="outgoingButtonBar"
+						left="0"
+						dataProvider="{outgoingViewStack}"
+						buttonHeight="32" itemClick="outgoingButtonBarClick(event)" />
+				</mx:Canvas>
+				
+				<mx:ViewStack id="outgoingViewStack" width="100%" height="100%">
+				
+				
+					<mx:VBox label="Chart" width="100%" height="100%"
+						icon="@Embed('assets/img/icons/pie_chart.png')">
+					<mx:Text width="100%" text="Here are referrals your hotel has sent by month:" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+						<mx:ColumnChart id="outgoingChart" dataProvider="{listChartOutgoing}" showDataTips="true"  dataTipFunction="dtFunc" width="100%" height="100%">
+							<mx:filters>
+					           <mx:DropShadowFilter 
+					                distance="10" 
+					                color="0x666666"
+					                alpha=".8"
+					           />
+							</mx:filters>
+					        <mx:horizontalAxis>
+					           <mx:CategoryAxis 
+					           		id="hAxisOutgoing"
+					                dataProvider="{listChartOutgoing}" 
+					                categoryField="myMonth"
+					           />
+					        </mx:horizontalAxis>
+					        <mx:verticalAxis>
+					           <mx:LinearAxis 
+					           		id="vAxisOutgoing"
+					           />
+					        </mx:verticalAxis>
+					        
+					        <mx:horizontalAxisRenderers>
+					       		<mx:AxisRenderer axis="{hAxisOutgoing}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:horizontalAxisRenderers>
+					        
+					        <mx:verticalAxisRenderers>
+					       		<mx:AxisRenderer axis="{vAxisOutgoing}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:verticalAxisRenderers>
+					        
+					        <mx:series>
+					           <mx:ColumnSeries 
+					                xField="myMonth" 
+					                yField="myCount" 
+					                displayName="Referrals"
+					                showDataEffect="{slideIn}">
+									<mx:filters>
+							           <mx:BevelFilter shadowAlpha=".1" angle="45" distance="5" strength="1" quality="50" highlightColor="#B2DC32" />
+							           <!--<mx:GlowFilter color="#a2d0fb" strength="3" alpha=".5" quality="50" />-->
+									</mx:filters>
+									<mx:fill>
+							           <mx:LinearGradient>
+							            <mx:entries>
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio="0" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#B2DC32" 
+							                    ratio=".33" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio=".80" 
+							                    alpha="1"
+							                />
+							            </mx:entries>
+							           </mx:LinearGradient>
+							        </mx:fill>
+								</mx:ColumnSeries>
+					        </mx:series>
+					     </mx:ColumnChart>
+					     <mx:Legend dataProvider="{outgoingChart}"/>
+
+					</mx:VBox>
+				
+				
+					<mx:VBox label="Data"
+						width="100%" height="100%"
+						icon="@Embed('assets/img/icons/table.png')">
+						<mx:Text width="100%" text="Below are your hotel's outbound referrals.  Click a column header to sort." styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+						<mx:DataGrid id="dataCash" 
+							width="100%" height="100%" 
+					        selectedIndex="{_selectedIndexOutgoing}"
+					        dataProvider="{listOutgoing}" 
+					        doubleClickEnabled="true"
+					        itemDoubleClick="outgoingGridItemClick()">
+								<mx:columns>
+									<mx:DataGridColumn headerText="Company" dataField="company"/>
+									<mx:DataGridColumn headerText="Event" dataField="myEvent"/>
+									<mx:DataGridColumn headerText="Arrival" dataField="arrival"/>
+									<mx:DataGridColumn headerText="Rm Nts" textAlign="right" labelFunction="numberLabel"	dataField="totalTotal"/>
+									<mx:DataGridColumn headerText="Revenue" textAlign="right" labelFunction="currencyLabel" dataField="ttlRevenue"/>
+									<mx:DataGridColumn headerText="Bonus" textAlign="right" labelFunction="currencyLabel" dataField="bonus"/>
+									<mx:DataGridColumn headerText="Referred" dataField="sentDate"/>
+								</mx:columns>
+						</mx:DataGrid>
+							
+							<mx:HBox width="100%" verticalAlign="bottom">
+								<mx:HBox width="100%" horizontalAlign="left">
+									<mx:Image source="@Embed('assets/img/hotel_room3_grn.jpg')"/>
+								</mx:HBox>
+								<mx:HBox width="100%" horizontalAlign="right" verticalAlign="bottom">
+									<mx:Button label="Refresh" width="240" height="50" click="fill()" icon="@Embed('assets/img/icons/refresh.png')"/>
+								</mx:HBox>
+							</mx:HBox>
+							
+					</mx:VBox>
+
+				</mx:ViewStack>
+			</mx:VBox>
+			
+			
+			
+	</mx:TabNavigator>
+		
+	</mx:VBox>
+</com:GradientCanvas>
+</mx:ViewStack>
+</SuperPanel>

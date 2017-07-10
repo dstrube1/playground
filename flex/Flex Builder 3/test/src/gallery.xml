@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- http://blog.flexexamples.com/2008/03/08/creating-a-simple-image-gallery-with-the-flex-tilelist-control/ -->
+<gallery>
+    <image title="Flex"
+        thumbnailImage="http://www2.myelife.com/images/img1.gif"
+        fullImage="http://www2.myelife.com/images/img1.gif"/>
+    <image title="Flash"
+            thumbnailImage="http://www2.myelife.com/images/img2.jpg"
+            fullImage="http://www2.myelife.com/images/img2.jpg" />
+    <image title="Illustrator"
+            thumbnailImage="http://www2.myelife.com/images/nuclear_girl.png"
+            fullImage="http://www2.myelife.com/images/nuclear_girl.png"/>
+    <image title="Dreamweaver"
+            thumbnailImage="http://www2.myelife.com/images/peacefulwakeup2.jpg"
+            fullImage="http://www2.myelife.com/images/peacefulwakeup2.jpg"/>
+    <image title="ColdFusion"
+            thumbnailImage="http://www2.myelife.com/images/workout2.jpg"
+            fullImage="http://www2.myelife.com/images/workout2.jpg"/>
+</gallery>

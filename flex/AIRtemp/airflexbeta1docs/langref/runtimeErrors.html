@@ -1,0 +1,1392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- saved from url=(0014)about:internet -->
+
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Run-Time Errors (Flex 3)</title>
+<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="print.css" type="text/css" media="print">
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="asdoc.js"></script><script type="text/javascript" language="javascript" src="cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+
+				asdocTitle = 'Run-Time Errors - Flex 3 Language Reference';
+
+				var baseRef = '';
+
+				window.onload = configPage;
+
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('all-classes.html')" href="package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('all-classes.html')" href="class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a href="language-elements.html">Language&nbsp;Elements</a>&nbsp;| <a onclick="loadClassListFrame('index-list.html')" href="all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="index.html?runtimeErrors.html&amp;all-classes.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Run-Time&nbsp;Errors</td><td align="right" id="subNav" class="titleTableSubNav"><a href="compilerErrors.html">Compiler Errors</a> | <a href="compilerWarnings.html">Compiler Warnings</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Run-Time Errors"); titleBar_setSubNav(false,false,false,false,false,false,false,false,false,false,false,false,false,false);}
+
+--></script>
+<div class="MainContent">
+<br>
+<p>The following errors can occur at run time. Run-time type checking occurs in ActionScript 3.0 whether
+        you compile in strict mode or warning mode.</p>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="compilerErrors.html" target="">Compiler Errors</a>
+<br>
+<a href="compilerWarnings.html" target="">Compiler Warnings</a>
+</div>
+<br>
+<a name="runtimeErrorSummary"></a>
+<table class="summaryTable" cellspacing="0" cellpadding="3">
+<tr>
+<th>&nbsp;</th><th>Code</th><th width="35%">Message</th><th>Description</th>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1000"></a><b>1000</b></td><td valign="top" class="summaryTableCol">The system is out of memory.
+</td><td class="summaryTableLastCol">
+		Flash Player needs more memory to compile your code than your system has available. 
+		Close some of the applications or processes running on your system.
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1001"></a><b>1001</b></td><td valign="top" class="summaryTableCol">The method _ is not implemented.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1002"></a><b>1002</b></td><td valign="top" class="summaryTableCol">Number.toPrecision has a range of 1 to 21. Number.toFixed and Number.toExponential have a range of 0 to 20. Specified value is not within expected range.
+</td><td class="summaryTableLastCol">
+		You specified a value that is not within the expected range of the <code>precision</code> argument. Number.toPrecision has a range of 1 to 21. Number.toFixed and Number.toExponential have a range of 0 to 20.		
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1003"></a><b>1003</b></td><td valign="top" class="summaryTableCol">The radix argument must be between 2 and 36; got _.
+     </td><td class="summaryTableLastCol">
+		You passed a value less than 2 or greater than 36 for the <code>radix</code> argument of a method or property. 
+		Pass a value between 2 and 36 as a <code>radix</code> argument.
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1004"></a><b>1004</b></td><td valign="top" class="summaryTableCol">Method _ was invoked on an incompatible object.
+</td><td class="summaryTableLastCol">
+		You tried to call a method that is not available to the specified object. This error occurs when 
+		you have copied a prototype function from one object to another, and then invoked it, but the 
+		target object is not the same type as the original object. Ensure that the target object and 
+		original object are the same type. See the ECMAScript Language Specification, 3rd Edition, Chapter 15 for more details.
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1005"></a><b>1005</b></td><td valign="top" class="summaryTableCol">Array index is not a positive integer (_).
+</td><td class="summaryTableLastCol">
+		You tried to access a member of an array using an index value that is not a positive integer. Pass only positive integers as index values for arrays.
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1006"></a><b>1006</b></td><td valign="top" class="summaryTableCol">_ is not a function.
+</td><td class="summaryTableLastCol">
+		This error occurs when you attempt to call a function that does not exist. 
+		Make sure you are calling the correct function, and that the API has 
+		not changed from ActionScript 2.0. Also, make sure you are using the correct
+		object. For example, you will see this error when you use the following code 
+		(because the last line mistakenly calls the variable <code>big</code> instead 
+		of <code>blg</code>): 
+		
+		<pre><code>var blg:String = "foo";
+var big:Sprite = new Sprite();
+var error:int = big.length(); </code></pre>
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1007"></a><b>1007</b></td><td valign="top" class="summaryTableCol">Instantiation attempted on a non-constructor.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1008"></a><b>1008</b></td><td valign="top" class="summaryTableCol">_ is ambiguous; Found more than one matching binding.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1009"></a><b>1009</b></td><td valign="top" class="summaryTableCol">Cannot access a property or method of a null object reference.
+</td><td class="summaryTableLastCol">
+	An object that evaluates to <code>null</code> can have no properties. This error can occur in some unexpected 
+	(though valid) situations. For example, consider the following code, which creates a Sprite
+	object. Because this Sprite object is never added to the display list (through the 
+	<code>addChild()</code> method of a DisplayObjectContainer object), its <code>stage</code>
+	property is set to <code>null</code>. Thus, the example generates this error because Sprite object's <code>stage</code> property 
+	cannot have any properties:
+	
+	<pre><code>import flash.display.Sprite;
+var sprite1:Sprite = new Sprite();
+var q:String = sprite1.stage.quality;</code></pre>
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1010"></a><b>1010</b></td><td valign="top" class="summaryTableCol">A term is undefined and has no properties.
+</td><td class="summaryTableLastCol">
+		This error can occur if you try to access a property of an object that does not exist. For example:
+		<pre><code>var obj:Object = new Object();
+obj.a = "foo";
+trace(obj.b.prop);</code></pre>
+		
+		<p>You can also see this error because of a misspelling, for example in the following, where
+		<code>mc</code> represents a MovieClip object in the display list, and the <code>stage</code>
+		property is misspelled with a capital S (it should be <code>stage</code>):</p>
+		
+		<pre><code>trace(mc.Stage.quality);</code></pre>
+		
+	
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1011"></a><b>1011</b></td><td valign="top" class="summaryTableCol">Method _ contained illegal opcode _ at offset _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1012"></a><b>1012</b></td><td valign="top" class="summaryTableCol">The last instruction exceeded code size.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1013"></a><b>1013</b></td><td valign="top" class="summaryTableCol">Cannot call OP_findproperty when scopeDepth is 0.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1014"></a><b>1014</b></td><td valign="top" class="summaryTableCol">Class _ could not be found.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1015"></a><b>1015</b></td><td valign="top" class="summaryTableCol">Method _ cannot set default xml namespace
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1016"></a><b>1016</b></td><td valign="top" class="summaryTableCol">Descendants operator (..) not supported on type _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1017"></a><b>1017</b></td><td valign="top" class="summaryTableCol">Scope stack overflow occurred.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1018"></a><b>1018</b></td><td valign="top" class="summaryTableCol">Scope stack underflow occurred.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1019"></a><b>1019</b></td><td valign="top" class="summaryTableCol">Getscopeobject _ is out of bounds.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1020"></a><b>1020</b></td><td valign="top" class="summaryTableCol">Code cannot fall off the end of a method.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1021"></a><b>1021</b></td><td valign="top" class="summaryTableCol">At least one branch target was not on a valid instruction in the method.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1022"></a><b>1022</b></td><td valign="top" class="summaryTableCol">Type void may only be used as a function return type.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1023"></a><b>1023</b></td><td valign="top" class="summaryTableCol">Stack overflow occurred.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1024"></a><b>1024</b></td><td valign="top" class="summaryTableCol">Stack underflow occurred.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1025"></a><b>1025</b></td><td valign="top" class="summaryTableCol">An invalid register _ was accessed.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1026"></a><b>1026</b></td><td valign="top" class="summaryTableCol">Slot _ exceeds slotCount=_ of _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1027"></a><b>1027</b></td><td valign="top" class="summaryTableCol">Method_info _ exceeds method_count=_.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1028"></a><b>1028</b></td><td valign="top" class="summaryTableCol">Disp_id _ exceeds max_disp_id=_ of _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1029"></a><b>1029</b></td><td valign="top" class="summaryTableCol">Disp_id _ is undefined on _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1030"></a><b>1030</b></td><td valign="top" class="summaryTableCol">Stack depth is unbalanced. _ != _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1031"></a><b>1031</b></td><td valign="top" class="summaryTableCol">Scope depth is unbalanced. _ != _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1032"></a><b>1032</b></td><td valign="top" class="summaryTableCol">Cpool index _ is out of range _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1033"></a><b>1033</b></td><td valign="top" class="summaryTableCol">Cpool entry _ is wrong type.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1034"></a><b>1034</b></td><td valign="top" class="summaryTableCol">Type Coercion failed: cannot convert _ to _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1035"></a><b>1035</b></td><td valign="top" class="summaryTableCol">Illegal super expression found in method _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1037"></a><b>1037</b></td><td valign="top" class="summaryTableCol">Cannot assign to a method _ on _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1038"></a><b>1038</b></td><td valign="top" class="summaryTableCol">_ is already defined.
+</td><td class="summaryTableLastCol">
+		You cannot declare a variable or function with the same identifier name more than once 
+		within the same scope. 
+		In ActionScript 3.0, different code blocks (such as those used in two <code>for</code> loops
+		in the same <code>function</code> definition) are considered to be in the same scope.
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1039"></a><b>1039</b></td><td valign="top" class="summaryTableCol">Cannot verify method until it is referenced.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1040"></a><b>1040</b></td><td valign="top" class="summaryTableCol">The right-hand side of instanceof must be a class or function.
+</td><td class="summaryTableLastCol">
+		The expression on the right side of the <code>instanceof</code> operator must be a class or function.
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1041"></a><b>1041</b></td><td valign="top" class="summaryTableCol">The right-hand side of operator must be a class.
+</td><td class="summaryTableLastCol">
+		The expression on the right side of the <code>is</code> operator must be a class.
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1042"></a><b>1042</b></td><td valign="top" class="summaryTableCol">Not an ABC file.  major_version=_ minor_version=_.
+</td><td class="summaryTableLastCol">
+You are attempting to use an  invalid file with the player: the tool that generates the SWF may be out of date or the SWF itself may be corrupt.
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1043"></a><b>1043</b></td><td valign="top" class="summaryTableCol">Invalid code_length=_.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1044"></a><b>1044</b></td><td valign="top" class="summaryTableCol">MethodInfo-_ unsupported flags=_.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1045"></a><b>1045</b></td><td valign="top" class="summaryTableCol">Unsupported traits kind=_.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1046"></a><b>1046</b></td><td valign="top" class="summaryTableCol">MethodInfo-_ referenced before definition.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1047"></a><b>1047</b></td><td valign="top" class="summaryTableCol">No entry point was found.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1049"></a><b>1049</b></td><td valign="top" class="summaryTableCol">Prototype objects must be vanilla Objects.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1050"></a><b>1050</b></td><td valign="top" class="summaryTableCol">Cannot convert _ to primitive.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1051"></a><b>1051</b></td><td valign="top" class="summaryTableCol">Illegal early binding access to _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1052"></a><b>1052</b></td><td valign="top" class="summaryTableCol">Invalid URI passed to _ function.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1053"></a><b>1053</b></td><td valign="top" class="summaryTableCol">Illegal override of _ in _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1054"></a><b>1054</b></td><td valign="top" class="summaryTableCol">Illegal range or target offsets in exception handler.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1056"></a><b>1056</b></td><td valign="top" class="summaryTableCol">Cannot create property _ on _.
+</td><td class="summaryTableLastCol">
+	You are trying to assign a value to a nonexistent property on an instance of a non-dynamic 
+	class. This is only possible for instances of dynamic classes</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1057"></a><b>1057</b></td><td valign="top" class="summaryTableCol">_ can only contain methods.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1058"></a><b>1058</b></td><td valign="top" class="summaryTableCol">Illegal operand type: _ must be _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1059"></a><b>1059</b></td><td valign="top" class="summaryTableCol">ClassInfo-_ is referenced before definition.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1060"></a><b>1060</b></td><td valign="top" class="summaryTableCol">ClassInfo _ exceeds class_count=_.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1061"></a><b>1061</b></td><td valign="top" class="summaryTableCol">The value _ cannot be converted to _ without losing precision.
+</td><td class="summaryTableLastCol">
+	
+		This error appears if you attempt to assign a decimal number to a property that has data type 
+		int.
+		
+		<p>This error also appears for out-of-range assignments, such as the following:</p>
+		
+		<pre><code>var m0:int = 2147483648; // int.MAX_VALUE == 2147483647</code></pre>		
+		<p>You can also see this error when using the bitwise left shift operator (&lt&lt).
+		For example, consider the following code:</p>
+		
+		<pre><code>var m0:uint = 0xFF;
+var m1:uint = m0&lt&lt24;</code></pre>
+		
+		<p>The result of left shift operator (&lt&lt) is interpreted as a 32-bit two's complement number 
+		with sign. In the example, the result is a negative value, which causes the error when assigned
+		to the uint typed property. A workaround is the following:</p>
+		
+		<pre><code>var m0:uint = 0xFF;
+var m1:uint = uint(m0&lt;&lt;24);</code></pre>
+	
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1063"></a><b>1063</b></td><td valign="top" class="summaryTableCol">Argument count mismatch on _. Expected _, got _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1064"></a><b>1064</b></td><td valign="top" class="summaryTableCol">Cannot call method _ as constructor.
+  </td><td class="summaryTableLastCol">
+	Extracted methods are permanently bound to the object they are extracted from. 
+	Therefore, they can not later be called as a constructor. For example, the following 
+	creates function <code>f()</code> in Class A:
+ 	<pre><code>class A {
+	   function f() {}
+	}</code></pre>
+	In the following code, extracting the function causes no error. However, creating 
+	a new instance of the function causes an error.
+	<pre><code>var a = new A()
+	var m = a.f // extract f, don't call it
+	m() // same as a.f()
+	new m() // causes this error</code></pre>
+	
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1065"></a><b>1065</b></td><td valign="top" class="summaryTableCol">Variable _ is not defined.
+  </td><td class="summaryTableLastCol">
+	You are using an undefined lexical reference. For example, in the following statements, the 
+	statement <code>trace(x)</code> generates an error because <code>x</code> is undefined. However, the 
+	statement <code>trace(y)</code> doesn't generate an error because <code>y</code> is defined:
+ 	<pre><code>trace("hello world")
+	trace(x) // x is undefined
+	var y
+	trace(y) // No error, y is defined.</code></pre>
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1066"></a><b>1066</b></td><td valign="top" class="summaryTableCol">The form function('function body') is not supported.
+  </td><td class="summaryTableLastCol">
+	Unlike JavaScript, Flash does not compile code on-the-fly using <code>eval()</code> and 
+	<code>function()</code>.  Thus, calling these as a constructor in ActionScript 3.0 generates this error.
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1067"></a><b>1067</b></td><td valign="top" class="summaryTableCol">Native method _ has illegal method body.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1068"></a><b>1068</b></td><td valign="top" class="summaryTableCol">_ and _ cannot be reconciled.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1069"></a><b>1069</b></td><td valign="top" class="summaryTableCol">Property _ not found on _ and there is no default value.
+  </td><td class="summaryTableLastCol">
+	You are referencing an undefined property on a non-dynamic class instance. For example, the following generates this error when it references property 
+	<code>x</code>, which is not defined and cannot be created dynamically: 	
+	<pre><code>class A {} // sealed class, not dynamic
+	trace(new A().x) // no property x defined on A, and A is not dynamic</code></pre>
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1070"></a><b>1070</b></td><td valign="top" class="summaryTableCol">Method _ not found on _
+  </td><td class="summaryTableLastCol">
+	You are using a <code>super</code> statement to call a function, but the function doesn't exist in the super class. 
+	For example, the following code generates the error:	<pre><code>class A() {}
+class B extends A {
+  function f() { trace(super.f()); } // error 1070, there is no f on A
+}</code></pre>
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1071"></a><b>1071</b></td><td valign="top" class="summaryTableCol">Function _ has already been bound to _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1072"></a><b>1072</b></td><td valign="top" class="summaryTableCol">Disp_id 0 is illegal.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1073"></a><b>1073</b></td><td valign="top" class="summaryTableCol">Non-override method _ replaced because of duplicate disp_id _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1074"></a><b>1074</b></td><td valign="top" class="summaryTableCol">Illegal write to read-only property _ on _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1075"></a><b>1075</b></td><td valign="top" class="summaryTableCol">Math is not a function.
+  </td><td class="summaryTableLastCol">
+	You are trying to call <code>math()</code> as a function, but the Math class is a class with static methods.
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1076"></a><b>1076</b></td><td valign="top" class="summaryTableCol">Math is not a constructor.
+  </td><td class="summaryTableLastCol">
+	You can not instantiate the Math class. 
+ 	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1077"></a><b>1077</b></td><td valign="top" class="summaryTableCol">Illegal read of write-only property _ on _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1078"></a><b>1078</b></td><td valign="top" class="summaryTableCol">Illegal opcode/multiname combination: _&lt;_&gt;.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1079"></a><b>1079</b></td><td valign="top" class="summaryTableCol">Native methods are not allowed in loaded code.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1080"></a><b>1080</b></td><td valign="top" class="summaryTableCol">Illegal value for namespace.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1081"></a><b>1081</b></td><td valign="top" class="summaryTableCol">Property _ not found on _ and there is no default value.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1082"></a><b>1082</b></td><td valign="top" class="summaryTableCol">No default namespace has been set.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1083"></a><b>1083</b></td><td valign="top" class="summaryTableCol">The prefix "_" for element "_" is not bound.
+</td><td class="summaryTableLastCol">
+	An attribute name or element name has a prefix but no matching namespace was 
+	found. This statement generates an error because there is no <code>foo</code> 
+	namespace to match <code>foo:x</code>:<pre/>&lt;foo:x xmlns:clowns='http://circuscenter.org'&gt;</pre>
+		</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1084"></a><b>1084</b></td><td valign="top" class="summaryTableCol">Element or attribute ("_") does not match QName production: QName::=(NCName':')?NCName.
+</td><td class="summaryTableLastCol">
+	You have <code>foo: </code> or <code>:foo</code> as an element or attribute name, but there is nothing 
+	on the other side of the colon.	
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1085"></a><b>1085</b></td><td valign="top" class="summaryTableCol">The element type "_" must be terminated by the matching end-tag "&lt;/_&gt;".</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1086"></a><b>1086</b></td><td valign="top" class="summaryTableCol">The _ method only works on lists containing one item.
+</td><td class="summaryTableLastCol">
+	The XMLList class propagates the XML-specific functions to one child if it has only one 
+	item in its list. If more than one item is in the list, the routines fail with this 
+	error. This happens for the following XMLList functions that mimic XML functions: 	
+	<p><code>addNamespace</code>, <code>appendChild</code>,  <code>childIndex</code>,  	
+	<code>inScopeNamespaces</code>,  <code>insertChildAfter</code>,  <code>insertChildBefore</code>,  	
+	<code>name</code>,  <code>namespace</code>,  <code>localName</code>,  <code>namespaceDeclarations</code>,  	
+	<code>nodeKind</code>,  <code>prependChild</code>,  <code>removeNamespace</code>,  <code>replace</code>,  	
+	<code>setChildren</code>,  <code>setLocalName</code>,  <code>setName</code>,  and <code>setNamespace.
+ 
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1087"></a><b>1087</b></td><td valign="top" class="summaryTableCol">Assignment to indexed XML is not allowed.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1088"></a><b>1088</b></td><td valign="top" class="summaryTableCol">The markup in the document following the root element must be well-formed.
+</td><td class="summaryTableLastCol">
+	These are possible causes of this error:
+	<ul>
+	<li>Parsing an XMLList style object as XML</li>
+	<li>Misbalanced strings</li>
+	</ul>	
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1089"></a><b>1089</b></td><td valign="top" class="summaryTableCol">Assignment to lists with more than one item is not supported.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1090"></a><b>1090</b></td><td valign="top" class="summaryTableCol">XML parser failure: element is malformed.
+</td><td class="summaryTableLastCol">
+	An element name is malformed. This example of an element name is malformed because a 
+	trailing right angle bracket <code>></code> is missing:
+ 
+	<pre>&lt;a/&gt;&lt;b&gt;&lt;/b</pre>	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1091"></a><b>1091</b></td><td valign="top" class="summaryTableCol">XML parser failure: Unterminated CDATA section.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1092"></a><b>1092</b></td><td valign="top" class="summaryTableCol">XML parser failure: Unterminated XML declaration.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1093"></a><b>1093</b></td><td valign="top" class="summaryTableCol">XML parser failure: Unterminated DOCTYPE declaration.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1094"></a><b>1094</b></td><td valign="top" class="summaryTableCol">XML parser failure: Unterminated comment.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1095"></a><b>1095</b></td><td valign="top" class="summaryTableCol">XML parser failure: Unterminated attribute.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1096"></a><b>1096</b></td><td valign="top" class="summaryTableCol">XML parser failure: Unterminated element.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1097"></a><b>1097</b></td><td valign="top" class="summaryTableCol">XML parser failure: Unterminated processing instruction.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1098"></a><b>1098</b></td><td valign="top" class="summaryTableCol">Illegal prefix _ for no namespace.
+</td><td class="summaryTableLastCol">
+	The namespace constructor throws this error if you try to pass in an empty URI with a 
+	non-empty prefix as in this example:
+ 
+<pre>ns = new Namespace ("prefix", "");
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1100"></a><b>1100</b></td><td valign="top" class="summaryTableCol">Cannot supply flags when constructing one RegExp from another.
+  </td><td class="summaryTableLastCol">
+	Creating a new regular expression from an existing one also copies its flags. To create a regular expression with 
+	different flags, use the <code>new</code> operator and set the flags as desired. For example, this statement 
+	creates a regular expression and specifies flag settings:
+	<pre><code>var re:RegExp = new RegExp("ali", /s)</code></pre>
+	Alternatively, this statement creates a regular expression that has the same flags as re:
+	<pre><code>var re2:RegExp = new RegExp(re, ...)</code></pre> 	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1101"></a><b>1101</b></td><td valign="top" class="summaryTableCol">Cannot verify method _ with unknown scope.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1102"></a><b>1102</b></td><td valign="top" class="summaryTableCol">Illegal default value for type _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1103"></a><b>1103</b></td><td valign="top" class="summaryTableCol">Class _ cannot extend final base class.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1104"></a><b>1104</b></td><td valign="top" class="summaryTableCol">Attribute "_" was already specified for element "_".</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1107"></a><b>1107</b></td><td valign="top" class="summaryTableCol">The ABC data is corrupt, attempt to read out of bounds.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1108"></a><b>1108</b></td><td valign="top" class="summaryTableCol">The OP_newclass opcode was used with the incorrect base class.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1109"></a><b>1109</b></td><td valign="top" class="summaryTableCol">Attempt to directly call unbound function _ from method _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1110"></a><b>1110</b></td><td valign="top" class="summaryTableCol">_ cannot extend _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1111"></a><b>1111</b></td><td valign="top" class="summaryTableCol">_ cannot implement _.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1112"></a><b>1112</b></td><td valign="top" class="summaryTableCol">Argument count mismatch on class coercion.  Expected 1, got _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1113"></a><b>1113</b></td><td valign="top" class="summaryTableCol">OP_newactivation used in method without NEED_ACTIVATION flag.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1114"></a><b>1114</b></td><td valign="top" class="summaryTableCol">OP_getglobalslot or OP_setglobalslot used with no global scope.
+</td><td class="summaryTableLastCol">
+		See the <a href="#note">note</a> at the bottom of this table.&#42;
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1115"></a><b>1115</b></td><td valign="top" class="summaryTableCol">_ is not a constructor.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1116"></a><b>1116</b></td><td valign="top" class="summaryTableCol">second argument to Function.prototype.apply must be an array.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1117"></a><b>1117</b></td><td valign="top" class="summaryTableCol">Invalid XML name: _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1118"></a><b>1118</b></td><td valign="top" class="summaryTableCol">Illegal cyclical loop between nodes.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1119"></a><b>1119</b></td><td valign="top" class="summaryTableCol">Delete operator is not supported with operand of type _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1120"></a><b>1120</b></td><td valign="top" class="summaryTableCol">Cannot delete property _ on _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1121"></a><b>1121</b></td><td valign="top" class="summaryTableCol">Method _ has a duplicate method body.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1122"></a><b>1122</b></td><td valign="top" class="summaryTableCol">Interface method _ has illegal method body.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1123"></a><b>1123</b></td><td valign="top" class="summaryTableCol">Filter operator not supported on type _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1124"></a><b>1124</b></td><td valign="top" class="summaryTableCol">OP_hasnext2 requires object and index to be distinct registers.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1502"></a><b>1502</b></td><td valign="top" class="summaryTableCol">A script has executed for longer than the default timeout period of 15 seconds.
+        </td><td class="summaryTableLastCol">
+		A script executed after the timeout period. (The default timeout period is 15 seconds.) After this error occurs, the 
+		script can continue to execute for 15 seconds more, after which the script terminates and throws run-time error number 1503 (A script failed to exit after 30 seconds and was terminated.)  
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1503"></a><b>1503</b></td><td valign="top" class="summaryTableCol">A script failed to exit after 30 seconds and was terminated.
+      </td><td class="summaryTableLastCol">
+	  The script was still executing after 30 seconds. Flash Player first throws run-time error number 1502 (A script has executed for longer than the default timeout period of 15 seconds.) if the script executed more than 15 
+	  seconds, which is the default timeout period. This error occurs 15 seconds after Error 1502 occurs.  
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1507"></a><b>1507</b></td><td valign="top" class="summaryTableCol">Argument _ cannot be null.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1508"></a><b>1508</b></td><td valign="top" class="summaryTableCol">The value specified for argument _ is invalid.
+  </td><td class="summaryTableLastCol">
+	You are possibly trying to pass the wrong data type. For example, the code
+	<pre><code>public function doSomething(const:int):void {
+	}
+	this ["doSomething"] ("str")</code></pre> 
+	generates an error at runtime because <code>doSomething</code> is cast as an int data type.	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="1510"></a><b>1510</b></td><td valign="top" class="summaryTableCol">When the callback argument is a method of a class, the optional this argument must be null.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2000"></a><b>2000</b></td><td valign="top" class="summaryTableCol">No active security context.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2001"></a><b>2001</b></td><td valign="top" class="summaryTableCol">Too few arguments were specified; got _, _ expected.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2002"></a><b>2002</b></td><td valign="top" class="summaryTableCol">Operation attempted on invalid socket.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2003"></a><b>2003</b></td><td valign="top" class="summaryTableCol">Invalid socket port number specified.
+      </td><td class="summaryTableLastCol">
+	The valid range is 0 to 65535. For more information, see Socket Connections in this language reference.
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2004"></a><b>2004</b></td><td valign="top" class="summaryTableCol">One of the parameters is invalid.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2005"></a><b>2005</b></td><td valign="top" class="summaryTableCol">Parameter _ is of the incorrect type. Should be type _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2006"></a><b>2006</b></td><td valign="top" class="summaryTableCol">The supplied index is out of bounds.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2007"></a><b>2007</b></td><td valign="top" class="summaryTableCol">Parameter _ must be non-null.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2008"></a><b>2008</b></td><td valign="top" class="summaryTableCol">Parameter _ must be one of the accepted values.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2009"></a><b>2009</b></td><td valign="top" class="summaryTableCol">This method cannot be used on a text field with a style sheet.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2010"></a><b>2010</b></td><td valign="top" class="summaryTableCol">Local-with-filesystem SWF files are not permitted to use sockets.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2011"></a><b>2011</b></td><td valign="top" class="summaryTableCol">Socket connection failed to _:_.
+        </td><td class="summaryTableLastCol">
+		There is a network problem. Possibly a DNS name is not resolving or a TCP socket is not connecting.
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2012"></a><b>2012</b></td><td valign="top" class="summaryTableCol">_ class cannot be instantiated.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2013"></a><b>2013</b></td><td valign="top" class="summaryTableCol">Feature can only be used in Flash Authoring.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2014"></a><b>2014</b></td><td valign="top" class="summaryTableCol">Feature is not available at this time.
+        </td><td class="summaryTableLastCol">
+		The feature is not supported on this system.
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2015"></a><b>2015</b></td><td valign="top" class="summaryTableCol">Invalid BitmapData.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2017"></a><b>2017</b></td><td valign="top" class="summaryTableCol">Only trusted local files may cause the Flash Player to exit.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2018"></a><b>2018</b></td><td valign="top" class="summaryTableCol">System.exit is only available in the standalone Flash Player.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2019"></a><b>2019</b></td><td valign="top" class="summaryTableCol">Depth specified is invalid.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2020"></a><b>2020</b></td><td valign="top" class="summaryTableCol">MovieClips objects with different parents cannot be swapped.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2021"></a><b>2021</b></td><td valign="top" class="summaryTableCol">Object creation failed.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2022"></a><b>2022</b></td><td valign="top" class="summaryTableCol">Class _ must inherit from DisplayObject to link to a symbol.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2023"></a><b>2023</b></td><td valign="top" class="summaryTableCol">Class _ must inherit from Sprite to link to the root.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2024"></a><b>2024</b></td><td valign="top" class="summaryTableCol">An object cannot be added as a child of itself.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2025"></a><b>2025</b></td><td valign="top" class="summaryTableCol">The supplied DisplayObject must be a child of the caller.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2026"></a><b>2026</b></td><td valign="top" class="summaryTableCol">An error occurred navigating to the URL _.
+        </td><td class="summaryTableLastCol">
+		Possibly the URL does not exist, the network connection has a problem, or the URL is outside the security sandbox.
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2027"></a><b>2027</b></td><td valign="top" class="summaryTableCol">Parameter _ must be a non-negative number; got _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2028"></a><b>2028</b></td><td valign="top" class="summaryTableCol">Local-with-filesystem SWF file _ cannot access Internet URL _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2029"></a><b>2029</b></td><td valign="top" class="summaryTableCol">This URLStream object does not have a stream opened.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2030"></a><b>2030</b></td><td valign="top" class="summaryTableCol">End of file was encountered.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2031"></a><b>2031</b></td><td valign="top" class="summaryTableCol">Socket Error.
+        </td><td class="summaryTableLastCol">
+	A socket error occurred. For more information, see Socket Connections in this language reference.
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2032"></a><b>2032</b></td><td valign="top" class="summaryTableCol">Stream Error.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2033"></a><b>2033</b></td><td valign="top" class="summaryTableCol">Key Generation Failed.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2035"></a><b>2035</b></td><td valign="top" class="summaryTableCol">URL Not Found.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2036"></a><b>2036</b></td><td valign="top" class="summaryTableCol">Load Never Completed.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2037"></a><b>2037</b></td><td valign="top" class="summaryTableCol">Functions called in incorrect sequence, or earlier call was unsuccessful.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2038"></a><b>2038</b></td><td valign="top" class="summaryTableCol">File I/O Error.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2039"></a><b>2039</b></td><td valign="top" class="summaryTableCol">Invalid remote URL protocol. The remote URL protocol must be HTTP or HTTPS.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2041"></a><b>2041</b></td><td valign="top" class="summaryTableCol">Only one file browsing session may be performed at a time.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2044"></a><b>2044</b></td><td valign="top" class="summaryTableCol">Unhandled _:.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2047"></a><b>2047</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _: _ cannot access _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2048"></a><b>2048</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _ cannot load data from _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2049"></a><b>2049</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _ cannot upload data to _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2051"></a><b>2051</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _ cannot evaluate scripting URLs within _ (allowScriptAccess is _). Attempted URL was _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2052"></a><b>2052</b></td><td valign="top" class="summaryTableCol">Only String arguments are permitted for allowDomain and allowInsecureDomain.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2053"></a><b>2053</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _ cannot clear an interval timer set by _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2054"></a><b>2054</b></td><td valign="top" class="summaryTableCol">The value of Security.exactSettings cannot be changed after it has been used.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2055"></a><b>2055</b></td><td valign="top" class="summaryTableCol">The print job could not be started.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2056"></a><b>2056</b></td><td valign="top" class="summaryTableCol">The print job could not be sent to the printer.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2057"></a><b>2057</b></td><td valign="top" class="summaryTableCol">The page could not be added to the print job.
+        </td><td class="summaryTableLastCol">
+		The <code>addPage()</code> method is not used correctly. See the addPage() entry in this language reference.
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2058"></a><b>2058</b></td><td valign="top" class="summaryTableCol">There was an error decompressing the data.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2059"></a><b>2059</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _ cannot overwrite an ExternalInterface callback added by _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2060"></a><b>2060</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: ExternalInterface caller _ cannot access _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2061"></a><b>2061</b></td><td valign="top" class="summaryTableCol">No ExternalInterface callback _ registered.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2062"></a><b>2062</b></td><td valign="top" class="summaryTableCol">Children of Event must override clone() {return new MyEventClass (...);}.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2063"></a><b>2063</b></td><td valign="top" class="summaryTableCol">Error attempting to execute IME command.
+        </td><td class="summaryTableLastCol">
+		One of the IME services has failed.
+		<ul>
+		<li>If you are using the <code>setConversionMode()</code> or <code>setEnabled()</code> method, ActionScript 3.0 replaces these
+		methods with the <code>access</code> property.</li>
+		<li>If you are using the <code>doConversion()</code> or <code>setComposition()</code> 
+		method, these methods are not supported for Macintosh OSX and Macintosh Classic.</li>
+		</ul>	
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2065"></a><b>2065</b></td><td valign="top" class="summaryTableCol">The focus cannot be set for this target.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2066"></a><b>2066</b></td><td valign="top" class="summaryTableCol">The Timer delay specified is out of range.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2067"></a><b>2067</b></td><td valign="top" class="summaryTableCol">The ExternalInterface is not available in this container. ExternalInterface requires Internet Explorer ActiveX, Firefox, Mozilla 1.7.5 and greater, or other browsers that support NPRuntime.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2068"></a><b>2068</b></td><td valign="top" class="summaryTableCol">Invalid sound.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2069"></a><b>2069</b></td><td valign="top" class="summaryTableCol">The Loader class does not implement this method.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2070"></a><b>2070</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: caller _ cannot access Stage owned by _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2071"></a><b>2071</b></td><td valign="top" class="summaryTableCol">The Stage class does not implement this property or method.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2074"></a><b>2074</b></td><td valign="top" class="summaryTableCol">The stage is too small to fit the download ui.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2075"></a><b>2075</b></td><td valign="top" class="summaryTableCol">The downloaded file is invalid.
+        </td><td class="summaryTableLastCol">
+	Possibly the file decompression failed, the file format is invalid, or the signature validation failed.	
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2077"></a><b>2077</b></td><td valign="top" class="summaryTableCol">This filter operation cannot be performed with the specified input parameters.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2078"></a><b>2078</b></td><td valign="top" class="summaryTableCol">The name property of a Timeline-placed object cannot be modified.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2079"></a><b>2079</b></td><td valign="top" class="summaryTableCol">Classes derived from Bitmap can only be associated with defineBits characters (bitmaps).</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2082"></a><b>2082</b></td><td valign="top" class="summaryTableCol">Connect failed because the object is already connected.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2083"></a><b>2083</b></td><td valign="top" class="summaryTableCol">Close failed because the object is not connected.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2084"></a><b>2084</b></td><td valign="top" class="summaryTableCol">The AMF encoding of the arguments cannot exceed 40K.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2085"></a><b>2085</b></td><td valign="top" class="summaryTableCol">Parameter _ must be non-empty string.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2086"></a><b>2086</b></td><td valign="top" class="summaryTableCol">A setting in the mms.cfg file prohibits this FileReference request.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2087"></a><b>2087</b></td><td valign="top" class="summaryTableCol">The FileReference.download() file name contains prohibited characters.
+        </td><td class="summaryTableLastCol">
+		The filename cannot contain spaces or any of the following characters: &#47, &#92, &#58, &#42, &#63, &#34, &#60, &#62, &#124, &#37, or the ASCII control 
+		characters 0 through 31 (0x00 through 0X1F). Also, filenames longer than 256 characters may fail on some browsers or servers.
+	
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2088"></a><b>2088</b></td><td valign="top" class="summaryTableCol">The Proxy class does not implement getProperty. It must be overridden by a subclass.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2089"></a><b>2089</b></td><td valign="top" class="summaryTableCol">The Proxy class does not implement setProperty. It must be overridden by a subclass.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2090"></a><b>2090</b></td><td valign="top" class="summaryTableCol">The Proxy class does not implement callProperty. It must be overridden by a subclass.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2091"></a><b>2091</b></td><td valign="top" class="summaryTableCol">The Proxy class does not implement hasProperty. It must be overridden by a subclass.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2092"></a><b>2092</b></td><td valign="top" class="summaryTableCol">The Proxy class does not implement deleteProperty. It must be overridden by a subclass.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2093"></a><b>2093</b></td><td valign="top" class="summaryTableCol">The Proxy class does not implement getDescendants. It must be overridden by a subclass.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2094"></a><b>2094</b></td><td valign="top" class="summaryTableCol">Event dispatch recursion overflow.
+        </td><td class="summaryTableLastCol">
+		The recursion exceeds the maximum recursion depth. (The default maximum is 256.)
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2095"></a><b>2095</b></td><td valign="top" class="summaryTableCol">_ was unable to invoke callback _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2096"></a><b>2096</b></td><td valign="top" class="summaryTableCol">The HTTP request header _ cannot be set via ActionScript.
+        </td><td class="summaryTableLastCol">
+		You are adding a disallowed HTTP header to an HTTP request. The following headers are disallowed:
+		<ul>
+		<li>NULL header string</li>
+		<li>Accept-Charset</li>
+		<li>Accept-Encoding</li>
+		<li>Accept-Ranges</li>
+		<li>Age</li>
+		<li>Allow</li>
+		<li>Allowed</li>
+		<li>Connection</li>
+		<li>Content-Length</li>
+		<li>Content-Location</li>
+		<li>Content-Range</li>
+		<li>Date</li>
+		<li>ETag</li>
+		<li>Expect</li>
+		<li>Host</li>
+		<li>Keep-Alive</li>
+		<li>Last-Modified</li>
+		<li>Location</li>
+		<li>Max-Forwards</li>
+		<li>Proxy-Authenticate</li>
+		<li>Proxy-Authorization</li>
+		<li>Public</li>
+		<li>Range</li>
+		<li>Referer</li>
+		<li>Retry-After</li>
+		<li>Server</li>
+		<li>TE</li>
+		<li>Trailer</li>
+		<li>Transfer-Encoding</li>
+		<li>Upgrade</li>
+		<li>URI</li>
+		<li>User-Agent</li>
+		<li>Vary</li>
+		<li>Via</li>
+		<li>Warning</li>
+		<li>WWW-Authenticate</li>
+		<li>x-flash-version</li>
+		</ul>
+
+	</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2097"></a><b>2097</b></td><td valign="top" class="summaryTableCol">The FileFilter Array is not in the correct format.
+          </td><td class="summaryTableLastCol">
+		There are two valid formats:
+		<ul>
+		<li>A description with Windows file extensions only</li>
+		<li>A description with Windows file extensions and Macintosh file formats.</li>
+		</ul>
+		<p>The two file formats and not interchangeable; you must use one or the other. 
+		For more information, see the FileFilter class in this language reference.
+		
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2098"></a><b>2098</b></td><td valign="top" class="summaryTableCol">The loading object is not a .swf file, you cannot request SWF properties from it.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2099"></a><b>2099</b></td><td valign="top" class="summaryTableCol">The loading object is not sufficiently loaded to provide this information.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2100"></a><b>2100</b></td><td valign="top" class="summaryTableCol">The ByteArray parameter in Loader.loadBytes() must have length greater than 0.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2101"></a><b>2101</b></td><td valign="top" class="summaryTableCol">The String passed to URLVariables.decode() must be a URL-encoded query string containing name/value pairs.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2102"></a><b>2102</b></td><td valign="top" class="summaryTableCol">The before XMLNode parameter must be a child of the caller.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2103"></a><b>2103</b></td><td valign="top" class="summaryTableCol">XML recursion failure: new child would create infinite loop.
+            </td><td class="summaryTableLastCol">
+			Possibly you are trying to make objects child objects of each other. For example, the following code generates this error because a and b both try to add the other as a child object.
+			<pre>a.addChild(b);
+b.addChild(a);</pre>
+	</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2105"></a><b>2105</b></td><td valign="top" class="summaryTableCol">The Proxy class does not implement nextNameIndex. It must be overridden by a subclass.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2106"></a><b>2106</b></td><td valign="top" class="summaryTableCol">The Proxy class does not implement nextName. It must be overridden by a subclass.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2107"></a><b>2107</b></td><td valign="top" class="summaryTableCol">The Proxy class does not implement nextValue. It must be overridden by a subclass.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2108"></a><b>2108</b></td><td valign="top" class="summaryTableCol">Scene _ was not found.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2109"></a><b>2109</b></td><td valign="top" class="summaryTableCol">Frame label _ not found in scene _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2110"></a><b>2110</b></td><td valign="top" class="summaryTableCol">The value of Security.disableAVM1Loading cannot be set unless the caller can access the stage and is in an ActionScript 3.0 SWF file.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2111"></a><b>2111</b></td><td valign="top" class="summaryTableCol">Security.disableAVM1Loading is true so the current load of the ActionScript 1.0/2.0 SWF file has been blocked.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2112"></a><b>2112</b></td><td valign="top" class="summaryTableCol">Provided parameter LoaderContext.ApplicationDomain is from a disallowed domain.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2113"></a><b>2113</b></td><td valign="top" class="summaryTableCol">Provided parameter LoaderContext.SecurityDomain is from a disallowed domain.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2114"></a><b>2114</b></td><td valign="top" class="summaryTableCol">Parameter _ must be null.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2115"></a><b>2115</b></td><td valign="top" class="summaryTableCol">Parameter _ must be false.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2116"></a><b>2116</b></td><td valign="top" class="summaryTableCol">Parameter _ must be true.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2118"></a><b>2118</b></td><td valign="top" class="summaryTableCol">The LoaderInfo class does not implement this method.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2119"></a><b>2119</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: caller _ cannot access LoaderInfo.applicationDomain owned by _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2121"></a><b>2121</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _: _ cannot access _. This may be worked around by calling Security.allowDomain.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2122"></a><b>2122</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _: _ cannot access _. A policy file is required, but the checkPolicyFile flag was not set when this media was loaded.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2123"></a><b>2123</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _: _ cannot access _. No policy files granted access.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2124"></a><b>2124</b></td><td valign="top" class="summaryTableCol">Loaded file is an unknown type.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2125"></a><b>2125</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _ cannot use Runtime Shared Library _ because crossing the boundary between ActionScript 3.0 and ActionScript 1.0/2.0 objects is not allowed.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2126"></a><b>2126</b></td><td valign="top" class="summaryTableCol">NetConnection object must be connected.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2127"></a><b>2127</b></td><td valign="top" class="summaryTableCol">FileReference POST data cannot be type ByteArray.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2129"></a><b>2129</b></td><td valign="top" class="summaryTableCol">Connection to _ failed.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2130"></a><b>2130</b></td><td valign="top" class="summaryTableCol">Unable to flush SharedObject.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2131"></a><b>2131</b></td><td valign="top" class="summaryTableCol">Definition _ cannot be found.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2132"></a><b>2132</b></td><td valign="top" class="summaryTableCol">NetConnection.connect cannot be called from a netStatus event handler.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2133"></a><b>2133</b></td><td valign="top" class="summaryTableCol">Callback _ is not registered.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2134"></a><b>2134</b></td><td valign="top" class="summaryTableCol">Cannot create SharedObject.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2135"></a><b>2135</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _: _ cannot access _. RTMP content cannot be accessed using this API.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2136"></a><b>2136</b></td><td valign="top" class="summaryTableCol">The SWF file _ contains invalid data.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2137"></a><b>2137</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _ cannot navigate window _ within _ (allowScriptAccess is _). Attempted URL was _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2138"></a><b>2138</b></td><td valign="top" class="summaryTableCol">Rich text XML could not be parsed.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2139"></a><b>2139</b></td><td valign="top" class="summaryTableCol">SharedObject could not connect.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2140"></a><b>2140</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _ cannot load _. Local-with-filesystem and local-with-networking SWF files cannot load each other.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2141"></a><b>2141</b></td><td valign="top" class="summaryTableCol">Only one PrintJob may be in use at a time.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2142"></a><b>2142</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: local SWF files cannot use the LoaderContext.securityDomain property. _ was attempting to load _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2143"></a><b>2143</b></td><td valign="top" class="summaryTableCol">AccessibilityImplementation.get_accRole() must be overridden from its default.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2144"></a><b>2144</b></td><td valign="top" class="summaryTableCol">AccessibilityImplementation.get_accState() must be overridden from its default.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2145"></a><b>2145</b></td><td valign="top" class="summaryTableCol">Cumulative length of requestHeaders must be less than 8192 characters.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2146"></a><b>2146</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _ cannot call _ because the HTML/container parameter allowNetworking has the value _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2147"></a><b>2147</b></td><td valign="top" class="summaryTableCol">Forbidden protocol in URL _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2148"></a><b>2148</b></td><td valign="top" class="summaryTableCol">SWF file _ cannot access local resource _. Only local-with-filesystem and trusted local SWF files may access local resources.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2149"></a><b>2149</b></td><td valign="top" class="summaryTableCol">Security sandbox violation: _ cannot make fscommand calls to _ (allowScriptAccess is _).</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2150"></a><b>2150</b></td><td valign="top" class="summaryTableCol">An object cannot be added as a child to one of it's children (or children's children, etc.).</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2151"></a><b>2151</b></td><td valign="top" class="summaryTableCol">You cannot enter full screen mode when the settings dialog is visible.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2152"></a><b>2152</b></td><td valign="top" class="summaryTableCol">Full screen mode is not allowed.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2153"></a><b>2153</b></td><td valign="top" class="summaryTableCol">Cannot perform operation on closed window.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2154"></a><b>2154</b></td><td valign="top" class="summaryTableCol">Adobe Reader cannot be found.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2155"></a><b>2155</b></td><td valign="top" class="summaryTableCol">Adobe Reader 8.1 or later cannot be found.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2156"></a><b>2156</b></td><td valign="top" class="summaryTableCol">Default Adobe Reader must be version 8.1 or later.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2157"></a><b>2157</b></td><td valign="top" class="summaryTableCol">Illegal path name.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2158"></a><b>2158</b></td><td valign="top" class="summaryTableCol">File or directory is in use.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2159"></a><b>2159</b></td><td valign="top" class="summaryTableCol">File or directory access denied.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2160"></a><b>2160</b></td><td valign="top" class="summaryTableCol">File or directory exists.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2161"></a><b>2161</b></td><td valign="top" class="summaryTableCol">File or directory does not exist.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2162"></a><b>2162</b></td><td valign="top" class="summaryTableCol">Insufficient file space.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2163"></a><b>2163</b></td><td valign="top" class="summaryTableCol">Insufficient system resources.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2164"></a><b>2164</b></td><td valign="top" class="summaryTableCol">Not a file.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2165"></a><b>2165</b></td><td valign="top" class="summaryTableCol">Not a directory.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2166"></a><b>2166</b></td><td valign="top" class="summaryTableCol">Read-only or write-protected media.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2167"></a><b>2167</b></td><td valign="top" class="summaryTableCol">Cannot move file or directory to a different device.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2168"></a><b>2168</b></td><td valign="top" class="summaryTableCol">Directory is not empty.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2169"></a><b>2169</b></td><td valign="top" class="summaryTableCol">Only application-sandbox content can access this feature.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2170"></a><b>2170</b></td><td valign="top" class="summaryTableCol">Caller _ cannot set LoaderInfo property _.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2171"></a><b>2171</b></td><td valign="top" class="summaryTableCol">Move or copy destination already exists.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2172"></a><b>2172</b></td><td valign="top" class="summaryTableCol">Cannot delete file or directory.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a name="2173"></a><b>2173</b></td><td valign="top" class="summaryTableCol">An error ocurred trying to load Adobe Reader.</td><td class="summaryTableLastCol">&nbsp;</td>
+</tr>
+</table>
+<br>
+<br>
+<p>
+<a name="note"></a>* Note: This error indicates that the ActionScript in the SWF is invalid. If you believe that the file has not been corrupted, please report the problem to Adobe.</p>
+<br>
+<div align="right" class="topLinks" width="100%">
+<span><a href="compilerErrors.html">Compiler Errors</a> | <a href="compilerWarnings.html">Compiler Warnings</a></span>
+</div>
+<div style="padding-bottom:5px" align="right" class="topLinks" width="100%">
+<span style="display:none;font-size:14px;font-weight:bold" id="navigationCell2"><a onclick="loadClassListFrame('all-classes.html')" href="package-summary.html">All&nbsp;Packages</a>&nbsp;| <a onclick="loadClassListFrame('all-classes.html')" href="class-summary.html">All&nbsp;Classes</a>&nbsp;| <a href="language-elements.html">Language&nbsp;Elements</a>&nbsp;| <a onclick="loadClassListFrame('index-list.html')" href="all-index-Symbols.html">Index</a>&nbsp;| <a href="appendixes.html">Appendixes</a>&nbsp;| <a href="conventions.html">Conventions</a>&nbsp;| <a href="index.html?runtimeErrors.html&amp;all-classes.html" id="framesLink2">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink2">No&nbsp;Frames</a></span>
+</div>
+<p></p>
+<div>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('runtimeErrors.html','');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:53 AM GMT-04:00 </center>
+</div>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:53 AM GMT-04:00 -->

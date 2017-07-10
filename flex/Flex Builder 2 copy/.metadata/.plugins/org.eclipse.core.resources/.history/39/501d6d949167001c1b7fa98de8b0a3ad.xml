@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base.lenz.frame:BaseLenzFrame xmlns:base.lenz.frame="base.lenz.frame.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml"  
+	xmlns="base.lenz.frame.*"  
+	implements="base.lenz.frame.LenzFrame"
+	styleName="lenzFrame">
+
+	
+		
+	<mx:Script>
+		<![CDATA[
+
+			import base.util.ModalWait;
+			import mx.controls.Image;
+//			import lenz.main.investigator.InvestigatorLenz;
+//			import lenz.main.investigator.panel.InvestigatorLenzPanel;
+//			import lenz.main.monitor.MonitorLenz;
+//			import lenz.main.monitor.panel.MonitorLenzPanel;
+//			import lenz.main.monitor.panel.MonitorLenzPanelB;
+//			import lenz.main.study_mgr.StudyManagerLenz;
+			import lenz.main.site_select.SiteSelectionLenz;
+			import base.blade.BladeItem;
+			import app.config.BladeFactory;
+			import base.event.LenzClosedEvent;
+//			import lenz.main.welcome.WelcomeLenz;
+//			import lenz.main.my_pharma.MyPharmaLenz;
+			import app.config.LenzFactory;
+			import base.lenz.Lenz;
+			import base.lenz.panel.LenzPanel;
+			import base.lenz.panel.PanelBuilder;
+			import base.blade.Blade;
+			import mx.controls.Alert;
+			import base.event.SelectLenzEvent;
+			import mx.core.Application;
+
+			
+			[Bindable]
+			private var leftBlade:Blade;
+			[Bindable]
+			private var rightBlade:Blade;
+			[Bindable]
+			private var right2Blade:Blade;
+			[Bindable]
+			private var topBlade:Blade;
+			[Bindable]
+			private var bottomBlade:Blade;
+			
+			public var siteSelectionLenz:Lenz = null;
+			public var lenzToOpen:Lenz = null;
+			
+
+			public override function onFrameCreationComplete():void {
+				
+				logger.debug(title+" onFrameCreationComplete()");
+				
+				addSiteSelectionLenz();
+				addLenzEventListener();
+				
+			}
+			
+			protected override function activateFrame():void {
+				logger.debug(title+" activateFrame()");
+				
+				//addBlades();
+			}
+
+
+			
+			private function addSiteSelectionLenz():void {
+
+				siteSelectionLenz = LenzFactory.getLenz(SiteSelectionLenz.LENZ_ID);
+				
+				setupCurrentLenz(siteSelectionLenz);				
+								
+			}
+			
+
+			private function addLenzEventListener():void {
+
+				addEventListener(SelectLenzEvent.SELECT_LENZ_EVENT_BASE, onSelectLenzEvent,false,0,true);
+				addEventListener(LenzClosedEvent.EVENT_CODE, onLenzClosedEvent,false,0,true);
+
+			}
+
+			private function onSelectLenzEvent(ev:SelectLenzEvent):void {
+				
+				
+				currentLenz.close();
+				currentLenz = null;
+
+
+				var lenz:Lenz = LenzFactory.getLenz(ev.getLenz());
+				
+				if (null == lenz) {
+					throw new Error("Unable to locate lenz with id: "+ev.getLenz());
+				} else {
+					
+					lenzToOpen = lenz;					
+				}
+				
+				
+			}
+
+
+			private function onLenzClosedEvent(ev:LenzClosedEvent):void {
+
+				// now that the old lenz is closed, we can open the new lenz
+				
+				if (lenzToOpen != null) {	
+				
+					setupCurrentLenz(lenzToOpen);  // side effect is to set currentLenz to lenzToOpen
+
+					currentLenz.initialize();
+				}
+				
+			}
+
+
+			private function setupCurrentLenz( pLenz:Lenz):void {
+				
+				logger.debug("Setting up new lenz: "+pLenz.getLenzId());
+				
+				currentLenz = pLenz;
+
+				currentLenz.setLenzFrame(this);
+				
+				
+			}
+
+
+
+
+			private var bladeProps:Object = { height: 280, width: 700 };
+			
+			
+			private function addBlades():void {
+				
+				
+				logger.debug("adding Blades");
+				
+
+
+				fadeInBlades.play();
+
+
+				var advisorBladeItem:BladeItem = BladeFactory.getBladeItem("Advisor");
+
+				
+			}
+			
+			
+			
+		]]>
+	</mx:Script>
+
+
+
+	<mx:Fade id="fadeInBlades" alphaFrom="0.1" alphaTo="1.0" duration="2500" targets="{[ topBlade, bottomBlade, leftBlade, rightBlade, right2Blade]}">
+		
+	</mx:Fade>
+
+	
+	
+
+	
+</base.lenz.frame:BaseLenzFrame>

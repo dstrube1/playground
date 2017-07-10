@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel  xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="500" height="250" styleName="loginForm" 
+	implements="base.form.LenzForm" verticalCenter="0" horizontalCenter="0" keyDown="keyHandler(event,'Panel in loginpanelForm')" >
+ 
+
+	<mx:Script>
+		<![CDATA[
+			import app.server.LenzServer;
+			import base.services.ServiceConfig;
+			import base.services.Response;
+			import mx.controls.Alert;
+			import mx.rpc.events.ResultEvent;										
+			import mx.rpc.events.FaultEvent;
+			import base.services.LenzServiceHelper;
+			import base.services.ValueType;
+			import base.services.CommonKeys;
+			import base.services.Content;
+			import base.lenz.panel.LenzPanel;
+
+			private var panel:LenzPanel = null;
+
+
+			
+			protected function two_factor_click():void {
+				if (two_factor.selected) {
+					
+					
+					fadeIn.play();
+					
+					
+				} else {
+					
+					fadeOut.play();
+										
+				}
+			}		
+			 
+			public function initializeForm():void {
+		
+		
+			}
+
+
+			protected function submitLogin():void {
+			
+			
+			
+				LenzServiceHelper.callAction( "loginAction", { username: username.text, password: password.text, failure: serviceFailureHandler, result: serviceResponseHandler });
+															
+			}
+			
+			
+			
+			
+			
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				panel = newParent;
+				
+			}
+			
+			
+			public function animate():void {
+				// do nothing
+			}
+			
+			
+			private function serviceFailureHandler( ev:FaultEvent):void {
+				
+				Alert.show("Login Failed");
+				
+			}
+			
+			
+			private function serviceResponseHandler( r:Response):void {
+				
+				if (r.ResponseCode == 200) {
+
+					//Alert.show("Successful Login");
+					
+					var sessionId:String = LenzServiceHelper.getSessionId(r);
+
+					panel.actionTaken("success");
+										
+				} else {
+					Alert.show("Error in login.  Response Code: "+r.ResponseCode+" message: "+LenzServiceHelper.getErrorMessage(r));					
+				}
+				
+											
+			}
+			public function populateResources(data:Object):void {
+				
+			}
+			
+			private function keyHandler(event:KeyboardEvent,from:String):void {
+				var t:Date = new Date();
+				if (event.keyCode == 9){Alert.show("Tab from user");}
+				else Alert.show(t.seconds+":"+t.milliseconds.toString()+": Capture from "+from+": "+event.keyCode);
+				
+			}
+			
+		]]>
+	</mx:Script>
+<!--
+	<mx:Image width="144" height="176" source="@Embed('/resources/images/study_manager_woman.jpg')" x="10" y="10"/>
+-->
+	<mx:Image width="151" height="210" source="@Embed('/resources/images/woman_icon2.png')" x="0" y="0"/>
+	<mx:TextInput x="177" y="16" width="200" height="30" cornerRadius="5" id="username" 
+		keyDown="keyHandler(event,'TextInput in LoginPanelForm')" />
+        <mx:Label color="white" text="user name"  x="385" y="19" fontSize="11"/>
+
+	<mx:TextInput x="177" y="54" width="200" height="30" cornerRadius="5" id="password" displayAsPassword="true" />        
+        <mx:Label color="white" text="password"  x="385" y="57" fontSize="11"/>
+		 
+
+	<mx:CheckBox id="two_factor" label="2 Factor Authentication"
+		color="white" click="two_factor_click()"  x="177" y="92" fontSize="12" />
+		
+    <mx:Image id="fingerprint" source="@Embed('/resources/images/fingerprint.png')" alpha="0.3"  scaleContent="true" width="60" height="60" x="177" y="126"/>
+	    <mx:Label id="f_label" x="177" y="186" text="fingerprint" color="#f8f8f8" fontSize="9" visible="false"/>
+
+
+    <mx:Image id="smartcard" source="@Embed('/resources/images/smartcard2.png')" alpha="0.3"  scaleContent="true" width="60" height="60" x="245" y="126"/>
+	    <mx:Label id="ss_label" x="244" y="186" text="smart scan" color="#f8f8f8" fontSize="9" visible="false"/>
+	    
+	    
+    <mx:Button x="325" y="172" label="Secure Login" color="white" width="145" height="28" fontSize="11" click="submitLogin();"/>
+		
+		
+
+	<mx:Fade id="fadeIn" targets="{[smartcard, fingerprint]}" alphaFrom="0.3" alphaTo="1.0" effectEnd="f_label.visible = true; ss_label.visible = true;" duration="300">
+		
+	</mx:Fade>
+	<mx:Fade id="fadeOut" targets="{[smartcard, fingerprint]}" alphaFrom="1.0" alphaTo="0.3" effectStart="f_label.visible = false; ss_label.visible = false;" duration="300">
+		
+	</mx:Fade>
+	
+	
+	
+</mx:Panel>

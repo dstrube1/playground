@@ -1,0 +1,15 @@
+package base.event
+{ 
+	public class LenzInitializedEvent extends BaseLenzEvent
+	{
+		public static const LENZ_INITIALIZED_EVENT_BASE:String = "LenzInitializedEvent_BASE";
+		
+		public static const EVENT_CODE:String = LENZ_INITIALIZED_EVENT_BASE;
+		
+		public function LenzInitializedEvent( lenz:String) {
+			super(EVENT_CODE, lenz);
+		}
+
+		
+	}
+}

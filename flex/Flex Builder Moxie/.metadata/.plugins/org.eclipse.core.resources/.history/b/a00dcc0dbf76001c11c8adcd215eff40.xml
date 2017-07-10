@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="400" height="300"
+	xmlns:service="service.*" 	xmlns:app="app.*">
+	<mx:Script>
+		<![CDATA[
+		
+		import mx.controls.Alert;
+		
+		public var memListPanel:MemListPanel;
+		public var loginPanel:LoginPanel;
+		public var memory:Object;
+
+		public static function setVisible(visible:Boolean):void{
+			setVisible(visible);
+		}
+		
+		private function backToList():void{
+			this.setVisible(false);
+			memListPanel.setVisible(true);
+		}
+		
+		public function setUp():void{
+			if (memory!=null){
+				img.source = memory.thumbnail;
+				memoryName.text = String(memory.name);
+			}
+		}
+		private function logoutClick():void{
+			loginPanel.logoutClick();
+			this.setVisible(false);
+		}
+
+		]]>
+	</mx:Script>
+
+	<mx:Button label="Back to List" click="backToList()"/>
+<mx:Button label="Logout" click="logoutClick()" y="24"/>
+<mx:Image id="img" x="10" y="74"/>
+<mx:Label id="memoryName" text="name" x="10" y="48"/>
+<app:Uploader 	width="522" height="400" 
+	paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"
+	verticalScrollPolicy="on" horizontalScrollPolicy="off" x="80" y="54">
+<!--
+Adding these elements in the tag of the instance of the Uploader as a Canvas component instead of a WindowedApplication
+is not only unnecessary, it is wrong. The elements must be added in the Uploader code.
+	<mx:Canvas width="200" height="92" id="myCanvas" x="176" y="10">
+	</mx:Canvas>
+	
+	<mx:HBox id="files_vb" 
+		width="246" height="186" 
+		backgroundColor="#FFFFFF" 
+		horizontalScrollPolicy="off" 
+		paddingBottom="5" paddingLeft="5" 
+		paddingRight="5" paddingTop="5" 
+		borderColor="#ABABAB" borderStyle="inset" 
+		x="129" y="110">
+	</mx:HBox>
+
+	<mx:Button id="clear_btn" label="Clear" x="10"/>
+	<mx:Button id="show_btn" label="Show Files" x="10" y="30"/>
+	<mx:Button id="upload_btn" label="Upload Files" x="10" y="60"/>
+	<mx:Button x="10" y="90" label="Browse" id="browse_btn"/>
+-->
+</app:Uploader>
+
+</mx:Panel>

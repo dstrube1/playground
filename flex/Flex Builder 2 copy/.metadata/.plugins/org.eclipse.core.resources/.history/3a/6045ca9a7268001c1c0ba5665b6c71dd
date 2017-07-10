@@ -1,0 +1,22 @@
+package base.services
+{ 
+	import base.util.text.Base64Codec;
+	
+	public class ServiceConfig
+	{
+		
+		private static var mapArrayHelper:MapArrayHelper = new MapArrayHelper( new Base64Codec(), [ValueType.STRING, ValueType.XML]);
+
+
+		public static function getMapArrayHelper():MapArrayHelper {
+			return(mapArrayHelper);
+		}
+
+
+		public static function setMapArrayHelper( mah:MapArrayHelper):void {
+			mapArrayHelper = mah;
+		}
+
+		
+	}
+}

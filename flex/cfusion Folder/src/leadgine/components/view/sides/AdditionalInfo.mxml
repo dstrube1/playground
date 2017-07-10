@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow showCloseButton="true"
+	close="handleClose(event)"
+	styleName="rprPanel"  
+	horizontalAlign="center" 
+	x = "{myDTO.referralFormX}"
+	y = "{myDTO.referralFormY}"
+	width = "{myDTO.referralFormWidth}"
+	height = "{myDTO.referralFormHeight}"
+	title="Referral Form" 
+	creationComplete="init()" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:components="leadgine.components.*"
+	>
+<!--
+<panel:SuperPanel xmlns:panel="nl.wv.extenders.panel.*"
+-->
+
+<mx:Script>
+<![CDATA[
+	import mx.core.Application;
+	import leadgine.components.dto.FullServiceReferral;
+	import mx.events.CloseEvent;
+	import mx.managers.PopUpManager;
+	
+	[Bindable] public var myTitle:String;
+	[Bindable] private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	
+	private function handleClose(event:CloseEvent):void{
+		Application.application.resetDialogs();
+		PopUpManager.removePopUp(this);
+	}
+
+	private function init():void{
+		navFooter.nextButton.enabled = true;
+		populateSavedValues();
+	}
+	private function populateSavedValues() : void
+	{
+		if (myDTO.savedAdditionalInfo){
+			commentsText.text = myDTO.commentsText;
+			requestsText.text = myDTO.requestsText;
+		}
+	}
+	private function nextSection():void {
+		updateDataStore();
+		Application.application.toggleDialog(1);
+	}
+	private function prevSection():void {
+		updateDataStore();
+		Application.application.toggleDialog(-1);
+	}
+	private function updateDataStore():void{
+		myDTO.referralFormX = this.x;
+		myDTO.referralFormY = this.y;
+
+		myDTO.savedAdditionalInfo  =true;
+		myDTO.commentsText = commentsText.text;
+		myDTO.requestsText = requestsText.text;
+	}
+]]>
+</mx:Script>
+
+	<mx:VBox height="100%" >
+
+		<mx:HBox verticalAlign="bottom" id="headerArea" width="800" styleName="headerStyle">
+			<mx:Label text="Full Service Referral Form" styleName="mainTitle" />
+			<mx:Spacer width="100%" />
+		</mx:HBox>	
+		<mx:VBox 
+			width="100%" 
+			height="100%">
+			
+			<mx:VBox styleName="containerStyle" width="100%" height="100%">
+				<mx:Label text="{myTitle}" styleName="secTitle" />
+				<mx:VBox width="800" height="300" paddingLeft="20" paddingRight="20">
+					<mx:Label text="Special Comments:" />
+					<mx:TextArea width="100%" height="120" id="commentsText" />
+					<mx:Label text="Requests, History, Alternate Dates, etc.:" />
+					<mx:TextArea width="100%" height="120" id="requestsText"/>
+				</mx:VBox>
+				
+				<mx:Spacer height="100%" />
+				<mx:HBox width="100%" paddingRight="20">
+					<components:NavigationFooter id="navFooter" 
+						prevSection="prevSection()"
+						nextSection="nextSection()"
+					/>
+				</mx:HBox>
+			</mx:VBox>
+		</mx:VBox>
+	</mx:VBox>
+<!--
+</panel:SuperPanel>
+-->
+</mx:TitleWindow>

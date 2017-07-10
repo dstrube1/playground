@@ -1,0 +1,44 @@
+SQL Lite:
+tools: http://www.sqlite.org/cvstrac/wiki?p=ManagementTools; sqlite admin- AIR; firefox plugin: SQLite Manager;  SQLite2008 Pro
+manipulating data: connect to db, create/deploy tables; CRUDs; manip results
+	connect: 
+	myConn = new SQLConnection();
+	dbFile = File.applicationStorageDirectory.resolvePath(filename);
+	conn.open(dbFile);
+	conn.openAsync(dbFile);
+	create tables:
+	sql="create table if not exists "+tablename+" (ID INTEGERPRIMARY KEY AUTOINCREMENT/, " + ...//SQLite Mgr makes this easy
+	CRUD:
+	var sql:String = "Select * from "+tableName;
+	selectStmt = new SQLStatement();
+	selectStmt.sqlConnection = conn;
+	selectStmt.execute(); //=commit unless specify begin transaction
+	...
+	manip results:
+	var aResult:Array = selectStmt.getResult().data;
+	var result:ArrayCollection = new ArrayCollection(aResult);
+	...
+	
+	
+strategy for data synching
+self-contained- very portable
+serverless- no isolation
+zero config, transactional, public domain, utf-8&16
+file format is cross platform- replacement for fopen()
+compact lib: 250K 
+no stored procs; no enforcing of data type constraints (can put strings into ints +vv); no foriegn key constraints (can use triggers, but nothing built in); primary keys must be integers (can have additional columns that indexed with uniqueness; no UUIDs)- problem: predictability
+is not: for client server apps ("doesn't work over network connection"); high volume; very large datasets (100MB, ok); high concurrency (is single user app)
+manifest typing instead of typed columns
+can perform ops synchronously or asynchronously
+used in AIR, Apple Mail, Safari, Firefox 3 bookmarking, Google desktop for mac, Android OS
+
+
+Papervision3D:
+open source library
+3D engine basics: worldspace, objects in world space, camera
+"eliminate perspective by setting zoom to infinity"?
+ex:
+https://www.catalystnaturalgas.com/enrollment.aspx
+http://www.carlosulloa.com/
+v2.0 coming soon: great white; frustum culling, lighting/shading, collada
+alternative: sandy

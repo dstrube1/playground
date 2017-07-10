@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:sides="view.sides.*">	
+
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.ac.mxeffects.Flip;
+			import com.adobe.ac.mxeffects.DistortionConstants;
+			
+			private function flipToRegistration() : void
+			{
+				var e : Flip = new Flip( login );
+				e.siblings = [ registration ];
+				e.direction = DistortionConstants.RIGHT;
+				e.duration = 2000;
+				e.play();
+			}
+			
+			private function flipToLogin() : void
+			{
+				var e : Flip = new Flip( registration );
+				e.siblings = [ login ];
+				e.direction = DistortionConstants.LEFT;					
+				e.duration = 2000;
+				e.play();
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:ViewStack id="loginViewStack">
+	
+		<sides:Login id="login" title="Login" change="flipToRegistration();"/>
+		<sides:Registration id="registration"  title="Registration" change="flipToLogin();"/>
+	
+	</mx:ViewStack>
+	
+</mx:VBox>

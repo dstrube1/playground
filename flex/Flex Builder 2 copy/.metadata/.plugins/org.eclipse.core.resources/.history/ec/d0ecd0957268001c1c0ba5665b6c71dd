@@ -1,0 +1,61 @@
+package app.server.mock.impl
+{
+	import base.services.Content;
+	import base.services.mock.MockService;
+	import mx.rpc.events.ResultEvent;
+	import flash.utils.setTimeout;
+	import base.services.Response;
+	import base.services.ValueType;
+	import base.services.CommonKeys;
+	import base.services.MapArray;
+	import base.services.MapArrayHelper;
+	import base.services.ServiceConfig;
+	import base.lenz.NotificationReport;
+
+	public class MockLoginService extends BaseMockService implements MockService
+	{
+		
+		public var notificationReport:NotificationReport = null;
+		
+		
+		public function call(content:Content, failureHandler:Function, resultHandler:Function):void
+		{
+
+			var user:String = content.DataMap.getValue("login.username.key") as String;
+			var pass:String = content.DataMap.getValue("login.password.key") as String;
+
+			var control:MapArray = new MapArray();
+			var data:MapArray = new MapArray();
+			var responseCode:int = 500;
+			
+			
+			if (user == pass) {
+
+				responseCode = 200;
+
+				control.add(CommonKeys.SESSION_ID_KEY, ValueType.STRING, "100");
+									
+				if (notificationReport != null) {
+					
+					control.add(CommonKeys.NOTIFY_ALARM_COUNT, ValueType.INTEGER, notificationReport.alarmCount);
+					control.add(CommonKeys.NOTIFY_ALERT_COUNT, ValueType.INTEGER, notificationReport.alertCount);
+					control.add(CommonKeys.NOTIFY_INFO_COUNT, ValueType.INTEGER, notificationReport.infoCount);
+					
+				}									
+									
+				
+			} else {
+				
+				responseCode = 500;
+				
+				control.add(CommonKeys.ERROR_MSG_KEY, ValueType.STRING, "Unknown username or invalid password.");
+				
+			}
+			
+			respond( responseCode, control, data, resultHandler );
+			
+
+		}
+		
+	}
+}

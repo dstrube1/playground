@@ -1,0 +1,209 @@
+/* CSS file */
+
+/*Arial Regular */
+@font-face {
+	src:url("/resources/style/arial.ttf");
+	fontFamily: arial;
+	flashType: true;
+}
+
+/*Interstate Regular */
+@font-face {
+	src:url("/resources/style/Interstate.ttf");
+	fontFamily: interstate;
+	flashType: true;
+}
+
+/*Interstate Bold */
+@font-face {
+	src:url("/resources/style/InterstateBold_4.ttf");
+	fontFamily: interstateBold;
+	fontWeight: bold;
+	flashType: true;
+	
+}
+
+/*Interstate Italic */
+@font-face {
+	src:url("/resources/style/InterstateItalic.ttf");
+	fontFamily: interstate;
+	fontStyle: italic;
+	flashType: true;
+}
+
+/*Interstate Bold Italic */
+@font-face {
+	src:url("/resources/style/InterstateBoldItalic.ttf");
+	fontFamily: interstate;
+	fontStyle: italic;
+	fontWeight: bold;
+	flashType: true;
+}
+
+Application {
+   backgroundColor: #006000;
+   backgroundGradientColors: #006000, #001000;
+	color: #000000;
+	fontFamily: interstate;
+	fontSize: 12;
+   themeColor: #008000;
+
+}
+
+.bladeButton {
+	/*
+	Deprecated; BladeItem is an image, not a button
+	alpha: 0.1;
+	borderColor: #000000;
+	cornerRadius: 20;
+	dropShadow: true;
+	fillAlphas: 0.5, 0.5;
+	fillColors: #000000, #001000;
+	fontSize: 11;
+	fontWeight: normal;
+	highlightAlphas: 0.01, 0.0;
+	shadowDistance: 1;	
+	textRollOverColor: #ffffff;
+	color: #222222;
+	*/
+}
+
+.bladeItem {
+	
+	padding: 15 15 15 15px;
+	
+}
+
+.bladePanel {
+	padding: 15 15 15 15px;
+	vertical-align: middle;
+}
+
+
+.infoLink{
+	color: #000000;
+}
+
+.invisibleScrollbar {
+	alpha: 0.01;
+	background-alpha: 0.01;
+}
+
+invisibleScrollbar {
+	alpha: 0.01;
+	background-alpha: 0.01;
+}
+
+
+.lenzCanvas {
+	alpha: 0.9;
+   background-image: Embed("/resources/images/study_manager_bg.jpg");
+}
+
+
+.lenzFrame {
+	alpha: 1.0;
+	backgroundImage: Embed("/resources/swf/border.swf");
+	padding-bottom: 1;
+	padding-top: 1;
+	padding-left: 1;
+	padding-right: 1;
+	/*
+	backgroundColor: #111111;
+	*/
+}
+
+.lenzPanel { 
+
+	background-alpha: 0.6;
+	/*	
+	background-color: #808080;
+	*/
+	borderAlpha: 1;
+	borderColor: #eeeeee;
+	borderStyle: solid;
+	borderThickness: 0; /*<- controls border of login and Today */
+	color: #eeeeee;
+	cornerRadius: 08;
+	headerColors: #808080, #808080;
+	headerHeight: 24;
+	highlightAlphas: 0.2,0.2;
+	panelBorderStyle: default;
+	/*
+	   Does not work, as far as I can tell.
+	vertical-scroll-bar-style-name: "invisibleScrollbar";
+	*/
+	
+	
+	
+	/*
+	paddingTop: 50;
+	paddingBottom: 10;
+	paddingRight: 10;
+	paddingLeft: 20;
+	marginLeft: 50;
+	*/
+	rounded-bottom-corners: false;
+	roundedBottomCorners: false;
+	rounded-bottom-corners: 0;
+	roundedBottomCorners: 0;
+	rounded-bottom-corners: off;
+	shadowDistance: 0;
+	shadow-direction: right;
+	titleStyleName: "lenzPanelTitle";
+
+	
+
+}
+
+
+.lenzPanelTitle {
+	
+	color: #000000;
+	fontWeight: normal;
+	textAlign: center;
+}
+
+.loginForm {
+	
+	background-alpha: 0.9;
+	background-color: #8b9f83;  
+	border-color: #8b9f83;
+	border-alpha: 0.9;
+	color: #111111;
+	cornerRadius: 08;
+	headerColors: #8b9f83, #8b9f83;
+	rounded-bottom-corners: true;
+/*	  tried this, didn't work.
+	background-image: Embed("/resources/images/study_manager_bg.jpg");
+*/
+	/*
+	font-weight: bold;
+	*/
+}
+
+.notificationPanel {
+
+	backgroundAlpha: 0.8;
+	borderStyle: outset;
+	borderThickness: 0;	
+	color: #333333;
+	dropShadowEnabled: true;
+	fillAlphas: 1, 0.5, 0, 0;
+	fillColors: #447D2C, #cccccc, #ffffff, #eeeeee;
+	highlightAlphas: 0.5, 0;
+	openDuration: 750;
+	shadowDirection: right;
+	shadowDistance: 3;
+	textIndent: 2;
+}
+
+
+.welcomeForm{
+	height: 450;
+	horizontal-center: 0;
+	vertical-center: 0;
+	width: 700;
+}
+
+

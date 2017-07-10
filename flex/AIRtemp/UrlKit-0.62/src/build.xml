@@ -1,0 +1,13 @@
+<project name="urlkit" default="build">
+	<property name="compc.jar" value="${flex.home}/lib/compc.jar"/>
+	<property name="manifest.uri" value="http://www.allurent.com/2006/urlkit"/>
+	<target name="build">
+		<java jar="${compc.jar}" dir="." fork="true" failonerror="true">
+			<arg value="+flexlib=${flex.home}/frameworks"/>
+		    <arg value="-source-path=."/>
+		    <arg value="-output=bin/UrlKit.swc"/>
+		    <arg value="-namespace=${manifest.uri},urlkit-manifest.xml"/>
+		    <arg value="-include-namespaces=${manifest.uri}"/>
+		</java>
+	</target>
+</project>

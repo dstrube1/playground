@@ -1,0 +1,13 @@
+package base.event
+{ 
+	public class PanelReadyEvent extends BaseLenzEvent
+	{
+		public static const PANEL_READY_EVENT_BASE:String = "PanelReadyEvent_BASE";
+		
+		public static const EVENT_CODE:String = PANEL_READY_EVENT_BASE;
+		
+		public function PanelReadyEvent( lenz:String) {
+			super(EVENT_CODE, lenz);
+		}
+	}
+}

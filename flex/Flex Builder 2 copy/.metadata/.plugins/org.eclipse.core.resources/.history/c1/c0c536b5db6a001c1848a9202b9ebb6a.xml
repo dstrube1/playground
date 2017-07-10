@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" 
+	xmlns:base.blade="base.blade.*" xmlns:config="app.config.*">
+	<mx:Script>
+		<![CDATA[
+			import base.lenz.frame.BaseLenzFrame;
+			import mx.controls.Alert; 
+			import lenz.main.site_select.SiteSelectionLenz;
+			//import lenz.main.investigator.InvestigatorLenz;
+			//import lenz.main.monitor.MonitorLenz;
+			//import lenz.main.study_mgr.StudyManagerLenz;
+			//import lenz.main.welcome.WelcomeLenz;
+			import app.App;
+			
+			[Bindable]
+			private var yOffsetGlobalNavs:int = 60;
+			[Bindable]
+			private var xOffsetGlobalNavs:int = 90;
+			[Bindable]
+			private var bSize:int = 104; // button size
+			
+		 	[Bindable]
+            private var selectedUser:Object;
+			[Embed(source="/resources/images/woman_icon2.png")]
+	        public var User1Image:Class; 
+	        [Embed(source="/resources/images/StudyManager.jpg")]
+	        public var User2Image:Class; 
+	        [Embed(source="/resources/images/Monitor.jpg")]
+	        public var User3Image:Class; 
+	        [Embed(source="/resources/images/woman_icon3.png")]
+	        public var User4Image:Class; 
+	        
+			[Bindable]
+			private var users:Array = [{label:"User1",data:User1Image},
+				{label:"User2",data:User2Image}];
+			[Bindable]
+			private var resolutions:Array = [{label:"640 x 800",data:1},{label:"800 x 600",data:2}];
+			[Bindable]
+            private var selectedTheme:Object;
+			[Bindable]
+			private var themes:Array = new Array("Green (default)","Blue", "Steel");
+			
+			private function mouseOut(event:Event):void {
+				event.target.alpha=1;			
+			}
+			
+			private function mouseOver(event:Event):void {
+				event.target.alpha=0.5;	
+				
+				
+			}
+			
+				private function highlight(canvas:Canvas):void{
+				canvas.alpha=0.5;
+			}
+			
+			private function unhighlight(canvas:Canvas):void{
+				canvas.alpha=0.1;
+			}
+			/*
+			private function removeCover():void{
+				if (cover.alpha > 0.9){
+					removeGlobalNavCover.play();
+					cover.setActualSize(1,1)
+				}
+//				else Alert.show("cover.alpha = " + cover.alpha)
+			}
+			
+			private function addCover():void{
+				if (cover.alpha < 0.2){
+					cover.setActualSize(635,174);
+					addGlobalNavCover.play();
+				}
+//				else Alert.show("cover.alpha = " + cover.alpha)
+			}
+			*/
+			public function changeUser():void{
+		        //this.parentApplication.hasOwnProperty("backgroundImage") = false
+		        //this.parentApplication.toString() = LenzDemo3_0
+		        Alert.show(this.parentApplication.hasOwnProperty("backgroundImage").toString());
+		        //base.lenz.frame.BaseLenzFrame
+			}
+		]]>
+	</mx:Script>
+	
+	
+	
+	<base.blade:BladeItem id="cass" height="100" width="100" mouseOut="mouseOut(event)" mouseOver="mouseOver(event)"  horizontalCenter="0" verticalCenter="0" visible="true">
+		<mx:Image horizontalCenter="0" verticalCenter="0" scaleContent="true" source="@Embed('/resources/images/gloe.png')" />
+		<mx:Label horizontalCenter="0" verticalCenter="30" color="#FFFFFF" fontSize="10" text="Site Selection" />
+	</base.blade:BladeItem>
+	
+
+	<base.blade:BladeItem id="settings" height="100" width="100" mouseOut="mouseOut(event)" mouseOver="mouseOver(event)"  horizontalCenter="0" verticalCenter="0" visible="true">
+		<mx:Image horizontalCenter="0" verticalCenter="0" source="@Embed('/resources/images/icon_settings.png')" />		
+		<mx:Label horizontalCenter="0" verticalCenter="40" color="#FFFFFF" fontSize="10" text="Settings" />
+	</base.blade:BladeItem>
+	
+	
+	<base.blade:BladeItem id="SiteSelection" height="100" width="100" mouseOut="mouseOut(event)" mouseOver="mouseOver(event)"  horizontalCenter="0" verticalCenter="0" visible="true">
+		
+		<mx:Image x="12" y="12" scaleContent="true" autoLoad="true"  width="75" height="75" source="resources/images/SiteSelect.jpg" 
+			/>
+		
+	</base.blade:BladeItem>
+
+	
+	<base.blade:BladeItem id="StudyManager" height="100" width="100"  horizontalCenter="0" verticalCenter="0" visible="true">
+		
+		<mx:Image  x="12" y="12" scaleContent="true" autoLoad="true"  width="75" height="75" source="resources/images/StudyManager.jpg" 
+			/>
+		
+	</base.blade:BladeItem>
+
+
+
+	<base.blade:BladeItem id="Monitor" height="100" width="100"  horizontalCenter="0" verticalCenter="0" visible="true">
+		
+		<mx:Image  x="12" y="12" scaleContent="true" autoLoad="true"  width="75" height="75" source="resources/images/Monitor.jpg" 
+			/>
+		
+	</base.blade:BladeItem>
+
+
+	<base.blade:BladeItem id="Investigator" height="100" width="100"  horizontalCenter="0" verticalCenter="0" visible="true">
+		
+		<mx:Image  x="12" y="12" scaleContent="true" autoLoad="true"  width="75" height="75" source="resources/images/Investigator.jpg" 
+			/>
+		
+	</base.blade:BladeItem>
+	
+
+	<base.blade:BladeItem id="WelcomeLenz" height="100" width="100"  horizontalCenter="0" verticalCenter="0" visible="true">
+		
+		<mx:Image  x="12" y="12" scaleContent="true" autoLoad="true"  width="75" height="75" source="resources/images/line.png" 
+			/>
+		
+	</base.blade:BladeItem>
+	
+	
+	<base.blade:BladeItem id="Energizer" height="100" width="100"  horizontalCenter="0" verticalCenter="0" visible="true">
+		<mx:Button label="Energizer" />
+	</base.blade:BladeItem>
+	<base.blade:BladeItem id="Tools" height="100%" width="100%" horizontalCenter="0" verticalCenter="0" visible="true">
+
+		<mx:Image id="tools" source="@Embed('/resources/images/tools.png')" height="200" width="500" x="100" 
+			scaleContent="true" autoLoad="true"/>
+		<mx:Label color="white" fontSize="20" x="170" y="20" text="Database Reset" />
+		<mx:Label color="white" fontSize="20" x="170" y="130" text="Tool 2" />
+		<mx:Label color="white" fontSize="20" x="430" y="20" text="Tool 3" />
+		<mx:Label color="white" fontSize="20" x="430" y="130" text="Tool 4" />
+
+		<mx:Canvas height="82" width="230" id="t1" x="110" y="8" click="Alert.show('Database reset goes here')" />
+		<mx:Canvas height="82" width="230" id="t2" x="110" y="105" click="Alert.show('Tool 2 goes here')"/>
+		<mx:Canvas height="82" width="230" id="t3" x="350" y="8" />
+		<mx:Canvas height="82" width="230" id="t4" x="350" y="105" />
+	</base.blade:BladeItem>
+
+	<base.blade:BladeItem id="Investigator2" height="100" width="100"  horizontalCenter="0" verticalCenter="0" visible="true">
+		
+		<mx:Image  x="12" y="12" scaleContent="true" autoLoad="true"  width="75" height="75" source="resources/images/Investigator.jpg" 
+			/>
+		
+	</base.blade:BladeItem>
+	
+
+	<base.blade:BladeItem id="GlobalNav" width="650" height="350" horizontalCenter="0" verticalCenter="0" visible="true">
+	    <mx:Canvas width="633" height="230" styleName="filledTone" y="60" x="15"></mx:Canvas>
+	
+		<mx:Image id="topbar" source="@Embed('/resources/images/top_3_bar.png')" y="50	" x="32"  />
+	
+			<!--
+	 	<mx:Label id="discovery" text="Discovery" mouseOver="discovery.setStyle('fontWeight','bold')" 
+	 		mouseOut="discovery.setStyle('fontWeight','normal')" x="90" y="25" fontSize="15" />
+		
+	 	<mx:Label text="Development" x="280" y="25" fontSize="15" />
+	 	<mx:Label id="salesAndM" text="Sales And Marketing" x="450" y="25" fontSize="15" />
+
+		<mx:Canvas id="discoveryButton" height="43" width="185" x="30" y="4" mouseOver="addCover()"/>
+	 	<mx:Canvas id="developmentButton" height="43" width="215" x="230" y="4" mouseOver="removeCover()" />
+	 	<mx:Canvas id="salesAndMButton" height="43" width="185" x="440" y="4" mouseOver="addCover()"/>
+		-->
+	<mx:Canvas y="60">
+		<config:GlobalNavigationItem id="WF" x="{xOffsetGlobalNavs}" y="{yOffsetGlobalNavs}"
+			title="Home" imgSource="@Embed('/resources/images/home_icon.png')"/> 
+			<!-- clickFunction="{[App.WELCOME]}" -->
+	
+		<config:GlobalNavigationItem id="SS" x="{xOffsetGlobalNavs+(bSize*1)}" y="{yOffsetGlobalNavs}"
+    		clickFunction="{[SiteSelectionLenz.LENZ_ID]}" title="Study Allocation" imgSource="@Embed('/resources/images/site_selection_icon.png')" />
+    		
+		<config:GlobalNavigationItem id="II" x="{xOffsetGlobalNavs+(bSize*2)}" y="{yOffsetGlobalNavs}" visible="true"
+			 title="" imgSource="@Embed('/resources/images/investigator_icon.png')" />
+		
+		<!-- 	clickFunction="{[InvestigatorLenz.LENZ_ID]}" title="{'Investigator\nIdentifier'}" -->
+		
+		<config:GlobalNavigationItem id="CA" x="{xOffsetGlobalNavs+(bSize*3)}" y="{yOffsetGlobalNavs}" visible="true"
+			title="" imgSource="@Embed('/resources/images/country_allocation_icon.png')"/>
+		<!--  clickFunction="{[MonitorLenz.LENZ_ID]}" title="{'Country\nAllocation'}"  -->
+		
+		<config:GlobalNavigationItem id="SM" x="{xOffsetGlobalNavs+(bSize*4)}" y="{yOffsetGlobalNavs}"
+			title="Study Management" imgSource="@Embed('/resources/images/study_manager_icon.png')"/>
+		<!-- clickFunction="{[StudyManagerLenz.LENZ_ID]}" -->
+		</mx:Canvas>
+		
+	</base.blade:BladeItem>
+	<!-- mx:Fade id="addGlobalNavCover" alphaFrom="0.1" alphaTo="1.0" duration="1000" target="{cover}"/>
+	<mx:Fade id="removeGlobalNavCover" alphaFrom="1.0" alphaTo="0.1" duration="1000" target="{cover}"/>  -->
+	
+	<base.blade:BladeItem id="Communications" height="230" width="650" horizontalCenter="0" verticalCenter="0"
+		visible="true">
+		<mx:Image id="commImage" source="@Embed('/resources/images/communications.png')" height="200"
+			width="500" x="100" scaleContent="true" autoLoad="true"/>
+		
+		<mx:Label color="white" fontSize="20" x="180" y="20" textAlign="left" height="55" width="150" 
+			text="{'Video\nConference'}" />
+		<mx:Label color="white" fontSize="20" x="180" y="115" textAlign="left" height="55" width="150" 
+			text="{'Join\nChatroom'}" />
+		<mx:Label color="white" fontSize="20" x="435" y="20" textAlign="left" height="55" width="150" 
+			text="{'Instant\nMessage'}" />
+		
+		<mx:Canvas height="82" width="230" id="c1" x="110" y="8" 
+			mouseOver="highlight(c1)" mouseOut="unhighlight(c1)" backgroundColor="white" alpha="0.1" />
+		<mx:Canvas height="82" width="230" id="c2" x="110" y="105" 
+			mouseOver="highlight(c2)" mouseOut="unhighlight(c2)" backgroundColor="white" alpha="0.1"/>
+		<mx:Canvas height="82" width="230" id="c3" x="350" y="8" 
+			mouseOver="highlight(c3)" mouseOut="unhighlight(c3)" backgroundColor="white" alpha="0.1"/>
+	</base.blade:BladeItem>
+	
+	<base.blade:BladeItem id="Advisor" width="650" height="230" horizontalCenter="0" verticalCenter="0" visible="true">
+		
+		<mx:Canvas height="50" width="350" id="advice" backgroundColor="gray" y="50">
+			<mx:Image source="@Embed('/resources/images/advisor.png')" />
+			<mx:Label x="50" text="It has been 7 days since the site screened a subject" fontSize="12"/>
+		</mx:Canvas>
+		<mx:Canvas height="{advice.height}" width="{advice.width}" x="{advice.x}" y="{advice.y}"
+			 id="a1" mouseOver="highlight(a1)" mouseOut="unhighlight(a1)" backgroundColor="white" alpha="0.1"/>
+
+		<!-- advice button 1 -->
+		<mx:Button id="ab1" x="400" y="50" label="Run Marketing Program" fontSize="15" />
+		<mx:Button id="ab2" x="400" y="100" label="Submit Case Report" fontSize="15" />
+	</base.blade:BladeItem>
+	
+	<base.blade:BladeItem id="UserPreferences" height="230" width="650" horizontalCenter="0" verticalCenter="0"
+		visible="true">
+		<mx:Label text="User Information" fontSize="20" x="10" y="10" />
+
+		<mx:Image x="10" y="40" height="190" width="130" 
+			id="face" source="@Embed('/resources/images/woman_icon2.png')" />
+
+		<mx:List x="150" y="40" height="100" width="200" 
+			id="userlist" dataProvider="{users}" selectedIndex="0"
+			change="this.selectedUser=List(event.target).selectedItem;face.source=selectedUser.data"/>
+
+		<mx:Button x="150" y="150" 
+			id="edituser" label="Edit User Information" fillAlphas="[1,1]"
+			click="changeUser()"/>
+
+		<mx:CheckBox x="400" y="40" 
+			id="fullscreen" label="Full Screen" />
+		
+		<mx:Label x="400" y="60" text="Screen Resolution"  />
+		<mx:ComboBox x="400" y="80" width="100" 
+			id="resolutions_cb" dataProvider="{resolutions}" fillAlphas="[1,1]" />
+
+		<mx:Label x="400" y="130" text="Theme"/>
+		<mx:ComboBox x="400" y="150" width="100"
+			id="themes_cb" dataProvider="{themes}" fillAlphas="[1,1]"
+			close="selectedTheme=ComboBox(event.target).selectedItem" />
+	</base.blade:BladeItem>
+	   
+</mx:Canvas>

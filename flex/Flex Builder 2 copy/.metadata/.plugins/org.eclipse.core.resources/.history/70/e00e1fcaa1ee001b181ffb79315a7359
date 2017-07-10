@@ -1,0 +1,9 @@
+package base
+{
+	import base.model.ViewContext; 
+	
+	public interface Context
+	{
+		//function getViewContext():ViewContext;
+	}
+}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:ns1="http://www.sephiroth.it/2006/mxml" 
+	width="100%" 
+	height="100%" 
+	xmlns:view="leadgine.components.view.*" 
+	xmlns:components="leadgine.components.*"
+	initialize="{navFooter.nextButton.enabled=true}"
+	creationComplete="init();" >
+
+	<mx:Metadata>
+		[Event("prevSection", type="mx.events.Event")]
+		[Event("nextSection", type="mx.events.Event")]
+	</mx:Metadata>
+	
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var myTitle:String;
+	import mx.collections.*;
+	import leadgine.components.*;
+	
+	
+	[Bindable]
+	public var folderList:XMLList =
+		<>
+		<folder state="unchecked" label="All" isBranch="true" >
+			<folder state="unchecked" label="Alabama" isBranch="true" >	
+		      	<folder state="unchecked" isBranch="true" label="CW" >
+			      	<folder state="unchecked" isBranch="false" label="Birmingham (BHMCR)" />
+			      	<folder state="unchecked" isBranch="false" label="Huntsville (HSVEP)" />
+		      	</folder>
+		    </folder>
+		    <folder state="unchecked" label="Arkansas" isBranch="true" >	
+				<folder  state="unchecked" isBranch="true" label="CP" >
+					<folder state="unchecked" isBranch="false" label="Little Rock (LITSH)" />
+				</folder>
+				<folder  state="unchecked" isBranch="true" label="ST" >
+					<folder state="unchecked" isBranch="false" label="Bentonville-Rogers (RGGAR)" />
+				</folder>
+			</folder>
+		</folder>		
+		</>;
+	
+	[Bindable]
+	public var folderCollection:XMLListCollection;
+	
+	private function init() : void
+	{
+		folderCollection = new XMLListCollection(folderList);
+		checkTree.dataProvider = folderCollection;
+		checkTree.expandItem([0], true, true);
+	}
+		]]>
+	</mx:Script>
+	
+
+	<mx:VBox styleName="containerStyle" width="100%" height="100%">
+		<mx:Label text="{myTitle}" styleName="secTitle" />
+		<mx:HBox width="100%" height="100%" paddingLeft="20" paddingRight="20">
+			<mx:Tree
+					id="checkTree"
+					itemRenderer="leadgine.components.CheckTreeRenderer"
+					labelField="@label"
+		 			width="100%" height="100%"
+		 			showRoot="true"
+		 			 >
+		 	</mx:Tree>
+		</mx:HBox>
+		<components:NavigationFooter id="navFooter"
+			prevSection="dispatchEvent( new Event( 'prevSection' ) );"
+			nextSection="dispatchEvent( new Event( 'nextSection' ) );"
+		/>
+	</mx:VBox>
+</mx:VBox>

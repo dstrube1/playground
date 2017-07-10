@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	backgroundGradientColors="[#3510f0, #5df098]">
+    
+    <mx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+            import mx.containers.VBox;
+            import flash.events.*;
+            
+            [Bindable]
+            private var tf:Array = [false,true];
+            
+            [Bindable]
+            private var windows:ArrayCollection = new ArrayCollection();
+            
+            [Bindable]
+            private var winControlsEnabled:Boolean = false;
+            
+            private function createNewWindow():void{
+                // create initOptions
+                var initOptions:NativeWindowInitOptions  =  new NativeWindowInitOptions();
+                //initOptions.appearsInWindowMenu = true;
+                //initOptions.hasMenu = true;
+                initOptions.resizable = winResizable.selectedItem;
+                initOptions.transparent = winTransparent.selectedItem;
+                if (initOptions.transparent){
+	                initOptions.systemChrome = NativeWindowSystemChrome.NONE;
+                }else{
+	                initOptions.systemChrome = NativeWindowSystemChrome.STANDARD;
+                }
+                // create windows
+                var newWindow:NativeWindow = new NativeWindow(initOptions);
+                newWindow.title = winTitle.text;
+                newWindow.alwaysInFront = winAlwaysInFront.selectedItem;
+                newWindow.stage.addChild( new VBox() );                
+                newWindow.width = winWidth.value;
+                newWindow.height = winHeight.value;
+                newWindow.x = winX.value;
+                newWindow.y = winY.value;
+                newWindow.addEventListener(flash.events.Event.CLOSE, closeEvent);
+                // add new window to ArrayCollection
+                windows.addItem(newWindow);
+                winControlsEnabled = true;
+                winY.value = windows.length * 50;
+            }
+            
+            private function closeEvent(event:Event):void{
+                // remove window from ArrayCollection when it closes
+                windows.removeItemAt(windows.getItemIndex(event.target));
+                if(windows.length == 0){
+                    winControlsEnabled = false;
+                    winY.value = 0;
+                }
+            }
+            
+            private function testForWindows(windows:ArrayCollection):Boolean{
+                if(windows.length > 0){
+                    return true;
+                }
+                return false;
+            }
+        ]]>
+    </mx:Script>
+    <mx:Label x="96" y="22" text="Window Creation Options"/>
+    <mx:ComboBox id="winAlwaysInFront" dataProvider="{tf}" x="177" y="89" width="64"/>
+    <mx:ComboBox id="winResizable" dataProvider="{tf}" x="177" y="226" width="64"/>
+    <mx:ComboBox id="winTransparent" dataProvider="{tf}" x="177" y="256" width="64"/>
+    <mx:TextInput id="winTitle" text="Window {windows.length + 1}"  x="176" y="59"/>
+    <mx:NumericStepper id="winWidth" maximum="500" minimum="100" stepSize="100"  y="119" value="500" x="176"/>
+    <mx:NumericStepper id="winHeight" maximum="500" minimum="100" stepSize="100"  x="176" y="145" value="300"/>
+    <mx:NumericStepper id="winX" maximum="500" minimum="50" stepSize="50"  x="176" y="171" value="50"/>
+    <mx:NumericStepper id="winY" maximum="500" minimum="50" stepSize="50"  x="176" y="197" value="0"/>
+    <mx:Label x="28" y="91" text="Window Always in front" width="141"/>
+    <mx:Label x="27" y="61" text="Window Title" width="141"/>
+    <mx:Label x="28" y="121" text="Window Width" width="140"/>
+    <mx:Label x="28" y="147" text="Window Height" width="140"/>
+    <mx:Label x="28" y="173" text="Window x" width="140"/>
+    <mx:Label x="28" y="199" text="Window y" width="140"/>
+    <mx:Label x="29" y="228" text="Window Resizable" width="140"/>
+    <mx:Label x="29" y="258" text="Window Transparent" width="140"/>
+    <mx:Button click="this.createNewWindow()" x="188" y="286" label="Create Window"/>
+    
+    <mx:VRule x="344" y="0" height="341" width="3"/>
+    
+    <mx:Label x="375" y="22" text="Window Controls"/>
+    <mx:ComboBox x="375" y="48" id="winId" dataProvider="{windows}" labelField="title" width="127"/>
+    <mx:Button x="375" y="81" label="Maximize Window" click="winId.selectedItem.maximize()" enabled="{winControlsEnabled}"/>
+    <mx:Button x="375" y="111" label="Minimize Window" click="winId.selectedItem.minimize()" width="127" enabled="{winControlsEnabled}"/>
+    <mx:Button x="375" y="141" label="Restore Window" click="winId.selectedItem.restore()" width="127" enabled="{winControlsEnabled}"/>
+    <mx:Button x="375" y="171" label="Close Window" click="winId.selectedItem.close()" width="127" enabled="{winControlsEnabled}"/>
+    
+</mx:WindowedApplication>

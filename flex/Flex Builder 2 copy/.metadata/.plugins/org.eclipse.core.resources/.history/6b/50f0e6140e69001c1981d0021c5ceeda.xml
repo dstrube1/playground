@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+ xmlns:mx="http://www.adobe.com/2006/mxml" 
+ layout="absolute">
+<mx:Script>
+	<![CDATA[
+		[Bindable]
+		public var mystring:String = "blah";
+	]]>
+</mx:Script>
+<mx:Button id="a" label="Here I am." click="mx.controls.Alert.show('Rock you like a hurricane.')" toolTip="{mystring}"/>
+</mx:Application>

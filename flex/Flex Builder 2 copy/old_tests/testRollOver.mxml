@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+public function main():void{
+	// main button
+	var spriteButton:Sprite = new Sprite();
+	spriteButton.name = "spriteButton";
+	
+	// graphics
+	var spriteGraphics1:Sprite = createGraphics("spriteGraphics1", 0xFF, 50, 50, 25);
+	var spriteGraphics2:Sprite = createGraphics("spriteGraphics2", 0x80, 50, 50, 15);
+	
+	// add to display list
+	spriteButton.addChild(spriteGraphics1);
+	spriteButton.addChild(spriteGraphics2);
+	addChild(spriteButton);
+	
+	// events
+	spriteButton.addEventListener(MouseEvent.ROLL_OVER, over);
+	spriteButton.addEventListener(MouseEvent.ROLL_OUT, out);
+	//~spriteButton.addEventListener(MouseEvent.MOUSE_OVER, over);
+	//~spriteButton.addEventListener(MouseEvent.MOUSE_OUT, out);
+
+	function over(evt:MouseEvent):void {
+	    Alert.show("over: " + evt.target.name);
+	}
+	function out(evt:MouseEvent):void {
+	    Alert.show("out: " + evt.target.name);
+	}
+	
+	// create circles
+	function createGraphics(name:String, color:uint, x:Number, y:Number, radius:Number):Sprite {
+	    var circle:Sprite = new Sprite();
+	    circle.name = name;
+	    circle.graphics.beginFill(color);
+	    circle.graphics.drawCircle(x, y, radius);
+	    return circle;
+	}
+}
+		]]>
+	</mx:Script>
+</mx:Canvas>

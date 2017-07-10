@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:local="*">
+<local:FavAnalysisTab  width="191" left="0" top="0" height="247"/>
+<mx:Canvas height="375" top="10" width="631" x="199">
+	<mx:SWFLoader source="segmentheatmap.swf" scaleContent="true" 
+		 x="10" y="10" height="355" />
+</mx:Canvas>
+<local:AlertPane height="150" width="181" left="10" y="245"/>
+</mx:Application>

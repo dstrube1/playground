@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" 
+	xmlns:ns1="com.dotcomit.rss.*" creationComplete="init()">
+
+	<mx:Script>
+		<![CDATA[
+			import com.dotcomit.rss.RSSDelegateAS;
+			
+			[Bindable] private var rssDelegate : RSSDelegateAS = 
+							new RSSDelegateAS();
+			
+			private function init():void{
+				rssDelegate.update();
+			}
+		]]>
+	</mx:Script>
+	
+<!--
+	<ns1:RSSDelegate x="341" y="314" id="rssDelegate">
+	</ns1:RSSDelegate>-->
+
+	<mx:Text x="10" y="10" text="{rssDelegate.title}" width="472"/>
+	<mx:TextArea x="10" y="36" width="472" height="214" 
+				text="{rssDelegate.description}"/>
+	
+</mx:Application>

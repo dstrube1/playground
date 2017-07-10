@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	creationComplete="init()">
+
+<mx:Script>
+	<![CDATA[
+		import com.dotcomit.rss.IRSSDelegate;
+		
+		[Bindable] public var rssDelegate : IRSSDelegate ;
+		
+		private function init():void{
+			rssDelegate.update();
+		}
+	]]>
+</mx:Script>
+
+<mx:Text x="10" y="10" 
+	text="{rssDelegate.title}" width="472"/>
+<mx:TextArea x="10" y="36" width="472" height="214" 
+	text="{rssDelegate.description}"/>
+<mx:Button click="rssDelegate.update()" 
+	label="Refresh" />
+</mx:VBox>

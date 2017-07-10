@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base.lenz.frame:BaseLenzFrame xmlns:base.lenz.frame="base.lenz.frame.*" xmlns:mx="http://www.adobe.com/2006/mxml"
+	implements="base.lenz.frame.LenzFrame" 
+	title="PharmaLenz"
+	>
+	
+		<mx:Script>
+		<![CDATA[
+			import base.event.AppModeEvent;
+			import app.config.BladeFactory;
+			import base.blade.BladeItem;
+			import base.event.LenzInitializedEvent;
+			import app.config.LenzFactory;
+			import base.log.Logger;
+			import base.lenz.panel.PanelBuilder;
+			import base.lenz.panel.LenzPanel;
+			import lenz.main.site_select.SiteSelectionLenz;
+		
+			import lenz.intro.IntroLenz;
+		
+		
+			public override function onFrameCreationComplete():void {
+
+				//logger.debug("introLenzFrame: onFrameCreationComplete");								
+				
+				currentLenz = LenzFactory.getLenz(IntroLenz.LENZ_ID);
+
+				currentLenz.setLenzFrame(this);
+				
+				currentLenz.initialize();
+			
+
+			}
+
+
+			protected override function activateFrame():void {
+				
+				
+				//logger.debug("IntroLenzFrame: activateFrame()");
+				
+				var cass:BladeItem = BladeFactory.getBladeItem("cass");
+
+				//logger.debug("Site Selection blade item: "+cass);
+				
+				if (cass != null) {
+				
+
+				
+					cass.visible = true;
+
+	
+					cass.setClickFunction( selectLenz, [SiteSelectionLenz.LENZ_ID] );
+
+/*
+					cass.setClickFunction( function():void {
+						
+						logger.debug("Firing Intro Success event");
+						
+						var e:Event = new AppModeEvent(AppModeEvent.INTRO_SUCCESS);
+						
+						this.dispatchEvent(e);
+												
+					}, []);
+*/
+					
+					menu.addBladeItem(cass);
+					
+					
+					
+				} else {
+					//logger.error("Unable to instantiate the Country Allocation blade item");
+				}
+				
+				
+				var settings:BladeItem = BladeFactory.getBladeItem("settings");
+				
+				if (settings != null) {
+					settings.visible = true;
+					
+					menu.addConfigItem(settings);
+				} else {
+					//logger.error("Unable to instantiate the Config blade item");
+				}
+				
+			}
+			
+			protected override function selectLenz( data:Array ):void {
+				var e:Event = new AppModeEvent(AppModeEvent.INTRO_SUCCESS);
+				
+				this.dispatchEvent(e);
+				
+				super.selectLenz(data);
+			}
+			
+			
+		]]>
+	</mx:Script>
+
+
+</base.lenz.frame:BaseLenzFrame>

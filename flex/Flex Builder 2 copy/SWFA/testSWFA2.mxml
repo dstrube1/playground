@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+    creationComplete="SWFAddress.onChange=handleSWFAddress">
+
+    <mx:Script>
+        <![CDATA[
+
+            private function handleSWFAddress():void
+            {
+                var path:String = SWFAddress.getPath();
+                switch (path) {
+                    case "/Home":
+                        content.selectedIndex = 0;
+                        break;
+                    case "/About":
+                        content.selectedIndex = 1;
+                        break;
+                    case "/Contact":
+                        content.selectedIndex = 2;
+                        break;
+                }
+            }
+            private function setURL(event:Event):void
+            {
+                SWFAddress.setTitle('My Title: ' + event.target.selectedChild.label);
+                SWFAddress.setValue('/' + event.target.selectedChild.label);
+            }
+
+        ]]>
+    </mx:Script>
+
+    <mx:TabNavigator height="100%" width="100%" id="content" change="setURL(event)">
+        <mx:VBox label="Home" />
+        <mx:VBox label="About" />
+        <mx:VBox label="Contact" />
+
+    </mx:TabNavigator>
+
+</mx:Application>

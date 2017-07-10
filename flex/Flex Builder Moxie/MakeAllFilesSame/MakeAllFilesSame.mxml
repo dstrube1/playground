@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import flash.filesystem.File;
+			
+			//I'm not doing a lot of good practices here to verify the data is good
+			//because I'm the one giving the data
+			public function go():void{
+				var dir:File = new File();
+				dir.nativePath = where.text;
+				var sourceFile:File = new File();
+				sourceFile.nativePath = sourcefile.text; 
+				//to make things easy, must give full path while running^^^
+				//var list:String = "";
+				var fr:FileReference = new FileReference();
+				if (dir.isDirectory){
+					//Alert.show("valid dir");
+					for each (var file:File in dir.listDirectory())
+					{
+						if (!file.isDirectory){
+							if (file.name.indexOf(ext.text)!=-1){
+								//list+=file.name;
+								//list+="\n";
+								fr = file.resolve(file.nativePath);
+								file.deleteFile();
+								sourceFile.copyTo(fr);
+								//list+="delete "+file.nativePath+"\n";
+								//list+="copy "+sourceFile.nativePath+" over it\n";
+							}
+						}
+					}
+					//Alert.show(list);
+					Alert.show("Done.");
+				}//else Alert.show("invalid dir");
+			}
+		]]>
+	</mx:Script>
+	<mx:Button x="10" y="92" label="Go" click="go()"/>
+	<mx:Label x="10" y="10" text="Where are we doing this"/>
+	<mx:TextInput x="158" y="8" id="where"/>
+	<mx:Label x="10" y="40" text="What is the extension"/>
+	<mx:TextInput x="158" y="38" id="ext"/>
+	<mx:Label x="10" y="66" text="What is the source file"/>
+	<mx:TextInput x="158" y="68" id="sourcefile"/>
+	
+</mx:WindowedApplication>

@@ -1,0 +1,146 @@
+package base.db
+{
+	import base.db.MemDB;
+	import base.log.Logger;
+
+	public class BaseMemDB implements MemDB
+	{
+		
+		
+		private var logger:Logger = Logger.getLogger("BaseMemDB");
+		
+		private var _db:Array = [];
+		
+		public function add( o:Object ):void {
+
+			_db.push(o);
+			
+		}
+		
+		
+		public function addAll( a:Array):void {
+			
+			for each (var o:Object in a) {
+				add(o);				
+			}
+			
+		}
+		
+		
+		public function deleteRow( filter:Object ):int {
+			
+			
+			var i:int = 0;
+			var deleteCount:int = 0;
+			
+			var done:Boolean = false;
+			
+			do {
+				
+				var rec:Object = _db[i];
+				if (matchesFilter(rec, filter)) {
+					_db.splice(i, 1);
+					deleteCount++;
+				} else {
+					i++;
+				}
+				
+				if (i == _db.length) {
+					done = true;
+				}
+				
+			} while (!done);
+			
+						
+			return(deleteCount);
+			
+		}
+		
+		
+		
+		public function clear():void {
+			_db.splice(0, _db.length);
+		}
+		
+		
+		public function fetch( filter:Object=null ):Array {
+
+
+			var rs:Array = [];
+			
+			for each (var rec:Object in _db) {
+				
+				if (matchesFilter(rec, filter)) {
+					
+					rs.push(rec);
+					
+				}
+				
+			}
+
+
+			return(rs);
+			
+		}
+		
+		
+		
+		private function matchesFilter( rec:Object, filter:Object):Boolean {
+
+			var match:Boolean = true;  // if the filter is empty, every record should match.			
+
+			if (filter == null) {
+				return true;
+			}
+			
+			if (rec == null) {
+				return false;
+			}
+			
+			for ( var key:String in filter) {
+				
+				if (rec.hasOwnProperty(key)) {
+
+					//logger.debug("key: "+key+" matching "+rec[key]+" to filter: "+filter[key]);
+
+					// adding OR logic.  if filter[key] is an array, we need to match any of the
+					// elements in the array
+					
+					var filterValue:Object = filter[key];
+					
+					if (filterValue is Array) {
+
+						var found:Boolean = false;
+						
+						var filterArray:Array = filterValue as Array;
+						
+						for each (var subFilterValue:String in filterArray) {
+							if (rec[key] == subFilterValue) {
+								found = true;
+							}						
+							
+						}
+						
+						if (!found) {
+							return false;
+						}
+						
+					} else {
+					
+						if (rec[key] != filterValue) {
+							return(false);
+						}
+					}
+															
+				} else {
+					return(false);
+				}
+				
+			}
+
+
+			return(match);			
+		}
+		
+	}
+}

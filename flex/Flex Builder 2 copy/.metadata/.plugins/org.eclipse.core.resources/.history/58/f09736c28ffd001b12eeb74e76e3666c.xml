@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	color="black" borderThickness="1" >
+ 
+<mx:Canvas id="glassPane" alpha="0.01" click="callClickFunction()" 
+	height="{content.height}" width="{content.width}" x="0" y="0" />
+<mx:Canvas borderColor="white" borderThickness="1" id="content" height="100%" width="100%" x="0" y="0">	
+</mx:Canvas>
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+//			import base.event.SelectLenzEvent;
+//			import app.App;
+		
+		    private var _components:Array;
+		    private var _title:String;
+	     
+		    public function set subComponents( a:Array ) : void
+	     	{
+	        	 _components = a;
+	     	}
+	     	 
+	     	public function set title(s:String):void{}
+	     	 
+		     private function addComponents() : void 
+		     {
+		          content.removeAllChildren();
+		          
+		          if (_components != null) {
+			          for(var i:int=0; i < _components.length; i++) {
+			               content.addChild( _components[i] );
+			          }
+			      }
+		     }
+		     
+
+
+			private var _clickFunction:Function;
+			private var _varList:Object;
+		     
+		     //when clicked, do this thing (func) with these parameters(varList)
+			public function setClickFunction( func:Function, varList:Object):void {
+		    	_clickFunction = func;
+		    	_varList = varList;
+			}
+			
+ 			protected function callClickFunction():void {
+ 				Alert.show("Click function called!");
+ 				
+ 				
+		     	if(_clickFunction != null) {
+					_clickFunction(_varList);		     
+		     	}
+		     }
+/*
+		     
+		     private function selectLenz( lenzId:String):void {
+				
+				var ev:SelectLenzEvent = new SelectLenzEvent(lenzId);
+				
+				this.dispatchEvent(ev); 
+			}
+*/
+				
+		]]>
+	</mx:Script>
+</mx:Canvas>

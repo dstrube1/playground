@@ -1,0 +1,1226 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
+<meta content="Validator,mx.validators.Validator,MASTER_CARD,VISA,AMERICAN_EXPRESS,DISCOVER,DINERS_CLUB,maxLength,minLength,tooLongError,tooShortError,allowedFormatChars,domain,invalidCharError,invalidDomainError,wrongCAFormatError,wrongLengthError,wrongUSFormatError,ROMAN_LETTERS,DECIMAL_DIGITS,required,subFields,actualTrigger,actualListeners,enabled,listener,property,resourceManager,source,trigger,triggerEvent,requiredFieldError,expression,flags,noExpressionError,noMatchError,US_OR_CANADA,US_ONLY,cardNumberProperty,cardTypeProperty,allowedFormatChars,cardNumberListener,cardNumberSource,cardTypeListener,cardTypeSource,invalidCharError,invalidNumberError,noNumError,noTypeError,wrongLengthError,wrongTypeError,matchedIndex,matchedString,matchedSubstrings,errorCode,errorMessage,isError,subField,alignSymbol,allowNegative,currencySymbol,decimalSeparator,maxValue,minValue,precision,thousandsSeparator,currencySymbolError,decimalPointCountError,exceedsMaxError,invalidCharError,invalidFormatCharsError,lowerThanMinError,negativeError,precisionError,separationError,ANY,LEFT,RIGHT,errorString,validationSubField,dayProperty,monthProperty,yearProperty,allowedFormatChars,dayListener,daySource,inputFormat,monthListener,monthSource,validateAsString,yearListener,yearSource,formatError,invalidCharError,wrongDayError,wrongLengthError,wrongMonthError,wrongYearError,invalidCharError,invalidDomainError,invalidIPDomainError,invalidPeriodsInDomainError,missingAtSignError,missingPeriodInDomainError,missingUsernameError,tooManyAtSignsError,allowNegative,decimalSeparator,domain,maxValue,minValue,precision,thousandsSeparator,decimalPointCountError,exceedsMaxError,integerError,invalidCharError,invalidFormatCharsError,lowerThanMinError,negativeError,precisionError,separationError,allowedFormatChars,invalidCharError,wrongLengthError,allowedFormatChars,invalidCharError,wrongFormatError,zeroStartError,validateString,doValidation,validateZipCode,doValidation,validateAll,initialized,resourcesChanged,addListenerHandler,removeListenerHandler,isRealValue,validate,getValueFromSource,doValidation,handleResults,doValidation,validateCreditCard,doValidation,validateCurrency,doValidation,validationResultHandler,validateDate,doValidation,validateEmail,doValidation,validateNumber,doValidation,validatePhoneNumber,doValidation,validateSocialSecurity,doValidation" name="keywords">
+<title>mx.validators.Validator (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Validator - Flex 3 Language Reference';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../index.html?mx/validators/Validator.html&amp;mx/validators/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Validator</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Validator"); titleBar_setSubNav(true,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.validators</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  Validator<a href="../../mx/core/IMXMLObject.html">IMXMLObject</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Validator  <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../flash/events/EventDispatcher.html">EventDispatcher</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../Object.html">Object</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="../../mx/core/IMXMLObject.html">IMXMLObject</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="../../mx/validators/CreditCardValidator.html">CreditCardValidator</a>, <a href="../../mx/validators/CurrencyValidator.html">CurrencyValidator</a>, <a href="../../mx/validators/DateValidator.html">DateValidator</a>, <a href="../../mx/validators/EmailValidator.html">EmailValidator</a>, <a href="../../mx/validators/NumberValidator.html">NumberValidator</a>, <a href="../../mx/validators/PhoneNumberValidator.html">PhoneNumberValidator</a>, <a href="../../mx/validators/RegExpValidator.html">RegExpValidator</a>, <a href="../../mx/validators/SocialSecurityValidator.html">SocialSecurityValidator</a>, <a href="../../mx/validators/StringValidator.html">StringValidator</a>, <a href="../../mx/validators/ZipCodeValidator.html">ZipCodeValidator</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  The Validator class is the base class for all Flex validators. 
+  This class implements the ability for a validator to make a field
+  required, which means that the user must enter a value in the field
+  or the validation fails.
+ 
+  <p></p>
+<a name="mxmlSyntaxSummary"></a><span class="classHeaderTableLabel">MXML Syntax</span><span style="display:none" id="showMxmlLink"><a onclick="toggleMXMLOnly();" href="#mxmlSyntaxSummary"><img class="collapsedImage" alt="collapsed" title="collapsed" src="../../images/collapsed.gif">Show MXML Syntax</a>
+<br>
+</span><span id="hideMxmlLink"><a onclick="toggleMXMLOnly();" href="#mxmlSyntaxSummary"><img class="expandedImage" alt="expanded" title="expanded" src="../../images/expanded.gif">Hide MXML Syntax</a></span>
+<div class="mxmlSyntax" id="mxmlSyntax">   <p>The Validator class defines the following tag attributes, 
+  which all of its subclasses inherit:</p>
+   <pre>
+  &lt;mx:Validator 
+    enabled="true|false" 
+    listener="<i>Value of the source property</i>" 
+    property="<i>No default</i>" 
+    required="true|false" 
+    requiredFieldError="This field is required." 
+    source="<i>No default</i>" 
+    trigger="<i>Value of the source property</i>" 
+    triggerEvent="valueCommit" 
+  /&gt;
+  </pre>
+   </div>
+<script type="text/javascript" language="javascript">
+<!--
+setMXMLOnly();
+--></script>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../mx/events/ValidationResultEvent.html" target="">mx.events.ValidationResultEvent</a>
+<br>
+<a href="ValidationResult.html" target="">mx.validators.ValidationResult</a>
+<br>
+<a href="RegExpValidationResult.html" target="">mx.validators.RegExpValidationResult</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#constructor">constructor</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  A reference to the class object or constructor function for a given object instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#enabled">enabled</a> : <a href="../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription"> 
+      Setting this value to false will stop the validator
+      from performing validation.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#listener">listener</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+      Specifies the validation listener.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#property">property</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription">
+      A String specifying the name of the property
+      of the source object that contains 
+      the value to validate.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#prototype">prototype</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">[static] 
+  A reference to the prototype object of a class or function object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#required">required</a> : <a href="../../Boolean.html">Boolean</a> = true<div class="summaryTableDescription">
+      If true, specifies that a missing or empty 
+      value causes a validation error.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#requiredFieldError">requiredFieldError</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription">
+      Error message when a value is missing and the 
+      required property is true.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#source">source</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+      Specifies the object containing the property to validate.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#trigger">trigger</a> : <a href="../../flash/events/IEventDispatcher.html">IEventDispatcher</a>
+<div class="summaryTableDescription">
+      Specifies the component generating the event that triggers the validator.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#triggerEvent">triggerEvent</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription">
+      Specifies the event that triggers the validation.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#actualListeners">actualListeners</a> : <a href="../../Array.html">Array</a>
+<div class="summaryTableDescription">[read-only] 
+      Contains an Array of listener objects, if any,  
+      or the source object.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#actualTrigger">actualTrigger</a> : <a href="../../flash/events/IEventDispatcher.html">IEventDispatcher</a>
+<div class="summaryTableDescription">[read-only] 
+      Contains the trigger object, if any,
+      or the source object.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#resourceManager">resourceManager</a> : <a href="../../mx/resources/IResourceManager.html">IResourceManager</a>
+<div class="summaryTableDescription">[read-only] 
+   A reference to the object which manages
+   all of the application's localized resources.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#subFields">subFields</a> : <a href="../../Array.html">Array</a>
+<div class="summaryTableDescription">
+      An Array of Strings containing the names for the properties contained 
+      in the value Object passed to the validate() method.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#Validator()">Validator</a>()</div>
+<div class="summaryTableDescription">
+      Constructor.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#addEventListener()">addEventListener</a>(type:<a href="../../String.html">String</a>, listener:<a href="../../Function.html">Function</a>, useCapture:<a href="../../Boolean.html">Boolean</a> = false, priority:<a href="../../int.html">int</a> = 0, useWeakReference:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+    Registers an event listener object with an EventDispatcher object so that the listener 
+    receives notification of an event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#dispatchEvent()">dispatchEvent</a>(event:<a href="../../flash/events/Event.html">Event</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Dispatches an event into the event flow.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#hasEventListener()">hasEventListener</a>(type:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Checks whether the EventDispatcher object has any listeners registered for a specific type 
+    of event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">hasOwnProperty</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an object has a specified property defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initialized()">initialized</a>(document:<a href="../../Object.html">Object</a>, id:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+       Called automatically by the MXML compiler when the Validator
+       is created using an MXML tag.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">isPrototypeOf</a>(theClass:<a href="../../Object.html">Object</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an instance of the Object class is in the prototype chain of the object specified 
+  as the parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">propertyIsEnumerable</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether the specified property exists and is enumerable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#removeEventListener()">removeEventListener</a>(type:<a href="../../String.html">String</a>, listener:<a href="../../Function.html">Function</a>, useCapture:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+    Removes a listener from the EventDispatcher object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#setPropertyIsEnumerable()">setPropertyIsEnumerable</a>(name:<a href="../../String.html">String</a>, isEnum:<a href="../../Boolean.html">Boolean</a> = true):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+     Sets the availability of a dynamic property for loop operations.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#toString()">toString</a>():<a href="../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the string representation of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#validate()">validate</a>(value:<a href="../../Object.html">Object</a> = null, suppressEvents:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../mx/events/ValidationResultEvent.html">ValidationResultEvent</a>
+</div>
+<div class="summaryTableDescription">
+      Performs validation and optionally notifies
+      the listeners of the result.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#validateAll()">validateAll</a>(validators:<a href="../../Array.html">Array</a>):<a href="../../Array.html">Array</a>
+</div>
+<div class="summaryTableDescription">[static] 
+      Invokes all the validators in the validators Array.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#valueOf()">valueOf</a>():<a href="../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the primitive value of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#willTrigger()">willTrigger</a>(type:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Checks whether an event listener is registered with this EventDispatcher object or any of 
+    its ancestors for the specified event type.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addListenerHandler()">addListenerHandler</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Sets up all of the listeners for the 
+      valid and invalid
+      events dispatched from the validator.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#doValidation()">doValidation</a>(value:<a href="../../Object.html">Object</a>):<a href="../../Array.html">Array</a>
+</div>
+<div class="summaryTableDescription">
+      Executes the validation logic of this validator, 
+      including validating that a missing or empty value
+      causes a validation error as defined by
+      the value of the required property.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getValueFromSource()">getValueFromSource</a>():<a href="../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+      Returns the Object to validate.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#handleResults()">handleResults</a>(errorResults:<a href="../../Array.html">Array</a>):<a href="../../mx/events/ValidationResultEvent.html">ValidationResultEvent</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a ValidationResultEvent from the Array of error results.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isRealValue()">isRealValue</a>(value:<a href="../../Object.html">Object</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+      Returns true if value is null.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeListenerHandler()">removeListenerHandler</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Disconnects all of the listeners for the 
+      valid and invalid
+      events dispatched from the validator.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#resourcesChanged()">resourcesChanged</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   This method is called when a Validator is constructed,
+   and again whenever the ResourceManager dispatches
+   a "change" Event to indicate
+   that the localized resources have changed in some way.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<div class="showHideLinks">
+<div class="hideInheritedEvent" id="hideInheritedEvent">
+<a onclick="javascript:setInheritedVisible(false,'Event');" href="#eventSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Events</a>
+</div>
+<div class="showInheritedEvent" id="showInheritedEvent">
+<a onclick="javascript:setInheritedVisible(true,'Event');" href="#eventSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Events</a>
+</div>
+</div>
+<table id="summaryTableEvent" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th> Summary </th><th class="summaryTableOwnerCol">Defined By</th>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#event:activate">activate</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when Flash Player or the and AIR application gains operating system focus and becomes active.</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../flash/events/EventDispatcher.html#event:deactivate">deactivate</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when Flash Player loses operating system focus and is becoming inactive.</td><td class="summaryTableOwnerCol"><a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:invalid">invalid</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when validation fails.</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:valid">valid</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when validation succeeds.</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+</table>
+</div>
+<a name="protectedConstantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Constants</div>
+<table id="summaryTableProtectedConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#DECIMAL_DIGITS">DECIMAL_DIGITS</a> : <a href="../../String.html">String</a> = "0123456789"<div class="summaryTableDescription">[static] 
+      A String containing the decimal digits 0 through 9.</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ROMAN_LETTERS">ROMAN_LETTERS</a> : <a href="../../String.html">String</a> = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"<div class="summaryTableDescription">[static] 
+      A string containing the upper- and lower-case letters
+      of the Roman alphabet  ("A" through "Z" and "a" through "z").</div>
+</td><td class="summaryTableOwnerCol">Validator</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="actualListeners"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">actualListeners</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>actualListeners:<a href="../../Array.html">Array</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+      Contains an Array of listener objects, if any,  
+      or the source object. Used to determine which object
+      to notify about the validation result.
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;protected function get actualListeners():<a href="../../Array.html">Array</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="actualTrigger"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">actualTrigger</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>actualTrigger:<a href="../../flash/events/IEventDispatcher.html">IEventDispatcher</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+      Contains the trigger object, if any,
+      or the source object. Used to determine the listener object
+      for the <code>triggerEvent</code>. 
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;protected function get actualTrigger():<a href="../../flash/events/IEventDispatcher.html">IEventDispatcher</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="enabled"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">enabled</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>enabled:<a href="../../Boolean.html">Boolean</a></code>&nbsp;&nbsp;[read-write] <p></p><p> 
+      Setting this value to <code>false</code> will stop the validator
+      from performing validation. 
+      When a validator is disabled, it dispatch no events, 
+      and the <code>validate()</code> method returns null.
+           </p><p> The default value is <code>true</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get enabled():<a href="../../Boolean.html">Boolean</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set enabled(value:<a href="../../Boolean.html">Boolean</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="listener"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">listener</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>listener:<a href="../../Object.html">Object</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Specifies the validation listener.
+           <p>If you do not specify a listener,
+      Flex uses the value of the <code>source</code> property. 
+      After Flex determines the source component,
+      it changes the border color of the component,
+      displays an error message for a failure,
+      or hides any existing error message for a successful validation.</p>
+          </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get listener():<a href="../../Object.html">Object</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set listener(value:<a href="../../Object.html">Object</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="property"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">property</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>property:<a href="../../String.html">String</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      A String specifying the name of the property
+      of the <code>source</code> object that contains 
+      the value to validate.
+      The property is optional, but if you specify <code>source</code>,
+      you should set a value for this property as well.
+      
+      </p><p> The default value is <code>null</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get property():<a href="../../String.html">String</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set property(value:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="required"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">required</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var required:<a href="../../Boolean.html">Boolean</a> = true</code>
+<p></p><p>
+      If <code>true</code>, specifies that a missing or empty 
+      value causes a validation error. 
+      
+      </p><p> The default value is <code>true</code>.</p>
+</div>
+<a name="propertyDetail"></a><a name="requiredFieldError"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">requiredFieldError</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>requiredFieldError:<a href="../../String.html">String</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Error message when a value is missing and the 
+      <code>required</code> property is <code>true</code>. 
+      
+      </p><p> The default value is <code>"This field is required."</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get requiredFieldError():<a href="../../String.html">String</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set requiredFieldError(value:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="resourceManager"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">resourceManager</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>resourceManager:<a href="../../mx/resources/IResourceManager.html">IResourceManager</a></code>&nbsp;&nbsp;[read-only] <p>
+   A reference to the object which manages
+   all of the application's localized resources.
+   This is a singleton instance which implements
+   the IResourceManager interface.
+  </p><p>
+   </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;protected function get resourceManager():<a href="../../mx/resources/IResourceManager.html">IResourceManager</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="source"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">source</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>source:<a href="../../Object.html">Object</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Specifies the object containing the property to validate. 
+      Set this to an instance of a component or a data model. 
+      You use data binding syntax in MXML to specify the value.
+      This property supports dot-delimited Strings
+      for specifying nested properties. 
+           If you specify a value to the <code>source</code> property,
+      then you should specify a value to the <code>property</code>
+      property as well. 
+      The <code>source</code> property is optional.
+      
+      </p><p> The default value is <code>null</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get source():<a href="../../Object.html">Object</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set source(value:<a href="../../Object.html">Object</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="subFields"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">subFields</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var subFields:<a href="../../Array.html">Array</a></code>
+<p></p><p>
+      An Array of Strings containing the names for the properties contained 
+      in the <code>value</code> Object passed to the <code>validate()</code> method. 
+      For example, CreditCardValidator sets this property to 
+      <code>[ "cardNumber", "cardType" ]</code>. 
+      This value means that the <code>value</code> Object 
+      passed to the <code>validate()</code> method 
+      should contain a <code>cardNumber</code> and a <code>cardType</code> property. 
+           <p>Subclasses of the Validator class that 
+      validate multiple data fields (like CreditCardValidator and DateValidator)
+      should assign this property in their constructor. </p>
+     </p></div>
+<a name="propertyDetail"></a><a name="trigger"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">trigger</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>trigger:<a href="../../flash/events/IEventDispatcher.html">IEventDispatcher</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Specifies the component generating the event that triggers the validator. 
+      If omitted, by default Flex uses the value of the <code>source</code> property.
+      When the <code>trigger</code> dispatches a <code>triggerEvent</code>,
+      validation executes. 
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get trigger():<a href="../../flash/events/IEventDispatcher.html">IEventDispatcher</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set trigger(value:<a href="../../flash/events/IEventDispatcher.html">IEventDispatcher</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="triggerEvent"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">triggerEvent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>triggerEvent:<a href="../../String.html">String</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Specifies the event that triggers the validation. 
+      If omitted, Flex uses the <code>valueCommit</code> event. 
+      Flex dispatches the <code>valueCommit</code> event
+      when a user completes data entry into a control.
+      Usually this is when the user removes focus from the component, 
+      or when a property value is changed programmatically.
+      If you want a validator to ignore all events,
+      set <code>triggerEvent</code> to the empty string ("").
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get triggerEvent():<a href="../../String.html">String</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set triggerEvent(value:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor Detail</div>
+<a name="Validator()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">Validator</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function Validator()</code>
+<p></p><p>
+      Constructor.
+     </p></div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method Detail</div>
+<a name="addListenerHandler()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addListenerHandler</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function addListenerHandler():<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Sets up all of the listeners for the 
+      <code>valid</code> and <code>invalid</code>
+      events dispatched from the validator. Subclasses of the Validator class 
+      should first call the <code>removeListenerHandler()</code> method, 
+      and then the <code>addListenerHandler()</code> method if 
+      the value of one of their listeners or sources changes. 
+      The CreditCardValidator and DateValidator classes use this function internally. 
+     </p></div>
+<a name="doValidation()"></a><a name="doValidation(Object)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">doValidation</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function doValidation(value:<a href="../../Object.html">Object</a>):<a href="../../Array.html">Array</a></code>
+<p></p><p>
+      Executes the validation logic of this validator, 
+      including validating that a missing or empty value
+      causes a validation error as defined by
+      the value of the <code>required</code> property.
+           <p>If you create a subclass of a validator class,
+      you must override this method. </p>
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:<a href="../../Object.html">Object</a></code> &mdash; Value to validate.
+           </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Array.html">Array</a></code> &mdash; For an invalid result, an Array of ValidationResult objects,
+      with one ValidationResult object for each field examined
+      by the validator that failed validation.
+           </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="ValidationResult.html" target="">mx.validators.ValidationResult</a>
+</div>
+</div>
+<a name="getValueFromSource()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getValueFromSource</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function getValueFromSource():<a href="../../Object.html">Object</a></code>
+<p></p><p>
+      Returns the Object to validate. Subclasses, such as the 
+      CreditCardValidator and DateValidator classes, 
+      override this method because they need
+      to access the values from multiple subfields. 
+           </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Object.html">Object</a></code> &mdash; The Object to validate.
+     </td>
+</tr>
+</table>
+</div>
+<a name="handleResults()"></a><a name="handleResults(Array)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">handleResults</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function handleResults(errorResults:<a href="../../Array.html">Array</a>):<a href="../../mx/events/ValidationResultEvent.html">ValidationResultEvent</a></code>
+<p></p><p>
+      Returns a ValidationResultEvent from the Array of error results. 
+      Internally, this function takes the results from the 
+      <code>doValidation()</code> method and puts it into a ValidationResultEvent object. 
+      Subclasses, such as the RegExpValidator class, 
+      should override this function if they output a subclass
+      of ValidationResultEvent objects, such as the RegExpValidationResult objects, and 
+      needs to populate the object with additional information. You never
+      call this function directly, and you should rarely override it. 
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">errorResults</span>:<a href="../../Array.html">Array</a></code> &mdash; Array of ValidationResult objects.
+     
+      </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../mx/events/ValidationResultEvent.html">ValidationResultEvent</a></code> &mdash; The ValidationResultEvent returned by the <code>validate()</code> method. 
+     </td>
+</tr>
+</table>
+</div>
+<a name="initialized()"></a><a name="initialized(Object,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initialized</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function initialized(document:<a href="../../Object.html">Object</a>, id:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+       Called automatically by the MXML compiler when the Validator
+       is created using an MXML tag.  
+             </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">document</span>:<a href="../../Object.html">Object</a></code> &mdash; The MXML document containing this Validator.
+             </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">id</span>:<a href="../../String.html">String</a></code> &mdash; Ignored.
+      </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="isRealValue()"></a><a name="isRealValue(Object)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isRealValue</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function isRealValue(value:<a href="../../Object.html">Object</a>):<a href="../../Boolean.html">Boolean</a></code>
+<p></p><p>
+      Returns <code>true</code> if <code>value</code> is null. 
+     
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:<a href="../../Object.html">Object</a></code> &mdash; The value to test.
+           </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Boolean.html">Boolean</a></code> &mdash; <code>true</code> if <code>value</code> is null.
+     </td>
+</tr>
+</table>
+</div>
+<a name="removeListenerHandler()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeListenerHandler</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function removeListenerHandler():<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Disconnects all of the listeners for the 
+      <code>valid</code> and <code>invalid</code>
+      events dispatched from the validator. Subclasses should first call the
+      <code>removeListenerHandler()</code> method and then the 
+      <code>addListenerHandler</code> method if 
+      the value of one of their listeners or sources changes. 
+      The CreditCardValidator and DateValidator classes use this function internally. 
+     </p></div>
+<a name="resourcesChanged()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">resourcesChanged</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function resourcesChanged():<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+   This method is called when a Validator is constructed,
+   and again whenever the ResourceManager dispatches
+   a <code>"change"</code> Event to indicate
+   that the localized resources have changed in some way.
+  
+   <p>This event will be dispatched when you set the ResourceManager's
+   <code>localeChain</code> property, when a resource module
+   has finished loading, and when you call the ResourceManager's
+   <code>update()</code> method.</p>
+     <p>Subclasses should override this method and, after calling
+   <code>super.resourcesChanged()</code>, do whatever is appropriate
+   in response to having new resource values.</p>
+     </p></div>
+<a name="validate()"></a><a name="validate(Object,Boolean)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">validate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function validate(value:<a href="../../Object.html">Object</a> = null, suppressEvents:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../mx/events/ValidationResultEvent.html">ValidationResultEvent</a></code>
+<p></p><p>
+      Performs validation and optionally notifies
+      the listeners of the result. 
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:<a href="../../Object.html">Object</a></code> (default = <code>null</code>)<code></code> &mdash; Optional value to validate.
+      If null, then the validator uses the <code>source</code> and
+      <code>property</code> properties to determine the value.
+      If you specify this argument, you should also set the
+      <code>listener</code> property to specify the target component
+      for any validation error messages.
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">suppressEvents</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>false</code>)<code></code> &mdash; If <code>false</code>, then after validation,
+      the validator will notify the listener of the result.
+           </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../mx/events/ValidationResultEvent.html">ValidationResultEvent</a></code> &mdash; A ValidationResultEvent object
+      containing the results of the validation. 
+      For a successful validation, the
+      <code>ValidationResultEvent.results</code> Array property is empty. 
+      For a validation failure, the
+      <code>ValidationResultEvent.results</code> Array property contains
+      one ValidationResult object for each field checked by the validator, 
+      both for fields that failed the validation and for fields that passed. 
+      Examine the <code>ValidationResult.isError</code>
+      property to determine if the field passed or failed the validation. 
+           </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../mx/events/ValidationResultEvent.html" target="">mx.events.ValidationResultEvent</a>
+<br>
+<a href="ValidationResult.html" target="">mx.validators.ValidationResult</a>
+</div>
+</div>
+<a name="validateAll()"></a><a name="validateAll(Array)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">validateAll</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function validateAll(validators:<a href="../../Array.html">Array</a>):<a href="../../Array.html">Array</a></code>
+<p></p><p>
+      Invokes all the validators in the <code>validators</code> Array.
+      Returns an Array containing one ValidationResultEvent object 
+      for each validator that failed.
+      Returns an empty Array if all validators succeed. 
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">validators</span>:<a href="../../Array.html">Array</a></code> &mdash; An Array containing the Validator objects to execute. 
+           </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Array.html">Array</a></code> &mdash; Array of ValidationResultEvent objects, where the Array
+      contains one ValidationResultEvent object for each validator
+      that failed. 
+      The Array is empty if all validators succeed.
+     </td>
+</tr>
+</table>
+</div>
+<div class="detailSectionHeader"> Event Detail </div>
+<a name="event:invalid"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">invalid</td><td class="detailHeaderType">event&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../mx/events/ValidationResultEvent.html"><code>mx.events.ValidationResultEvent</code></a>
+<br>
+<span class="label">ValidationResultEvent.type property = </span><a href="../../mx/events/ValidationResultEvent.html#INVALID"><code>mx.events.ValidationResultEvent.INVALID</code></a>
+<br>
+<p></p><p> 
+  Dispatched when validation fails.
+   </p>
+   The <code>ValidationResultEvent.INVALID</code> constant defines the value of the 
+   <code>type</code> property of the event object for an <code>invalid</code> event.
+   The value of this constant is "invalid".
+     <p>The properties of the event object have the following values:</p>
+   <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td>false</td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td>false</td>
+</tr>
+<tr>
+<td><code>currentTarget</code></td><td>The Object that defines the 
+           event listener that handles the event. For example, if you use 
+           <code>myButton.addEventListener()</code> to register an event listener, 
+           myButton is the value of the <code>currentTarget</code>. </td>
+</tr>
+<tr>
+<td><code>field</code></td><td>The name of the field that failed validation.</td>
+</tr>
+<tr>
+<td><code>message</code></td><td>A single string that contains 
+           every error message from all of the ValidationResult objects in the results Array.</td>
+</tr>
+<tr>
+<td><code>results</code></td><td>An array of ValidationResult objects, 
+           one per validated field.</td>
+</tr>
+<tr>
+<td><code>target</code></td><td>The Object that dispatched the event; 
+           it is not always the Object listening for the event. 
+           Use the <code>currentTarget</code> property to always access the 
+           Object listening for the event.</td>
+</tr></table>
+        </div>
+<a name="event:valid"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">valid</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../mx/events/ValidationResultEvent.html"><code>mx.events.ValidationResultEvent</code></a>
+<br>
+<span class="label">ValidationResultEvent.type property = </span><a href="../../mx/events/ValidationResultEvent.html#VALID"><code>mx.events.ValidationResultEvent.VALID</code></a>
+<br>
+<p></p><p>
+  Dispatched when validation succeeds.
+   </p>
+   The <code>ValidationResultEvent.VALID</code> constant defines the value of the 
+   <code>type</code> property of the event object for a <code>valid</code>event.
+   The value of this constant is "valid".
+     <p>The properties of the event object have the following values:</p>
+   <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td>false</td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td>false</td>
+</tr>
+<tr>
+<td><code>currentTarget</code></td><td>The Object that defines the 
+           event listener that handles the event. For example, if you use 
+           <code>myButton.addEventListener()</code> to register an event listener, 
+           myButton is the value of the <code>currentTarget</code>. </td>
+</tr>
+<tr>
+<td><code>field</code></td><td>An empty String.</td>
+</tr>
+<tr>
+<td><code>message</code></td><td>An empty String.</td>
+</tr>
+<tr>
+<td><code>results</code></td><td>An empty Array.</td>
+</tr>
+<tr>
+<td><code>target</code></td><td>The Object that dispatched the event; 
+           it is not always the Object listening for the event. 
+           Use the <code>currentTarget</code> property to always access the 
+           Object listening for the event.</td>
+</tr></table>
+        </div>
+<div class="detailSectionHeader">Constant Detail</div>
+<a name="constantDetail"></a><a name="DECIMAL_DIGITS"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">DECIMAL_DIGITS</td><td class="detailHeaderType">Constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected static const DECIMAL_DIGITS:<a href="../../String.html">String</a> = "0123456789"</code>
+<p></p><p>
+      A String containing the decimal digits 0 through 9.    
+     </p></div>
+<a name="constantDetail"></a><a name="ROMAN_LETTERS"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ROMAN_LETTERS</td><td class="detailHeaderType">Constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected static const ROMAN_LETTERS:<a href="../../String.html">String</a> = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"</code>
+<p></p><p>
+      A string containing the upper- and lower-case letters
+      of the Roman alphabet  ("A" through "Z" and "a" through "z").
+     </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/validators/Validator.html','mx/validators/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

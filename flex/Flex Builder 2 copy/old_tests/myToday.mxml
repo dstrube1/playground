@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="760" height="300">
+<mx:Script>
+	<![CDATA[
+		import mx.controls.Alert;
+		private function constructionNotice(from:String):void{
+			Alert.show("More functionality coming to "+from);
+		}
+	]]>
+</mx:Script>
+	<mx:Panel x="10" y="10" width="250" height="200" layout="absolute" 
+		click="constructionNotice('Announcements')" title="Announcements">
+		<mx:TextArea borderThickness="0" editable="false"
+			text="k;jafdngkljarngkaj bkjbhnkahgfg" />
+	</mx:Panel>
+	<mx:Panel layout="absolute" x="268" y="10" width="219" height="200"
+		click="constructionNotice('Advisor')" title="Advisor" >
+		<mx:TextArea borderThickness="0" editable="false"
+			text="It has been 7 days since the site screened a subject" />
+	</mx:Panel>
+	<mx:Panel layout="absolute" x="495" y="10" width="196" height="200"
+		click="constructionNotice('Schedule')" title="Schedule" >
+		<mx:TextArea borderThickness="0" editable="false"
+			text="kjdfasnbkfjnbounbkeaj blktbjtb" />
+	</mx:Panel>
+	
+	
+	
+</mx:Canvas>

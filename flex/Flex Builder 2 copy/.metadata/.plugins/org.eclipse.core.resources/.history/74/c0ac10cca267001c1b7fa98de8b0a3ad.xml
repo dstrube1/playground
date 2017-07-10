@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="750" height="470" horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm" horizontalScrollPolicy="off" verticalScrollPolicy="off" color="0x000000" 
+	creationComplete="onCreationComplete()">
+	
+
+			
+<mx:Script><![CDATA[
+	import base.services.MapArray;
+	import mx.controls.Alert;
+	import mx.collections.ArrayCollection;
+	import base.log.Logger;
+	import base.lenz.panel.LenzPanel;
+	import lenz.main.site_select.SiteSelectionLenz;
+		import base.services.LenzService;
+	import base.services.LenzServiceHelper;
+		import base.services.Response;
+	
+	private static var logger:Logger = Logger.getLogger("InvestigatorFinderForm");
+	private var _parent:LenzPanel = null;
+	private static var _self:InvestigatorFinderForm;
+	
+	[Bindable]
+	private var regionArray:ArrayCollection = new ArrayCollection();
+	[Bindable]
+	private var countryArray:ArrayCollection = new ArrayCollection();
+	[Bindable]
+	private var stateArray:ArrayCollection = new ArrayCollection();
+	[Bindable]
+	private var northAm:ArrayCollection = new ArrayCollection();
+	[Bindable]
+	private var southAm:ArrayCollection = new ArrayCollection();
+	[Bindable]
+	private var europe:ArrayCollection = new ArrayCollection();
+	[Bindable]
+	private var asia:ArrayCollection = new ArrayCollection();
+	
+	private var usStates:Array = ['Georgia','New York','New Hampshire'];
+	private var canadaStates:Array = ['Manitoba','Ontario','Saskatchewan'];
+	private var mexicoStates:Array = ['Aguascalientes','Quintana Roo','Zacatecas'];
+	
+	[Bindable]
+	private var theraputicAreaOptions:Array = ['Endocrinology','Psychiatry','Oncology'];
+	[Bindable]
+	private var indicationOptions:Array = ['Diabetes','Depression','Melanoma'];
+	[Bindable]
+	private var phaseOptions:Array = ['1','2','3'];
+	[Bindable]
+	private var priorStudiesOptions:Array = ['1','2','3'];
+	
+	public function animate():void {}
+
+	public function setLenzPanel( newParent:LenzPanel):void {
+				_parent = newParent;
+	}
+
+	public function populateResources(data:Object):void {}
+
+	/**
+	* Form clean up logic 
+	*/
+	public function destroy():void {
+		_self = null;
+	}			
+	
+	public function initializeForm():void {}
+	
+	public function failureHandler():void {}
+	
+	private function onCreationComplete():void{
+		countryTitle.visible = false;
+		countryList.visible = false;
+		stateTitle.visible = false;
+		stateList.visible = false;
+		populateRegions();
+		logger.debug("InvestigatorFinderForm: onCreationComplete");
+	}
+
+
+	public static function populateUsStates(r:Response): void {
+		
+			var datamap:MapArray = r.DataMap;
+			var xmlString:String = datamap.getValue("states.xml") as String;
+			var xmlDoc:XML = new XML(xmlString);
+			_self.usStates = new Array();
+			var i:int = 0;
+			for each (var prop:XML in xmlDoc.state) {
+				_self.usStates[i]=prop;
+				i++;	
+			}
+			
+			var msg:String = "";
+			for each( var str:String in _self.usStates) {
+				msg += ", state : " + str;
+			}
+			logger.debug("InvestigatorFinderForm: states: " + msg);
+			
+			for each ( var arr:Object in _self.northAm) {
+				if("US" == arr["label"]) {
+					arr["data"] = _self.usStates;
+					break;
+				}
+			}
+			
+			
+			/*
+			
+			Alert.show(" Populating states : " + msg);
+*/
+	}
+	
+
+
+	private function populateRegions():void
+	{
+		regionArray.removeAll();
+		_self = this;	
+	
+		try {
+		
+			LenzServiceHelper.callResource( "siteSelectionLenzServerAction", { actionId: "stateLookup",  
+				failure: failureHandler, 
+				result: populateUsStates
+			} );
+
+		}  catch (terr:TypeError)
+		{
+		  Alert.show("Finder Service : T Exception!"  + terr.toString());
+		
+		}
+		catch (err:ReferenceError)
+		{
+		  Alert.show("Finder Service :  Exception!"  + err.toString());
+		}
+		
+		northAm.addItem({label:"US",data:usStates});
+		northAm.addItem({label:'Canada',data:canadaStates});
+		northAm.addItem({label:'Mexico',data:mexicoStates});
+		
+		southAm.addItem({label:'Argentina',data:[]});
+		southAm.addItem({label:'Brazil',data:[]});
+		southAm.addItem({label:'Peru',data:[]});
+		southAm.addItem({label:'Columbia',data:[]});
+		
+		europe.addItem({label:'Italy',data:[]});
+		europe.addItem({label:'France',data:[]});
+		europe.addItem({label:'Spain',data:[]});
+		
+		asia.addItem({label:'China',data:[]});
+		asia.addItem({label:'Russia',data:[]});
+		asia.addItem({label:'Thailand',data:[]});
+		
+		regionArray.addItem( {label:"North America",data:northAm} );
+		regionArray.addItem( {label:"South America", data:southAm} );
+		regionArray.addItem( {label:"Europe", data:europe} );
+		regionArray.addItem( {label:"Asia", data:asia} );
+	}
+	
+	private function populateCountries():void
+	{
+		countryList.setVisible(true);
+		countryTitle.setVisible(true);
+		stateTitle.setVisible(false);
+		stateList.setVisible(false);
+		
+		countryArray.removeAll();
+		var countries:ArrayCollection = regionList.selectedItem.data;
+		for(var i:int=0; i<countries.length; i++)
+			countryArray.addItem( {label:countries[i].label,data:countries[i].data} );
+	}
+	
+	private function populateStates():void{
+		stateTitle.setVisible(true);
+		stateList.setVisible(true);
+		stateArray.removeAll();
+		
+		var states:Array = countryList.selectedItem.data;
+		for(var i:int=0; i<states.length; i++)
+			stateArray.addItem( {label:states[i],data: "State data at "+i.toString() } );
+	}
+	
+	private function searchClick():void{
+		
+		
+		var ipfSearch = new Array();
+		
+	
+		var text:String;
+		if (regionList.selectedItem != null) {
+			text="Region = "+regionList.selectedItem.label;
+			ipfSearch["region.id.key"] = regionList.selectedItem.label;
+		}
+		else
+			text="Region selected = null";
+		if (countryList.selectedItem != null) {
+			text+="\nCountry = "+countryList.selectedItem.label;
+			ipfSearch["country.id.key"] = countryList.selectedItem.label;
+		} else
+			text+="\nCountry selected = null";
+		if (stateList.selectedItem != null) {
+			text+="\nState = "+stateList.selectedItem.label;
+			ipfSearch["state.id.key"] = stateList.selectedItem.label;
+		} else
+			text+="\nState selected = null";
+		
+		text+="\nTheraputic Area = "+theraputicArea.selectedLabel;
+		ipfSearch["therapyArea"] = theraputicArea.selectedLabel;
+
+		text+="\nIndication = "+indication.selectedLabel;
+		ipfSearch["indication"] = indication.selectedLabel;
+		
+
+		text+="\nPhysicians = "+physicians.selected;
+		ipfSearch["physicians"] = physicians.selected;
+		
+		text+="\nInvestigators = "+investigators.selected;
+		ipfSearch["investigatorsOnly"] = investigators.selected;
+		
+		text+="\nInclude KPI Criteria = "+includeKPI.selected;
+		ipfSearch["includeKpis"] = includeKPI.selected;
+		
+		
+		text+="\nPhase = "+phase.selectedLabel;
+		ipfSearch["phase"] = phase.selectedLabel;
+		
+		text+="\n# Prior Studies = "+priorStudies.selectedLabel;
+		ipfSearch["numberOfStudies"] = priorStudies.selectedLabel;
+		
+		
+	
+	
+		
+		// Alert.show(text);
+		var parent = _parent.getParent();
+		var siteSelection:SiteSelectionLenz = (parent as SiteSelectionLenz);
+		
+		siteSelection.simulateExternalClick('InvestigatorFinder2',ipfSearch);
+		
+		
+		
+	}
+	
+	private function processDone():void {
+		(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('')		
+	}
+	
+  ]]></mx:Script>
+  	
+	<mx:Text x="10" y="4" text="Investigator / Physician Finder" fontSize="20"/>
+	<mx:Panel styleName="rightPanel"  x="10" y="43" width="555" height="285" layout="absolute" title="Geographic Location"
+		cornerRadius="12" roundedBottomCorners="true" 
+		horizontalScrollPolicy="off"  verticalScrollPolicy="off">
+		<mx:Text x="10" y="10" text="Region" styleName="IICaption"/>
+		<mx:List styleName="IICountriesList" id="regionList" dataProvider="{regionArray}" click="populateCountries()"  x="10" y="36" width="161"/>
+		<mx:Text id="countryTitle" x="170" y="10" text="Country" styleName="IICaption" />
+		<mx:List styleName="IICountriesList" id="countryList" dataProvider="{countryArray}" x="170" y="36" click="populateStates()"  width="162"/>
+		<mx:Text id="stateTitle" x="330" y="10" text="State/Province" styleName="IICaption" />
+		<mx:List styleName="IICountriesList" id="stateList" dataProvider="{stateArray}" x="330" y="36"  width="161"/>
+	</mx:Panel>
+	
+	<mx:Panel styleName="rightPanel"  x="573" y="43" width="167" height="285" layout="absolute" title="Medical Specialty"
+		cornerRadius="12" roundedBottomCorners="true" 
+		horizontalScrollPolicy="off"  verticalScrollPolicy="off">
+		<mx:Text x="10" y="10" text="Theraputic Area" styleName="IICaption"/>
+		<mx:ComboBox id="theraputicArea" x="10" y="36" dataProvider="{theraputicAreaOptions}" width="125" styleName="IIComboBox"/>
+		<mx:Text x="10" y="66" text="Indication" styleName="IICaption"/>
+		<mx:ComboBox id="indication" x="10" y="92" dataProvider="{indicationOptions}" width="125" styleName="IIComboBox"/>
+	</mx:Panel>
+	
+	<!--mx:Panel styleName="IITermsPanel"  x="15" y="335" width="725" height="129" layout="absolute"
+		cornerRadius="12" headerHeight="5" roundedBottomCorners="true" 
+		horizontalScrollPolicy="off"  verticalScrollPolicy="off" -->
+	<mx:VBox x="10" y="335" width="730" height="129" styleName="filledRight" >
+		<mx:Canvas width="100%" height="123" >
+		
+			<mx:CheckBox id="physicians" x="7" y="12" label="Physicians    " labelPlacement="left" styleName="IICaption" width="142"/>
+			<mx:CheckBox id="investigators" x="7" y="48" label="Investigators" labelPlacement="left" styleName="IICaption" width="142"/>
+			<mx:CheckBox id="includeKPI" x="173" y="12" label="Include KPI Criteria" labelPlacement="left" styleName="IICaption"/>
+			<mx:Text x="357" y="12" text="Phase" styleName="IICaption"/>
+			<mx:ComboBox id="phase" x="461" y="10" dataProvider="{phaseOptions}" styleName="IIComboBox"/>
+			<mx:Text x="357" y="47" text="# Prior Studies" styleName="IICaption"/>
+			<mx:ComboBox id="priorStudies" x="463" y="45" dataProvider="{priorStudiesOptions}" styleName="IIComboBox"/>
+			
+			<mx:Button x="658" y="100" label="Search" styleName="IIButton" 
+				click="searchClick()"/>
+			<mx:Button x="9" y="100" label="Done" styleName="IIButton" click="processDone()"/>
+		</mx:Canvas>
+				
+	</mx:VBox>
+
+
+</mx:Canvas>

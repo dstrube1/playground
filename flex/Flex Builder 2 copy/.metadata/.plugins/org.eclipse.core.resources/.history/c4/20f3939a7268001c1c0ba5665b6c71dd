@@ -1,0 +1,32 @@
+package base.services
+{
+	public class BaseContentChain implements ContentChain
+	{
+				 
+		private var next:ContentChain = null;
+				
+		
+		public function process(c:Content):void
+		{
+			subclassProcess(c);
+			
+			if (next != null) {
+				next.process(c);
+			} else {
+				// we're done.
+			}
+			
+		}
+		
+		public function setNext(chain:ContentChain):void
+		{
+				next = chain;
+		}
+		
+		
+		public function subclassProcess( c:Content):void {
+			// override with your own code.
+		}
+		
+	}
+}

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" implements="base.form.LenzForm" 
+	xmlns:panel="lenz.main.welcome.panel.*" creationComplete="onCreationComplete()"
+	styleName="welcomeForm" width="750" height="470">
+	 
+		<mx:Script>
+		<![CDATA[
+			import mx.controls.Button;
+			import mx.containers.Panel;
+			import mx.controls.Label;
+			import base.log.Logger;
+			import base.event.SelectLenzEvent;
+			import app.App;
+			import base.lenz.panel.LenzPanel;
+			import flash.utils.setTimeout;
+			import base.lenz.panel.LenzPanel;
+			import mx.rpc.events.ResultEvent;
+			import mx.controls.Alert;
+
+			private var _parent:LenzPanel = null;
+
+
+			private var logger:Logger = Logger.getLogger('WelcomeForm');
+			
+			private var infoLink:InfoLink = null;
+
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			
+			public function animate():void {
+				lenz2Fade.play();
+			}
+			
+			
+			
+			private function selectLenz( param:Object):void {
+				
+				logger.debug("selectLenz: "+param);
+				
+				var ev:SelectLenzEvent = new SelectLenzEvent( param.lenzId );
+				
+				this.dispatchEvent(ev);
+				
+			}
+			
+			private function onCreationComplete():void{
+				addInfoPanels();
+				logger.debug("WelcomeForm: creationComplete");
+			}
+			private function addInfoPanels():void{
+				//announcements
+				var annInfoLink:InfoLink = new InfoLink();
+				var annTitle:Label = new Label();
+				var annPanel:Panel = new Panel();
+				var annButton:Button = new Button();
+
+				annTitle.text= "Announcements";
+				annButton.label = "Announcement";
+				annPanel.title = annTitle.text;
+				annPanel.height = this.height/3;
+				//annPanel.addChild(annButton);
+
+				annInfoLink.addChild(annPanel);
+				ann.addInfoItem(annInfoLink);
+				
+				//advisor
+				var advInfoLink:InfoLink = new InfoLink();
+				var advLabel:Label = new Label();
+				var advPanel:Panel = new Panel();
+				var advButton1:Button = new Button();
+				var advButton2:Button = new Button();
+				//var advButton3:Button = new Button();
+				advButton1.label = "Site Selection";
+				advButton2.label = "Study Manager";
+				advLabel.text="Advisor";
+				//advPanel.title = advLabel.text;
+				//advPanel.addChild(advButton1);
+				//advPanel.addChild(advButton2);
+				advInfoLink.addChild( advPanel );
+	
+				var param:Object = { lenzId: App.SITE_SELECT};			
+				advInfoLink.setClickFunction(selectLenz, param);
+				adv.addInfoItem(advInfoLink);
+				
+				//schedule
+				var schInfoLink:InfoLink = new InfoLink();
+				var schLabel:Label = new Label();
+				schLabel.text="Schedule";
+				schInfoLink.addChild(schLabel );
+				sch.addInfoItem(schInfoLink);
+				
+			}
+			
+			public function populateResources(data:Object):void{}
+			public function initializeForm():void{}
+		]]>
+	</mx:Script>
+
+	<mx:SWFLoader source="@Embed('/resources/swf/grass.swf')" scaleContent="true" 
+		width="730" height="135"  y="38" x="10"/>
+<!--
+	<mx:SWFLoader source="@Embed('/resources/swf/grass.swf')" scaleContent="true" horizontalCenter="0" 
+		verticalCenter="0" width="100%" height="100%" />
+-->
+	<mx:Label  text="Today" fontThickness="200" fontSize="24" x="10" y="128" width="109" height="45"/>
+	
+	<mx:VBox height="50%" x="10" y="225" id="Lenz1" >
+		<panel:InfoPanel id="ann" title="Announcements" width="200" height="200" alpha="0.5"/>
+	</mx:VBox>
+
+	<mx:VBox height="50%" x="275" y="225" id="Lenz2">
+		<panel:InfoPanel id="adv" title="Advisor" width="200" height="200"/>
+	</mx:VBox>
+
+	<mx:VBox height="50%" x="540" y="225" id="Lenz3">
+		<panel:InfoPanel id="sch" title="Schedule" width="200" height="200" alpha="0.5"/>
+	</mx:VBox>
+	
+	<!--
+	<mx:VBox x="290" y="114" height="50%" id="Lenz4" alpha="0.0">
+		<mx:Image  width="75" height="75" source="resources/images/Investigator.jpg" x="290" y="114"
+			click="selectLenz(App.INVESTIGATOR)"/>
+		<mx:Label x="290" y="197" text="Investigator" width="75" textAlign="center" height="18"/>		
+	</mx:VBox>
+	
+	<mx:Fade id="lenz1Fade" target="{Lenz1}" alphaTo="1.0" startDelay="500">
+		
+	</mx:Fade>
+	-->	
+	<mx:Fade id="lenz2Fade" target="{Lenz2}" alphaTo="1.0" startDelay="500">
+		
+	</mx:Fade>
+	<!--
+	<mx:Fade id="lenz3Fade" target="{Lenz3}" alphaTo="1.0" startDelay="2100">
+		
+	</mx:Fade>
+	<mx:Fade id="lenz4Fade" target="{Lenz4}" alphaTo="1.0" startDelay="2900">
+		
+	</mx:Fade>
+	-->
+	
+</mx:Canvas>

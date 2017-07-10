@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+ xmlns:mx="http://www.adobe.com/2006/mxml" 
+ layout="absolute" creationComplete="init()" >
+<mx:Script>
+	<![CDATA[
+		import mx.controls.Alert;
+
+		private function init():void{
+		}
+		
+	]]>
+</mx:Script>
+<mx:Button label="Here I am." click="Alert.show('Rock you like a hurricane.')" visible="true"/>
+
+</mx:Application>

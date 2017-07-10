@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:components="leadgine.components.view.sides.*"
+	creationComplete="init()">
+<mx:Script>
+<![CDATA[
+	import mx.core.Application;
+	import leadgine.components.dto.FullServiceReferral;
+	public var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	//[Bindable] public var roomRate:String = ;
+	[Bindable] public var readOnly:Boolean = false;
+	public var daysPlus:uint;
+	[Bindable] public var singleCount:uint = 0;
+	[Bindable] public var doubleCount:uint = 0;
+	[Bindable] public var rowTotalCount:uint = 0;
+	[Bindable] public var roomDateText:String = "";	
+	[Bindable] public var revenueText:String = "$0.00";
+	
+	private function init():void{
+		
+		roomDate.text = RoomBlockInfoUnlimited.calcDate(myDTO.startDate, daysPlus);
+	}
+	//DS 20090928: changing this roomRow's rate from RoomBlockInfoUnlimited after changing the rate in the ContactInfo apparently doesn't call the change event on rate
+	//But making this function public is an ugly dangerous kludge,
+	//So use it carefully until a better method is found
+	public function calcTotal():void{
+		if (single != null){
+			roomDateText	 = roomDate.text;
+			singleCount		 = Number(single.text);
+			doubleCount		 = Number(double.text);
+			rowTotalCount	 = Number(rowTotal.text);
+			revenueText		 = revenue.text;
+		}
+		
+		rowTotalCount = singleCount + doubleCount;
+		var rateString:String = myDTO.rate.replace("$","");
+		var rateNum:Number = Number(rateString);
+		var totalRevenue:Number = Number((rowTotalCount * rateNum));//.toPrecision(2)
+		//^ not only is toPrecision not necessary here, it is detrimental 
+		//  as illustrated with big singles and double counts and small rates
+		//toFixed below is not only good enough, it's perfect for our needs
+		revenueText = "$"+totalRevenue.toFixed(2);
+	}
+]]>
+</mx:Script>
+	<mx:TextInput textAlign="right" width="80"  editable="false" text="{roomDateText}" id="roomDate" tabEnabled="false" />
+	<mx:TextInput textAlign="right" width="100" editable="{!readOnly}" restrict="0-9" text="{singleCount}" id="single" change="calcTotal()" />
+	<mx:TextInput textAlign="right" width="100" editable="{!readOnly}" restrict="0-9" text="{doubleCount}" id="double" change="calcTotal()" />
+	<mx:TextInput textAlign="right" width="100" editable="false" text="{rowTotalCount}" styleName="totalRow" restrict="0-9" 
+		id="rowTotal" tabEnabled="false" />
+	<mx:TextInput textAlign="right" width="100" editable="false" text="{myDTO.rate}" id="rate" tabEnabled="false" change="calcTotal()" />
+	<mx:TextInput textAlign="right" width="100" editable="false" text="{revenueText}" id="revenue" tabEnabled="false" />
+</mx:HBox>

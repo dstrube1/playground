@@ -1,0 +1,47 @@
+package app.config
+{
+	
+	import mx.core.UIComponent;
+    import flash.events.Event;
+
+	public class LenzConfiguration extends UIComponent
+	{
+		/** Reference to singleton instance of this class. */
+        private static var _instance:LenzConfiguration;
+
+		// To Keep various key/vals, if needed
+		public var stateMap:Object = new Object();
+
+        [Bindable]
+        public var serviceHostPort:String;
+
+        [Bindable]
+        public var serviceWSDLPath:String;
+
+        [Bindable]
+        public var servicePortPath:String;
+
+        [Bindable]
+        public var testMode:Boolean;
+        
+
+        //[Bindable]
+        //public var session:Session = new Session();
+
+
+
+		public function LenzConfiguration()
+        {
+            super();
+            _instance = this;
+            dispatchEvent(new Event("instanceChanged"));
+        }
+        
+        [Bindable("instanceChanged")]
+        public static function get instance():LenzConfiguration
+        {
+            return _instance;
+        }
+		
+	}
+}

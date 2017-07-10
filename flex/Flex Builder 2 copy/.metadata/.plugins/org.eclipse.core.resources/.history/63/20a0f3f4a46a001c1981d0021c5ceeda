@@ -1,0 +1,59 @@
+package app.model.CountryAllocation
+{
+
+	public class Region extends GeographicalLocation
+	{
+		public function Region( id:String, name:String, selected:int ):void
+		{
+			super( id, name, selected );
+			this.type = "Region";
+			this.children = new Array();
+		}
+		
+		public function setSelected(selected:int):void
+		{
+			this.selectionStatus = selectionStatus;
+			/*
+			if(selected == false)
+			for(var i:int=0;i<children.length; i++)
+			{
+				children[i].selected = false;
+			}
+			*/
+		}	
+		
+		public function setCountryStatus(countryName:String, status:int):Boolean {
+			var result:Boolean = false;
+			for(var i:int=0;i<children.length; i++)
+			{
+				if( (children[i] as Country).name == countryName ) {
+					(children[i] as Country).selectionStatus = status;
+					result = true;
+					break;
+				} 
+			}
+			return result;
+		}
+		
+		public function getCountriesBySelectionStatus( countrySelectionStatus:int ):Array
+		{
+			var ret:Array = new Array();
+			for(var i:int=0;i<children.length; i++)
+			{
+				if( children[i].selectionStatus == countrySelectionStatus ) ret.push( children[i] );
+			}
+			return ret;
+		}
+		
+		public function addCountry(country:Country):void
+		{
+			children.push(country);
+			country.parent = this;
+		}
+		public function getAllCountries():Array {
+			return this.children;
+		}
+		public var children:Array;
+	}
+	
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="750" height="470" horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm" horizontalScrollPolicy="off" verticalScrollPolicy="off" color="0x000000">
+	 
+	<mx:Script>
+		<![CDATA[
+			
+			import base.lenz.panel.LenzPanel;
+			import lenz.main.site_select.SiteSelectionLenz;
+			
+			private var _parent:LenzPanel = null;
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+			}
+			
+			private function launchApp( appId:int):void {
+				
+				
+				
+			}
+			
+			public function initializeForm():void {
+				
+		
+			}
+			
+			
+			public function populateResources(data:Object):void { }
+			
+		]]>
+	</mx:Script>
+
+
+	<mx:Label x="0" y="5" color="#000000" maxHeight="30" text="Country Allocation: Country / Region Preferences" fontThickness="200" fontSize="18"  />
+		
+	<mx:Canvas id="surveyContent" top="41" left="10" right="138" height="419" horizontalScrollPolicy="off">
+
+			<mx:List x="219" y="38"></mx:List>
+			<mx:Label x="219" y="10" text="Regions" fontSize="14" fontWeight="bold" textAlign="center" width="162"/>
+			<mx:List x="10" y="38"></mx:List>
+			<mx:List x="10" y="232"></mx:List>
+			<mx:Label x="10" y="12" text="Must Include" fontSize="12" fontWeight="bold" width="162" textAlign="center"/>
+			<mx:List x="219" y="232"></mx:List>
+			<mx:List x="428" y="38"></mx:List>
+			<mx:List x="428" y="232"></mx:List>
+			<mx:Label x="428" y="12" text="Must Include" fontSize="12" fontWeight="bold" width="162" textAlign="center"/>
+			<mx:ComboBox x="221" y="202"></mx:ComboBox>
+			<mx:Label x="389" y="65" text="&gt;&gt;" fontSize="16" fontWeight="bold"/>
+			<mx:Label x="389" y="269" text="&gt;&gt;" fontSize="16" fontWeight="bold"/>
+			<mx:Label x="180" y="304" text="&gt;&gt;" fontSize="16" fontWeight="bold"/>
+			<mx:Label x="180" y="105" text="&gt;&gt;" fontSize="16" fontWeight="bold"/>
+			<mx:Label x="389" y="304" text="&lt;&lt;" fontSize="16" fontWeight="bold"/>
+			<mx:Label x="180" y="269" text="&lt;&lt;" fontSize="16" fontWeight="bold"/>
+			<mx:Label x="180" y="65" text="&lt;&lt;" fontSize="16" fontWeight="bold"/>
+			<mx:Label x="389" y="105" text="&lt;&lt;" fontSize="16" fontWeight="bold"/>
+			<mx:Button x="525" y="387" label="Done" 
+				click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('SequenceBrowser')"/>
+				
+	</mx:Canvas>
+	
+</mx:Canvas>

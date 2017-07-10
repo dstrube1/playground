@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="750" height="470" horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm" horizontalScrollPolicy="off" verticalScrollPolicy="off" color="0x000000">
+	 
+	<mx:Script>
+		<![CDATA[
+			
+			import base.lenz.panel.LenzPanel;
+			import lenz.main.site_select.SiteSelectionLenz;
+			
+			private var _parent:LenzPanel = null;
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+			}
+			
+			private function launchApp( appId:int):void {
+				
+				
+				
+			}
+			
+			public function initializeForm():void {
+				
+		
+			}
+			
+			
+			public function populateResources(data:Object):void { }
+			
+		]]>
+	</mx:Script>
+
+
+	<mx:Label x="0" y="5" color="#000000" maxHeight="30" text="Country Allocation: New Study" fontThickness="200" fontSize="18"  />
+		
+	<mx:Canvas id="surveyContent" top="50" left="10" right="10" height="410" horizontalScrollPolicy="off">
+			<mx:Canvas x="10" y="10" width="384" height="390" cornerRadius="10" borderStyle="inset">
+					<mx:Label x="10" y="10" text="Study Name:" fontWeight="bold"/>
+					<mx:TextInput x="136.5" y="8"/>
+					<mx:Label x="10" y="36" text="Therapeutic Area" fontWeight="bold"/>
+					<mx:ComboBox x="136.5" y="34"></mx:ComboBox>
+					<mx:Label x="10" y="62" text="Indication Type:" fontWeight="bold"/>
+					<mx:ComboBox x="136.5" y="60"></mx:ComboBox>
+					<mx:Label x="10" y="88" text="Phase:" fontWeight="bold"/>
+					<mx:RadioButton x="137.5" y="90" label="I" groupName="phaseRadio"/>
+					<mx:RadioButton x="172.5" y="90" label="II" groupName="phaseRadio" width="44"/>
+					<mx:RadioButton x="208.5" y="90" label="III" groupName="phaseRadio"/>
+					<mx:RadioButton x="249.5" y="90" label="IV" groupName="phaseRadio"/>
+					<mx:Label x="10" y="114" text="Study Parameters" fontSize="14" fontWeight="bold"/>
+					<mx:HRule x="26" y="135"/>
+					<mx:Label x="26" y="145" text="Total Subjects Enrolled" fontWeight="bold"/>
+					<mx:TextInput x="172.5" y="143" width="123"/>
+					<mx:Label x="26" y="171" text="Planned FSFV" fontWeight="bold"/>
+					<mx:Label x="26" y="197" text="Planned LSFV" fontWeight="bold"/>
+					<mx:Label x="26" y="223" text="Per-Subject Budget" fontWeight="bold"/>
+					<mx:DateField x="172" y="169"/>
+					<mx:DateField x="172" y="195"/>
+					<mx:TextInput x="172" y="221" width="123"/>
+					<mx:Label x="10" y="263" text="Country Criteria" fontSize="14" fontWeight="bold"/>
+					<mx:HRule x="26" y="284"/>
+					<mx:Label x="26" y="294" text="Disease Prevalence (Minimum)" fontWeight="bold"/>
+					<mx:TextInput x="219" y="292" width="47"/>
+					<mx:TextInput x="219" y="318" width="47"/>
+					<mx:Label x="26" y="320" text="Subject Contribution (Minimum)" fontWeight="bold"/>
+					<mx:Button label="Allocate Countries" width="150" height="30" id="submitBtn"
+						click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('SequenceBrowser')" x="220" y="356"/>
+			</mx:Canvas>
+			<mx:Canvas x="450" y="10" width="270" height="390">
+					<mx:Label x="28" y="28" text="Upload Previous Study" fontSize="16" width="214" height="27" textAlign="center"/>
+					<mx:Label x="28" y="168" text="Set Country Preferences" fontSize="16" width="214" height="27" textAlign="center" 
+						click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('CountrySelection')"  />
+					<mx:Label x="10" y="305" text="Change Allocation Weights" fontSize="16" width="250" height="27" textAlign="center"
+						click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('Metrics')"  />
+					
+			</mx:Canvas>
+				
+	</mx:Canvas>
+	
+</mx:Canvas>

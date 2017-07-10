@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100" height="768" styleName="menuBlade" >
+	
+	<mx:Script>
+		<![CDATA[
+			import base.log.Logger;
+			
+			private var logger:Logger = Logger.getLogger("Blade");
+			
+			
+			public function expose():void {
+				
+				//logger.debug("Exposing blade");
+				
+				width=0;
+				this.visible = true;
+				
+				exposeBlade.play();
+			}
+			
+			
+			public function retract():void {
+				
+				retractBlade.play();
+				
+			}
+			
+			
+			public function addBladeItem( item:BladeItem ):void {
+				
+				
+				//logger.debug("Adding blade item: "+item+" to list");
+				
+				
+				item.visible = true;
+				
+				list.addChild( item );
+				
+			}
+			
+			
+			public function addConfigItem( item:BladeItem):void {
+				
+				//logger.debug("adding config blade item: "+item);
+				
+				item.visible = true;
+
+				settings.removeAllChildren();
+				
+				settings.addChild(item);
+				
+			}
+			
+			
+			public function clear():void {
+				
+				//logger.debug("clearing config and blades");
+
+				clearList();
+				settings.removeAllChildren();
+				
+			}
+			
+			
+			public function clearList():void {
+
+				//logger.debug("clearing main bladeitem list.");				
+				list.removeAllChildren();
+				
+			}
+			
+			
+			
+		]]>
+	</mx:Script>
+	
+	
+	<mx:Parallel id="exposeBlade" >
+		<mx:Resize target="{this}" widthTo="100" duration="500" />
+	</mx:Parallel>
+	
+	<mx:Parallel id="retractBlade" >
+		<mx:Resize target="{this}" widthTo="0" duration="500" />		
+	</mx:Parallel>
+	
+	<mx:Image source="resources/images/caret.png" x="75" y="20" click="retract()" />
+	
+	
+	<mx:VBox id="list" horizontalGap="10" width="{width}" height="{height - 227}" x="0" y="64" />
+	
+	<mx:Canvas id="settings" width="{width}" height="100" x="0" y="{list.height + list.y}">
+	</mx:Canvas>
+	
+	
+</mx:Canvas>

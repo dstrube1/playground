@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="750" height="470" horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm" horizontalScrollPolicy="off" verticalScrollPolicy="off" color="0x000000" creationComplete="onCreationComplete()">
+	 
+	<mx:Script>
+		<![CDATA[
+			
+			import mx.formatters.Formatter;
+			import mx.formatters.NumberFormatter;
+			import mx.controls.sliderClasses.Slider;
+			import base.lenz.panel.LenzPanel;
+			import lenz.main.site_select.SiteSelectionLenz;
+			
+			private var _parent:LenzPanel = null;
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+			}
+			
+			private function launchApp( appId:int):void {
+				
+				
+				
+			}
+			
+			public function initializeForm():void {
+				
+		
+			}
+			
+			
+			public function populateResources(data:Object):void { }
+			
+
+
+
+			
+			private var sliders:Array;
+			private var boxes:Array;
+			
+
+			private function onCreationComplete():void {
+				
+				sliders = [ metricSliderA, metricSliderB, metricSliderC, metricSliderD ];
+				boxes = [metricWeightA, metricWeightB, metricWeightC, metricWeightD ];
+				
+				setSliders(sliders, [5.0, 5.0, 5.0, 5.0] );
+				
+				
+			}
+			
+			private function setSliders( a:Array, v:Array):void {
+				
+				for each ( var s:Slider in a) {
+					
+					s.value = v.shift();
+					
+				}
+			
+				updateWeights();
+				
+			}
+			
+			
+			private function updateWeights():void {
+				
+				var sum:Number = totalSliders( sliders );
+				
+				var weights:Array = buildSliderRatios( sliders, sum);
+				
+				var weightDisplays:Array = formatWeights(weights);
+				
+				for each (var box:TextInput in boxes) {
+
+					var weight:String = weightDisplays.shift();
+					
+					box.text = weight;
+					
+				}
+				
+				
+			}			
+			
+			
+			private function totalSliders( a:Array ):int {
+				
+				
+				var total:Number = 0.0;
+								
+				for each (var slider:Slider in a) {
+					
+					total += slider.value;
+										
+				}
+				
+				return total;
+				
+			}
+			
+			
+			
+			private function buildSliderRatios( a:Array, total:Number ):Array {
+				
+				var ratio:Array = new Array();
+				
+				for each (var slider:Slider in a) {
+					
+					ratio.push(  slider.value / total );
+					
+				}
+				
+				return ratio;
+				
+			}
+			
+			
+			private function formatWeights( a:Array ):Array {
+
+				var fmt:NumberFormatter = new NumberFormatter();
+				
+				fmt.precision = 0;
+				fmt.rounding = "nearest";
+
+				
+				var weight:Array = new Array();
+				
+				for each (var num:Number in a) {
+					
+					
+					weight.push(fmt.format(num*100)+"%");
+					
+				}
+				
+				
+				return(weight);
+			}
+			
+						
+			
+			
+			
+		]]>
+	</mx:Script>
+
+
+	<mx:Label x="0" y="5" color="#000000" maxHeight="30" text="Country Allocation: Allocation Weighting" fontThickness="200" fontSize="18"  />
+		
+	<mx:Canvas id="surveyContent" top="41" left="10" right="219" height="419" horizontalScrollPolicy="off">
+			<mx:Label x="15" y="53" text="Time to LSFV" fontSize="16"/>
+			<mx:Label x="15" y="86" text="Per Subject Cost" fontSize="16"/>
+			<mx:Label x="15" y="119" text="Disease Prevalence" fontSize="16"/>
+			<mx:Label x="10" y="152" text="Country Subject Contribution" fontSize="16"/>
+			
+
+			<mx:HSlider x="260" y="55" height="18" id="metricSliderA" allowTrackClick="true" 
+					minimum="1" maximum="10" snapInterval="0.5" change="updateWeights()"/>
+			<mx:HSlider x="260" y="86" height="18" id="metricSliderB" allowTrackClick="true" 
+					minimum="1" maximum="10" snapInterval="0.5" change="updateWeights()"/>
+			<mx:HSlider x="260" y="119" height="18" id="metricSliderC" allowTrackClick="true" 
+					minimum="1" maximum="10" snapInterval="0.5" change="updateWeights()"/>
+			<mx:HSlider x="260" y="152" height="18" id="metricSliderD" allowTrackClick="true" 
+					minimum="1" maximum="10" snapInterval="0.5" change="updateWeights()"/>
+			
+			<mx:TextInput x="428" y="53" width="40" editable="false" id="metricWeightA"/>
+			<mx:TextInput x="428" y="83" width="40" editable="false" id="metricWeightB"/>
+			<mx:TextInput x="428" y="118" width="40" editable="false" id="metricWeightC"/>
+			<mx:TextInput x="428" y="148" width="40" editable="false" id="metricWeightD"/>
+			
+
+			<mx:Button x="392" y="204" label="Done" 
+				click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('SequenceBrowser')"/>
+				
+	</mx:Canvas>
+	
+</mx:Canvas>

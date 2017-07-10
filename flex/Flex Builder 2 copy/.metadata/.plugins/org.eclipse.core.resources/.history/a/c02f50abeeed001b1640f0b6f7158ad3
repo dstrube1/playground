@@ -1,0 +1,28 @@
+package base.lenz.frame
+{
+	import base.log.LogWindow;
+	import base.lenz.Lenz;
+	import flash.display.DisplayObject;
+	import base.lenz.panel.LenzPanel;
+	import flash.events.Event;
+	
+	public interface LenzFrame  
+	{
+		
+		function getTitle():String;
+		
+		function getFrameComponent():DisplayObject;
+			
+		function setPanel( panel:LenzPanel):void;
+		
+		function dispatchEvent( ev:Event):Boolean;
+		function schedule( closure:Function, delay:Number, rest:Array):void;
+
+		
+		
+		function set activate(b:Boolean):void;
+		function get activate():Boolean;
+		
+		
+	}
+}

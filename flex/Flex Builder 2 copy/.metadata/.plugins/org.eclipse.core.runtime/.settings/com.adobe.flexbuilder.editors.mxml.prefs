@@ -1,0 +1,9 @@
+#Tue Sep 25 10:12:01 EDT 2007
+appViewSizes=1024 x 768;800 x 600
+lastEditorView=Source
+eclipse.preferences.version=1
+expandState=controls\:layout\:navigators\:
+autoViewIDs=com.adobe.flexbuilder.editors.mxml.states.StatesView\=design,com.adobe.flexbuilder.editors.mxml.inspector.view.PropertiesView\=design,com.adobe.flexbuilder.editors.mxml.components.ComponentsView\=design
+activeViewIDs2=org.eclipse.ui.views.ResourceNavigator,org.eclipse.search.ui.views.SearchView
+activeViewIDs1=com.adobe.flexbuilder.editors.mxml.components.ComponentsView,org.eclipse.ui.views.ProblemView
+compViewSize=400 x 300;300 x 200

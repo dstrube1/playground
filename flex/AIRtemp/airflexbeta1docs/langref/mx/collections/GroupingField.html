@@ -1,0 +1,486 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
+<meta content="GroupingField,mx.collections.GroupingField,currentDepth,dataField,label,operation,summaryFunction,ANY_INDEX_MODE,FIRST_INDEX_MODE,LAST_INDEX_MODE,compareFunction,fields,unique,length,filterFunction,sort,fields,summaryPlacement,summaryObjectFunction,grouping,beforeFirst,afterLast,view,label,groupingObjectFunction,compareFunction,fields,openNodes,length,source,openNodes,FIRST,LAST,CURRENT,value,groupingFunction,groupingObjectFunction,summaries,caseInsensitive,compareFunction,descending,name,numeric,localIndex,length,list,filterFunction,sort,summaries,grouping,source,source,caseInsensitive,compareFunction,descending,name,numeric,afterLast,beforeFirst,bookmark,current,view,childrenField,source,length" name="keywords">
+<title>mx.collections.GroupingField (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'GroupingField - Flex 3 Language Reference';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../index.html?mx/collections/GroupingField.html&amp;mx/collections/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;GroupingField</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class GroupingField"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.collections</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  GroupingField</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">GroupingField  <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../Object.html">Object</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  The GroupingField class represents individual data fields 
+  that you use to group flat data for display by the AdvancedDataGrid control. 
+   <p>To populate the AdvancedDataGrid control with grouped data, 
+  you create an instance of the GroupingCollection class from your flat data, 
+  and then pass that GroupingCollection instance to the data provider 
+  of the AdvancedDataGrid control. 
+  To specify the grouping fields of your flat data, 
+  you pass a Grouping instances to 
+  the <code>GroupingCollection.grouping</code> property. 
+  The Grouping instance contains an Array of GroupingField instances, 
+  one per grouping field. </p>
+   <p>The following example uses the Grouping class to define
+  two grouping fields: Region and Territory.</p>
+   <pre>
+  &lt;mx:AdvancedDataGrid id="myADG"    
+    &lt;mx:dataProvider&gt; 
+      &lt;mx:GroupingCollection id="gc" source="{dpFlat}"&gt; 
+        &lt;mx:grouping&gt; 
+          &lt;mx:Grouping&gt; 
+            &lt;mx:GroupingField name="Region"/&gt; 
+            &lt;mx:GroupingField name="Territory"/&gt; 
+          &lt;/mx:Grouping&gt; 
+        &lt;/mx:grouping&gt; 
+      &lt;/mx:GroupingCollection&gt; 
+    &lt;/mx:dataProvider&gt;  
+     
+    &lt;mx:columns&gt; 
+      &lt;mx:AdvancedDataGridColumn dataField="Region"/&gt; 
+      &lt;mx:AdvancedDataGridColumn dataField="Territory"/&gt; 
+      &lt;mx:AdvancedDataGridColumn dataField="Territory_Rep"/&gt; 
+      &lt;mx:AdvancedDataGridColumn dataField="Actual"/&gt; 
+      &lt;mx:AdvancedDataGridColumn dataField="Estimate"/&gt; 
+    &lt;/mx:columns&gt; 
+  &lt;/mx:AdvancedDataGrid&gt;
+  </pre>
+ 
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">Default MXML Property</span><code>summaries</code>
+</p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../mx/controls/AdvancedDataGrid.html" target="">mx.controls.AdvancedDataGrid</a>
+<br>
+<a href="GroupingCollection.html" target="">mx.collections.GroupingCollection</a>
+<br>
+<a href="Grouping.html" target="">mx.collections.Grouping</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#caseInsensitive">caseInsensitive</a> : <a href="../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">
+      Set to true if the sort for this field should be case insensitive.</div>
+</td><td class="summaryTableOwnerCol">GroupingField</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#compareFunction">compareFunction</a> : <a href="../../Function.html">Function</a>
+<div class="summaryTableDescription">
+      The function that compares two items during a sort of items for the
+      associated collection.</div>
+</td><td class="summaryTableOwnerCol">GroupingField</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#constructor">constructor</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  A reference to the class object or constructor function for a given object instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#descending">descending</a> : <a href="../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">
+      Set to true if the sort for this field should be 
+      in descending order.</div>
+</td><td class="summaryTableOwnerCol">GroupingField</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#groupingFunction">groupingFunction</a> : <a href="../../Function.html">Function</a>
+<div class="summaryTableDescription">
+      A function that determines the label for this group.</div>
+</td><td class="summaryTableOwnerCol">GroupingField</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#groupingObjectFunction">groupingObjectFunction</a> : <a href="../../Function.html">Function</a>
+<div class="summaryTableDescription">
+     The object in which grouping information is stored.</div>
+</td><td class="summaryTableOwnerCol">GroupingField</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#name">name</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription">
+      The name of the field to be sorted.</div>
+</td><td class="summaryTableOwnerCol">GroupingField</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#numeric">numeric</a> : <a href="../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">
+      Specifies that if the field being sorted contains numeric
+      (number/int/uint) values, or String representations of numeric values, 
+      the comparitor use a numeric comparison.</div>
+</td><td class="summaryTableOwnerCol">GroupingField</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#prototype">prototype</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">[static] 
+  A reference to the prototype object of a class or function object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#summaries">summaries</a> : <a href="../../Array.html">Array</a>
+<div class="summaryTableDescription">
+      Array of SummaryRow instances that define the group-level summaries.</div>
+</td><td class="summaryTableOwnerCol">GroupingField</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#GroupingField()">GroupingField</a>(name:<a href="../../String.html">String</a> = null, caseInsensitive:<a href="../../Boolean.html">Boolean</a> = false, descending:<a href="../../Boolean.html">Boolean</a> = false, numeric:<a href="../../Boolean.html">Boolean</a> = false)</div>
+<div class="summaryTableDescription">
+      Constructor.</div>
+</td><td class="summaryTableOwnerCol">GroupingField</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">hasOwnProperty</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an object has a specified property defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">isPrototypeOf</a>(theClass:<a href="../../Object.html">Object</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an instance of the Object class is in the prototype chain of the object specified 
+  as the parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">propertyIsEnumerable</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether the specified property exists and is enumerable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#setPropertyIsEnumerable()">setPropertyIsEnumerable</a>(name:<a href="../../String.html">String</a>, isEnum:<a href="../../Boolean.html">Boolean</a> = true):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+     Sets the availability of a dynamic property for loop operations.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#toString()">toString</a>():<a href="../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the string representation of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#valueOf()">valueOf</a>():<a href="../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the primitive value of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="caseInsensitive"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">caseInsensitive</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>caseInsensitive:<a href="../../Boolean.html">Boolean</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Set to <code>true</code> if the sort for this field should be case insensitive.
+           </p><p> The default value is <code>false</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get caseInsensitive():<a href="../../Boolean.html">Boolean</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set caseInsensitive(value:<a href="../../Boolean.html">Boolean</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="compareFunction"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">compareFunction</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>compareFunction:<a href="../../Function.html">Function</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      The function that compares two items during a sort of items for the
+      associated collection. If you specify a <code>compareFunction</code>
+      property in a Grouping object, Flex ignores any <code>compareFunction</code>
+      properties of the GroupingField objects.
+           <p>The compare function must have the following signature:</p>
+           <pre>function myCompare(a:Object, b:Object):int</pre>
+           <p>This function must return the following values:</p>
+       <ul>
+            <li>-1, if <code>a</code> should appear before <code>b</code> in
+            the sorted sequence.</li>
+            <li>0, if <code>a</code> equals <code>b</code>.</li>
+            <li>1, if <code>a</code> should appear after <code>b</code> in the
+            sorted sequence.</li>
+      </ul>
+           <p>The default value is an internal compare function that can perform 
+      a string, numeric, or date comparison in ascending or descending order, 
+      with case-sensitive or case-insensitive string comparisons.
+      Specify your own function only if you need a need a custom comparison algorithm.
+      This is normally only the case if a calculated field is used in a display.</p>
+          </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get compareFunction():<a href="../../Function.html">Function</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set compareFunction(value:<a href="../../Function.html">Function</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="descending"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">descending</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>descending:<a href="../../Boolean.html">Boolean</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Set to <code>true</code> if the sort for this field should be 
+      in descending order.
+           </p><p> The default value is <code>false</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get descending():<a href="../../Boolean.html">Boolean</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set descending(value:<a href="../../Boolean.html">Boolean</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="groupingFunction"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">groupingFunction</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var groupingFunction:<a href="../../Function.html">Function</a></code>
+<p></p><p>
+      A function that determines the label for this group.  By default
+      the group displays the text for the field in the data that matches the
+      name field.  However, sometimes you want to group the items based on
+      more than one field in the data, or group based on something that is
+      not a simple String field.
+      In such a case you specify a callback function by using 
+      the <code>groupingFunction</code> property.
+           <p>For the GroupField, the method signature has the following form:</p>
+           <pre>groupingFunction(item:Object, field:GroupField):String</pre>
+           <p>Where <code>item</code> contains the data item object, and
+      <code>field</code> contains the GroupField Object.</p>
+           <p>A callback function might convert a number for the month into 
+      the string for the month or group more items into a single group
+      based on some criteria other than the actual value of the field.</p>
+     </p></div>
+<a name="propertyDetail"></a><a name="groupingObjectFunction"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">groupingObjectFunction</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var groupingObjectFunction:<a href="../../Function.html">Function</a></code>
+<p></p><p>
+     The object in which grouping information is stored.
+          </p></div>
+<a name="propertyDetail"></a><a name="name"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">name</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>name:<a href="../../String.html">String</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      The name of the field to be sorted.
+           </p><p> The default value is <code>null</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get name():<a href="../../String.html">String</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set name(value:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="numeric"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">numeric</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>numeric:<a href="../../Boolean.html">Boolean</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Specifies that if the field being sorted contains numeric
+      (number/int/uint) values, or String representations of numeric values, 
+      the comparitor use a numeric comparison.
+      If this property is <code>false</code>, fields with String representations
+      of numbers are sorted using String comparison, so 100 precedes 99, 
+      because "1" is a lower string value than "9".
+           </p><p> The default value is <code>false</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get numeric():<a href="../../Boolean.html">Boolean</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set numeric(value:<a href="../../Boolean.html">Boolean</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="summaries"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">summaries</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var summaries:<a href="../../Array.html">Array</a></code>
+<p></p><p>
+      Array of SummaryRow instances that define the group-level summaries.
+     </p></div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor Detail</div>
+<a name="GroupingField()"></a><a name="GroupingField(String,Boolean,Boolean,Boolean)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">GroupingField</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function GroupingField(name:<a href="../../String.html">String</a> = null, caseInsensitive:<a href="../../Boolean.html">Boolean</a> = false, descending:<a href="../../Boolean.html">Boolean</a> = false, numeric:<a href="../../Boolean.html">Boolean</a> = false)</code>
+<p></p><p>
+      Constructor.
+           </p><span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:<a href="../../String.html">String</a></code> (default = <code>null</code>)<code></code> &mdash; The name of the property that this field uses for
+                  comparison.
+                  If the object is a simple type, pass null.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">caseInsensitive</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>false</code>)<code></code> &mdash; When sorting strings, tells the comparitor
+                  whether to ignore the case of the values.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">descending</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>false</code>)<code></code> &mdash; Tells the comparator whether to arrange items in
+                  descending order.
+      </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">numeric</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>false</code>)<code></code> &mdash; Tells the comparitor whether to compare sort items as
+                  numbers, instead of alphabetically.
+     </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/collections/GroupingField.html','mx/collections/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

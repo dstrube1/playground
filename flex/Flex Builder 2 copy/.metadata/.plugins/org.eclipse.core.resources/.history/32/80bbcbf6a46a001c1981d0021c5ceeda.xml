@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flexLibProperties version="1">
+<includeClasses>
+<classEntry path="app.server.calls.DatabaseResetCall"/>
+<classEntry path="app.server.mock.impl.MockGetViewService"/>
+<classEntry path="app.server.mock.impl.BaseMockService"/>
+<classEntry path="app.model.CountryAllocation.Region"/>
+<classEntry path="app.server.calls.GetViewCall"/>
+<classEntry path="app.server.calls.SiteSelectionLenzServerCall"/>
+<classEntry path="app.server.calls.LoginCall"/>
+<classEntry path="app.model.CountryAllocation.GeographicalLocation"/>
+<classEntry path="app.server.mock.impl.MockGetStudyOverviewService"/>
+<classEntry path="app.server.calls.UpdateDataCall"/>
+<classEntry path="app.server.LenzServer"/>
+<classEntry path="app.server.mock.MockLenzService"/>
+<classEntry path="app.server.mock.impl.MockLoginService"/>
+<classEntry path="app.server.calls.GetStudyOverviewCall"/>
+</includeClasses>
+<includeResources/>
+<namespaceManifests/>
+</flexLibProperties>

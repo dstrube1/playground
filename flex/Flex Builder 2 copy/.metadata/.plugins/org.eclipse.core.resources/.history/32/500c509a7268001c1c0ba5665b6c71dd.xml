@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Image xmlns:mx="http://www.adobe.com/2006/mxml" >
+	<mx:Script>
+	<![CDATA[
+	import mx.controls.Alert;
+	import base.error.LenzError;
+	import base.log.Logger;
+	
+		private var logger:Logger = Logger.getLogger('StageCircle');
+	
+		[Embed(source="/resources/images/funnel_01_green.png")]
+        private var stage1Severe1:Class;  
+        
+        [Embed(source="/resources/images/funnel_01_gray.png")]
+        private var stage1Severe2:Class; 
+        
+        [Embed(source="/resources/images/funnel_01_red.png")]
+        private var stage1Severe3:Class; 
+
+		[Embed(source="/resources/images/funnel_02_green.png")]
+        private var stage2Severe1:Class; 
+        
+        [Embed(source="/resources/images/funnel_02_gray.png")]
+        private var stage2Severe2:Class; 
+        
+        [Embed(source="/resources/images/funnel_02_red.png")]
+        private var stage2Severe3:Class; 
+
+		[Embed(source="/resources/images/funnel_03_green.png")]
+        private var stage3Severe1:Class; 
+        
+        [Embed(source="/resources/images/funnel_03_gray.png")]
+        private var stage3Severe2:Class; 
+        
+        [Embed(source="/resources/images/funnel_03_red.png")]
+        private var stage3Severe3:Class; 
+
+		[Embed(source="/resources/images/funnel_04_green.png")]
+        private var stage4Severe1:Class; 
+        
+        [Embed(source="/resources/images/funnel_04_gray.png")]
+        private var stage4Severe2:Class; 
+        
+        [Embed(source="/resources/images/funnel_04_red.png")]
+        private var stage4Severe3:Class; 
+        
+        public var stageNumber:int;
+
+
+		public function setSeverity(severity:String, stage:String=""):void{
+			/*
+			if (stageNumber > 0 && stageNumber < 5){
+				if (stageNumber == PatientFunnel.STAGE1){
+					if (severity == PatientFunnel.LOW){
+						this.source = stage1Severe1;
+					}
+					else if (severity==PatientFunnel.MEDIUM){
+						this.source = stage1Severe2;
+					}
+					else if (severity==PatientFunnel.HIGH){
+						this.source = stage1Severe3;
+					}
+					else{
+						logger.error("PatientFunnel Stage1: severity unrecognized: "+severity);
+					}
+				}
+				else if (stageNumber == PatientFunnel.STAGE2){
+					if (severity == PatientFunnel.LOW){
+						this.source = stage2Severe1;
+					}
+					else if (severity==PatientFunnel.MEDIUM){
+						this.source = stage2Severe2;
+					}
+					else if (severity==PatientFunnel.HIGH){
+						this.source = stage2Severe3;
+					}
+					else{
+						logger.error("PatientFunnel Stage2: severity unrecognized: "+severity);
+					}
+				}
+				else if (stageNumber == PatientFunnel.STAGE3){
+					if (severity == PatientFunnel.LOW){
+						this.source = stage3Severe1;
+					}
+					else if (severity==PatientFunnel.MEDIUM){
+						this.source = stage3Severe2;
+					}
+					else if (severity==PatientFunnel.HIGH){
+						this.source = stage3Severe3;
+					}
+					else{
+						logger.error("PatientFunnel Stage3: severity unrecognized: "+severity);
+					}
+				}
+				else if (stageNumber == PatientFunnel.STAGE4){
+					if (severity == PatientFunnel.LOW){
+						this.source = stage4Severe1;
+					}
+					else if (severity==PatientFunnel.MEDIUM){
+						this.source = stage4Severe2;
+					}
+					else if (severity==PatientFunnel.HIGH){
+						this.source = stage4Severe3;
+					}
+					else{
+						logger.error("PatientFunnel Stage4: severity unrecognized: "+severity);
+					}
+				}
+			}
+			else{
+				logger.error("PatientFunnel->StageCircle should have a stage number");
+			}
+			*/
+		}
+	]]>
+	</mx:Script>
+	
+</mx:Image>

@@ -1,0 +1,10 @@
+package base.controller
+{
+	public interface ClickManager
+	{
+		function processAction( params:Object ):void;
+		
+		
+		
+	}
+}

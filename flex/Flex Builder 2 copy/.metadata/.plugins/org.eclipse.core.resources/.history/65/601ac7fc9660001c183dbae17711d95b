@@ -1,0 +1,294 @@
+package app
+{
+	import app.config.BladeFactory;
+	import app.config.DefaultBladeItems;
+	import app.config.LenzFactory;
+	import app.server.LenzServer;
+	import app.server.mock.MockLenzService;
+	import app.server.mock.impl.MockGetViewService;
+	
+	import base.lenz.panel.PanelBuilder;
+	import base.log.LogWindow;
+	import base.log.Logger;
+	import base.services.LenzService;
+	import base.services.RichLenzService;
+	import base.services.ServiceBuilder;
+	import base.services.SimpleLenzService;
+	
+	import lenz.intro.IntroLenz;
+	import lenz.login.LoginLenz;
+	import lenz.main.investigator.InvestigatorLenz;
+	import lenz.main.monitor.MonitorLenz;
+	import lenz.main.site_select.SiteSelectionLenz;
+	//import lenz.main.site_select.panel.CA_ProposalBrowserPanel; //testing
+	import lenz.main.study_mgr.StudyManagerLenz;
+	import lenz.main.welcome.WelcomeLenz;
+	import lenz.main.my_pharma.MyPharmaLenz;
+	
+	import mx.core.ClassFactory;
+	import app.server.mock.impl.MockGetStudyOverviewService;
+
+	
+	public class Init
+	{
+		
+		private var config:Object = null;
+
+		private var logger:Logger = Logger.getLogger("Init");
+		
+		
+		public function Init( logWin:LogWindow, configParams:Object):void {
+			
+			config = configParams;
+			
+			// all the configuration for the base code goes here, or in sub methods of this.
+			initLogger(logWin);
+			
+			registerLenzes();
+			
+			configPanelBuilder();
+						
+		}
+		
+		
+		public function phase2( defaultBladeItems:DefaultBladeItems):void {
+			
+			logger.debug("Init: phase2");
+			
+			provisionBlades(defaultBladeItems);
+			
+			configureServer( config );
+			
+			
+		}
+		
+		
+		private function initLogger(logWin:LogWindow):void {
+							
+			Logger.initialize(logWin.getTextArea()); 
+			
+		}
+		
+		
+		private function registerLenzes():void {
+	
+	
+			LenzFactory.registerLenz( App.INTRO, IntroLenz );
+			/*
+			LenzFactory.registerLenz( App.SITE_SELECT, SiteSelectionLenz);
+			LenzFactory.registerLenz( App.STUDY_MANAGER, StudyManagerLenz);
+			*/LenzFactory.registerLenz( LoginLenz.LENZ_ID, LoginLenz);/*
+			LenzFactory.registerLenz( WelcomeLenz.LENZ_ID, WelcomeLenz);
+			LenzFactory.registerLenz( App.MONITOR, MonitorLenz);
+			LenzFactory.registerLenz( App.INVESTIGATOR, InvestigatorLenz);
+			LenzFactory.registerLenz( App.MY_PHARMALENZ, MyPharmaLenz);
+			*/
+			//LenzFactory.registerLenz(App.COUNTRY_ALLOCATION, CA_ProposalBrowserPanel);
+		}
+		
+		
+		private function provisionBlades(def:DefaultBladeItems):void {
+			
+			BladeFactory.setBladeItemComponent(def);
+		}
+		
+		
+		private function configPanelBuilder():void {
+			
+			PanelBuilder.setContentHeight(App.LENZ_PANEL_CONTENT_HEIGHT);
+			
+		}
+		
+		
+		
+		
+		private function configureServer( config:Object ):void {
+			
+			var url:String = config["svcUrl"];
+			var wsdlPath:String = config["wsdlPath"];
+			var portPath:String = config["portPath"];
+
+			var baseService:LenzService = null;			
+			var visibleService:LenzService = null;
+
+			if (config["testMode"]) {
+
+				baseService = new MockLenzService();
+
+
+				var notificationXML:XML = <db>
+				   			  <notification id="100" type="alarm" priority="1" text="Significant Enrollment Problem" area="recruiting" region="NA" country="USA" monitor="J100" site="XFG11" />
+				  			  <notification id="101" type="alert" priority="2" text="Monitor Falling Behind" area="deliverables"  region="NA" country="USA" monitor="J100" site="XFG11" />
+							  <notification id="102" type="notification" priority="3" text="Missing Paperwork" area="quality" region="NA" country="USA" monitor="J100" site="XFG11" />
+						</db>
+						
+				var notificationDetailsXML:XML = <db>
+								<notification type="alarm" name="Monitor Falling Behind" description="Description of Monitor Falling Behind" />
+							</db>
+							
+				var plansXML:XML = <db>
+								<plan id="1" name="Plan1" description="Hold a Rejuvenation Meeting" />
+								<plan id="2" name="Plan2" description="Add more monitors" />
+							</db>
+
+				
+				var getViewSvc:MockGetViewService = (baseService as MockLenzService).getResourceHandler("getView") as MockGetViewService;
+			
+				setGetViewMockResponses(getViewSvc, notificationXML, notificationDetailsXML, plansXML);
+				
+				
+				var getStudyOverviewSvc:MockGetStudyOverviewService = (baseService as MockLenzService).getResourceHandler("getStudyOverview") as MockGetStudyOverviewService;
+				setGetStudyOverviewMockResponses(  getStudyOverviewSvc, notificationXML );
+				
+				
+			} else {
+				
+				var builder:ServiceBuilder = new ServiceBuilder();
+				
+				builder.setUrl(url);
+				builder.setWsdlPath(wsdlPath);
+				builder.setPortPath(portPath);
+				baseService = new SimpleLenzService();
+				
+				builder.build( baseService );
+				
+				
+			}
+			
+			
+			visibleService = new RichLenzService(baseService );
+			
+			LenzServer.init(visibleService);
+						
+			
+		}
+		
+		private function setGetViewMockResponses(getViewSvc:MockGetViewService, notificationXML:XML, notifDetailsXML:XML, plansXML:XML):void {
+			var studyName:String = "EBM991 Protocol 007";
+						
+			var funnelXml:XML = <db>
+									<stage id="1" count="90" severity="LOW" startCount="100"/>
+									<stage id="2" count="80" severity="LOW" />
+									<stage id="3" count="50" severity="MEDIUM" />
+									<stage id="4" count="20" severity="HIGH" />
+								</db>
+			var funnelXml1:XML = <db>
+									<stage id="1" count="90" severity="LOW" startCount="100"/>
+									<stage id="2" count="50" severity="HIGH" />
+									<stage id="3" count="40" severity="MEDIUM" />
+									<stage id="4" count="10" severity="HIGH" />
+								</db>
+								
+			var funnelXml2:XML = <db>
+									<stage id="1" count="90" severity="MEDIUM" startCount="100"/>
+									<stage id="2" count="50" severity="MEDIUM" />
+									<stage id="3" count="40" severity="MEDIUM" />
+									<stage id="4" count="10" severity="MEDIUM" />
+								</db>
+			
+			//World map
+			getViewSvc.setView("Main", { 
+												study_name: studyName,
+												changePanel: "true",
+												panel: "Main",
+												form: "",												 
+												notification_xml: notificationXML,
+												patient_db: funnelXml,
+												geographic_map_url: "WorldMapMock.swf",
+												budget_graph_url: "Step.swf" } );
+												
+			//Northeast map
+			getViewSvc.setView("Main.Northeast", { 
+												study_name: studyName,
+												panel: "Main",
+												form: "",												 
+												notification_xml: notificationXML,
+												patient_db: funnelXml,
+												geographic_map_url: "USMapMock.swf",
+												budget_graph_url: "Step.swf" } );
+												
+			//Europe map
+			getViewSvc.setView("Main.Europe", { 
+												study_name: studyName,
+												panel: "Main",
+												form: "",
+												notification_xml: notificationXML,
+												patient_db: funnelXml,
+												geographic_map_url: "EuropeMock.swf",
+												budget_graph_url: "Step.swf", 
+												radar_small_graph_url: "small_radar",
+												radar_graph_url: "large_radar" } );
+												
+			//Radar_Site
+			getViewSvc.setView("Metric.Site", 
+											 { 	
+											 	study_name: studyName,
+											 	panel: "Metric",
+												form: "metrics1",
+												drilldown: "false",
+												notification_xml: notificationXML,
+												patient_db: funnelXml1,												
+												geographic_map_url: "geo_url",
+												radar_small_graph_url: "small_radar",
+												radar_graph_url: "Radar_Site.swf" } );
+												
+			//Radar_World
+			getViewSvc.setView("Metric.World", 
+											 { 	
+											 	study_name: studyName,
+											 	panel: "Metric",
+												form: "metrics1",
+												drilldown: "true",													
+												notification_xml: notificationXML,
+												patient_db: funnelXml1,												
+												radar_graph_url: "resources/swf/BigWrapper.swf?movieName=Radar_World_Mock.swf",
+												budget_graph_url: "Step.swf" } );
+			
+			//Metric.Subgraph
+			getViewSvc.setView("Metric.Subgraph",
+											{ 	study_name: studyName,
+												panel: "Metric",
+												form: "metrics2",
+												notification_xml: notificationXML,
+												patient_db: funnelXml2,
+												metric_subgraph_count: "3",
+												submetric_1_small_graph_url: "resources/swf/Bar.swf",
+												submetric_2_small_graph_url: "resources/swf/HorizontalBar.swf",
+												submetric_3_small_graph_url: "resources/swf/Pie.swf" } );
+			
+			
+			//PR Forecast graph
+			getViewSvc.setView("PR.Result",
+											{	study_name: studyName,
+												panel: "PR",
+												form: "PR1",
+												notification_xml: notificationXML,
+												patient_db: funnelXml,
+												//simulation_count: "3",
+												plans_db: plansXML,
+												notification_details_db: notifDetailsXML,
+												forecast_graph_url_current: "resources/swf/Templb.swf",
+												forecast_graph_url_1: "resources/swf/Intervention1b.swf",
+												forecast_graph_url_2: "resources/swf/Intervention2b.swf" } );
+										
+			
+		}
+		
+		
+		private function setGetStudyOverviewMockResponses( svc:MockGetStudyOverviewService, notificationXML:XML):void {
+			var funnelXml:XML = <db>
+									<stage id="1" count="90" severity="LOW" startCount="100"/>
+									<stage id="2" count="80" severity="LOW" />
+									<stage id="3" count="50" severity="MEDIUM" />
+									<stage id="4" count="20" severity="HIGH" />
+								</db>
+								
+			svc.setNotificationXML(notificationXML);
+			svc.setStateGraphUrl("WorldMapMock.swf");
+			svc.setBudgetGraphUrl("Step.swf");
+			svc.setSiteDb(funnelXml);
+			
+		}
+		
+	}
+}

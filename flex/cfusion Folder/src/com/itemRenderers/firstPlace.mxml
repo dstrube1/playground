@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100" height="50"
+	horizontalScrollPolicy="off" verticalScrollPolicy="off" >
+	<mx:Script>
+        <![CDATA[
+
+            [Embed(source="assets/img/icons/prize_winner.png")]
+            [Bindable]
+            public var ribbon:Class;            
+        ]]>
+    </mx:Script>
+    <mx:Image height="48" source="{ribbon}"/>
+    <mx:Label text="Leader!" fontSize="12" fontStyle="italic" fontWeight="bold"/>
+
+</mx:HBox>

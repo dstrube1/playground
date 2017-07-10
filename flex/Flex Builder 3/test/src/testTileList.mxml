@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+ xmlns:mx="http://www.adobe.com/2006/mxml" 
+ layout="absolute" creationComplete="init()" >
+<mx:Script>
+	<![CDATA[
+		import mx.controls.Image;
+		import mx.controls.Alert;
+		import mx.events.ListEvent;
+//		[Bindable]
+//         [Embed(source="assets/Nokia_6630.png")]
+//         public var phone1:Class;
+
+		private function init():void{
+		}
+		
+		private function tileList_itemClick(evt:ListEvent):void {
+              var show:String = evt.itemRenderer.data.@title;
+              Alert.show(show);
+            }
+            
+	]]>
+</mx:Script>
+<mx:Button label="Here I am." click="Alert.show('Rock you like a hurricane.')" visible="true"/>
+
+	<mx:XML id="xml" source="gallery.xml" />
+    <mx:XMLListCollection id="xmlListColl" source="{xml.image}" />
+    
+<mx:TileList id="tileList"
+            dataProvider="{xmlListColl}"
+            itemRenderer="CustomItemRenderer"
+            columnCount="4"
+            columnWidth="125"
+            rowCount="2"
+            rowHeight="100"
+            themeColor="haloSilver"
+            verticalScrollPolicy="on"
+            itemClick="tileList_itemClick(event);" />
+        
+</mx:Application>

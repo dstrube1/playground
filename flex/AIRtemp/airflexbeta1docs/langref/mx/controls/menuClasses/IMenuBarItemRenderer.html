@@ -1,0 +1,174 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="IMenuBarItemRenderer,mx.controls.menuClasses.IMenuBarItemRenderer,branchIcon,icon,label,data,listData,menu,menuBar,menuBarItemIndex,menuBarItemState,icon,label,data,menuBar,menuBarItemIndex,menuBarItemState,dataProvider,menu" name="keywords">
+<title>mx.controls.menuClasses.IMenuBarItemRenderer (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'IMenuBarItemRenderer - Flex 3 Language Reference';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../../index.html?mx/controls/menuClasses/IMenuBarItemRenderer.html&amp;mx/controls/menuClasses/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Interface&nbsp;IMenuBarItemRenderer</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Interface IMenuBarItemRenderer"); titleBar_setSubNav(false,true,false,false,false,false,false,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.controls.menuClasses</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public  interface  IMenuBarItemRenderer extends <a href="../../../mx/core/IDataRenderer.html">IDataRenderer</a>, <a href="../../../mx/core/IUIComponent.html">IUIComponent</a>, <a href="../../../mx/styles/ISimpleStyleClient.html">ISimpleStyleClient</a>, <a href="../../../mx/controls/listClasses/IListItemRenderer.html">IListItemRenderer</a>, <a href="../../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a>, <a href="../../../flash/display/IBitmapDrawable.html">IBitmapDrawable</a>, <a href="../../../flash/events/IEventDispatcher.html">IEventDispatcher</a>, <a href="../../../mx/managers/ILayoutManagerClient.html">ILayoutManagerClient</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implementors</td><td><a href="../../../mx/controls/menuClasses/MenuBarItem.html">MenuBarItem</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  The IMenuBarItemRenderer interface defines the interface
+  that an item renderer for the top-level menu bar of a 
+  MenuBar control must implement.
+  The item renderer defines the look of the individual buttons 
+  in the top-level menu bar. 
+ 
+  To implement this interface, you must define a 
+  setter and getter method that implements the <code>menuBar</code>, 
+  <code>menuBarItemIndex</code>, and <code>menuBarItemState</code> properties. 
+ 
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../../mx/controls/MenuBar.html" target="">mx.controls.MenuBar</a>
+<br>
+<a href="MenuBarItem.html" target="">mx.controls.menuClasses.MenuBarItem</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#menuBar">menuBar</a> : <a href="../../../mx/controls/MenuBar.html">MenuBar</a>
+<div class="summaryTableDescription">
+      Contains a reference to the item renderer's MenuBar control.</div>
+</td><td class="summaryTableOwnerCol">IMenuBarItemRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#menuBarItemIndex">menuBarItemIndex</a> : <a href="../../../int.html">int</a>
+<div class="summaryTableDescription">
+      Contains the index of this item renderer relative to
+      other item renderers in the MenuBar control.</div>
+</td><td class="summaryTableOwnerCol">IMenuBarItemRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#menuBarItemState">menuBarItemState</a> : <a href="../../../String.html">String</a>
+<div class="summaryTableDescription">
+      Contains the current state of this item renderer.</div>
+</td><td class="summaryTableOwnerCol">IMenuBarItemRenderer</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="menuBar"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">menuBar</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>menuBar:<a href="../../../mx/controls/MenuBar.html">MenuBar</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Contains a reference to the item renderer's MenuBar control. 
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get menuBar():<a href="../../../mx/controls/MenuBar.html">MenuBar</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set menuBar(value:<a href="../../../mx/controls/MenuBar.html">MenuBar</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="menuBarItemIndex"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">menuBarItemIndex</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>menuBarItemIndex:<a href="../../../int.html">int</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Contains the index of this item renderer relative to
+      other item renderers in the MenuBar control. 
+      The index of the first item renderer,
+      the left most renderer, is 0 and increases by 1 as you
+      move to the right in the MenuBar control. 
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get menuBarItemIndex():<a href="../../../int.html">int</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set menuBarItemIndex(value:<a href="../../../int.html">int</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="menuBarItemState"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">menuBarItemState</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>menuBarItemState:<a href="../../../String.html">String</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Contains the current state of this item renderer. 
+      The possible values are <code>"itemUpSkin"</code>, 
+      <code>"itemDownSkin"</code>, and <code>"itemOverSkin"</code>. 
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get menuBarItemState():<a href="../../../String.html">String</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set menuBarItemState(value:<a href="../../../String.html">String</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/controls/menuClasses/IMenuBarItemRenderer.html','mx/controls/menuClasses/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

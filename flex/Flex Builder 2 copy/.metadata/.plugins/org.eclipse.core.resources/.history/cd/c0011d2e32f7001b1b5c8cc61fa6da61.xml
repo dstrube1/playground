@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BaseLenzPanel xmlns="base.lenz.panel.*" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	implements="base.lenz.panel.LenzPanel"
+	creationComplete="onCreationComplete()" 
+	title="Welcome" >
+	 
+	<mx:Script>
+		<![CDATA[
+			import base.event.SelectLenzEvent;
+			import base.log.Logger;
+//			import presentation.main.siteselect.SiteSelectWelcome;
+			
+			
+			private var _form:WelcomeForm = null;
+			private var logger:Logger = Logger.getLogger('WelcomeLenzPanel');
+			
+			
+			
+			protected  function onCreationComplete():void {
+				
+				logger.debug("WelcomeLenzPanel: onCreationComplete");		
+				
+				lenzId = "WelcomePanel";
+				
+				_form = new WelcomeForm();
+				
+				super.completePanel(_form);
+			
+				ready();
+
+																
+			}
+			
+			
+			public override function animateContent():void {
+				_form.animate();
+			}
+			
+
+
+			
+		]]>
+	</mx:Script>
+	
+</BaseLenzPanel>

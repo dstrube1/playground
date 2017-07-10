@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init();" >
+
+<mx:Script>
+<![CDATA[
+
+	import mx.collections.*;
+	
+	[Bindable]
+	public var folderList:XMLList =
+		<>
+		<folder state="unchecked" label="Marketing Collateral" isBranch="true" >
+	      <folder state="unchecked" isBranch="true" label="Media, PR, and Communications" >
+		      <folder state="unchecked" isBranch="false" label="Article Reprint Disclaimers" />
+		      <folder state="unchecked" isBranch="false" label="Articles Reprints" />
+		      <folder state="unchecked" isBranch="false" label="Interviews and Transcripts" />
+		      <folder state="unchecked" isBranch="false" label="Press Kits" />
+		      <folder state="unchecked" isBranch="false" label="Press Releases" />
+		      <folder state="unchecked" isBranch="false" label="Quick Hits" />
+		      <folder state="unchecked" isBranch="false" label="Rep Talking Points" />
+		      <folder state="unchecked" isBranch="false" label="Special Updates" />
+		      <folder state="unchecked" isBranch="false" label="White Papers" />
+	      </folder>
+	      <folder  state="unchecked" isBranch="true" label="Forms and Applications" >
+	          <folder state="unchecked" isBranch="false" label="Applications" />
+	          <folder state="unchecked" isBranch="false" label="Forms" />
+	      </folder>
+		</folder>		
+		</>;
+	
+	[Bindable]
+	public var folderCollection:XMLListCollection;
+	
+	private function init() : void
+	{
+		folderCollection = new XMLListCollection(folderList);
+		checkTree.dataProvider = folderCollection;
+	}
+
+]]>
+</mx:Script>
+	<mx:Tree 
+			id="checkTree"
+			itemRenderer="CheckTreeRenderer"
+			labelField="@label"
+ 			width="100%" height="100%" >
+ 	</mx:Tree>
+</mx:Application>

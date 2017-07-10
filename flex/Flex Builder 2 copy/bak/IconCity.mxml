@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+		
+	    EXAMPLE: Icon City
+	    AUTHOR: Theodore Patrick
+	    CREATED: Oct. 21, 2005
+	    MODIFIED: Oct. 21, 2005
+	
+	    Macromedia® Flex® by Example
+	    http://www.ifbin.com
+		
+-->
+
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" >
+ 
+	<mx:Script>
+		<![CDATA[
+		
+			[Embed("ifbin.png")]
+			var ifbin:String; 
+			
+			var listArray = 
+				[{label:"One",icon:ifbin},
+				{label:"Two",icon:ifbin},
+				{label:"Three",icon:ifbin},
+				{label:"Four",icon:ifbin}]
+			
+		]]>
+	</mx:Script>
+	<!--
+	TypeError: Error #1034: Type Coercion failed: cannot convert "IconCity_ifbin" to Class.:
+	<mx:Button icon="{ ifbin }" label="Button Icon Via AS" />	
+	-->
+	<mx:Button icon="@Embed('ifbin.png')" label="Button Icon Via Embed" />
+	<mx:Label text="via List"/>
+	<mx:List height="100" dataProvider="{ listArray }"/>
+	<mx:Label text="via ComboBox"/>
+	<mx:ComboBox dataProvider="{ listArray }"/>
+	<mx:Label text="via TileList"/>
+	<mx:TileList height="100" dataProvider="{ listArray }"/>
+</mx:Application>

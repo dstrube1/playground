@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:utils="com.utils.*"
+	xmlns:com="com.*"
+	width="472" height="522" 
+	title="hotel admin"
+	horizontalAlign="center" layout="horizontal" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	creationComplete="fill()"
+	showCloseButton="true" close="handleClose(event)">
+	
+	<mx:Script>
+        <![CDATA[
+        	import mx.events.CloseEvent;        	
+        	
+            import mx.controls.Alert;
+			import mx.rpc.events.ResultEvent;
+			import mx.managers.PopUpManager;
+			import mx.collections.ArrayCollection;
+			import mx.collections.XMLListCollection;			
+			import mx.core.Application;
+			import com.ComboBox2;
+			
+			private var params:Object = new Object();
+			
+			private var AlertMsgSuccess:String;
+			private var AlertMsgSuccessTitle:String;
+			private var AlertMsgFail:String = "Your Account information could not be loaded.  Please try again.";
+			private var AlertMsgFailTitle:String = "Load Problem";
+
+			[Bindable] private var listData:XMLListCollection;
+			[Bindable] private var hotels:ArrayCollection;
+			[Bindable] private var companies:ArrayCollection;
+			[Bindable] private var roles:ArrayCollection;
+
+			[Bindable] private var listAccount:XMLListCollection;
+			[Bindable] private var listRoles:ArrayCollection;
+			
+			private function handleClose(event:CloseEvent):void{
+				closeReg();
+			}
+            private function closeReg():void {
+                // Check credentials (not shown) then remove pop up.
+                PopUpManager.removePopUp(this);
+            }
+			
+			public function resultHandlerUpdate(event:ResultEvent):void {	
+				var result:XML = XML(event.result);  
+				var code:String;
+				
+				code = result.items.item[0].code.toString();
+				//Alert.show(String(code));
+				
+				if (String(code) == "0"){
+					Alert.show("Your account information has been updated.", "Account Updated");
+					txtUsername.text = "";
+					txtPassword.text = "";
+				}else{
+					Alert.show("There was a problem with saving your account information.  Please try again.", "Update Problem");
+				}
+			}
+			private function validateForm():void{
+				//var company:String = this.selCompany.value;
+				//var hotel:String = this.selProperty.value;
+				//var role:String = this.selRole.value;
+				
+				//Alert.show(this.selProperty.data);
+				
+				if (this.selRole.selectedItem.@data==""){
+					Alert.show("Please be sure to select your Job Role from the list.","Select Your Job Role");
+					this.selRole.setFocus();
+				}else if (this.txtEmail.text != this.txtEmail2.text){
+					Alert.show("Your email address entries do not match.  Please re-enter.","Re-enter Email Address");
+					this.txtEmail2.text = "";
+					this.selRole.setFocus();
+				}else if (this.txtPassword.text != this.txtPassword2.text){
+					Alert.show("Your password entries do not match.  Please re-enter.","Re-enter Password");
+					this.txtPassword2.text = "";
+					this.selRole.setFocus();
+				}else{
+					sendUpdate();
+				}				
+			}
+			
+            private function handleFormValidate(event:Event):void {
+               // status.text = "This form is: "+String(event.type);
+            }
+			
+			public function sendUpdate():void{
+			    params = {
+			    "method": "Register", 
+			    "first": txtFirst.text,
+			    "last": txtLast.text,
+			    "title": txtTitle.text,
+			    "role": selRole.selectedItem.@data,
+			    "email": txtEmail.text,
+			    "phone": txtPhone.text,
+			    "fax": txtFax.text,
+			    "userName": txtUsername.text,
+			    "password": txtPassword.text
+			    }; 
+				updateService.cancel();
+				updateService.url="http://www.revparsuite.com/myAccountEXE.asp" + Application.application.userID;
+				updateService.method = "POST";
+				updateService.send(params);
+			}
+            
+			public function regCompleted():void{
+				PopUpManager.removePopUp(this);
+			}
+			
+			public function resultHandlerRoles(event:ResultEvent):void {	
+				listRoles = new ArrayCollection();
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.children();
+			    //for each (var xml:XML in result){
+			    //	var temp:String = xml.children().toString();
+			    //}
+			    for each (var xml:XML in result.children()){
+			    	var o:Object = new Object();
+			    	o.name = xml.@name;//o.name//xml.child("name");
+			    	o.data = xml.@data;
+			    	listRoles.addItem(o);
+			    }
+			}
+			
+			public function resultHandlerAccount(event:ResultEvent):void {	
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					//listAccount = new XMLListCollection(xmlList);
+					txtFirst.text = result.items.item[0].first_name.toString();
+					txtLast.text = result.items.item[0].last_name.toString();
+					txtTitle.text = result.items.item[0].myTitle.toString();
+/*					
+var val:String;
+
+val = result.items.item[0].role.toString()  ;
+for (var i: int = 0; i < selRole.dataProvider.length; i++) {
+	//Alert.show(String(selRole.dataProvider[i].data));
+	//Alert.show(String(listRoles[i].data));
+	//if ( val == selRole.dataProvider[i].data) {
+	if ( val == selRole.dataProvider[i].data) {
+		selRole.selectedIndex = i;
+		break;
+	}    
+}
+*/
+					//selRole.selectedValue = result.items.item[0].role.toString();
+					//selRole.selectedValue = getRole(result.items.item[0].role.toString());
+					selRole.selectedItem = getRole(result.items.item[0].role.toString());
+					//var temp:String = selRole.selectedItem.toString();
+					
+					txtEmail.text = result.items.item[0].email1.toString();
+					txtEmail2.text = result.items.item[0].email1.toString();
+					txtPhone.text = result.items.item[0].phone1.toString();
+					txtFax.text = result.items.item[0].fax.toString();
+					txtUsername.text = result.items.item[0].username.toString();
+					txtPassword.text = result.items.item[0].password.toString();
+					txtPassword2.text = result.items.item[0].password.toString();
+					
+					//Alert.show(result.items.item[0].role.toString());
+				}
+			}
+			
+		public function getRole(role:String):Object{
+			for each (var o:Object in listRoles){
+				if (o.data == role){
+					return o;
+				}
+			}
+			return null;
+		}
+		
+			
+			public function fill():void {
+				rolesService.send();
+				
+				accountService.cancel();
+				accountService.url="http://www.revparsuite.com/myAccountEXE.asp?userid=" + Application.application.userID + "&myType=single";
+				accountService.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				accountService.addEventListener(ResultEvent.RESULT,resultHandlerAccount);
+				accountService.method = "GET";
+				accountService.send(); 
+				
+
+
+			}
+
+			public function insertItemHandler(event:ResultEvent):void {	
+				//fill();
+			}						
+			
+			
+			
+			
+        ]]>
+    </mx:Script>
+    
+	<mx:HTTPService 
+        id="updateService"
+ 		url="http://www.revparsuite.com/myAccountEXE.asp"
+        resultFormat="e4x"
+        useProxy="false"/>
+	<mx:HTTPService 
+        id="accountService"
+		result="resultHandlerAccount(event)"
+        resultFormat="e4x"
+        useProxy="false"/>
+	        
+	<mx:HTTPService id="rolesService" url="com/login/job_roles.xml" 
+		result="resultHandlerRoles(event)"
+		resultFormat="e4x"
+        useProxy="false" />
+        
+        
+<mx:Array id="validators" >
+    <mx:PhoneNumberValidator source="{txtPhone}" property="text"/>
+	<mx:EmailValidator source="{txtEmail}" property="text"/>
+	<mx:EmailValidator source="{txtEmail2}" property="text"/>
+	<mx:StringValidator source="{txtFirst}" property="text" minLength="2"/>
+	<mx:StringValidator source="{txtLast}" property="text" minLength="2"/>
+	<!--<mx:StringValidator source="{selCompany}" property="value" requiredFieldError="Please be sure to select your Company from the list." minLength="1"/>
+	<mx:StringValidator source="{selProperty}" property="value" requiredFieldError="Please be sure to select your Hotel from the list." minLength="1"/>
+	<mx:StringValidator source="{selRole}" property="value" requiredFieldError="Please be sure to select your Job Role from the list." minLength="1"/>-->
+	<mx:StringValidator source="{txtUsername}" property="text" minLength="6"/>
+	<mx:StringValidator source="{txtPassword}" property="text" minLength="6"/>
+	<mx:StringValidator source="{txtPassword2}" property="text" minLength="6"/>
+</mx:Array>
+		
+	<utils:ValidatorForm
+			id="frmRegister"
+			defaultButton="{btnSave}"
+			validators="{validators}"
+			valid="handleFormValidate(event)"
+			invalid="handleFormValidate(event)"
+			>	
+		<mx:Text width="400" text="Make any desired changes to your account info below and Save."/>
+		<mx:FormItem label="First Name:" required="true">
+			<mx:TextInput id="txtFirst" width="300" maxChars="30"/>
+		</mx:FormItem>
+		<mx:FormItem label="Last Name:" required="true">
+			<mx:TextInput id="txtLast" width="300" maxChars="30"/>
+		</mx:FormItem>
+		<!--<mx:FormItem label="Company:" required="true">
+			<mx:ComboBox width="300" id="selCompany" dataProvider="{companies}" labelField="name"></mx:ComboBox>
+		</mx:FormItem>-->
+		<!--<mx:FormItem label="Hotel:" required="true">
+			<mx:TextInput id="txtProperty" width="300" maxChars="30"/>
+		</mx:FormItem>-->
+		<mx:FormItem label="Job Title:" required="false">
+			<mx:TextInput id="txtTitle" width="300" maxChars="100"/>
+		</mx:FormItem>
+		<mx:FormItem label="Job Role:" required="true">
+			<com:ComboBox2 width="300" id="selRole" dataProvider="{listRoles}" labelField="name" />
+		</mx:FormItem>
+		<mx:FormItem label="Email" required="true">
+			<mx:TextInput id="txtEmail" width="300" maxChars="100"/>
+		</mx:FormItem>
+		<mx:FormItem label="Confirm Email" required="true">
+			<mx:TextInput id="txtEmail2" width="300" maxChars="100"/>
+		</mx:FormItem>
+		<mx:FormItem label="Phone" required="true">
+			<mx:TextInput id="txtPhone" width="300" maxChars="30"/>
+		</mx:FormItem>
+		<mx:FormItem label="Fax" required="false">
+			<mx:TextInput id="txtFax" width="300" maxChars="20"/>
+		</mx:FormItem>
+		<mx:FormItem label="Username" required="true">
+			<mx:TextInput id="txtUsername" width="300" maxChars="16"/>
+		</mx:FormItem>
+		<mx:FormItem label="Password" required="true">
+			<mx:TextInput id="txtPassword" width="300" displayAsPassword="true" maxChars="16"/>
+		</mx:FormItem>
+		<mx:FormItem label="Confirm Password" required="true">
+			<mx:TextInput id="txtPassword2" width="300" displayAsPassword="true" maxChars="16"/>
+		</mx:FormItem>
+	</utils:ValidatorForm>
+    <mx:ControlBar horizontalAlign="right" paddingTop="3" paddingBottom="3" paddingRight="10">
+        <mx:Button label="Cancel" click="closeReg();" />
+        <mx:Button label="Save" id="btnSave" enabled="false" click="validateForm()" />
+    </mx:ControlBar>
+
+</mx:TitleWindow>

@@ -1,0 +1,39 @@
+package base.lenz.db
+{
+	public class NotificationRecord
+	{
+	
+		private var _type:String;
+		private var _region:String;
+		private var _country:String;
+		private var _monitor:String;
+		private var _site:String;
+		private var _study:String; 
+	
+		
+		public function get type():String {
+			return _type;
+		}
+		
+		public function get region():String {
+			return _region;
+		}
+		
+		public function get country():String {
+			return _country;
+		}
+		
+		public function get monitor():String {
+			return _monitor;
+		}
+		
+		public function get site():String {
+			return _site;
+		}
+		
+		public function get study():String {
+			return _study;
+		}
+		
+	}
+}

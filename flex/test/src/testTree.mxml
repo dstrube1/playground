@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   minWidth="955" minHeight="600">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<mx:XMLListCollection id="treeData">
+			<fx:XMLList>
+				<folder label="1" isLeaf="false">
+					<folder label="2"  isLeaf="true"/>
+					<folder label="3" isLeaf="false">
+						<folder label="4" isLeaf="false"/>
+					</folder>
+				</folder>
+			</fx:XMLList>
+		</mx:XMLListCollection>
+		<!--
+		isBranch="true"
+		-->
+	</fx:Declarations>
+	
+	<mx:Tree id="tree" 
+			 dataProvider="{treeData}" 
+			 height="100%" width="100%"
+			 labelField="@label"
+			 showRoot="false"
+			 itemRenderer="dstrube.MyTreeItemRenderer"
+			 
+			 >
+		
+	</mx:Tree>
+</s:Application>

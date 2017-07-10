@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- saved from url=(0014)about:internet -->
+
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../print.css" type="text/css" media="print">
+<title></title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../asdoc.js"></script><script type="text/javascript" language="javascript" src="../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+
+				asdocTitle = 'Flex 3 Language Reference';
+
+				var baseRef = '../';
+
+				window.onload = configPage;
+
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a href="../language-elements.html">Language&nbsp;Elements</a>&nbsp;| <a onclick="loadClassListFrame('../index-list.html')" href="../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../index.html?mxml/mxml/model.html&amp;mxml-tags.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">&nbsp;</td><td align="right" id="subNav" class="titleTableSubNav"></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle(""); titleBar_setSubNav(false,false,false,false,false,false,false,false,false,false,false,false,false,false);}
+
+--></script>
+<div class="MainContent">
+        <div style="height:20px;" width="100%"></div>
+        <h3>&lt;mx:Model> tag implemented by the compiler</h3>
+        <hr />
+
+        <p>You use the &lt;mx:Model&gt; tag to declare a data model in MXML. 
+        An &lt;mx:Model&gt; tag is compiled into a tree of ActionScript objects; the leaves of the tree are scalar values.
+
+        <p><b>MXML Syntax</b></p> <p>You can place an &lt;mx:Model&gt; tag in a Flex application file, or in an MXML component file. 
+        The tag must have an id value. It cannot be the root tag of an MXML component. 
+        The &lt;mx:Model&gt; tag has the following syntax:  </p>
+        
+    <pre> &lt;mx:Model id="modelID"&gt;<br>   <i>model declaration</i><br> &lt;/mx:Model&gt; </pre> </p> </p>
+
+    <p>or:</p>
+    <pre> &lt;mx:Model id="modelID" source="fileName" /&gt;</pre>
+
+        <p>where <CODE>source</CODE> specifies an external source, such as a file, for the data model. 
+        The external source can contain static data and data binding expressions. 
+        The file referenced in a <code>source</code> property resides on the server and not on the client machine. 
+        The compiler reads the source value and compiles the source into the application; 
+        the <CODE>source</CODE> value is not read at runtime. </p>
+        
+        <p>The model declaration, either in-line in the tag or in the source file, must have a single root
+        node that contains all other nodes. You can use MXML binding expressions, such as 
+        <CODE>{myForm.lastName.text}</CODE> in the model declaration. 
+        This way you can bind the contents of form fields to a structured data representation.</p>
+
+<p>In the following example, the myEmployee model is placed in an MXML application
+  file:</p>
+    <pre>
+    &lt;?xml version="1.0"?&gt;
+    &lt;mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"&gt;
+    ...
+      &lt;mx:Model id="MyEmployee"&gt;
+        &lt;root&gt;
+            &lt;name&gt;
+               &lt;first&gt;Will&lt;/first&gt;
+               &lt;last&gt;Tuckerman&lt;/last&gt;
+            &lt;/name&gt;
+            &lt;department&gt;Accounting&lt;/department&gt;
+            &lt;email&gt;wtuckerman@wilsoncompany.com&lt;/email&gt;
+        &lt;/root&gt;
+      &lt;/mx:Model&gt;
+    ...
+    &lt;/mx:Application&gt;</pre>
+    <hr />
+    <br />
+    <div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mxml/model.html','');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:52 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:52 AM GMT-04:00 -->

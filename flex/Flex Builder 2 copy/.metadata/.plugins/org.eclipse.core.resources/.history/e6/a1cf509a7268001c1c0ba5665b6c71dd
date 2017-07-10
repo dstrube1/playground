@@ -1,0 +1,47 @@
+package base.lenz.panel
+{
+	import flash.display.DisplayObject;
+	import base.form.LenzForm;
+	import base.lenz.Lenz;
+	import mx.core.UIComponent;
+	
+	public interface LenzPanel
+	{ 
+		
+		function setParent(l:Lenz):void;
+		
+		function getTitle():String;		
+		
+		function animateContent():void;
+		
+		function actionTaken( data:*):void;
+		
+		function activate():void;
+		
+		function open():void;
+		
+		function close( closure:Function=null):void;
+		
+		function setMaxContentHeight( h:int):void;
+
+		function getPanelComponent():UIComponent ;
+
+		function set exposePanel(b:Boolean):void;
+		
+		function newPanel(panel:Class):void;
+		
+		function getCurrentForm():LenzForm;
+		
+		function getParent():Lenz;
+		
+		function setFormType(type:String):void;
+		
+		function initializePanel():void; 
+		
+		/**
+		 * Do clean up, before disposing panel
+		 **/
+		function destroy():void;
+
+	}
+}

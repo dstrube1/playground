@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:utils="com.utils.*"
+	width="472" height="522" 
+	title="Registration Form"
+	horizontalAlign="center" layout="horizontal" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	creationComplete="initApp()">
+	
+	<mx:Script>
+        <![CDATA[        	
+        	
+            import mx.controls.Alert;
+			import mx.rpc.events.ResultEvent;
+			import mx.managers.PopUpManager;
+			import mx.collections.ArrayCollection;
+			import mx.collections.XMLListCollection;			
+		
+			private var params:Object = new Object();
+			
+			[Bindable] private var listData:XMLListCollection;
+			[Bindable] private var hotels:ArrayCollection;
+			[Bindable] private var companies:ArrayCollection;
+			[Bindable] private var roles:ArrayCollection;
+
+			[Bindable] private var listPortfolio:XMLListCollection;
+			[Bindable] private var listRoles:XMLListCollection;
+			
+            private function closeReg():void {
+                // Check credentials (not shown) then remove pop up.
+                PopUpManager.removePopUp(this);
+            }
+			
+			public function getRegister():void{
+				registerService.addEventListener(ResultEvent.RESULT,resultHandlerRegister);
+				registerService.method = "GET";
+				params['method'] = "FindAll";
+				registerService.cancel();
+				registerService.send(params);
+			}
+			
+			public function resultHandlerRegister(event:ResultEvent):void {	
+				var result:XML = XML(event.result);  
+				var code:String;
+				
+				code = result.items.item[0].code.toString();
+				//Alert.show(String(code));
+				
+				if (String(code) == "1"){
+					Alert.show("The Username and Password combination you selected is already in use.  Please try another login.", "Invalid Login");
+					txtUsername.text = "";
+					txtPassword.text = "";
+				}else if (String(code) == "0"){
+					//regCompleted();
+					PopUpManager.removePopUp(this);
+					Alert.show("Thank you for registering with RevPARSuite.com!  Your registration information has been forwarded to the " + 
+							"appropriate person for approval.  You will be notified via email when your registration has been " + 
+							"approved.", "Registration");
+				}else{
+					Alert.show("There was a problem with your registration attempt.  Please try again.", "Problem during registration.");
+				}
+			}
+			private function validateForm():void{
+				//var company:String = this.selCompany.value;
+				//var hotel:String = this.selProperty.value;
+				//var role:String = this.selRole.value;
+				
+				//Alert.show(this.selProperty.data);
+				
+				if (this.selProperty.selectedItem.@data==""){
+					Alert.show("Please be sure to select your Hotel from the list.","Select Your Hotel");
+					this.selProperty.setFocus();
+				}else if (this.selRole.selectedItem.@data==""){
+					Alert.show("Please be sure to select your Job Role from the list.","Select Your Job Role");
+					this.selRole.setFocus();
+				}else if (this.txtEmail.text != this.txtEmail2.text){
+					Alert.show("Your email address entries do not match.  Please re-enter.","Re-enter Email Address");
+					this.txtEmail2.text = "";
+					this.selRole.setFocus();
+				}else if (this.txtPassword.text != this.txtPassword2.text){
+					Alert.show("Your password entries do not match.  Please re-enter.","Re-enter Password");
+					this.txtPassword2.text = "";
+					this.selRole.setFocus();
+				}else{
+					sendRegister();
+				}				
+			}
+			
+            private function handleFormValidate(event:Event):void {
+               // status.text = "This form is: "+String(event.type);
+            }
+			
+			public function sendRegister():void{
+			    params = {
+			    "method": "Register", 
+			    "first": txtFirst.text,
+			    "last": txtLast.text,
+			    "hotel": selProperty.selectedItem.@data,
+			    "title": txtTitle.text,
+			    "role": selRole.selectedItem.@data,
+			    "email": txtEmail.text,
+			    "phone": txtPhone.text,
+			    "fax": txtFax.text,
+			    "userName": txtUsername.text,
+			    "password": txtPassword.text
+			    }; 
+				registerService.cancel();
+				registerService.method = "POST";
+				registerService.send(params);
+				//getRegister();
+			}
+            
+			public function regCompleted():void{
+				PopUpManager.removePopUp(this);
+			}
+			
+			private function initApp():void
+			{
+				hotelService.send();
+				//companyService.send();
+				rolesService.send();
+			}
+			private function hotelsInHandler(event:ResultEvent):void
+			{
+				//listPortfolio = event.result.item.hotel;
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.item.hotel;	
+			    
+				listPortfolio = new XMLListCollection(xmlList);
+			}
+			
+			public function resultHandlerRoles(event:ResultEvent):void {	
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.item.role;	//XMLList
+
+				listRoles = new XMLListCollection(xmlList); //XMLListCollection(xmlList); 				
+			}
+			
+/*
+			private function rolesInHandler(event:ResultEvent):void
+			{
+				roles = event.result.list.role;
+			}
+*/
+        ]]>
+    </mx:Script>
+    
+	<mx:HTTPService 
+        id="registerService"
+ 		url="http://www.revparsuite.com/registerEXE.asp"
+ 		result="resultHandlerRegister(event)"
+        resultFormat="e4x"
+        useProxy="false"/>
+        
+	<mx:HTTPService id="hotelService" url="http://www.revparsuite.com/allhotelsEXE.asp" 
+		result="hotelsInHandler(event)"
+		resultFormat="e4x"
+        useProxy="false"/>
+
+	        
+	<mx:HTTPService id="rolesService" url="com/login/job_roles.xml" 
+		result="resultHandlerRoles(event)"
+		resultFormat="e4x"
+        useProxy="false" />
+        
+        
+<mx:Array id="validators" >
+    <mx:PhoneNumberValidator source="{txtPhone}" property="text"/>
+	<mx:EmailValidator source="{txtEmail}" property="text"/>
+	<mx:EmailValidator source="{txtEmail2}" property="text"/>
+	<mx:StringValidator source="{txtFirst}" property="text" minLength="2"/>
+	<mx:StringValidator source="{txtLast}" property="text" minLength="2"/>
+	<!--<mx:StringValidator source="{selCompany}" property="value" requiredFieldError="Please be sure to select your Company from the list." minLength="1"/>
+	<mx:StringValidator source="{selProperty}" property="value" requiredFieldError="Please be sure to select your Hotel from the list." minLength="1"/>
+	<mx:StringValidator source="{selRole}" property="value" requiredFieldError="Please be sure to select your Job Role from the list." minLength="1"/>-->
+	<mx:StringValidator source="{txtUsername}" property="text" minLength="6"/>
+	<mx:StringValidator source="{txtPassword}" property="text" minLength="6"/>
+	<mx:StringValidator source="{txtPassword2}" property="text" minLength="6"/>
+</mx:Array>
+		
+	<!--<mx:Form width="350" height="408" id="frmRegister" label="Complete all fields and click 'Register'" verticalGap="3" verticalScrollPolicy="off" horizontalScrollPolicy="off">-->
+	<utils:ValidatorForm
+			id="frmRegister"
+			defaultButton="{btnRegister}"
+			validators="{validators}"
+			valid="handleFormValidate(event)"
+			invalid="handleFormValidate(event)"
+			>	
+		<mx:Text width="400" text="Complete all required fields (*) to register for IHGHPS.com. Your registration will be sent to the appropriate individual for approval."/>
+		<mx:FormItem label="First Name:" required="true">
+			<mx:TextInput id="txtFirst" width="300" maxChars="30"/>
+		</mx:FormItem>
+		<mx:FormItem label="Last Name:" required="true">
+			<mx:TextInput id="txtLast" width="300" maxChars="30"/>
+		</mx:FormItem>
+		<!--<mx:FormItem label="Company:" required="true">
+			<mx:ComboBox width="300" id="selCompany" dataProvider="{companies}" labelField="name"></mx:ComboBox>
+		</mx:FormItem>-->
+		<mx:FormItem label="Hotel:" required="true">
+			<mx:ComboBox width="300" id="selProperty" dataProvider="{listPortfolio}" labelField="@name"></mx:ComboBox>
+		</mx:FormItem>
+		<mx:FormItem label="Job Title:" required="false">
+			<mx:TextInput id="txtTitle" width="300" maxChars="100"/>
+		</mx:FormItem>
+		<mx:FormItem label="Job Role:" required="true">
+			<mx:ComboBox width="300" id="selRole" dataProvider="{listRoles}" labelField="@name"></mx:ComboBox>
+		</mx:FormItem>
+		<mx:FormItem label="Email" required="true">
+			<mx:TextInput id="txtEmail" width="300" maxChars="100"/>
+		</mx:FormItem>
+		<mx:FormItem label="Confirm Email" required="true">
+			<mx:TextInput id="txtEmail2" width="300" maxChars="100"/>
+		</mx:FormItem>
+		<mx:FormItem label="Phone" required="true">
+			<mx:TextInput id="txtPhone" width="300" maxChars="30"/>
+		</mx:FormItem>
+		<mx:FormItem label="Fax" required="false">
+			<mx:TextInput id="txtFax" width="300" maxChars="20"/>
+		</mx:FormItem>
+		<mx:FormItem label="Username" required="true">
+			<mx:TextInput id="txtUsername" width="300" maxChars="16"/>
+		</mx:FormItem>
+		<mx:FormItem label="Password" required="true">
+			<mx:TextInput id="txtPassword" width="300" displayAsPassword="true" maxChars="16"/>
+		</mx:FormItem>
+		<mx:FormItem label="Confirm Password" required="true">
+			<mx:TextInput id="txtPassword2" width="300" displayAsPassword="true" maxChars="16"/>
+		</mx:FormItem>
+	<!--</mx:Form>-->
+	</utils:ValidatorForm>
+    <mx:ControlBar horizontalAlign="right" paddingTop="3" paddingBottom="3" paddingRight="10">
+        <mx:Button label="Cancel" click="closeReg();" />
+        <mx:Button label="Register" id="btnRegister" enabled="false" click="validateForm()" />
+    </mx:ControlBar>
+
+</mx:Panel>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--http://www.adobe.com/devnet/flex/example_apps/fx_explorer/moreinfo.html
+unrecognized namespace in original source;
+unrecognized component:
+    <mx:MediaPlayback width="300" height="300" contentPath="images/1.flv" controllerPolicy="on"/>
+-->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" >
+<!--
+remove unused containers from automation heirarchy:
+showInAutomationHierarchy="false"
+-->
+<mx:TabNavigator height="100%" width="100%" >
+	
+<mx:Script>
+	<![CDATA[
+		import mx.managers.FocusManager;
+		import mx.managers.SystemManager;
+		import mx.controls.VideoDisplay;
+		
+		public function playVid(vd:VideoDisplay):void{
+			vd.play();
+			/*
+			
+			System.totalMemory
+			System.vmVersion
+			System.setClipboard("blah");
+			SystemManager.getSWFRoot(this);
+			var fm:FocusManager = new FocusManager(this, true);
+			*/
+			
+		}
+		public function pauseVid(vd:VideoDisplay):void{
+			vd.pause();
+		}
+		public function stopVid(vd:VideoDisplay):void{
+			vd.stop();
+		}
+		public function toHalfVid(vd:VideoDisplay):void{
+			
+		}
+	]]>
+</mx:Script>
+
+<mx:VBox label="1" >
+	
+<mx:VideoDisplay id="test1" width="300" height="300" source="1.flv" autoPlay="false"/>
+
+<mx:Button id="play" click="playVid(test1)" label="play"  x="10" y="318"/>
+<mx:Button id="pause" click="pauseVid(test1)" label="pause"  x="68" y="318"/>
+<mx:Button id="stop" click="stopVid(test1)" label="stop"  x="146" y="318"/>
+<mx:Button id="toHalf" click="toHalfVid(test1)" label="Go to Halfway"  x="205" y="318"/>
+
+</mx:VBox> 
+
+
+
+</mx:TabNavigator>
+
+</mx:Application>

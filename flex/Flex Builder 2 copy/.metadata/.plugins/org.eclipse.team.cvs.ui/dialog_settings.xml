@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="CommitWizard">
+		<item key="width" value="400"/>
+		<item key="height" value="525"/>
+	</section>
+	<section name="RefreshRemoteProjectWizard">
+		<item key="UseWorkingSet" value="false"/>
+	</section>
+	<section name="CheckoutAsWizard">
+	</section>
+	<section name="NewLocationWizard">
+		<item key="ConfigurationWizardMainPage.STORE_DONT_VALIDATE_ID" value="false"/>
+		<list key="ConfigurationWizardMainPage.STORE_HOSTNAME_ID">
+			<item value="10.50.1.97"/>
+		</list>
+		<list key="ConfigurationWizardMainPage.STORE_PATH_ID">
+			<item value="/home/cvs"/>
+		</list>
+		<list key="ConfigurationWizardMainPage.STORE_USERNAME_ID">
+			<item value="dstrube"/>
+		</list>
+	</section>
+	<section name="IgnoreResourcesDialog">
+		<item key="Action" value="0"/>
+	</section>
+	<section name="org.eclipse.team.ccvs.ui.RepositoriesView">
+		<item key="SelectedWorkingSet" value=""/>
+	</section>
+</section>

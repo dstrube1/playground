@@ -1,0 +1,42 @@
+package app.server.mock.impl
+{
+	import base.services.MapArray;
+	import base.services.Content;
+	import base.services.mock.MockService;
+	import mx.rpc.events.ResultEvent;
+	import flash.utils.setTimeout;
+	import base.services.Response;
+	import base.services.ValueType;
+	import base.services.CommonKeys;
+	import base.services.MapArrayHelper;
+	import base.services.ServiceConfig;
+	import app.server.LenzServer;
+	
+	public class BaseMockService
+	{
+		
+		protected function respond( responseCode:int, control:MapArray, data:MapArray, resultHandler:Function):void {
+
+			var response:Response = new Response( { ResponseCode: responseCode });
+			
+						
+			response.ControlMap = ServiceConfig.getMapArrayHelper().encode(control);
+			response.DataMap = ServiceConfig.getMapArrayHelper().encode(data);
+
+			
+			var ev:ResultEvent = new ResultEvent( ResultEvent.RESULT, false, true, new Object() );
+			ev.result.params = response;
+			
+			if (LenzServer.mockDelay > 0) {
+
+				setTimeout( function(args:Array):void { resultHandler( ev ); }, 500, null );
+			} else {
+				
+				resultHandler( ev);
+				
+			}
+			
+		}
+		
+	}
+}

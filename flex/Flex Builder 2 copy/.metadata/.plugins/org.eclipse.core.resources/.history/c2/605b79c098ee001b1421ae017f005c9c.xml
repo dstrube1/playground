@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="750" height="470" horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm" horizontalScrollPolicy="off" verticalScrollPolicy="off" color="0x000000">
+	 
+	<mx:Script>
+		<![CDATA[
+			
+			import base.lenz.panel.LenzPanel;
+			import lenz.main.site_select.SiteSelectionLenz;
+			
+			private var _parent:LenzPanel = null;
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+			}
+			
+			private function launchApp( appId:int):void {
+				
+				
+				
+			}
+			
+			public function initializeForm():void {
+				
+		
+			}
+			
+			
+			public function populateResources(data:Object):void { }
+			
+		]]>
+	</mx:Script>
+
+
+	<mx:Label x="0" y="5" color="#000000" maxHeight="30" text="Country Allocation" fontThickness="200" fontSize="18"  />
+		
+	<mx:Canvas id="surveyContent" top="50" left="10" right="10" height="206" horizontalScrollPolicy="off" cornerRadius="18" borderStyle="inset" backgroundColor="#2520e3">
+	
+	</mx:Canvas>
+	<mx:Button label="New Study" width="102" height="30" right="638" bottom="176" id="submitBtn"
+		click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('NewProposal')"/>
+	
+</mx:Canvas>

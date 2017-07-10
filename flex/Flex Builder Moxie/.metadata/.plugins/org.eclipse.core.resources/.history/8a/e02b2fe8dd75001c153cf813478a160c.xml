@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="400" height="300"
+	xmlns:service="service.*" >
+	<!-- 
+	creationComplete="onCreationComplete()" 
+	-->
+<service:LoginService id="localLoginService"/>
+	<mx:Script>
+		<![CDATA[
+		
+		import mx.controls.Alert;
+		
+		public var memListPanel:MemListPanel;
+
+		public static function setVisible(visible:Boolean):void{
+			setVisible(visible);
+		}
+		
+		private function backToList():void{
+			this.setVisible(false);
+			memListPanel.setVisible(true);
+		}
+		
+		private function onCreationComplete():void{
+			if (localLoginService.lastResult==null){
+				Alert.show("localLoginService.lastResult is null");
+				return;
+			}
+			if (localLoginService.lastResult.memories==null){
+				Alert.show("localLoginService.lastResult.memories is null");
+			}
+			if (localLoginService.lastResult.memories.memory==null){
+				Alert.show("localLoginService.lastResult.memories.memory is null");
+			}
+			else 
+				Alert.show(localLoginService.lastResult.memories.memory);
+			}
+			
+		}
+		]]>
+	</mx:Script>
+
+	<mx:Button label="Back to List" click="backToList()"/>
+<mx:Button label="Button2" click="onCreationComplete()" y="24"/>
+<!--
+	<mx:Image source="{localLoginService.lastResult.memories.memory.thumbnail}" x="100" y="6"/>
+-->
+</mx:Panel>

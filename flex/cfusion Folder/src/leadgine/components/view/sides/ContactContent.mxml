@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off"
+	creationComplete="init()">
+<mx:Script>
+<![CDATA[
+	import mx.core.Application;
+	import leadgine.components.dto.FullServiceReferral;
+	
+	[Bindable] private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	
+	public var content:String = "";
+	
+	private function init():void{
+		newOrExisting.selectedItem=myDTO.newOrExisting;
+		stateCB.selectedItem	 = myDTO.getState(myDTO.state);
+		countryCB.selectedItem	 = myDTO.getCountry(myDTO.country);
+		setContent();
+	}
+	private function setContent():void{
+		content += "Contact Info: \n";
+		content += newOrExisting.selectedLabel + "\n";
+		content += firstNameText.text + "\n";
+		content += lastNameText.text + "\n";
+		content += titleText.text + "\n";
+		content += orgText.text + "\n";
+		content += evtText.text + "\n";
+		content += addressText.text + "\n";
+		content += address2Text.text + "\n";
+		content += cityText.text + "\n";
+		content += stateCB.selectedLabel + "\n";
+		content += countryCB.selectedLabel + "\n";
+		content += zipcodeText.text + "\n";
+		content += phoneText.text + "\n";
+		content += emailText.text + "\n";
+		content += faxText.text + "\n";
+		if (decisionDate.selectedDate != null){
+			content += decisionDate.selectedDate.toDateString() + "\n";
+		}else{
+			content += "null decisionDate\n";
+		}
+		content += radioComm.selected + "\n";
+		content += commPercent.text + "\n";
+		content += radioNetRate.selected + "\n";
+		content += IATAText.text + "\n";
+		content += estRateText.text + "\n";
+		content += estNum.text + "\n";
+		content += "\n";
+	}
+]]>
+</mx:Script>
+	<mx:VBox styleName="containerStyle" width="100%" height="100%">
+	<!--BEGIN CONTACT FORM-->
+		<mx:ComboBox id="newOrExisting" editable="false" tabEnabled="false" enabled="false" dataProvider="{myDTO.NEW_OR_EXISTING_OPTIONS}" />
+		<mx:HRule  width="760" height="1"/>
+		<mx:HBox>		
+			<mx:FormItem label="Contact First Name" horizontalAlign="left" textAlign="left">
+				<mx:TextInput id="firstNameText" width="100" text="{myDTO.contactFirstName}" editable="false" tabEnabled="false" />
+			</mx:FormItem>
+			<mx:FormItem label="Contact Last Name" textAlign="left">
+				<mx:TextInput id="lastNameText" width="100" text="{myDTO.contactLastName}" editable="false" tabEnabled="false" />
+			</mx:FormItem>
+			<mx:FormItem label="Title" width="205" horizontalAlign="left" labelWidth="40">
+				<mx:TextInput id="titleText" width="150" text="{myDTO.contactTitle}" editable="false" tabEnabled="false" />
+			</mx:FormItem>	
+		</mx:HBox>
+		<mx:HBox>
+			<mx:FormItem label="Organization/Company" width="350" labelWidth="150">
+				<mx:TextInput id="orgText" width="185" text="{myDTO.org}" editable="false" tabEnabled="false" />
+			</mx:FormItem>
+			<mx:FormItem label="Event" width="375" horizontalAlign="left" labelWidth="40">
+				<mx:TextInput id="evtText" width="320" text="{myDTO.evt}" editable="false" tabEnabled="false" />
+			</mx:FormItem>				
+		</mx:HBox>
+		<mx:Spacer height="10" />
+		<mx:FormItem label="Address" labelWidth="150" width="735" horizontalAlign="right" textAlign="right">
+			<mx:TextInput  width="570" textAlign="left" id="addressText" text="{myDTO.address}" editable="false" tabEnabled="false" />
+		</mx:FormItem>
+		<mx:FormItem label="Address 2" labelWidth="150" width="735" horizontalAlign="right" textAlign="right" horizontalGap="0">
+			<mx:TextInput  width="570" textAlign="left" id="address2Text" text="{myDTO.address2}" editable="false" tabEnabled="false" />
+		</mx:FormItem>
+		<mx:HBox>
+			<mx:FormItem label="City" labelWidth="150" width="350" horizontalAlign="right" textAlign="right">
+				<mx:TextInput  width="185" textAlign="left" id="cityText" text="{myDTO.city}" editable="false" tabEnabled="false" />
+			</mx:FormItem>
+			<mx:FormItem label="State" labelWidth="40" width="135" horizontalAlign="right" textAlign="right">
+				<mx:ComboBox width="80" textAlign="left" id="stateCB" dataProvider="{FullServiceReferral.STATES}" 
+					editable="false" tabEnabled="false" enabled="false" />
+				<!--
+				    <mx:dataProvider>   
+				        <mx:String>Select</mx:String>
+			        	<mx:String>AL</mx:String>
+						<mx:String>AK</mx:String>
+						<mx:String>AZ</mx:String>
+						<mx:String>AR</mx:String>
+						<mx:String>CA</mx:String>
+						<mx:String>CO</mx:String>
+						<mx:String>CT</mx:String>
+						<mx:String>DE</mx:String>
+						<mx:String>DC</mx:String>
+						<mx:String>FL</mx:String>
+						<mx:String>GA</mx:String>
+						<mx:String>HI</mx:String>
+						<mx:String>ID</mx:String>
+						<mx:String>IL</mx:String>
+						<mx:String>IN</mx:String>
+						<mx:String>IA</mx:String>
+						<mx:String>KS</mx:String>
+						<mx:String>KY</mx:String>
+						<mx:String>LA</mx:String>
+						<mx:String>ME</mx:String>
+						<mx:String>MD</mx:String>
+						<mx:String>MA</mx:String>
+						<mx:String>MI</mx:String>
+						<mx:String>MN</mx:String>
+						<mx:String>MS</mx:String>
+						<mx:String>MO</mx:String>
+						<mx:String>MT</mx:String>
+						<mx:String>NE</mx:String>
+						<mx:String>NV</mx:String>
+						<mx:String>NH</mx:String>
+						<mx:String>NJ</mx:String>
+						<mx:String>NM</mx:String>
+						<mx:String>NY</mx:String>
+						<mx:String>NC</mx:String>
+						<mx:String>ND</mx:String>
+						<mx:String>OH</mx:String>
+						<mx:String>OK</mx:String>
+						<mx:String>OR</mx:String>
+						<mx:String>PA</mx:String>
+						<mx:String>RI</mx:String>
+						<mx:String>SC</mx:String>
+						<mx:String>SD</mx:String>
+						<mx:String>TN</mx:String>
+						<mx:String>TX</mx:String>
+						<mx:String>UT</mx:String>
+						<mx:String>VT</mx:String>
+						<mx:String>VA</mx:String>
+						<mx:String>WA</mx:String>
+						<mx:String>WV</mx:String>
+						<mx:String>WI</mx:String>
+						<mx:String>WY</mx:String>
+				    </mx:dataProvider>
+				</mx:ComboBox>	
+				-->
+			</mx:FormItem>	
+			<mx:FormItem label="Country" labelWidth="70" width="235" horizontalAlign="right" textAlign="right">
+				<mx:ComboBox width="150" textAlign="left" id="countryCB" editable="false" tabEnabled="false" 
+					dataProvider="{FullServiceReferral.COUNTRIES}" enabled="false" >
+					<!--
+				    <mx:dataProvider>   
+				        <mx:String>Select</mx:String>
+				        <mx:String>United States</mx:String>
+				        <mx:String>Canada</mx:String>
+				        <mx:String>Mexico</mx:String>
+				        
+				        <!- - Add all other countries. - ->
+				    </mx:dataProvider>
+				    -->
+				</mx:ComboBox>	
+			</mx:FormItem>			
+		</mx:HBox>
+		<mx:HBox>
+			<mx:FormItem label="Zipcode" labelWidth="150" width="350" horizontalAlign="right" textAlign="right">
+				<mx:TextInput id="zipcodeText" width="185" textAlign="left" text="{myDTO.zipcode}" editable="false" tabEnabled="false" />
+			</mx:FormItem>
+			<mx:FormItem label="Phone" labelWidth="40" width="240" horizontalAlign="left" textAlign="right">
+				<mx:TextInput id="phoneText" width="170" textAlign="left" text="{myDTO.phone}" editable="false" tabEnabled="false" />
+			</mx:FormItem>
+		</mx:HBox>
+		<mx:HBox>
+			<mx:FormItem label="Email Address" labelWidth="150" width="350" horizontalAlign="right" textAlign="right">
+				<mx:TextInput id="emailText" width="185" textAlign="left" text="{myDTO.emailAddress}" editable="false" tabEnabled="false" />
+			</mx:FormItem>
+			<mx:FormItem label="Fax" labelWidth="40" width="240" horizontalAlign="left" textAlign="right">
+				<mx:TextInput id="faxText" width="170" textAlign="left" text="{myDTO.fax}" editable="false" tabEnabled="false" />
+			</mx:FormItem>
+		</mx:HBox>
+				<mx:Spacer height="10" />
+				<mx:HRule  width="760" height="1"/>
+			<mx:Spacer height="10" />
+		<mx:HBox width="701" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+			<mx:FormItem label="Est. Decision Date" labelWidth="150" width="350" horizontalAlign="right" textAlign="right">
+				<mx:DateField id="decisionDate"  width="185" textAlign="left" selectedDate="{myDTO.estDecisionDate}" editable="false" tabEnabled="false"
+					 enabled="false" />
+			</mx:FormItem>
+			<mx:Spacer width="45" />
+				<mx:RadioButton groupName="empTypeGrp" label="Commissionable" id="radioComm" 
+					selected="{myDTO.rateType == FullServiceReferral.RATE_TYPE_COMMISIONABLE}" enabled="false" tabEnabled="false" />
+<!--
+				<mx:FormItem width="45" horizontalAlign="left" >
+				</mx:FormItem>
+-->
+				<mx:TextInput id="commPercent" width="40" textAlign="right" editable="false" tabEnabled="false" text="{myDTO.commPercent}" />
+				<mx:Label text="%"  width="15"/>
+				<mx:RadioButton groupName="empTypeGrp" label="Net Rate" id="radioNetRate" enabled="false" tabEnabled="false" 
+					selected="{myDTO.rateType == FullServiceReferral.RATE_TYPE_NET_RATE}" />
+		</mx:HBox>
+		<mx:HBox>
+			<mx:FormItem label="IATA#" labelWidth="150" width="350" horizontalAlign="right" textAlign="right">
+				<mx:TextInput id="IATAText" width="185" textAlign="left" text="{myDTO.IATA}" editable="false" tabEnabled="false" />
+			</mx:FormItem>
+			<mx:FormItem label="Estimated Rm Rate" horizontalAlign="left" textAlign="right" >
+				<mx:TextInput id="estRateText" width="89" textAlign="left" text="{myDTO.rate}" editable="false" tabEnabled="false" />
+			</mx:FormItem>
+			<mx:Spacer width="100%"/>
+			<mx:FormItem required="true" label="# of Guests" horizontalAlign="right" enabled="false">
+				<mx:TextInput id="estNum" width="50" textAlign="right" text="{myDTO.numGuests}" />
+			</mx:FormItem>				
+		</mx:HBox>
+	</mx:VBox>
+</mx:Canvas>

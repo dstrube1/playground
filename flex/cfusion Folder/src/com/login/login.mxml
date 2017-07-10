@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="center" creationComplete="PopUpManager.centerPopUp(this)">
+	
+	<!-- INCLUDE EXTERNAL AS FILE -->
+	<mx:Script source="Login.as" />
+	
+	<mx:HTTPService id="loginService" url="http://www.revparsuite.com/loginEXE.asp"
+        resultFormat="e4x"
+        useProxy="false"/>
+
+    <mx:states>
+        <mx:State name="Register">
+            <mx:AddChild relativeTo="{loginForm}" position="lastChild">
+                <mx:target>
+                    <mx:FormItem id="confirm" label="Confirm:">
+                        <mx:TextInput id="txtConfPassword"/>
+                    </mx:FormItem>
+                </mx:target>
+            </mx:AddChild>
+            <mx:SetProperty target="{loginPanel}" name="title" value="Register"/>
+            <mx:SetProperty target="{loginButton}" name="label" value="Register"/>
+            <mx:SetStyle target="{loginButton}" 
+                name="color" value="blue"/>
+            <mx:RemoveChild target="{registerLink}"/>
+            <mx:AddChild relativeTo="{spacer1}" position="before">
+                <mx:target>
+                    <mx:LinkButton id="loginLink" label="Return to Login" click="currentState=''"/>
+                </mx:target>
+            </mx:AddChild>
+        </mx:State>
+    </mx:states>
+
+    <mx:transitions>
+        <!-- Define the transition from the base state to the Register state.-->
+        <mx:Transition id="toRegister" fromState="*" toState="Register">
+            <mx:Sequence targets="{[loginPanel, registerLink, confirm, loginLink, spacer1]}">
+                <mx:RemoveChildAction/>
+                <mx:SetPropertyAction target="{loginPanel}" name="title"/>
+                <mx:SetPropertyAction target="{loginButton}" name="label"/>
+                <mx:SetStyleAction target="{loginButton}" name="color"/>
+                <mx:Resize target="{loginPanel}"/>
+                <mx:AddChildAction/>
+            </mx:Sequence>
+        </mx:Transition>
+
+        <!-- Define the transition from the Register state to the base state.-->
+        <mx:Transition id="toDefault" fromState="Register" toState="*">
+            <mx:Sequence targets="{[loginPanel, registerLink, 
+                    confirm, loginLink, spacer1]}">
+                <mx:RemoveChildAction/>
+                <mx:SetPropertyAction target="{loginPanel}" name="title"/>
+                <mx:SetPropertyAction  target="{loginButton}" name="label"/>
+                <mx:SetStyleAction target="{loginButton}" name="color"/>
+                <mx:Resize target="{loginPanel}"/>
+                <mx:AddChildAction/>
+            </mx:Sequence>
+        </mx:Transition>
+    </mx:transitions>
+
+    <!-- Define a Panel container that defines the login form.-->
+    <mx:Panel title="Login" id="loginPanel" 
+        horizontalScrollPolicy="off" verticalScrollPolicy="off"
+        paddingTop="10" paddingLeft="10" paddingRight="10" paddingBottom="10">
+    
+        <mx:Text width="100%"
+            text="Enter your Login credentials to enter RevParSuite.com.  Click the 'Need to Register?' button to get registered today."/>
+
+        <mx:Form id="loginForm" defaultButton="{loginButton}" >
+            <mx:FormItem label="Username:">
+                <mx:TextInput id="txtUsername" text="testing7"/>
+            </mx:FormItem>
+            <mx:FormItem label="Password:">
+                <mx:TextInput id="txtPassword" text="testing8" displayAsPassword="true"/>
+            </mx:FormItem>
+        </mx:Form>
+        <mx:ControlBar>
+            <mx:LinkButton id="registerLink"  label="Need to Register?"
+                 click="showRegister()"/>
+            <mx:Spacer width="100%" id="spacer1"/>
+            <mx:Button label="Login" id="loginButton" click="myPost()"/>
+        </mx:ControlBar>
+    </mx:Panel>
+</mx:VBox>

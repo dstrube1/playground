@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://ns.adobe.com/air/application/1.0.M4" appId="com.example.ExampleApplication" version="1.0 Beta">
+
+<!-- 
+From /Applications/Adobe Flex Builder 2/AIR SDK/templates/
+
+-->
+    
+    <name>Name</name>
+    
+    <title>Title</title>
+    
+    <description>Description</description>
+    
+    <copyright>Copyright</copyright>
+    
+    <!--
+        The main content file of the application, which must be a SWF or 
+        HTML file. (Required.)
+        
+        Attributes:
+        systemChrome - "standard" or "none". 
+        transparent  - "true" or "false". 
+        visible      - "true" or "false". 
+        width        - the initial window height (including chrome).
+        height       - the initial window width (including chrome).
+    -->    
+    <rootContent>bin/test.swf</rootContent>
+    
+</application>

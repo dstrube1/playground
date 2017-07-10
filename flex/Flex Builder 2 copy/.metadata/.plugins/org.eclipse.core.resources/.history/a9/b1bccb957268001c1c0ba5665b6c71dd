@@ -1,0 +1,25 @@
+package app.server.calls
+{
+	import base.services.calls.ServiceCall;
+	import base.services.Content;
+	import app.server.LenzServer;
+	import base.services.LenzServiceHelper;
+	import base.services.ValueType;
+
+	public class GetViewCall implements ServiceCall
+	{
+		public function call(name:String, params:Object):void
+		{
+
+			var content:Content = LenzServiceHelper.createResourceCall("getView");
+			content.DataMap.add("study.id.key", ValueType.STRING, params["studyId"]);
+			content.DataMap.add("view.id.key", ValueType.STRING, params["viewId"]);			
+			content.DataMap.add("view.params.key", ValueType.STRING, params["viewParams"]);			
+			content.DataMap.add("filter.db.key", ValueType.XML, params["filterDb"]);			
+			
+			LenzServer.getSvc( content, params["failure"], params["result"]);
+
+		}
+		
+	}
+}

@@ -1,0 +1,170 @@
+package base.lenz.funnel
+{
+	import mx.formatters.NumberFormatter;
+	import base.error.LenzError;
+	
+	public class FunnelAdapter 
+	{
+		private var patientsIdentified:int; 
+		private var patientsCompleted:int; 
+		private const numOfStages:uint = 4;
+
+		private var lessStage1:int;
+		private var stage1PatientCount:int;
+		private var lessStage1Percent:int;
+		private var stage1Severity:String;
+
+
+		private var lessStage2:int;
+		private var stage2PatientCount:int;
+		private var lessStage2Percent:int;
+		private var stage2Severity:String;
+		
+		private var lessStage3:int;
+		private var stage3PatientCount:int;
+		private var lessStage3Percent:int;
+		private var stage3Severity:String;
+		
+		private var lessStage4:int;
+		private var stage4PatientCount:int;
+		private var lessStage4Percent:int;
+		private var stage4Severity:String;
+		
+		private var parentFunnel:PatientFunnel = null;
+		
+		
+		public function FunnelAdapter(pf:PatientFunnel):void{
+			parentFunnel = pf;
+		}
+		
+		
+		public function describeFunnel(totalPatients:int, stageData:Array):void{
+			if (parentFunnel == null)
+				throw new LenzError("Parent funnel is null.");
+			if (totalPatients<0)
+				throw new LenzError("Initial patient count must not be negative.");
+				
+			if (stageData == null)
+				throw new LenzError("Funnel stage data must not be null.");
+				
+			if (stageData.length !=numOfStages)
+				throw new LenzError("Funnel stage data must have four items.");
+
+			for (var i:int=0;i<numOfStages; i++){
+				
+				if (stageData[i] == null)
+					throw new LenzError("Funnel stage data items must not be null.");
+					
+				if (!(stageData[i] is FunnelStage))
+					throw new LenzError("Funnel stage data must have only FunnelStage items.");
+
+				var fs:FunnelStage = stageData[i] as FunnelStage;
+
+				if (fs.severity==null)
+					throw new LenzError("Funnel stage data items must not have null severity.");
+				if (i>0) //not looking at the first item
+				{
+					var prev:FunnelStage = stageData[i-1] as FunnelStage;
+					if (fs.patients > prev.patients)
+						throw new LenzError("Funnel stage data must have descending patient counts.");
+				}
+				//NOTE: so long as no rule above is violated, patient's value at a stage can be 0, right?
+				if (fs.patients <0 )
+					throw new LenzError("Funnel stage data must have FunnelStage "+
+						"items with non-negative patient counts.");
+				if (fs.severity != PatientFunnel.HIGH  
+					&& fs.severity != PatientFunnel.LOW && fs.severity != PatientFunnel.MEDIUM)
+					throw new LenzError("Funnel stage data must have FunnelStage "+
+						"items with expected severities.");
+			}
+			//now the meat:
+			patientsIdentified = totalPatients;
+			var tempStageData:FunnelStage = stageData[0] as FunnelStage;
+			stage1PatientCount = tempStageData.patients;
+			stage1Severity = tempStageData.severity;
+			
+			tempStageData = stageData[1] as FunnelStage;
+			stage2PatientCount = tempStageData.patients;
+			stage2Severity = tempStageData.severity;
+			
+			tempStageData = stageData[2] as FunnelStage;
+			stage3PatientCount = tempStageData.patients;
+			stage3Severity = tempStageData.severity;
+			
+			tempStageData = stageData[3] as FunnelStage;
+			stage4PatientCount = tempStageData.patients;
+			stage4Severity = tempStageData.severity;
+			
+			setResults();
+		}
+		
+		
+				
+		public function val(num:Number):String {
+			
+			var nf:NumberFormatter = new NumberFormatter();
+			nf.precision = -1;
+			nf.rounding = "nearest";
+			
+			return ( nf.format( num));
+		}
+		
+
+		private function setResults():void{
+			//
+			lessStage1 = patientsIdentified - stage1PatientCount;
+			lessStage1Percent = (100*(lessStage1 / patientsIdentified));
+
+			lessStage2 = stage1PatientCount - stage2PatientCount;
+			lessStage2Percent = (100*(lessStage2 / stage1PatientCount));
+
+			lessStage3 = stage2PatientCount - stage3PatientCount;
+			lessStage3Percent = (100*(lessStage3 / stage2PatientCount));
+
+			lessStage4 = stage3PatientCount - stage4PatientCount;
+			lessStage4Percent = (100*(lessStage4 / stage3PatientCount));
+			patientsCompleted = (stage4PatientCount);
+			
+			// this situation happens during the unit tests, since the visual elements (such as the
+			// Stage Circles) are not initialized.
+			//
+			if (parentFunnel.stage1Circle != null){
+
+				parentFunnel.stage1Circle.setSeverity(stage1Severity);
+				parentFunnel.stage2Circle.setSeverity(stage2Severity);
+				parentFunnel.stage3Circle.setSeverity(stage3Severity);
+				parentFunnel.stage4Circle.setSeverity(stage4Severity);
+				
+				parentFunnel.patientsIdentified_L.text = val(patientsIdentified);
+	//commenting out lines referring to properties removed from patientFunnel:
+	//	"less" values & percents
+//				parentFunnel.lessStage1_L.text = val(lessStage1);
+//				parentFunnel.lessStage1Percent_L.text = val(lessStage1Percent);
+				parentFunnel.stage1PatientCount_L.text = val(stage1PatientCount);
+	
+//				parentFunnel.lessStage2_L.text = val(lessStage2);
+//				parentFunnel.lessStage2Percent_L.text = val(lessStage2Percent);
+				parentFunnel.stage2PatientCount_L.text = val(stage2PatientCount);
+	
+//				parentFunnel.lessStage3_L.text = val(lessStage3);
+//				parentFunnel.lessStage3Percent_L.text = val(lessStage3Percent);
+				parentFunnel.stage3PatientCount_L.text = val(stage3PatientCount);
+	
+//				parentFunnel.lessStage4_L.text = val(lessStage4);
+//				parentFunnel.lessStage4Percent_L.text = val(lessStage4Percent);
+				parentFunnel.stage4PatientCount_L.text = val(stage4PatientCount);
+				
+				parentFunnel.patientsCompleted_L.text = val(patientsCompleted);
+			}
+		}
+		
+		public function percentages():Array{
+			return [lessStage1Percent,lessStage2Percent,lessStage3Percent,lessStage4Percent];
+		}
+		
+		public function getPatientsCompleted():int{
+			return patientsCompleted;
+		}
+	
+	}
+}

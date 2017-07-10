@@ -1,0 +1,136 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="IMenuItemRenderer,mx.controls.menuClasses.IMenuItemRenderer,branchIcon,icon,label,data,listData,menu,menuBar,menuBarItemIndex,menuBarItemState,icon,label,data,menuBar,menuBarItemIndex,menuBarItemState,dataProvider,menu" name="keywords">
+<title>mx.controls.menuClasses.IMenuItemRenderer (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'IMenuItemRenderer - Flex 3 Language Reference';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../../index.html?mx/controls/menuClasses/IMenuItemRenderer.html&amp;mx/controls/menuClasses/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Interface&nbsp;IMenuItemRenderer</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Interface IMenuItemRenderer"); titleBar_setSubNav(false,true,false,false,false,false,false,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.controls.menuClasses</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public  interface  IMenuItemRenderer</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implementors</td><td><a href="../../../mx/controls/menuClasses/MenuItemRenderer.html">MenuItemRenderer</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  The IMenuItemRenderer interface defines the interface
+  that a menu item renderer for a Menu control must implement.
+ 
+  The menu item renderers are often recycled. Once they are created, 
+  they may be used again simply by being given new data. 
+  Therefore, in individual implementations, component developers must 
+  make sure that component properties are not assumed to contain 
+  specific initial, or default values.
+   To implement this interface, a component developer must define a 
+  setter and getter method that implements the <code>menu</code> property.
+  Typically, the setter method writes the value of the data property
+  to an internal variable, and the getter method returns the current
+  value of the internal variable, as the following example shows:
+  <pre>
+     // Internal variable for the property value.
+     private var _menu:Menu;
+ 
+     // Define the getter method.
+     public function get menu():Menu
+     {
+         return _menu;
+     }
+ 
+     // Define the setter method.
+     public function set menu(value:Menu):void
+     {
+         _menu = value;
+     }
+  </pre>
+ <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#menu">menu</a> : <a href="../../../mx/controls/Menu.html">Menu</a>
+<div class="summaryTableDescription">
+   A reference to this menu item renderer's Menu control, 
+   if it contains one.</div>
+</td><td class="summaryTableOwnerCol">IMenuItemRenderer</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="menu"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">menu</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>menu:<a href="../../../mx/controls/Menu.html">Menu</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+   A reference to this menu item renderer's Menu control, 
+   if it contains one. This would indicate that this menu item
+   renderer is a branch node, capable of popping up a sub menu. 
+  
+   </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get menu():<a href="../../../mx/controls/Menu.html">Menu</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set menu(value:<a href="../../../mx/controls/Menu.html">Menu</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/controls/menuClasses/IMenuItemRenderer.html','mx/controls/menuClasses/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

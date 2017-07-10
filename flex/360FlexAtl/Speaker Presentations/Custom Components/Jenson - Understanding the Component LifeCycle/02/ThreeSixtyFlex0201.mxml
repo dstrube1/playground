@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:view="view.*" layout="vertical">
+	
+	<mx:Script>
+		<![CDATA[
+			import view.MenuPanel;
+
+			
+			private function createSomething():void
+			{
+				var myPanel:MenuPanel = new MenuPanel();
+			}
+		]]>
+	</mx:Script>
+	
+	<view:MenuPanel width="300" height="150">
+		<mx:Label text="test"/>
+	</view:MenuPanel>
+	
+	<view:PanelMenu panelMenuChange="panelMenuText.text += event.toString() + '\n';" width="300" height="150">
+		<mx:TextArea id="panelMenuText" width="100%" height="100%"/>
+	</view:PanelMenu>
+	
+</mx:Application>

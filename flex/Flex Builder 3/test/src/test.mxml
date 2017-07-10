@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init();">
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.controls.Image;
+			
+			private function init():void{
+/*
+				var image:Image = new Image();
+				image.source = "../assets/gone.gif";
+				addChild(image);
+				if (image.width >0 ){
+					Alert.show("image.width >0");
+				}else{
+					Alert.show("image.width NOT >0");
+				}
+				RESULT=FALSE;
+*/
+				var bool:Boolean = (a.width >0);
+				Alert.show("image exists: "+bool);
+			}
+		]]>
+	</mx:Script>
+	<mx:Image source="../assets/gone.gif" id="a"/>
+</mx:Application>

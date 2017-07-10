@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SuperPanel xmlns="nl.wv.extenders.panel.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:com="com.*"
+	endMaximize="onEndMaximize()" endRestore="onEndRestore()" creationPolicy="all">
+	
+<mx:Script>
+<![CDATA[
+
+			[Bindable] private var _selectedIndexSearch:Number = -1;				
+			[Bindable] private var listSearch:XMLListCollection;
+			
+			import mx.core.Application;
+			import mx.events.ItemClickEvent;
+			import mx.collections.ArrayCollection;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.collections.XMLListCollection;
+			import mx.collections.ListCollectionView;
+			import mx.utils.ArrayUtil;
+			import mx.controls.dataGridClasses.DataGridItemRenderer;
+			import mx.managers.CursorManager;
+			import mx.formatters.DateFormatter;
+			import mx.rpc.events.ResultEvent;
+			import mx.utils.ObjectUtil;
+			import mx.utils.ObjectProxy;
+			import mx.controls.Alert;
+											
+			import leadgine.components.dto.FullServiceReferral;
+	
+			private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+
+			public var srchinbound:String;
+			public var hotel:String;
+			public var code:String;
+			public var userid:String;
+
+			public var srchreferrer:String;
+			public var srchcompany:String;
+			public var srchEvent:String;
+			public var srchStatus:String;
+			public var srchroomsMin:Number;
+			public var srchroomsMax:Number;
+			public var srchrevenueMin:Number;
+			public var srchrevenueMax:Number;
+			public var srchrateMin:Number;
+			public var srchrateMax:Number;
+			private var params:Object = new Object();
+
+			private var AlertMsgSuccess:String;
+			private var AlertMsgSuccessTitle:String;
+			private var AlertMsgFail:String = "Requested search data could not be loaded.  Please try your search again.";
+			private var AlertMsgFailTitle:String = "Load Problem";
+			
+			private function searchGridItemClick():void{
+				myDTO.middlize();
+				Application.application.showReferralDialog(true,5);
+			}
+
+			public function resultHandlerSearch(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listSearch = new XMLListCollection(xmlList);
+				}
+			}
+			
+			public function faultHandler():void {
+				this.searchService.showBusyCursor = false;
+			}
+			
+	public function myPost():void{
+	    params = {"referrer":radioMyReferrals.selected,
+	    		"company":companyText.text,
+	    		"event":eventText.text,
+	    		"status":statusCB.selectedItem,
+	    		"roomMin":roomMin.text,
+	    		"roomMax":roomMax.text,
+	    		"revMin":revenueMin.text,
+	    		"revMax":revenueMax.text,
+	    		"rateMin":rateMin.text,
+	    		"rateMax":rateMax.text
+	    		}; 
+
+		vsIncentives.selectedIndex = 2;
+
+		searchService.url="http://www.revparsuite.com/leadgine/searchEXE.asp?userid=" + Application.application.userID + "&hotel=" + Application.application.hotel;
+		searchService.method = "POST";
+		searchService.send(params);
+
+	}
+	
+	private function reset():void{
+	    radioMyReferrals.selected = true;
+	    companyText.text = "";
+	    eventText.text = "";
+	    statusCB.selectedItem = "";
+	    roomMin.text = "";
+	    roomMax.text = "";
+	    revenueMin.text = "";
+	    revenueMax.text = "";
+	    rateMin.text = "";
+	    rateMax.text = "";
+	}
+			
+			
+			private function set selectedIndexSearch(n:Number):void {
+				// Make sure we are within range of dataProvider.
+				if (n < 0)
+					n = listSearch.length - 1;
+				else if (n > (listSearch.length - 1))
+					n = 0;
+
+				_selectedIndexSearch = n;
+			}
+			
+			
+			private function get selectedIndexSearch():Number {
+				return _selectedIndexSearch;
+			}
+			
+			public function fill():void {
+				searchService.url="http://www.revparsuite.com/leadgine/searchEXE.asp?userid=" + Application.application.userID + "&hotel=" + Application.application.hotel;
+				searchService.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				searchService.addEventListener(ResultEvent.RESULT,resultHandlerSearch);
+				searchService.method = "POST";
+				searchService.cancel();
+				searchService.send(); 
+			}
+
+			public function insertItemHandler(event:ResultEvent):void {	
+				//fill();
+			}						
+			
+			private function sortNumeric(obj1:Object, obj2:Object):int {
+				var value1:Number = (obj1.rooms == '' || obj1.rooms == null) ? null : new Number(obj1.rooms);
+				var value2:Number = (obj2.rooms == '' || obj2.rooms == null) ? null : new Number(obj2.rooms);
+				
+				if (value1 < value2) {
+					return -1;
+				} else if (value1 > value2) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+						
+
+			private function date_sort_Begin_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.begin));
+                var dateB:Date = new Date(Date.parse(itemB.begin));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+
+
+			private function date_sort_End_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.end));
+                var dateB:Date = new Date(Date.parse(itemB.end));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+	private function onEndMaximize():void{
+		vsIncentives.selectedIndex = 1;
+	}
+	private function onEndRestore():void{
+		vsIncentives.selectedIndex = 0;
+	}
+	
+	private function currencyLabel(item:Object, column:DataGridColumn):String
+    {
+        return fmtCurrency.format(item[column.dataField]);
+    }
+	
+	private function numberLabel(item:Object, column:DataGridColumn):String
+    {
+        return fmtNumber.format(item[column.dataField]);
+    }
+	
+	
+]]>
+</mx:Script>
+
+<mx:CurrencyFormatter id="fmtCurrency" precision="0" />
+<mx:NumberFormatter id="fmtNumber" useThousandsSeparator="true"/>
+
+
+<mx:HTTPService id="searchService" url="http://www.revparsuite.com/leadgine/searchEXE.asp?userid={ Application.application.userID }&amp;hotel={ Application.application.hotel }" 
+	result="resultHandlerSearch(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:ViewStack id="vsIncentives" width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+<com:GradientCanvas 
+	width="100%" height="100%" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10"
+	colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.myFillColors4 }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="0"
+		click="{this.normalMaxClickHandler(null)}">
+
+		<mx:Canvas borderStyle="solid" borderColor="#666666" cornerRadius="20" backgroundColor="#FFFFFF" borderThickness="1" alpha="0.8" left="130" right="10" top="10" bottom="10">
+				<mx:Text text="Search the database for any referral you've sent in the past." left="20" right="20" top="20" bottom="20" styleName="myPanelCaption">
+					<mx:filters>
+				        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+				    </mx:filters>
+				</mx:Text>
+		</mx:Canvas>
+		<mx:Image source="assets/img/icons/grey_circle/find.png" verticalCenter="0" left="30"/>
+
+</com:GradientCanvas>
+	<com:GradientCanvas label="Results" width="100%" height="100%" 
+		icon="@Embed('assets/img/icons/search.png')"
+		paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off"
+		colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.topGradientColor }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="100">
+
+				<mx:VBox width="100%" label="criteria" height="100%" horizontalAlign="center" paddingTop="20" >
+
+					<mx:Canvas backgroundColor="#ffffff" 
+						cornerRadius="30" 
+						borderStyle="solid" borderColor="#000000" borderThickness="1" 
+						dropShadowEnabled="true">
+						
+							<mx:VBox horizontalAlign="center" paddingLeft="20" paddingRight="20" paddingTop="20" paddingBottom="20">
+							<mx:Text text="Enter your criteria below to search the referrals database:" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+								<mx:Form horizontalCenter="true">
+									<mx:FormItem required="false" label="Referrer:" width="100%" labelWidth="150">
+										<mx:HBox width="100%">
+											<mx:RadioButton groupName="referralsTypeGrp" label="my referrals" id="radioMyReferrals" selected="true" />
+											<mx:RadioButton groupName="referralsTypeGrp" label="hotel referrals" id="radioHotelReferrals" />
+										</mx:HBox>
+									</mx:FormItem>
+									<mx:FormItem required="false" label="Company:" width="100%" labelWidth="150">
+										<mx:TextInput id="companyText"/>
+									</mx:FormItem>
+									<mx:FormItem required="false" label="Event:" width="100%" labelWidth="150">
+										<mx:TextInput id="eventText"/>
+									</mx:FormItem>
+							
+									<!--<mx:FormItem required="false" label="Contact First Name:" width="100%" labelWidth="150">
+										<mx:TextInput id="firstNameText"/>
+									</mx:FormItem>
+									<mx:FormItem required="false" label="Contact Last Name:" width="100%" labelWidth="150">
+										<mx:TextInput id="lastNameText"/>
+									</mx:FormItem>-->
+							
+									<mx:FormItem required="false" label="Status:" width="100%" labelWidth="150">
+										<mx:ComboBox textAlign="left" id="statusCB" dataProvider="{FullServiceReferral.STATUS_OPTIONS}" />
+									</mx:FormItem>
+									
+									<mx:FormItem required="false" label="Ttl Rooms Between:" width="100%" labelWidth="150">
+										<mx:HBox width="100%">
+											<mx:TextInput id="roomMin" width="54"/>
+											<mx:Label text=" and "/>
+											<mx:TextInput id="roomMax" width="54"/>
+										</mx:HBox>
+									</mx:FormItem>
+							
+									<mx:FormItem required="false" label="Total revenue between:" width="100%" labelWidth="150">
+										<mx:HBox width="100%">
+											<mx:TextInput id="revenueMin" width="54"/>
+											<mx:Label text=" and "/>
+											<mx:TextInput id="revenueMax" width="54"/>
+										</mx:HBox>
+									</mx:FormItem>
+									
+									<mx:FormItem required="false" label="Room rate between:" width="100%" labelWidth="150">
+										<mx:HBox width="100%">
+											<mx:TextInput id="rateMin" width="54"/>
+											<mx:Label text=" and "/>
+											<mx:TextInput id="rateMax" width="54"/>
+										</mx:HBox>
+									</mx:FormItem>
+							</mx:Form>
+							<!--<mx:FormItem required="false" label="State:" width="100%" labelWidth="150">
+								<mx:ComboBox textAlign="left" id="stateCB" dataProvider="{FullServiceReferral.STATES}" />
+							</mx:FormItem>
+							<mx:FormItem required="false" label="Country:" width="100%" labelWidth="150">
+								<mx:ComboBox textAlign="left" id="countryCB" dataProvider="{FullServiceReferral.COUNTRIES}" />
+							</mx:FormItem>-->
+							<mx:HBox horizontalAlign="center" horizontalCenter="true">
+								<mx:Button label="Reset" id="resetButton" click="reset()"/>
+								<mx:Button label="Search" id="searchButton" click="myPost()"/>
+							</mx:HBox>
+						</mx:VBox>
+					</mx:Canvas>
+			</mx:VBox>
+		</com:GradientCanvas>
+	
+<com:GradientCanvas label="Results" width="100%" height="100%" 
+		icon="@Embed('assets/img/icons/table.png')"
+		paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off"
+		colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.topGradientColor }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="100">
+			<mx:VBox backgroundColor="#ffffff" backgroundAlpha=".5" width="100%" height="100%" paddingBottom="10" paddingRight="10" paddingLeft="10" paddingTop="10">
+			<mx:Text text="Below are your search results.  Click a column header to sort." y="8" right="-307" left="188" styleName="myFormHeader">
+				<mx:filters>
+			        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+			    </mx:filters>
+			</mx:Text>
+
+					<mx:DataGrid id="dataSearch" 
+						width="100%" height="100%" 
+				        selectedIndex="{_selectedIndexSearch}"
+				        dataProvider="{listSearch}" 
+				        doubleClickEnabled="true"
+				        itemDoubleClick="searchGridItemClick()">
+						<mx:columns>
+							<mx:DataGridColumn headerText="Status" dataField="myStatus"/>
+							<mx:DataGridColumn headerText="Company" dataField="company"/>
+							<mx:DataGridColumn headerText="Event" dataField="myEvent"/>
+							<mx:DataGridColumn headerText="Arrival" dataField="arrival"/>
+							<mx:DataGridColumn headerText="Rm Nts" textAlign="right" labelFunction="numberLabel"	dataField="totalTotal"/>
+							<mx:DataGridColumn headerText="Revenue" textAlign="right" labelFunction="currencyLabel" dataField="ttlRevenue"/>
+							<mx:DataGridColumn headerText="Bonus" textAlign="right" labelFunction="currencyLabel" dataField="bonus"/>
+							<mx:DataGridColumn headerText="Referred" dataField="sentDate"/>
+						</mx:columns>
+					</mx:DataGrid>
+					<mx:HBox width="100%" verticalAlign="bottom">
+						<mx:HBox width="100%" horizontalAlign="left">
+							<mx:Image source="@Embed('assets/img/map_handshake_grn.jpg')"/>
+						</mx:HBox>
+						<mx:HBox width="100%" horizontalAlign="right" verticalAlign="bottom">
+							<mx:Button label="New Search" id="btnBack" click="vsIncentives.selectedIndex=1" icon="@Embed('assets/img/icons/search.png')" width="240" height="50"/>
+							<mx:Button label="Refresh" width="240" height="50" click="fill()" icon="@Embed('assets/img/icons/refresh.png')"/>
+						</mx:HBox>
+					</mx:HBox>
+			</mx:VBox>
+					
+					
+	</com:GradientCanvas>
+		<!--</mx:TabNavigator>
+	</mx:VBox>
+</mx:Canvas>-->
+</mx:ViewStack>
+
+</SuperPanel>

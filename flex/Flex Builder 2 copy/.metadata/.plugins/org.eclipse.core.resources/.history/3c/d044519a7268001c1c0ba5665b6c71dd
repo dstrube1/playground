@@ -1,0 +1,100 @@
+package base.lenz.panel
+{
+	import mx.core.UIComponent;
+	import mx.styles.CSSStyleDeclaration;
+	import mx.styles.StyleManager;
+	import flash.display.GradientType;
+	import flash.filters.BevelFilter;
+	import flash.geom.Matrix;
+	
+	
+	[Style(name="fillColors", type="Array", format="Color", inherit="no")]
+	[Style(name="fillAlphas", type="Array", format="Number", inherit="no")]
+	public class ReflectPanel extends UIComponent
+	{
+		
+	        // Define a static variable for initializing the style property.
+        private static var classConstructed:Boolean = classConstruct();
+    
+        private var fillMatrix:Matrix;
+
+    
+        // Define a static method to initialize the style.
+        private static function classConstruct():Boolean {
+            if (!StyleManager.getStyleDeclaration("ReflectPanel")) 
+            {
+                // If StyledRectangle has no CSS definition, 
+                // create one and set the default value.
+                var newStyleDeclaration:CSSStyleDeclaration =                     new CSSStyleDeclaration();
+                newStyleDeclaration.setStyle("fillColors", [0xFF0000, 0x0000FF]);
+                newStyleDeclaration.setStyle("fillAlphas", [0.9, 0.1]);
+                StyleManager.setStyleDeclaration("ReflectPanel",                     newStyleDeclaration, true);
+            }
+            return true;
+        }
+    
+        // Constructor    
+        public function ReflectPanel() {
+            super();    
+            
+            fillMatrix = new Matrix();
+           fillMatrix.rotate(Math.PI/2);
+            
+        }        
+        
+        // Define a default size of 100 x 100 pixels.
+        override protected function measure():void {
+            super.measure();
+
+            measuredWidth = measuredMinWidth = 100;
+            measuredHeight = measuredMinHeight = 100;
+        }
+
+        // Define the variable to hold the current gradient fill colors.
+        private var fillColorsData:Array;
+        private var fillAlphasData:Array;
+        
+        // Define the flag that indicates a change to fillColors.
+        private var bFillColorsChanged:Boolean = true;
+
+        // Define variables for additional controls on the fill.
+        // You can create style properties for these as well.
+        private var ratios:Array = [0x00, 0xFF];
+        
+        // Override styleChanged() to detect changes in your new style.
+        override public function styleChanged(styleProp:String):void {
+
+            super.styleChanged(styleProp);
+
+            // Check to see if style changed. 
+            if (styleProp=="fillColors") 
+            {
+                bFillColorsChanged=true; 
+                invalidateDisplayList();
+                return;
+            }
+        }
+    
+        // Override updateDisplayList() to update the component 
+        // based on the style setting.
+        override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
+
+            super.updateDisplayList(unscaledWidth, unscaledHeight);
+
+            // Check to see if style changed. 
+            if (bFillColorsChanged==true) 
+            {
+                // Redraw gradient fill only if style changed.
+                fillColorsData=getStyle("fillColors");
+				fillAlphasData=getStyle("fillAlphas");
+				
+
+                graphics.beginGradientFill(GradientType.LINEAR,  fillColorsData, 
+                	fillAlphasData, ratios, fillMatrix);  
+                graphics.drawRect(0, 0, unscaledWidth, unscaledHeight);
+            }
+        }
+	
+		
+	}
+}

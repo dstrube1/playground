@@ -1,0 +1,28 @@
+package base.lenz.panel
+{
+	import base.lenz.panel.LenzPanel;
+	import base.lenz.Lenz;
+	
+	public class PanelBuilder
+	{
+		
+		private static var _contentHeight:int = 0;
+		
+		public static function setContentHeight( ch:int):void {
+			_contentHeight = ch;
+		} 
+		
+		
+		public static function build( panelClass:Class, lenz:Lenz):LenzPanel {
+			
+			var tmp:LenzPanel = new panelClass();
+			tmp.setMaxContentHeight(_contentHeight);
+			tmp.setParent(lenz);
+			
+			return(tmp);
+			
+		}
+		
+		
+	}
+}

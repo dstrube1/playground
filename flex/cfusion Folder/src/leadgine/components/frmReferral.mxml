@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+		<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+			showCloseButton="true" 
+			styleName="rprPanel"  
+			width="900" height="550" 
+			horizontalAlign="center" 
+			title="Referral Form" 
+			xmlns:sides="leadgine.components.view.sides.*">
+	<!-- INCLUDE EXTERNAL AS FILE -->
+	<mx:Script source="ReferralSubmit.as" />
+	
+	
+	<mx:HTTPService id="referralService" 
+		url="http://www.revparsuite.com/leadgine/referralEXE.asp"
+		result="resultHandlerReferral(event)"
+		fault="faultHandlerReferral(event)"
+        resultFormat="e4x"
+        useProxy="false"
+        method="POST"/>
+
+				<mx:Script>
+					<![CDATA[
+						import mx.controls.Alert;
+						import leadgine.components.dto.FullServiceReferral;
+
+						[Bindable]
+						public var myFullServiceReferral:FullServiceReferral = new FullServiceReferral();
+						
+						private function nextSection():void {
+							mainVS.selectedIndex += 1;
+						}
+						private function prevSection():void {
+							mainVS.selectedIndex -= 1;
+						}
+						private function initApp():void {
+			
+						}
+						private function onFormSubmit():void {
+							//Alert.show("Post this: \n" + "Org: " + referralModel.org + "\nEvent: " + referralModel.evt);
+							//mainVS.selectedIndex = 5;
+							myPost();
+						}
+					]]>
+				</mx:Script>
+
+	
+	<mx:Model id="referralModel">
+	    <referral>
+	        <userid>{Application.application.userID}</userid>
+	        <refhotel>{Application.application.myHotel}</refhotel>
+	        <org>{secContactInfo.orgText.text}</org>
+			<evt>{secContactInfo.evtText.text}</evt>
+			<estNum>{secContactInfo.estNum.text}</estNum>
+			<contactName>{secContactInfo.nameText.text}</contactName>
+			<contactTitle>{secContactInfo.titleText.text}</contactTitle>
+			<address>{secContactInfo.addressText.text}</address>
+			<address2>{secContactInfo.address2Text.text}</address2>
+			<city>{secContactInfo.cityText.text}</city>
+			<state>{secContactInfo.stateCB.selectedItem}</state>
+			<country>{secContactInfo.countryCB.selectedItem}</country>
+			<zipcode>{secContactInfo.zipcodeText.text}</zipcode>
+			<emailAddress>{secContactInfo.emailText.text}</emailAddress>
+			<phone>{secContactInfo.phoneText.text}</phone>
+			<fax>{secContactInfo.faxText.text}</fax>
+			<estDecisionDate>{secContactInfo.decisionDate.selectedDate}</estDecisionDate>
+			<commissionable>{secContactInfo.radioComm.selected}</commissionable>
+			<commPercent>{secContactInfo.commPercent.text}</commPercent>
+			<IATA>{secContactInfo.IATAText.text}</IATA>
+			<estRate>{secContactInfo.estRateText.text}</estRate>
+			<referralType></referralType>
+			<startDate>{secRoomBlockInfo.startDate.selectedDate}</startDate>
+			<numDays>{secRoomBlockInfo.numDays.value}</numDays>
+			<comments>{secAdditionalInfo.commentsText.text}</comments>
+			<requests>{secAdditionalInfo.requestsText.text}</requests>
+	    </referral>
+	</mx:Model>
+	
+	
+	<!--
+			<day2>{secRoomBlockInfo.day2.text}</day2>
+			<day3>{secRoomBlockInfo.day3.text}</day3>
+			<day4>{secRoomBlockInfo.day4.text}</day4>
+			<day5>{secRoomBlockInfo.day5.text}</day5>
+			<day6>{secRoomBlockInfo.day6.text}</day6>
+			<day7>{secRoomBlockInfo.day7.text}</day7>
+	-->
+	
+	
+			<mx:VBox>
+
+				<mx:HBox verticalAlign="bottom" id="headerArea" width="800" styleName="headerStyle">
+					<mx:Label text="Full Service Referral Form" styleName="mainTitle" />
+					<mx:Spacer width="100%" />
+				</mx:HBox>
+				
+				<mx:ViewStack id="mainVS" creationPolicy="all" width="800" height="500">
+					<sides:ContactInfo id="secContactInfo" label="Contact Information" 
+						myTitle="Contact Information" 
+						nextSection="nextSection()"
+						prevSection="prevSection()"
+						myDTO="{myFullServiceReferral}"
+						 />
+					<sides:RoomBlockInfoUnlimited id="secRoomBlockInfo" label="Room Block Information" 
+						myTitle="Room Block Information" 
+						nextSection="nextSection()"
+						prevSection="prevSection()"
+						myDTO="{myFullServiceReferral}"
+						 />
+					<sides:FunctionType id="secFunctionType" label="Function Types" 
+						myTitle="Function Types"
+						nextSection="nextSection()"
+						prevSection="prevSection()"
+						myDTO="{myFullServiceReferral}"
+						day1="{referralModel.startDate}"
+						day2="{referralModel.day2}"
+						day3="{referralModel.day3}"
+						day4="{referralModel.day4}"
+						day5="{referralModel.day5}"
+						day6="{referralModel.day6}"
+						day7="{referralModel.day7}"
+						 />
+						 
+					<!-- I AM CURRENTLY FIXING THIS SECTION -->
+					<sides:PropertySelection id="secPropertySelection" label="Property Selection" 
+						myTitle="Property Selection"
+						nextSection="nextSection()"
+						prevSection="prevSection()"
+						/>
+					<sides:AdditionalInfo id="secAdditionalInfo" label="Additional Information" 
+						myTitle="Additional Information"
+						nextSection="nextSection()"
+						prevSection="prevSection()"
+						formSubmit="onFormSubmit()"
+						 />
+					<!--<sides:frmMyReferrals id="secMyReferrals" label="My Referrals" 
+						myTitle="My Referrals"
+						nextSection="nextSection()"
+						prevSection="prevSection()"
+						 />-->
+				</mx:ViewStack>
+			</mx:VBox> 
+			
+		</mx:TitleWindow>

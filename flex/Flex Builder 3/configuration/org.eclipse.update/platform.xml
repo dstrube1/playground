@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config date="1227565790657" transient="false" version="3.0">
+<site enabled="true" policy="USER-EXCLUDE" updateable="true" url="platform:/base/">
+<feature id="org.eclipse.platform" url="features/org.eclipse.platform_3.3.1.R33x_r20070911-_19UEkpF-B7Uh2hKy75y/" version="3.3.1.R33x_r20070911-_19UEkpF-B7Uh2hKy75y">
+</feature>
+<feature id="org.eclipse.cvs" url="features/org.eclipse.cvs_1.0.1.R33x_r20070802-7C79_9_KKG-mDM9e3H5D/" version="1.0.1.R33x_r20070802-7C79_9_KKG-mDM9e3H5D">
+</feature>
+<feature id="org.eclipse.rcp" url="features/org.eclipse.rcp_3.3.1.R33x_r20070802-8y8eE8sEV3Fz0z0GlHJrXvTAUS/" version="3.3.1.R33x_r20070802-8y8eE8sEV3Fz0z0GlHJrXvTAUS">
+</feature>
+<feature id="com.adobe.flexbuilder.feature.core.osx" plugin-identifier="com.adobe.flexbuilder.feature.core.brand" url="features/com.adobe.flexbuilder.feature.core.osx_3.0.214193/" version="3.0.214193">
+</feature>
+<feature id="com.adobe.flexbuilder.feature.standalone.osx" plugin-identifier="com.adobe.flexbuilder.standalone" url="features/com.adobe.flexbuilder.feature.standalone.osx_3.0.214193/" version="3.0.214193">
+</feature>
+</site>
+</config>

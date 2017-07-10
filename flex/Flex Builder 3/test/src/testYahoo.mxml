@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+ xmlns:mx="http://www.adobe.com/2006/mxml" 
+ layout="absolute"  creationComplete="handleCreationComplete(event)">
+<mx:Script>
+	<![CDATA[
+		import com.yahoo.maps.api.markers.SearchMarker;
+		import com.yahoo.maps.webservices.local.LocalSearchItem;
+		import com.yahoo.maps.webservices.local.LocalSearchResults;
+		import com.yahoo.maps.webservices.local.events.LocalSearchEvent;
+		import com.yahoo.maps.webservices.local.LocalSearch;
+		import com.yahoo.maps.api.overlays.PolylineOverlay;
+		import com.yahoo.maps.api.core.location.Address;
+		import com.yahoo.maps.api.markers.SimpleMarker;
+		import com.yahoo.maps.api.core.location.LatLon;
+		import com.yahoo.maps.api.YahooMapEvent;
+		import mx.controls.Alert;
+		import com.yahoo.maps.api.YahooMap;
+		/*ex: 
+		http://developer.yahoo.com/flash/maps/examples/YahooMap_FlexExample/YahooMap_FlexExample.html
+		http://developer.yahoo.com/flash/maps/
+		yswfblog.com
+		brucephillips.name.com?
+		*/
+		
+		private var yahooMap:YahooMap;
+
+		private function handleCreationComplete(event:Event):void{
+			yahooMap = new YahooMap();
+
+			yahooMap.addEventListener(YahooMapEvent.MAP_INITIALIZE, handleMapInit);
+
+			yahooMap.init("360flex",mapContainer.width, mapContainer.height);
+
+			mapContainer.addChild(yahooMap);
+		}
+		
+		private function handleMapInit(event:YahooMapEvent):void{
+			yahooMap.zoomLevel = 10;
+			yahooMap.centerLatLon = new LatLon(37,-122);
+
+			yahooMap.addPanControl();
+			yahooMap.addTypeWidget();
+			yahooMap.addZoomWidget();
+			
+			yahooMap.addEventListener(YahooMapEvent.MAP_DOUBLE_CLICK, handleDoubleClick);
+			
+//			var marker:SimpleMarker = new SimpleMarker();
+			var marker:Flex360Marker = new Flex360Marker();
+			marker.address = new Address("sunnyvale, ca");
+			
+			yahooMap.markerManager.addMarker(marker);
+			
+			var polyline:PolylineOverlay = new PolylineOverlay(0xff0000,1,4,true);
+			yahooMap.overlayManager.addOverlay(polyline);
+			polyline.dataProvider = [yahooMap.centerLatLon, yahooMap.centerLatLon.shift(5,25)];
+			
+			var localSearch:LocalSearch = new LocalSearch();
+			localSearch.addEventListener(LocalSearchEvent.SEARCH_SUCCESS,handleSearchSuccess);
+			localSearch.searchLocal("pizza",yahooMap.zoomLevel, yahooMap.centerLatLon,10,1,20,"96926243+96926236")
+//																																																																									^pizza										^restaurant
+
+		}
+		
+		private function handleDoubleClick(event:YahooMapEvent):void{
+			yahooMap.zoomLevel--;
+		}
+		
+		private function handleSearchSuccess(event:LocalSearchEvent):void{
+			var results:LocalSearchResults = event.data as LocalSearchResults;
+			
+// search query?:
+//			results.term 
+			for (var i:int=0; i< results.results.length; i++){
+				var item:LocalSearchItem = results.results[i];
+				var marker:SearchMarker = new SearchMarker(item);
+				
+				yahooMap.markerManager.addMarker(marker);
+			}
+		}
+	]]>
+</mx:Script>
+
+<mx:UIComponent id="mapContainer" width="100%" height="100%" />
+
+</mx:Application>

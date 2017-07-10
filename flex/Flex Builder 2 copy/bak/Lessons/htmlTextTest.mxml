@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" backgroundGradientColors="[#FFFFFF, #FFFFFF]">
+	<mx:Text width="100%" color="blue" fontStyle="italic" fontSize="14">
+		<mx:htmlText>
+			<![CDATA[
+				This is 14 point blue italic text.<br>
+				<b><font color="#000000" size="10"></i><!--"</i>" does nuzzing-->
+				This text is 10 point black, italic, and bold.
+				</font></b>
+			]]>
+		</mx:htmlText>
+	</mx:Text>
+
+	
+</mx:Application>

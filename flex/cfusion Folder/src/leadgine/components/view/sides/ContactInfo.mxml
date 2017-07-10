@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow showCloseButton="true"
+	close="handleClose(event)" 
+	styleName="rprPanel"  
+	horizontalAlign="center" 
+	x = "{myDTO.referralFormX}"
+	y = "{myDTO.referralFormY}"
+	width = "{myDTO.referralFormWidth}"
+	height = "{myDTO.referralFormHeight}"
+	title="Referral Form" 
+	creationComplete="init()" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:components="leadgine.components.*"
+	xmlns:utils="leadgine.components.utils.*"
+	>
+<!--
+<panel:SuperPanel xmlns:panel="nl.wv.extenders.panel.*"
+-->
+
+<mx:Script>
+<![CDATA[
+	import mx.collections.ArrayCollection;
+	import mx.collections.XMLListCollection;
+	import mx.rpc.events.ResultEvent;
+	import mx.events.ValidationResultEvent;
+	import mx.controls.Alert;
+	import mx.validators.Validator;
+	import mx.core.Application;
+	import leadgine.components.dto.FullServiceReferral;
+	import mx.events.CloseEvent;
+	import mx.managers.PopUpManager;
+	
+//which handler to use for populateSavedValues: 
+//show= ?
+//addedToStage = null exception
+//creationComplete = works
+//valid= ?
+	[Bindable] private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	
+	private var listContactDataIncoming:XMLListCollection;
+	[Bindable] private var existingsArray:ArrayCollection = new ArrayCollection();
+	
+	private function init():void{
+		setDimensions();
+		populateSavedValues();
+	}
+	private function setDimensions():void{
+	//	this.x = FullServiceReferral.referralFormX;
+	//	this.y = FullServiceReferral.referralFormY;
+	//	this.width = FullServiceReferral.referralFormWIDTH;
+	//	this.height = FullServiceReferral.referralFormHEIGHT;
+	
+	//this was useful, but causes this form to not maintain x & y when dragged around from another form, then come back to this one
+		//myDTO.middlize();
+		//however, this will be useful in handleClose
+		myDTO.middlize();
+	}
+	private function populateSavedValues():void{
+		if (myDTO.savedContact){
+			orgText.text				 = myDTO.org;
+			evtText.text				 = myDTO.evt;
+			firstNameText.text			 = myDTO.contactFirstName;
+			lastNameText.text			 = myDTO.contactLastName;
+			titleText.text				 = myDTO.contactTitle;
+			estNum.text					 = myDTO.numGuests
+			addressText.text			 = myDTO.address;
+			address2Text.text			 = myDTO.address2;
+			cityText.text				 = myDTO.city;
+			stateCB.selectedItem		 = myDTO.getState(myDTO.state);
+			countryCB.selectedItem		 = myDTO.getCountry(myDTO.country);
+			zipcodeText.text			 = myDTO.zipcode;
+			phoneText.text				 = myDTO.phone;
+			emailText.text				 = myDTO.emailAddress;
+			faxText.text				 = myDTO.fax;
+			decisionDate.selectedDate	 = myDTO.estDecisionDate;
+			if (myDTO.rateType == FullServiceReferral.RATE_TYPE_COMMISIONABLE){
+				radioComm.selected = true;
+				commPercent.text = myDTO.commPercent;
+			}
+			else if (myDTO.rateType == FullServiceReferral.RATE_TYPE_NET_RATE){
+				radioNetRate.selected = true;
+				//no need to blank out commPercent as that is its default
+			}
+			IATAText.text				 = myDTO.IATA;
+			estRateText.text			 = myDTO.rate;
+		}
+	}
+	
+	private function handleClose(event:CloseEvent):void{
+		myDTO.middlize();
+		Application.application.resetDialogs();
+		PopUpManager.removePopUp(this);
+	}
+
+	private function nextSection():void {
+		if(validateForm()){
+			updateDataStore();
+			Application.application.toggleDialog(1);
+		}
+		//mainVS.selectedIndex += 1;
+	}
+	private function prevSection():void {
+		//invalid here
+		//updateDataStore();
+		//Application.application.toggleDialog(-1);
+		//mainVS.selectedIndex -= 1;
+	}
+	private function validateForm():Boolean{
+		var validatorErrorArray:Array = Validator.validateAll(validators);
+		var isValidForm:Boolean = validatorErrorArray.length == 0;
+		if (isValidForm) {
+			return true;
+		}
+		var err:ValidationResultEvent;
+		var errorMessageArray:Array = [];
+		for each (err in validatorErrorArray) {
+			var errField:String = FormItem(err.currentTarget.source.parent).label
+			errorMessageArray.push(errField + ": " + err.message);
+		}
+		Alert.show(errorMessageArray.join("\n\n"), "Missing data", Alert.OK);
+		
+		return false;
+	}
+	private function updateDataStore():void{
+		myDTO.referralFormX = this.x;
+		myDTO.referralFormY = this.y;
+
+		myDTO.savedContact	 = true;
+		
+		myDTO.org			 = orgText.text;
+		myDTO.evt			 = evtText.text;
+		myDTO.contactFirstName=firstNameText.text;
+		myDTO.contactLastName= lastNameText.text;
+		myDTO.contactTitle	 = titleText.text;
+		myDTO.numGuests		 = estNum.text;
+		myDTO.address		 = addressText.text;
+		myDTO.address2		 = address2Text.text;
+		myDTO.city			 = cityText.text;
+		myDTO.state			 = stateCB.selectedLabel;
+		myDTO.country		 = countryCB.selectedLabel;
+		myDTO.zipcode		 = zipcodeText.text;
+		myDTO.phone			 = phoneText.text;
+		myDTO.emailAddress	 = emailText.text;
+		myDTO.fax			 = faxText.text;
+		myDTO.estDecisionDate= decisionDate.selectedDate;
+		if (radioComm.selected){
+			myDTO.rateType	 = FullServiceReferral.RATE_TYPE_COMMISIONABLE;
+			myDTO.commPercent = commPercent.text;
+		}
+		else if (radioNetRate.selected){
+			myDTO.rateType	 = FullServiceReferral.RATE_TYPE_NET_RATE;
+			myDTO.commPercent = "";
+		}
+		myDTO.IATA			 = IATAText.text;
+		//Application.application.myFullServiceReferral.rate			 = estRateText.text;
+		myDTO.rate			 = estRateText.text;
+	}
+    private function handleFormValidate(event:Event):void {
+       // status.text = "This form is: "+String(event.type);
+    }
+	private function changeNewOrExisting():void{
+		if (newOrExisting.selectedLabel == myDTO.NEW_OR_EXISTING_OPTIONS[1]){
+			existings.visible = true;
+			contactDataIncoming.method = "POST";
+			contactDataIncoming.cancel();
+			contactDataIncoming.send(); 
+		}else{
+			existings.visible = false;
+		}
+	}
+	private function changeExistings():void{
+		var o:Object = existings.selectedItem;
+		if (o.id != null && o.id != ""){
+			myDTO.setContact(listContactDataIncoming,o.id);
+			myDTO.savedContact = true;
+			populateSavedValues();
+		}
+	}
+	private function resultHandlerContactDataIncoming(event:ResultEvent):void{
+		var result:XML = XML(event.result);  
+	    var xmlList:XMLList = result.items.children();	//Only change made to this file by Curtis Foster, 10/19/09
+	    
+		listContactDataIncoming = new XMLListCollection(xmlList);
+		existingsArray = new ArrayCollection();
+		existingsArray.addItem({label:"Select",id:""});
+		for each (var xml:XML in listContactDataIncoming){
+			var o:Object = new Object();
+			o.label=xml.child("last_name")+","+xml.child("first_name");
+			o.id=xml.child("id");
+			existingsArray.addItem(o);
+		}
+	}
+	private function faultHandler():void{
+		
+	}
+]]>
+</mx:Script>
+<mx:HTTPService id="contactDataIncoming" 
+	url="http://www.revparsuite.com/leadgine/contactsEXE.asp?userid={ Application.application.userID }&amp;myType=all" 
+	result="resultHandlerContactDataIncoming(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+	useProxy="false" 
+	showBusyCursor="true"/>
+
+	<mx:Array id="validators" >
+		<mx:StringValidator source="{orgText}" property="text" minLength="2" required="true" />
+		<mx:StringValidator source="{evtText}" property="text" minLength="2" required="true" />
+		<mx:StringValidator source="{estRateText}" property="text" minLength="1" required="true" />
+		<mx:StringValidator source="{firstNameText}" property="text" minLength="2" required="true" />
+		<mx:StringValidator source="{lastNameText}" property="text" minLength="2" required="true" />
+		<mx:StringValidator source="{addressText}" property="text" minLength="2" required="true" />
+		<mx:StringValidator source="{phoneText}" property="text" minLength="2" required="true" />
+		<mx:StringValidator source="{decisionDate}" property="text" minLength="2" required="true" />
+		<mx:StringValidator source="{estNum}" property="text" minLength="1" required="true" />
+	</mx:Array>
+
+	<mx:VBox>
+
+		<mx:HBox verticalAlign="bottom" id="headerArea" width="800" styleName="headerStyle">
+			<mx:Label text="Full Service Referral Form" styleName="mainTitle" />
+			<mx:Spacer width="100%" />
+		</mx:HBox>
+		<mx:Canvas 
+			width="800" 
+			height="100%"
+			styleName="containerStyle"
+			horizontalScrollPolicy="off"
+			verticalScrollPolicy="off">
+		
+			<mx:VBox styleName="containerStyle" width="100%" height="100%">
+				<mx:HBox width="100%">
+					<mx:Label text="Contact Information" styleName="secTitle" />
+					<mx:Spacer width="100%" />
+					<mx:Label text="*Required Fields" styleName="reqField" />			
+				</mx:HBox>
+			
+			<!--BEGIN CONTACT FORM-->
+			<!--
+				<utils:ValidatorForm
+					id="addEmployeeForm"
+					defaultButton="{navFooter.nextButton}"
+					validators="{validators}"
+					valid="handleFormValidate(event)"
+					invalid="handleFormValidate(event)"
+					>
+			-->
+					<mx:HBox width="100%">
+						
+						<mx:ComboBox id="newOrExisting" change="changeNewOrExisting()" dataProvider="{myDTO.NEW_OR_EXISTING_OPTIONS}" />
+						<mx:ComboBox id="existings" change="changeExistings()" visible="false" dataProvider="{existingsArray}" />
+					</mx:HBox>
+					<mx:HRule  width="760" height="1"/>
+					<mx:HBox>
+						<mx:FormItem required="true" label="Contact First Name" horizontalAlign="left" textAlign="left">
+							<mx:TextInput id="firstNameText" width="100" text="11" />
+						</mx:FormItem>
+						<mx:FormItem required="true" label="Contact Last Name" textAlign="left">
+							<mx:TextInput id="lastNameText" width="100" text="11" />
+						</mx:FormItem>
+						<mx:FormItem label="Title" width="205" horizontalAlign="left" labelWidth="40">
+							<mx:TextInput id="titleText" width="150"/>
+						</mx:FormItem>	
+					</mx:HBox>
+					<mx:HBox>
+						<mx:FormItem required="true" label="Organization/Company" width="350" labelWidth="150">
+							<mx:TextInput id="orgText" width="185" text="11" />
+						</mx:FormItem>
+						<mx:FormItem required="true" label="Event" width="375" horizontalAlign="left" labelWidth="40">
+							<mx:TextInput id="evtText" width="320" text="11" />
+						</mx:FormItem>				
+					</mx:HBox>
+					<mx:Spacer height="10" />
+					<mx:FormItem label="Address" labelWidth="150" required="true" width="735" horizontalAlign="right" textAlign="right">
+						<mx:TextInput  width="570" textAlign="left" id="addressText" text="11" />
+					</mx:FormItem>
+					<mx:FormItem label="Address 2" labelWidth="150" required="false" width="735" horizontalAlign="right" textAlign="right" horizontalGap="0">
+						<mx:TextInput  width="570" textAlign="left" id="address2Text"/>
+					</mx:FormItem>
+					<mx:HBox>
+						<mx:FormItem label="City" labelWidth="150" required="false" width="350" horizontalAlign="right" textAlign="right">
+							<mx:TextInput  width="185" textAlign="left" id="cityText" />
+						</mx:FormItem>
+						<mx:FormItem label="State" labelWidth="40" required="false" width="135" horizontalAlign="right" textAlign="right">
+							<mx:ComboBox width="80" textAlign="left" id="stateCB" dataProvider="{FullServiceReferral.STATES}" />
+							<!--
+							    <mx:dataProvider>   
+							        
+							    </mx:dataProvider>
+							</mx:ComboBox>	
+							    -->
+						</mx:FormItem>	
+						<mx:FormItem label="Country" labelWidth="70" required="false" width="235" horizontalAlign="right" textAlign="right">
+							<mx:ComboBox width="150" textAlign="left" id="countryCB" dataProvider="{FullServiceReferral.COUNTRIES}">
+							<!--
+							    <mx:dataProvider>   
+							        <mx:String>Select</mx:String>
+							        <mx:String>United States</mx:String>
+							        <mx:String>Canada</mx:String>
+							        <mx:String>Mexico</mx:String>
+							        
+							        <!- - Add all other countries. - ->
+							    </mx:dataProvider>
+							    -->
+							</mx:ComboBox>	
+						</mx:FormItem>			
+					</mx:HBox>
+					<mx:HBox>
+						<mx:FormItem label="Zipcode" labelWidth="150" required="false" width="350" horizontalAlign="right" textAlign="right">
+							<mx:TextInput id="zipcodeText" width="185" textAlign="left"/>
+						</mx:FormItem>
+						<mx:FormItem label="Phone" labelWidth="40" required="true" width="240" horizontalAlign="left" textAlign="right">
+							<mx:TextInput id="phoneText" width="170" textAlign="left" text="11" />
+						</mx:FormItem>
+					</mx:HBox>
+					<mx:HBox>
+						<mx:FormItem label="Email Address" labelWidth="150" required="false" width="350" horizontalAlign="right" textAlign="right">
+							<mx:TextInput id="emailText" width="185" textAlign="left"/>
+						</mx:FormItem>
+						<mx:FormItem label="Fax" labelWidth="40" required="false" width="240" horizontalAlign="left" textAlign="right">
+							<mx:TextInput id="faxText" width="170" textAlign="left"/>
+						</mx:FormItem>
+					</mx:HBox>
+							<mx:Spacer height="10" />
+							<mx:HRule  width="760" height="1"/>
+						<mx:Spacer height="10" />
+					<mx:HBox width="701" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+						<mx:FormItem label="Est. Decision Date" labelWidth="150" width="350" horizontalAlign="right" required="true" textAlign="right">
+							<mx:DateField id="decisionDate"  width="185" textAlign="left" selectedDate="{new Date()}"
+							/>
+							 <!-- TO LIMIT DATE RANGE:  selectableRange="{{rangeStart : new Date()}}"
+							  -->
+						</mx:FormItem>
+						<mx:Spacer width="45" />
+							<mx:RadioButton groupName="empTypeGrp" label="Commissionable" id="radioComm" />
+							<mx:FormItem width="45" horizontalAlign="left" paddingLeft="-10">
+								<mx:TextInput id="commPercent" width="40" restrict="0-9" maxChars="3" textAlign="right" enabled="{radioComm.selected}"/>
+							</mx:FormItem>
+							<mx:Label text="%"  paddingLeft="-10" width="15"/>
+							<mx:RadioButton groupName="empTypeGrp" label="Net Rate" selected="true" paddingLeft="10" id="radioNetRate"/>						
+					</mx:HBox>
+					<mx:HBox>
+						<mx:FormItem label="IATA#" labelWidth="150" required="false" width="350" horizontalAlign="right" textAlign="right">
+							<mx:TextInput id="IATAText" width="185" textAlign="left"/>
+						</mx:FormItem>
+						<mx:FormItem label="Estimated Rm Rate" required="true" horizontalAlign="left" textAlign="right" paddingLeft="0">
+							<mx:TextInput id="estRateText" width="89" textAlign="left" restrict="0-9,.$" text="11" />
+						</mx:FormItem>
+						<mx:Spacer width="100%"/>
+						<mx:FormItem required="true" label="# of Guests" horizontalAlign="right">
+							<mx:TextInput id="estNum" width="50" restrict="0-9" textAlign="right" text="11" />
+						</mx:FormItem>				
+					</mx:HBox>
+				<!--
+				</utils:ValidatorForm>
+				-->
+				<components:NavigationFooter hasPrevBtn="false" id="navFooter" 
+					prevSection="prevSection()"
+					nextSection="nextSection()"
+					/>
+			</mx:VBox>
+		</mx:Canvas>
+	</mx:VBox>
+<!--
+</panel:SuperPanel>
+-->
+</mx:TitleWindow>

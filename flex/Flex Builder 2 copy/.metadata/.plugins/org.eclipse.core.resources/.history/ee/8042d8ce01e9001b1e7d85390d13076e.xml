@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="740" height="450"
+	implements="base.form.LenzForm" 
+	xmlns:panel="lenz.main.study_mgr.panel.*"
+	styleName="studyManagerMainForm" 
+	horizontalCenter="0" 
+	creationComplete="onCreationComplete()"
+	xmlns:notification="base.notification.*">
+	 
+	<mx:Script>
+		<![CDATA[
+			import base.db.MemDB;
+			import base.db.MemDbHelper;
+			import base.lenz.NotificationReport;
+			import app.server.LenzServer;
+			import lenz.main.study_mgr.controller.StudyClickManager;
+			import mx.controls.Alert;
+			import base.lenz.panel.LenzPanel;
+			import app.App;
+			import base.services.MapArray;
+			import base.lenz.funnel.PatientFunnel;
+			import base.log.Logger;
+			
+			private var logger:Logger = Logger.getLogger("StudyManagerForecastForm");
+			
+			
+			private var patientFunnel:PatientFunnel = new PatientFunnel();
+			
+			private var _parent:LenzPanel = null;
+			
+			private var high:Array = null;
+			private var medium:Array = null;
+			private var low:Array = null;
+			
+			[Bindable]
+			private var sName:String = "";
+			[Bindable]
+			private var notifDetails:Array = null;
+			[Bindable]
+			private var labelText:String = null;
+			[Bindable]
+			private var descText:String = null;
+			
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+				//lenz2Fade.play();
+			}
+			
+			protected function onCreationComplete():void {
+				
+				logger.debug("StudyManagerForecastForm: onCreationComplete");
+				var notifications:MemDB = LenzServer.notificationReport.notificationDb;
+				high = notifications.fetch({"severity":"1"});
+				
+				addPatientFunnel(this.funnelImg, null);			
+				
+			}
+			
+			public function addPatientFunnel(can:Canvas, funnelStr:Object):void {
+				//can.removeAllChildren() also does the same thing.
+				for(var itr:int = 0; itr < can.getChildren().length; itr++) {
+					can.removeChildAt(itr);
+				}
+				var funnel:DisplayObject =  can.addChild(patientFunnel);
+				
+			}
+			
+			public function initializeForm():void {
+				onCreationComplete();
+			}			
+			
+			public function populateResources(data:Object):void {
+				sName = (data as MapArray).getValue("study.name") as String;
+				LenzServer.sName = sName;
+				
+				var o:Object = (data as MapArray).getValue("patient.db");
+				var funnelXml:XML = new XML(o);
+				var db:MemDB = MemDbHelper.convert(funnelXml, MemDbHelper.FUNNEL);				
+				patientFunnel.refreshFunnel(db);
+				addPatientFunnel(this.funnelImg, null);
+				
+				LenzServer.patientXml = o;
+				LenzServer.data = data;
+				
+				var o:Object = (data as MapArray).getValue("notification.details");
+				var notificationDetailsXml:XML = new XML(o);
+				var db:MemDB = MemDbHelper.convert(notificationDetailsXml, MemDbHelper.NOTIFICATION_DETAILS);
+				notifDetails = db.fetch(null);
+				labelText = notifDetails[0].type + ": " + notifDetails[0].name;
+				descText = notifDetails[0].description;
+			}
+			
+			public function displayWorldView():void {
+				var clickMgr:StudyClickManager = new StudyClickManager();
+	 			clickMgr.processAction( {"currentLenzId":_parent.getParent().getLenzId(), "actionName":"drilldown","targetId":"Territory", "actionParams":"type=world,view=Main,changePanel=true"} );
+			}
+			
+		]]>
+	</mx:Script>
+
+	<mx:Label x="0" y="5" color="#000000" id="studyName" maxHeight="30" text="{sName}" fontThickness="200" fontSize="18" click="Alert.show('List of open studies here')" />
+	
+	<!--mx:VBox x="10" y="45" id="main" width="490" height="390" borderStyle="solid" borderColor="#5E5E5E" cornerRadius="8" -->
+		
+		<!--mx:List x="20" y="50" width="450" color="#000000" dataProvider="{notifDetails}" labelFunction="createAlarmLabel" backgroundAlpha="0.0" borderStyle="none" mouseOver="null"/-->
+		<mx:Label text="{labelText}" x="20" y="50" width="450" color="#000000" />
+		
+		<!--mx:List x="40" y="75" width="420" color="#000000" dataProvider="{notifDetails}" labelFunction="createAlarmDescription" backgroundAlpha="0.0" borderStyle="none"/-->
+		<mx:Label text="{descText}" x="40" y="75" width="450" color="#000000" />
+		
+		<mx:Label text="Potential Resolutions:" x="40" y="125" color="#000000" />
+		
+		<notification:ProblemResolutionView x="60" y="150" id="planView" width="400" height="300" backgroundAlpha="0.0"/>
+		 
+	<!--/mx:VBox-->	
+	
+		<mx:Image id="globeIcon" source="resources/images/icon_globe.png" x="25" y="380" alpha="0.6" mouseOver="globeIcon.alpha=1.0;" mouseOut="globeIcon.alpha=0.6" click="displayWorldView()" visible="true"/>
+		
+	<notification:NotificationView x="501" y="35" id="nv" 
+		context="{App.getContext()}" 
+		notificationReport="{LenzServer.notificationReport}" 
+		width="230" height="180" />
+		
+		
+	<mx:Canvas x="513" y="228" id="funnelImg" 
+		backgroundAlpha="0.0" width="227" height="212" cornerRadius="0"/>
+		
+	 
+</mx:Canvas>
+

@@ -1,0 +1,102 @@
+package app.server.mock
+{
+	import mx.rpc.soap.WebService;
+	import base.services.Content;
+	import base.services.LenzService;
+	import base.services.CommonKeys;
+	import mx.rpc.events.FaultEvent;
+	import app.server.mock.impl.MockLoginService;
+	import base.services.mock.MockService;
+	import app.server.mock.impl.MockGetStudyOverviewService;
+	import app.server.mock.impl.MockGetViewService;
+
+	public class MockLenzService implements LenzService
+	{
+		
+		
+		private var actionHandlers:Object = { 
+		
+				loginAction:  new MockLoginService(),
+				testAction:   null				 
+											};
+		
+		
+		private var resourceHandlers:Object = {
+			getStudyOverview: new MockGetStudyOverviewService(),
+			getView: new MockGetViewService()
+		};
+		
+		
+		
+		public function getActionHandler( key:String):MockService {
+			
+			return(actionHandlers[key]);
+			
+		}
+		
+		public function getResourceHandler( key:String):MockService {
+			return(resourceHandlers[key]);
+		}
+		
+		
+		public function postSvc(content:Content, faultListener:Function, resultListener:Function):void
+		{
+			
+			var action:String = content.ControlMap.getValue(CommonKeys.ACTION_NAME_KEY) as String;
+
+
+			var svc:MockService = actionHandlers[action];
+			
+			if (svc == null) {
+				faultListener( new FaultEvent("Unknown Action: "+action) );
+				
+			} else {
+				
+				svc.call(content, faultListener, resultListener);
+				
+			}
+
+			
+		}
+		
+		public function getSvc(content:Content, faultListener:Function, resultListener:Function):void
+		{
+
+			var resource:String = content.ControlMap.getValue(CommonKeys.RESOURCE_NAME_KEY) as String;
+
+
+			var svc:MockService = resourceHandlers[resource];
+			
+			if (svc == null) {
+				faultListener( new FaultEvent("Unknown Resource: "+resource) );
+				
+			} else {
+				
+				svc.call(content, faultListener, resultListener);
+				
+			}
+			
+			
+		}
+		
+		public function setWebService(ws:WebService):void
+		{
+		}
+		
+		
+		public function setActionHandler( key:String, handler:MockService):void {
+			
+			
+			actionHandlers[key] = handler;
+			
+		}
+		
+		public function setResourceHandler( key:String, handler:MockService):void {
+			
+			resourceHandlers[key] = handler;
+			
+		}
+		
+		
+	}
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="168" height="132" backgroundColor="#ffffff" xmlns:local="*">
+<mx:Style source="RowColorStyles.css"/>
+
+	<mx:Script>
+		<![CDATA[
+/*
+		[Embed(source="images/circle_red.GIF")]
+		private var redImage:Class;
+		
+        [Embed(source="images/circle_green.GIF")]
+		private var greenImage:Class;	    
+		
+        [Embed(source="images/circle_yellow.GIF")]
+		private var yellowImage:Class;	 
+		
+		private function setAlerts():void{		
+		}
+		*/
+		import mx.collections.ArrayCollection;
+		
+		private var dgArray:Array = [
+		{priority:'1',description:'There\'s a tiger in the office',time:'now'},
+		{priority:'2',description:'I forgot my lunch',time:'this morning'},
+		{priority:'3',description:'My shoes are untied',time:'now'},	];
+		
+		[Bindable] private var dgArrayCollection:ArrayCollection 
+			= new ArrayCollection(dgArray);
+		
+		]]>
+	</mx:Script> 
+	<mx:Label x="0" y="0" text="Alerts" fontWeight="bold" fontSize="15"/>
+	<local:RowColorDataGrid id="dg" styleName="rowColorsDataGrid" top="18" left="0" dataProvider="{dgArrayCollection}" width="100%" height="100%">
+		<local:columns>
+			<mx:Array>
+				<mx:DataGridColumn headerText="Priority" dataField="priority" width="20" />
+				<mx:DataGridColumn headerText="Description" dataField="description" width="80"/>
+				<mx:DataGridColumn headerText="Time" dataField="time" width="50"/>
+			</mx:Array>
+		</local:columns>
+	</local:RowColorDataGrid>
+	
+</mx:Canvas>

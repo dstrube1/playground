@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  
+	xmlns:base.lenz.panel="base.lenz.panel.*"
+	implements="base.lenz.panel.LenzPanel"
+	verticalScrollBar="{null}"
+	verticalScrollBarStyleName="invisibleScrollbar"
+	clipContent="false"
+	height="610"
+	width="763"
+	horizontalCenter="0"
+	verticalCenter="0"
+	backgroundAlpha="0">	 
+
+	
+	
+	<mx:Metadata>		
+		[DefaultProperty("subComponents")]
+	</mx:Metadata>
+	
+	<mx:String id="title"/>
+	<mx:Number id="maxContentHeight" />
+
+
+
+	<mx:Script>
+		<![CDATA[
+			import base.event.ExposePanelEvent;
+			import base.event.PanelReadyEvent;
+			import base.lenz.Lenz;
+			import base.form.LenzForm;
+			import app.App;
+
+			import mx.effects.easing.*;
+			import mx.events.EffectEvent;
+			
+						
+			[Bindable]
+			private var targetHeightTo:int = maxContentHeight;
+			
+			[Bindable]
+			private var yBy:int = 0;
+						
+						
+			public const contentY:int = 30;
+			
+			[Embed(source="/resources/images/window_maximize.png")]
+	        public var standardBackgroundImage:Class; 
+	        [Bindable]
+	        public var baseBackgroundImage:Class = standardBackgroundImage; 
+			
+	
+		
+
+			private var currentlyExposed:Boolean = false;
+
+
+			protected var lenzId:String = null;
+			
+			protected var _form:LenzForm = null;
+			
+			protected var parentLenz:Lenz = null;
+			
+			//HB
+			public function getCurrentForm():LenzForm {
+				return _form;
+			}
+
+			
+			//this method has to be overridden in the subclass
+			public function getDefaultFormClass():Class {
+				return null;
+			}
+			//HB
+	
+			protected var onExpose:Function;
+			protected var onRetract:Function;		
+		
+	
+			public function getParent():Lenz {
+				return this.parentLenz;
+			}
+	
+	
+			public function setParent( l:Lenz):void {
+				this.parentLenz = l;
+			}
+			
+			
+			/**
+				tell this panel it's time to get started.
+			*/
+			public function open():void {
+				
+				
+				this.dispatchEvent(new ExposePanelEvent());
+				
+			}
+			
+			
+			public function close( closure:Function=null ):void {
+
+				setExposePanel( false, closure);	
+			}
+			
+			
+			
+			public function setMaxContentHeight( h:int):void {
+				maxContentHeight = h;
+			}	
+	
+	
+	
+			public function getPanelComponent():DisplayObject {
+				return this;
+			}
+	
+	
+	
+			public function getTitle():String {
+				return title;
+			}	
+	
+			
+			
+			
+			public function clearContent():void {
+				content.removeAllChildren();
+			}			
+			
+			
+			
+			
+			public function actionTaken( data:*):void {   // abstract
+				// do nothing.
+			}
+
+
+		
+		
+			public function set exposePanel( hint:Boolean):void {
+				setExposePanel(hint, null);
+			}
+		
+		
+			public function setExposePanel( hint:Boolean, onComplete:Function):void {
+				
+				if (hint) {
+					if (expose != null) {
+
+						onExpose = onComplete;
+						
+						if (currentlyExposed) {
+							// do nothing.
+						} else {
+							
+							expose.play();
+							currentlyExposed = true;
+						}
+					}
+				} else {
+					if (retract != null) {
+						
+						onRetract = onComplete;
+						
+						if (currentlyExposed) {
+							retract.play();
+							currentlyExposed = false;
+						}
+					}
+				}
+				
+			}
+			
+			
+			public function newPanel(panel:Class):void {
+				
+				parentLenz.newPanel(panel);
+
+				
+			}
+			
+			
+			
+
+
+
+			// ---- subclassable --	
+	
+	
+			protected  function completePanel(form:LenzForm):void {
+				
+				
+				addComponents();
+			
+				setupAnimation();
+			
+				addForm(form);
+				
+				addEventListener(ExposePanelEvent.EXPOSE_PANEL_EVENT_BASE, onExposePanel);
+				
+								
+			}
+			
+			protected function ready():void {
+				
+				this.dispatchEvent(new PanelReadyEvent( lenzId ));
+				
+			}
+			
+
+	
+	
+			protected function addForm( form:LenzForm): void {
+				
+				form.setLenzPanel(this);
+																
+				content.addChild(DisplayObject(form));								
+
+				_form = form;
+
+				content.height = 0;
+				content.visible = false;
+
+			}
+			
+	
+	
+			// -- private --
+	
+	
+			private function setupAnimation():void {
+				
+		
+
+				targetHeightTo = maxContentHeight;
+				
+	
+				// set y to the bottom of the slide area
+				content.y = content.y + targetHeightTo;
+				
+		
+				// we need Y to move up by height 
+				yBy = 0 - targetHeightTo;
+				
+				content.visible = false;
+				
+				
+			}
+
+
+	
+		     private var _components:Array;
+	     
+		     private function set subComponents( a:Array ) : void
+	    	 {
+	        	 _components = a;
+	     	 }
+	     	 
+		     private function addComponents() : void 
+		     {
+		          content.removeAllChildren();
+		          
+		          if (_components != null) {
+			          for(var i:int=0; i < _components.length; i++) {
+			               content.addChild( _components[i] );
+			          }
+			      }
+		     }
+		
+		
+
+
+			
+			private function onExposePanel(ev:Event):void {
+				
+				exposePanel = true;
+				
+			}
+			
+	
+		
+		]]>
+	</mx:Script>
+
+
+	<mx:Canvas id="content" styleName="lenzPanel" height="0" width="{width}" 
+		x="0"
+		y="{contentY}" 
+		clipContent="true"
+		verticalScrollBar="{null}"
+		verticalScrollBarStyleName="invisibleScrollbar"
+		visible="false"  alpha="1.0" 
+		backgroundImage="{baseBackgroundImage}"	>
+		<!-- backgroundSize="106%" -->
+		<!-- 		backgroundAlpha="1.0" -->
+				
+	</mx:Canvas>
+	
+
+
+	<mx:Button height="30" width="150" x="{0.7*width}" y="{0.82*height}" label="{title}" id="titleButton"
+			styleName="lenzPanelTitle"
+			alpha="1.0"
+			highlightAlphas="1,1"
+			selected="true"
+			visible="false"
+			/>	
+
+
+	
+	
+	<mx:Parallel id="expose">
+
+	
+		<mx:Resize target="{content}"
+			effectStart="content.visible=true;"
+			heightTo="{targetHeightTo}"  
+			easingFunction="mx.effects.easing.Quadratic.easeIn"
+			effectEnd="{animateContent(); if (onExpose != null) onExpose();}"
+			hideChildrenTargets="{[content]}"
+        	duration="500" />
+		<mx:Move target="{content}" yBy="{yBy}"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"
+        	duration="500" />		
+        <mx:Fade target="{content}" alphaFrom="0.1" alphaTo="1.0" duration="500" />
+        
+	</mx:Parallel>
+	
+	<mx:Parallel id="retract">
+	
+        <mx:Fade target="{content}" alphaFrom="1.0" alphaTo="0.1" duration="500" />
+		<mx:Move target="{content}" yBy="{0 - yBy}"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"
+        	duration="500" />		
+		<mx:Resize target="{content}" 
+			heightTo="0"
+			hideChildrenTargets="{[content]}"
+			easingFunction="mx.effects.easing.Quadratic.easeIn"
+	        duration="500"  
+	        effectEnd="content.visible=false; content.height = 0; if (onRetract != null) onRetract();"/>
+	</mx:Parallel>
+	
+	
+
+	
+</mx:Canvas>

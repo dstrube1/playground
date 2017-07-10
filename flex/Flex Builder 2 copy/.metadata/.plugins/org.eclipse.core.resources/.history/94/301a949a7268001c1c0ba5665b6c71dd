@@ -1,0 +1,69 @@
+package base.services
+{
+	import base.util.Assert;
+	import base.log.Logger; 
+	import base.util.FunctionUtils;
+	import mx.rpc.events.ResultEvent;
+		
+	public class BaseResponseChain implements ResponseChain
+	{
+		
+		private var logger:Logger = Logger.getLogger("ResponseChain");
+		
+		private var handler:Function = null;
+		private var next:ResponseChain = null;
+		
+		public function setHandler(f:Function):void
+		{
+			
+			handler = f;
+			
+		}
+		
+		
+		
+		
+		public function getStatefulCallbackHandler():Function
+		{
+			return FunctionUtils.bind( this, convertResultToResponseAndDelegate);
+		}
+		
+		
+		private function convertResultToResponseAndDelegate( result:ResultEvent):void {
+			var r:Response = new Response(result.result.params);
+				
+			r.decode( ServiceConfig.getMapArrayHelper());
+
+			process(r);	
+		}
+		
+		
+		public function process(r:Response):void
+		{
+
+			
+			
+			subclassProcess(r);
+			
+			if (next != null) {
+				next.process(r);
+			} else if (handler != null) {
+				handler(r);
+			} else {
+				//logger.error("No handler specified for Response chain: "+this);
+			}
+			
+		}
+		
+		public function setNext(r:ResponseChain):void
+		{
+				next = r;
+		}
+		
+		
+		public function subclassProcess( r:Response):void {
+			// subclass code here.
+		}
+		
+	}
+}

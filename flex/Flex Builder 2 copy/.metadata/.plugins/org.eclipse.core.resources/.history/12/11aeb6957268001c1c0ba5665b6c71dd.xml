@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BaseLenzFrame xmlns="base.lenz.frame.*" xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="addShutdownPanel()">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Button;
+			
+			
+			
+			private var shutdownButton:Button = new Button();
+
+			public function addShutdownPanel():void {
+
+			}
+			
+		]]>
+	</mx:Script>
+
+	
+</BaseLenzFrame>

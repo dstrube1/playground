@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" frameRate="200" 
+	backgroundColor="white" backgroundGradientAlphas="[0.0, 0.0]"   creationComplete = "initApp()" 
+	horizontalScrollPolicy="off" verticalScrollPolicy="off">
+	
+	<mx:Label id="fps" text="-- fps" visible="false"/>
+	<mx:Image id="flex_ball_0" source="@Embed(source='bin/assets/david.jpg')" 
+		visible="false" /><!--ball.swf')" y="30" /> -->
+	<!-- flex_ball_0 -->
+	<mx:Image id="image2" source="@Embed(source='bin/assets/walkin.gif')" 
+		x="247" y="176" visible="false" />
+	<mx:Image id="m" source="http://www.coreconcept.com/img/wyethlogo.gif"  x="72" y="9" visible="false" />
+	<mx:Image id="n" source="http://www.coreconcept.com/img/roche.gif" visible="false"/>
+
+
+    <mx:TextArea id="ta" fontSize="20" text="This is some text that should show behind the image(s)"  
+    	width="291" height="115" x="53" y="10"/>
+    	
+    <mx:Script>
+        <![CDATA[
+        	import FlexBalls.*;
+        	import flash.external.*;
+        	
+        	public var flexTest : BallsTest;
+	       	
+            public function initApp():void 
+            {
+				var o:Object = new Object();
+       	
+		       	o["a"]=flex_ball_0;
+    		   	o["b"]=image2;
+	       		var a:Array = new Array(4);
+       			a[0]= image2;
+       			a[1]= flex_ball_0;
+       			a[2]=m;
+       			a[3]=n;
+
+				flexTest = new BallsTest(a, null, a.length);
+				
+				flexTest._showFPS = function(fps_value : Number) : void {
+					fps.text = fps_value.toString() + " fps";
+				}
+				//flexTest.start();
+				
+				ExternalInterface.addCallback("startAni", startAnimation);
+				ExternalInterface.addCallback("startAniN", startAnimationN);
+				ExternalInterface.addCallback("stopAni", stopAnimation);
+            }
+            public function startAnimation():void  {
+            	flexTest.start();
+            }
+            public function startAnimationN(N : Number):void  {
+            	flexTest.startN(N);
+            }
+            public function stopAnimation():void  {
+            	flexTest.stop();
+            	fps.text = "-- fps";
+//            	bStart.visible = false;
+//setting start button disabled because clicking start after stop throws error
+//will fix this problem better later
+            	bStart.enabled = false;
+            	//set first image invisible
+            	image2.visible = false;
+            }      
+        ]]>
+    </mx:Script>
+
+    <mx:Button id="bStart" click="startAnimation()" label="Start" y="284" right="659"/>
+    <mx:Button click="stopAnimation()" label="Stop" y="314" textAlign="center" right="714"/>
+<!-- stop is clickable if original, alpha=0.5 image is on top of it, but not if any other image is -->
+</mx:Application>

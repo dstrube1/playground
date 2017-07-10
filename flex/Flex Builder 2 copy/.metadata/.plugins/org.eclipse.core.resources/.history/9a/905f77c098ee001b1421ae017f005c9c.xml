@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="750" height="470" horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm" horizontalScrollPolicy="off" verticalScrollPolicy="off" color="0x000000">
+	 
+	<mx:Script>
+		<![CDATA[
+			
+			import base.lenz.panel.LenzPanel;
+			import lenz.main.site_select.SiteSelectionLenz;
+			
+			private var _parent:LenzPanel = null;
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+			}
+			
+			private function launchApp( appId:int):void {
+				
+				
+				
+			}
+			
+			public function initializeForm():void {
+				
+		
+			}
+			
+			
+			public function populateResources(data:Object):void { }
+			
+		]]>
+	</mx:Script>
+
+
+	<mx:Label x="0" y="5" color="#000000" maxHeight="30" text="Country Allocation: Scenario: " fontThickness="200" fontSize="18"  />
+		
+	<mx:Canvas id="surveyContent" top="50" left="10" right="10" height="410" horizontalScrollPolicy="off">
+		<mx:Canvas x="10" y="10" width="422" height="390" cornerRadius="10" borderStyle="inset">
+			<mx:Canvas x="10" y="10" width="398" height="100">
+					<mx:Label text="Configuration 1" verticalCenter="10" horizontalCenter="0"
+							click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('SequenceCloseup')"  />				
+			</mx:Canvas>
+			<mx:Canvas x="10" y="118" width="398" height="100">
+					<mx:Label text="Configuration 2" verticalCenter="0" horizontalCenter="0"
+							click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('SequenceCloseup')"  />				
+					
+			</mx:Canvas>
+			<mx:Canvas x="10" y="226" width="398" height="100">
+					<mx:Label text="Configuration 3" verticalCenter="0" horizontalCenter="0"
+							click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('SequenceCloseup')"  />				
+					
+			</mx:Canvas>
+		</mx:Canvas>
+		<mx:Canvas x="450" y="10" width="270" height="390">
+			<mx:Label x="28" y="28" text="Upload Previous Study" fontSize="16" width="214" height="27" textAlign="center"/>
+			<mx:Label x="28" y="168" text="Set Country Preferences" fontSize="16" width="214" height="27" textAlign="center"
+					click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('CountrySelection')"  />				
+			<mx:Label x="10" y="305" text="Change Allocation Weights" fontSize="16" width="250" height="27" textAlign="center"
+					click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('Metrics')"  />				
+		</mx:Canvas>
+				
+	</mx:Canvas>
+	<mx:Label x="284" y="5" color="#000000" maxHeight="30" text="Scenario Name" fontThickness="200" fontSize="18"   id="scenarioName"/>
+	
+</mx:Canvas>

@@ -1,0 +1,64 @@
+Here's the apparent current schema for the hotelsEXE.asp webservice used by ourHotelsPanel:
+<response>
+	<items>
+		<item>
+			<code>[blah]</code>
+			<id>[blah]</id>
+			<brand>[blah]</brand>
+			<property_name>[blah]</property_name>
+			<property_code>[blah]</property_code>
+			<address1>[blah]</address1>
+			<address2>[blah]</address2>
+			<city>[blah]</city>
+			<state>[blah]</state>
+			<zip>[blah]</zip>
+			<country>[blah]</country>
+			<description>[blah]</description>
+			<lat_coordinates>[blah]</lat_coordinates>
+			<long_coordinates>[blah]</long_coordinates>
+			<photo>[blah]</photo>
+		</item>
+...
+	</items>
+</response>
+
+===========================
+Here's the schema used for PropertySelection:
+
+<>
+<folder state="unchecked" label="All" isBranch="true" >
+	<folder state="unchecked" label="Alabama" isBranch="true" >	
+      	<folder state="unchecked" isBranch="true" label="CW" >
+	      	<folder state="unchecked" isBranch="false" label="Birmingham (BHMCR)" />
+	      	<folder state="unchecked" isBranch="false" label="Huntsville (HSVEP)" />
+      	</folder>
+    </folder>
+    <folder state="unchecked" label="Arkansas" isBranch="true" >	
+      	<folder  state="unchecked" isBranch="true" label="CP" >
+      		<folder state="unchecked" isBranch="false" label="Little Rock (LITSH)" />
+      	</folder>
+      	<folder  state="unchecked" isBranch="true" label="ST" >
+      		<folder state="unchecked" isBranch="false" label="Bentonville-Rogers (RGGAR)" />
+      	</folder>
+	</folder>
+</folder>
+</>;
+
+===========================
+Therefore, this is the schema the hotelsEXE.asp webservice should use:
+<>
+<folder state="unchecked" label="All" isBranch="true" >
+	<folder state="unchecked" label="[State]" isBranch="true" >	
+      	<folder state="unchecked" isBranch="true" label="[Brand]" >
+	      	<folder state="unchecked" isBranch="false" label="[PropertyName]" [all the other property specific data, like address, city, zip, description, etc]/>
+	      	...
+      	</folder>
+      	...
+    </folder>
+    ...
+</folder>
+</>;
+
+where each "..." can be 0 or more of the previous node. I.E., there can be 1 or more properties in a brand, 1 or more brands in a state, and 1 or more states.
+
+Note, the outside <> & </> may not be necessary.

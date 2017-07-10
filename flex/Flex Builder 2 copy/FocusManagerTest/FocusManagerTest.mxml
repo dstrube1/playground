@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:ns1="*" creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.FocusManager;
+			
+			private var o:Dictionary;
+			
+			private function init():void
+			{
+				o = new Dictionary(true);
+				o.f1 = new FocusManager(canvas1);
+				o.f2 = new FocusManager(canvas1)
+				canvas1.systemManager = systemManager;
+				canvas2.systemManager = systemManager;
+			}
+		]]>
+	</mx:Script>
+
+	<ns1:FocusManagerCanvas id="canvas1" x="59" y="53" borderStyle="solid" borderColor="#FAFBFC">
+		<mx:TextInput x="66" y="51" text="AAAAA"/>
+		<mx:TextInput x="66" y="98" text="BBBBB"/>
+		<mx:TextInput x="66" y="140" text="CCCCC"/>
+	</ns1:FocusManagerCanvas>
+	<ns1:FocusManagerCanvas id="canvas2" x="467" y="53" borderStyle="solid" borderColor="#FDFEFE">
+		<mx:TextInput x="76" y="46" text="DDDDDD"/>
+		<mx:TextInput x="76" y="98" text="EEEEEE"/>
+		<mx:TextInput x="76" y="152" text="FFFFFF"/>
+	</ns1:FocusManagerCanvas>
+	
+</mx:Application>

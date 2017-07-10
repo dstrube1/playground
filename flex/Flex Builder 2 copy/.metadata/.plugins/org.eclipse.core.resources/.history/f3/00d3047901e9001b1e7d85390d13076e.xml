@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="740" height="450"
+			implements="base.form.LenzForm" xmlns:panel="lenz.main.study_mgr.panel.*" xmlns:triangle="triangle.*"
+			styleName="studyManagerMainForm" horizontalCenter="0" creationComplete="onCreationComplete()"
+			xmlns:notification="base.notification.*" 
+			>
+	
+	<mx:Script>
+		<![CDATA[
+			import base.event.SelectLenzEvent;
+			import lenz.main.study_mgr.StudyManagerLenz;
+			import app.server.LenzServer;
+			import app.App;
+			import lenz.main.study_mgr.controller.StudyClickManager;
+			import base.db.MemDbHelper;
+			import base.db.MemDB;
+			import base.services.MapArray;
+			
+			import mx.controls.Image;
+			import triangle.ImageOctagon;
+			import mx.controls.Alert;
+			import base.lenz.panel.LenzPanel;
+			import base.lenz.funnel.PatientFunnel;
+			import base.lenz.funnel.FunnelStageValue.*;
+	    	import flash.external.*;
+	    	import base.util.ModalWait;
+	    	import base.log.Logger;
+			
+			private var _parent:LenzPanel = null;
+			private var patientFunnel:PatientFunnel = new PatientFunnel();
+	    	public var stageValueTest : StageValueTest;
+			private var creationCompleted:Boolean = false;
+			private var logger:Logger = Logger.getLogger("StudyManagerMetricsForm");
+			
+			[Bindable]
+			private var sName:String="";			
+			 
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+				//lenz2Fade.play();
+			}
+			
+			protected function onCreationComplete():void {
+				logger.debug("StudyManagerMetricsForm: onCreationComplete");
+				if (!creationCompleted) {
+					patientFunnel.createAdapter(null);
+					addPatientFunnel(this.funnelImg, null);
+					initFunnelStageValues();
+					creationCompleted = true;
+				}				
+			}			
+			
+			public function initializeForm():void {
+				onCreationComplete();
+			}			
+			
+			public function addPatientFunnel(can:Canvas, db:MemDB):void {
+				
+				var f:DisplayObject = can.addChild(patientFunnel);
+				
+			}
+			
+			public function initFunnelStageValues():void{
+				var stages:Array = new Array(13);
+	   			stages[0]= a;
+	   			stages[1]= b;
+	   			stages[2]= c;
+	   			stages[3]= d;
+	   			stages[4]= e;
+	   			stages[5]= f;
+	   			stages[6]= g;
+	   			stages[7]= h;
+	   			stages[8]= i;
+	   			stages[9]= j;
+	   			stages[10]= k;
+	   			stages[11]= l;
+	   			stages[12]= m;
+	
+				stageValueTest = new StageValueTest(stages, null, stages.length);
+				
+				ExternalInterface.addCallback("startAni", startAnimation);
+				ExternalInterface.addCallback("startAniN", startAnimationN);
+				ExternalInterface.addCallback("stopAni", stopAnimation);
+	
+			}
+	
+	        public function startAnimation():void  {
+	        	stageValueTest.start();
+	        }
+	        public function startAnimationN(N : Number):void  {
+	        	stageValueTest.startN(N);
+	        }
+	        public function stopAnimation():void  {
+	        	stageValueTest.stop();
+	//setting this disabled because otherwise after stop throws error
+	//will fix this problem better later
+				startB.enabled = false;
+	        	//set first invisible
+	        	a.visible = false;
+	        }      
+
+			public function populateResources(data:Object):void {
+
+				//mapSWF.load( (data as MapArray).getValue("radar.large.graph.url") );
+				//var imageOctagon:ImageOctagon = new ImageOctagon();
+				//imageOctagon.height = main.height - 10;
+				//imageOctagon.width = main.width - 10;
+				//main.addChild(imageOctagon);
+				//imageOctagon.setImageSource("triangle/rc_01.png");
+				
+				sName = (data as MapArray).getValue("study.name") as String;
+				
+				var url:String = (data as MapArray).getValue("radar.graph.url") as String;
+				var graphUrl:String = "resources/swf/BigWrapper.swf?movieName=" + url;
+				//using the rounded corners movie here seems to animate the radar graph
+				imageOctagon.setImageSource(url);
+				var i:int; 
+				for (i=0; i<8; i++){
+					//imageOctagon.setClickFunction( function():void{Alert.show("click")}, i);
+					if ((data as MapArray).getValue("drilldown") == "true") {
+					
+						imageOctagon.setClickFunction( displaySubmetrics, i);
+						
+					} else {
+						imageOctagon.setClickFunction( function():void{}, i);
+						
+					}
+				}
+				
+				//radarSWF.load( (data as MapArray).getValue("radar.graph.url") );
+				
+				var o:Object = (data as MapArray).getValue("patient.db");
+				var funnelXml:XML = new XML(o);
+				var db:MemDB = MemDbHelper.convert(funnelXml, MemDbHelper.FUNNEL);				
+				patientFunnel.refreshFunnel(db);
+				
+			}
+			
+			public function displaySubmetrics():void {
+				
+				var clickMgr:StudyClickManager = new StudyClickManager();
+	 			clickMgr.processAction( {"currentLenzId":_parent.getParent().getLenzId(), "actionName":"displayMetricsView","actionParams":"view=Metric.Subgraph"} );
+				
+			}
+			
+			
+			public function displayMainView():void {
+				ModalWait.start();				
+								
+				var ev:Event = new SelectLenzEvent(StudyManagerLenz.LENZ_ID);
+				
+				this.dispatchEvent(ev);
+
+				/*								
+				var clickMgr:StudyClickManager = new StudyClickManager();
+	 			clickMgr.processAction( 
+	 				{"currentLenzId":_parent.getParent().getLenzId(), 
+	 				targetId: 
+	 				"actionName":"displayMainView",
+	 				"actionParams":"view=Geo.World"} );
+				*/
+								
+			}
+			
+			
+		]]>
+	</mx:Script>
+
+	<!--	
+	<mx:Model id="alarmsList">
+			<alarms>
+				<alarm label="Alarm A"/>
+				<alarm label="Alarm B"/>
+				<alarm label="Alarm C"/>
+				<alarm label="Alarm D"/>
+				<alarm label="Alarm E"/>
+				<alarm label="Alarm F"/>
+			</alarms>
+	</mx:Model>
+	-->
+	
+
+	<mx:Label x="0" y="5" color="#000000" id="studyName" maxHeight="30" text="{sName}" fontThickness="200" fontSize="18" click="Alert.show('List of open studies here')" />
+
+
+	<notification:NotificationView x="490" y="35" id="nv" 
+		context="{App.getContext()}" 
+		notificationReport="{LenzServer.notificationReport}" 
+		width="230" height="180" />
+
+	<mx:Canvas x="503" y="228" id="funnelImg" 
+		backgroundAlpha="0.0" 
+		width="230" height="212" cornerRadius="0"/>
+
+
+	<mx:Canvas x="10" y="45" id="main" width="490" height="390" 
+			borderStyle="none" borderColor="#5E5E5E" cornerRadius="8" backgroundAlpha="0">
+
+		<mx:Image x="94" y="22" width="326" height="367" scaleContent="true" id="radarBase" source="resources/images/radar_chart_labelled_background.png" alpha="1.0"/>
+
+		<triangle:ImageOctagon id="imageOctagon" height="380" width="460" alpha="0.5" horizontalCenter="0" verticalCenter="0" backgroundAlpha="0"/>
+	</mx:Canvas>
+
+	<mx:Image id="globeIcon" source="resources/images/icon_globe.png" x="45" y="380" alpha="0.6" mouseOver="globeIcon.alpha=1.0;" mouseOut="globeIcon.alpha=0.6" click="displayMainView()"/>
+	<mx:Button id="startB" label="" click="startAnimation()" x="200" y="378" alpha="0.01" width="110"/>
+	<mx:Button id="stopB" label="" click="stopAnimation()"  x="10" y="11" alpha="0.01"/>
+	<mx:Image id="a" visible="false" source="http://www.coreconcept.com/img/sub6_r01_c1.jpg"/>
+	<mx:Image id="b" visible="false" source="http://www.coreconcept.com/img/sub6_r02_c1.jpg"/>
+	<mx:Image id="c" visible="false" source="http://www.coreconcept.com/img/sub6_r03_c1.jpg"/>
+	<mx:Image id="d" visible="false" source="http://www.coreconcept.com/img/sub6_r04_c1.jpg"/>
+	<mx:Image id="e" visible="false" source="http://www.coreconcept.com/img/sub6_r05_c1.jpg"/>
+	<mx:Image id="f" visible="false" source="http://www.coreconcept.com/img/sub6_r06_c1.jpg"/>
+	<mx:Image id="g" visible="false" source="http://www.coreconcept.com/img/sub6_r06a_c1.jpg"/>
+	<mx:Image id="h" visible="false" source="http://www.coreconcept.com/img/sub6_r07_c1.jpg"/>
+	<mx:Image id="i" visible="false" source="http://www.coreconcept.com/img/sub6_r08_c1.jpg"/>
+	<mx:Image id="j" visible="false" source="http://www.coreconcept.com/img/sub6_r09_c1.jpg"/>
+	<mx:Image id="k" visible="false" source="http://www.coreconcept.com/img/sub6_r10_c1.jpg"/>
+	<mx:Image id="l" visible="false" source="http://www.coreconcept.com/img/sub6_r11_c1.jpg" />
+	<mx:Image id="m" visible="false" source="http://www.coreconcept.com/img/sub6_r12_c1.jpg" />
+	
+	
+
+
+</mx:Canvas>
+

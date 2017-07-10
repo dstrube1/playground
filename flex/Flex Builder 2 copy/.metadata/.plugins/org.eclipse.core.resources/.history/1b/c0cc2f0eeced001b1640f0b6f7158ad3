@@ -1,0 +1,40 @@
+package base.lenz.panel
+{
+	import flash.display.DisplayObject;
+	import base.form.LenzForm;
+	import base.lenz.Lenz;
+	
+	public interface LenzPanel
+	{ 
+		
+		function setParent(l:Lenz):void;
+		function getTitle():String;		
+		
+		function actionTaken( data:*):void;
+		
+		function open():void;
+		function close( closure:Function=null):void;
+		
+		
+		function setMaxContentHeight( h:int):void;
+		
+
+		function getPanelComponent():DisplayObject;
+
+		function set exposePanel(b:Boolean):void;
+		
+		function newPanel(panel:Class):void;
+		
+		//HB -------
+		function getCurrentForm():LenzForm;
+		
+		function getParent():Lenz;
+		
+		function getDefaultFormClass():Class;
+		
+		function setFormType(type:String):void;
+		
+		function initializePanel():void; 
+		//HB		
+	}
+}

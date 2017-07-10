@@ -1,0 +1,49 @@
+package app.server
+{
+	import base.services.Content;
+	import base.services.LenzService;
+	import mx.controls.Alert;
+	
+	
+	/**
+	 *   This is a fairly lame way to create a "global" variable for the interface to the server.  I didn't see the point of
+	 * doing a singleton, and this approach allows me to hide the implementation quite well.
+	 */ 
+	public class LenzServer
+	{
+		
+		private static var _service:LenzService = null;
+
+			
+		public static var patientXml:Object = null;
+		
+		public static var data:Object = null;
+		
+		public static var mockDelay:int = 300;
+		
+		public static var sName:String = "";
+		
+		
+		public static function init( svc:LenzService):void {
+			
+			_service = svc;
+			
+		}
+			
+		
+		public static function getSvc( content:Content, failureHandler:Function, resultHandler:Function):void {
+			
+			_service.getSvc(content, failureHandler, resultHandler);
+			
+		}
+		
+		
+		public static function postSvc( content:Content, failureHandler:Function, resultHandler:Function):void {
+			//_service.postSvc(content, failureHandler, resultHandler);
+			Alert.show("calling postSvc");
+		}
+		
+				
+		
+	}
+}

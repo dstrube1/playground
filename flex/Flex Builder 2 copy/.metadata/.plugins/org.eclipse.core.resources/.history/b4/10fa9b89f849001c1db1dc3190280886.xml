@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="catRO.send()">
+<mx:Script>
+	<![CDATA[
+		import mx.rpc.events.ResultEvent;
+		import mx.collections.ArrayCollection;
+		[Bindable]
+		private var categories:ArrayCollection;
+		
+		private function getCategoriesHandler(event:ResultEvent):void{
+			
+		}
+	]]>
+</mx:Script>
+<mx:HTTPService id="catRO" url="xmldata/categories.xml" result="getCategoriesHandler(event)" />	
+</mx:Application>

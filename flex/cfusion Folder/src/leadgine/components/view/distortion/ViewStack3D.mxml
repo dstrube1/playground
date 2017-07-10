@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:sides="view.sides.*" 
+	xmlns:controls="com.adobe.ac.controls.*" 
+   horizontalAlign="center" verticalAlign="middle" verticalGap="20">
+	
+	<mx:HSlider 
+		id="widthSlider" 
+		minimum="0" maximum="100" value="40" 
+		liveDragging="true" change="viewStack.tilt( widthSlider.value );"/>
+
+	<controls:ViewStack3D id="viewStack" creationPolicy="all">
+	
+		<sides:Login 
+			id="login" />	
+		<sides:QuickSearch 
+			id="quickSearch" />		
+		<sides:Search 
+			id="search" />
+		<sides:ProductList 
+			id="productList" />
+		<sides:Registration 
+			id="registration" />
+		<sides:Calendar 
+			id="calendar" />
+
+	</controls:ViewStack3D>
+
+</mx:VBox>

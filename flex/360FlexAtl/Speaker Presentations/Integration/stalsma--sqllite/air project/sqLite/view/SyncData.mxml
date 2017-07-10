@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import service.UserDataEvent;
+			import model.SampleData;
+			import mx.collections.ArrayCollection;
+			import model.ApplicationModel;
+			import service.ApplicationService;
+			import service.Factory;
+			
+			private var applicationService:ApplicationService;
+			private var applicationModel:ApplicationModel;
+			
+			private function init():void {
+				applicationService = Factory.getInstance().applicationService;
+				applicationModel = Factory.getInstance().applicationModel
+			} 
+			
+			private function syncDataViaSoap():void {
+				applicationService.userSOAPService.addEventListener( UserDataEvent.USERDATAEVENT_NAME, handerUserDataEvent );
+				applicationService.userSOAPService.getUsers();
+			}
+			
+			private function syncDataViaRemoting():void {
+				applicationService.userRemoteService.addEventListener( UserDataEvent.USERDATAEVENT_NAME, handerUserDataEvent );
+				applicationService.userRemoteService.getUsers();
+			}
+			
+			private function purgeData():void {
+				applicationService.userDAO.removeAll();
+				updateModelFromDB();
+			}
+			
+			private function populateStaticData():void {
+				applicationService.userDAO.removeAll();
+				var aStaticData:ArrayCollection = new SampleData().sampleData;
+				Factory.getInstance().applicationService.userDAO.bulkInsert( aStaticData );
+				updateModelFromDB();
+			}
+			
+			
+			private function handerUserDataEvent( event:UserDataEvent ):void {
+				updateMsg("Saving to Db");
+				Factory.getInstance().applicationService.userDAO.bulkInsert( event.aUserBeanCollection );
+				updateMsg("");
+				updateModelFromDB();
+			}
+			
+			private function updateModelFromDB():void {
+				applicationModel.aEmailRecipients = applicationService.userDAO.getAll();
+			} 
+			
+			
+			private function updateMsg( s:String ):void {
+				Factory.getInstance().applicationModel.statusMsg = s;
+			}
+		]]>
+		
+	</mx:Script>
+	
+	<mx:Button label="Populate via StaticData" click="populateStaticData()" />
+	<mx:Button label="Populate via Webservice" click="syncDataViaSoap()" />
+	<mx:Button label="Populate via Remoting" click="syncDataViaRemoting()" />
+	<mx:Button label="Purge DB" click="purgeData()" />
+</mx:HBox>

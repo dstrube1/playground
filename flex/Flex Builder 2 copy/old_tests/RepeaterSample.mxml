@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!-- Simple example to demonstrate the Repeater class. -->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:local="*" creationComplete="z()"
+	layout="absolute">
+
+    <mx:Script>
+        <![CDATA[
+        	import mx.collections.ArrayCollection;
+        	import mx.controls.Alert;
+        
+//            [Bindable]
+//            private var dp1:Array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];    
+            [Bindable]
+			private var dp:ArrayCollection = new ArrayCollection();
+			
+			private function z():void{
+				dp.addItem({text:"1"});
+				dp.addItem({text:"2"});
+			}
+			private function a():void{
+				
+				dp.addItem({text:String(dp.length+1)});
+//				tl.initialize();
+			}
+			
+			private function show():void{
+				for each (var o:Object in dp)
+					Alert.show(o.text);
+				//for (var i:int=0; i<dp.length; i++)
+				//	Alert.show("X");
+			}
+            
+        ]]>
+    </mx:Script>
+    <mx:Panel title="TileList Control Example" height="250" width="350" 
+        paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" x="10" y="10">
+        
+        <mx:TileList id="tl" height="190" width="290" dataProvider="{dp}" 
+            maxColumns="3" rowHeight="80" columnWidth="80" itemRenderer="FileComponent"/>
+                
+    </mx:Panel>
+<!--
+    <mx:Panel title="Repeater Example" width="10%" height="10%" 
+        paddingTop="10" paddingLeft="10" paddingRight="10" paddingBottom="10" x="505" y="28">
+  
+        <mx:Tile direction="horizontal" borderStyle="inset" 
+            horizontalGap="10" verticalGap="15"
+            paddingLeft="10" paddingTop="10" paddingBottom="10" paddingRight="10">
+        
+            <mx:Repeater id="rp" dataProvider="{dp1}">
+                <mx:Button height="50" width="50" 
+                    label="{String(rp.currentItem)}" 
+                    />
+            </mx:Repeater>    
+        </mx:Tile>
+  
+    </mx:Panel>  
+    -->
+    <mx:Button x="48" y="273" label="Show Objects" click="show()"/>
+    <mx:Button x="48" y="303" label="Add to Object" click="a()"/>
+    
+</mx:Application>

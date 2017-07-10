@@ -1,0 +1,114 @@
+package base.model
+{
+	public class ViewContext
+	{
+		
+		private var group:Array;
+		private var country:Array;
+		private var region:Array;		
+		private var site:Array;
+		private var monitor:Array;		
+		private var study:Array;
+		private var attrs:Array = new Array();
+		
+		
+		public static const propList:Array = ["group","country","region","site","monitor","study"];
+		
+		
+		private var _previous:ViewContext = null;
+		 
+		 
+		
+		
+		public function ViewContext( old:ViewContext=null ) {
+			
+			if (old != null) {
+				overwriteWith(old, propList);
+			}
+			
+			
+			
+		}
+		
+		
+		public function get previous():ViewContext {
+			return _previous;
+		}
+		
+		
+		public function update( obj:Object ):void {
+			
+			var tmp:ViewContext = new ViewContext(this);
+			
+			this._previous = tmp;
+
+
+			overwriteWith( obj, propList);					
+			
+		}
+
+
+		private function overwriteWith( obj:Object, propList:Array):void {
+
+			
+			for each (var i:String in propList) {
+				
+				if (obj[i] != null) {
+					
+					var o:Object = obj[i];
+
+
+					var a:Array = null;
+					
+					if (o is Array) {
+						a = o as Array;
+					} else {
+						a = [ o ];
+					}
+					
+					this[i] = a;
+				}
+				
+			}
+			
+		}
+		
+		public function getObject(objName:String) :Object {			
+			if (this.attrs[objName] != null) {
+				return this.attrs[objName];
+			} else {
+				return null;
+			}
+		}	
+		
+		public function setObject(objName:String, obj:Object):void {
+			this.attrs[objName] = obj;
+		}
+		
+		public function getGroup():Array { return this.group; }
+		public function getRegion():Array { return this.region; }
+		public function getCountry():Array { return this.country; }
+		public function getSite():Array { return this.site; }
+		public function getMonitor():Array { return this.monitor; }
+		public function getStudy():Array { return this.study; }
+		
+		
+		public function getFilters():Object {
+			
+			var tmp:Object = {};
+
+			for each (var i:String in propList) {
+				if (this[i] != null) {
+					tmp[i] = this[i];
+				}
+			}
+
+			return(tmp);			
+			
+		}
+		
+		
+		
+		
+	}
+}

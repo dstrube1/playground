@@ -1,0 +1,42 @@
+package base.lenz
+{
+	//import base.Context;
+	import base.lenz.frame.LenzFrame;
+	import base.lenz.panel.LenzPanel; 
+	import base.event.PanelReadyEvent;
+	
+	public interface Lenz
+	{
+		function getCurrentPanel():LenzPanel;
+		
+		function getLenzId():String;
+		
+		function newPanel(panel:Class):void;
+		
+		//function setGlobalContext( c:Context):void;
+		
+		////////////// ***************** HB set visual context here
+		//function setVisualContext( c:Context ):void;
+
+		function setLenzFrame( lf:LenzFrame):void;
+
+				
+				
+		function initialize():void; // tell a lenz to get ready to be shown.  when ready, it will send LenzInitDoneEvent
+		function activate():void; // tell a lenz to become the active lenz, which typically means "show yourself".  When
+									// complete, the lenz will send a LenzActiveEvent
+		function close():void;   // tell a lenz to close itself.  When complete, the lenz will send a LenzClosedEvent
+		
+		
+		function onPanelReadyEvent(ev:PanelReadyEvent):void;
+		
+		
+		function fetchInitialData( postCompletionHandler:Function ):void;		
+		
+		function getNotificationClickHandler():Function;
+		
+		//function getClickManager():ClickManager;
+				
+				
+	}
+}

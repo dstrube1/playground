@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import vo.UserBean;
+			import mx.events.CollectionEvent;
+			import mx.events.FlexEvent;
+			import mx.events.ListEvent;
+			import service.Factory;
+			import mx.collections.ArrayCollection;
+			
+			[Bindable]
+			public var aEmailRecipients:ArrayCollection;
+			[Bindable]
+			public var aSelectedEmailRecipients:ArrayCollection;
+			[Bindable]
+			private var selectedUser:UserBean = null;
+			
+			private function init():void {
+				updateTextField();
+			}
+
+			private function itemRemoved( event:*=null ):void {
+
+				aSelectedEmailRecipients.removeItemAt(selectedAddresses.selectedIndex);
+				updateTextField();
+			}
+			
+			
+			private function updateSelectedUser( event:ListEvent ):void {
+				if( allAddresses.selectedItem ) {
+					selectedUser = Factory.getInstance().applicationService.userDAO.getByID( allAddresses.selectedItem.ID );
+				} else {
+					selectedUser = null;
+				}
+			}
+			
+			
+			private function updateTextField():void {
+				//xmlAddresses.text = formatXML( aSelectedEmailRecipients );
+			}
+			
+			private function formatXML( a:ArrayCollection ):String {
+				var s:String = "";
+				var crlf:String = "\n";
+				
+				s += "<addresses>" + crlf;
+				if( a ) {
+					for( var i:int = 0 ; i < a.length ; i++ ) {
+						s += "  <address>" + crlf;
+						s += "    <userid>" + a.getItemAt(i).userid + "</userid>" + crlf;
+						s += "    <email>" + a.getItemAt(i).email + "</email>" + crlf;
+						s += "  </address>" + crlf;
+					}
+				}
+				s += "</addresses>" + crlf;
+				
+				return s;
+			}
+			
+			private function inspect( event:Event ):void {
+				var i:int = 0;
+				i = i + 1;
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:HBox>
+		<mx:DataGrid id="allAddresses" dataProvider="{aEmailRecipients}" 
+			change="updateSelectedUser(event);"
+			dragComplete="updateTextField()"
+			dragEnabled="true" width="50%">
+			<mx:columns>
+				<mx:DataGridColumn dataField="userid" visible="false"/>
+				<mx:DataGridColumn dataField="firstName"/>
+				<mx:DataGridColumn dataField="lastName"/>
+			</mx:columns>
+		</mx:DataGrid>
+		
+		<mx:DataGrid id="selectedAddresses" 
+			dataProvider="{aSelectedEmailRecipients}" 
+			dragEnabled="true" dropEnabled="true" width="50%"
+			dragExit="itemRemoved(event)">
+			<mx:columns>
+				<mx:DataGridColumn dataField="userid" visible="false"/>
+				<mx:DataGridColumn dataField="firstName"/>
+				<mx:DataGridColumn dataField="lastName"/>
+			</mx:columns>
+		</mx:DataGrid>
+	</mx:HBox>
+	<mx:HBox width="100%">
+		<mx:Form width="50%">
+			<mx:FormItem label="userid">
+				<mx:TextInput text="{selectedUser.userid}" editable="false"/>
+			</mx:FormItem>
+			<mx:FormItem label="first">
+				<mx:TextInput text="{selectedUser.firstName}"/>
+			</mx:FormItem>
+			<mx:FormItem label="last">
+				<mx:TextInput text="{selectedUser.lastName}"/>
+			</mx:FormItem>
+			<mx:FormItem label="email">
+				<mx:TextInput text="{selectedUser.email}"/>
+			</mx:FormItem>
+			
+			<mx:FormItem label="company">
+				<mx:TextInput text="{selectedUser.company}"/>
+			</mx:FormItem>
+			
+		</mx:Form>
+		
+		<mx:DataGrid dataProvider="{selectedUser.aPhoneNr}">
+			<mx:columns>
+				<mx:DataGridColumn headerText="Type" dataField="type"/>
+				<mx:DataGridColumn headerText="Nr" dataField="phoneNr"/>
+			</mx:columns>
+		</mx:DataGrid>
+	</mx:HBox>
+	
+	
+	<!--
+	<mx:TextArea id="xmlAddresses"  width="100%" height="152" visible="false"/>
+	-->
+</mx:VBox>

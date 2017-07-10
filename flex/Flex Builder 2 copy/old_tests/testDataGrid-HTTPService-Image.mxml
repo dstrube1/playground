@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+ xmlns:mx="http://www.adobe.com/2006/mxml" 
+ layout="absolute"
+ initialize="documentationService.send()"
+  backgroundGradientColors="[#ffffff, #ffffff]">
+ <!-- from 
+ http://www.adobe.com/cfusion/communityengine/index.cfm?event=showdetails&postId=1499&productId=2&loc=en_US
+ -->
+ <mx:Script>
+  <![CDATA[
+  
+   public function goURL( uri:String ):void
+   {
+    import flash.net.navigateToURL;
+    navigateToURL( new URLRequest( uri ) , "_self" )
+   
+   }
+      
+  ]]>
+ </mx:Script>
+ 
+ 
+ <mx:HTTPService 
+  id="documentationService" 
+  resultFormat="e4x" 
+  url="{ 'http://www.flex.org/xml/documentation.xml'}" />
+  
+ <mx:DataGrid
+  horizontalCenter="0" 
+  borderStyle="solid" 
+  width="450" height="100%" 
+  dataProvider="{ documentationService.lastResult.document }">
+  <mx:columns>
+         <mx:DataGridColumn width="300" headerText="Document Name" dataField="@name"/>
+         <mx:DataGridColumn width="50" headerText="html">
+          <mx:itemRenderer>
+     <mx:Component>
+                     <mx:Image
+       toolTip="{ data.@html }"
+       horizontalAlign="center"
+       source = "{ data.hasOwnProperty('@html') ? 'http://www.flex.org/images/icon_html.gif' : null }"
+       xmlns:mx="http://www.adobe.com/2006/mxml"
+       click="Application.application.goURL( data.@html )"
+       >       
+       <mx:Script>
+        <![CDATA[         
+         import mx.core.Application         
+        ]]>
+       </mx:Script>      
+      </mx:Image>
+                 </mx:Component>      
+    </mx:itemRenderer>
+         </mx:DataGridColumn>
+         <mx:DataGridColumn width="50" headerText="pdf">
+          <mx:itemRenderer>
+     <mx:Component>
+                     <mx:Image
+       toolTip="{ data.@pdf }"
+       horizontalAlign="center"
+       source = "{ data.hasOwnProperty('@pdf') ? 'http://www.flex.org/images/icon_pdf.gif' : null }"
+       xmlns:mx="http://www.adobe.com/2006/mxml"
+       click="Application.application.goURL( data.@pdf )"
+       >       
+       <mx:Script>
+        <![CDATA[         
+         import mx.core.Application         
+        ]]>
+       </mx:Script>      
+      </mx:Image>
+                 </mx:Component>     
+    </mx:itemRenderer>
+         </mx:DataGridColumn>             
+         <mx:DataGridColumn width="50" headerText="zip">
+          <mx:itemRenderer>
+     <mx:Component>
+                     <mx:Image
+       toolTip="{ data.@zip }"
+       horizontalAlign="center"
+       source = "{ data.hasOwnProperty('@zip') ? 'http://www.flex.org/images/icon_zip.gif' : null }"
+       xmlns:mx="http://www.adobe.com/2006/mxml"
+       click="Application.application.goURL( data.@zip )"
+       >       
+       <mx:Script>
+        <![CDATA[
+         import mx.core.Application         
+        ]]>
+       </mx:Script>      
+      </mx:Image>
+                 </mx:Component>     
+    </mx:itemRenderer>
+         </mx:DataGridColumn>
+     </mx:columns>
+ </mx:DataGrid> 
+  
+</mx:Application>

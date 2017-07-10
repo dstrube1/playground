@@ -1,0 +1,25 @@
+package base.renderer
+{
+	public class RendererFactory
+	{
+		public static const GEO_RENDERER:String = "Main";
+		public static const RADAR_RENDERER:String = "Metric";
+		public static const PR_RENDERER:String = "PR";
+		//public static const CHECKBOX_RENDERER:String = "Checkbox";
+		
+		public static function getRenderer (type:String) :Renderer {
+			if (type == GEO_RENDERER) {
+				return new GeoRenderer();
+			} else if  (type == RADAR_RENDERER) {
+				return new RadarRenderer();
+			} else if  (type == PR_RENDERER) {
+				return new PRRenderer();
+			//} else if  (type == CHECKBOX_RENDERER) {
+			//	return new CheckboxRenderer();
+			} else {
+				return null;
+			} 
+			return null;
+		}
+	}
+}

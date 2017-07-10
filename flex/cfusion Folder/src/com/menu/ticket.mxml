@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:utils="com.utils.*"
+	width="700" height="522" 
+	title="Help"
+	horizontalAlign="center" layout="horizontal" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	showCloseButton="true" close="handleClose(event)"
+	move="adjustForMove()"
+	>
+	
+	<mx:Script>
+        <![CDATA[
+        	import mx.events.EffectEvent;
+        	import mx.effects.WipeRight;
+        	import mx.events.CloseEvent;        	
+        	
+            import mx.controls.Alert;
+			import mx.rpc.events.ResultEvent;
+			import mx.managers.PopUpManager;
+			import mx.collections.ArrayCollection;
+			import mx.collections.XMLListCollection;			
+			import mx.core.Application;
+			private var params:Object = new Object();
+
+			[Bindable] private var listTicket:XMLListCollection;
+
+			public function handleClose(event:CloseEvent):void{
+				PopUpManager.removePopUp(this);
+			}
+			private function adjustForMove():void{
+				Application.application.help1.x = this.x;
+				Application.application.help1.y = this.y;
+			}
+			private function sendTicket():void
+			{
+				params = {"email":txtEmail.text, 
+						"phone":txtPhone.text, 
+						"time":txtTime.text,
+						"browser":selBrowser.selectedItem.data,
+						"version":txtVersion.text,
+						"computer":selComputer.selectedItem.data,
+						"issue":txtIssue.text
+						}; 
+				ticketService.cancel();
+				ticketService.url="http://www.revparsuite.com/ticketEXE.asp?userid=" + Application.application.userID + "&hotel=" + Application.application.hotel + "&user=" + Application.application.userlast + ", " + Application.application.userfirst + "&hotelname=" + Application.application.hotelname;
+				ticketService.method = "POST";
+				ticketService.send(params);
+
+			}
+			
+			private function reset():void
+			{
+				txtEmail.text = "";
+				txtPhone.text = "";
+				txtTime.text = "";
+				selBrowser.selectedIndex = 0;
+				txtVersion.text = "";
+				selComputer.selectedIndex = 0;
+				txtIssue.text = "";
+			}
+
+			public function resultHandlerTicket(event:ResultEvent):void {	
+				var result:XML = XML(event.result);  
+				var code:String;
+				var ticket:String;
+				
+				code = result.items.item[0].code.toString();
+				ticket = result.items.item[0].ticket.toString();
+				
+				
+				if (String(code) != "0"){
+					Alert.show("There was a problem during the submission of your support request.  Please try again.  We apologize for this inconvenience.", "Submission Problem");
+				} else {
+					Alert.show("Your Support Ticket has been successfully submitted.  Your Support Ticket Number is:\n\n" + ticket + "\n\nYou will also receive an email shortly with your Support Ticket number.  Please be sure to retain this number for you records.", "Request Received");
+					reset();
+					PopUpManager.removePopUp(this);
+				}
+			}
+
+
+            [Bindable]
+            public var browsers:ArrayCollection = new ArrayCollection(
+                [ {label:"--Select a Browser--", data:""},
+                  {label:"Internet Explorer", data:"IE"}, 
+                  {label:"Firefox", data:"FF"}, 
+                  {label:"Safari", data:"SI"}, 
+                  {label:"Opera", data:"OP"},
+                  {label:"Google Chrome", data:"GC"},
+                  {label:"Other", data:"OT"}
+                  ]);
+                  
+            [Bindable]
+            public var computers:ArrayCollection = new ArrayCollection(
+                [ {label:"--Select a Computer--", data:""},
+                  {label:"Windows PC", data:"PC"}, 
+                  {label:"Apple Mac", data:"MC"}
+                  ]);
+
+            	private function transitionClick():void{
+					var wipeOut:WipeRight = new WipeRight();
+					wipeOut.showTarget = false;
+					wipeOut.target = this;
+					wipeOut.addEventListener(EffectEvent.EFFECT_END,wipeEndHandler);
+					Application.application.help1.visible = true;
+					wipeOut.stop();
+					wipeOut.play();
+				}
+				private function wipeEndHandler(e:EffectEvent):void{
+					this.visible = false;
+				}
+				
+			private function validateForm():void{
+
+				if (this.selBrowser.selectedItem.@data==""){
+					Alert.show("Please be sure to select your Internet Browser from the list.","Select Your Browser");
+					this.selBrowser.setFocus();
+
+				}				
+			}
+			
+            private function handleFormValidate(event:Event):void {
+               // status.text = "This form is: "+String(event.type);
+            }
+
+        ]]>
+    </mx:Script>
+    
+<mx:Array id="validators" >
+    <!--<mx:PhoneNumberValidator source="{txtPhone}" property="text"/>
+	<mx:EmailValidator source="{txtEmail}" property="text" tooShortError="Please be sure to select your Browser from the list."/>-->
+  <mx:EmailValidator 
+  	source="{txtEmail}" property="text"
+    invalidCharError="Your e-mail address contains invalid characters."
+    invalidDomainError= "The domain in your e-mail address is incorrectly formatted." 
+    invalidIPDomainError="The IP domain in your e-mail address is incorrectly formatted." 
+    invalidPeriodsInDomainError="The domain in your e-mail address has consecutive periods." 
+    missingAtSignError="An at sign (@) is missing in your e-mail address."
+    missingPeriodInDomainError="The domain in your e-mail address is missing a period." 
+    missingUsernameError="The username in your e-mail address is missing." 
+    tooManyAtSignsError="Your e-mail address contains too many '@' characters."
+  />
+	<mx:StringValidator source="{txtVersion}" property="text" tooShortError="Please be sure to select your Browser from the list." minLength="1"/>
+	<mx:StringValidator source="{selBrowser}" property="value" requiredFieldError="Please be sure to select your Browser from the list." minLength="1"/>
+	<mx:StringValidator source="{selComputer}" property="value" requiredFieldError="Please indicate which computer operating system you are using." minLength="1"/>
+	<mx:StringValidator source="{txtIssue}" property="text" requiredFieldError="Please provide a detailed description of the issue you are having." minLength="1"/>
+</mx:Array>
+
+	<mx:HTTPService id="ticketService" url="http://www.revparsuite.com/ticketEXE.asp?userid={ Application.application.userID }&amp;hotel={ Application.application.hotel }" 
+		result="resultHandlerTicket(event)"
+		resultFormat="e4x"
+        useProxy="false" />
+
+	<mx:VBox width="100%" height="100%" paddingLeft="10" paddingRight="10" paddingBottom="10" paddingTop="10">
+		<mx:Text text="Please complete the fields below to open a ticket with the RevPAR Suite Support Team.  Someone will contact you within 24 hrs:" width="100%"/>
+		
+	<utils:ValidatorForm
+			id="frmRegister"
+			defaultButton="{btnSupport}"
+			validators="{validators}"
+			valid="handleFormValidate(event)"
+			invalid="handleFormValidate(event)"
+			>	
+		
+		<!--<mx:Form width="100%" height="100%">-->
+			<mx:FormItem label="Best contact email:" required="true">
+				<mx:TextInput id="txtEmail"/>
+			</mx:FormItem>
+			<mx:FormItem label="Best contact phone:">
+				<mx:TextInput id="txtPhone"/>
+			</mx:FormItem>
+			<mx:FormItem label="Best timeframe to reach you:">
+				<mx:TextInput id="txtTime"/>
+			</mx:FormItem>
+			<mx:FormItem label="Internet browser:" required="true">
+				<mx:ComboBox id="selBrowser" dataProvider="{browsers}"/>
+			</mx:FormItem>
+			<mx:FormItem label="Browser version:" required="true">
+				<mx:TextInput id="txtVersion"/>
+			</mx:FormItem>
+			<mx:FormItem label="Computer:" required="true">
+				<mx:ComboBox id="selComputer" dataProvider="{computers}"/>
+			</mx:FormItem>
+			<mx:HRule width="100%"/>
+			<mx:FormItem label="Describe your issue with as much detail as possible:" required="true">
+					<mx:TextArea id="txtIssue" width="335" height="158"/>
+			</mx:FormItem>
+
+			
+			
+		<!--</mx:Form>-->
+	</utils:ValidatorForm>
+		<mx:HBox width="100%" height="54" horizontalAlign="right" verticalAlign="middle" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+			<mx:HBox width="100%" height="52" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+				<mx:Button label="Back to FAQ's" height="49" width="130" id="btnBack" click="transitionClick()"/>
+			</mx:HBox>
+			<mx:Text text="If unable to find a solution above, open a Support Ticket and someone will contact you within 24 hrs:" width="293" height="30"/>
+			<mx:Button label="Open Support Ticket" enabled="false" height="53" width="207" id="btnSupport" click="sendTicket()"/>
+		</mx:HBox>
+	</mx:VBox>
+
+</mx:TitleWindow>

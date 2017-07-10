@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" 
+	creationComplete="init()">
+<mx:Script>
+<![CDATA[
+	import leadgine.components.FunctionDate;
+	import mx.collections.ArrayCollection;
+	import mx.core.Application;
+	import leadgine.components.dto.FullServiceReferral;
+	
+	[Bindable] private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	[Bindable] public var startDate:String = RoomBlockInfoUnlimited.calcDate(myDTO.startDate,0);
+	private var roomRowArray:ArrayCollection;
+	private var functionArray:ArrayCollection;
+	
+	public var content:String = "";
+
+	private function init():void{
+		roomRowArray = myDTO.roomRowArray;
+		if (myDTO.savedFunctionDates.length > 0){
+			functionArray = myDTO.functionArray;
+		}
+		updateRows();
+		setContent();
+	}
+	private function setContent():void{
+		content += "Functions: \n";
+		for each (var functionDate:FunctionDate in funcArea.getChildren()){
+			content += functionDate.getContent(); //TODO
+		}
+		content += "\n";
+	}
+	private function updateRows():void{
+		funcArea.removeAllChildren();
+		for each (var roomRow:RoomRow in roomRowArray){
+			var functionDate:FunctionDate = new FunctionDate();
+			var date:Date = new Date(roomRow.roomDate.text);
+			functionDate.myDate = RoomBlockInfoUnlimited.calcDate(date,0);
+			functionDate.myFunctionArray = functionArray;
+			functionDate.readOnly = true;
+			funcArea.addChild(functionDate);
+		}
+	}
+]]>
+</mx:Script>
+	<mx:Label text="{startDate}" />
+				
+	<mx:VBox id="funcArea" width="100%" height="100%" />
+	
+
+</mx:VBox>

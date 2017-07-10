@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:utils="com.utils.*"
+	width="700" height="522" 
+	title="Help"
+	horizontalAlign="center" layout="horizontal" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	creationComplete="initApp()" 
+	showCloseButton="true" close="handleClose(event)">
+	
+	<mx:Script>
+        <![CDATA[
+        	import mx.events.CloseEvent;        	
+        	
+            import mx.controls.Alert;
+			import mx.rpc.events.ResultEvent;
+			import mx.managers.PopUpManager;
+			import mx.collections.ArrayCollection;
+			import mx.collections.XMLListCollection;			
+		
+			private var params:Object = new Object();
+			
+			[Bindable] private var listData:XMLListCollection;
+			[Bindable] private var hotels:ArrayCollection;
+			[Bindable] private var companies:ArrayCollection;
+			[Bindable] private var roles:ArrayCollection;
+
+			[Bindable] private var listPortfolio:XMLListCollection;
+			[Bindable] private var listRoles:XMLListCollection;
+			
+			private function handleClose(event:CloseEvent):void{
+				closeReg();
+			}
+            private function closeReg():void {
+                // Check credentials (not shown) then remove pop up.
+                PopUpManager.removePopUp(this);
+            }
+
+			public function regCompleted():void{
+				PopUpManager.removePopUp(this);
+			}
+			
+			private function initApp():void
+			{
+				rolesService.send();
+			}
+
+			public function resultHandlerRoles(event:ResultEvent):void {	
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.item.role;	//XMLList
+
+				listRoles = new XMLListCollection(xmlList); //XMLListCollection(xmlList); 				
+			}
+			
+            [Bindable]
+            public var selectedNode:XML;
+
+            // Event handler for the Tree control change event.
+            public function treeChanged(event:Event):void {
+                selectedNode=Tree(event.target).selectedItem as XML;
+            }
+            
+            
+        ]]>
+    </mx:Script>
+    
+
+	<mx:HTTPService id="rolesService" url="http://www.ihghps.com/rmh/users.asp?myType=roles" 
+		result="resultHandlerRoles(event)"
+		resultFormat="e4x"
+        useProxy="false" />
+        
+    <mx:XMLList id="treeData">
+        <node label="Mail Box">
+            <node label="Inbox">
+                <node label="Marketing"/>
+                <node label="Product Management"/>
+                <node label="Personal"/>
+            </node>
+            <node label="Outbox">
+                <node label="Professional"/>
+                <node label="Personal"/>
+            </node>
+            <node label="Spam"/>
+            <node label="Sent"/>
+        </node>    
+    </mx:XMLList>
+
+	<mx:VBox width="100%" height="100%" paddingLeft="10" paddingRight="10" paddingBottom="10" paddingTop="10">
+		<mx:Text text="Browse through the following Frequently Asked Questions for a solution to your problem.  If you are still having challenges, use the Support Ticket link at the bottom to submit your question to the RevPAR Suite Support Team." width="100%"/>
+		<mx:HDividedBox width="100%" liveDragging="true" height="341">
+			<mx:Tree id="myTree" width="50%" height="100%" 
+				alternatingItemColors="[#333333, #666666]" labelField="@label"
+                showRoot="false" dataProvider="{treeData}" change="treeChanged(event)"/>
+			<mx:TextArea width="50%" height="100%"
+                text="Selected Item: {selectedNode.@label}"/>
+		</mx:HDividedBox>
+		<mx:HBox width="100%" height="54" horizontalAlign="right" verticalAlign="middle">
+			<mx:Text text="If unable to find a solution above, open a Support Ticket and someone will contact you within 24 hrs:" width="293" height="30"/>
+			<mx:Button label="Open Support Ticket" height="53" width="207" id="btnSupport"/>
+		</mx:HBox>
+	</mx:VBox>
+
+</mx:TitleWindow>

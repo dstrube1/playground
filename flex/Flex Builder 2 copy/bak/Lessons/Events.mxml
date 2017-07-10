@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+	creationComplete="createListener();">
+	<mx:Script>
+		<![CDATA[
+public function convertCurrency(e:Event):void {
+    var rate:Number = 120;
+    var price:Number = Number(tDollars.text);
+    if (isNaN(price)) {
+        lResult.text = "Please enter a valid amount.";
+    } else {
+        price = price * rate;
+        lResult.text = "Amount in Yen: " + String(price);
+    }
+}
+public function createListener():void{
+	bConvert.addEventListener(MouseEvent.MOUSE_OVER, convertCurrency);
+}
+		]]>
+	</mx:Script>
+	<mx:Panel x="10" y="10" width="423" height="200" layout="absolute" title="Currency Converter">
+		<mx:Label x="10" y="55" text="Amount in Dollars"/>
+		<mx:Label x="122" y="83" id="lResult"/>
+		<mx:TextInput x="122" y="53" id="tDollars"/>
+		<mx:Button x="287" y="53" label="Convert to Yen" id="bConvert" />
+		<!--alternate to creationComplete, createListener, e:Event method:
+		click="convertCurrency()"/>-->
+	</mx:Panel>
+	
+</mx:Application>

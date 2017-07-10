@@ -1,0 +1,13 @@
+/* CSS file */
+.rssTitle
+{
+	text-align: left;
+	font-size: 14px;
+}
+
+.rssBody
+{
+	text-align: left;
+	color: #ffffff;
+	font-size: 12px;
+}

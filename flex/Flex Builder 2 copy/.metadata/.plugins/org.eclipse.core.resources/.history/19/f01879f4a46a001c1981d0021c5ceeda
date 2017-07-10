@@ -1,0 +1,54 @@
+package app.config
+{
+	import base.blade.BladeItem;
+	import base.log.Logger;
+	import mx.controls.Alert;
+	
+	public class BladeFactory
+	{
+
+		private static var bladeItemComponent:DefaultBladeItems = null;
+
+		private static var logger:Logger = Logger.getLogger('BladeFactory');
+
+		
+		public static function setBladeItemComponent(  comp:DefaultBladeItems):void {
+			
+			//logger.debug("BladeFactory: setting blade item component: "+comp);
+			
+			bladeItemComponent = comp;
+			
+		}
+		
+		
+		public static function getBladeItem(item:String):BladeItem {
+			
+			//logger.debug("BladeFactory: searching for: "+item);			
+
+
+			if (bladeItemComponent == null) {
+				Alert.show("Unable to load bladeItemComponent - it may need to be set by an initializer");
+				return null;
+			}
+
+			
+			if (bladeItemComponent.hasOwnProperty(item)) {
+				
+				//logger.debug("Found component: "+bladeItemComponent[item]);
+				
+				return (bladeItemComponent[item]);
+			} else {
+				
+				//logger.debug("BladeFactory: no bladeItem matches: "+item);
+				
+				return null;
+			}
+			
+			
+		}
+		
+
+		
+		
+	}
+}

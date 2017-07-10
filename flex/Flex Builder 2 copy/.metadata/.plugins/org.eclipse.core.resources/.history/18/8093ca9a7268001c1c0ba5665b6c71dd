@@ -1,0 +1,15 @@
+package base.services
+{ 
+	public class ValueType
+	{
+		
+		public static const STRING:String = "STRING";
+		public static const INTEGER:String = "INTEGER";
+		public static const NULL:String = "NULL";
+		public static const REAL:String = "REAL";
+//		public const static const LABEL:String = "LABEL";
+		public static const XML:String = "XML";
+		public static const URL:String = "URL";
+		
+	}
+}

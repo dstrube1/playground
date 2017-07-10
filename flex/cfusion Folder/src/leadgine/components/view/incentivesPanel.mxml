@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SuperPanel xmlns="nl.wv.extenders.panel.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:com="com.*"
+	endMaximize="onEndMaximize()" endRestore="onEndRestore()" creationPolicy="all" xmlns:utils="com.utils.*">
+	
+<mx:Script>
+<![CDATA[
+
+			[Bindable] private var _selectedIndexSearch:Number = -1;				
+			[Bindable] private var listSearch:XMLListCollection;
+			[Bindable] private var listSearchOther:XMLListCollection;
+			
+			import mx.core.Application;
+			import mx.events.ItemClickEvent;
+			import mx.collections.ArrayCollection;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.collections.XMLListCollection;
+			import mx.collections.ListCollectionView;
+			import mx.utils.ArrayUtil;
+			import mx.controls.dataGridClasses.DataGridItemRenderer;
+			import mx.managers.CursorManager;
+			import mx.formatters.DateFormatter;
+			import mx.rpc.events.ResultEvent;
+			import mx.utils.ObjectUtil;
+			import mx.utils.ObjectProxy;
+			import mx.controls.Alert;
+			import com.GradientCanvas;
+			import mx.events.CloseEvent;
+			//import mx.managers.PopUpManager;
+			//import leadgine.components.dto.FullServiceReferral;
+			//import mx.containers.TitleWindow;
+			
+			public var hotel:String;
+			public var code:String;
+			public var userid:String;
+			
+			private var AlertMsgSuccess:String;
+			private var AlertMsgSuccessTitle:String;
+			private var AlertMsgFail:String = "Incentives data could not be loaded.  Please click the 'Refresh' button to try again.";
+			private var AlertMsgFailTitle:String = "Load Problem";
+
+			private var params:Object = new Object();
+			
+			[Embed(source='assets/img/icons/caution.png')]
+			private var confirmIcon:Class;
+			
+			[Embed(source='images/cash_computer1_opt.png')]
+			[Bindable]
+			private var IncentivePic1:Class;
+		
+			[Embed(source='images/cash_computer2_opt.png')]
+			[Bindable]
+			private var IncentivePic2:Class;
+		
+			[Embed(source='images/cash_computer3_opt.png')]
+			[Bindable]
+			private var IncentivePic3:Class;
+		
+			[Embed(source='images/cash_computer4_opt.png')]
+			[Bindable]
+			private var IncentivePic4:Class;
+		
+			[Embed(source='images/cash_computer5_opt.png')]
+			[Bindable]
+			private var IncentivePic5:Class;
+			
+			
+			private function searchGridItemClick():void{
+
+				//var popup:TitleWindow = PopUpManager.createPopUp(this, contactsPanel) as TitleWindow;
+				//popups.push(popup);
+			}
+			private function hideReferralDialog():void{
+				//PopUpManager.removePopUp(popups[popups.length - 1]);
+				
+				//popups.pop();
+			}
+
+
+			public function resultHandlerSearch(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				//trace(result.toXMLString());
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listSearch = new XMLListCollection(xmlList);
+				}
+			}
+
+			public function resultHandlerSearchOther(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listSearchOther = new XMLListCollection(xmlList);
+				}
+			}
+
+			public function resultHandlerUpdate(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + sql + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					Alert.show(AlertMsgSuccess, AlertMsgSuccessTitle);
+					vsOurIncentives.selectedIndex=0;
+					refresh();
+				}
+					
+			}
+			
+			public function refresh():void {
+				searchService.send(); 
+			}			
+			
+			public function faultHandler():void {
+				this.searchService.showBusyCursor = false;
+				this.searchServiceOther.showBusyCursor = false;
+				this.updateService.showBusyCursor = false;
+			}
+
+			
+			public function saveIncentive():void{
+			    params = {
+			    "incentive_name": txtIncentiveName.text,
+			    "incentive": sldIncentive.value,
+			    "incentive_desc": txtDesc.text, 
+			    "refer_from_date": (txtReferFrom.selectedDate.getMonth() + 1) + "/" + txtReferFrom.selectedDate.getDate() + "/" + txtReferFrom.selectedDate.getFullYear(),
+			    "refer_to_date": (txtReferTo.selectedDate.getMonth() + 1) + "/" + txtReferTo.selectedDate.getDate() + "/" + txtReferTo.selectedDate.getFullYear(),
+			    "from_date": (txtFrom.selectedDate.getMonth() + 1) + "/" + txtFrom.selectedDate.getDate() + "/" + txtFrom.selectedDate.getFullYear(),
+			    "to_date": (txtTo.selectedDate.getMonth() + 1) + "/" + txtTo.selectedDate.getDate() + "/" + txtTo.selectedDate.getFullYear(),
+			    "summary": txtSummary.text,
+			    "qualify": txtQualify.text
+			    }; 
+			    
+				AlertMsgSuccess = "Your Incentive has been succussfully updated.";
+				AlertMsgSuccessTitle = "Incentive Updated";
+				AlertMsgFail = "There was a problem updating this Incentive.  Please try again.";
+				AlertMsgFailTitle = "Problem Updating";
+				
+
+				updateService.cancel();
+			    updateService.url="http://www.revparsuite.com/leadgine/incentivesEXE.asp?clientid=" 
+			    	+ Application.application.clientID + "&userid=" + Application.application.userID 
+			    	+ "&hotel=" + Application.application.hotel + "&myType=update"
+			    	+ "&id=" + dataOurIncentives.selectedItem.id;
+			    
+				//Alert.show(updateService.url + ";  " + dataOurIncentives.selectedItem.id);
+
+				updateService.method = "POST";
+				updateService.send(params);
+
+			}
+			
+			public function saveNewIncentive():void{
+			    params = {
+			    "incentive_name": txtIncentiveNameNew.text,
+			    "incentive": sldIncentiveNew.value,
+			    "incentive_desc": txtDescNew.text, 
+			    "refer_from_date": (txtReferFromNew.selectedDate.getMonth() + 1) + "/" + txtReferFromNew.selectedDate.getDate() + "/" + txtReferFromNew.selectedDate.getFullYear(),
+			    "refer_to_date": (txtReferToNew.selectedDate.getMonth() + 1) + "/" + txtReferToNew.selectedDate.getDate() + "/" + txtReferToNew.selectedDate.getFullYear(),
+			    "from_date": (txtFromNew.selectedDate.getMonth() + 1) + "/" + txtFromNew.selectedDate.getDate() + "/" + txtFromNew.selectedDate.getFullYear(),
+			    "to_date": (txtToNew.selectedDate.getMonth() + 1) + "/" + txtToNew.selectedDate.getDate() + "/" + txtToNew.selectedDate.getFullYear(),
+			    "summary": txtSummaryNew.text,
+			    "qualify": txtQualifyNew.text
+			    }; 
+			    
+				AlertMsgSuccess = "Your Incentive has been succussfully created.";
+				AlertMsgSuccessTitle = "Incentive Created";
+				AlertMsgFail = "There was a problem creating this Incentive.  Please try again.";
+				AlertMsgFailTitle = "Problem Creating";
+				
+
+				
+			    updateService.url="http://www.revparsuite.com/leadgine/incentivesEXE.asp?clientid=" 
+			    	+ Application.application.clientID + "&userid=" + Application.application.userID 
+			    	+ "&hotel=" + Application.application.hotel + "&myType=update"
+			    	+ "&id=0";
+
+				updateService.cancel();
+				updateService.method = "POST";
+				updateService.send(params);
+
+			}
+			
+			private function newIncentive():void{
+				reset();
+				vsOurIncentives.selectedIndex=2;
+			}
+			
+			public function confirmDeactivate():void{
+				Alert.show("Are you certain you wish to Deactivate this Incentive?","Deactivate?",Alert.YES | Alert.NO, this, deactivateIncentive, confirmIcon, Alert.NO);
+			}
+			
+			public function deactivateIncentive(event:CloseEvent):void{
+				if (event.detail == Alert.YES) {
+				    params = {
+				    "id": dataOurIncentives.selectedItem.id
+				    }; 
+	
+					AlertMsgSuccess = "Your Incentive has been succussfully deactivated.";
+					AlertMsgSuccessTitle = "Incentive Deactived";
+					AlertMsgFail = "There was a problem deactivating this Incentive.  Please try again.";
+					AlertMsgFailTitle = "Problem Deactivating";
+					
+				    updateService.url="http://www.revparsuite.com/leadgine/incentivesEXE.asp?clientid=" + Application.application.clientID + "&userid=" + Application.application.userID + "&hotel=" + Application.application.hotel + "&myType=deactivate";
+					updateService.cancel();
+					updateService.method = "POST";
+					updateService.send(params);
+				} else if (event.detail == Alert.NO) {
+					//
+				}
+
+			}
+
+			private function reset():void{
+			    txtIncentiveName.text = "";
+			    sldIncentive.value = 2;
+			    txtDesc.text = ""; 
+			    
+			    var myDate1:Date = new Date();
+			    txtFrom.selectedDate = myDate1;
+			    
+			    txtTo.text = "";
+			    txtSummary.text = "";
+			    txtQualify.text = "";
+			}
+
+			private function set selectedIndexSearch(n:Number):void {
+				// Make sure we are within range of dataProvider.
+				if (n < 0)
+					n = listSearch.length - 1;
+				else if (n > (listSearch.length - 1))
+					n = 0;
+
+				_selectedIndexSearch = n;
+			}
+			
+			
+			private function get selectedIndexSearch():Number {
+				return _selectedIndexSearch;
+			}
+			
+			public function fill():void {
+				searchService.cancel();
+				searchService.url="http://www.revparsuite.com/leadgine/incentivesEXE.asp?clientid=" + Application.application.clientID + "&userid=" + Application.application.userID + "&hotel=" + Application.application.hotel + "&myType=myHotel"
+				searchService.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				searchService.addEventListener(ResultEvent.RESULT,resultHandlerSearch);
+				searchService.method = "GET";
+				searchService.send(); 
+
+				searchServiceOther.url="http://www.revparsuite.com/leadgine/incentivesEXE.asp?clientid=" + Application.application.clientID + "&userid=" + Application.application.userID + "&hotel=" + Application.application.hotel + "&myType=otherHotels"
+				searchServiceOther.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				searchServiceOther.addEventListener(ResultEvent.RESULT,resultHandlerSearchOther);
+				searchServiceOther.method = "GET";
+				searchServiceOther.send(); 
+			}
+
+			public function insertItemHandler(event:ResultEvent):void {	
+				//fill();
+			}						
+			
+			
+			private function convertDate():void {
+				txtFrom.selectedDate = new Date(dataOurIncentives.selectedItem.from_date.toString());
+				txtTo.selectedDate = new Date(dataOurIncentives.selectedItem.to_date.toString());
+				txtReferFrom.selectedDate = new Date(dataOurIncentives.selectedItem.refer_from_date.toString());
+				txtReferTo.selectedDate = new Date(dataOurIncentives.selectedItem.refer_to_date.toString());
+			}
+			
+			
+			
+			private function sortNumeric(obj1:Object, obj2:Object):int {
+				var value1:Number = (obj1.rooms == '' || obj1.rooms == null) ? null : new Number(obj1.rooms);
+				var value2:Number = (obj2.rooms == '' || obj2.rooms == null) ? null : new Number(obj2.rooms);
+				
+				if (value1 < value2) {
+					return -1;
+				} else if (value1 > value2) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+						
+
+			private function date_sort_Begin_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.begin));
+                var dateB:Date = new Date(Date.parse(itemB.begin));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+
+
+			private function date_sort_End_Date(itemA:Object, itemB:Object):int {
+                var dateA:Date = new Date(Date.parse(itemA.end));
+                var dateB:Date = new Date(Date.parse(itemB.end));
+                return ObjectUtil.dateCompare(dateA, dateB);
+            }
+	private function onEndMaximize():void{
+		fill();
+		vsIncentives.selectedIndex = 1;
+	}
+	private function onEndRestore():void{
+		vsIncentives.selectedIndex = 0;
+	}
+	
+	private function incentiveChange():void{
+		if (sldIncentive.value == 2){
+			imgIncentive.source = IncentivePic1;
+		}else if (sldIncentive.value == 3){
+			imgIncentive.source = IncentivePic1;
+		}else if (sldIncentive.value == 4){
+			imgIncentive.source = IncentivePic2;
+		}else if (sldIncentive.value == 5){
+			imgIncentive.source = IncentivePic2;
+		}else if (sldIncentive.value == 6){
+			imgIncentive.source = IncentivePic3;
+		}else if (sldIncentive.value == 7){
+			imgIncentive.source = IncentivePic3;
+		}else if (sldIncentive.value == 8){
+			imgIncentive.source = IncentivePic4;
+		}else if (sldIncentive.value == 9){
+			imgIncentive.source = IncentivePic4;
+		}else if (sldIncentive.value == 10){
+			imgIncentive.source = IncentivePic5;
+			
+		}
+		lblIncentive.text = String(sldIncentive.value);
+	}
+	
+	private function incentiveChangeNew():void{
+		if (sldIncentiveNew.value == 2){
+			imgIncentiveNew.source = IncentivePic1;
+		}else if (sldIncentiveNew.value == 3){
+			imgIncentiveNew.source = IncentivePic1;
+		}else if (sldIncentiveNew.value == 4){
+			imgIncentiveNew.source = IncentivePic2;
+		}else if (sldIncentiveNew.value == 5){
+			imgIncentiveNew.source = IncentivePic2;
+		}else if (sldIncentiveNew.value == 6){
+			imgIncentiveNew.source = IncentivePic3;
+		}else if (sldIncentiveNew.value == 7){
+			imgIncentiveNew.source = IncentivePic3;
+		}else if (sldIncentiveNew.value == 8){
+			imgIncentiveNew.source = IncentivePic4;
+		}else if (sldIncentiveNew.value == 9){
+			imgIncentiveNew.source = IncentivePic4;
+		}else if (sldIncentiveNew.value == 10){
+			imgIncentiveNew.source = IncentivePic5;
+			
+		}
+		lblIncentiveNew.text = String(sldIncentiveNew.value);
+	}
+	
+]]>
+</mx:Script>
+
+
+<mx:HTTPService id="searchService" url="http://www.revparsuite.com/leadgine/incentivesEXE.asp?clientid={ Application.application.clientID }&amp;userid={ Application.application.userID }&amp;hotel={ Application.application.hotel }&amp;myType=myHotel" 
+	result="resultHandlerSearch(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:HTTPService id="searchServiceOther" url="http://www.revparsuite.com/leadgine/incentivesEXE.asp?clientid={ Application.application.clientID }&amp;userid={ Application.application.userID }&amp;hotel={ Application.application.hotel }&amp;myType=otherHotels" 
+	result="resultHandlerSearchOther(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+    
+<mx:HTTPService id="updateService" url="http://www.revparsuite.com/leadgine/incentivesEXE.asp?clientid={ Application.application.clientID }&amp;userid={ Application.application.userID }&amp;hotel={ Application.application.hotel }&amp;myType=update" 
+	result="resultHandlerUpdate(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+    
+<mx:ViewStack id="vsIncentives" width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+<com:GradientCanvas 
+	width="100%" height="100%" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.myFillColors5 }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="0"
+		click="{this.normalMaxClickHandler(null)}">
+
+		<mx:Canvas borderStyle="solid" borderColor="#666666" cornerRadius="20" backgroundColor="#FFFFFF" borderThickness="1" alpha="0.8" left="130" right="10" top="10" bottom="10">
+				<mx:Text text="Hotels with Greater Incentives get Greater Referrals." left="20" right="20" top="20" bottom="20" styleName="myPanelCaption">
+					<mx:filters>
+				        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+				    </mx:filters>
+				</mx:Text>
+		</mx:Canvas>
+		<mx:Image source="assets/img/icons/grey_circle/dollar_currency_sign.png" verticalCenter="0" left="30"/>
+
+</com:GradientCanvas>
+
+
+	<com:GradientCanvas label="Results" width="100%" height="100%" 
+		icon="@Embed('assets/img/icons/search.png')"
+		paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off"
+		colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.topGradientColor }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="100">
+
+	<mx:VBox width="100%" height="100%" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10">
+	
+		<mx:TabNavigator id="tabIncentives" horizontalAlign="left" tabOffset="30" width="100%" height="100%" 
+			backgroundColor="#ffffff" backgroundAlpha=".5"
+			paddingBottom="10" paddingRight="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off" creationPolicy="all">
+		
+			<mx:Canvas label="Our Incentives" width="100%" height="100%" 
+				icon="@Embed('assets/img/icons/home.png')"
+				paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+
+
+				<mx:ViewStack id="vsOurIncentives" width="100%" height="100%">
+						<mx:VBox width="100%" height="100%">
+		
+							<mx:Text text="Here are Incentives your hotel has created to drive business:" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							<mx:DataGrid id="dataOurIncentives" 
+								width="100%" height="100%" 
+						        selectedIndex="{_selectedIndexSearch}"
+						        dataProvider="{listSearch}" 
+						        doubleClick="convertDate();incentiveChange();vsOurIncentives.selectedIndex=1">
+								<mx:columns>
+									<mx:DataGridColumn visible="false" dataField="id"/>
+									<mx:DataGridColumn headerText="Hotel" dataField="hotel"/>
+									<mx:DataGridColumn headerText="Name" dataField="incentive_name"/>
+									<mx:DataGridColumn headerText="Incentive" dataField="incentive"/>
+									<mx:DataGridColumn visible="false" headerText="Description" dataField="incentive_desc"/>
+									<mx:DataGridColumn visible="false" headerText="Referred After" dataField="refer_from_date"/>
+									<mx:DataGridColumn visible="false" headerText="Referred Before" dataField="refer_to_date"/>
+									<mx:DataGridColumn headerText="Arriving After" dataField="from_date"/>
+									<mx:DataGridColumn headerText="Arriving Before" dataField="to_date"/>
+									<mx:DataGridColumn visible="false" headerText="Summary" dataField="summary"/>
+									<mx:DataGridColumn visible="false" headerText="Qualify" dataField="qualify"/>
+								</mx:columns>
+							</mx:DataGrid>
+							
+							<mx:HBox width="100%" verticalAlign="bottom">
+								<mx:HBox width="100%" horizontalAlign="left">
+									<mx:Image source="@Embed('assets/img/money_map_grn.jpg')"/>
+								</mx:HBox>
+								<mx:HBox width="100%" horizontalAlign="right" verticalAlign="bottom">
+									<mx:Button label="Create New Incentive" width="240" height="50" click="newIncentive()" icon="@Embed('assets/img/icons/edit2.png')"/>
+									<mx:Button label="Refresh" width="240" height="50" click="fill()" icon="@Embed('assets/img/icons/refresh.png')"/>
+								</mx:HBox>
+							</mx:HBox>
+							
+						</mx:VBox>
+						
+				<mx:HBox width="100%" label="criteria" height="100%" horizontalAlign="center" paddingTop="20" >
+					<mx:Canvas id="cnvIncentive" backgroundColor="#ffffff" 
+						cornerRadius="30" 
+						borderStyle="solid" borderColor="#000000" borderThickness="1" 
+						dropShadowEnabled="true">
+						
+						<mx:HBox id="hbxIncentive" paddingLeft="20" paddingRight="20" paddingTop="20" paddingBottom="20" width="100%" height="100%" horizontalAlign="center">
+							<mx:VBox width="100%" height="100%" horizontalAlign="center" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+								<mx:Text width="100%" text="Create compelling incentives in order to drive business to your hotel!" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+								<utils:ValidatorForm id="frmOurIncentives" horizontalCenter="true">
+									<mx:FormItem label="Hotel:">
+										<mx:TextInput id="txtHotel" width="300" text="{ dataOurIncentives.selectedItem.hotel }"/>
+									</mx:FormItem>
+									<mx:FormItem label="Incentive Name:">
+										<mx:TextInput id="txtIncentiveName" width="300" text="{ dataOurIncentives.selectedItem.incentive_name }"/>
+									</mx:FormItem>
+									<mx:FormItem label="Incentive Amount:">
+										<mx:VBox>
+											<mx:HSlider id="sldIncentive" width="300" snapInterval="1" change="incentiveChange()" minimum="2" maximum="10" value="{ dataOurIncentives.selectedItem.incentive }"/>
+											<mx:Label text="{ sldIncentive.value }X Bonus to Referrer ({ sldIncentive.value }% of actualized revenues)"/>
+											<mx:Text width="100%" text="Note: This does not include or effect meeting planner or RevPARSuite.com commissions." fontStyle="italic" fontSize="10"/>
+										</mx:VBox>
+									</mx:FormItem>
+									
+									<mx:FormItem label="Description:">
+										<mx:TextArea id="txtDesc" width="300" text="{ dataOurIncentives.selectedItem.incentive_desc }"/>
+									</mx:FormItem>
+									
+									
+									<mx:FormItem label="Refer between:">
+										<mx:HBox>
+											<mx:DateField id="txtReferFrom" width="122"/>
+											<mx:Label text=" and "/>
+											<mx:DateField id="txtReferTo" width="122"/>
+										</mx:HBox>
+									</mx:FormItem>
+									
+									
+									<mx:FormItem label="Arriving between:">
+										<mx:HBox>
+											<mx:DateField id="txtFrom" width="122"/>
+											<mx:Label text=" and "/>
+											<mx:DateField id="txtTo" width="122"/>
+										</mx:HBox>
+									</mx:FormItem>
+									<mx:FormItem label="Summary:">
+										<mx:TextArea id="txtSummary" width="300" text="{ dataOurIncentives.selectedItem.summary }"/>
+									</mx:FormItem>
+									<mx:FormItem label="Qualify:">
+										<mx:TextArea id="txtQualify" width="300" text="{ dataOurIncentives.selectedItem.qualify }"/>
+									</mx:FormItem>
+								</utils:ValidatorForm>
+								<mx:HBox width="100%" height="100%" horizontalAlign="center">
+									<mx:Button label="Back" width="100" height="20" click="vsOurIncentives.selectedIndex=0"/>
+									<mx:Button label="Deactivate" width="100" height="20" click="confirmDeactivate()"/>
+									<mx:Button label="Save" width="100" height="20" click="saveIncentive()"/>
+								</mx:HBox>
+							</mx:VBox>
+						</mx:HBox>
+					</mx:Canvas>
+					
+					
+					<mx:Canvas backgroundColor="#ffffff" 
+						cornerRadius="30" 
+						borderStyle="solid" borderColor="#000000" borderThickness="1" 
+						dropShadowEnabled="true">
+						
+						<mx:VBox paddingLeft="20" paddingRight="20" paddingTop="20" paddingBottom="20" width="100%" height="100%" horizontalAlign="center">
+							<mx:Image id="imgIncentive" source="{ IncentivePic1 }" />
+							<mx:Canvas width="100%" height="60" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+								<mx:Label y="0" x="15" width="60" textAlign="right" id="lblIncentive" fontSize="32" fontWeight="bold" color="#c60303">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#000000" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Label>
+								<mx:Label fontSize="16" x="70" y="5" text="X Bonus!" fontWeight="bold" color="#666666">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Label>
+							</mx:Canvas>
+						</mx:VBox>
+					</mx:Canvas>
+					
+				</mx:HBox>
+						
+				<mx:HBox width="100%" label="criteria" height="100%" horizontalAlign="center" paddingTop="20" >
+					<mx:Canvas backgroundColor="#ffffff" 
+						cornerRadius="30" 
+						borderStyle="solid" borderColor="#000000" borderThickness="1" 
+						dropShadowEnabled="true">
+						
+						<mx:HBox paddingLeft="20" paddingRight="20" paddingTop="20" paddingBottom="20" width="100%" height="100%" horizontalAlign="center">
+							<mx:VBox width="100%" height="100%" horizontalAlign="center" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+								<mx:Text text="Create compelling incentives in order to drive business to your hotel!" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+								<utils:ValidatorForm id="frmNewIncentive" horizontalCenter="true">
+									<mx:FormItem label="Incentive Name:">
+										<mx:TextInput id="txtIncentiveNameNew" width="300"/>
+									</mx:FormItem>
+									<mx:FormItem label="Incentive Amount:">
+										<mx:VBox>
+											<mx:HSlider id="sldIncentiveNew" width="300" snapInterval="1" change="incentiveChangeNew()" minimum="2" maximum="10" value="2"/>
+											<mx:Label text="{ sldIncentiveNew.value }X Bonus to Referrer ({ sldIncentiveNew.value }% of actualized revenues)"/>
+											<mx:Text width="100%" text="Note: This does not include or effect meeting planner or RevPARSuite.com commissions." fontStyle="italic" fontSize="10"/>
+										</mx:VBox>
+									</mx:FormItem>
+									<mx:FormItem label="Description:">
+										<mx:TextArea id="txtDescNew" width="300"/>
+									</mx:FormItem>
+									
+									<mx:FormItem label="Refer between:">
+										<mx:HBox>
+											<mx:DateField id="txtReferFromNew" width="122"/>
+											<mx:Label text=" and "/>
+											<mx:DateField id="txtReferToNew" width="122"/>
+										</mx:HBox>
+									</mx:FormItem>
+									
+									
+									<mx:FormItem label="Arriving between:">
+										<mx:HBox>
+											<mx:DateField id="txtFromNew" width="122"/>
+											<mx:Label text=" and "/>
+											<mx:DateField id="txtToNew" width="122"/>
+										</mx:HBox>
+									</mx:FormItem>
+									<mx:FormItem label="Summary:">
+										<mx:TextArea id="txtSummaryNew" width="300"/>
+									</mx:FormItem>
+									<mx:FormItem label="Qualify:">
+										<mx:TextArea id="txtQualifyNew" width="300"/>
+									</mx:FormItem>
+								</utils:ValidatorForm>
+								<mx:HBox width="100%" height="100%" horizontalAlign="center">
+									<mx:Button label="Back" width="100" height="20" click="vsOurIncentives.selectedIndex=0"/>
+									<mx:Button label="Save" width="100" height="20" click="saveNewIncentive()"/>
+								</mx:HBox>
+							</mx:VBox>
+						</mx:HBox>
+					</mx:Canvas>
+					
+					<mx:Canvas backgroundColor="#ffffff" 
+						cornerRadius="30" 
+						borderStyle="solid" borderColor="#000000" borderThickness="1" 
+						dropShadowEnabled="true">
+						
+						<mx:VBox paddingLeft="20" paddingRight="20" paddingTop="20" paddingBottom="20" width="100%" height="100%" horizontalAlign="center">
+							<mx:Image id="imgIncentiveNew" source="{ IncentivePic1 }" />
+							<mx:Canvas width="100%" height="60" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+								<mx:Label y="0" x="15" width="60" textAlign="right" id="lblIncentiveNew" fontSize="32" fontWeight="bold" color="#c60303">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#000000" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Label>
+								<mx:Label fontSize="16" x="70" y="5" text="X Bonus!" fontWeight="bold" color="#666666">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Label>
+							</mx:Canvas>
+						</mx:VBox>
+					</mx:Canvas>
+					
+				</mx:HBox>
+			</mx:ViewStack>
+		</mx:Canvas>
+	
+			<mx:Canvas label="Other Hotels' Incentives" width="100%" height="100%" 
+				icon="@Embed('assets/img/icons/company.png')"
+				paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+				
+				<mx:ViewStack id="vsOtherIncentives" width="100%" height="100%">
+					<mx:HBox width="100%" height="100%">
+						<mx:VBox width="100%" height="100%">
+							<mx:Text text="Here are Incentives other hotels have created to drive business:" y="8" right="-307" left="188" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							<mx:DataGrid id="dataOtherIncentives" 
+								width="100%" height="100%" 
+						        selectedIndex="{_selectedIndexSearch}"
+						        dataProvider="{listSearchOther}">
+								<mx:columns>
+									<mx:DataGridColumn visible="false" dataField="id"/>
+									<mx:DataGridColumn headerText="Hotel" dataField="hotel"/>
+									<mx:DataGridColumn headerText="Name" dataField="incentive_name"/>
+									<mx:DataGridColumn headerText="Incentive" dataField="incentive"/>
+									<mx:DataGridColumn visible="false" headerText="Description" dataField="incentive_desc"/>
+									<mx:DataGridColumn visible="false" headerText="Referred After" dataField="refer_from_date"/>
+									<mx:DataGridColumn visible="false" headerText="Referred Before" dataField="refer_to_date"/>
+									<mx:DataGridColumn headerText="Arriving After" dataField="from_date"/>
+									<mx:DataGridColumn headerText="Arriving Before" dataField="to_date"/>
+									<mx:DataGridColumn visible="false" headerText="Summary" dataField="summary"/>
+									<mx:DataGridColumn visible="false" headerText="Qualify" dataField="qualify"/>
+								</mx:columns>
+							</mx:DataGrid>
+						</mx:VBox>
+				<mx:VBox width="400" label="criteria" height="100%" horizontalAlign="center" paddingTop="20" >
+
+					<mx:Canvas backgroundColor="#ffffff" 
+						cornerRadius="30" 
+						borderStyle="solid" borderColor="#000000" borderThickness="1" 
+						dropShadowEnabled="true">
+						
+						<mx:VBox paddingLeft="0" paddingRight="0" paddingTop="20" paddingBottom="20">
+						
+							<mx:Text width="350" paddingLeft="10" paddingRight="10" text="You can earn BIG Bonuses when referring to hotels with Incentives:" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+							<utils:ValidatorForm id="frmOtherIncentives" horizontalCenter="true">
+								<mx:FormItem fontWeight="bold" label="Hotel:">
+									<mx:Text fontWeight="normal" width="200" text="{ dataOtherIncentives.selectedItem.hotel }"/>
+								</mx:FormItem>
+								<mx:FormItem fontWeight="bold" label="Incentive Name:">
+									<mx:Text fontWeight="normal" width="200" text="{ dataOtherIncentives.selectedItem.incentive_name }"/>
+								</mx:FormItem>
+								<mx:FormItem fontWeight="bold" label="Incentive Amount:">
+									<mx:Label fontWeight="normal" width="200" text="{ dataOtherIncentives.selectedItem.incentive }X Bonus!"/>
+								</mx:FormItem>
+								<mx:FormItem fontWeight="bold" label="Description:">
+									<mx:Text fontWeight="normal" width="200" text="{ dataOtherIncentives.selectedItem.incentive_desc }"/>
+								</mx:FormItem>
+								
+								<mx:FormItem fontWeight="bold" label="Refer After:">
+									<mx:Label fontWeight="normal" width="200" text="{ dataOtherIncentives.selectedItem.refer_from_date }"/>
+								</mx:FormItem>
+								<mx:FormItem fontWeight="bold" label="Refer Before:">
+									<mx:Label fontWeight="normal" width="200" text="{ dataOtherIncentives.selectedItem.refer_to_date }"/>
+								</mx:FormItem>
+								
+								<mx:FormItem fontWeight="bold" label="Arriving After:">
+									<mx:Label fontWeight="normal" width="200" text="{ dataOtherIncentives.selectedItem.from_date }"/>
+								</mx:FormItem>
+								<mx:FormItem fontWeight="bold" label="Arriving Before:">
+									<mx:Label fontWeight="normal" width="200" text="{ dataOtherIncentives.selectedItem.to_date }"/>
+								</mx:FormItem>
+								<mx:FormItem fontWeight="bold" label="Summary:">
+									<mx:Text fontWeight="normal" width="200" text="{ dataOtherIncentives.selectedItem.summary }"/>
+								</mx:FormItem>
+								<mx:FormItem fontWeight="bold" label="Qualify:">
+									<mx:Text fontWeight="normal" width="200" text="{ dataOtherIncentives.selectedItem.qualify }"/>
+								</mx:FormItem>
+								
+								
+							</utils:ValidatorForm>
+							
+						</mx:VBox>
+						
+					</mx:Canvas>
+				</mx:VBox>
+			</mx:HBox>
+				</mx:ViewStack>
+			</mx:Canvas>
+		</mx:TabNavigator>
+	</mx:VBox>
+</com:GradientCanvas>
+
+</mx:ViewStack>
+
+</SuperPanel>

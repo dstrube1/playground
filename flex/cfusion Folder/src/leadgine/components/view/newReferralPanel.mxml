@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SuperPanel xmlns="nl.wv.extenders.panel.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:com="com.*"
+	endMaximize="onEndMaximize()" endRestore="onEndRestore()">
+<mx:Script>
+<![CDATA[
+	import mx.events.ItemClickEvent;
+	import mx.core.Application;
+	import com.GradientCanvas;
+	/*
+	private function myStatsButtonBarClick(event:ItemClickEvent):void{
+		myStatsViewStack.selectedIndex = event.index;
+	}
+	*/
+	
+	private function launchRefer():void{
+		Application.application.showReferralDialog();
+	}
+
+	private function onEndMaximize():void{
+		vsIncentives.selectedIndex = 1;
+	}
+	private function onEndRestore():void{
+		vsIncentives.selectedIndex = 0;
+	}	
+]]>
+</mx:Script>
+<mx:ViewStack id="vsIncentives" width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+	
+<com:GradientCanvas 
+	width="100%" height="100%" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.myFillColors1 }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="0"
+		>
+	
+
+
+		<mx:VBox borderStyle="solid" borderColor="#666666" cornerRadius="20" backgroundColor="#FFFFFF" horizontalAlign="center" borderThickness="1" alpha="0.8" left="130" right="10" top="10" bottom="10">
+				<!--<mx:VBox width="100%" height="100%">-->
+					<mx:Text text="Have a lead you can't accomodate?  Refer Now, Earn Big!" paddingTop="10" paddingLeft="10" paddingRight="10" width="100%" left="20" right="20" top="20" bottom="20" styleName="myPanelCaption">
+						<mx:filters>
+					        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+					    </mx:filters>
+					</mx:Text>
+					<mx:Button id="pnl1Button" buttonMode="true" label="GO!" click="pnl1Button.enabled=false;launchRefer()" width="136" height="60" cornerRadius="20" fontSize="25"/>
+				<!--</mx:VBox>   icon="@Embed('assets/img/icons/edit2_large.png')"  -->
+		</mx:VBox>
+		<mx:Image source="assets/img/icons/grey_circle/edit.png" verticalCenter="0" left="30"/>
+		
+</com:GradientCanvas>
+<com:GradientCanvas label="Results" width="100%" height="100%" 
+		icon="@Embed('assets/img/icons/search.png')"
+		paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off"
+		colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.topGradientColor }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="100">
+		
+		<mx:VBox width="100%" label="criteria" height="100%" horizontalAlign="center" paddingTop="20" >
+		
+				<mx:Canvas backgroundColor="#ffffff" 
+					cornerRadius="30" 
+					borderStyle="solid" borderColor="#000000" borderThickness="1" 
+					dropShadowEnabled="true">
+					<mx:VBox width="100%" height="100%" horizontalAlign="center" paddingLeft="40" paddingRight="40" paddingTop="40" paddingBottom="40">
+						<mx:Label text="Create and send a new referral now!" fontSize="14" textAlign="center"/>
+						
+					</mx:VBox>
+				</mx:Canvas>
+		</mx:VBox>
+</com:GradientCanvas>
+</mx:ViewStack>
+</SuperPanel>

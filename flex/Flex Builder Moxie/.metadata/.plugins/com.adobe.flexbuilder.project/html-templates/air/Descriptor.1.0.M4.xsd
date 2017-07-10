@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://ns.adobe.com/air/application/1.0.M4" 
+    xmlns="http://ns.adobe.com/air/application/1.0.M4" 
+    elementFormDefault="qualified"
+>
+  <xs:element name="application">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="name">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <!-- name cannot have any of these characters: *"/:<>?\| and end in a period ('.') -->
+              <xs:pattern value="[^\*&quot;/:&gt;&lt;\?\\\|]*[^\*&quot;/:&gt;&lt;\?\\\|\.]"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="title"          type="xs:string" minOccurs="0"/>
+        <xs:element name="description"    type="xs:string" minOccurs="0"/>
+        <xs:element name="copyright"      type="xs:string" minOccurs="0"/>
+        <xs:element name="rootContent">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:anyURI">
+                <xs:attribute name="visible" type="xs:boolean" default="true"/>
+                <xs:attribute name="transparent" type="xs:boolean"/>
+                <xs:attribute name="systemChrome">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="none"/>
+                      <xs:enumeration value="standard"/>
+                      <xs:enumeration value="alternate"/>
+                      <xs:enumeration value="utility"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="width" type="xs:unsignedInt"/>
+                <xs:attribute name="height" type="xs:unsignedInt"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="installFolder" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <!-- installFolder cannot have any of these characters: *":<>?\|, begin with a forward-slash '/', and end in a period '.' -->
+              <xs:pattern value="[^\*&quot;/:&gt;&lt;\?\\\|\.]|[^\*&quot;/:&gt;&lt;\?\\\|][^\*&quot;:&gt;&lt;\?\\\|]*[^\*&quot;:&gt;&lt;\?\\\|\.]"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="icon" type="IconType" minOccurs="0"/>
+        <xs:element name="handleUpdates" minOccurs="0">
+          <!-- define handleUpdates as an optional, empty element -->
+          <xs:complexType/>
+        </xs:element>
+        <xs:element name="fileTypes" minOccurs="0">
+            <xs:complexType>
+                <xs:sequence>                    
+                    <xs:element name="fileType" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:all>
+                                <xs:element name="name" type="xs:string"/>
+                                <xs:element name="extension" type="xs:string"/>
+                                <xs:element name="description" type="xs:string" minOccurs="0"/>
+                                <xs:element name="contentType" type="xs:string" minOccurs="0"/>
+                                <xs:element name="icon" type="IconType" minOccurs="0"/>
+                            </xs:all>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+      </xs:all>
+      <xs:attribute name="appId" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z0-9\-\.]{1,255}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="version" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="IconType">
+      <xs:all>
+          <xs:element name="image16x16"   type="xs:anyURI" minOccurs="0"/>
+          <xs:element name="image32x32"   type="xs:anyURI" minOccurs="0"/>
+          <xs:element name="image48x48"   type="xs:anyURI" minOccurs="0"/>
+          <xs:element name="image128x128" type="xs:anyURI" minOccurs="0"/>
+      </xs:all>
+  </xs:complexType>
+</xs:schema>

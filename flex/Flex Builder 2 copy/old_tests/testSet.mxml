@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml">
+    <mx:Style>
+        Button { 
+            fontSize: 10pt; 
+            color: Blue; 
+        }
+        .myClass {
+            fontFamily: Arial, Helvetica, "_sans";
+            color: Red;
+            fontSize: 22;
+            fontWeight: bold;
+        } 
+    </mx:Style>
+    <mx:Script><![CDATA[
+    	[Embed(source="fonts/JOKERMAN.TTF",fontName="Jokerman")]
+    	private var joker:Class;
+    	private var f:Font = new Font();
+    	
+        public function showStyles():void {
+            lb1.text = String(ip1.getStyle("fontSize"));
+            lb1.text += "; "+f.fontName;//String(ip1.getStyle("fontName")) +":name";
+        }
+        
+        public function setNewStyles(newSize:Number):void {
+//        	var a:Array = Font.enumerateFonts(true);
+//        	a.sortOn("fontName", Array.CASEINSENSITIVE);
+        	
+//        	f = a[91] as Font; //= Jokerman
+			Font.registerFont(joker);
+            ip1.setStyle("fontSize",newSize);
+            ip1.setStyle("fontName",f.fontName);
+        }
+        
+    ]]></mx:Script>
+    <mx:VBox id="vb">
+    
+        <mx:TextInput styleName="myClass" text="My attrs" id="ip1"
+            width="400"/>
+        <mx:Label id="lb1" text="" width="400"/>
+        
+        <mx:Button label="Show Style" click="showStyles();"/>
+        <mx:Button label="Set Style" click="setNewStyles(Number(ip2.text));"/>
+        
+        <mx:TextInput text="" id="ip2" width="50"/>
+    </mx:VBox>
+</mx:Application>

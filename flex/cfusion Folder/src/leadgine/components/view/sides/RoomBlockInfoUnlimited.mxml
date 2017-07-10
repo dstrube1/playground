@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow showCloseButton="true"
+	close="handleClose(event)"
+	styleName="rprPanel"  
+	horizontalAlign="center" 
+	x = "{myDTO.referralFormX}"
+	y = "{myDTO.referralFormY}"
+	width = "{myDTO.referralFormWidth}"
+	height = "{myDTO.referralFormHeight}"
+	title="Referral Form" 
+	creationComplete="init()" 
+	click="debug()" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:components="leadgine.components.*"
+	xmlns:sides="leadgine.components.view.sides.*"
+	>
+<!--
+<panel:SuperPanel xmlns:panel="nl.wv.extenders.panel.*"
+-->
+
+<mx:Script>
+<![CDATA[
+	import mx.controls.Alert;
+	import mx.core.Application;
+	import mx.collections.ArrayCollection;
+	import mx.formatters.DateFormatter;
+    import leadgine.components.dto.FullServiceReferral;
+	import leadgine.components.view.sides.RoomRow;
+	import mx.events.CloseEvent;
+	import mx.managers.PopUpManager;
+	
+	[Bindable] public var myTitle:String;
+	[Bindable] public var myStartDate:String;
+
+	[Bindable] private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+	private var myNumRows:uint = 0;
+	private var myRowsArray:ArrayCollection;
+	private var headersSet:Boolean = false;
+		
+	private function init():void{
+		populateSavedValues();
+	}
+    private function populateSavedValues():void{
+    	if (myDTO.savedRoomBlock){
+			startDate.selectedDate = myDTO.startDate;
+			if (myDTO.roomRowArray == null){
+				return;
+			}
+			myRowsArray = new ArrayCollection(myDTO.roomRowArray.toArray());
+			//even with the following loop,
+			//This function does not update rows if we change the rate on the previous screen after adding days on this screen, 
+    		//unless days are cleared and re-added.
+    		//This may be a bug with IDeferredInstantiationUIComponent referenced in Container.as, called by roomRows.addChild(r) in updateNumRows, 
+    		//or I might be doing this wrong.
+			for (var i:uint=0; i< myRowsArray.length; i++){
+				var roomRow:RoomRow = myRowsArray[i] as RoomRow;
+				roomRow.rate.text = myDTO.rate;
+				myRowsArray[i] = roomRow;
+			}
+			numDays.value = myRowsArray.length;
+			roomRows.invalidateDisplayList();
+			roomRows.invalidateProperties();
+			roomRows.invalidateSize();
+			//complete the population:
+			updateNumRows();
+		}
+    }
+
+	private function handleClose(event:CloseEvent):void{
+		Application.application.resetDialogs();
+		PopUpManager.removePopUp(this);
+	}
+
+	private function debug():void{
+		var i:uint=0;//breakpoint here
+	}
+
+	private function nextSection():void {
+		if (validateForm()){
+			updateDataStore();
+			Application.application.toggleDialog(1);
+		}
+	}
+	private function prevSection():void {
+		//user can go backward if form not filled out
+		//if (validateForm){
+			updateDataStore();
+			Application.application.toggleDialog(-1);
+		//}
+	}
+	private function validateForm():Boolean{
+		var isValidForm:Boolean = (startDate.selectedDate && myNumRows > 0);
+		if (isValidForm) {
+			return true;
+		}
+		Alert.show("Please select a date and number of days.", "Missing data", Alert.OK);
+		return false;
+	}
+	private function updateDataStore():void{
+		myDTO.referralFormX = this.x;
+		myDTO.referralFormY = this.y;
+
+		myDTO.savedRoomBlock = true;
+		
+		myDTO.startDate = startDate.selectedDate;
+		myDTO.roomRowArray = myRowsArray;
+	}
+	public function onSelectDate():void {		
+		//this line is required by RoomRom's date calculation call
+		myDTO.startDate = startDate.selectedDate;
+		
+		myStartDate = calcDate(startDate.selectedDate,0);
+		//nextButton isn't ready till numDays is set.
+		//numDays isn't ready till myStartDate is set
+//		if (numDays.value > 0){
+//			navFooter.nextButton.enabled = true;
+//		}else{
+//			navFooter.nextButton.enabled = false;
+//		}
+		numDays.enabled = true;
+	}
+
+    private function updateNumRowsOnEnter(event:KeyboardEvent):void{
+    	if (event.keyCode == Keyboard.ENTER){
+    		updateNumRows();
+    	}
+    }
+    private function updateNumRows():void{
+    	
+    	//this function changes the number of rows displayed - one row per day
+    	myNumRows = numDays.value;
+    	
+    	if (myRowsArray == null){
+    		myRowsArray = new ArrayCollection();
+    	}
+    	
+    	if (myNumRows == 0){
+    		roomRows.removeAllChildren();
+    		myRowsArray = new ArrayCollection();
+    		return;
+    	}
+    	
+   		if (myNumRows == myRowsArray.length){
+   			//probably calling from populate; but in case not (i.e., use just hit enter on numeric stepper without changing the number) :
+   			roomRows.removeAllChildren();
+   			//calling from populate
+   			//var fixRoomRowsVBox:Boolean = false;
+   			for each (var r:RoomRow in myRowsArray){
+   				r.calcTotal();
+   				roomRows.addChild(r);
+   				/* by removing the local rate string for roomRow 
+   				and instead just always referring to myDTO.rate,
+   				I think I may have removed the need for this kludge - Yay!
+   				
+   				if (r.rate.text != myDTO.rate){
+   					//something went wrong in adding the row to roomRows VBox
+   					fixRoomRowsVBox = true;
+   				}*/
+   			}
+   			/*
+   			Just need to call calcTotal in the above for loop
+   			if (fixRoomRowsVBox){
+   				for (var i:uint=0; i<roomRows.getChildren().length; i++){
+   					//(roomRows.getChildAt(i) as RoomRow).rate.text = myDTO.rate;
+   					//may god have mercy on my soul for such an ugly dangerous kludge
+   					(roomRows.getChildAt(i) as RoomRow).calcTotal();
+   				}
+   			}
+   			*/
+		}
+   		var diff:uint;
+   		if (myNumRows < myRowsArray.length){
+   			diff = myRowsArray.length - myNumRows;
+   	    	for (var i:uint=0; i<diff; i++){
+   	    		var index:uint = myRowsArray.length-1;
+	    	//pop off last n
+		    	myRowsArray.removeItemAt(index);
+   	    		roomRows.removeChildAt(index);
+	    	}
+   		}
+   		if (myNumRows > myRowsArray.length){
+   			diff = myNumRows - myRowsArray.length;
+   			for (var j:uint=0; j<diff; j++){
+   				var roomRow:RoomRow = new RoomRow();
+   				//this doesn't work because the rate field isn't instantiated yet
+   				//roomRow.rate.text = myDTO.rate;
+   				//this should take care of Rate
+   				roomRow.myDTO = myDTO;
+   				roomRow.daysPlus = myRowsArray.length;//would be -1 after we add the row to the array
+	    		roomRows.addChild(roomRow);
+	    		myRowsArray.addItem(roomRow);
+	    	}
+
+   		}
+   		//this wouldn't get called without further user intervention, which could get annoying:
+   		calcTotals();
+    }	
+    private function calcTotals():void{
+    	var singles:uint = 0;
+    	var doubles:uint = 0;
+    	var totals:uint = 0;
+    	var revenue:Number = 0;
+    	for each(var roomRow:RoomRow in myRowsArray){
+    		singles += roomRow.singleCount;
+    		doubles += roomRow.doubleCount;
+    		totals += roomRow.rowTotalCount;
+    		revenue += Number(roomRow.revenueText.replace("$",""));
+    	}
+    	totalSingles.text = singles.toString();
+    	totalDoubles.text = doubles.toString();
+    	totalTotals.text = totals.toString();
+    	totalRevenue.text = "$"+revenue.toFixed(2);
+    	//debugging:
+    	//totalSingles.text = roomRows.height.toString();
+    }
+	/*Utility functions - some of these should be moved to a utility class*/
+    private function handleFormValidate(event:Event):void {
+       // status.text = "This form is: "+String(event.type);
+    }
+	//Calculate row totals-----
+	private function balanceRow(val1:int, val2:int, val3:int, val4:int, val5:int, val6:int, val7:int):String {
+		return (val1 + val2 + val3 + val4 + val5 + val6 + val7).toString();
+	}
+	
+	//Calculate column totals----
+	private function balanceCol(val1:int, val2:int):String {
+		return (val1 + val2).toString();
+	}
+	
+	//generate 6 subsequent days based on start date selected----
+	public static function calcDate(date:Date, days:Number):String {
+		if (date == null){
+			return "";
+		}
+		var calculatedDate:Date = addDays(date, days);
+        var myDateFormatter:DateFormatter = new DateFormatter();
+        	myDateFormatter.formatString="MM/DD/YYYY";			
+		var formattedDate:String = myDateFormatter.format(calculatedDate);
+		return formattedDate;
+    }
+    public static function addDays(date:Date, days:Number):Date {
+        return addHours(date, days*24);
+    }
+    public static function addHours(date:Date, hrs:Number):Date {
+        return addMinutes(date, hrs*60);
+    }
+    public static function addMinutes(date:Date, mins:Number):Date {
+        return addSeconds(date, mins*60);
+    }
+    public static function addSeconds(date:Date, secs:Number):Date {
+        var mSecs:Number = secs * 1000;
+        var sum:Number = mSecs + date.getTime();
+        return new Date(sum);
+    }
+    private function onNextSection():void {
+    	dispatchEvent( new Event( 'nextSection' ) );
+    }
+
+]]>
+</mx:Script>
+<mx:VBox height="100%">
+
+		<mx:HBox verticalAlign="bottom" id="headerArea" width="800" styleName="headerStyle">
+			<mx:Label text="Full Service Referral Form" styleName="mainTitle" />
+			<mx:Spacer width="100%" />
+		</mx:HBox>
+		<mx:VBox 
+			width="100%" 
+			height="100%" >
+			
+			<mx:VBox styleName="containerStyle" width="100%" height="100%">
+				<!--SECTION LABEL IS PASSED IN FROM MAIN APPLICATION-->
+				<mx:Label text="{myTitle}" styleName="secTitle" />
+				
+				<mx:DateField id="startDate" width="100" change="onSelectDate()" />
+				<mx:NumericStepper textAlign="right" width="100" id="numDays" click="updateNumRows()"
+					keyDown="updateNumRowsOnEnter(event)" enabled="{startDate.selectedDate!=null}"
+					minimum="0" maximum="100"/>
+				<mx:HBox id="roomRowsHeader" width="{roomRows.width}">
+					<mx:Text id="header1" text="Date"/>
+					<mx:Spacer width="100%"/>
+					<mx:Text id="header2" text="Singles"/> 
+					<mx:Spacer width="100%"/>
+					<mx:Text id="header3" text="Doubles"/> 
+					<mx:Spacer width="100%"/>
+					<mx:Text id="header4" text="Total"/> 
+					<mx:Spacer width="100%"/>
+					<mx:Text id="header5" text="Rate"/> 
+					<mx:Spacer width="100%"/>
+					<mx:Text id="header6" text="Revenue"/> 
+        		</mx:HBox>
+				<mx:VBox id="roomRows" click="calcTotals()" keyDown="calcTotals()" maxHeight="247" />
+				<mx:HBox id="roomTotals" width="{roomRows.width}">
+					<mx:Text text="Totals"/> 
+					<mx:Spacer width="100%"/>
+					<mx:Text id="totalSingles" text=""/> 
+					<mx:Spacer width="100%"/>
+					<mx:Text id="totalDoubles" text=""/> 
+					<mx:Spacer width="100%"/>
+					<mx:Text id="totalTotals" text=""/> 
+					<mx:Spacer width="100%"/>
+					<mx:Text id="totalBlank" text=""/> 
+					<mx:Spacer width="100%"/>
+					<mx:Text id="totalRevenue" text=""/> 
+				</mx:HBox>
+				
+				<!--NAVIGATION FOOTER-->
+				<mx:Spacer height="100%" />
+				<components:NavigationFooter id="navFooter" verticalAlign="bottom"
+					prevSection="prevSection()"
+					nextSection="nextSection()"
+				/>
+			</mx:VBox>	
+		</mx:VBox>
+	</mx:VBox>
+<!--
+</panel:SuperPanel>
+-->
+</mx:TitleWindow>

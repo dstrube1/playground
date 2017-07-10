@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600"
+			   creationComplete="init()">
+	<fx:Script>
+		<![CDATA[
+			public var heartbeat:Timer = new Timer(3000,0);
+			public var defibrillator:Timer = new Timer(30000,0);
+			public var defibrillatorCount:uint = 0;
+			public var urlRequest:URLRequest = new URLRequest("http://www.google.com");
+			public var urlLoader:URLLoader = new URLLoader();
+
+			[Bindable]
+			public var status:String = "status initialized";
+			public function init():void{
+				status = "app initialized";
+				heartbeat.addEventListener(TimerEvent.TIMER, executeHeartbeat); 
+				defibrillator.addEventListener(TimerEvent.TIMER, defibrillate);
+
+				urlLoader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
+				urlLoader.addEventListener(Event.OPEN, open);
+				urlLoader.addEventListener(Event.COMPLETE, complete);
+				//urlLoader.addEventListener(Event.ACTIVATE, active);
+				//urlLoader.addEventListener(HTTPStatusEvent.HTTP_RESPONSE_STATUS, httpResponse);
+				
+				heartbeat.start();
+				status = "heartbeat started";
+			}
+			public function executeHeartbeat (e:Event):void {
+				heartbeat.stop();
+				status = "heartbeat stopped; checking heartbeat...";
+				handleNotification("EXECUTE_HEARTBEAT");
+			}
+			
+			public function handleNotification( note:String ):void{
+				switch ( note )
+				{
+					case "EXECUTE_HEARTBEAT":
+						//check for heartbeat
+						try{
+							urlLoader.load(urlRequest);
+						}catch(e:SecurityError){
+							status = "urlLoader.load = SecurityError";
+						}
+						//defibrillate if necessary - errorHandler
+						//else
+						//heartbeat.start(); - complete
+						break;
+				}
+			}
+			public function errorHandler(e:IOErrorEvent):void{
+				status = "IOError; defibrillator count = " + defibrillatorCount;
+				if (defibrillatorCount < 5){
+					defibrillator.start();
+				}else{
+					status = "patient is dead";
+				}
+			}
+			public function open (e:Event):void {
+				status = "urlLoader open";
+			}
+//			public function active (e:Event):void {
+//				status = "urlLoader active";
+//			}
+//			public function httpResponse (e:HTTPStatusEvent):void {
+//				status = "urlLoader http response: " + e.status;
+//			}
+			public function complete (e:Event):void {
+				status = "urlLoader complete; restarting heartbeat...";
+				heartbeat.start();
+				urlLoader.close();
+			}
+			public function defibrillate(e:Event):void {
+				defibrillatorCount++;
+				if (heartbeat.running){
+					if (defibrillator.running){
+						defibrillator.stop();
+					}
+					return;
+				}
+				heartbeat.start();
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<mx:Text text="{status}"/>
+</s:Application>

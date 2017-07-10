@@ -1,0 +1,69 @@
+package base.renderer
+{
+	import app.App;
+	import app.config.LenzFactory;
+	
+	import base.form.LenzForm;
+	import base.lenz.BaseLenz;
+	import base.lenz.Lenz;
+	import base.lenz.panel.BaseLenzPanel;
+	import base.lenz.panel.LenzPanel;
+	import base.lenz.panel.PanelBuilder;
+	
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
+	import flash.utils.setTimeout;
+	
+	import lenz.main.study_mgr.StudyManagerLenz;
+	import lenz.main.study_mgr.panel.StudyManagerGeoForm;
+	import lenz.main.study_mgr.panel.StudyManagerGeoPanel;
+	
+	import mx.containers.Panel; 
+	import mx.controls.Alert;
+	
+	public class RadarRenderer implements Renderer
+	{
+		private var currentLenz:Lenz = null;
+		private var data:Object = null;
+		private var form:LenzForm;
+		
+		public function render (lenzId:String, data:Object, changePanel:Boolean):void {
+			
+			this.currentLenz = LenzFactory.getLenz(lenzId);
+			this.data = data;
+			
+			//slide down and up only if showing a new panel
+			
+			if (changePanel) {
+				var panel:LenzPanel = this.currentLenz.getCurrentPanel();
+				
+				if (lenzId == App.STUDY_MANAGER) {
+					(this.currentLenz as StudyManagerLenz).changePanel(data);
+				}
+				
+			} else {
+				
+				changeResource();
+				form.setLenzPanel(this.currentLenz.getCurrentPanel()); 
+			}
+		}
+		
+		private function changeResource():void {
+			
+		}
+		
+		public function getForm(clazz:Class):LenzForm {
+			return new clazz();
+			
+			
+		}
+		
+		public function timerHandler(event:TimerEvent):void {
+			changeResource();
+			currentLenz.getCurrentPanel().exposePanel = true;
+			currentLenz.getCurrentPanel().animateContent();
+		}
+		
+	}
+
+}

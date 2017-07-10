@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta name="description" content="Ben Clinkinbeard Creating Flexible Components for Reuse and Distribution www.universalmind.com Who is this guy? www.universalmind.com What are we going to cover? Building single-use components (usually) sucks Components should be: easy to utilize reusable customizable style friendly useful (not just usable) www.universalmind.com Why? www.universalmind.com You Good: Creating new components and applications  Bad: Supporting old components www.universalmind.com People using your component Good: Your component just works Discovery of depth and elegance can/should happen later  Bad: Getting up and running takes 20 10 minutes of reading docs and code www.universalmind.com OK smart guy, how? www.universalmind.com flexmdi Project site - http://code.google.com/p/flexmdi/ Brian Holmes - http://brianjoseph31.typepad.com/smashedapples/ Brendan Meutzner - http://www.meutzner.com/blog/  Conceived and begun at 360|Flex Seattle, August 2007 Released September 2007 Version 1.1 released February 12, 2008 Stay tuned... www.universalmind.com Composition over “in there”-itance Division of responsibilities Classic tenet of OOP and common refactoring method One component != one class Expose modularity / assignment  MDIWindowControlsContainer flexmdi effects www.universalmind.com Hide the details Another core principle of OOP - Encapsulation Less exposure means more freedom Automate tedious tasks  MDICanvas mdiManager.windowEventProxy() www.universalmind.com Providing default behaviors Listen for own events Low priority listener to ensure late/last execution EventPriority.DEFAULT_HANDLER:int = -50 addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void www.universalmind.com Modifying default behaviors “Normal” listeners will get called first mdiWindow.addEventListener(MDIManager.WINDOW_CLOSE, onWindowClose); Cancel default behavior by calling event.preventDefault(); Use event.clone() to store copy for later execution www.universalmind.com Executing default behaviors Default handler is public for delayed / manual calls Behavior is conditional if( !event.isDefaultPrevented() ) www.universalmind.com Follow conventions Use life cycle functions when possible / appropriate MDIWindowControlsContainer Styles as styles Metadata... www.universalmind.com Metadata (is mandatory) Compiler instructions Code completion and MXML assignments  [Event(name=&quot;minimize&quot;, type=&quot;flexmdi.events.MDIWindowEvent&quot;)]  [Style(name=&quot;closeBtnStyleName&quot;, type=&quot;String&quot;, inherit=&quot;no&quot;)]  [Bindable] www.universalmind.com Make things easy Expose things the framework doesn’t mdiWindow.getTitleTextField() Proxy properties mdiCanvas.enforceBoundaries Provide base implementations MDIEffectsDescriptorBase www.universalmind.com"/>
+    <title></title>
+    <script type="text/javascript" language="javascript">
+//      <![CDATA[
+            var images = new Array (17);
+            images[0] = "preso.html_files/preso.001.png";
+            images[1] = "preso.html_files/preso.002.png";
+            images[2] = "preso.html_files/preso.003.png";
+            images[3] = "preso.html_files/preso.004.png";
+            images[4] = "preso.html_files/preso.005.png";
+            images[5] = "preso.html_files/preso.006.png";
+            images[6] = "preso.html_files/preso.007.png";
+            images[7] = "preso.html_files/preso.008.png";
+            images[8] = "preso.html_files/preso.009.png";
+            images[9] = "preso.html_files/preso.010.png";
+            images[10] = "preso.html_files/preso.011.png";
+            images[11] = "preso.html_files/preso.012.png";
+            images[12] = "preso.html_files/preso.013.png";
+            images[13] = "preso.html_files/preso.014.png";
+            images[14] = "preso.html_files/preso.015.png";
+            images[15] = "preso.html_files/preso.016.png";
+            images[16] = "preso.html_files/preso.017.png";
+            var index = 0;
+            function WindowLoaded(evt)
+            {
+                document.body.onselectstart = function () { return false; };
+            }
+            function Step(i)
+            {
+                GoTo(index + i)
+            }
+            function GoTo(newIndex)
+            {
+                if(newIndex >= 0 && newIndex < images.length)
+                {
+                    index = newIndex;
+                    document.Slideshow.src = images[index];
+                }
+            }
+//      ]]>
+    </script>
+</head>
+<body bgcolor="black" onload='WindowLoaded(event);'>
+    <p align="center">
+        <br/>
+        <br/>
+        <img name="Slideshow" alt="" src="preso.html_files/preso.001.png" onclick="Step(1)"/>
+        <br/>
+        <br/>
+        <input type="image" src="preso.html_files/home.png" onclick="GoTo(0)"/>
+        &nbsp;&nbsp;&nbsp;
+        <input type="image" src="preso.html_files/prev.png" onclick="Step(-1)"/>
+        <input type="image" src="preso.html_files/next.png" onclick="Step(1)"/>
+    </p>
+</body>
+</html>

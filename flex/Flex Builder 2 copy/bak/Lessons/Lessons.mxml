@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	<mx:Panel x="10" y="10" width="250" height="200" layout="absolute" title="Panel">
+		<mx:Label x="10" y="10" text="Label" mouseDownEffect="WipeRight"/>
+	</mx:Panel>
+	
+</mx:Application>

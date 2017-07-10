@@ -1,0 +1,5 @@
+#Fri Sep 21 16:38:25 EDT 2007
+OPEN_REQUIRED_PROJECTS=always
+SAVE_ALL_BEFORE_BUILD=true
+eclipse.preferences.version=1
+REFRESH_WORKSPACE_ON_STARTUP=false

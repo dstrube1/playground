@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" height="100%" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" >
+<mx:Script>
+<![CDATA[
+	import com.google.maps.InfoWindowOptions;
+	import com.google.maps.overlays.Marker;
+	import mx.collections.ArrayCollection;
+	import com.google.maps.Map;
+	import com.google.maps.LatLng;
+	
+	private const brandPrefix:String = "Brand: ";
+	private const propertyNamePrefix:String = "\nName: ";
+	private const addressPrefix:String = "\nAddress: ";
+	private const cityPrefix:String = "\nCity: ";
+	private const statePrefix:String = "\nState: ";
+	private const zipPrefix:String = "\nZip: ";
+	private const descriptionPrefix:String = "\nDescription: ";
+	[Bindable] public var brand:String;
+	[Bindable] public var propertyName:String;
+	[Bindable] public var address:String;
+	[Bindable] public var city:String;
+	[Bindable] public var state:String;
+	[Bindable] public var zip:String;
+	[Bindable] public var description:String;
+	[Bindable] public var latLng:LatLng;
+	public var map:Map;
+	public var markerArray:ArrayCollection;
+	public var markerContentArray:ArrayCollection;
+	public var markerLabel:String;
+	
+	private function buttonClick():void{
+		map.setCenter(latLng,14);
+		var infoWindowOptions:InfoWindowOptions = new InfoWindowOptions();
+		var marker:Marker;
+		for each (var object:Object in markerContentArray){
+			if (object.latLng == latLng){
+				for each (var temp:Marker in markerArray){
+					if (temp.getOptions().label == markerLabel){
+						marker = temp;
+						break;
+					}
+				}
+				if (marker == null){return;}
+				try{
+					var name:String = markerContentArray[Number(markerLabel)-1].name.toString();
+					infoWindowOptions.content = name;
+					marker.openInfoWindow(infoWindowOptions);
+				}catch(e:TypeError){
+					//fail quietly
+				}
+				return;
+			}
+		}
+	}
+]]>
+</mx:Script>
+	<mx:TextArea width="100%" height="120" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
+		text="{brandPrefix + brand + propertyNamePrefix + propertyName + addressPrefix + address + cityPrefix + city + statePrefix + state + zipPrefix + zip + descriptionPrefix + description}" editable="false" cornerRadius="5">
+	</mx:TextArea>
+	<mx:Button icon="@Embed('assets/img/icons/right.png')" width="50" label="" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" height="120" click="buttonClick()"/>
+</mx:HBox>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BaseLenzPanel xmlns="base.lenz.panel.*" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	implements="base.lenz.panel.LenzPanel"
+	creationComplete="onCreationComplete()" 
+	title="Study Manager">
+	 
+	<mx:Script>
+		<![CDATA[
+			import base.form.LenzForm;
+			import base.event.FormResourcedEvent;
+			
+			
+//			private var _form:StudyManagerGeoForm = null;
+
+
+			
+			protected function onCreationComplete():void {
+
+				//logger.debug("StudyManagerGeoPanel: onCreationComplete()");
+
+				lenzId = "StudyManagerGeoPanel";
+								
+				initializePanel();
+						
+				ready();
+					
+			}
+			
+			public override function getDefaultFormClass():Class {
+				return StudyManagerGeoForm;
+			}
+			 
+			
+
+			
+		]]>
+	</mx:Script>
+	
+</BaseLenzPanel>

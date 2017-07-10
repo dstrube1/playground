@@ -1,0 +1,1123 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
+<meta content="IResourceManager,mx.resources.IResourceManager,resourceBundles,bundleName,content,locale,localeChain,language,country,variant,bundleName,content,locale,localeChain,getResourceBundle,getContent,getBoolean,getNumber,getString,getStringArray,getObject,getInstance,loadResourceBundles,unloadResourceBundles,addResourceBundle,getResourceBundle,removeResourceBundle,removeResourceBundlesForLocale,update,getLocales,getBundleNamesForLocale,findResourceBundleWithResource,getObject,getString,getStringArray,getNumber,getInt,getUint,getBoolean,getClass,getCurrent,toString,loadResourceBundles,unloadResourceBundles,addResourceBundle,removeResourceBundle,removeResourceBundlesForLocale,update,getLocales,getBundleNamesForLocale,getResourceBundle,findResourceBundleWithResource,getObject,getString,getStringArray,getNumber,getInt,getUint,getBoolean,getClass" name="keywords">
+<title>mx.resources.IResourceManager (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'IResourceManager - Flex 3 Language Reference';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../index.html?mx/resources/IResourceManager.html&amp;mx/resources/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Interface&nbsp;IResourceManager</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Interface IResourceManager"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.resources</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public  interface  IResourceManager extends <a href="../../flash/events/IEventDispatcher.html">IEventDispatcher</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implementors</td><td><a href="../../mx/resources/ResourceManager.html">ResourceManager</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  The APIs of the IResourceManager interface 
+  provide localization support for Flex applications.
+   <p>There are three main concepts involved in localization:
+  locales, resources, and resource bundles.</p>
+   <p>A locale specifies a language and a country
+  for which your application has been localized.
+  For example, the locale <code>"en_US"</code>
+  specifies English as spoken in the United States.
+  (See the mx.resources.Locale class for more information.)</p>
+   <p>A resource is a named value which is locale-dependent.
+  For example, your application might have a resource
+  whose name is <code>"OPEN"</code>
+  and whose value for an English locale is <code>"Open"</code>
+  but whose value for a French locale is <code>"Ouvrir"</code>.</p>
+   <p>A resource bundle is a named group of resources
+  whose values have been localized for a particular locale.
+  A resource bundle is identified by the combination of its
+  <code>bundleName</code> and its <code>locale</code>,
+  and has a <code>content</code> Object which contains
+  the name/value pairs for the bundle's resources.
+  See the documentation for mx.resources.IResourceBundle
+  for information about how you typically create resource
+  bundles from .properties files.</p>
+   <p>A single ResourceManager object implementing the IResourceManager
+  interface manages multiple resource bundles, possibly for multiple
+  locales, and provides access to the resources that they contain.
+  For example, you can retrieve a specific resource as a String by calling
+  <code>resourceManager.getString(bundleName, resourceName)</code>.</p>
+   <p>All classes that extend UIComponent, Formatter, or Validator
+  have a <code>resourceManager</code> property
+  which provides a reference to the object implementing this interface.
+  Other classes can call <code>ResourceManager.getInstance()</code>
+  to obtain this object.</p>
+   <p>Resource retrieval methods such as <code>getString()</code>
+  search for resources in the locales specified
+  by the <code>localeChain</code> property.
+  By changing this property, you can make your application
+  suddenly use, for example, Japanese rather than English resources.</p>
+   <p>When your application starts, the ResourceManager is automatically
+  populated with whatever resource bundles were compiled
+  into the application.
+  If you create a code module, by default the resources that its classes
+  need are compiled into the module.
+  When the module is loaded into an application, any bundles which the
+  application does not already have are added to the ResourceManager.</p>
+   <p>You can compile "resource modules" which have only resources in them,
+  and load them with the <code>loadResourceBundles()</code> method
+  of IResourceManager.
+  With resource modules you can support multiple locales by loading
+  the resources you need at runtime rather than compiling them into
+  your application.</p>
+   <p>Although the ResourceManager is normally populated with resource bundles
+  that were compiled into your application or loaded from modules,
+  you can also programmatically create resource bundles and add them
+  to the ResourceManager yourself with the <code>addResourceBundle()</code>
+  method.</p>
+   <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="ResourceManager.html" target="">mx.resources.ResourceManager</a>
+<br>
+<a href="IResourceBundle.html" target="">mx.resources.IResourceBundle</a>
+<br>
+<a href="ResourceBundle.html" target="">mx.resources.ResourceBundle</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#localeChain">localeChain</a> : <a href="../../Array.html">Array</a>
+<div class="summaryTableDescription">
+   An Array of locale Strings, such as [ "en_US" ],
+   which specifies one or more locales to be searched for resources.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addResourceBundle()">addResourceBundle</a>(resourceBundle:<a href="../../mx/resources/IResourceBundle.html">IResourceBundle</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Adds the specified ResourceBundle to the ResourceManager
+   so that its resources can be accessed by ResourceManager
+   methods such as getString().</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#findResourceBundleWithResource()">findResourceBundleWithResource</a>(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../mx/resources/IResourceBundle.html">IResourceBundle</a>
+</div>
+<div class="summaryTableDescription">
+   Searches the locales in the localeChain
+   for the specified resource and returns
+   the first resource bundle in which it is found.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getBoolean()">getBoolean</a>(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+   Gets the value of a specified resource as a Boolean.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getBundleNamesForLocale()">getBundleNamesForLocale</a>(locale:<a href="../../String.html">String</a>):<a href="../../Array.html">Array</a>
+</div>
+<div class="summaryTableDescription">
+   Returns an Array of Strings specifying the bundle names
+   for all ResourceBundles which exist in the ResourceManager
+   and which belong to the specified locale.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getClass()">getClass</a>(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../Class.html">Class</a>
+</div>
+<div class="summaryTableDescription">
+   Gets the value of a specified resource as a Class.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getInt()">getInt</a>(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../int.html">int</a>
+</div>
+<div class="summaryTableDescription">
+   Gets the value of a specified resource as an int.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getLocales()">getLocales</a>():<a href="../../Array.html">Array</a>
+</div>
+<div class="summaryTableDescription">
+   Returns an Array of Strings specifying all locales for which
+   ResourceBundles exist in the ResourceManager.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getNumber()">getNumber</a>(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../Number.html">Number</a>
+</div>
+<div class="summaryTableDescription">
+   Gets the value of a specified resource as a Number.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getObject()">getObject</a>(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#*">*</a>
+</div>
+<div class="summaryTableDescription">
+   Gets the value of a specified resource as an Object.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getResourceBundle()">getResourceBundle</a>(locale:<a href="../../String.html">String</a>, bundleName:<a href="../../String.html">String</a>):<a href="../../mx/resources/IResourceBundle.html">IResourceBundle</a>
+</div>
+<div class="summaryTableDescription">
+   Returns a ResourceBundle with the specified locale
+   and bundleName which has been previously added
+   to the ResourceManager with addResourceBundle().</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getString()">getString</a>(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>, <a href="../../statements.html#..._(rest)_parameter">...</a> parameters):<a href="../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+   Gets the value of a specified resource as a String,
+   after substituting specified values for placeholders.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getStringArray()">getStringArray</a>(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../Array.html">Array</a>
+</div>
+<div class="summaryTableDescription">
+   Gets the value of a specified resource as an Array of Strings.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getUint()">getUint</a>(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../uint.html">uint</a>
+</div>
+<div class="summaryTableDescription">
+   Gets the value of a specified resource as a uint.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#loadResourceBundles()">loadResourceBundles</a>(url:<a href="../../String.html">String</a>, update:<a href="../../Boolean.html">Boolean</a> = true, trustContent:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../flash/events/IEventDispatcher.html">IEventDispatcher</a>
+</div>
+<div class="summaryTableDescription">
+   Begins loading a resource module containing resource bundles.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeResourceBundle()">removeResourceBundle</a>(locale:<a href="../../String.html">String</a>, bundleName:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Removes the specified ResourceBundle from the ResourceManager
+   so that its resources can no longer be accessed by ResourceManager
+   methods such as getString().</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeResourceBundlesForLocale()">removeResourceBundlesForLocale</a>(locale:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Removes all ResourceBundles for the specified locale
+   from the ResourceManager so that their resources
+   can no longer be accessed by ResourceManager methods
+   such as getString().</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#unloadResourceBundles()">unloadResourceBundles</a>(url:<a href="../../String.html">String</a>, update:<a href="../../Boolean.html">Boolean</a> = true):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   This method has not yet been implemented.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#update()">update</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Dispatches a "change" Event from the
+   resource manager.</div>
+</td><td class="summaryTableOwnerCol">IResourceManager</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="localeChain"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">localeChain</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>localeChain:<a href="../../Array.html">Array</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+   An Array of locale Strings, such as <code>[ "en_US" ]</code>,
+   which specifies one or more locales to be searched for resources.
+   
+   <p>When you call the ResourceManager methods <code>getObject()</code>,
+   <code>getString()</code>, <code>getStringArray()</code>,
+   <code>getNumber()</code>, <code>getInt()</code>,
+   <code>getUint()</code>, <code>getBoolean()</code>, or
+   <code>getClass()</code> to get the value of a resource,
+   you specify a bundle name and a resource name,
+   but not a locale.
+   The ResourceManager starts with the first locale in the
+   <code>localeChain</code> and looks for a ResourceBundle
+   with the specified bundle name for that locale.
+   If such a ResourceBundle exists, and the specified resource
+   exists in it, then the value of that resource is returned.
+   Otherwise, the ResourceManager proceeds on to the other
+   locales in the <code>localeChain</code>.</p>
+     <p>This scheme makes it possible to have locales which do not
+   necessarily contain a complete set of localized resources.
+   For example, if you are localizing your application for
+   Indian English rather than U.S. English, you need only
+   supply resources for the en_IN locale in which the
+   Indian spelling or usage differs from that in the U.S.,
+   and then set the <code>localeChain</code>
+   to <code>[ "en_IN", "en_US" ]</code>.</p>
+     <p>Many framework classes assume that they can always
+   obtain, from some locale, the resources that they expect,
+   and they will throw Errors if they cannot do so.
+   Therefore, you must ensure that the <code>localeChain</code>
+   always contains a complete set of resources.
+   Unless you have done a complete localization of all the
+   framework's resources as well as your own application's
+   resources, you can keep the <code>"en_US"</code> locale
+   at the end of your <code>localeChain</code> to ensure this.</p>
+     <p>Setting this property causes the ResourceManager to dispatch
+   a <code>"change"</code> Event.</p>
+  </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get localeChain():<a href="../../Array.html">Array</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set localeChain(value:<a href="../../Array.html">Array</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method Detail</div>
+<a name="addResourceBundle()"></a><a name="addResourceBundle(mx.resources.IResourceBundle)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addResourceBundle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addResourceBundle(resourceBundle:<a href="../../mx/resources/IResourceBundle.html">IResourceBundle</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+   Adds the specified ResourceBundle to the ResourceManager
+   so that its resources can be accessed by ResourceManager
+   methods such as <code>getString()</code>.
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">resourceBundle</span>:<a href="../../mx/resources/IResourceBundle.html">IResourceBundle</a></code> &mdash; The resource bundle to be added.
+  </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="findResourceBundleWithResource()"></a><a name="findResourceBundleWithResource(String,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">findResourceBundleWithResource</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function findResourceBundleWithResource(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../mx/resources/IResourceBundle.html">IResourceBundle</a></code>
+<p></p><p>
+   Searches the locales in the <code>localeChain</code>
+   for the specified resource and returns
+   the first resource bundle in which it is found.
+   If the resource isn't found, this method returns <code>null</code>.
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">bundleName</span>:<a href="../../String.html">String</a></code> &mdash; A bundle name such as <code>"MyResources"</code>.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">resourceName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource in the resource bundle.
+     </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../mx/resources/IResourceBundle.html">IResourceBundle</a></code> &mdash; The first ResourceBundle in the <code>localeChain</code>
+   that contains the specified resource, or <code>null</code>.
+  </td>
+</tr>
+</table>
+</div>
+<a name="getBoolean()"></a><a name="getBoolean(String,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getBoolean</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getBoolean(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a></code>
+<p></p><p>
+   Gets the value of a specified resource as a Boolean.
+     <p>This method first calls <code>getString()</code>
+   and converts the result to lowercase.
+   It then returns <code>true</code>
+   if the result was <code>"true"</code>.
+   and <code>false</code> otherwise.</p>
+     <p>If the specified resource is not found,
+   this method returns <code>false</code>.</p>
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">bundleName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource bundle.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">resourceName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource in the resource bundle.
+     </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Boolean.html">Boolean</a></code> &mdash; The resource value, as a Boolean,
+   or <code>false</code> if it is not found.
+  </td>
+</tr>
+</table>
+</div>
+<a name="getBundleNamesForLocale()"></a><a name="getBundleNamesForLocale(String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getBundleNamesForLocale</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getBundleNamesForLocale(locale:<a href="../../String.html">String</a>):<a href="../../Array.html">Array</a></code>
+<p></p><p>
+   Returns an Array of Strings specifying the bundle names
+   for all ResourceBundles which exist in the ResourceManager
+   and which belong to the specified locale.
+     <p>The order of bundle names in this array is not specified.</p>
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">locale</span>:<a href="../../String.html">String</a></code> &mdash; A locale string such as <code>"en_US"</code>.
+     </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Array.html">Array</a></code> &mdash; An Array of bundle names.
+     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="IResourceBundle.html" target="">mx.resources.IResourceBundle</a>
+</div>
+</div>
+<a name="getClass()"></a><a name="getClass(String,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getClass</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getClass(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../Class.html">Class</a></code>
+<p></p><p>
+   Gets the value of a specified resource as a Class.
+     <p>This method calls <code>getObject()</code>
+   and coerces it to type Class using the <code>as</code> operator.
+   The result will be <code>null</code> if the resource value
+   was not a class reference.
+   It is useful if you have written a lines such as</p>
+     <pre>
+   IMAGE=Embed("image.jpg")
+   BUTTON_SKIN=ClassReference("skins.ButtonSkin_en_US")
+   </pre>
+     <p>in a .properties file and want to obtain
+   the Class that the <code>Embed()</code>
+   or <code>ClassReference()</code> directive produced.</p> 
+     <p>If the specified resource is not found,
+   this method returns <code>null</code>.</p>
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">bundleName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource bundle.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">resourceName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource in the resource bundle.
+     </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Class.html">Class</a></code> &mdash; The resource value, as a <code>Class</code>,
+   or <code>null</code> if it is not found.
+  </td>
+</tr>
+</table>
+</div>
+<a name="getInt()"></a><a name="getInt(String,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getInt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getInt(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../int.html">int</a></code>
+<p></p><p>
+   Gets the value of a specified resource as an <code>int</code>.
+     <p>This method calls <code>getObject()</code>
+   and casts the result to an <code>int</code>.
+   It is useful if you have written a line such as</p>
+     <pre>
+   MINIMUM=5
+   </pre>
+     <p>in a .properties file and want to obtain the value
+   <code>5</code> rather than <code>"5"</code>.</p> 
+     <p>If the specified resource is not found,
+   this method returns <code>0</code>.</p>
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">bundleName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource bundle.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">resourceName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource in the resource bundle.
+     </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../int.html">int</a></code> &mdash; The resource value, as an <code>int</code>,
+   or <code>0</code> if it is not found.
+  </td>
+</tr>
+</table>
+</div>
+<a name="getLocales()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getLocales</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getLocales():<a href="../../Array.html">Array</a></code>
+<p></p><p>
+   Returns an Array of Strings specifying all locales for which
+   ResourceBundles exist in the ResourceManager.
+     <p>The order of locales in this array is not specified.</p>
+     </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Array.html">Array</a></code> &mdash; An Array of locale Strings.
+  </td>
+</tr>
+</table>
+</div>
+<a name="getNumber()"></a><a name="getNumber(String,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getNumber</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getNumber(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../Number.html">Number</a></code>
+<p></p><p>
+   Gets the value of a specified resource as a Number.
+     <p>This method calls <code>getObject()</code>
+   and casts the result to a Number.
+   It is useful if you have written a line such as</p>
+     <pre>
+   LONGITUDE=170.3
+   </pre>
+     <p>in a .properties file and want to obtain the value
+   <code>170.3</code> rather than <code>"170.3"</code>.</p> 
+     <p>If the specified resource is not found,
+   this method returns <code>NaN</code>.</p>
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">bundleName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource bundle.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">resourceName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource in the resource bundle.
+     </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Number.html">Number</a></code> &mdash; The resource value, as a Number,
+   or <code>NaN</code> if it is not found.
+  </td>
+</tr>
+</table>
+</div>
+<a name="getObject()"></a><a name="getObject(String,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getObject</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getObject(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#*">*</a></code>
+<p></p><p>
+   Gets the value of a specified resource as an Object.
+     <p>The value is returned exactly as it is stored
+   in the <code>content</code> Object of the ResourceBundle,
+   with no conversion.
+   If the resource was compiled from a .properties files,
+   the resource value in the <code>content</code> Object 
+   is always a String unless you used the <code>Embed()</code>
+   or <code>ClassReference()</code> directive, in which case
+   it is a Class.
+   Use the <code>getString()</code>, <code>getStringArray()</code>, 
+   <code>getNumber()</code>, <code>getInt()</code>
+   <code>getUint()</code>, <code>getBoolean()</code>, and
+   <code>getClass()</code> methods to convert the value
+   to more specific types.</p>
+     <p>If the specified resource is not found,
+   this method returns <code>undefined</code>.</p>
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">bundleName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource bundle.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">resourceName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource in the resource bundle.
+     </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../specialTypes.html#*">*</a></code> &mdash; The resource value, exactly as it is stored
+   in the <code>content</code> Object,
+   or <code>undefined</code> if the resource is not found.
+  </td>
+</tr>
+</table>
+</div>
+<a name="getResourceBundle()"></a><a name="getResourceBundle(String,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getResourceBundle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getResourceBundle(locale:<a href="../../String.html">String</a>, bundleName:<a href="../../String.html">String</a>):<a href="../../mx/resources/IResourceBundle.html">IResourceBundle</a></code>
+<p></p><p>
+   Returns a ResourceBundle with the specified <code>locale</code>
+   and <code>bundleName</code> which has been previously added
+   to the ResourceManager with <code>addResourceBundle()</code>.
+   If no such ResourceBundle exists, this method returns <code>null</code>.
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">locale</span>:<a href="../../String.html">String</a></code> &mdash; A locale string such as <code>"en_US"</code>.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">bundleName</span>:<a href="../../String.html">String</a></code> &mdash; A bundle name such as <code>"MyResources"</code>.
+     </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../mx/resources/IResourceBundle.html">IResourceBundle</a></code> &mdash; The ResourceBundle with the specified <code>locale</code>
+   and <code>bundleName</code> if one exists; otherwise <code>null</code>.
+     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="IResourceBundle.html" target="">mx.resources.IResourceBundle</a>
+</div>
+</div>
+<a name="getString()"></a><a name="getString(String,String,restParam)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getString(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>, <a href="../../statements.html#..._(rest)_parameter">...</a> parameters):<a href="../../String.html">String</a></code>
+<p></p><p>
+   Gets the value of a specified resource as a String,
+   after substituting specified values for placeholders.
+     <p>This method calls <code>getObject()</code>
+   and then casts the result to a String.</p>
+     <p>If optional additional arguments are passed to this method,
+   they are substituted, in order, for the placeholders
+   <code>"{0}"</code>, <code>"{1}"</code>, etc., in the string
+   before it is returned.</p>
+     <p>If the specified resource is not found,
+   this method returns <code>null</code>.</p>
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">bundleName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource bundle.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">resourceName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource in the resource bundle.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><a href="../../statements.html#..._(rest)_parameter">...</a> <span class="label">parameters</span></code> &mdash; Additional optional parameters which are
+   substituted for the placeholders.
+   Each parameter is converted to a String with <code>toString()</code>
+   before being substituted.
+     </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../String.html">String</a></code> &mdash; The resource value, as a String,
+   or <code>null</code> if it is not found.
+  </td>
+</tr>
+</table>
+</div>
+<a name="getStringArray()"></a><a name="getStringArray(String,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getStringArray</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getStringArray(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../Array.html">Array</a></code>
+<p></p><p>
+   Gets the value of a specified resource as an Array of Strings.
+     <p>This method assumes that the resource value is a String
+   containing a comma-separated list of items.
+   It calls <code>getString()</code>, splits the String
+   into items at the commas, and trims whitespace
+   before and after each item.
+   It is useful if you have written a line such as</p>
+     <pre>
+   COUNTRIES=India, China, Japan
+   </pre>
+     <p>in a .properties file and want to obtain the value
+   <code>[ "India", "China", "Japan" ]</code>
+   rather than <code>"India, China, Japan"</code>.</p> 
+     <p>If the specified resource is not found,
+   this method returns <code>null</code>.</p>
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">bundleName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource bundle.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">resourceName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource in the resource bundle.
+     </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Array.html">Array</a></code> &mdash; The resource value, as an Array of Strings,
+   or <code>null</code> if it is not found.
+  </td>
+</tr>
+</table>
+</div>
+<a name="getUint()"></a><a name="getUint(String,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getUint</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getUint(bundleName:<a href="../../String.html">String</a>, resourceName:<a href="../../String.html">String</a>):<a href="../../uint.html">uint</a></code>
+<p></p><p>
+   Gets the value of a specified resource as a <code>uint</code>.
+     <p>This method calls <code>getObject()</code>
+   and casts the result to a <code>uint</code>.
+   It is useful if you have written a line such as</p>
+     <pre>
+   MINIMUM=5
+   </pre>
+     <p>in a .properties file and want to obtain the value
+   <code>5</code> rather than <code>"5"</code>.</p> 
+     <p>If the specified resource is not found,
+   this method returns <code>0</code>.</p>
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">bundleName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource bundle.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">resourceName</span>:<a href="../../String.html">String</a></code> &mdash; The name of a resource in the resource bundle.
+     </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../uint.html">uint</a></code> &mdash; The resource value, as a <code>uint</code>,
+   or <code>0</code> if it is not found.
+  </td>
+</tr>
+</table>
+</div>
+<a name="loadResourceBundles()"></a><a name="loadResourceBundles(String,Boolean,Boolean)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">loadResourceBundles</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function loadResourceBundles(url:<a href="../../String.html">String</a>, update:<a href="../../Boolean.html">Boolean</a> = true, trustContent:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../flash/events/IEventDispatcher.html">IEventDispatcher</a></code>
+<p></p><p>
+   Begins loading a resource module containing resource bundles.
+     <p>Each call to this method returns a new event-dispatching object
+   that you can use to learn how the loading is progressing
+   and whether it completes successfully or results in an error.
+   This object dispatches <code>ResourceEvent.PROGRESS</code>,
+   <code>ResourceEvent.COMPLETE</code>, and
+   <code>ResourceEvent.ERROR</code> events.</p>
+     <p>When the module has been loaded, the resource bundles
+   are added to the ResourceManager, but the <code>localeChain</code>
+   is left unchanged.
+   If the <code>update</code> parameter is <code>true</code>,
+   the <code>update()</code> method will be called.</p>
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">url</span>:<a href="../../String.html">String</a></code> &mdash; The URL from which to load the resource module.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">update</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>true</code>)<code></code> &mdash; A flag indicating whether to call
+   the <code>update()</code> method when the module has been loaded.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">trustContent</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>false</code>)<code></code> &mdash; If <code>true</code>, the module is loaded
+      into your security domain. The default is <code>false</code>.
+     </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../flash/events/IEventDispatcher.html">IEventDispatcher</a></code> &mdash; An object associated with this particular load operation
+   which dispatches <code>ResourceEvent.PROGRESS</code>,
+   <code>ResourceEvent.COMPLETE</code>, and
+   <code>ResourceEvent.ERROR</code> events.
+     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../mx/events/ResourceEvent.html" target="">mx.events.ResourceEvent</a>
+<br>
+<a href="IResourceManager.html#update()" target="">mx.resources.IResourceManager.update()</a>
+</div>
+</div>
+<a name="removeResourceBundle()"></a><a name="removeResourceBundle(String,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeResourceBundle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeResourceBundle(locale:<a href="../../String.html">String</a>, bundleName:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+   Removes the specified ResourceBundle from the ResourceManager
+   so that its resources can no longer be accessed by ResourceManager
+   methods such as <code>getString()</code>.
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">locale</span>:<a href="../../String.html">String</a></code> &mdash; A locale string such as <code>"en_US"</code>.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">bundleName</span>:<a href="../../String.html">String</a></code> &mdash; A bundle name such as <code>"MyResources"</code>.
+     </td>
+</tr>
+</table>
+</p>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="IResourceBundle.html" target="">mx.resources.IResourceBundle</a>
+</div>
+</div>
+<a name="removeResourceBundlesForLocale()"></a><a name="removeResourceBundlesForLocale(String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeResourceBundlesForLocale</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeResourceBundlesForLocale(locale:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+   Removes all ResourceBundles for the specified locale
+   from the ResourceManager so that their resources
+   can no longer be accessed by ResourceManager methods
+   such as <code>getString()</code>.
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">locale</span>:<a href="../../String.html">String</a></code> &mdash; A locale string such as <code>"en_US"</code>.
+     </td>
+</tr>
+</table>
+</p>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="IResourceBundle.html" target="">mx.resources.IResourceBundle</a>
+</div>
+</div>
+<a name="unloadResourceBundles()"></a><a name="unloadResourceBundles(String,Boolean)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">unloadResourceBundles</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function unloadResourceBundles(url:<a href="../../String.html">String</a>, update:<a href="../../Boolean.html">Boolean</a> = true):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+   This method has not yet been implemented.
+  </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">url</span>:<a href="../../String.html">String</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">update</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>true</code>)<code></code></td>
+</tr>
+</table>
+</p>
+</div>
+<a name="update()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">update</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function update():<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+   Dispatches a <code>"change"</code> Event from the
+   resource manager.
+     <p>This will cause binding expressions to re-evaluate
+   if they involve the ResourceManager methods
+   <code>getObject()</code>, <code>getString()</code>, 
+   <code>getStringArray()</code>, <code>getNumber()</code>, 
+   <code>getInt()</code>, <code>getUint()</code>, 
+   <code>getBoolean()</code>, or <code>getClass()</code>.</p>
+     <p>It will also cause the resourcesChanged() method
+   of a UIComponent, Formatter, or Validator to execute.
+   Many components implement this method to update
+   their state based on the latest resources.</p>
+  </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/resources/IResourceManager.html','mx/resources/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

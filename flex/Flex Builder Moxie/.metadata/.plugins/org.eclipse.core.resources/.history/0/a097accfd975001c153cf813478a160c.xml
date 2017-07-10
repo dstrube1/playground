@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="400" height="300" 
+	xmlns:local="*" xmlns:service="service.*">
+
+<service:LoginService id="localLoginService"/>
+
+    <mx:Script>
+	<![CDATA[
+		import mx.controls.Alert;
+		
+		import flash.net.navigateToURL;
+		import mx.events.ListEvent;
+	
+		public var loginPanel:LoginPanel;
+		public var memDetailPanel:MemDetailPanel;
+		
+		private function itemClickEvent(event:ListEvent):void {
+			//clickColumn.text="column="+String(event.columnIndex);
+			//clickRow.text="row="+String(event.rowIndex);
+			//eventType.text="event.type="+event.type;
+			if (event.columnIndex == 1){
+				Alert.show(memThumb.dataField.toString());
+				//if ^ is null, no alert
+			}
+			this.setVisible(false);
+			memDetailPanel.setVisible(true);
+		}
+		public function goURL( uri:String ):void
+	   {
+		    navigateToURL( new URLRequest( uri ) , "_self" )
+	   }
+		private function logoutClick():void{
+			loginPanel.logoutClick();
+			this.setVisible(false);
+		}
+		
+		public static function setVisible(visible:Boolean):void{
+			Alert.show("setVisible called in MemListPanel with value="+visible);
+		}
+		
+	]]>
+</mx:Script>
+
+	<mx:DataGrid id="dgPosts" height="80%" width="90%" 
+        dataProvider="{localLoginService.lastResult.memories.memory}" rowHeight="60" y="10" x="10"
+        itemClick="itemClickEvent(event)">
+        <mx:columns>
+			<mx:DataGridColumn id="memName" headerText="Memory Name" dataField="name"/>
+            <mx:DataGridColumn id="memID" headerText="Memory ID" dataField="id" visible="false"/>
+            <mx:DataGridColumn id="memThumb" headerText="Thumbnail" 
+            	itemRenderer="MemoryRenderer" dataField="thumbnail"/>
+        </mx:columns>
+    </mx:DataGrid>
+    
+    <mx:Button x="168" y="310" label="Logout" click="logoutClick()"/>
+        
+<!--
+	<mx:TextArea id="clickColumn"  x="192" y="145"/>
+	<mx:TextArea id="clickRow"  x="178" y="206"/>
+	<mx:TextArea id="eventType"  x="10" y="206"/>
+-->
+</mx:Panel>

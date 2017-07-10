@@ -1,0 +1,101 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="IListItemRenderer,mx.controls.listClasses.IListItemRenderer" name="keywords">
+<title>mx.controls.listClasses.IListItemRenderer (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'IListItemRenderer - Flex 3 Language Reference';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../../index.html?mx/controls/listClasses/IListItemRenderer.html&amp;mx/controls/listClasses/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Interface&nbsp;IListItemRenderer</td><td align="right" id="subNav" class="titleTableSubNav"></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Interface IListItemRenderer"); titleBar_setSubNav(false,false,false,false,false,false,false,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.controls.listClasses</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public  interface  IListItemRenderer extends <a href="../../../mx/core/IDataRenderer.html">IDataRenderer</a>, <a href="../../../flash/events/IEventDispatcher.html">IEventDispatcher</a>, <a href="../../../mx/core/IFlexDisplayObject.html">IFlexDisplayObject</a>, <a href="../../../mx/managers/ILayoutManagerClient.html">ILayoutManagerClient</a>, <a href="../../../mx/styles/ISimpleStyleClient.html">ISimpleStyleClient</a>, <a href="../../../mx/core/IUIComponent.html">IUIComponent</a>, <a href="../../../flash/display/IBitmapDrawable.html">IBitmapDrawable</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implementors</td><td><a href="../../../mx/controls/advancedDataGridClasses/AdvancedDataGridGroupItemRenderer.html">AdvancedDataGridGroupItemRenderer</a>, <a href="../../../mx/controls/advancedDataGridClasses/AdvancedDataGridHeaderRenderer.html">AdvancedDataGridHeaderRenderer</a>, <a href="../../../mx/controls/advancedDataGridClasses/AdvancedDataGridItemRenderer.html">AdvancedDataGridItemRenderer</a>, <a href="../../../mx/controls/Button.html">Button</a>, <a href="../../../mx/controls/ComboBox.html">ComboBox</a>, <a href="../../../mx/core/Container.html">Container</a>, <a href="../../../mx/controls/dataGridClasses/DataGridItemRenderer.html">DataGridItemRenderer</a>, <a href="../../../mx/controls/DateField.html">DateField</a>, <a href="../../../mx/controls/HTML.html">HTML</a>, <a href="../../../mx/controls/Image.html">Image</a>, <a href="../../../mx/controls/Label.html">Label</a>, <a href="../../../mx/controls/listClasses/ListBase.html">ListBase</a>, <a href="../../../mx/controls/listClasses/ListItemRenderer.html">ListItemRenderer</a>, <a href="../../../mx/controls/menuClasses/MenuItemRenderer.html">MenuItemRenderer</a>, <a href="../../../mx/controls/NumericStepper.html">NumericStepper</a>, <a href="../../../mx/controls/TextArea.html">TextArea</a>, <a href="../../../mx/controls/TextInput.html">TextInput</a>, <a href="../../../mx/controls/listClasses/TileListItemRenderer.html">TileListItemRenderer</a>, <a href="../../../mx/controls/treeClasses/TreeItemRenderer.html">TreeItemRenderer</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  Item renderers and item editors for list components must implement 
+  the IListItemRenderer interface.
+  The IListItemRenderer interface is a set of several other interfaces. 
+  It does not define any new class methods or properties. 
+   <p>The set of interfaces includes the following:
+  IDataRenderer, IFlexDisplayObject, ILayoutManagerClient,
+  ISimpleStyleClient, IUIComponent.
+  The UIComponent class implements all of these interfaces,
+  except the IDataRenderer interface. 
+  Therefore, if you create a custom item renderer or item editor
+  as a subclass  of the UIComponent class, you only have to implement
+  the IDataRenderer interface and then you can add to the class
+  definition that the class implements IDataRenderer and IListItemRenderer.</p>
+  <p>IListItemRenderers are generally dedicated to displaying a particular
+  field from the data provider item and cannot be re-used in other
+  DataGrid columns or in other lists with different fields.  If you want
+  to create a renderer that can be re-used you can also implement
+  IDropInListItemRenderer, and the list will pass more data to
+  the renderer that allows the renderer to be re-used with different
+  data fields.</p>
+   <p>Item renderers and item editors are passed data from a list class'
+  data provider using the IDataRenderer interface.
+  Renderers and editors that implement the IDropInListItemRenderer
+  interface get other information from the list class.
+  The item renderer or item editor uses one or both pieces of information
+  to display the data.</p>
+   <p>The renderers and editors are often recycled.
+  Once they are created, they may be used again simply by being given
+  a new data and optional <code>listData</code> property.
+  Therefore in your implementation you must make sure that component
+  properties are not assumed to contain their initial, or default values.</p>
+ <p></p>
+<br>
+<hr>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/controls/listClasses/IListItemRenderer.html','mx/controls/listClasses/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

@@ -1,0 +1,5 @@
+[Tue Jan 27 11:50:05 EST 2009] java.lang.NullPointerException
+	at com.aptana.ide.framework.apollo.debugger.FDBDebugHost.readMessage(FDBDebugHost.java:371)
+	at com.aptana.ide.framework.apollo.debugger.FDBDebugHost.access$6(FDBDebugHost.java:365)
+	at com.aptana.ide.framework.apollo.debugger.FDBDebugHost$1.run(FDBDebugHost.java:342)
+

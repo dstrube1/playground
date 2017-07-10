@@ -1,0 +1,35 @@
+package base.lenz
+{
+	import base.db.BaseMemDB;
+	import base.db.MemDB;
+	
+	public class NotificationReport
+	{
+		
+		public var alarmCount:int;
+		public var alertCount:int;
+		public var infoCount:int;
+ 
+		public var notificationDb:MemDB = new BaseMemDB();
+
+		
+
+
+		public function copy( rep:NotificationReport):void {
+			
+			
+			alarmCount = rep.alarmCount;
+			alertCount = rep.alertCount;
+			infoCount = rep.infoCount;
+			
+			notificationDb = rep.notificationDb;
+
+								
+		}
+		
+		
+		
+		
+		
+	}
+}

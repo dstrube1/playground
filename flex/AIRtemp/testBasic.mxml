@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+ xmlns:mx="http://www.adobe.com/2006/mxml" 
+ layout="absolute" >
+	
+<mx:Button id="a" label="Here I am." click="mx.controls.Alert.show('Rock you like a hurricane.')"/>
+</mx:Application>

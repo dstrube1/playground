@@ -1,0 +1,24 @@
+package base.util
+{ 
+	public class Populate
+	{
+		
+		public static function copyFromTo( frObj:Object, toObj:Object):void {
+			
+			if (frObj != null && toObj != null) {
+				
+				// iterate across the properties in frObj and set the appropriate property in toObj
+				
+				for ( var pName:String in frObj) {
+					
+					if (toObj.hasOwnProperty(pName)) {
+					
+						toObj[pName] = frObj[pName];
+																		
+					}
+				}	
+			}	
+		}		
+	}
+	
+}

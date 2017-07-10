@@ -1,0 +1,1038 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="MaskEffectInstance,mx.effects.effectClasses.MaskEffectInstance,captureRollEvents,originX,originY,zoomHeightFrom,zoomHeightTo,zoomWidthFrom,zoomWidthTo,xBy,xFrom,xTo,yBy,yFrom,yTo,effectMask,targetVisualBounds,moveEasingFunction,scaleEasingFunction,scaleXFrom,scaleXTo,scaleYFrom,scaleYTo,targetArea,xFrom,xTo,yFrom,yTo,createMaskFunction,showTarget,playedAction,bufferTime,loops,panEasingFunction,panFrom,panTo,sound,startTime,useDuration,volumeEasingFunction,volumeFrom,volumeTo,isLoading,soundChannel,source,easingFunction,tween,playheadTime,blurXFrom,blurXTo,blurYFrom,blurYTo,toValue,isStyle,property,roundValue,fromValue,index,relativeTo,position,alphaFrom,alphaTo,color,targetArea,name,value,heightFrom,hideChildrenTargets,widthFrom,heightBy,heightTo,widthBy,widthTo,alphaFrom,alphaTo,name,value,angleFrom,angleTo,originX,originY,alphaFrom,alphaTo,blurXFrom,blurXTo,blurYFrom,blurYTo,color,inner,knockout,strength,end,start,target,pause,resume,reverse,defaultCreateMask,initMaskEffect,onMoveTweenUpdate,onMoveTweenEnd,onScaleTweenUpdate,onScaleTweenEnd,saveStartValue,getStartValue,seek,end,createTween,onTweenUpdate,onTweenEnd,end,onEffectEnd,addChildSet,onEffectEnd,onTweenUpdate,onTweenEnd,end,onEffectEnd" name="keywords">
+<title>mx.effects.effectClasses.MaskEffectInstance (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'MaskEffectInstance - Flex 3 Language Reference';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../../index.html?mx/effects/effectClasses/MaskEffectInstance.html&amp;mx/effects/effectClasses/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;MaskEffectInstance</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class MaskEffectInstance"); titleBar_setSubNav(false,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.effects.effectClasses</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  MaskEffectInstance</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">MaskEffectInstance  <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../../../mx/effects/EffectInstance.html">EffectInstance</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../../../Object.html">Object</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="../../../mx/effects/effectClasses/IrisInstance.html">IrisInstance</a>, <a href="../../../mx/effects/effectClasses/WipeDownInstance.html">WipeDownInstance</a>, <a href="../../../mx/effects/effectClasses/WipeLeftInstance.html">WipeLeftInstance</a>, <a href="../../../mx/effects/effectClasses/WipeRightInstance.html">WipeRightInstance</a>, <a href="../../../mx/effects/effectClasses/WipeUpInstance.html">WipeUpInstance</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  The MaskEffectInstance class is an abstract base class 
+  that implements the instance class for 
+  the MaskEffect class. 
+  <p>Every effect class that is a subclass of the TweenEffect class 
+  supports the following events:</p>
+  
+  <ul>
+    <li><code>tweenEnd</code>: Dispatched when the tween effect ends. </li>
+  
+    <li><code>tweenUpdate</code>: Dispatched every time a TweenEffect 
+      class calculates a new value.</li> 
+  </ul>
+  
+  <p>The event object passed to the event listener for these events is of type TweenEvent. 
+  The TweenEvent class defines the property <code>value</code>, which contains 
+  the tween value calculated by the effect. 
+  For the Mask effect, 
+  the <code>TweenEvent.value</code> property contains a 4-item Array, where: </p>
+  <ul>
+    <li>value[0]:Number  The value of the target's <code>x</code> property.</li> 
+  
+    <li>value[1]:Number  The value of the target's <code>y</code> property.</li>
+  
+    <li>value[2]:Number  The value of the target's <code>scaleX</code> property.</li>
+  
+    <li>value[3]:Number  The value of the target's <code>scaleY</code> property.</li>
+  </ul>
+   <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../../mx/effects/MaskEffect.html" target="">mx.effects.MaskEffect</a>
+<br>
+<a href="../../../mx/events/TweenEvent.html" target="">mx.events.TweenEvent</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/effects/EffectInstance.html#className">className</a> : <a href="../../../String.html">String</a>
+<div class="summaryTableDescription">[read-only] 
+   The name of the effect class, such as "FadeInstance".</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../Object.html#constructor">constructor</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  A reference to the class object or constructor function for a given object instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#createMaskFunction">createMaskFunction</a> : <a href="../../../Function.html">Function</a>
+<div class="summaryTableDescription">
+   Function called when the effect creates the mask.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/effects/EffectInstance.html#duration">duration</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription"> 
+   Duration of the effect in milliseconds.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/effects/EffectInstance.html#effect">effect</a> : <a href="../../../mx/effects/Effect.html">Effect</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/effects/EffectInstance.html#effectTargetHost">effectTargetHost</a> : IEffectTargetHost<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#moveEasingFunction">moveEasingFunction</a> : <a href="../../../Function.html">Function</a>
+<div class="summaryTableDescription">
+   Easing function to use for moving the mask.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/effects/EffectInstance.html#playheadTime">playheadTime</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">[read-only] 
+   Current position in time of the effect.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/effects/EffectInstance.html#propertyChanges">propertyChanges</a> : <a href="../../../mx/effects/effectClasses/PropertyChanges.html">PropertyChanges</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../Object.html#prototype">prototype</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription">[static] 
+  A reference to the prototype object of a class or function object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/effects/EffectInstance.html#repeatCount">repeatCount</a> : <a href="../../../int.html">int</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/effects/EffectInstance.html#repeatDelay">repeatDelay</a> : <a href="../../../int.html">int</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#scaleEasingFunction">scaleEasingFunction</a> : <a href="../../../Function.html">Function</a>
+<div class="summaryTableDescription">
+   Easing function to use for scaling the mask.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#scaleXFrom">scaleXFrom</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">
+   Initial scaleX for mask.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#scaleXTo">scaleXTo</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription"> 
+   Ending scaleX for mask.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#scaleYFrom">scaleYFrom</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription"> 
+   Initial scaleY for mask.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#scaleYTo">scaleYTo</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">
+   Ending scaleY for mask.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#showTarget">showTarget</a> : <a href="../../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">
+      Specifies that the target component is becoming visible, 
+      false, or invisible, true.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/effects/EffectInstance.html#startDelay">startDelay</a> : <a href="../../../int.html">int</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/effects/EffectInstance.html#suspendBackgroundProcessing">suspendBackgroundProcessing</a> : <a href="../../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/effects/EffectInstance.html#target">target</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#targetArea">targetArea</a> : <a href="../../../flash/geom/Rectangle.html">Rectangle</a>
+<div class="summaryTableDescription">
+   The area where the mask is applied on the target.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/effects/EffectInstance.html#triggerEvent">triggerEvent</a> : <a href="../../../flash/events/Event.html">Event</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#xFrom">xFrom</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription"> 
+   Initial position's x coordinate for mask.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#xTo">xTo</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription"> 
+   Destination position's x coordinate for mask.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#yFrom">yFrom</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">
+   Initial position's y coordinate for mask.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#yTo">yTo</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription"> 
+   Destination position's y coordinate for mask.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#effectMask">effectMask</a> : <a href="../../../flash/display/Shape.html">Shape</a>
+<div class="summaryTableDescription">
+   Contains the effect mask, either the default mask created 
+   by the defaultCreateMask() method, 
+   or the one specified by the function passed to the 
+   createMaskFunction property.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#targetVisualBounds">targetVisualBounds</a> : <a href="../../../flash/geom/Rectangle.html">Rectangle</a>
+<div class="summaryTableDescription">
+   The actual size of the effect target, including any drop shadows.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#MaskEffectInstance()">MaskEffectInstance</a>(target:<a href="../../../Object.html">Object</a>)</div>
+<div class="summaryTableDescription">
+   Constructor.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#addEventListener()">addEventListener</a>(type:<a href="../../../String.html">String</a>, listener:<a href="../../../Function.html">Function</a>, useCapture:<a href="../../../Boolean.html">Boolean</a> = false, priority:<a href="../../../int.html">int</a> = 0, useWeakReference:<a href="../../../Boolean.html">Boolean</a> = false):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+    Registers an event listener object with an EventDispatcher object so that the listener 
+    receives notification of an event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#dispatchEvent()">dispatchEvent</a>(event:<a href="../../../flash/events/Event.html">Event</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Dispatches an event into the event flow.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/effects/EffectInstance.html#end()">end</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Interrupts an effect instance that is currently playing,
+   and jumps immediately to the end of the effect.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/effects/EffectInstance.html#finishEffect()">finishEffect</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Called by the end() method when the effect
+   finishes playing.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/effects/EffectInstance.html#finishRepeat()">finishRepeat</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Called after each iteration of a repeated effect finishes playing.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#hasEventListener()">hasEventListener</a>(type:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Checks whether the EventDispatcher object has any listeners registered for a specific type 
+    of event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">hasOwnProperty</a>(name:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an object has a specified property defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/effects/EffectInstance.html#initEffect()">initEffect</a>(event:<a href="../../../flash/events/Event.html">Event</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   This method is called if the effect was triggered by the EffectManager.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">isPrototypeOf</a>(theClass:<a href="../../../Object.html">Object</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an instance of the Object class is in the prototype chain of the object specified 
+  as the parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#pause()">pause</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Pauses the effect until you call the resume() method.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/effects/EffectInstance.html#play()">play</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Plays the effect instance on the target.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">propertyIsEnumerable</a>(name:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether the specified property exists and is enumerable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#removeEventListener()">removeEventListener</a>(type:<a href="../../../String.html">String</a>, listener:<a href="../../../Function.html">Function</a>, useCapture:<a href="../../../Boolean.html">Boolean</a> = false):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+    Removes a listener from the EventDispatcher object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#resume()">resume</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Resumes the effect after it has been paused 
+   by a call to the pause() method.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#reverse()">reverse</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Plays the effect in reverse,
+   starting from the current position of the effect.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#setPropertyIsEnumerable()">setPropertyIsEnumerable</a>(name:<a href="../../../String.html">String</a>, isEnum:<a href="../../../Boolean.html">Boolean</a> = true):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+     Sets the availability of a dynamic property for loop operations.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/effects/EffectInstance.html#startEffect()">startEffect</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Plays the effect instance on the target after the startDelay period
+   has elapsed.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/effects/EffectInstance.html">EffectInstance</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#toString()">toString</a>():<a href="../../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the string representation of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#valueOf()">valueOf</a>():<a href="../../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the primitive value of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#willTrigger()">willTrigger</a>(type:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Checks whether an event listener is registered with this EventDispatcher object or any of 
+    its ancestors for the specified event type.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#defaultCreateMask()">defaultCreateMask</a>(targ:<a href="../../../Object.html">Object</a>, bounds:<a href="../../../flash/geom/Rectangle.html">Rectangle</a>):<a href="../../../flash/display/Shape.html">Shape</a>
+</div>
+<div class="summaryTableDescription">
+   Creates the default mask for the effect.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initMaskEffect()">initMaskEffect</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Initializes the move and scale
+   properties of the effect.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onMoveTweenEnd()">onMoveTweenEnd</a>(value:<a href="../../../Object.html">Object</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription"> 
+   Callback method that is called when the x and y position 
+   of the mask should be updated by the effect for the last time.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onMoveTweenUpdate()">onMoveTweenUpdate</a>(value:<a href="../../../Object.html">Object</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription"> 
+   Callback method that is called when the x and y position 
+   of the mask should be updated by the effect.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onScaleTweenEnd()">onScaleTweenEnd</a>(value:<a href="../../../Object.html">Object</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription"> 
+   Callback method that is called when the 
+   scaleX and scaleY properties 
+   of the mask should be updated by the effect for the last time.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onScaleTweenUpdate()">onScaleTweenUpdate</a>(value:<a href="../../../Object.html">Object</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription"> 
+   Callback method that is called when the 
+   scaleX and scaleY properties 
+   of the mask should be updated by the effect.</div>
+</td><td class="summaryTableOwnerCol">MaskEffectInstance</td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<div class="showHideLinks">
+<div class="hideInheritedEvent" id="hideInheritedEvent">
+<a onclick="javascript:setInheritedVisible(false,'Event');" href="#eventSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Events</a>
+</div>
+<div class="showInheritedEvent" id="showInheritedEvent">
+<a onclick="javascript:setInheritedVisible(true,'Event');" href="#eventSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Events</a>
+</div>
+</div>
+<table id="summaryTableEvent" class="summaryTable hideInheritedEvent" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th> Summary </th><th class="summaryTableOwnerCol">Defined By</th>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#event:activate">activate</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when Flash Player or the and AIR application gains operating system focus and becomes active.</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#event:deactivate">deactivate</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when Flash Player loses operating system focus and is becoming inactive.</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="createMaskFunction"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">createMaskFunction</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>createMaskFunction:<a href="../../../Function.html">Function</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+   Function called when the effect creates the mask.
+   The default value is a function that returns a Rectangle
+   with the same dimensions as the effect target. 
+     <p>You can use this property to specify your own callback function to draw the mask. 
+   The function must have the following signature:</p>
+  
+   <pre>
+   public function createLargeMask(targ:Object, bounds:Rectangle):Shape {
+     var myMask:Shape = new Shape();
+     // Create mask.
+   
+     return myMask;
+   }
+   </pre>
+     <p>You set this property to the name of the function, 
+   as the following example shows for the WipeLeft effect:</p>
+  
+   <pre>
+     &lt;mx:WipeLeft id="showWL" createMaskFunction="createLargeMask" showTarget="false"/&gt;</pre>
+  </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get createMaskFunction():<a href="../../../Function.html">Function</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set createMaskFunction(value:<a href="../../../Function.html">Function</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="effectMask"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">effectMask</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var effectMask:<a href="../../../flash/display/Shape.html">Shape</a></code>
+<p></p><p>
+   Contains the effect mask, either the default mask created 
+   by the <code>defaultCreateMask()</code> method, 
+   or the one specified by the function passed to the 
+   <code>createMaskFunction</code> property.
+  </p></div>
+<a name="propertyDetail"></a><a name="moveEasingFunction"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">moveEasingFunction</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var moveEasingFunction:<a href="../../../Function.html">Function</a></code>
+<p></p><p>
+   Easing function to use for moving the mask.
+  </p></div>
+<a name="propertyDetail"></a><a name="scaleEasingFunction"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">scaleEasingFunction</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var scaleEasingFunction:<a href="../../../Function.html">Function</a></code>
+<p></p><p>
+   Easing function to use for scaling the mask.
+  </p></div>
+<a name="propertyDetail"></a><a name="scaleXFrom"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">scaleXFrom</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var scaleXFrom:<a href="../../../Number.html">Number</a></code>
+<p></p><p>
+   Initial scaleX for mask.
+  </p></div>
+<a name="propertyDetail"></a><a name="scaleXTo"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">scaleXTo</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var scaleXTo:<a href="../../../Number.html">Number</a></code>
+<p></p><p> 
+   Ending scaleX for mask.
+  </p></div>
+<a name="propertyDetail"></a><a name="scaleYFrom"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">scaleYFrom</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var scaleYFrom:<a href="../../../Number.html">Number</a></code>
+<p></p><p> 
+   Initial scaleY for mask.
+  </p></div>
+<a name="propertyDetail"></a><a name="scaleYTo"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">scaleYTo</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var scaleYTo:<a href="../../../Number.html">Number</a></code>
+<p></p><p>
+   Ending scaleY for mask.
+  </p></div>
+<a name="propertyDetail"></a><a name="showTarget"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">showTarget</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>showTarget:<a href="../../../Boolean.html">Boolean</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Specifies that the target component is becoming visible, 
+      <code>false</code>, or invisible, <code>true</code>.
+     </p><p> The default value is <code>true</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get showTarget():<a href="../../../Boolean.html">Boolean</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set showTarget(value:<a href="../../../Boolean.html">Boolean</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="targetArea"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">targetArea</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var targetArea:<a href="../../../flash/geom/Rectangle.html">Rectangle</a></code>
+<p></p><p>
+   The area where the mask is applied on the target.
+   The dimensions are relative to the target itself.
+   By default, the area is the entire target and is created like this: 
+   <code>new Rectangle(0, 0, target.width, target.height);</code>
+  </p></div>
+<a name="propertyDetail"></a><a name="targetVisualBounds"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">targetVisualBounds</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var targetVisualBounds:<a href="../../../flash/geom/Rectangle.html">Rectangle</a></code>
+<p></p><p>
+   The actual size of the effect target, including any drop shadows. 
+   Flex calculates the value of this property; you do not have to set it. 
+  </p></div>
+<a name="propertyDetail"></a><a name="xFrom"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">xFrom</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var xFrom:<a href="../../../Number.html">Number</a></code>
+<p></p><p> 
+   Initial position's x coordinate for mask.  
+  </p></div>
+<a name="propertyDetail"></a><a name="xTo"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">xTo</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var xTo:<a href="../../../Number.html">Number</a></code>
+<p></p><p> 
+   Destination position's x coordinate for mask.  
+  </p></div>
+<a name="propertyDetail"></a><a name="yFrom"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">yFrom</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var yFrom:<a href="../../../Number.html">Number</a></code>
+<p></p><p>
+   Initial position's y coordinate for mask.  
+  </p></div>
+<a name="propertyDetail"></a><a name="yTo"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">yTo</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var yTo:<a href="../../../Number.html">Number</a></code>
+<p></p><p> 
+   Destination position's y coordinate for mask.  
+  </p></div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor Detail</div>
+<a name="MaskEffectInstance()"></a><a name="MaskEffectInstance(Object)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">MaskEffectInstance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function MaskEffectInstance(target:<a href="../../../Object.html">Object</a>)</code>
+<p></p><p>
+   Constructor. 
+     </p><span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">target</span>:<a href="../../../Object.html">Object</a></code> &mdash; The Object to animate with this effect.
+  </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method Detail</div>
+<a name="defaultCreateMask()"></a><a name="defaultCreateMask(Object,flash.geom.Rectangle)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">defaultCreateMask</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function defaultCreateMask(targ:<a href="../../../Object.html">Object</a>, bounds:<a href="../../../flash/geom/Rectangle.html">Rectangle</a>):<a href="../../../flash/display/Shape.html">Shape</a></code>
+<p></p><p>
+   Creates the default mask for the effect.
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">targ</span>:<a href="../../../Object.html">Object</a></code> &mdash; The effect target.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">bounds</span>:<a href="../../../flash/geom/Rectangle.html">Rectangle</a></code> &mdash; The actual visual bounds of the target which includes drop shadows
+   
+   </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../../flash/display/Shape.html">Shape</a></code> &mdash; A Shape object that defines the mask.
+  </td>
+</tr>
+</table>
+</div>
+<a name="initMaskEffect()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initMaskEffect</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function initMaskEffect():<a href="../../../specialTypes.html#void">void</a></code>
+<p></p><p>
+   Initializes the <code>move</code> and <code>scale</code>
+   properties of the effect. 
+   All subclasses should override this function.
+   Flex calls it after the mask has been created,
+   but before the tweens are created. 
+  </p></div>
+<a name="onMoveTweenEnd()"></a><a name="onMoveTweenEnd(Object)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onMoveTweenEnd</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onMoveTweenEnd(value:<a href="../../../Object.html">Object</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<p></p><p> 
+   Callback method that is called when the x and y position 
+   of the mask should be updated by the effect for the last time. 
+   You do not call this method directly. 
+      This method implements the method of the superclass. 
+         </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:<a href="../../../Object.html">Object</a></code> &mdash; Contains the final 
+   x and y value for the mask position, where <code>value[0]</code> 
+   contains the x position of the mask, 
+   and <code>value[1]</code> contains the y position.    
+  </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="onMoveTweenUpdate()"></a><a name="onMoveTweenUpdate(Object)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onMoveTweenUpdate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onMoveTweenUpdate(value:<a href="../../../Object.html">Object</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<p></p><p> 
+   Callback method that is called when the x and y position 
+   of the mask should be updated by the effect. 
+   You do not call this method directly. 
+      This method implements the method of the superclass. 
+         </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:<a href="../../../Object.html">Object</a></code> &mdash; Contains an interpolated 
+   x and y value for the mask position, where <code>value[0]</code> 
+   contains the new x position of the mask, 
+   and <code>value[1]</code> contains the new y position.    
+  </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="onScaleTweenEnd()"></a><a name="onScaleTweenEnd(Object)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onScaleTweenEnd</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onScaleTweenEnd(value:<a href="../../../Object.html">Object</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<p></p><p> 
+   Callback method that is called when the 
+   <code>scaleX</code> and <code>scaleY</code> properties 
+   of the mask should be updated by the effect for the last time. 
+   You do not call this method directly. 
+      This method implements the method of the superclass. 
+         </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:<a href="../../../Object.html">Object</a></code> &mdash; Contains the final 
+   <code>scaleX</code> and <code>scaleY</code> value for the mask, 
+   where <code>value[0]</code> 
+   contains the <code>scaleX</code> value of the mask, 
+   and <code>value[1]</code> contains the <code>scaleY</code> value.    
+  </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="onScaleTweenUpdate()"></a><a name="onScaleTweenUpdate(Object)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onScaleTweenUpdate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function onScaleTweenUpdate(value:<a href="../../../Object.html">Object</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<p></p><p> 
+   Callback method that is called when the 
+   <code>scaleX</code> and <code>scaleY</code> properties 
+   of the mask should be updated by the effect. 
+   You do not call this method directly. 
+      This method implements the method of the superclass. 
+         </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:<a href="../../../Object.html">Object</a></code> &mdash; Contains an interpolated 
+   <code>scaleX</code> and <code>scaleY</code> value for the mask, 
+   where <code>value[0]</code> 
+   contains the new <code>scaleX</code> value of the mask, 
+   and <code>value[1]</code> contains the new <code>scaleY</code> value.    
+  </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="pause()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pause</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function pause():<a href="../../../specialTypes.html#void">void</a></code>
+<p></p><p>
+   Pauses the effect until you call the <code>resume()</code> method.
+  </p></div>
+<a name="resume()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">resume</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function resume():<a href="../../../specialTypes.html#void">void</a></code>
+<p></p><p>
+   Resumes the effect after it has been paused 
+   by a call to the <code>pause()</code> method. 
+  </p></div>
+<a name="reverse()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">reverse</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function reverse():<a href="../../../specialTypes.html#void">void</a></code>
+<p></p><p>
+   Plays the effect in reverse,
+   starting from the current position of the effect.
+  </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/effects/effectClasses/MaskEffectInstance.html','mx/effects/effectClasses/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

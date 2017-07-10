@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:rss="components.rss.*">
+
+<rss:RSSReader timeStep="1" spacingY="15" x="1" y="158" width="{parent.width - 5}" height="340" 
+		rssurls="http://www.medicalnewstoday.com/rss/clinicaltrials.xml,http://www.medicalnewstoday.com/rss/compliance.xml"
+		 >
+	</rss:RSSReader>
+
+</mx:Application>

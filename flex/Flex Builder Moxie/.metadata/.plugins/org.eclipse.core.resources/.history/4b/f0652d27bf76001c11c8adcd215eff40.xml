@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" xmlns:local="*" xmlns:service="service.*">
+	<service:LoginService id="loginRequest"/>
+
+	<local:LoginPanel title="Login" x="10" y="10" width="800" height="400" 
+		id="loginPanel" localLoginService="{loginRequest}" memListPanel="{memListPanel}" />
+			
+	<local:MemListPanel title="List" x="10" y="10" width="800" height="400" visible="false" id="memListPanel"
+		localLoginService="{loginRequest}" loginPanel="{loginPanel}" memDetailPanel="{memDetailPanel}">
+	
+	</local:MemListPanel>
+	
+	<local:MemDetailPanel title="Detail" x="10" y="10" width="800" height="400" visible="false" 
+		id="memDetailPanel" memListPanel="{memListPanel}"/>
+	
+</mx:WindowedApplication>

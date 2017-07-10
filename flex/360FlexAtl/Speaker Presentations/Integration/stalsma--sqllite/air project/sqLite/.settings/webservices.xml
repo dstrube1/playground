@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<projectRoot>
+  <url value="http://localhost:8500/sqLite/components/UserService.cfc?wsdl">
+    <service name="UserServiceService">
+      <port name="UserService.cfc">
+        <operations>
+          <operation name="getUsers(): ArrayOf_xsd_anyType"/>
+        </operations>
+      </port>
+    </service>
+    <asPackage absPath="C:\workspace\sqLite\generated\webservices" name="generated.webservices">
+      <mainAsClass name="SOAPService.as"/>
+      <otherAsClass name="MapItem.as"/>
+      <otherAsClass name="GetUsersResultEvent.as"/>
+      <otherAsClass name="ArrayOf_xsd_anyType.as"/>
+      <otherAsClass name="CFCInvocationException.as"/>
+      <otherAsClass name="ArrayOfArrayOf_xsd_anyType.as"/>
+      <otherAsClass name="BaseSOAPService.as"/>
+      <otherAsClass name="ISOAPService.as"/>
+      <otherAsClass name="GetUsers_request.as"/>
+      <otherAsClass name="BaseSOAPServiceSchema.as"/>
+      <otherAsClass name="ArrayOf_xsd_string.as"/>
+    </asPackage>
+  </url>
+</projectRoot>

@@ -1,0 +1,51 @@
+package base.services
+{ 
+	import mx.rpc.soap.WebService;
+	import base.services.chain.NotificationInterceptorResponseChain;
+	import base.event.DataUpdateEvent;
+
+	public class RichLenzService implements LenzService
+	{
+		
+		private var delegate:LenzService = null;
+		
+		public function RichLenzService( baseSvc:LenzService):void {
+			
+			delegate = baseSvc;
+			
+		}
+		
+		
+		public function postSvc(content:Content, faultListener:Function, resultListener:Function):void
+		{
+		
+					
+			// we intercept information about alarms from the response, and ensure that we look at the response
+			// before handing it off to the eventual receiver.
+			var notificationChain:NotificationInterceptorResponseChain = new NotificationInterceptorResponseChain();
+			
+			notificationChain.setHandler(resultListener);
+			
+			delegate.postSvc(content, faultListener, notificationChain.getStatefulCallbackHandler());
+			
+		}
+		
+		public function getSvc(content:Content, faultListener:Function, resultListener:Function):void
+		{
+
+			// we intercept information about alarms from the response, and ensure that we look at the response
+			// before handing it off to the eventual receiver.
+			var notificationChain:NotificationInterceptorResponseChain = new NotificationInterceptorResponseChain();
+			
+			notificationChain.setHandler(resultListener);
+
+			delegate.getSvc(content, faultListener, notificationChain.getStatefulCallbackHandler());
+		}
+		
+		public function setWebService(ws:WebService):void
+		{
+			delegate.setWebService(ws);
+		}
+		
+	}
+}

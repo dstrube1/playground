@@ -1,0 +1,149 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="IConstraintLayout,mx.containers.utilityClasses.IConstraintLayout,container,height,explicitHeight,id,maxHeight,minHeight,percentHeight,constraintColumns,constraintRows,container,id,maxWidth,minWidth,width,explicitWidth,percentWidth" name="keywords">
+<title>mx.containers.utilityClasses.IConstraintLayout (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'IConstraintLayout - Flex 3 Language Reference';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../../index.html?mx/containers/utilityClasses/IConstraintLayout.html&amp;mx/containers/utilityClasses/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Interface&nbsp;IConstraintLayout</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Interface IConstraintLayout"); titleBar_setSubNav(false,true,false,false,false,false,false,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.containers.utilityClasses</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public  interface  IConstraintLayout</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implementors</td><td><a href="../../../mx/containers/Canvas.html">Canvas</a>, <a href="../../../mx/core/LayoutContainer.html">LayoutContainer</a>, <a href="../../../mx/containers/Panel.html">Panel</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  IConstraintLayout is a marker interface that indicates that a container
+  supports ConstraintColumn class and ConstraintRow class within its layout. 
+  Application, Canvas, and Panel containers support ConstraintRow and  
+  ConstraintColumn classes. To utilize this type of constraint in these containers, set 
+  the <code>layout</code> property to <code>"absolute"</code> and create ConstraintColumn and
+  ConstraintRow instances. 
+ 
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../../mx/containers/Canvas.html" target="">mx.containers.Canvas</a>
+<br>
+<a href="../../../mx/containers/Panel.html" target="">mx.containers.Panel</a>
+<br>
+<a href="../../../mx/core/Application.html" target="">mx.core.Application</a>
+<br>mx.containers.utilityClasses.ConstraintColumn;<br>mx.containers.utilityClasses.ConstraintRow;<br>mx.modules.Module;<br>mx.styles.metadata.AnchorStyles;</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#constraintColumns">constraintColumns</a> : <a href="../../../Array.html">Array</a>
+<div class="summaryTableDescription">
+   The ConstraintColumn instances partitioning this Canvas.</div>
+</td><td class="summaryTableOwnerCol">IConstraintLayout</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#constraintRows">constraintRows</a> : <a href="../../../Array.html">Array</a>
+<div class="summaryTableDescription">
+   The ConstraintRow instances partitioning this Canvas.</div>
+</td><td class="summaryTableOwnerCol">IConstraintLayout</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="constraintColumns"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">constraintColumns</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>constraintColumns:<a href="../../../Array.html">Array</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+   The ConstraintColumn instances partitioning this Canvas. The ConstraintColumn
+   instance at index 0 is the left-most column; indices increase from left to right. 
+  
+   </p><p> The default value is <code>[]</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get constraintColumns():<a href="../../../Array.html">Array</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set constraintColumns(value:<a href="../../../Array.html">Array</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="constraintRows"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">constraintRows</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>constraintRows:<a href="../../../Array.html">Array</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+   The ConstraintRow instances partitioning this Canvas. The ConstraintRow
+   instance at index 0 is the top-most row; indices increase from top to bottom.
+  
+   </p><p> The default value is <code>[]</code>.</p>
+<br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get constraintRows():<a href="../../../Array.html">Array</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set constraintRows(value:<a href="../../../Array.html">Array</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/containers/utilityClasses/IConstraintLayout.html','mx/containers/utilityClasses/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

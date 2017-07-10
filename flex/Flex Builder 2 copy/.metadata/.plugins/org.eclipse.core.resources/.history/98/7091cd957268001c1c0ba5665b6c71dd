@@ -1,0 +1,22 @@
+package app.server.calls
+{
+	import base.services.calls.ServiceCall;
+	import base.services.Content;
+	import app.server.LenzServer;
+	import base.services.LenzServiceHelper;
+	import base.services.ValueType;	
+
+	public class UpdateDataCall implements ServiceCall
+	{
+		public function call(name:String, params:Object):void
+		{
+			var content:Content = LenzServiceHelper.createAction("updateData");
+			content.DataMap.add("study.id.key", ValueType.STRING, params["studyId"]);
+			content.DataMap.add("plan.id.key", ValueType.STRING, params["planId"]);
+			content.DataMap.add("value.key", ValueType.XML, params["value"]);
+			
+			LenzServer.postSvc( content, params["failure"], params["result"]);
+		}
+		
+	}
+}

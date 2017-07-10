@@ -1,0 +1,1177 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
+<meta content="ObjectProxy,mx.utils.ObjectProxy,SERVER_NAME_TOKEN,SERVER_PORT_TOKEN,dispatcher,notifiers,proxyClass,propertyList,object,type,uid,adjustBrightness,adjustBrightness2,rgbMultiply,getServerNameWithPort,getServerName,getPort,getFullURL,isHttpURL,isHttpsURL,getProtocol,replaceProtocol,replacePort,replaceTokens,urisEqual,hasUnresolvableTokens,objectToString,stringToObject,getProperty,callProperty,deleteProperty,hasProperty,nextName,nextNameIndex,nextValue,setProperty,getComplexProperty,readExternal,writeExternal,addEventListener,removeEventListener,dispatchEvent,hasEventListener,willTrigger,propertyChangeHandler,setupPropertyList,describeType,registerCacheHandler,createUID,getUID,trim,trimArrayElements,isWhitespace,substitute,compare,copy,isSimple,numericCompare,stringCompare,dateCompare,toString,getClassInfo,hasMetadata,normalizeURL,drawRoundRectComplex,createUniqueName,displayObjectToString,toArray,getItemIndex,createXMLDocument,qnamesEqual,qnameToString" name="keywords">
+<title>mx.utils.ObjectProxy (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'ObjectProxy - Flex 3 Language Reference';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../index.html?mx/utils/ObjectProxy.html&amp;mx/utils/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;ObjectProxy</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class ObjectProxy"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.utils</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public dynamic   class  ObjectProxy<a href="../../flash/utils/IExternalizable.html">IExternalizable</a>, <a href="../../mx/core/IPropertyChangeNotifier.html">IPropertyChangeNotifier</a>, <a href="../../flash/events/IEventDispatcher.html">IEventDispatcher</a>, <a href="../../mx/core/IUID.html">IUID</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">ObjectProxy  <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../flash/utils/Proxy.html">Proxy</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../Object.html">Object</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="../../flash/utils/IExternalizable.html">IExternalizable</a>, <a href="../../mx/core/IPropertyChangeNotifier.html">IPropertyChangeNotifier</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  This class provides the ability to track changes to an item
+  managed by this proxy.
+  Any number of objects can "listen" for changes on this
+  object, by using the <code>addEventListener()</code> method.
+   <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#constructor">constructor</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  A reference to the class object or constructor function for a given object instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#prototype">prototype</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">[static] 
+  A reference to the prototype object of a class or function object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#uid">uid</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription">
+      The unique identifier for this object.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#dispatcher">dispatcher</a> : <a href="../../flash/events/EventDispatcher.html">EventDispatcher</a>
+<div class="summaryTableDescription">
+      A reference to the EventDispatcher for this proxy.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#notifiers">notifiers</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+      A hashmap of property change notifiers that this proxy is 
+      listening for changes from; the key of the map is the property name.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#object">object</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">[read-only] 
+      The object being proxied.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#propertyList">propertyList</a> : <a href="../../Array.html">Array</a>
+<div class="summaryTableDescription">
+      Contains a list of all of the property names for the proxied object.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#proxyClass">proxyClass</a> : <a href="../../Class.html">Class</a>
+<div class="summaryTableDescription">
+      Indicates what kind of proxy to create
+      when proxying complex properties.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#type">type</a> : <a href="../../QName.html">QName</a>
+<div class="summaryTableDescription">
+      The qualified type name associated with this object.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#ObjectProxy()">ObjectProxy</a>(item:<a href="../../Object.html">Object</a> = null, uid:<a href="../../String.html">String</a> = null, proxyDepth:<a href="../../int.html">int</a> = -1)</div>
+<div class="summaryTableDescription">
+      Initializes this proxy with the specified object, id and proxy depth.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addEventListener()">addEventListener</a>(type:<a href="../../String.html">String</a>, listener:<a href="../../Function.html">Function</a>, useCapture:<a href="../../Boolean.html">Boolean</a> = false, priority:<a href="../../int.html">int</a> = 0, useWeakReference:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Registers an event listener object  
+      so that the listener receives notification of an event.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#dispatchEvent()">dispatchEvent</a>(event:<a href="../../flash/events/Event.html">Event</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+      Dispatches an event into the event flow.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasEventListener()">hasEventListener</a>(type:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+      Checks whether there are any event listeners registered 
+      for a specific type of event.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">hasOwnProperty</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an object has a specified property defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">isPrototypeOf</a>(theClass:<a href="../../Object.html">Object</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an instance of the Object class is in the prototype chain of the object specified 
+  as the parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#propertyChangeHandler()">propertyChangeHandler</a>(event:<a href="../../mx/events/PropertyChangeEvent.html">PropertyChangeEvent</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Called when a complex property is updated.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">propertyIsEnumerable</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether the specified property exists and is enumerable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#readExternal()">readExternal</a>(input:<a href="../../flash/utils/IDataInput.html">IDataInput</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Since Flex only uses ObjectProxy to wrap anonymous objects,
+      the server flex.messaging.io.ObjectProxy instance serializes itself
+      as a Map that will be returned as a plain ActionScript object.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeEventListener()">removeEventListener</a>(type:<a href="../../String.html">String</a>, listener:<a href="../../Function.html">Function</a>, useCapture:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Removes an event listener.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#setPropertyIsEnumerable()">setPropertyIsEnumerable</a>(name:<a href="../../String.html">String</a>, isEnum:<a href="../../Boolean.html">Boolean</a> = true):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+     Sets the availability of a dynamic property for loop operations.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#toString()">toString</a>():<a href="../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the string representation of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#valueOf()">valueOf</a>():<a href="../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the primitive value of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#willTrigger()">willTrigger</a>(type:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+      Checks whether an event listener is registered with this object 
+      or any of its ancestors for the specified event type.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#writeExternal()">writeExternal</a>(output:<a href="../../flash/utils/IDataOutput.html">IDataOutput</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Since Flex only serializes the inner ActionScript object that it wraps,
+      the server flex.messaging.io.ObjectProxy populates itself
+      with this anonymous object's contents and appears to the user as a Map.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#callProperty()">callProperty</a>(name:<a href="../../specialTypes.html#*">*</a>, <a href="../../statements.html#..._(rest)_parameter">...</a> rest):<a href="../../specialTypes.html#*">*</a>
+</div>
+<div class="summaryTableDescription">
+      Returns the value of the proxied object's method with the specified name.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#deleteProperty()">deleteProperty</a>(name:<a href="../../specialTypes.html#*">*</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+      Deletes the specified property on the proxied object and
+      sends notification of the delete to the handler.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getComplexProperty()">getComplexProperty</a>(name:<a href="../../specialTypes.html#*">*</a>, value:<a href="../../specialTypes.html#*">*</a>):<a href="../../specialTypes.html#*">*</a>
+</div>
+<div class="summaryTableDescription">
+      Provides a place for subclasses to override how a complex property that
+      needs to be either proxied or daisy chained for event bubbling is managed.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getProperty()">getProperty</a>(name:<a href="../../specialTypes.html#*">*</a>):<a href="../../specialTypes.html#*">*</a>
+</div>
+<div class="summaryTableDescription">
+      Returns the specified property value of the proxied object.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasProperty()">hasProperty</a>(name:<a href="../../specialTypes.html#*">*</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+      This is an internal function that must be implemented by 
+      a subclass of flash.utils.Proxy.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#nextName()">nextName</a>(index:<a href="../../int.html">int</a>):<a href="../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+      This is an internal function that must be implemented by 
+      a subclass of flash.utils.Proxy.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#nextNameIndex()">nextNameIndex</a>(index:<a href="../../int.html">int</a>):<a href="../../int.html">int</a>
+</div>
+<div class="summaryTableDescription">
+      This is an internal function that must be implemented by 
+      a subclass of flash.utils.Proxy.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#nextValue()">nextValue</a>(index:<a href="../../int.html">int</a>):<a href="../../specialTypes.html#*">*</a>
+</div>
+<div class="summaryTableDescription">
+      This is an internal function that must be implemented by 
+      a subclass of flash.utils.Proxy.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#setProperty()">setProperty</a>(name:<a href="../../specialTypes.html#*">*</a>, value:<a href="../../specialTypes.html#*">*</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Updates the specified property on the proxied object
+      and sends notification of the update to the handler.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#setupPropertyList()">setupPropertyList</a>():<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      This method creates an array of all of the property names for the 
+      proxied object.</div>
+</td><td class="summaryTableOwnerCol">ObjectProxy</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="dispatcher"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">dispatcher</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var dispatcher:<a href="../../flash/events/EventDispatcher.html">EventDispatcher</a></code>
+<p></p><p>
+      A reference to the EventDispatcher for this proxy.
+     </p></div>
+<a name="propertyDetail"></a><a name="notifiers"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">notifiers</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var notifiers:<a href="../../Object.html">Object</a></code>
+<p></p><p>
+      A hashmap of property change notifiers that this proxy is 
+      listening for changes from; the key of the map is the property name.
+     </p></div>
+<a name="propertyDetail"></a><a name="object"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">object</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>object:<a href="../../Object.html">Object</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+      The object being proxied.
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../statements.html#object_proxy">object_proxy</a> function get object():<a href="../../Object.html">Object</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="propertyList"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">propertyList</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var propertyList:<a href="../../Array.html">Array</a></code>
+<p></p><p>
+      Contains a list of all of the property names for the proxied object.
+      Descendants need to fill this list by overriding the
+      <code>setupPropertyList()</code> method.
+     </p></div>
+<a name="propertyDetail"></a><a name="proxyClass"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">proxyClass</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var proxyClass:<a href="../../Class.html">Class</a></code>
+<p></p><p>
+      Indicates what kind of proxy to create
+      when proxying complex properties.
+      Subclasses should assign this value appropriately.
+     </p></div>
+<a name="propertyDetail"></a><a name="type"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">type</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>type:<a href="../../QName.html">QName</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      The qualified type name associated with this object.
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../statements.html#object_proxy">object_proxy</a> function get type():<a href="../../QName.html">QName</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../statements.html#object_proxy">object_proxy</a> function set type(value:<a href="../../QName.html">QName</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="uid"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">uid</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>uid:<a href="../../String.html">String</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      The unique identifier for this object.
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get uid():<a href="../../String.html">String</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set uid(value:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor Detail</div>
+<a name="ObjectProxy()"></a><a name="ObjectProxy(Object,String,int)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ObjectProxy</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function ObjectProxy(item:<a href="../../Object.html">Object</a> = null, uid:<a href="../../String.html">String</a> = null, proxyDepth:<a href="../../int.html">int</a> = -1)</code>
+<p></p><p>
+      Initializes this proxy with the specified object, id and proxy depth.
+     
+      </p><span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">item</span>:<a href="../../Object.html">Object</a></code> (default = <code>null</code>)<code></code> &mdash; Object to proxy.
+      If no item is specified, an anonymous object will be constructed
+      and assigned.
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">uid</span>:<a href="../../String.html">String</a></code> (default = <code>null</code>)<code></code> &mdash; String containing the unique id
+      for this object instance.
+      Required for IPropertyChangeNotifier compliance as every object must 
+      provide a unique way of identifying it.
+      If no value is specified, a random id will be assigned.
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">proxyDepth</span>:<a href="../../int.html">int</a></code> (default = <code>-1</code>)<code></code> &mdash; An integer indicating how many levels in a complex
+      object graph should have a proxy created during property access.
+      The default is -1, meaning "proxy to infinite depth".
+      
+      </td>
+</tr>
+</table>
+<br>
+<span class="label"> Example </span>
+<br>
+<br>           <pre>
+      import mx.events.PropertyChangeEvent;
+      import mx.utils.ObjectUtil;
+      import mx.utils.ObjectProxy;
+      import mx.utils.StringUtil;
+           var a:Object = { name: "Tyler", age: 5, ssnum: "555-55-5555" };
+      var p:ObjectProxy = new ObjectProxy(a);
+      p.addEventListener(PropertyChangeEvent.PROPERTY_CHANGE, updateHandler);
+      p.name = "Jacey";
+      p.age = 2;
+      delete p.ssnum;
+           // handler function
+      function updateHandler(event:PropertyChangeEvent):void
+      {
+          trace(StringUtil.substitute("updateHandler('{0}', {1}, {2}, {3}, '{4}')",
+                                         event.kind,
+                                         event.property,
+                                         event.oldValue,
+                                         event.newValue,
+                                         event.target.uid));
+      }
+           // trace output
+      updateHandler('opUpdate', name, Jacey, '698AF8CB-B3D9-21A3-1AFFDGHT89075CD2')
+      updateHandler('opUpdate', age, 2, '698AF8CB-B3D9-21A3-1AFFDGHT89075CD2')
+      updateHandler('opDelete', ssnum, null, '698AF8CB-B3D9-21A3-1AFFDGHT89075CD2')
+      </pre>
+     </div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method Detail</div>
+<a name="addEventListener()"></a><a name="addEventListener(String,Function,Boolean,int,Boolean)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addEventListener</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addEventListener(type:<a href="../../String.html">String</a>, listener:<a href="../../Function.html">Function</a>, useCapture:<a href="../../Boolean.html">Boolean</a> = false, priority:<a href="../../int.html">int</a> = 0, useWeakReference:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Registers an event listener object  
+      so that the listener receives notification of an event. 
+      For more information, see the flash.events.EventDispatcher class.
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:<a href="../../String.html">String</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">listener</span>:<a href="../../Function.html">Function</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">useCapture</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>false</code>)<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">priority</span>:<a href="../../int.html">int</a></code> (default = <code>0</code>)<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">useWeakReference</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>false</code>)<code></code></td>
+</tr>
+</table>
+</p>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../flash/events/EventDispatcher.html#addEventListener()" target="">flash.events.EventDispatcher.addEventListener()</a>
+</div>
+</div>
+<a name="callProperty()"></a><a name="callProperty(,restParam)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">callProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code><a href="../../statements.html#flash_proxy">flash_proxy</a> override function callProperty(name:<a href="../../specialTypes.html#*">*</a>, <a href="../../statements.html#..._(rest)_parameter">...</a> rest):<a href="../../specialTypes.html#*">*</a></code>
+<p></p><p>
+      Returns the value of the proxied object's method with the specified name.
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:<a href="../../specialTypes.html#*">*</a></code> &mdash; The name of the method being invoked.
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><a href="../../statements.html#..._(rest)_parameter">...</a> <span class="label">rest</span></code> &mdash; An array specifying the arguments to the
+      called method.
+           </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../specialTypes.html#*">*</a></code> &mdash; The return value of the called method.
+     </td>
+</tr>
+</table>
+</div>
+<a name="deleteProperty()"></a><a name="deleteProperty()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">deleteProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code><a href="../../statements.html#flash_proxy">flash_proxy</a> override function deleteProperty(name:<a href="../../specialTypes.html#*">*</a>):<a href="../../Boolean.html">Boolean</a></code>
+<p></p><p>
+      Deletes the specified property on the proxied object and
+      sends notification of the delete to the handler.
+     
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:<a href="../../specialTypes.html#*">*</a></code> &mdash; Typically a string containing the name of the property,
+      or possibly a QName where the property name is found by 
+      inspecting the <code>localName</code> property.
+           </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Boolean.html">Boolean</a></code> &mdash; A Boolean indicating if the property was deleted.
+     </td>
+</tr>
+</table>
+</div>
+<a name="dispatchEvent()"></a><a name="dispatchEvent(flash.events.Event)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">dispatchEvent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function dispatchEvent(event:<a href="../../flash/events/Event.html">Event</a>):<a href="../../Boolean.html">Boolean</a></code>
+<p></p><p>
+      Dispatches an event into the event flow. 
+      For more information, see the flash.events.EventDispatcher class.
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:<a href="../../flash/events/Event.html">Event</a></code></td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Boolean.html">Boolean</a></code></td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../flash/events/EventDispatcher.html#dispatchEvent()" target="">flash.events.EventDispatcher.dispatchEvent()</a>
+</div>
+</div>
+<a name="getComplexProperty()"></a><a name="getComplexProperty(,)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getComplexProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code><a href="../../statements.html#object_proxy">object_proxy</a> function getComplexProperty(name:<a href="../../specialTypes.html#*">*</a>, value:<a href="../../specialTypes.html#*">*</a>):<a href="../../specialTypes.html#*">*</a></code>
+<p></p><p>
+      Provides a place for subclasses to override how a complex property that
+      needs to be either proxied or daisy chained for event bubbling is managed.
+     
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:<a href="../../specialTypes.html#*">*</a></code> &mdash; Typically a string containing the name of the property,
+      or possibly a QName where the property name is found by 
+      inspecting the <code>localName</code> property.
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:<a href="../../specialTypes.html#*">*</a></code> &mdash; The property value.
+           </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../specialTypes.html#*">*</a></code> &mdash; The property value or an instance of <code>ObjectProxy</code>.
+     </td>
+</tr>
+</table>
+</div>
+<a name="getProperty()"></a><a name="getProperty()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code><a href="../../statements.html#flash_proxy">flash_proxy</a> override function getProperty(name:<a href="../../specialTypes.html#*">*</a>):<a href="../../specialTypes.html#*">*</a></code>
+<p></p><p>
+      Returns the specified property value of the proxied object.
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:<a href="../../specialTypes.html#*">*</a></code> &mdash; Typically a string containing the name of the property,
+      or possibly a QName where the property name is found by 
+      inspecting the <code>localName</code> property.
+           </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../specialTypes.html#*">*</a></code> &mdash; The value of the property.
+      In some instances this value may be an instance of 
+      <code>ObjectProxy</code>.
+     </td>
+</tr>
+</table>
+</div>
+<a name="hasEventListener()"></a><a name="hasEventListener(String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasEventListener</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasEventListener(type:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a></code>
+<p></p><p>
+      Checks whether there are any event listeners registered 
+      for a specific type of event. 
+      This allows you to determine where an object has altered handling 
+      of an event type in the event flow hierarchy. 
+      For more information, see the flash.events.EventDispatcher class.
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:<a href="../../String.html">String</a></code></td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Boolean.html">Boolean</a></code></td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../flash/events/EventDispatcher.html#hasEventListener()" target="">flash.events.EventDispatcher.hasEventListener()</a>
+</div>
+</div>
+<a name="hasProperty()"></a><a name="hasProperty()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code><a href="../../statements.html#flash_proxy">flash_proxy</a> override function hasProperty(name:<a href="../../specialTypes.html#*">*</a>):<a href="../../Boolean.html">Boolean</a></code>
+<p></p><p>
+      This is an internal function that must be implemented by 
+      a subclass of flash.utils.Proxy.
+      
+      </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:<a href="../../specialTypes.html#*">*</a></code> &mdash; The property name that should be tested 
+      for existence.
+           </td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Boolean.html">Boolean</a></code></td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../flash/utils/Proxy.html#hasProperty()" target="">flash.utils.Proxy.hasProperty()</a>
+</div>
+</div>
+<a name="nextName()"></a><a name="nextName(int)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nextName</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code><a href="../../statements.html#flash_proxy">flash_proxy</a> override function nextName(index:<a href="../../int.html">int</a>):<a href="../../String.html">String</a></code>
+<p></p><p>
+      This is an internal function that must be implemented by 
+      a subclass of flash.utils.Proxy.
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">index</span>:<a href="../../int.html">int</a></code></td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../String.html">String</a></code></td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../flash/utils/Proxy.html#nextName()" target="">flash.utils.Proxy.nextName()</a>
+</div>
+</div>
+<a name="nextNameIndex()"></a><a name="nextNameIndex(int)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nextNameIndex</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code><a href="../../statements.html#flash_proxy">flash_proxy</a> override function nextNameIndex(index:<a href="../../int.html">int</a>):<a href="../../int.html">int</a></code>
+<p></p><p>
+      This is an internal function that must be implemented by 
+      a subclass of flash.utils.Proxy.
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">index</span>:<a href="../../int.html">int</a></code></td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../int.html">int</a></code></td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../flash/utils/Proxy.html#nextNameIndex()" target="">flash.utils.Proxy.nextNameIndex()</a>
+</div>
+</div>
+<a name="nextValue()"></a><a name="nextValue(int)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nextValue</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code><a href="../../statements.html#flash_proxy">flash_proxy</a> override function nextValue(index:<a href="../../int.html">int</a>):<a href="../../specialTypes.html#*">*</a></code>
+<p></p><p>
+      This is an internal function that must be implemented by 
+      a subclass of flash.utils.Proxy.
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">index</span>:<a href="../../int.html">int</a></code></td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../specialTypes.html#*">*</a></code></td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../flash/utils/Proxy.html#nextValue()" target="">flash.utils.Proxy.nextValue()</a>
+</div>
+</div>
+<a name="propertyChangeHandler()"></a><a name="propertyChangeHandler(mx.events.PropertyChangeEvent)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">propertyChangeHandler</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function propertyChangeHandler(event:<a href="../../mx/events/PropertyChangeEvent.html">PropertyChangeEvent</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Called when a complex property is updated.
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:<a href="../../mx/events/PropertyChangeEvent.html">PropertyChangeEvent</a></code></td>
+</tr>
+</table>
+</p>
+</div>
+<a name="readExternal()"></a><a name="readExternal(flash.utils.IDataInput)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">readExternal</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function readExternal(input:<a href="../../flash/utils/IDataInput.html">IDataInput</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Since Flex only uses ObjectProxy to wrap anonymous objects,
+      the server flex.messaging.io.ObjectProxy instance serializes itself
+      as a Map that will be returned as a plain ActionScript object. 
+      You can then set the object_proxy object property to this value.
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">input</span>:<a href="../../flash/utils/IDataInput.html">IDataInput</a></code></td>
+</tr>
+</table>
+</p>
+</div>
+<a name="removeEventListener()"></a><a name="removeEventListener(String,Function,Boolean)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeEventListener</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeEventListener(type:<a href="../../String.html">String</a>, listener:<a href="../../Function.html">Function</a>, useCapture:<a href="../../Boolean.html">Boolean</a> = false):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Removes an event listener. 
+      If there is no matching listener registered with the EventDispatcher object, 
+      a call to this method has no effect.
+      For more information, see the flash.events.EventDispatcher class.
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:<a href="../../String.html">String</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">listener</span>:<a href="../../Function.html">Function</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">useCapture</span>:<a href="../../Boolean.html">Boolean</a></code> (default = <code>false</code>)<code></code></td>
+</tr>
+</table>
+</p>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../flash/events/EventDispatcher.html#removeEventListener()" target="">flash.events.EventDispatcher.removeEventListener()</a>
+</div>
+</div>
+<a name="setProperty()"></a><a name="setProperty(,)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code><a href="../../statements.html#flash_proxy">flash_proxy</a> override function setProperty(name:<a href="../../specialTypes.html#*">*</a>, value:<a href="../../specialTypes.html#*">*</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Updates the specified property on the proxied object
+      and sends notification of the update to the handler.
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:<a href="../../specialTypes.html#*">*</a></code> &mdash; Object containing the name of the property that
+      should be updated on the proxied object.
+           </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">value</span>:<a href="../../specialTypes.html#*">*</a></code> &mdash; Value that should be set on the proxied object.
+     </td>
+</tr>
+</table>
+</p>
+</div>
+<a name="setupPropertyList()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setupPropertyList</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function setupPropertyList():<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      This method creates an array of all of the property names for the 
+      proxied object.
+      Descendants must override this method if they wish to add more 
+      properties to this list.
+      Be sure to call <code>super.setupPropertyList</code> before making any
+      changes to the <code>propertyList</code> property.
+     </p></div>
+<a name="willTrigger()"></a><a name="willTrigger(String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">willTrigger</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function willTrigger(type:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a></code>
+<p></p><p>
+      Checks whether an event listener is registered with this object 
+      or any of its ancestors for the specified event type. 
+      This method returns <code>true</code> if an event listener is triggered 
+      during any phase of the event flow when an event of the specified 
+      type is dispatched to this object or any of its descendants.
+      For more information, see the flash.events.EventDispatcher class.
+           </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:<a href="../../String.html">String</a></code></td>
+</tr>
+</table>
+</p>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Boolean.html">Boolean</a></code></td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../flash/events/EventDispatcher.html#willTrigger()" target="">flash.events.EventDispatcher.willTrigger()</a>
+</div>
+</div>
+<a name="writeExternal()"></a><a name="writeExternal(flash.utils.IDataOutput)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">writeExternal</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function writeExternal(output:<a href="../../flash/utils/IDataOutput.html">IDataOutput</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+      Since Flex only serializes the inner ActionScript object that it wraps,
+      the server flex.messaging.io.ObjectProxy populates itself
+      with this anonymous object's contents and appears to the user as a Map.
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">output</span>:<a href="../../flash/utils/IDataOutput.html">IDataOutput</a></code></td>
+</tr>
+</table>
+</p>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/utils/ObjectProxy.html','mx/utils/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

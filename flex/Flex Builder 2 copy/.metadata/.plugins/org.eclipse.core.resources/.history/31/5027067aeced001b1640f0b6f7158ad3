@@ -1,0 +1,193 @@
+package lenz.main.study_mgr.controller
+{
+	import app.config.LenzFactory;
+	 
+	import base.controller.ClickManager;
+	import base.renderer.*;
+	import base.lenz.BaseLenz;
+	import base.lenz.Lenz;
+	import base.services.LenzService;
+	import base.services.LenzServiceHelper;
+	import base.services.Response;
+	
+	import lenz.main.study_mgr.StudyManagerLenz;
+	
+	import mx.controls.Alert;
+	import mx.rpc.events.FaultEvent;
+	import mx.containers.ControlBar;
+	import app.server.LenzServer;
+	import base.services.MapArray;
+
+	
+	public class StudyClickManager implements ClickManager
+	{
+		public function displayForecast(data:Object):void {
+			
+			
+			var renderer:Renderer = RendererFactory.getRenderer(RendererFactory.PR_RENDERER);
+			renderer.render(StudyManagerLenz.LENZ_ID, data, true);
+			
+		}
+		
+		public function processAction( params:Object ):void
+		{
+			 var currentLenzId:String = params["currentLenzId"];
+			 var target:String = params["targetId"];
+			 var actionParmasMap:Object = splitParams( String(params["actionParams"]) );
+			 actionParmasMap["targetId"] = target;
+			 
+			 process( currentLenzId, String(params["actionName"]), actionParmasMap );		 
+		}
+		
+		
+		private function process( currentLenzId:String, actionName:String, actionParams:Object ):void
+		{
+			var target:String = actionParams["targetId"];
+			var type:String = actionParams["type"];
+			var value:String = actionParams["value"];
+			
+			var currentLenz:StudyManagerLenz = LenzFactory.getLenz(StudyManagerLenz.LENZ_ID) as StudyManagerLenz;
+			
+			var stId:String = "2";
+			var viewId:String;
+			var filter:String;
+			var filterXml:String = ""; 
+			
+			if( actionName == "drilldown" ) {
+				
+				if( target == "Territory" ) {
+					//geo map
+					
+					if( type == "world" || type == "World" ) {
+						
+						//temporarily placing this for demo; need to rework
+						var vParams:String = actionParams["changePanel"];
+						
+						viewId = actionParams["view"]; 
+						filter = actionParams["filter"];
+						if (filter != null) {
+							filterXml = "<map>\n     <element key=\"region\" value=\""+filter+"\" />\n</map>\n";
+						} else {
+							filterXml = "<map>\n </map>\n";
+						}
+
+						LenzServiceHelper.callResource( "getView", { studyId: stId, viewParams: vParams, viewId: viewId, filterDb: filterXml, failure: serviceFailureHandler, result: serviceResponseHandler} );
+						
+					}
+					
+					else if( type == "region" || type == "Region")
+					{
+						viewId = actionParams["view"]; 
+						filter = actionParams["filter"];
+						filterXml = "<map>\n     <element key=\"siteId\" value=\""+filter+"\" />\n</map>\n";
+						
+						LenzServiceHelper.callResource( "getView", { studyId: stId, viewParams: vParams, viewId: viewId, filterDb: filterXml, failure: serviceFailureHandler, result: serviceResponseHandler} );
+						
+					}
+						
+				} else if ( target == "Metric" ) {
+					//radar chart
+					
+					if( type == "world" ) {
+						
+						viewId = actionParams["view"]; 
+						filter = actionParams["filter"];
+						filterXml = "<map>\n     <element key=\"region\" value=\""+filter+"\" />\n	</map>\n";
+				
+						LenzServiceHelper.callResource( "getView", { studyId: stId, viewParams: vParams, viewId: viewId, filterDb: filterXml, failure: serviceFailureHandler, result: serviceResponseHandler} );
+
+					}
+					
+				}
+				
+			} else if ( actionName == "displayMetricsView" ) {
+				
+				viewId = actionParams["view"]; 
+				filter = actionParams["filter"];
+				
+						
+				LenzServiceHelper.callResource( "getView", { studyId: stId, viewParams: vParams, viewId: viewId, filterDb: filter, failure: serviceFailureHandler, result: serviceResponseHandler} );
+
+						
+		
+			} else if ( actionName == "displayPRView" ) {
+					
+				if (target == "ProblemReport") {
+					
+					viewId = actionParams["view"]; //"PR";
+	
+					LenzServiceHelper.callResource( "getView", { studyId: stId, viewParams: vParams, viewId: viewId, filterDb: filterXml, failure: serviceFailureHandler, result: serviceResponseHandler} );
+	
+				}
+			}	
+		}
+
+		
+		public static function serviceFailureHandler( ev:FaultEvent):void {
+				
+			Alert.show("Get View Failed");
+			
+		}
+		
+			
+		public static function serviceResponseHandler( r:Response):void {
+			
+			if (r.ResponseCode == 200) {
+				
+				var currentLenz:StudyManagerLenz = LenzFactory.getLenz(StudyManagerLenz.LENZ_ID) as StudyManagerLenz;
+				var renderer:Renderer = null;
+				
+				if (r.DataMap.getValue("panel") == RendererFactory.GEO_RENDERER) {
+					
+					renderer = RendererFactory.getRenderer(RendererFactory.GEO_RENDERER);
+					
+					if (r.DataMap.getValue("changePanel") == "true") {
+						renderer.render(StudyManagerLenz.LENZ_ID, r.DataMap, true);
+					} else {
+						renderer.render(StudyManagerLenz.LENZ_ID, r.DataMap, false);
+					}
+					
+				} else if (r.DataMap.getValue("panel") == RendererFactory.RADAR_RENDERER) {
+					
+					renderer = RendererFactory.getRenderer(RendererFactory.RADAR_RENDERER);
+					renderer.render(StudyManagerLenz.LENZ_ID, r.DataMap, true);
+				
+				} else if (r.DataMap.getValue("panel") == RendererFactory.PR_RENDERER) {
+					
+					var controller:ProblemResolutionViewController = new ProblemResolutionViewController();
+					controller.setProblemResolutionData(r.DataMap);
+					LenzServer.planData.copy(controller.getProblemResolutionData());
+					
+					renderer = RendererFactory.getRenderer(RendererFactory.PR_RENDERER);
+					renderer.render(StudyManagerLenz.LENZ_ID, r.DataMap, true);
+					
+				} else {
+					Alert.show("Unknown or unspecified value for the panel rendering.  This indicates that data is missing from the client/server protocol associated with the getView() action.");
+				}
+				
+															
+			} else {
+				Alert.show("Error in getting view.  Response Code: "+r.ResponseCode+" message: "+LenzServiceHelper.getErrorMessage(r));					
+			}
+			
+			
+		}
+		
+		public static function splitParams( params:String ):Object
+		{
+			var paramsMap:Object = new Object();
+			var parts:Array = params.split(","); 
+			for( var i:int = 0; i < parts.length; i++ ) 
+			{
+				var keyAndValue:Array = parts[i].split("=");
+				var key:String = keyAndValue[0];
+				var value:String = keyAndValue[1];
+				
+				paramsMap[ key ] = value;
+			}
+			return paramsMap;
+		}
+		
+		
+	}
+}

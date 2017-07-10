@@ -1,0 +1,146 @@
+package lenz.main.site_select
+{
+	import base.lenz.BaseLenz;
+	import base.lenz.Lenz;
+	import base.lenz.panel.LenzPanel;
+	import base.lenz.panel.PanelBuilder;
+	import app.App;
+	import mx.controls.Alert;
+	import lenz.main.site_select.panel.CA_ProposalBrowserPanel;
+	import lenz.main.site_select.panel.CA_CountryRegionSelectionPanel;
+	import lenz.main.site_select.panel.CA_MetricWeightingPanel;
+	import lenz.main.site_select.panel.CA_NewProposalBuilderPanel;
+	import lenz.main.site_select.panel.CA_SequenceBrowserPanel;
+	import lenz.main.site_select.panel.CA_SequenceCloseupPanel;
+	 
+	public class SiteSelectionLenz extends BaseLenz implements Lenz 
+	{
+		public static const LENZ_ID:String = App.SITE_SELECT;
+
+        
+		private var proposalBrowserPanel:LenzPanel = null;
+		private var newProposalBuilderPanel:LenzPanel = null;
+		private var sequenceBrowserPanel:LenzPanel = null;
+		private var countryRegionSelectionPanel:LenzPanel = null;
+		private var metricWeightingPanel:LenzPanel = null;
+		private var sequenceCloseupPanel:LenzPanel = null;
+		
+		
+/*		
+		private var protoPanel:LenzPanel = null;
+		private var idealPanel:LenzPanel = null;
+		private var sitePanel:LenzPanel = null;
+		private var finalPanel:LenzPanel = null;
+*/		
+		
+		public function SiteSelectionLenz():void {			
+			
+			super();
+			
+			lenzCreationComplete();
+			
+		}
+		
+		
+		public override function getLenzId():String {
+			return LENZ_ID;
+		}
+		
+		
+		public override function activate():void {
+			
+			proposalBrowserPanel = PanelBuilder.build( CA_ProposalBrowserPanel, this);
+			
+			setPanel(proposalBrowserPanel);
+			
+			super.activate();
+			
+		}
+		
+		public override function fetchInitialData(handler:Function):void {
+			
+			handler();
+			
+		}
+		
+		public function simulateExternalClick(data:String):void {
+			
+			
+			var tmp:LenzPanel = null;
+			
+			if (data == "ProposalBrowser") {
+				
+				if (proposalBrowserPanel == null) {
+					proposalBrowserPanel = PanelBuilder.build( CA_ProposalBrowserPanel, this);
+				}
+				
+				tmp = proposalBrowserPanel;
+				
+			} else if (data == "NewProposal") {
+				
+				if (newProposalBuilderPanel == null) {
+					newProposalBuilderPanel = PanelBuilder.build( CA_NewProposalBuilderPanel, this);
+				}
+				
+				tmp = newProposalBuilderPanel;
+				
+				
+			} else if (data == "SequenceBrowser") {
+				
+				if (sequenceBrowserPanel == null) {
+					sequenceBrowserPanel = PanelBuilder.build( CA_SequenceBrowserPanel, this);
+				}
+				
+				tmp = sequenceBrowserPanel;
+				
+			} else if (data == "CountrySelection") {
+				
+				if (countryRegionSelectionPanel == null) {
+					countryRegionSelectionPanel = PanelBuilder.build( CA_CountryRegionSelectionPanel, this);
+				}
+				
+				tmp = countryRegionSelectionPanel;
+				
+			} else if (data == "Metrics") {
+				if (metricWeightingPanel == null) {
+					metricWeightingPanel = PanelBuilder.build( CA_MetricWeightingPanel, this);
+				}				
+				
+				tmp = metricWeightingPanel;
+				
+			} else if (data == "SequenceCloseup") {
+				if (sequenceCloseupPanel == null) {
+					sequenceCloseupPanel = PanelBuilder.build( CA_SequenceCloseupPanel, this);
+				}
+				
+				tmp = sequenceCloseupPanel;
+				
+			} else {
+				Alert.show("Unknown data request:  "+data);
+				
+				tmp = proposalBrowserPanel;
+			}
+			
+			
+
+			// close the current panel, and tell the system what to do when the current panel is closed.
+			// Assuming this is related to the display of another form, you would want to set this up to
+			// wait for data from the server, set up the form within the new panel with the appropriate data
+			// and then 
+
+			currentPanel.close( 
+			
+				function():void{ 
+					setPanel(tmp); 
+					tmp.open(); 
+				} 
+				
+				
+			);
+
+
+		}
+
+		
+	}
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TabNavigator xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+	<mx:ArrayCollection id="faves">
+			<mx:source>
+				<mx:Object favorite="Favorite 1" />
+				<mx:Object favorite="Favorite 2" />
+				<mx:Object favorite="Favorite 3" />
+			</mx:source>
+	</mx:ArrayCollection>
+	<mx:Canvas label="Favorites" width="100%" height="100%">
+		<mx:DataGrid dataProvider="{faves}" width="100%" height="100%">
+			<mx:columns >
+				<mx:DataGridColumn headerText="Navigate to: " dataField="favorite"/>
+			</mx:columns>
+		</mx:DataGrid>
+	</mx:Canvas>
+	
+	<mx:ArrayCollection id="ac">
+			<mx:source>
+				<mx:Object analysis="Analysis 1" />
+				<mx:Object analysis="Analysis 2" />
+				<mx:Object analysis="Analysis 3" />
+			</mx:source>
+	</mx:ArrayCollection>
+	<mx:Canvas label="Analyses" width="100%" height="100%">
+		<mx:DataGrid showHeaders="false" dataProvider="{ac}" width="100%" height="100%">
+			<mx:columns >
+				<mx:DataGridColumn headerText="Navigate to: " dataField="analysis"/>
+			</mx:columns>
+		</mx:DataGrid>
+	</mx:Canvas>
+	
+</mx:TabNavigator>

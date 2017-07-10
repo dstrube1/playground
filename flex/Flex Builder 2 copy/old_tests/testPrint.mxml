@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:local="*" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" initialize="initData();">
+
+<mx:Script>
+	<![CDATA[
+		import mx.printing.FlexPrintJob;
+		import mx.collections.ArrayCollection;
+
+		[Bindable]
+		public var dgProvider:ArrayCollection;
+		public var prodIndex:Number;
+		
+		public function initData():void {
+            // Create the data provider for the DataGrid control.
+            dgProvider = new ArrayCollection; 
+        }
+        
+        public function setdgProvider(items:int):void {    
+
+            prodIndex=1;
+            dgProvider.removeAll();
+            for (var z:int=0; z<items; z++)    
+            {
+                var prod1:Object = {};
+                prod1.Qty = prodIndex * 7;
+                prod1.Index = prodIndex++;
+                //prodTotal += prod1.Qty; 
+                dgProvider.addItem(prod1);
+            }
+        }
+        
+		private function doPrint():void{
+			var pj:FlexPrintJob = new FlexPrintJob();
+			if (pj.start() == true){
+				return;
+			}
+			var myvbox:myVBox = new myVBox();
+			this.addChild(myvbox);
+			myvbox.contact.text = "Contact info here";
+			myvbox.myPDG.dataProvider= myDataGrid.dataProvider;
+
+		}
+	]]>
+</mx:Script>
+
+<mx:Canvas id="me" >
+	<mx:Panel id="me2" >
+		<mx:TextArea id="me3" />
+		<mx:Button id="setDP" label="Fill Grid" click="setdgProvider(5);"/>
+		<mx:Button id="me4" label="click me" click="doPrint()"/>
+		<mx:DataGrid id="myDataGrid" dataProvider="{dgProvider}">
+            <mx:columns>
+                <mx:DataGridColumn dataField="Index"/>
+                <mx:DataGridColumn dataField="Qty"/>
+            </mx:columns>
+        </mx:DataGrid>
+	</mx:Panel>
+</mx:Canvas>
+
+
+<!--
+<local:myToday />
+    <local:myFunnel x="131" y="70" 
+    	ptsIdentified="1500"  lessRed="990" lessBlue="178" 
+    	lessGreen="92" lessGray="159" />
+-->
+</mx:Application>

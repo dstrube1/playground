@@ -1,0 +1,844 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
+<meta content="DragManager,flash.desktop.DragManager,dropAction,dragInitiator,bitmaps,TEXT_FORMAT,URL_FORMAT,FILE_LIST_FORMAT,BITMAP_FORMAT,ORIGINAL_PREFERRED,ORIGINAL_ONLY,CLONE_PREFERRED,CLONE_ONLY,data,allowCopy,allowMove,allowLink,COPY,MOVE,LINK,NONE,formats,acceptDragDrop,isDragging,doDrag,accessClipboard,toString,removeData,addData,addHandler,dataForFormat,hasFormat" name="keywords">
+<title>flash.desktop.DragManager (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'DragManager - Flex 3 Language Reference';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../index.html?flash/desktop/DragManager.html&amp;flash/desktop/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;DragManager</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class DragManager"); titleBar_setSubNav(false,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">flash.desktop</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  DragManager</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">DragManager  <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../Object.html">Object</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+ Coordinates drag-and-drop operations. With the native drag-and-drop API, 
+ you can allow a user to drag data between an AIR application and the native operating system, 
+ between two AIR applications, as well as between components within a single application.
+ 
+ <p>Supported transfer formats include:</p>
+ <ul>
+ <li>Bitmaps</li>
+ <li>Files</li>
+ <li>Text</li>
+ <li>URL strings</li>
+ <li>Serialized objects</li>
+ <li>Object references (only valid within the originating application)</li>
+ </ul>
+ 
+ <p><b>Note:</b> all DragManager members are static. An instance of this class does not need to be created.</p>
+ 
+ <p>A drag-and-drop operation is a user interface gesture that begins with the user clicking on a visible item and
+ dragging it elsewhere. During the drag gesture, objects on the display list dispatch NativeDragEvents
+ as the gesture moves across the AIR application window. Handlers for these events can call 
+ the methods of the DragManager to indicate when a dragged item 
+ can be dropped. In response, the DragManager changes the mouse cursor to provide feedback to the user.</p>
+  <p><b>Drag Actions</b></p>
+ <p>Drag-and-drop gestures are typically used for three types of operations called actions. 
+ Since the meaning of these actions depends on the application context, 
+ the runtime does not enforce any particular behavior with respect to actions. 
+ However, properly implementing the actions will improve the user experience with your application.
+ </p> 
+ 
+ <p>The possible actions are:</p>
+ <ul>
+ <li>copy: A copy of the data should be made, leaving the original untouched. 
+ When dragging objects within an application, care should be taken to copy the 
+ original object itself rather than the reference to that object.</li>
+ <li>move: The data should be moved from its original context into the context defined by the drop target, 
+ such as when moving an item from one list to another.</li>
+ <li>link: A shortcut or reference to the original data should be created, 
+ while still leaving the item within its original context.</li>
+ </ul>
+ 
+ <p>The allowed actions can be set for a drag gesture by supplying an <code>allowedActions</code> parameter
+ in the <code>DragManager.doDrag()</code> call that starts the drag operation. If no <code>allowedActions</code> parameter is provided, all
+ of the actions are allowed. Potential drag targets can check which actions are allowed with the 
+ <code>allowedActions</code> property of a NativeDragEvent object, and should not accept a drop
+ that only allows incompatible actions (this is not enforced by the runtime, however).</p>
+ 
+ <p>When accepting a drop, a potential drop target should indicate the action chosen
+ by setting the <code>DragManager.dropAction</code> property in response to the 
+ <code>nativeDragDrop</code> event. This action is reported back to the initiating
+ display object in the <code>nativeDragComplete</code> event. If no action is set by a drop target, 
+ then a default action, chosen from the allowed actions in this order of 
+ precedence: copy, move, link, is reported in the event. The initiating object is responsible
+ for updating its internal state in response to the chosen action.</p> 
+ 
+ <p>String constants for the action names are defined in the DragActions class.</p>
+ 
+ <p><b>Sequence of events</b></p>
+ <p>A drag gesture is begun by calling the <code>DragManager.doDrag()</code> method 
+ within a <code>mouseDown</code> or <code>mouseMoved</code> event handler and 
+ proceeds through the following event sequence in response to user actions:</p>
+ <ul>
+ <li><code>nativeDragStart</code> event: When DragManager.doDrag() is called, 
+ the DisplayObject passed as a paramter to the method becomes the initiator 
+ object and will dispatch a <code>nativeDragStart</code> event.</li> 
+ 
+ <li><code>nativeDragEnter</code>, <code>nativeDragOver</code> events: When a drag 
+ gesture passes over a DisplayObject, that object will 
+ dispatch a <code>nativeDragEnter</code> event. While the drag gesture remains over the DisplayObject, 
+ it will continually dispatch <code>nativeDragOver</code> events. In response to either of these events, 
+ an object that serves as a potential drop target should check the properties of the event object 
+ to decide whether it can accept the drop. If the data format and allowed 
+ actions are appropriate, then the event handler for these events must call 
+ <code>DragManager.acceptDrop()</code>, passing in a reference to 
+ display object that will serve as the drag target (typically the object that 
+ dispatched the event). The user will then be able to drop the dragged item onto the target.</li>
+ 
+ <li><code>nativeDragExit</code> event: When a drag gesture passes out of a 
+ DisplayObject, then the object dispatches a <code>nativeDragExit</code> event. 
+ If the object had been designated as the drag target by an earlier call to the 
+ <code>DragManager.acceptDrop()</code> method, that call is no longer valid
+ and <code>acceptDrop()</code> must be called again if the gesture re-enters the DisplayObject.</li>
+ 
+ <li><code>nativeDragDrop</code> event: The target display object dispatches a 
+ <code>nativeDragDrop</code> event when the user releases the mouse button over the object. 
+ The handler for this event can access the data in the <code>transferable</code> 
+ property of the event object and should set the <code>DragManager.dropAction</code> property to
+ signal which action should be taken by the initiator object.</li>
+ 
+ <li><code>nativeDragComplete</code>: When the user releases the mouse at the end of a drag gesture, 
+ the initiator object dispatches a <code>nativeDragComplete</code> event (whether or not the drop itself was consumated). 
+ The handler for this event can check the <code>dropAction</code> property of the event object to determine what, 
+ if any, modification should be made to its internal data state, such as removing a dragged-out item from a list. 
+ If <code>dropAction==DragActions.NONE</code>, then the dragged item was not dropped on an eligible target.</li>
+ </ul>
+  <p><b>Gestures between application</b></p>
+ <p>When a drag gesture enters an AIR application window from a non-AIR application,
+ there will be no initiator object to dispatch the <code>nativeDragStart</code> or <code>nativeDragComplete</code>
+ events. The events dispatched during the gesture will otherwise follow the same
+ pattern as that of a gesture starting and ending within the same AIR application</p>
+ 
+ <p>When a drag gesture leaves an AIR application window, there will be no target object to dispatch 
+ <code>nativeDragEnter</code>, <code>nativeDragOver</code>, or <code>nativeDragDrop</code> events. The initiator object
+ still dispatches a <code>nativeDragComplete</code> event, which reports the drag action set 
+ by the native operating system (or "none," if the drop was not accepted).</p>
+ 
+ <p>When a drag gesture moves from one AIR application to another, the initiator
+ and target display objects dispatch events within their separate applications
+ as usual.</p>
+ 
+ <p><b>Transfering information</b></p>
+ <p>The data transfered during a drag-and-drop gesture is contained in a TransferableData object. 
+ This data object is added to the drag operation with the 
+ <code>DragManager.doDrag()</code> method that starts the drag gesture. 
+ Potential drop targets can access the TransferableData object through the 
+ <code>transferable</code> property of the NativeDragEvent 
+ object. Once a drag operation has started, the TransferableData object can 
+ only be accessed in the event handler of a NativeDragEvent. Any other attempt 
+ to access the object will generate a runtime error.</p>
+ 
+ <p><b>Security considerations</b></p>
+ <p>The security sandboxes of the initiator and potential target objects determine how the 
+ the data being dragged can be accessed. If both objects are in the same sandbox, 
+ then the data can be accessed from any NativeDragEvent object. However,
+ if the initiator and target objects are in different sandboxes, the data can 
+ only be accessed in the target sandbox within the event 
+ handler for the <code>nativeDragDrop</code> event. Other native drag event handlers can still
+ still access the TransferableData object referenced in the event<code>transferable</code>
+ property to determine which data formats are available, but calling the 
+ <code>transferable.dataForFormat()</code> method will generate a security error.</p>
+ 
+ <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../flash/events/NativeDragEvent.html" target="">flash.events.NativeDragEvent</a>
+<br>
+<a href="DragActions.html" target="">flash.desktop.DragActions</a>
+<br>
+<a href="DragOptions.html" target="">flash.desktop.DragOptions</a>
+<br>
+<a href="TransferableData.html" target="">flash.desktop.TransferableData</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#constructor">constructor</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  A reference to the class object or constructor function for a given object instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#dragInitiator">dragInitiator</a> : <a href="../../flash/display/DisplayObject.html">DisplayObject</a>
+<div class="summaryTableDescription">[static] [read-only] 
+    The DisplayObject passed to the DragManager.doDrag call that initiated the drag operation.</div>
+</td><td class="summaryTableOwnerCol">DragManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#dropAction">dropAction</a> : <a href="../../String.html">String</a>
+<div class="summaryTableDescription">[static] 
+     The drag action specified by the drop target.</div>
+</td><td class="summaryTableOwnerCol">DragManager</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../Object.html#prototype">prototype</a> : <a href="../../Object.html">Object</a>
+<div class="summaryTableDescription">[static] 
+  A reference to the prototype object of a class or function object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#acceptDragDrop()">acceptDragDrop</a>(target:<a href="../../flash/display/DisplayObject.html">DisplayObject</a>):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">[static] 
+     Informs the DragManager that the specified target DisplayObject can accept a drop
+     corresponding to the current drag event.</div>
+</td><td class="summaryTableOwnerCol">DragManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#doDrag()">doDrag</a>(initiator:<a href="../../flash/display/DisplayObject.html">DisplayObject</a>, transferable:<a href="../../flash/desktop/TransferableData.html">TransferableData</a>, dragImage:<a href="../../flash/display/BitmapData.html">BitmapData</a> = null, offset:<a href="../../flash/geom/Point.html">Point</a> = null, actionsAllowed:<a href="../../flash/desktop/DragOptions.html">DragOptions</a> = null):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">[static] 
+     Starts a drag-and-drop operation.</div>
+</td><td class="summaryTableOwnerCol">DragManager</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">hasOwnProperty</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an object has a specified property defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isDragging()">isDragging</a>():<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">[static] 
+    Indicates whether a drag operation is currently in progress.</div>
+</td><td class="summaryTableOwnerCol">DragManager</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">isPrototypeOf</a>(theClass:<a href="../../Object.html">Object</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an instance of the Object class is in the prototype chain of the object specified 
+  as the parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#AS3()">propertyIsEnumerable</a>(name:<a href="../../String.html">String</a>):<a href="../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether the specified property exists and is enumerable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#setPropertyIsEnumerable()">setPropertyIsEnumerable</a>(name:<a href="../../String.html">String</a>, isEnum:<a href="../../Boolean.html">Boolean</a> = true):<a href="../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+     Sets the availability of a dynamic property for loop operations.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#toString()">toString</a>():<a href="../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the string representation of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../Object.html#valueOf()">valueOf</a>():<a href="../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the primitive value of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../Object.html">Object</a></td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<table id="summaryTableEvent" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th> Summary </th><th class="summaryTableOwnerCol">Defined By</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:nativeDragComplete">nativeDragComplete</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched by the drag initiator DisplayObject when the user releases the drag gesture.</td><td class="summaryTableOwnerCol">DragManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:nativeDragDrop">nativeDragDrop</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched by the target DisplayObject when a dragged object is dropped on it and the drop has been accepted with a call to DragManager.acceptDragDrop().</td><td class="summaryTableOwnerCol">DragManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:nativeDragEnter">nativeDragEnter</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched by a DisplayObject when a drag gesture enters its boundary.</td><td class="summaryTableOwnerCol">DragManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:nativeDragExit">nativeDragExit</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched by a DisplayObject when a drag gesture leaves its boundary.</td><td class="summaryTableOwnerCol">DragManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:nativeDragOver">nativeDragOver</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched by a DisplayObject continually while a drag gesture remains within its boundary.</td><td class="summaryTableOwnerCol">DragManager</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:nativeDragStart">nativeDragStart</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched at the beginning of a drag operation by the DisplayObject that is specified as the drag initiator in the DragManager.doDrag() call.</td><td class="summaryTableOwnerCol">DragManager</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="dragInitiator"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">dragInitiator</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>dragInitiator:<a href="../../flash/display/DisplayObject.html">DisplayObject</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+    The DisplayObject passed to the DragManager.doDrag call that initiated the drag operation.
+    </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get dragInitiator():<a href="../../flash/display/DisplayObject.html">DisplayObject</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="dropAction"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">dropAction</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>dropAction:<a href="../../String.html">String</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+     The drag action specified by the drop target. 
+     
+     <p>The <code>dropAction</code>
+     should be set in the handler for the <code>nativeDragDrop</code> event.
+     If not set, the DragManager will automatically set value with the first 
+     allowed action from the list: copy, move, link (in that order).</p>
+     
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get dropAction():<a href="../../String.html">String</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set dropAction(value:<a href="../../String.html">String</a>):<a href="../../specialTypes.html#void">void</a></code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="DragActions.html" target="">flash.desktop.DragActions</a>
+</div>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method Detail</div>
+<a name="acceptDragDrop()"></a><a name="acceptDragDrop(flash.display.DisplayObject)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">acceptDragDrop</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function acceptDragDrop(target:<a href="../../flash/display/DisplayObject.html">DisplayObject</a>):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+     Informs the DragManager that the specified target DisplayObject can accept a drop
+     corresponding to the current drag event.
+     
+     <p>This method should only be called when there is a <code>nativeDragDrop</code>
+     handler on the specified target object that can handle at least one of the 
+     data formats in the dragged item and at least one of the allowed actions.</p>
+     
+     <p>This function can be called only within a nativeDragEnter or nativeDragOver
+     event handler.</p>
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">target</span>:<a href="../../flash/display/DisplayObject.html">DisplayObject</a></code></td>
+</tr>
+</table>
+</p>
+</div>
+<a name="doDrag()"></a><a name="doDrag(flash.display.DisplayObject,flash.desktop.TransferableData,flash.display.BitmapData,flash.geom.Point,flash.desktop.DragOptions)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">doDrag</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function doDrag(initiator:<a href="../../flash/display/DisplayObject.html">DisplayObject</a>, transferable:<a href="../../flash/desktop/TransferableData.html">TransferableData</a>, dragImage:<a href="../../flash/display/BitmapData.html">BitmapData</a> = null, offset:<a href="../../flash/geom/Point.html">Point</a> = null, actionsAllowed:<a href="../../flash/desktop/DragOptions.html">DragOptions</a> = null):<a href="../../specialTypes.html#void">void</a></code>
+<p></p><p>
+     Starts a drag-and-drop operation.
+     
+     <p>To start a drag operation:</p>
+     <ol>
+     <li>Create a new TransferableData object.</li>
+     <li>Add the data to be transfered in one or more formats.</li>
+     <li>Optionally, create a BitmapData object to serve as a proxy image during the drag.</li>
+     <li>Optionally, create a DragOptions object to restrict the actions allowed in this operation. 
+     (If the <code>allowedActions</code> parameter is left null, all actions are allowed.)</li>
+     <li>Call <code>DragManager.doDrag()</code>.</li>
+     </ol>
+     
+     <p>The initiator object will receive a <code>nativeDragStart</code> event after this method is called and a 
+     <code>nativeDragComplete</code> event when the user releases the mouse to end the drag gesture. 
+     The handler for the <code>nativeDragComplete</code> event can check the <code>dropAction</code> property of the 
+     event to determine whether the drag-and-drop operation was successfully completed. 
+     If <code>dropAction==DragActions.NONE</code>, then the dragged item was not dropped on an eligible target.</p>
+     
+     <p>This method may be called only from within a <code>mouseDown</code> or 
+     <code>mouseMoved</code> event handler. (If called in response to a 
+     <code>mouseMoved</code> event, the mouse button must also be down.)</p>
+     
+     </p><p>
+<span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">initiator</span>:<a href="../../flash/display/DisplayObject.html">DisplayObject</a></code> &mdash; typically the object from which the drag gesture began. Receives the nativeDragStart
+     and nativeDragComplete events.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">transferable</span>:<a href="../../flash/desktop/TransferableData.html">TransferableData</a></code> &mdash; a clipboard-like container for data being dragged.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">dragImage</span>:<a href="../../flash/display/BitmapData.html">BitmapData</a></code> (default = <code>null</code>)<code></code> &mdash; an optional proxy image displayed under the mouse cursor 
+     during the drag gesture. If <code>null</code>, no proxy image is displayed.
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">offset</span>:<a href="../../flash/geom/Point.html">Point</a></code> (default = <code>null</code>)<code></code> &mdash; the offset between the mouse hotspot and the top left 
+     corner of the dragImage. Negative coordinates will move the image up and 
+     to the left in relation to the hotspot. If <code>null</code>, the top, 
+     left corner of the drag image will be positioned at the mouse hotspot. 
+     </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">actionsAllowed</span>:<a href="../../flash/desktop/DragOptions.html">DragOptions</a></code> (default = <code>null</code>)<code></code> &mdash; restricts the drag-and-drop actions allowed for 
+     this operation. If <code>null</code>, all actions are allowed.
+     
+     </td>
+</tr>
+</table>
+</p>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="TransferableData.html" target="">flash.desktop.TransferableData</a>
+<br>
+<a href="DragOptions.html" target="">flash.desktop.DragOptions</a>
+<br>
+<a href="DragActions.html" target="">flash.desktop.DragActions</a>
+<br>
+<a href="../../flash/display/DisplayObject.html" target="">flash.display.DisplayObject</a>
+<br>
+<a href="../../flash/display/BitmapData.html" target="">flash.display.BitmapData</a>
+<br>
+<a href="../../flash/geom/Point.html" target="">flash.geom.Point</a>
+</div>
+</div>
+<a name="isDragging()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isDragging</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function isDragging():<a href="../../Boolean.html">Boolean</a></code>
+<p></p><p>
+    Indicates whether a drag operation is currently in progress.
+     
+     </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Boolean.html">Boolean</a></code> &mdash; <code>true</code> if a drag operation is in progress.
+    </td>
+</tr>
+</table>
+</div>
+<div class="detailSectionHeader"> Event Detail </div>
+<a name="event:nativeDragComplete"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nativeDragComplete</td><td class="detailHeaderType">event&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/NativeDragEvent.html"><code>flash.events.NativeDragEvent</code></a>
+<br>
+<span class="label">NativeDragEvent.type property = </span><a href="../../flash/events/NativeDragEvent.html#NATIVE_DRAG_COMPLETE"><code>flash.events.NativeDragEvent.NATIVE_DRAG_COMPLETE</code></a>
+<br>
+<p></p><p>
+ Dispatched by the drag initiator DisplayObject when the user releases the drag gesture.
+ 
+ <p>The event's dropAction property indicates the action set
+ by the drag target object; a value of "none" (<code>DragActions.NONE</code>) 
+ indicates that the drop was canceled or was not accepted.</p>
+  <p>The <code>nativeDragComplete</code> event handler is a convenient place
+ to update the state of the initiating display object, for example, by removing
+ an item from a list (on an drag action of "move"), or by changing the visual
+ properties.</p>
+ 
+ </p>
+ NativeDragEvent.NATIVE_DRAG_COMPLETE defines the value of the 
+  <code>type</code> property of a <code>nativeDragComplete</code> event object. 
+ 
+ <p>This event has the following properties:</p>
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>actionsAllowed</code></td><td>The DragOptions object specifying the actions relevant to this drag operation.</td>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>false</code>; there is no default behavior to cancel.</td>
+</tr>
+<tr>
+<td><code>dropAction</code></td><td>The action chosen by the drop target (or the default action if no action was set).</td>
+</tr>
+<tr>
+<td><code>transferable</code></td><td>The TransferableData object containing the dragged data.</td>
+</tr></table>
+ 
+ </div>
+<a name="event:nativeDragDrop"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nativeDragDrop</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/NativeDragEvent.html"><code>flash.events.NativeDragEvent</code></a>
+<br>
+<span class="label">NativeDragEvent.type property = </span><a href="../../flash/events/NativeDragEvent.html#NATIVE_DRAG_DROP"><code>flash.events.NativeDragEvent.NATIVE_DRAG_DROP</code></a>
+<br>
+<p></p><p>
+ Dispatched by the target DisplayObject when a dragged object is 
+ dropped on it and the drop has been accepted with a call to
+ DragManager.acceptDragDrop().
+ 
+ <p>Access the dropped data using the event object <code>transferable</code>
+ property.</p>
+ 
+ <p>The handler for this event should set the <code>DragManager.dropAction</code>
+ property to provide feedback to the initiator object about which drag action 
+ was taken. If no value is set, the DragManager will select a default value 
+ from the list of allowed actions.</p>
+  </p>
+ NativeDragEvent.NATIVE_DRAG_DROP defines the value of the <code>type</code> 
+  property of a <code>nativeDragDrop</code> event object. 
+ 
+ <p>This event has the following properties:</p>
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>actionsAllowed</code></td><td>The DragOptions object specifying the actions relevant to this drag operation.</td>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>true</code>; cancelling this event will cancel the drag operation.</td>
+</tr>
+<tr>
+<td><code>transferable</code></td><td>The TransferableData object containing the dragged data.</td>
+</tr></table>
+ 
+ </div>
+<a name="event:nativeDragEnter"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nativeDragEnter</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/NativeDragEvent.html"><code>flash.events.NativeDragEvent</code></a>
+<br>
+<span class="label">NativeDragEvent.type property = </span><a href="../../flash/events/NativeDragEvent.html#NATIVE_DRAG_ENTER"><code>flash.events.NativeDragEvent.NATIVE_DRAG_ENTER</code></a>
+<br>
+<p></p><p>
+ Dispatched by a DisplayObject when a drag gesture enters its boundary.
+ 
+ <p>Handle either the <code>nativeDragEnter</code> or <code>nativeDragOver</code> 
+ events to allow the display object to become the drop target.</p>
+ 
+ <p>To determine whether the dispatching display object can accept the drop,
+ check the suitability of the data in <code>transferable</code> property of 
+ the event object and the allowed drag actions in the <code>actionsAllowed</code> 
+ property.</p> 
+  </p>
+ NativeDragEvent.NATIVE_DRAG_ENTER defines the value of the 
+ <code>type</code> property of a <code>nativeDragEnter</code> event object. 
+ 
+ <p>This event has the following properties:</p>
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>actionsAllowed</code></td><td>The DragOptions object specifying the actions relevant to this drag operation.</td>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>false</code>; there is no default behavior to cancel.</td>
+</tr>
+<tr>
+<td><code>transferable</code></td><td>The TransferableData object containing the dragged data.</td>
+</tr></table>
+ 
+ </div>
+<a name="event:nativeDragExit"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nativeDragExit</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/NativeDragEvent.html"><code>flash.events.NativeDragEvent</code></a>
+<br>
+<span class="label">NativeDragEvent.type property = </span><a href="../../flash/events/NativeDragEvent.html#NATIVE_DRAG_EXIT"><code>flash.events.NativeDragEvent.NATIVE_DRAG_EXIT</code></a>
+<br>
+<p></p><p>
+ Dispatched by a DisplayObject when a drag gesture leaves its boundary.
+  </p>
+ NativeDragEvent.NATIVE_DRAG_EXIT defines the value of the <code>type</code> 
+  property of a <code>nativeDragExit</code> event object. 
+ 
+ <p>This event has the following properties:</p>
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>actionsAllowed</code></td><td>The DragOptions object specifying the actions relevant to this drag operation.</td>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>false</code>; there is no default behavior to cancel.</td>
+</tr>
+<tr>
+<td><code>transferable</code></td><td>The TransferableData object containing the dragged data.</td>
+</tr></table>
+ 
+ </div>
+<a name="event:nativeDragOver"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nativeDragOver</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/NativeDragEvent.html"><code>flash.events.NativeDragEvent</code></a>
+<br>
+<span class="label">NativeDragEvent.type property = </span><a href="../../flash/events/NativeDragEvent.html#NATIVE_DRAG_OVER"><code>flash.events.NativeDragEvent.NATIVE_DRAG_OVER</code></a>
+<br>
+<p></p><p>
+ Dispatched by a DisplayObject continually while a drag gesture remains within its
+ boundary.
+ 
+ <p>nativeDragOver events are dispatched on a timer and whenever the
+ mouse is moved.</p>
+ 
+ <p>Handle either the <code>nativeDragOver</code> or <code>nativeDragEnter</code> 
+ events to allow the display object to become the drop target.</p> 
+ 
+ <p>To determine whether the dispatching display object can accept the drop,
+ check the suitability of the data in <code>transferable</code> property of 
+ the event object and the allowed drag actions in the <code>actionsAllowed</code> 
+ property.</p> 
+ 
+ </p>
+ NativeDragEvent.NATIVE_DRAG_OVER defines the value of the <code>type</code> 
+  property of a <code>nativeDragOver</code> event object. 
+ 
+ <p>This event has the following properties:</p>
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>actionsAllowed</code></td><td>The DragOptions object specifying the actions relevant to this drag operation.</td>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>true</code>; cancelling this event will cancel the drag operation.</td>
+</tr>
+<tr>
+<td><code>transferable</code></td><td>The TransferableData object containing the dragged data.</td>
+</tr></table>
+ 
+ </div>
+<a name="event:nativeDragStart"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nativeDragStart</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event Object Type: </span><a href="../../flash/events/NativeDragEvent.html"><code>flash.events.NativeDragEvent</code></a>
+<br>
+<span class="label">NativeDragEvent.type property = </span><a href="../../flash/events/NativeDragEvent.html#NATIVE_DRAG_START"><code>flash.events.NativeDragEvent.NATIVE_DRAG_START</code></a>
+<br>
+<p></p><p>
+ Dispatched at the beginning of a drag operation by the DisplayObject that is 
+ specified as the drag initiator in the DragManager.doDrag() call.
+  </p>
+ NativeDragEvent.NATIVE_DRAG_START defines the value of the <code>type</code> 
+ property of a <code>nativeDragStart</code> event object. 
+ 
+ <p>This event has the following properties:</p>
+ <table class="innertable" ><tr>
+<th>Property</th><th>Value</th>
+</tr>
+<tr>
+<td><code>actionsAllowed</code></td><td>The DragOptions object specifying the actions relevant to this drag operation.</td>
+</tr>
+<tr>
+<td><code>bubbles</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td><code>cancelable</code></td><td><code>true</code>; cancelling this event will cancel the drag operation.</td>
+</tr>
+<tr>
+<td><code>transferable</code></td><td>The TransferableData object containing the dragged data.</td>
+</tr></table>
+ 
+ </div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('flash/desktop/DragManager.html','flash/desktop/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

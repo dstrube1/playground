@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="installedFeatures">
+		<item value="com.adobe.flexbuilder.feature.core.osx:2.0.167022"/>
+		<item value="com.adobe.flexbuilder.feature.standalone.osx:2.0.167022"/>
+		<item value="org.eclipse.platform:3.2.2.r322_v20070119-RQghndJN8IM0MsK"/>
+		<item value="org.eclipse.rcp.patch1:3.2.2.v20070330_322"/>
+		<item value="org.eclipse.rcp:3.2.2.r322_v20070104-8pcviKVqd8J7C1U"/>
+	</list>
+	<section name="SaveAsDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="419"/>
+		<item key="DIALOG_FONT_NAME" value="1|Lucida Grande|11|0|CARBON|1|"/>
+		<item key="DIALOG_HEIGHT" value="563"/>
+		<item key="DIALOG_Y_ORIGIN" value="112"/>
+		<item key="DIALOG_WIDTH" value="525"/>
+	</section>
+	<section name="org.eclipse.ui.views.task">
+	</section>
+	<section name="CleanDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="482"/>
+		<item key="DIALOG_HEIGHT" value="376"/>
+		<item key="DIALOG_Y_ORIGIN" value="207"/>
+		<item key="DIALOG_WIDTH" value="516"/>
+		<item key="TOGGLE_SELECTED" value="true"/>
+	</section>
+	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.ui.wizards.new.project"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.views.problem">
+	</section>
+	<section name="ResourceNavigator">
+		<item key="ResourceWorkingSetFilter.STORE_WORKING_SET" value=""/>
+		<item key="ResourceViewer.STORE_SORT_TYPE" value="1"/>
+	</section>
+	<section name="BasicNewProjectResourceWizard">
+	</section>
+</section>

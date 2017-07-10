@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="complete()">
+<mx:Style source="styles/Delaware.css" />
+	<mx:Script>
+		<![CDATA[
+			public function complete():void{
+				var xml:XML = 
+				<map>
+				   <element key="x1" value="1" />
+				   <element key="x2" value="two" />
+				   <element key="x3" value="3.00" />
+				</map>;
+
+            	a.text += "\n\nKey of first element in simple xml:"+xml.element[0].@key
+            	
+            	var i:int = 0;
+            	a.text += "\n\nAll keys and values in simple xml:";
+            	for each (var korv:XML in xml.element){
+            		a.text += "\ni="+i+": key="+korv.@key+"; value="+korv.@value;
+            		i++;
+            	}
+            	
+            	a.text += "\n\nTest print of XMLMap:";
+//            	var testXML:XMLMap = null;
+//            	testXML = new XMLMap('<map><element key="k1" value="1" /><element key="asdf" value="asdf" /><element key="fp" value="3.14159" /><element key="asdffd" value="" /></map>');
+//missing map            	
+				var testXML:XMLMap = null;
+				testXML = new XMLMap('');
+//misplaced map            	var testXML:XMLMap = new XMLMap(' <map><element key="k1" value="1" /><element key="asdf" value="asdf" /><element key="fp" value="3.14159" /><element key="asdffd" value="" />');
+//missing element			var testXML:XMLMap = new XMLMap('<map> </map>');
+//misplaced element			var testXML:XMLMap = new XMLMap('<map> <element key="k1" value="1" /><element key="asdf" value="asdf" /><element key="fp" value="3.14159" /><element key="asdffd" value="" /></map>');
+//missing key				var testXML:XMLMap = new XMLMap('<map><element /></map>');
+//misplace key
+//missing value
+//missing </element>
+//missing </map>
+            	a.text += "\n"+testXML.print();
+            	
+            	a.text += "\n\nAll keys in XMLMap:";
+            	for each (var o:Object in testXML.getKeys()){
+            		a.text += "\n"+o.toString();
+            	}
+
+            	a.text += "\n\nAll values in XMLMap:";
+            	for each (o in testXML.getValues()){
+            		a.text += "\n"+o.toString();
+            	}
+//            	a.text += "\n"+
+			}
+		]]>
+	</mx:Script>
+	<mx:Text id="a" text="Initial text" />
+	
+	
+</mx:Application>

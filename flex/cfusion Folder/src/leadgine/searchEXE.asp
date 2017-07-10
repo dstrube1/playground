@@ -1,0 +1,150 @@
+<!--#include virtual="/includes/connection.asp" -->
+<!--#include virtual="/includes/errorHandler.asp" -->
+<%
+   'On Error Resume Next
+   
+   response.buffer = true
+
+	dim searchString
+   	dim usr, myType, hotel, company, referrer, myEvent, myStatus, roomMin, roomMax, revMin, revMax, rateMin, rateMax, sqlLeads
+   
+   'err.raise 11
+
+sub main()
+	getFormData
+	call processData()
+end sub
+
+sub getFormData()
+  usr = request.querystring("userid")
+  'if usr = "" then usr = 1
+  hotel = request.querystring("hotel")
+  
+  company = request.form("company")
+  	if company <> "" then
+		searchString = searchString & " and Company like '%" & company & "%' "
+  	end if
+  referrer = request.form("referrer")
+  	if referrer = false then
+		searchString = searchString & " and RefUserID = " & usr & " "
+  	end if
+  myEvent = request.form("event")
+  	if myEvent <> "" then
+		searchString = searchString & " and myEvent like '%" & myEvent & "%' "
+  	end if
+  myStatus = request.form("status")
+  	if myStatus <> "" and myStatus <> "--Select a Status--" then
+		select case myStatus
+			case "Definite"
+				myStatus = "DEF"
+			case "Tentative"
+				myStatus = "TENT"
+			case "Pending"
+				myStatus = "PEND"
+			case "Rejected"
+				myStatus = "REJ"
+			case "Lost"
+				myStatus = "LOST"
+		end select	
+		searchString = searchString & " and myStatus = '" & myStatus & "' "
+  	end if
+  roomMin = request.form("roomMin")
+  roomMax = request.form("roomMax")
+  	if roomMin <> "" and roomMax <> "" then
+		searchString = searchString & " and TotalRooms >= " & roomMin & " and TotalRooms <= " & roomMax & " "
+  	end if
+  revMin = request.form("revMin")
+  revMax = request.form("revMax")
+  	if revMin <> "" and revMax <> "" then
+		searchString = searchString & " and RmRevenue >= " & revMin & " and RmRevenue <= " & revMax & " "
+  	end if
+  rateMin = request.form("rateMin")
+  rateMax = request.form("rateMax")
+  	if rateMin <> "" and rateMax <> "" then
+		searchString = searchString & " and Rate >= " & rateMin & " and RmRevenue <= " & rateMax & " "
+  	end if
+end sub
+
+sub TrapIt()
+	If Err.number <> 0 then
+  		call TrapError(Err.description, err.number, usr, sqlLeads)
+	End If
+end sub
+
+
+sub processData()
+	on error resume next
+
+	set myConnSQL = server.createobject("ADODB.Connection")
+	myConnSQL.Open strConnSQL
+	call TrapIt()
+	
+		sqlLeads = "Select ID,Company,myEvent,Arrival, Sent_Date,TotalRooms,RmRevenue + RentalRevenue + CateringRevenue as Revenue,Bonus,myStatus from Referrals where RefUserID = " & usr & searchString & " order by Sent_Date,Company,myEvent "
+		set rsLeads = myConnSQL.Execute(sqlLeads)
+	
+		call TrapIt()
+
+		xmlLeads = "<?xml version='1.0' encoding='ISO-8859-1' ?><response><items>"
+		
+		While not rsLeads.eof
+			myStatus = rsLeads("myStatus")
+			select case myStatus
+				case "DEF"
+					myStatus = "Definite!"
+				case "TENT"
+					myStatus = "Tentative"
+				case "PEND"
+					myStatus = "Pending"
+				case "REJ"
+					myStatus = "Rejected"
+				case "LOST"
+					myStatus = "Lost"
+			end select
+			
+			xmlLeads = xmlLeads & "<item>"
+				xmlLeads = xmlLeads & "<code>0</code>"
+				xmlLeads = xmlLeads & "<id>" & rsLeads("ID") & "</id>"
+				xmlLeads = xmlLeads & "<company>" & rsLeads("company") & "</company>"
+				xmlLeads = xmlLeads & "<myEvent>" & rsLeads("myEvent") & "</myEvent>"
+				xmlLeads = xmlLeads & "<arrival>" & rsLeads("arrival") & "</arrival>"
+				xmlLeads = xmlLeads & "<totalTotal>" & rsLeads("totalrooms") & "</totalTotal>"
+				xmlLeads = xmlLeads & "<ttlRevenue>" & rsLeads("revenue") & "</ttlRevenue>"
+				xmlLeads = xmlLeads & "<sentDate>" & rsLeads("Sent_Date") & "</sentDate>"
+				xmlLeads = xmlLeads & "<myStatus>" & myStatus & "</myStatus>"
+				xmlLeads = xmlLeads & "<bonus>" & rsLeads("bonus") & "</bonus>"
+			xmlLeads = xmlLeads & "</item>"
+		
+			rsLeads.movenext
+		wend
+		if rsLeads.eof and rsLeads.bof then
+			xmlLeads = xmlLeads & "<item>"
+				xmlLeads = xmlLeads & "<code>0</code>"
+				xmlLeads = xmlLeads & "<id>0</id>"
+				xmlLeads = xmlLeads & "<company>No referrals.</company>"
+				xmlLeads = xmlLeads & "<myEvent></myEvent>"
+				xmlLeads = xmlLeads & "<date1></date1>"
+				xmlLeads = xmlLeads & "<totalTotal></totalTotal>"
+				xmlLeads = xmlLeads & "<ttlRevenue></ttlRevenue>"
+				xmlLeads = xmlLeads & "<sentDate></sentDate>"
+				xmlLeads = xmlLeads & "<workingHotel></workingHotel>"
+				xmlLeads = xmlLeads & "<myStatus></myStatus>"
+				xmlLeads = xmlLeads & "<bonus></bonus>"
+			xmlLeads = xmlLeads & "</item>"
+		end if
+		rsLeads.close
+		set rsLeads = nothing
+		call TrapIt()
+		
+		xmlLeads = xmlLeads & "</items></response>"
+		
+		
+		
+
+	response.write xmlLeads
+end sub
+	
+main()
+
+%>
+
+

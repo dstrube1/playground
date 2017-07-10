@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="750" height="470" horizontalCenter="0" verticalCenter="0" 
+	implements="base.form.LenzForm" horizontalScrollPolicy="off" verticalScrollPolicy="off" color="0x000000">
+	 
+	<mx:Script>
+		<![CDATA[
+			
+			import base.lenz.panel.LenzPanel;
+			import lenz.main.site_select.SiteSelectionLenz;
+			
+			private var _parent:LenzPanel = null;
+			
+			public function setLenzPanel( newParent:LenzPanel):void {
+				
+				_parent = newParent;
+				
+			}
+			
+			public function animate():void {
+			}
+			
+			private function launchApp( appId:int):void {
+				
+				
+				
+			}
+			
+			public function initializeForm():void {
+				
+		
+			}
+			
+			
+			public function populateResources(data:Object):void { }
+			
+		]]>
+	</mx:Script>
+
+
+	<mx:Label x="0" y="5" color="#000000" maxHeight="30" text="Country Allocation: New Study" fontThickness="200" fontSize="18"  />
+		
+	<mx:Canvas id="surveyContent" top="50" left="10" right="10" height="410" horizontalScrollPolicy="off">
+		<!-- Will need flat image of globe -->
+		<mx:RadioButtonGroup id="phaseRadio"/>
+		<mx:Label fontWeight="bold" textAlign="right" y="418" x="44" height="36">
+			<mx:text><![CDATA[Investigational Drug
+Administration:]]></mx:text>
+		</mx:Label>
+		<mx:RadioButtonGroup id="drud_admin"/>
+			<mx:RadioButton label="Oral" y="440" x="172"/>
+			<mx:RadioButton label="Subcutaneous" y="440" x="282"/>
+			<mx:RadioButton label="Intramuscular" y="440" x="392"/>
+			<mx:RadioButton label="Intravenous" y="440" x="502"/>
+			<mx:RadioButton label="Topical" y="460" x="172"/>
+			<mx:RadioButton label="Rectal" y="460" x="282"/>
+			<mx:RadioButton label="Sublingual" y="460" x="392"/>
+			<mx:RadioButton label="Inhalation" y="460" x="502"/>
+		<mx:Label fontWeight="bold" text="Treatment Regimen:" y="480" x="50"/>
+		<mx:TextInput width="57" x="172" y="480" id="doses"/>
+		<mx:Label fontWeight="bold" text="doses per day" y="480" x="230"/>
+		<mx:Label fontWeight="bold" text="Study Population Considerations" x="10" y="560" fontSize="15"/>
+		<mx:Label fontWeight="bold" text="Type of Condition:" y="590" x="30"/>
+		<mx:RadioButtonGroup id="condition"/>
+			<mx:RadioButton label="Acute" y="590" x="140"/>
+			<mx:RadioButton label="Chronic" y="590" x="200"/>
+		<mx:Label fontWeight="bold" y="610" x="34" textAlign="right" height="36">
+			<mx:text><![CDATA[General Disease
+Category:]]></mx:text>
+		</mx:Label>
+		<mx:RadioButtonGroup id="category"/>
+			<mx:RadioButton label="Rare" y="610" x="140"/>
+			<mx:RadioButton label="Common" y="610" x="200"/>
+			<mx:RadioButton label="Uncommon" y="610" x="300"/>
+		<mx:Label fontWeight="bold" text="Disease Prevalence:" x="15" y="648"/>
+		<mx:TextInput width="57" x="140" y="648"/>
+		<mx:Label fontWeight="bold" text="/1000" y="648" x="200"/>
+		<mx:Label fontWeight="bold" text="Treatment Location:" y="680" x="20"/>
+		<mx:RadioButtonGroup id="location"/>
+			<mx:RadioButton label="Inpatient" x="140" y="680"/>
+			<mx:RadioButton label="Outpatient" y="680" x="240"/>
+		<mx:Label fontWeight="bold" text="Prior Treatment:" y="705" x="42"/>
+		<mx:RadioButtonGroup id="treatment"/>
+			<mx:RadioButton label="Treatment Naive" y="705" x="140"/>
+			<mx:RadioButton label="No more than" y="705" x="280"/>
+		<mx:TextInput y="705" width="57" x="390" id="prior_meds"/>
+		<mx:Label y="705" x="450" text="# Prior Medications Allowed"/>
+		<mx:Label fontWeight="bold" y="735" x="22" height="36" textAlign="right">
+			<mx:text><![CDATA[Average duration of
+study visits:]]></mx:text>
+		</mx:Label>
+		<mx:TextInput width="57" x="140" y="740"/>
+		<mx:Label fontWeight="bold" y="740" x="200" text="hours"/>
+		<mx:Label fontWeight="bold" y="770" x="23" height="36" textAlign="right">
+			<mx:text><![CDATA[Requires Overnight
+Stay:]]></mx:text>
+		</mx:Label>
+		<mx:RadioButtonGroup id="overnight"/>
+			<mx:RadioButton label="No" y="770" x="140"/>
+			<mx:RadioButton label="Yes" y="770" x="190"/>
+		<mx:Label text="If Yes, # Overnight Stays:" y="770" x="235"/>
+		<mx:TextInput y="765" x="375" width="57"/>
+		<mx:Label fontWeight="bold" text="Requires Involvement:" y="805" x="10"/>
+		<mx:RadioButtonGroup id="involvement"/>
+			<mx:RadioButton label="No" y="805" x="140"/>
+			<mx:RadioButton label="Yes" y="805" x="190"/>
+			<mx:Canvas x="10" y="10" width="384" height="390" cornerRadius="10" borderStyle="inset">
+					<mx:Label x="10" y="10" text="Study Name:" fontWeight="bold"/>
+					<mx:TextInput x="136.5" y="8"/>
+					<mx:Label x="10" y="36" text="Therapeutic Area" fontWeight="bold"/>
+					<mx:ComboBox x="136.5" y="34"></mx:ComboBox>
+					<mx:Label x="10" y="62" text="Indication Type:" fontWeight="bold"/>
+					<mx:ComboBox x="136.5" y="60"></mx:ComboBox>
+					<mx:Label x="10" y="88" text="Phase:" fontWeight="bold"/>
+					<mx:RadioButton x="137.5" y="90" label="I" groupName="phaseRadio"/>
+					<mx:RadioButton x="172.5" y="90" label="II" groupName="phaseRadio" width="44"/>
+					<mx:RadioButton x="208.5" y="90" label="III" groupName="phaseRadio"/>
+					<mx:RadioButton x="249.5" y="90" label="IV" groupName="phaseRadio"/>
+					<mx:Label x="10" y="114" text="Study Parameters" fontSize="14" fontWeight="bold"/>
+					<mx:HRule x="26" y="135"/>
+					<mx:Label x="26" y="145" text="Total Subjects Enrolled" fontWeight="bold"/>
+					<mx:TextInput x="172.5" y="143" width="123"/>
+					<mx:Label x="26" y="171" text="Planned FSFV" fontWeight="bold"/>
+					<mx:Label x="26" y="197" text="Planned LSFV" fontWeight="bold"/>
+					<mx:Label x="26" y="223" text="Per-Subject Budget" fontWeight="bold"/>
+					<mx:DateField x="172" y="169"/>
+					<mx:DateField x="172" y="195"/>
+					<mx:TextInput x="172" y="221" width="123"/>
+					<mx:Label x="10" y="263" text="Country Criteria" fontSize="14" fontWeight="bold"/>
+					<mx:HRule x="26" y="284"/>
+					<mx:Label x="26" y="294" text="Disease Prevalence (Minimum)" fontWeight="bold"/>
+					<mx:TextInput x="219" y="292" width="47"/>
+					<mx:TextInput x="219" y="318" width="47"/>
+					<mx:Label x="26" y="320" text="Subject Contribution (Minimum)" fontWeight="bold"/>
+					<mx:Button label="Allocate Countries" width="150" height="30" id="submitBtn"
+						click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('SequenceBrowser')" x="220" y="356"/>
+			</mx:Canvas>
+			<mx:Canvas x="450" y="10" width="270" height="390">
+					<mx:Label x="28" y="28" text="Upload Previous Study" fontSize="16" width="214" height="27" textAlign="center"/>
+					<mx:Label x="28" y="168" text="Set Country Preferences" fontSize="16" width="214" height="27" textAlign="center" 
+						click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('CountrySelection')"  />
+					<mx:Label x="10" y="305" text="Change Allocation Weights" fontSize="16" width="250" height="27" textAlign="center"
+						click="(_parent.getParent() as SiteSelectionLenz).simulateExternalClick('Metrics')"  />
+					
+			</mx:Canvas>
+				
+	</mx:Canvas>
+	
+</mx:Canvas>

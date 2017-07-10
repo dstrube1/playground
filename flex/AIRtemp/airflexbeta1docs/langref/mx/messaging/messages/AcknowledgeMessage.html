@@ -1,0 +1,320 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="AcknowledgeMessage,mx.messaging.messages.AcknowledgeMessage,ERROR_HINT_HEADER,operation,source,CONTENT_TYPE_XML,CONTENT_TYPE_FORM,CONTENT_TYPE_SOAP_XML,POST_METHOD,GET_METHOD,PUT_METHOD,HEAD_METHOD,DELETE_METHOD,OPTIONS_METHOD,TRACE_METHOD,contentType,httpHeaders,recordHeaders,url,method,SUBTOPIC_HEADER,correlationId,SOAP_ACTION_HEADER,SUBSCRIBE_OPERATION,UNSUBSCRIBE_OPERATION,POLL_OPERATION,CLIENT_SYNC_OPERATION,CLIENT_PING_OPERATION,CLUSTER_REQUEST_OPERATION,LOGIN_OPERATION,LOGOUT_OPERATION,SUBSCRIPTION_INVALIDATE_OPERATION,MULTI_SUBSCRIBE_OPERATION,UNKNOWN_OPERATION,AUTHENTICATION_MESSAGE_REF_TYPE,SELECTOR_HEADER,PRESERVE_DURABLE_HEADER,NEEDS_CONFIG_HEADER,ADD_SUBSCRIPTIONS,REMOVE_SUBSCRIPTIONS,SUBTOPIC_SEPARATOR,POLL_WAIT_HEADER,operation,DESTINATION_CLIENT_ID_HEADER,ENDPOINT_HEADER,FLEX_CLIENT_ID_HEADER,REMOTE_CREDENTIALS_HEADER,REQUEST_TIMEOUT_HEADER,body,clientId,destination,headers,messageId,timestamp,timeToLive,totalTime,serverProcessingTime,serverPrePushTime,networkRTT,serverSendTime,clientReceiveTime,messageSize,responseMessageSize,pushedMessageFlag,totalPushTime,pushOneWayTime,originatingMessageSentTime,originatingMessageSize,MESSAGE_DELIVERY_IN_DOUBT,RETRYABLE_HINT_HEADER,faultCode,faultString,faultDetail,rootCause,extendedData,body,clientId,destination,headers,messageId,timestamp,timeToLive" name="keywords">
+<title>mx.messaging.messages.AcknowledgeMessage (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'AcknowledgeMessage - Flex 3 Language Reference';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../../index.html?mx/messaging/messages/AcknowledgeMessage.html&amp;mx/messaging/messages/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;AcknowledgeMessage</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class AcknowledgeMessage"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.messaging.messages</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  AcknowledgeMessage</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">AcknowledgeMessage  <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../../../mx/messaging/messages/AsyncMessage.html">AsyncMessage</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../../../Object.html">Object</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="../../../mx/messaging/messages/ErrorMessage.html">ErrorMessage</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  An AcknowledgeMessage acknowledges the receipt of a message that 
+  was sent previously.
+  Every message sent within the messaging system must receive an
+  acknowledgement.
+ <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable hideInheritedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AbstractMessage.html#body">body</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription">
+      The body of a message contains the specific data that needs to be 
+      delivered to the remote destination.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AbstractMessage.html#clientId">clientId</a> : <a href="../../../String.html">String</a>
+<div class="summaryTableDescription">
+      The clientId indicates which MessageAgent sent the message.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../Object.html#constructor">constructor</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  A reference to the class object or constructor function for a given object instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AsyncMessage.html#correlationId">correlationId</a> : <a href="../../../String.html">String</a>
+<div class="summaryTableDescription">
+      Provides access to the correlation id of the message.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AsyncMessage.html">AsyncMessage</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AbstractMessage.html#destination">destination</a> : <a href="../../../String.html">String</a>
+<div class="summaryTableDescription">
+      The message destination.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AbstractMessage.html#headers">headers</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription">
+      The headers of a message are an associative array where the key is the
+      header name and the value is the header value.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AbstractMessage.html#messageId">messageId</a> : <a href="../../../String.html">String</a>
+<div class="summaryTableDescription">
+      The unique id for the message.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../Object.html#prototype">prototype</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription">[static] 
+  A reference to the prototype object of a class or function object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AbstractMessage.html#timestamp">timestamp</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">
+      Provides access to the time stamp for the message.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AbstractMessage.html#timeToLive">timeToLive</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">
+      The time to live value of a message indicates how long the message
+      should be considered valid and deliverable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#AcknowledgeMessage()">AcknowledgeMessage</a>()</div>
+<div class="summaryTableDescription">
+      Constructs an instance of an AcknowledgeMessage with an empty body and header.</div>
+</td><td class="summaryTableOwnerCol">AcknowledgeMessage</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">hasOwnProperty</a>(name:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an object has a specified property defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">isPrototypeOf</a>(theClass:<a href="../../../Object.html">Object</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an instance of the Object class is in the prototype chain of the object specified 
+  as the parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">propertyIsEnumerable</a>(name:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether the specified property exists and is enumerable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#setPropertyIsEnumerable()">setPropertyIsEnumerable</a>(name:<a href="../../../String.html">String</a>, isEnum:<a href="../../../Boolean.html">Boolean</a> = true):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+     Sets the availability of a dynamic property for loop operations.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/messages/AbstractMessage.html#toString()">toString</a>():<a href="../../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+      Returns a string representation of the message.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#valueOf()">valueOf</a>():<a href="../../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the primitive value of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<div class="showHideLinks">
+<div class="hideInheritedConstant" id="hideInheritedConstant">
+<a onclick="javascript:setInheritedVisible(false,'Constant');" href="#constantSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Constants</a>
+</div>
+<div class="showInheritedConstant" id="showInheritedConstant">
+<a onclick="javascript:setInheritedVisible(true,'Constant');" href="#constantSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Constants</a>
+</div>
+</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AbstractMessage.html#DESTINATION_CLIENT_ID_HEADER">DESTINATION_CLIENT_ID_HEADER</a> : <a href="../../../String.html">String</a> = "DSDstClientId"<div class="summaryTableDescription">[static] 
+      Messages pushed from the server may arrive in a batch, with messages in the
+      batch potentially targeted to different Consumer instances.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a></td>
+</tr>
+<tr class="hideInheritedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AbstractMessage.html#ENDPOINT_HEADER">ENDPOINT_HEADER</a> : <a href="../../../String.html">String</a> = "DSEndpoint"<div class="summaryTableDescription">[static] 
+      Messages are tagged with the endpoint id for the Channel they are sent over.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ERROR_HINT_HEADER">ERROR_HINT_HEADER</a> : <a href="../../../String.html">String</a> = "DSErrorHint"<div class="summaryTableDescription">[static] 
+      Header name for the error hint header.</div>
+</td><td class="summaryTableOwnerCol">AcknowledgeMessage</td>
+</tr>
+<tr class="hideInheritedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AbstractMessage.html#FLEX_CLIENT_ID_HEADER">FLEX_CLIENT_ID_HEADER</a> : <a href="../../../String.html">String</a> = "DSId"<div class="summaryTableDescription">[static] 
+   This header is used to transport the global FlexClient Id value in outbound 
+   messages once it has been assigned by the server.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a></td>
+</tr>
+<tr class="hideInheritedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AbstractMessage.html#REMOTE_CREDENTIALS_HEADER">REMOTE_CREDENTIALS_HEADER</a> : <a href="../../../String.html">String</a> = "DSRemoteCredentials"<div class="summaryTableDescription">[static] 
+      Messages that need to set remote credentials for a destination
+      carry the Base64 encoded credentials in this header.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a></td>
+</tr>
+<tr class="hideInheritedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AbstractMessage.html#REQUEST_TIMEOUT_HEADER">REQUEST_TIMEOUT_HEADER</a> : <a href="../../../String.html">String</a> = "DSRequestTimeout"<div class="summaryTableDescription">[static] 
+   Messages sent with a defined request timeout use this header.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AbstractMessage.html">AbstractMessage</a></td>
+</tr>
+<tr class="hideInheritedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/messages/AsyncMessage.html#SUBTOPIC_HEADER">SUBTOPIC_HEADER</a> : <a href="../../../String.html">String</a> = "DSSubtopic"<div class="summaryTableDescription">[static] 
+   Messages sent by a MessageAgent with a defined subtopic
+   property indicate their target subtopic in this header.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/messages/AsyncMessage.html">AsyncMessage</a></td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor Detail</div>
+<a name="AcknowledgeMessage()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">AcknowledgeMessage</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function AcknowledgeMessage()</code>
+<p></p><p>
+      Constructs an instance of an AcknowledgeMessage with an empty body and header.
+     </p></div>
+<div class="detailSectionHeader">Constant Detail</div>
+<a name="constantDetail"></a><a name="ERROR_HINT_HEADER"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ERROR_HINT_HEADER</td><td class="detailHeaderType">Constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const ERROR_HINT_HEADER:<a href="../../../String.html">String</a> = "DSErrorHint"</code>
+<p></p><p>
+      Header name for the error hint header.
+      Used to indicate that the acknowledgement is for a message that
+      generated an error.
+     </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/messaging/messages/AcknowledgeMessage.html','mx/messaging/messages/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

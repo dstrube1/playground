@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base.lenz.frame:BaseLenzFrame xmlns:base.lenz.frame="base.lenz.frame.*" xmlns:mx="http://www.adobe.com/2006/mxml"
+	implements="base.lenz.frame.LenzFrame" 
+	>
+	
+		<mx:Script>
+		<![CDATA[
+			import base.event.LenzInitializedEvent;
+			import app.config.LenzFactory;
+			import base.lenz.panel.PanelBuilder;
+			import base.lenz.panel.LenzPanel;
+
+		
+			import lenz.login.LoginLenz;
+		
+
+
+			
+			
+			
+			
+		]]>
+	</mx:Script>
+
+
+</base.lenz.frame:BaseLenzFrame>

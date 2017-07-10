@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:local="base.lenz.funnel.*" layout="absolute" 
+	width="230" height="200"   backgroundImage="resources/images/patient_funnel2a_noPercents_a.jpg"
+	 creationComplete="createComplete()" headerHeight="0">
+
+<mx:Script>
+	<![CDATA[
+		import mx.controls.Alert;
+		import base.db.MemDB;
+		import mx.controls.Button;
+		import mx.controls.Text;
+		 
+		public static const HIGH:String = "HIGH";
+		public static const MEDIUM:String = "MEDIUM";
+		public static const LOW:String = "LOW";
+		
+		public static const STAGE1:int = 1;
+		public static const STAGE2:int = 2;
+		public static const STAGE3:int = 3;
+		public static const STAGE4:int = 4;
+		
+		private var totalPatientCount:int;
+		private var funnelData:Array = [];
+		public var funnelAdapter:FunnelAdapter = null;
+		
+		public function displayReason(color:String):void
+		{
+		}
+
+		private function createComplete():void{
+			if (funnelAdapter == null) {
+				createAdapter(null);
+			}
+			funnelAdapter.describeFunnel(totalPatientCount,funnelData);
+		}
+		
+		public function createAdapter(db:MemDB):void {
+			funnelAdapter = new FunnelAdapter(this);
+			
+			setFunnelData(db);
+			
+		}
+		
+		public function refreshFunnel(db:MemDB):void {
+			
+			//setFunnelData(db);
+			if (funnelAdapter == null) {
+				createAdapter(db);
+			} else {
+				setFunnelData(db);
+			}
+			
+			funnelAdapter.describeFunnel(totalPatientCount, funnelData);
+		}
+		
+		public function setFunnelData(db:MemDB):void {
+			var fs1:FunnelStage = null;
+			var fs2:FunnelStage = null;
+			var fs3:FunnelStage = null;
+			var fs4:FunnelStage = null;
+			
+			if (db != null && db.fetch(null).length > 0) {
+				var tmp:Array = null;
+				
+				tmp = db.fetch({id: "1"});
+				fs1 = new FunnelStage( tmp[0]["count"], tmp[0]["severity"] );
+				totalPatientCount = tmp[0]["startCount"];
+				
+				tmp = db.fetch({id: "2"});
+				fs2 = new FunnelStage( tmp[0]["count"], tmp[0]["severity"] );
+
+				tmp = db.fetch({id: "3"});
+				fs3 = new FunnelStage( tmp[0]["count"], tmp[0]["severity"] );
+
+				tmp = db.fetch({id: "4"});
+				fs4 = new FunnelStage( tmp[0]["count"], tmp[0]["severity"] );
+				
+				
+			} else {
+				
+				fs1 = new FunnelStage(90,LOW);
+				fs2 = new FunnelStage(80,LOW);
+				fs3 = new FunnelStage(70,LOW);
+				fs4 = new FunnelStage(60,LOW);
+				totalPatientCount = 100;
+			}
+			
+			funnelData = [fs1,fs2,fs3,fs4];
+			
+			
+		}
+		
+	]]>
+</mx:Script> 
+<!--
+<mx:Image id="b" source="{picture}"/>
+-->
+
+<mx:Label id="patientsIdentified_L"  x="95" y="17" fontSize="15" color="black"/>
+
+<local:StageCircle id="stage1Circle" height="35%" width="60%" x="50" y="40" stageNumber="{STAGE1}"/>
+<!--
+<mx:Label id="lessStage1_L" x="5" y="20" color="black" fontSize="7"/>
+<mx:Label id="lessStage1Percent_L" x="3" y="30" color="black" fontSize="7"/>
+-->
+<mx:Label id="stage1PatientCount_L" x="100" y="42" 
+	fontSize="10" click="displayReason('stage1');" color="white"/>
+
+<local:StageCircle id="stage2Circle" height="35%" width="50%" x="60" y="68" stageNumber="{STAGE2}"/>
+<!--
+<mx:Label id="lessStage2_L" x="22" y="56" color="black" fontSize="7"/>
+<mx:Label id="lessStage2Percent_L" x="19" y="64" color="black" fontSize="7"/>
+-->
+<mx:Label id="stage2PatientCount_L" x="100" y="69" 
+	fontSize="10" click="displayReason('stage2');" color="white"/>
+
+<local:StageCircle id="stage3Circle" height="35%" width="40%" x="70" y="91" stageNumber="{STAGE3}"/>
+<!--
+<mx:Label id="lessStage3_L" x="34" y="81" color="black" fontSize="7"/>
+<mx:Label id="lessStage3Percent_L" x="30" y="91" color="black" fontSize="7"/>
+-->
+<mx:Label id="stage3PatientCount_L" x="100" y="93" 
+	fontSize="10" color="white"/>
+
+<local:StageCircle id="stage4Circle" height="35%" width="30%" x="80" y="114" stageNumber="{STAGE4}"/>
+<!--
+<mx:Label id="lessStage4_L" x="40" y="106" color="black" fontSize="7"/>
+<mx:Label id="lessStage4Percent_L" x="37" y="115" color="black" fontSize="7"/>
+-->
+<mx:Label id="stage4PatientCount_L" x="100" y="114" 
+	fontSize="10" color="white"/>
+<mx:Label id="patientsCompleted_L" x="100" y="150" fontSize="15" />
+</mx:Panel>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600"
+			   creationComplete="init()"
+			   >
+	<fx:Script>
+		<![CDATA[
+			import dstrube.NF1;
+			import dstrube.NF2;
+			import dstrube.NF3;
+			import flash.globalization.LocaleID;
+			
+			import mx.controls.Alert;
+			[Bindable]
+			public var s:String = "before";
+			
+			protected  function init():void{
+				var value:String = "5558049.90360013";
+				
+				s = "spark.formatters.NumberFormatter = " + NF1.get(value); //5,558,049.90
+				
+				s += "\n flash.globalization.NumberFormatter = " + NF2.get(value);//5,558,049,00
+				
+				s += "\n mx.formatters.NumberFormatter = " + NF3.get(value); //5,558,049.90360013
+				
+				//Alert.show("LocaleID.DEFAULT = " + LocaleID.DEFAULT);
+				
+			}
+			protected  function init1():void{
+				Alert.show("index of http:// : " + textArea.text.toLowerCase().indexOf("http://http://"));
+				//textArea.text="hi there";
+				if (textArea.text.toLowerCase().indexOf("http://http://") > -1){
+					textArea.text = textArea.text.replace("http://http://","http://");
+				}
+				if (textArea.text.toLowerCase().indexOf("https://http://") > -1){
+					textArea.text = textArea.text.replace("https://http://","https://");
+				}
+				if (textArea.text.toLowerCase().indexOf("http://https://") > -1){
+					textArea.text = textArea.text.replace("http://https://","http://");
+				}
+				if (textArea.text.toLowerCase().indexOf("https://https://") > -1){
+					textArea.text = textArea.text.replace("https://https://","https://");
+				}
+			}
+		]]>
+	</fx:Script>
+	<!--
+	<fx:Declarations>
+		 <!- Place non-visual elements (e.g., services, value objects) here ->
+	</fx:Declarations>
+	<s:Group width="100%" height="100%">
+		<s:layout>
+			<s:VerticalLayout gap="10" />
+		</s:layout>
+	-->
+		
+		<s:TextArea id="textArea" text="{s}" width="100%" height="100%" />
+		
+	<!--
+	</s:Group>
+	<mx:Tree x="0" y="23"></mx:Tree>
+	-->
+	
+</s:Application>

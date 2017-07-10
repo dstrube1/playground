@@ -1,0 +1,11 @@
+package base.services.mock
+{
+	import base.services.Content;
+	
+	public interface MockService 
+	{
+	
+		function call( content:Content, failureHandler:Function, resultHandler:Function):void;
+		
+	}
+}

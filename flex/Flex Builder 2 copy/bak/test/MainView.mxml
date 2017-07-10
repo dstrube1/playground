@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:local="*">
+
+
+<mx:Panel cornerRadius="28" height="500" width="500"  x="39" y="66">
+<mx:Script> 
+	<![CDATA[ 
+	
+	import mx.controls.Alert;
+	private var myIm:myImage;
+	
+	private function addBlades():void {
+		myIm = myImage.place(this, {title:"blah"});
+	}
+
+	private function imageClick():void {
+		Alert.show("Blah");
+	}
+	]]> 
+</mx:Script>  
+</mx:Panel>
+<!--
+	<local:myImage /> 
+	<mx:Button icon="@Embed('/images/logo.png')" x="258" y="33"/>
+	<mx:Image source="@Embed('/images/logo.png')" click="imageClick()" />
+	-->
+</mx:Canvas>
+</mx:Application>

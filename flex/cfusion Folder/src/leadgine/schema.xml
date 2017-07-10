@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<response>
+	<items>
+		<item>
+			<id>1</id>
+			<newOrExisting>string text</newOrExisting>
+			<org>string text</org>
+			<evt>string text</evt>
+			<contactFirstName>string text</contactFirstName>
+			<contactLastName>string text</contactLastName>
+			<contactTitle>string text</contactTitle>
+			<numGuests>string text</numGuests>
+			<address>string text</address>
+			<address2>string text</address2>
+			<city>string text</city>
+			<state>string text</state>
+			<country>string text</country>
+			<zipcode>string text</zipcode>
+			<phone>string text</phone>
+			<emailAddress>string text</emailAddress>
+			<fax>string text</fax>
+			<estDecisionDate>string text</estDecisionDate>
+			<rateType>string text</rateType>
+			<commPercent>string text</commPercent>
+			<rate>string text</rate>
+			<IATA>string text</IATA>
+			<roomRows>
+				<roomRow>
+					<roomDate>string text</roomDate>
+					<singleCount>string text</singleCount>
+					<doubleCount>string text</doubleCount>
+				</roomRow>
+			</roomRows>
+			<functions>
+				<function>
+					<functionItems>
+						<functionItem>
+							<startTime>string text</startTime>
+							<endTime>string text</endTime>
+							<functionDescription>string text</functionDescription>
+							<numPeople>string text</numPeople>
+							<setup>string text</setup>
+							<foodBevComment>string text</foodBevComment>
+						</functionItem>
+					</functionItems>
+				</function>
+			</functions>
+			<folders>
+				<folder>
+					<folderState>string text</folderState>
+					<isBranch>string text</isBranch>
+					<folderLabel>string text</folderLabel>
+				</folder>
+			</folders>
+			<commentsText>string text</commentsText>
+			<requestsText>string text</requestsText>
+		</item>
+	</items>
+</response>

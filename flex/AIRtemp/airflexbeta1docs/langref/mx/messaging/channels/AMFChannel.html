@@ -1,0 +1,730 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="AMFChannel,mx.messaging.channels.AMFChannel,protocol,protocol,polling,pollingEnabled,pollingInterval,protocol,pollingEnabled,pollingInterval,polling,protocol,netConnection" name="keywords">
+<title>mx.messaging.channels.AMFChannel (Flex 3)</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'AMFChannel - Flex 3 Language Reference';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flex 3 Language Reference</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All Classes</a>&nbsp;|&nbsp;<a href="../../../language-elements.html">Language Elements</a>&nbsp;| <a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-Symbols.html">Index</a>&nbsp;|&nbsp;<a href="../../../appendixes.html">Appendixes</a>&nbsp;|&nbsp;<a href="../../../conventions.html">Conventions</a>&nbsp;|&nbsp;<a href="../../../index.html?mx/messaging/channels/AMFChannel.html&amp;mx/messaging/channels/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1"> No Frames </a></td><td rowspan="3" align="right" class="titleTableLogo"><img class="logoImage" src="../../../images/logo.jpg" alt=" Adobe Logo " title=" Adobe Logo "></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;AMFChannel</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class AMFChannel"); titleBar_setSubNav(false,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div xmlns:fn="http://www.w3.org/2005/02/xpath-functions" class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">mx.messaging.channels</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  AMFChannel</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">AMFChannel  <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../../../mx/messaging/channels/NetConnectionChannel.html">NetConnectionChannel</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../../../mx/messaging/channels/PollingChannel.html">PollingChannel</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../../../mx/messaging/Channel.html">Channel</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../../../Object.html">Object</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="../../../mx/messaging/channels/SecureAMFChannel.html">SecureAMFChannel</a></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+  The AMFChannel class provides the AMF support for messaging.
+  You can configure this Channel to poll the server at an interval
+  to approximate server push.
+  You can also use this Channel with polling disabled to send RPC messages 
+  to remote destinations to invoke their methods.
+   <p>
+  The AMFChannel relies on network services native to Flash Player,
+  and exposed to ActionScript by the NetConnection class.
+  This channel uses NetConnection exclusively, and creates a new NetConnection
+  per instance.
+  </p>
+   <p>
+  Channels are created within the framework using the
+  <code>ServerConfig.getChannel()</code> method. Channels can be constructed
+  directly and assigned to a ChannelSet if desired.
+  </p>
+   <p>
+  Channels represent a physical connection to a remote endpoint.
+  Channels are shared across destinations by default.
+  This means that a client targetting different destinations may use
+  the same Channel to communicate with these destinations.
+  </p>
+   <p>
+  When used in polling mode, this Channel polls the server for new messages 
+  based on the <code>polling-interval-seconds</code> property in the configuration file,
+  and this can be changed by setting the <code>pollingInterval</code> property.
+  The default value is 3 seconds.
+  To enable polling, the channel must be connected and the <code>polling-enabled</code> 
+  property in the configuration file must be set to <code>true</code>, or the 
+  <code>pollingEnabled</code> property of the Channel must be set to <code>true</code>.
+  </p>
+ <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/Channel.html#channelSets">channelSets</a> : <a href="../../../Array.html">Array</a>
+<div class="summaryTableDescription">[read-only] 
+      Provides access to the ChannelSets connected to the Channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/Channel.html#connected">connected</a> : <a href="../../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">[read-only] 
+   Indicates whether this channel has established a connection to the 
+   remote destination.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/Channel.html#connectTimeout">connectTimeout</a> : <a href="../../../int.html">int</a>
+<div class="summaryTableDescription">
+      Provides access to the connect timeout in seconds for the channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../Object.html#constructor">constructor</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription">
+  A reference to the class object or constructor function for a given object instance.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/Channel.html#endpoint">endpoint</a> : <a href="../../../String.html">String</a>
+<div class="summaryTableDescription">[read-only] 
+   Provides access to the endpoint for this channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/Channel.html#failoverURIs">failoverURIs</a> : <a href="../../../Array.html">Array</a>
+<div class="summaryTableDescription">
+      Provides access to the set of endpoint URIs that this channel can
+   attempt to failover to if the endpoint is clustered.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/Channel.html#id">id</a> : <a href="../../../String.html">String</a>
+<div class="summaryTableDescription">
+   Provides access to the id of this channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/channels/NetConnectionChannel.html#netConnection">netConnection</a> : <a href="../../../flash/net/NetConnection.html">NetConnection</a>
+<div class="summaryTableDescription">[read-only] 
+      Provides access to the associated NetConnection for this Channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/channels/NetConnectionChannel.html">NetConnectionChannel</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#polling">polling</a> : <a href="../../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">[read-only] 
+      Reports whether the channel is actively polling.</div>
+</td><td class="summaryTableOwnerCol">AMFChannel</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#pollingEnabled">pollingEnabled</a> : <a href="../../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">
+      Indicates whether this channel is enabled to poll.</div>
+</td><td class="summaryTableOwnerCol">AMFChannel</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#pollingInterval">pollingInterval</a> : <a href="../../../Number.html">Number</a>
+<div class="summaryTableDescription">
+      Provides access to the polling interval for this Channel.</div>
+</td><td class="summaryTableOwnerCol">AMFChannel</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#protocol">protocol</a> : <a href="../../../String.html">String</a>
+<div class="summaryTableDescription">[read-only] 
+      Returns the protocol for this channel (http).</div>
+</td><td class="summaryTableOwnerCol">AMFChannel</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../Object.html#prototype">prototype</a> : <a href="../../../Object.html">Object</a>
+<div class="summaryTableDescription">[static] 
+  A reference to the prototype object of a class or function object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/Channel.html#reconnecting">reconnecting</a> : <a href="../../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">[read-only] 
+      Indicates whether this channel is in the process of reconnecting to an
+      alternate endpoint.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/Channel.html#recordMessageSizes">recordMessageSizes</a> : <a href="../../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">[read-only] </div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/Channel.html#recordMessageTimes">recordMessageTimes</a> : <a href="../../../Boolean.html">Boolean</a>
+<div class="summaryTableDescription">[read-only] </div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/Channel.html#requestTimeout">requestTimeout</a> : <a href="../../../int.html">int</a>
+<div class="summaryTableDescription">
+      Provides access to the default request timeout in seconds for the 
+      channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../mx/messaging/Channel.html#uri">uri</a> : <a href="../../../String.html">String</a>
+<div class="summaryTableDescription">
+   Provides access to the URI used to create the whole endpoint URI for this channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#AMFChannel()">AMFChannel</a>(id:<a href="../../../String.html">String</a> = null, uri:<a href="../../../String.html">String</a> = null)</div>
+<div class="summaryTableDescription">
+      Creates an new AMFChannel instance.</div>
+</td><td class="summaryTableOwnerCol">AMFChannel</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#addEventListener()">addEventListener</a>(type:<a href="../../../String.html">String</a>, listener:<a href="../../../Function.html">Function</a>, useCapture:<a href="../../../Boolean.html">Boolean</a> = false, priority:<a href="../../../int.html">int</a> = 0, useWeakReference:<a href="../../../Boolean.html">Boolean</a> = false):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+    Registers an event listener object with an EventDispatcher object so that the listener 
+    receives notification of an event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#applySettings()">applySettings</a>(settings:<a href="../../../XML.html">XML</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Subclasses should override this method to apply any settings that may be
+      necessary for an individual channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#connect()">connect</a>(channelSet:<a href="../../../mx/messaging/ChannelSet.html">ChannelSet</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Connects the ChannelSet to the Channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/channels/PollingChannel.html#disablePolling()">disablePolling</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Disables polling based on the number of times enablePolling()
+      and disablePolling() have been invoked.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/channels/PollingChannel.html">PollingChannel</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#disconnect()">disconnect</a>(channelSet:<a href="../../../mx/messaging/ChannelSet.html">ChannelSet</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Disconnects the ChannelSet from the Channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#dispatchEvent()">dispatchEvent</a>(event:<a href="../../../flash/events/Event.html">Event</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Dispatches an event into the event flow.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/channels/PollingChannel.html#enablePolling()">enablePolling</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Enables polling based on the number of times enablePolling()
+      and disablePolling() have been invoked.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/channels/PollingChannel.html">PollingChannel</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#hasEventListener()">hasEventListener</a>(type:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Checks whether the EventDispatcher object has any listeners registered for a specific type 
+    of event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">hasOwnProperty</a>(name:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an object has a specified property defined.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">isPrototypeOf</a>(theClass:<a href="../../../Object.html">Object</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether an instance of the Object class is in the prototype chain of the object specified 
+  as the parameter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#logout()">logout</a>(agent:<a href="../../../mx/messaging/MessageAgent.html">MessageAgent</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Sends a CommandMessage to the server to logout if the Channel is connected.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/channels/PollingChannel.html#poll()">poll</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Initiates a poll operation if there are consumers subscribed to this channel, 
+      and polling is enabled for this channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/channels/PollingChannel.html">PollingChannel</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#AS3()">propertyIsEnumerable</a>(name:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+  Indicates whether the specified property exists and is enumerable.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#removeEventListener()">removeEventListener</a>(type:<a href="../../../String.html">String</a>, listener:<a href="../../../Function.html">Function</a>, useCapture:<a href="../../../Boolean.html">Boolean</a> = false):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+    Removes a listener from the EventDispatcher object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#send()">send</a>(agent:<a href="../../../mx/messaging/MessageAgent.html">MessageAgent</a>, message:<a href="../../../mx/messaging/messages/IMessage.html">IMessage</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Sends the specified message to its target destination.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#setCredentials()">setCredentials</a>(credentials:<a href="../../../String.html">String</a>, agent:<a href="../../../mx/messaging/MessageAgent.html">MessageAgent</a> = null):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Sets the credentials to the specified value.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#setPropertyIsEnumerable()">setPropertyIsEnumerable</a>(name:<a href="../../../String.html">String</a>, isEnum:<a href="../../../Boolean.html">Boolean</a> = true):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+     Sets the availability of a dynamic property for loop operations.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#toString()">toString</a>():<a href="../../../String.html">String</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the string representation of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../Object.html#valueOf()">valueOf</a>():<a href="../../../Object.html">Object</a>
+</div>
+<div class="summaryTableDescription">
+  Returns the primitive value of the specified object.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../Object.html">Object</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#willTrigger()">willTrigger</a>(type:<a href="../../../String.html">String</a>):<a href="../../../Boolean.html">Boolean</a>
+</div>
+<div class="summaryTableDescription">
+    Checks whether an event listener is registered with this EventDispatcher object or any of 
+    its ancestors for the specified event type.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a><a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedMethod" id="hideInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
+</div>
+<div class="showInheritedProtectedMethod" id="showInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
+</div>
+</div>
+<table id="summaryTableProtectedMethod" class="summaryTable hideInheritedProtectedMethod" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#protected()">connectFailed</a>(event:<a href="../../../mx/messaging/events/ChannelFaultEvent.html">ChannelFaultEvent</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Processes a failed internal connect and dispatches the 
+   FAULT event for the channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#protected()">connectSuccess</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Processes a successful internal connect and dispatches the 
+   CONNECT event for the Channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#protected()">connectTimeoutHandler</a>(event:<a href="../../../flash/events/TimerEvent.html">TimerEvent</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Handles a connect timeout by dispatching a ChannelFaultEvent.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#protected()">disconnectFailed</a>(event:<a href="../../../mx/messaging/events/ChannelFaultEvent.html">ChannelFaultEvent</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Processes a failed internal disconnect and dispatches the
+   FAULT event for the channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#protected()">disconnectSuccess</a>(rejected:<a href="../../../Boolean.html">Boolean</a> = false):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Processes a successful internal disconnect and dispatches the 
+   DISCONNECT event for the Channel.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#protected()">flexClientWaitHandler</a>(event:<a href="../../../mx/events/PropertyChangeEvent.html">PropertyChangeEvent</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+   Handles a change to the guard condition for managing initial Channel connect for the application.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#protected()">getMessageResponder</a>(agent:<a href="../../../mx/messaging/MessageAgent.html">MessageAgent</a>, message:<a href="../../../mx/messaging/messages/IMessage.html">IMessage</a>):<a href="../../../mx/messaging/MessageResponder.html">MessageResponder</a>
+</div>
+<div class="summaryTableDescription">
+      Returns the appropriate MessageResponder for the Channel's
+      send() method.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#protected()">internalConnect</a>():<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Connects the Channel to its endpoint.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#protected()">internalDisconnect</a>(rejected:<a href="../../../Boolean.html">Boolean</a> = false):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Disconnects the Channel from its endpoint.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#protected()">internalSend</a>(messageResponder:<a href="../../../mx/messaging/MessageResponder.html">MessageResponder</a>):<a href="../../../specialTypes.html#void">void</a>
+</div>
+<div class="summaryTableDescription">
+      Sends the Message out over the Channel and routes the response to the
+      responder.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<div class="showHideLinks">
+<div class="hideInheritedEvent" id="hideInheritedEvent">
+<a onclick="javascript:setInheritedVisible(false,'Event');" href="#eventSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Events</a>
+</div>
+<div class="showInheritedEvent" id="showInheritedEvent">
+<a onclick="javascript:setInheritedVisible(true,'Event');" href="#eventSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Events</a>
+</div>
+</div>
+<table id="summaryTableEvent" class="summaryTable hideInheritedEvent" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th> Summary </th><th class="summaryTableOwnerCol">Defined By</th>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#event:activate">activate</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when Flash Player or the and AIR application gains operating system focus and becomes active.</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#event:channelConnect">channelConnect</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched after the channel has connected to its endpoint.</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#event:channelDisconnect">channelDisconnect</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched after the channel has disconnected from its endpoint.</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#event:channelFault">channelFault</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched after the channel has faulted.</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../flash/events/EventDispatcher.html#event:deactivate">deactivate</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when Flash Player loses operating system focus and is becoming inactive.</td><td class="summaryTableOwnerCol"><a href="../../../flash/events/EventDispatcher.html">EventDispatcher</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#event:message">message</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when a channel receives a message from its endpoint.</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../mx/messaging/Channel.html#event:propertyChange">propertyChange</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">Dispatched when a property of the channel changes.</td><td class="summaryTableOwnerCol"><a href="../../../mx/messaging/Channel.html">Channel</a></td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<div class="detailSectionHeader">Property Detail</div>
+<a name="propertyDetail"></a><a name="polling"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">polling</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>polling:<a href="../../../Boolean.html">Boolean</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+      Reports whether the channel is actively polling.
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get polling():<a href="../../../Boolean.html">Boolean</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="pollingEnabled"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pollingEnabled</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>pollingEnabled:<a href="../../../Boolean.html">Boolean</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Indicates whether this channel is enabled to poll.
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get pollingEnabled():<a href="../../../Boolean.html">Boolean</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set pollingEnabled(value:<a href="../../../Boolean.html">Boolean</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+</div>
+<a name="propertyDetail"></a><a name="pollingInterval"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pollingInterval</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>pollingInterval:<a href="../../../Number.html">Number</a></code>&nbsp;&nbsp;[read-write] <p></p><p>
+      Provides access to the polling interval for this Channel.
+      The value is in milliseconds.
+      This value determines how often this Channel requests messages from
+      the server, to approximate server push.
+     
+      </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get pollingInterval():<a href="../../../Number.html">Number</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set pollingInterval(value:<a href="../../../Number.html">Number</a>):<a href="../../../specialTypes.html#void">void</a></code>
+<br>
+<br>
+<span class="label">Throws</span>
+<br>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../../ArgumentError.html">ArgumentError</a> </code> &mdash; If the pollingInterval is assigned a value of 0 or
+                            less.
+     </td>
+</tr>
+</table>
+</div>
+<a name="propertyDetail"></a><a name="protocol"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">protocol</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protocol:<a href="../../../String.html">String</a></code>&nbsp;&nbsp;[read-only] <p></p><p>
+      Returns the protocol for this channel (http).
+     </p><br>
+<span class="label"> Implementation </span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get protocol():<a href="../../../String.html">String</a></code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor Detail</div>
+<a name="AMFChannel()"></a><a name="AMFChannel(String,String)"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">AMFChannel</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function AMFChannel(id:<a href="../../../String.html">String</a> = null, uri:<a href="../../../String.html">String</a> = null)</code>
+<p></p><p>
+      Creates an new AMFChannel instance.
+        </p><span class="label"> Parameters </span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">id</span>:<a href="../../../String.html">String</a></code> (default = <code>null</code>)<code></code> &mdash; The id of this Channel.
+   
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">uri</span>:<a href="../../../String.html">String</a></code> (default = <code>null</code>)<code></code> &mdash; The uri for this Channel.
+     </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<div class="feedbackLink">
+<center>
+<a href="javascript:gotoLiveDocs('mx/messaging/channels/AMFChannel.html','mx/messaging/channels/class-list.html');">Submit Feedback on LiveDocs</a>
+</center>
+</div>
+<center class="copyright"> &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. <br>Thu Jun 7 2007, 8:13 AM GMT-04:00 </center>
+</div>
+</body>
+</html>
+<!-- &copy; 2004-2006 Adobe Systems Incorporated. All rights reserved. Thu Jun 7 2007, 8:13 AM GMT-04:00 -->

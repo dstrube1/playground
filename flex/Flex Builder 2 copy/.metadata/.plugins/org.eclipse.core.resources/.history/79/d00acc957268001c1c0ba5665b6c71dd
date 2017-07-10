@@ -1,0 +1,137 @@
+package app.server.calls
+{
+	import app.server.LenzServer;
+	import mx.controls.Alert;
+	import base.services.Content;
+	import base.services.LenzServiceHelper;
+	import base.services.ValueType;
+	import base.services.calls.ServiceCall;
+	
+	public class SiteSelectionLenzServerCall implements ServiceCall
+	{
+		public function call(name:String, params:Object):void
+		{
+			var content:Content;
+			
+			if (params["actionId"] == "fetchProposals") {
+				
+				content = LenzServiceHelper.createResourceCall("siteSelectionLenzServerAction");
+				
+				content.DataMap.add("site.selection.action.key", ValueType.STRING, params["actionId"]);
+				content.DataMap.add("user.id.key", ValueType.STRING, params["userId"]);
+				
+				LenzServer.getSvc( content, params["failure"], params["result"]);
+				
+			
+			} else if (params["actionId"] == "getAllRegions") {
+				
+				content = LenzServiceHelper.createResourceCall("siteSelectionLenzServerAction");
+				
+				content.DataMap.add("study.id.key", ValueType.STRING, params["studyId"]);
+				content.DataMap.add("site.selection.action.key", ValueType.STRING, params["actionId"]);			
+				content.DataMap.add("view.id.key", ValueType.STRING, params["viewId"]);			
+				content.DataMap.add("view.params.key", ValueType.STRING, params["actionParams"]);			
+				
+				LenzServer.getSvc( content, params["failure"], params["result"]);
+
+			
+			} else if (params["actionId"] == "getSequenceDetails") {
+				
+				content = LenzServiceHelper.createResourceCall("siteSelectionLenzServerAction");
+				
+				content.DataMap.add("site.selection.action.key", ValueType.STRING, params["actionId"]);
+				content.DataMap.add("study.id.key", ValueType.STRING, params["studyId"]);
+				content.DataMap.add("scenario.name.key", ValueType.STRING, params["scenarioName"]);
+				content.DataMap.add("sequence.id.key", ValueType.STRING, params["sequenceId"]);
+				
+				LenzServer.getSvc( content, params["failure"], params["result"]);
+				
+			
+			} else if (params["actionId"] == "getProposalData") {
+
+				content = LenzServiceHelper.createResourceCall("siteSelectionLenzServerAction");
+				
+				content.DataMap.add("site.selection.action.key", ValueType.STRING, params["actionId"]);
+				content.DataMap.add("user.id.key", ValueType.STRING, params["userId"]);
+				content.DataMap.add("study.id.key", ValueType.STRING, params["studyId"]);
+				
+				LenzServer.getSvc( content, params["failure"], params["result"]);
+				
+			
+			} else if (params["actionId"] == "postProposal") {
+
+				content = LenzServiceHelper.createResourceCall("siteSelectionLenzServerAction");
+				
+				content.DataMap.add("site.selection.action.key", ValueType.STRING, params["actionId"]);
+				content.DataMap.add("scenario.name", ValueType.XML, params["scenarioName"]);
+				content.DataMap.add("proposal.db.xml", ValueType.XML, params["proposalXml"]);
+				
+				LenzServer.getSvc( content, params["failure"], params["result"]);
+				
+			
+			}  else if (params["actionId"] == "commitScenario") {
+				
+				content = LenzServiceHelper.createResourceCall("siteSelectionLenzServerAction");
+				
+				content.DataMap.add("site.selection.action.key", ValueType.STRING, params["actionId"]);
+				content.DataMap.add("study.id.key", ValueType.STRING, params["studyId"]);
+				content.DataMap.add("scenario.name.key", ValueType.STRING, params["scenarioName"]);
+				content.DataMap.add("sequence.id.key", ValueType.XML, params["sequenceId"]);
+				
+				LenzServer.getSvc( content, params["failure"], params["result"]);
+			
+			} else if (params["actionId"] == "deleteProposal") {
+				
+				content = LenzServiceHelper.createResourceCall("siteSelectionLenzServerAction");
+				
+				content.DataMap.add("site.selection.action.key", ValueType.STRING, params["actionId"]);
+				content.DataMap.add("user.id.key", ValueType.STRING, params["userId"]);
+				content.DataMap.add("study.id.key", ValueType.STRING, params["studyId"]);
+				
+				LenzServer.getSvc( content, params["failure"], params["result"]);
+			
+			} else if (params["actionId"] == "exportCountryAllocations") {
+				
+				content = LenzServiceHelper.createResourceCall("siteSelectionLenzServerAction");
+				
+				content.DataMap.add("site.selection.action.key", ValueType.STRING, params["actionId"]);
+				content.DataMap.add("study.id.key", ValueType.STRING, params["studyId"]);
+				
+				LenzServer.getSvc( content, params["failure"], params["result"]);
+			
+			}  else if (params["actionId"] == "queryInvestigators") {
+				
+				content = LenzServiceHelper.createResourceCall("siteSelectionLenzServerAction");
+				
+				var inputs:Array = params["actionParams"] as Array;
+				
+				var str = " region : " +  inputs["region.id.key"];
+			
+				content.DataMap.add("site.selection.action.key", ValueType.STRING, params["actionId"]);
+				content.DataMap.add("user.id.key", ValueType.STRING, params["userId"]);
+				
+				content.DataMap.add("region.id.key", ValueType.STRING, inputs["region.id.key"]);
+		 		content.DataMap.add("country.id.key", ValueType.STRING, inputs["country.id.key"]);
+				content.DataMap.add("state.id.key", ValueType.STRING, inputs["state.id.key"]);
+				content.DataMap.add("therapyArea", ValueType.STRING, inputs["therapyArea"]);
+				content.DataMap.add("indication", ValueType.STRING, inputs["indication"]);
+				content.DataMap.add("physicians", ValueType.STRING, inputs["physicians"]);
+				content.DataMap.add("investigatorsOnly", ValueType.STRING, inputs["investigatorsOnly"]);
+				content.DataMap.add("includeKpis", ValueType.STRING, inputs["includeKpis"]);
+				content.DataMap.add("phase", ValueType.STRING, inputs["phase"]);
+				content.DataMap.add("numberOfStudies", ValueType.STRING, inputs["numberOfStudies"]);
+				
+				LenzServer.getSvc( content, params["failure"], params["result"]);
+			} else if (params["actionId"] == "stateLookup") {
+			
+				content = LenzServiceHelper.createResourceCall("siteSelectionLenzServerAction");
+				content.DataMap.add("site.selection.action.key", ValueType.STRING, params["actionId"]);
+			
+			
+				LenzServer.getSvc( content, params["failure"], params["result"]);
+			}
+			
+			//LenzServer.postSvc( - to save to the server
+		}
+	}
+}

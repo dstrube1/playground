@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="SearchDialog.ScopePart">
+		<item key="scope" value="0"/>
+	</section>
+	<section name="DialogBounds_SearchDialog">
+		<item key="DIALOG_X_ORIGIN" value="415"/>
+		<item key="DIALOG_HEIGHT" value="429"/>
+		<item key="DIALOG_FONT_NAME" value="1|Lucida Grande|11|0|CARBON|1|"/>
+		<item key="DIALOG_Y_ORIGIN" value="153"/>
+		<item key="DIALOG_WIDTH" value="504"/>
+	</section>
+	<section name="Search">
+		<list key="Search.enabledPageIds">
+			<item value="org.eclipse.search.internal.ui.text.TextSearchPage"/>
+		</list>
+		<list key="Search.processedPageIds">
+			<item value="org.eclipse.search.internal.ui.text.TextSearchPage"/>
+		</list>
+	</section>
+	<section name="TextSearchPage">
+		<item key="HISTORY_SIZE" value="12"/>
+		<item key="CASE_SENSITIVE" value="false"/>
+		<item key="SEARCH_DERIVED" value="false"/>
+		<item key="REG_EX_SEARCH" value="false"/>
+		<section name="HISTORY4">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="gloe"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+		</section>
+		<section name="HISTORY9">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="Renderer"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+		</section>
+		<section name="HISTORY0">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="icon_cass.png"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+		</section>
+		<section name="HISTORY2">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="cass"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+		</section>
+		<section name="HISTORY5">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="fetchRSSContent"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+		</section>
+		<section name="HISTORY10">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="RSS"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+		</section>
+		<section name="HISTORY7">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="RSSReader"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+		</section>
+		<section name="HISTORY3">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="icon_cass"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+		</section>
+		<section name="HISTORY1">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="caret_reverse.png"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+		</section>
+		<section name="HISTORY6">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="fetchRSSContentFor"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+		</section>
+		<section name="HISTORY11">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="Rss"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+		</section>
+		<section name="HISTORY8">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="getClickManager"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.*"/>
+			</list>
+		</section>
+	</section>
+	<section name="org.eclipse.search.text.FileSearchResultPage">
+	</section>
+</section>

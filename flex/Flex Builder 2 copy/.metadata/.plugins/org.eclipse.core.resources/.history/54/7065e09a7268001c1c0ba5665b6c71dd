@@ -1,0 +1,11 @@
+package base.util
+{ 
+	public class FunctionUtils
+	{
+		
+		public static function bind( obj:*, method:Function):Function {
+				return function():* { return method.apply(obj, arguments); }			
+		}
+		
+	}
+}

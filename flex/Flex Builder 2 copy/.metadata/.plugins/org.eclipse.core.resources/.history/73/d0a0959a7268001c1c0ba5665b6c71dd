@@ -1,0 +1,17 @@
+package base.services 
+{
+	public interface ResponseChain
+	{
+	
+		function setNext( r:ResponseChain):void;
+		
+		function process( r:Response):void;
+		
+		function setHandler( f:Function):void;
+		
+		function getStatefulCallbackHandler():Function;
+		
+		function subclassProcess( r:Response ):void;
+		
+	}
+}

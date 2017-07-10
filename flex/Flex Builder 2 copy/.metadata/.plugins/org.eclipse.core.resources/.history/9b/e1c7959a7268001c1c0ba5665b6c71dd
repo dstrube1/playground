@@ -1,0 +1,46 @@
+package base.services
+{ 
+	
+	import mx.rpc.soap.WebService;
+	import mx.rpc.events.ResultEvent;
+	
+	public class ServiceBuilder
+	{
+		
+		private var url:String = null;
+		private var wsdlPath:String = null;
+		private var portPath:String = null;
+		
+
+
+		public static var svcPrototype:LenzService = null;
+		
+		
+		public function setUrl(url:String):void {
+			this.url = url;
+		}
+		
+		public function setWsdlPath(path:String):void {
+			this.wsdlPath = path;
+		}
+		
+		public function setPortPath(path:String):void {
+			this.portPath = path;
+		}
+		
+		public function build( svc:LenzService ):void {
+			var service:WebService = new WebService();
+			
+			service.loadWSDL(url+wsdlPath);
+			service.endpointURI=url+wsdlPath;
+			
+
+			svc.setWebService(service);
+			
+
+		}
+		
+		
+		
+	}
+}

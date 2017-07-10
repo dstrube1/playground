@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow showCloseButton="true"
+	close="handleClose(event)"
+	styleName="rprPanel"  
+	horizontalAlign="center" 
+	x = "{myDTO.referralFormX}"
+	y = "{myDTO.referralFormY}"
+	width = "{myDTO.referralFormWidth}"
+	height = "{myDTO.referralFormHeight}"
+	title="Referral Form" 
+	creationComplete="populateSavedValues()"
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:components="leadgine.components.*"
+	>
+<!--
+<panel:SuperPanel xmlns:panel="nl.wv.extenders.panel.*"
+-->
+<mx:Script>
+<![CDATA[
+	import mx.collections.ArrayCollection;
+	import mx.core.Application;
+	import leadgine.components.FunctionDate;
+	import leadgine.components.dto.FullServiceReferral;
+	import mx.events.CloseEvent;
+	import mx.managers.PopUpManager;
+
+	[Bindable] private var myDTO:FullServiceReferral = Application.application.myFullServiceReferral;
+
+	[Bindable] public var myTitle:String;
+	[Bindable] public var startDate:String = RoomBlockInfoUnlimited.calcDate(myDTO.startDate,0);
+
+	private var roomRowArray:ArrayCollection;
+	private var functionArray:ArrayCollection;
+		
+	private function handleClose(event:CloseEvent):void{
+		Application.application.resetDialogs();
+		PopUpManager.removePopUp(this);
+	}
+
+	//TODO Fix removal of items
+	//TODO Add time range components to items
+	//TODO roomRowArray isn't really an array of Room Rows; In fact, a room Row isn't really a room Row; It's a day row, i.e., one row per day, not per room;
+		//while we're at it, functionArray isn't really an array of functions, is it?
+		//FunctionType is really a FunctionView
+		//Item is really a function, 
+		//which leads me to the conclusion that we should use some other word instead of function, like event, but that's already taken; maybe Occasion, or ScheduleEntry
+		//whatever the word, we can leave the visual labels the same, but should change the internal class naming; low priority, would only alleviate and avoid confusion
+	private function nextSection():void {
+		updateDataStore();
+		Application.application.toggleDialog(1);
+	}
+	private function prevSection():void {
+		updateDataStore();
+		Application.application.toggleDialog(-1);
+	}
+	private function updateDataStore():void{
+		myDTO.referralFormX = this.x;
+		myDTO.referralFormY = this.y;
+
+		for each (var funcDate:FunctionDate in funcArea.getChildren()){
+			funcDate.setItemArray();
+		}
+		for each (var roomRow:RoomRow in roomRowArray){
+			if (! myDTO.savedFunctionDates.contains(roomRow.roomDate.text)){
+				myDTO.savedFunctionDates.addItem(roomRow.roomDate.text);
+			}
+		}
+		//do not do this, because function array is not affected on this class, and will set the global to null
+		//Application.application.myFullServiceReferral.functionArray = functionArray;
+	}
+	private function populateSavedValues():void{
+		roomRowArray = myDTO.roomRowArray;
+		if (myDTO.savedFunctionDates.length > 0){
+			functionArray = myDTO.functionArray;
+		}
+		updateRows();
+	}
+	private function updateRows():void{
+		funcArea.removeAllChildren();
+		for each (var roomRow:RoomRow in roomRowArray){
+			var functionDate:FunctionDate = new FunctionDate();
+			var date:Date = new Date(roomRow.roomDate.text);
+			functionDate.myDate = RoomBlockInfoUnlimited.calcDate(date,0);
+			functionDate.myFunctionArray = functionArray;
+			funcArea.addChild(functionDate);
+		}
+	}
+]]>
+</mx:Script>
+	<mx:VBox>
+
+		<mx:HBox verticalAlign="bottom" id="headerArea" width="800" styleName="headerStyle">
+			<mx:Label text="Full Service Referral Form" styleName="mainTitle" />
+			<mx:Spacer width="100%" />
+		</mx:HBox>
+		<mx:VBox 
+			width="100%" 
+			height="100%" 
+			horizontalScrollPolicy="off"
+			verticalScrollPolicy="off"
+			initialize="{navFooter.nextButton.enabled=true}">
+			
+			<mx:VBox styleName="containerStyle" width="100%" height="100%">	
+				<mx:Label text="{myTitle}" styleName="secTitle" />
+				<!--
+				<mx:Label text="{startDate}" />
+				-->
+				<mx:VBox id="funcArea" width="790" height="350" paddingLeft="20"/>
+				
+				<mx:Spacer height="100%" />
+				<components:NavigationFooter id="navFooter"
+					prevSection="prevSection()"
+					nextSection="nextSection()"
+				/>
+			</mx:VBox>
+			
+		</mx:VBox>
+	</mx:VBox>
+<!--
+</panel:SuperPanel>
+-->
+</mx:TitleWindow>

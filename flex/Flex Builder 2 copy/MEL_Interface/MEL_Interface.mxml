@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+	xmlns:local="*" xmlns:service="service.*">
+<mx:Script>
+	<![CDATA[
+		[Bindable]
+		public var myUrl:String = "&username=hema&password=hema&image.png";
+	]]>
+</mx:Script>
+<!--
+http://127.0.0.1:8081/lifeline/xml/login.do?username=hema&password=hema
+see also
+http://livedocs.adobe.com/flex/201/html/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Book_Parts&file=dataservices_intro_098_2.html
+http://livedocs.adobe.com/labs/flex/3/html/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Book_Parts&file=data_intro_010_2.html
+-->
+	<service:LoginService id="loginRequest"/>
+
+	<local:LoginPanel title="Login" x="10" y="10" width="800" height="400" 
+		id="loginPanel" localLoginService="{loginRequest}" memListPanel="{memListPanel}" />
+			
+	<local:MemListPanel title="List" x="10" y="10" width="800" height="400" visible="false" id="memListPanel"
+		localLoginService="{loginRequest}" loginPanel="{loginPanel}" memDetailPanel="{memDetailPanel}">
+	
+	</local:MemListPanel>
+	
+	<local:MemDetailPanel title="Detail" x="10" y="10" width="800" height="400" visible="false" id="memDetailPanel"/>
+
+</mx:Application>

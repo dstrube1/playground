@@ -1,0 +1,75 @@
+package base.model
+{
+	import base.log.Logger;
+	
+		
+	public class ViewContextHelper
+	{
+		import mx.controls.Alert;
+		
+		private static var logger:Logger = Logger.getLogger("ViewContextHelper");
+		
+		
+		public static function convertToObj(xml:XML):ViewContext {
+			
+			var filter:ViewContext = new ViewContext();
+			var o:Object = {};
+			
+			
+			
+			for each(var elementTag:String in ViewContext.propList) {
+				
+				 
+				for each(var childTag:XML in xml.child(elementTag)) {
+					
+					o[elementTag] = convert(childTag);
+				}
+				    
+			}
+			filter.update(o);
+			return filter;
+		}
+					
+		private static function convert(elements:XML): Array {
+			
+			var o:Array = [];
+			var len:int = elements.children().length();			
+			
+			
+			for each (var child:XML in elements.children()) {
+				
+				o.push(child.toString());
+		
+			}
+			return o;
+		}
+		
+		public static function convertToXML(obj:ViewContext):XML {
+
+			var xml:XML = new XML("<viewContext></viewContext>");
+			
+			for each (var attr:String in ViewContext.propList) {
+				 
+				if (obj.getObject(attr) != null) {
+					
+					var xmlString:String = "<"+attr+"></"+attr+">";
+					xml.appendChild(new XML(xmlString));
+					
+					var attrXml:XMLList = xml.child(attr);
+					
+					var values:Array = obj.getObject(attr);
+					
+					for each (var value:String in values) {
+						
+						var valXml:XML = attrXml.appendChild(new XML("<value>"+value+"</value>"));
+						
+					}					
+		
+				}
+			}
+			
+			//logger.debug("Final XML - " + xml.toXMLString());
+			return xml;
+		}
+	}
+}

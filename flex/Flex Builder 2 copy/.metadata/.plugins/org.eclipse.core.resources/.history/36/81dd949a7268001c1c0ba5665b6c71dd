@@ -1,0 +1,15 @@
+package base.services
+{
+	public interface ContentChain
+	{
+	
+	 
+		function setNext( chain:ContentChain ):void;
+	
+		function process( c:Content):void;
+		
+		function subclassProcess( c:Content ):void;
+		
+		
+	}
+}

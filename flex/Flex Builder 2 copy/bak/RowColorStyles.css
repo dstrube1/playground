@@ -1,0 +1,27 @@
+/* CSS file */
+
+/* valid conditions == eq, ne, lt, gt, le, ge */
+
+.rowColor1 {
+    dataField:            priority;
+    condition:            eq;
+    value:                1;
+    backgroundColor:    "0xFF9D9D";
+}
+.rowColor2 {
+    dataField:            priority;
+    condition:            eq;
+    value:                2;
+    backgroundColor:    "#FFFF84";
+}
+.rowColor3 {
+    dataField:            priority;
+    condition:            eq;
+    value:                3;
+    backgroundColor:    "#74DC96";
+}
+
+/* rowColors are placed in order of priority */
+.rowColorsDataGrid {
+    rowColors:            rowColor1,rowColor2,rowColor3;
+}

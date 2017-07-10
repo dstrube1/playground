@@ -1,0 +1,30 @@
+<categories>
+	<category>
+		<CATEGORYID>1</CATEGORYID>
+		<CATEGORY>All</CATEGORY>
+	</category>	
+	<category>
+		<CATEGORYID>2</CATEGORYID>
+		<CATEGORY>Animals</CATEGORY>
+	</category>	
+	<category>
+		<CATEGORYID>3</CATEGORYID>
+		<CATEGORY>City</CATEGORY>
+	</category>	
+	<category>
+		<CATEGORYID>4</CATEGORYID>
+		<CATEGORY>Flowers</CATEGORY>
+	</category>	
+	<category>
+		<CATEGORYID>5</CATEGORYID>
+		<CATEGORY>Misc</CATEGORY>
+	</category>	
+	<category>
+		<CATEGORYID>6</CATEGORYID>
+		<CATEGORY>Nature</CATEGORY>
+	</category>	
+	<category>
+		<CATEGORYID>7</CATEGORYID>
+		<CATEGORY>People</CATEGORY>
+	</category>	
+</categories>

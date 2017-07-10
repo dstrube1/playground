@@ -1,0 +1,28 @@
+package base.notification
+{
+	import base.services.MapArray;
+	
+	public class ProblemResolutionViewModel
+	{
+		[Bindable]		
+		public var plans:Array;
+		
+		[Bindable]
+		public var graphUrls:MapArray
+		
+		public function copy(model:ProblemResolutionViewModel): void {
+			
+			plans = model.plans;
+			graphUrls = model.graphUrls;
+			
+		}
+		 
+		public function getGraphUrl(planId:String):String {
+			if (graphUrls != null) {
+				return graphUrls.getValue(planId) as String;
+			} else {
+				return null;
+			}
+		}
+	}
+}

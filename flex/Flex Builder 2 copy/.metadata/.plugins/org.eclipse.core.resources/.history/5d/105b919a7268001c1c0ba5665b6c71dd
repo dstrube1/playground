@@ -1,0 +1,49 @@
+package base.notification
+{
+	import flash.events.Event;
+	import mx.controls.Alert;
+	import base.lenz.NotificationReport;
+	import base.model.ViewContext;
+	
+	public class NotificationViewController
+	{
+		
+		private var model:NotificationViewModel = null;
+		private var report:NotificationReport = null; 
+		private var viewContext:ViewContext = null;
+		
+		public function onDataUpdate( ev:Event = null):void {
+
+//			Alert.show("DataUpdateEvent");
+			
+			
+			var alertFilter:Object = viewContext.getFilters();
+			alertFilter.type="alert";
+			
+			var notificationFilter:Object = viewContext.getFilters();
+			notificationFilter.type="notification";
+
+			model.topLevelAlarms = report.notificationDb.fetch( { type: "alarm" });
+			model.filteredAlerts = report.notificationDb.fetch( alertFilter );
+			model.filteredNotifications = report.notificationDb.fetch( notificationFilter );
+
+			
+		}
+		
+		
+		public function setModel( pModel:NotificationViewModel):void {
+			model = pModel;
+		}
+		
+		public function setNotificationReport( pReport:NotificationReport):void {
+			
+			report = pReport;
+			
+		}
+		
+		public function setViewContext( pContext:ViewContext ):void {
+			viewContext = pContext;
+		}
+		
+	}
+}

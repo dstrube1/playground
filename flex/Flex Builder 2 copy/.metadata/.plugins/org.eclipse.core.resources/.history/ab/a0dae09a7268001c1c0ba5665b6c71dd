@@ -1,0 +1,198 @@
+package base.util
+{ 
+	//# lines starting with this comment are commented for if/when we want to display (a rotating image) or 
+	//(text showing how much time is left on the wait)
+
+	import mx.containers.Canvas;
+	import mx.controls.Alert;
+	import flash.utils.Timer;
+	import flash.events.TimerEvent;
+	import mx.managers.CursorManager;
+	import mx.controls.Image;
+	import mx.core.Application;
+	import mx.controls.Label;
+	import mx.containers.VBox;
+	import flash.display.DisplayObject;
+	import mx.core.UIComponent;
+	import base.log.Logger;
+	
+	public class ModalWait extends Canvas
+	{
+		//#private static var maskCanvas:Canvas = null;
+		private static var application:Application = null;
+		//#private static var parentComponent:UIComponent = null;
+		
+		//#private var maskVbox:VBox = new VBox();
+		//#private var maskLabel:Label = new Label();
+		//#private var maskLabelBackup:Label = new Label();
+		//#private var maskImage:Image = new Image();
+		//private var maskImageBackup:Image = new Image();
+		//private var started:Boolean = new Boolean(false);
+		private static var myTimer:Timer = null;
+		private static var numCallers:uint = 0;
+		private static var origAlpha:Number = 0;
+		private static var seconds:uint = 10; 
+		private static var countDown:Number;
+		
+		
+		private static var logger:Logger = Logger.getLogger("ModalWait");
+		
+		public static function init(pApplication:Application, pSeconds:int = 10, pParent:UIComponent = null)
+		:void{
+				
+			logger.debug("ModalWait.init() - seconds: "+pSeconds);	
+				
+//#			maskCanvas = new Canvas();
+//#			maskCanvas.visible = false;
+
+			//if init has already been called,
+			if (null!=application){
+				logger.error("Attempt to call ModalWait.init() more than once.");
+				return;
+			}
+			application = pApplication;
+
+//#			if (null != pParent){
+//#				parentComponent = pParent;
+//#				parentComponent.addChildAt(maskCanvas, 0);
+//#			}
+//#			maskCanvas.percentHeight = 100;
+//#			maskCanvas.percentWidth = 100;
+//#			maskCanvas.removeAllChildren();
+//#			maskVbox.percentWidth = 100;
+//#			maskVbox.percentHeight = 100;
+//#			maskVbox.setStyle("horizontalAlign","center");
+//#			maskVbox.setStyle("verticalAlign","middle");
+//#			maskCanvas.addChild(maskVbox);
+//#			maskVbox.addChild(maskLabelBackup);
+//#			maskVbox.addChild(maskLabel);
+			
+			//maskLabelBackup.text = "seconds remaining: ";
+//#			maskLabelBackup.setStyle("fontSize",30);
+//#			maskLabelBackup.setStyle("fontWeight","bold");
+//#			maskLabel.text = "working";
+//#			maskLabel.setStyle("fontSize",30);
+//#			maskLabel.setStyle("fontWeight","bold");
+
+//#			[Embed(source="/resources/images/line.png")]
+//#	        var source:Class; 
+//#			maskImage.source = source;
+			//[Embed(source="images/backup.png")]
+	        //var sourceBackup:Class; 
+			//maskImageBackup.source = sourceBackup;
+			
+			//maskVbox.addChild(maskImageBackup);
+//#			maskVbox.addChild(maskImage);
+			//maskImage.x = maskImageBackup.x+ (maskImageBackup.width/2);
+			//maskImage.y = maskImageBackup.y+ (maskImageBackup.height/2);
+
+			seconds = pSeconds;
+			countDown = seconds*10;
+
+			// create the one timer we will use for all calls of ModalWait.start
+			myTimer = new Timer(100, countDown);
+            myTimer.addEventListener(TimerEvent.TIMER, timerHandler,false,0,true);
+            myTimer.addEventListener(TimerEvent.TIMER_COMPLETE, timerCompleteHandler,false,0,true);
+            
+		}
+		
+		
+		public static function start(arg:int=0):void{
+			
+			
+			logger.debug("ModalWait.start() - numCallers (before) == "+numCallers);
+			
+			numCallers++; 
+			
+			//if init hasnt been called or was called incorrectly,
+			if (null == application){
+				logger.error("ModalWait not initialized when start() is called.");
+				return;
+			}
+				
+			application.enabled=false;
+
+			if (numCallers > 1){
+				//if start is called more than once, do not increase the screen obscuration
+
+				// but do reset the timer.
+				myTimer.reset();
+				myTimer.start();			
+				
+				return;
+				
+			}
+			
+			
+			//origAlpha = application.root.parent.alpha;
+			//application.root.parent.alpha=origAlpha/3;
+			
+//#			maskCanvas.visible = true;
+			CursorManager.setBusyCursor();
+
+            myTimer.start();
+		}
+		
+		public static function stop(arg:int=0):void{
+
+
+			logger.debug("ModalWait.stop() - numCallers (before) == "+numCallers);
+
+			//if init hasnt been called or was called incorrectly,
+			if (null == application){
+				logger.error("ModalWait not initialized when stop() is called.");
+				return;
+			}
+
+			if (numCallers == 0){
+				//calling stop while already stopped is not allowed
+				CursorManager.removeBusyCursor();
+				application.enabled=true;
+				return;
+			}
+			
+			numCallers --;
+				
+			if (numCallers <= 0){
+				//application.root.parent.alpha = origAlpha;
+//#				maskCanvas.visible = false;
+//#				application.root.parent.removeChild(maskCanvas);
+				CursorManager.removeBusyCursor();
+				application.enabled=true;
+				
+				// stop the timer, and reset it back to the default total duration.
+				myTimer.reset();
+			}
+		}
+
+		private static function timerHandler(event:TimerEvent):void {			
+//#     	    updateImage();
+//#				updateText();
+        }
+        
+        private static function timerCompleteHandler(event:TimerEvent):void{
+        	numCallers = 1;
+     	   	Alert.show("Operation timed out.");
+     	   	ModalWait.stop();
+        	
+        }
+/*        
+//# begin
+		private function updateText(deciseconds:Number):void{
+			if (!started) {
+				maskLabel.text = "";
+				return;
+			}
+			maskLabel.text = ""+deciseconds;
+		}
+		
+		private function updateImage():void{
+			if (!started) {
+				return;
+			}
+			maskImage.rotation += 360/(seconds*10);
+		}		
+//# end
+*/
+	}//end class
+}//end package

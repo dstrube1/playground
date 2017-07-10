@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base.lenz.frame:BaseLenzFrame xmlns:base.lenz.frame="base.lenz.frame.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml"  
+	xmlns="base.lenz.frame.*"  
+	implements="base.lenz.frame.LenzFrame"
+	styleName="lenzFrame">
+
+	
+		
+	<mx:Script>
+		<![CDATA[
+
+			import mx.controls.Image;
+			import lenz.main.investigator.InvestigatorLenz;
+			import lenz.main.investigator.panel.InvestigatorLenzPanel;
+			import lenz.main.monitor.MonitorLenz;
+			import lenz.main.monitor.panel.MonitorLenzPanel;
+			import lenz.main.monitor.panel.MonitorLenzPanelB;
+			import lenz.main.study_mgr.StudyManagerLenz;
+			import lenz.main.study_mgr.panel.StudyManagerLenzPanel;
+			import lenz.main.site_select.SiteSelectionLenz;
+			import base.event.LenzClosedEvent;
+			import lenz.main.welcome.WelcomeLenz;
+			import app.config.LenzFactory;
+			import base.lenz.Lenz;
+			import base.lenz.panel.LenzPanel;
+			import base.lenz.panel.PanelBuilder;
+			import mx.controls.Alert;
+			import base.event.SelectLenzEvent;
+			import mx.core.Application;
+	
+			public var welcomeLenz:Lenz = null;
+			public var studyMgrLenz:Lenz = null;
+			
+			//@SMELL this would be better if it wasn't a global variable.
+			public var lenzToOpen:Lenz = null;
+			
+
+			public override function onFrameCreationComplete():void {
+				
+				logger.debug(title+" onFrameCreationComplete()");
+				
+				//HB - making the study manager lenz as the default start lenz
+				//addWelcomeLenz();
+				
+				addStudyMgrLenz();
+				addLenzEventListener();
+				//currentLenz.initialize();
+				
+			}
+			
+			protected override function activateFrame():void {
+			}
+
+
+			
+			private function addWelcomeLenz():void {
+
+							
+			}
+			
+			private function addStudyMgrLenz():void {
+				
+
+				studyMgrLenz = LenzFactory.getLenz(StudyManagerLenz.LENZ_ID);
+				
+				setupCurrentLenz(studyMgrLenz);				
+				
+								
+			}
+			
+
+			private function addLenzEventListener():void {
+
+
+				// when the user selects a lenz, this is fired, to start the process of hiding the existing
+				// lenz and showing the new one.
+				addEventListener(SelectLenzEvent.SELECT_LENZ_EVENT_BASE, onSelectLenzEvent);
+				addEventListener(LenzClosedEvent.EVENT_CODE, onLenzClosedEvent);
+
+			}
+
+
+
+
+
+
+			private function onSelectLenzEvent(ev:SelectLenzEvent):void {
+				
+				
+				currentLenz.close();
+				currentLenz = null;
+
+
+				var lenz:Lenz = LenzFactory.getLenz(ev.getLenz());
+				
+				if (null == lenz) {
+					throw new Error("Unable to locate lenz with id: "+ev.getLenz());
+				} else {
+					
+					lenzToOpen = lenz;					
+				}
+				
+				
+			}
+
+
+			private function onLenzClosedEvent(ev:LenzClosedEvent):void {
+
+				// now that the old lenz is closed, we can open the new lenz
+				
+				if (lenzToOpen != null) {	
+				
+					setupCurrentLenz(lenzToOpen);  // side effect is to set currentLenz to lenzToOpen
+
+					currentLenz.initialize();
+				}
+				
+			}
+
+
+			private function setupCurrentLenz( pLenz:Lenz):void {
+				
+				logger.debug("Setting up new lenz: "+pLenz.getLenzId());
+				
+				currentLenz = pLenz;
+
+				currentLenz.setLenzFrame(this);
+				
+
+			}
+
+
+			private function currentLenzRetracted( lenzId:String):void {
+			
+			}
+
+			private function selectLenz( data:Array):void {
+				
+				logger.debug("MainFrame: user selected: "+data[0]);
+				
+				var ev:Event = new SelectLenzEvent(data[0]);
+				
+				this.dispatchEvent(ev);
+				
+			}
+			
+			
+		]]>
+	</mx:Script>
+
+
+
+		
+</base.lenz.frame:BaseLenzFrame>

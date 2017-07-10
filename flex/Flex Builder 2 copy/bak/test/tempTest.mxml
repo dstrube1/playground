@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+ xmlns:mx="http://www.adobe.com/2006/mxml"
+ width="100%"
+ height="100%"
+ backgroundColor="#FFFFFF" 
+ creationComplete="f()">
+
+<mx:Script>
+	<![CDATA[
+		import HTTPURLLoader;
+		
+		public function f ():void{
+			var h:HTTPURLLoader;
+			h._httRequest = "http://www.coreconcept.com/company_overview.html";
+			var u:URLRequest = new URLRequest(h._httRequest);
+			try{
+				h.load(h._httRequest);
+				//t.text = h.data;
+				//t.text += u.url;
+			}
+			catch (err:Error){
+				t.text+="Error caught: "+err.toString();
+			}
+		}
+	]]>
+</mx:Script>
+<mx:Text text="blah" id="t"/>
+</mx:Application>

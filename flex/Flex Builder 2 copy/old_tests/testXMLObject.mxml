@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="ObjTest()">
+<mx:Script>
+	<![CDATA[
+		public function ObjTest():void{
+			var testStr:String = '<map><element key="k1" value="1" />'+
+										'<element key="asdf" value="asdf" />'+
+										'<element key="fp" value="3.14159" /></map>';
+								
+			var x:XML = new XML(testStr);
+			a.text = x;
+
+			var o:Object = new Object();
+			var arr:Array = [];
+			
+			for each (var element:XML in x.element){
+				o[element.@key] = element.@value;
+				arr.push(element.@key);
+           	}
+			
+			//puzzle: how to know/find/print the keys as well as values of this hash map object?
+			
+//			for each (var Obj:Object in o){
+//				a.text += "\nobj ="+Obj+" = "+Obj.valueOf(); //1=1, 3.14=3.14...
+//			}
+
+//			var y:XML = new XML(o.toString());
+//			a.text += "\n"+y.toString(); //=[object Object]
+
+//			a.text += "\n"+o.toString(); //=[object Object]
+
+			a.text += "\n<map>";
+			for each (var obj:Object in arr){
+				if (o.hasOwnProperty(obj)){
+					a.text+= "\n <element key=\""+obj+ "\" value=\"" + +o[obj]+"\" />";
+				}
+				else
+					a.text+= "\n o has no obj";
+//				a.text+= "\n<element key=\""+element.@key + "\" value=\"" + o[element.@key]+"\" />";
+			}
+
+			a.text += "\n</map>";
+
+			var string = "k1";
+			a.text += "\n \n key "+string+" exists: ";
+			if (o[string] == undefined)
+				a.text+= "false";
+			else
+				a.text+= "true";
+			for each (var obj:Object in o){
+				a.text += "\n\n "+obj.toString();
+			}
+		}
+	]]>
+</mx:Script>
+<mx:Text id="a" text="1"/>
+</mx:Application>

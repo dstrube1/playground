@@ -1,0 +1,128 @@
+package base.lenz.funnel.FunnelStageValue
+{
+	import mx.controls.Image;
+	import flash.utils.Timer;
+	import flash.events.TimerEvent;
+	
+	public class StageValueTest
+	{
+		function StageValueTest(stages : Array = null, root_stage : Image = null, N : Number=0) {
+			this._N = N; 
+			if (null != root_stage){
+				this._root_stage = root_stage;
+				this._stages = new Array(); 
+			}
+			else {
+				this._stages = stages;
+				this._root_stage = null;
+			}
+			this._isRunning = false;
+		}
+		
+		
+		protected var _N : Number; // number of objects
+		protected var _stages : Array; 
+		protected var _isRunning : Boolean;
+		protected var _root_stage : Image; 
+		protected var _F : Number = 0; 
+		protected var _lastF : Number = 0;
+		protected var _lastTime : Date;
+		
+		private var _frameTimer : Timer;
+		private var _fpsTimer : Timer;
+		
+		public var _showFPS : Function = null;
+		
+		public function startN(N : Number) : void {
+			this._N = N;
+			this.start();
+			//why not isRunning set true?
+			// because start() does this
+		}
+		
+		public function start() : void {
+			if (this._isRunning) return;
+			this._isRunning = true;
+			
+			this._F = 0;  
+			this._lastF = 0;
+			this._lastTime = new Date();
+
+			var _this : StageValueTest = this;
+			
+			var moveStages : Function = function() : void {
+				if (_this._N > _this._stages.length) 
+					return;
+				_this._F++;
+				// move stages
+				for (var i : Number = 0; i<_this._N; i++) {
+					_this._stages[i].move();
+				}
+				// process collisions
+				for (i=0; i<_this._N; i++) {
+					for (var j : Number = i+1; j<_this._N; j++) {
+						_this._stages[i].doCollide(_this._stages[j]);
+					}
+				}
+			}
+			var showFps : Function = function() : void {
+				if (_this._F - _this._lastF < 10) return;
+				var currTime : Date = new Date();
+				var delta_t : Number = (currTime.getMinutes() 
+					- _this._lastTime.getMinutes())*60 + currTime.getSeconds() 
+					- _this._lastTime.getSeconds() + (currTime.getMilliseconds() 
+					- _this._lastTime.getMilliseconds())/1000.0;
+				 
+				var fps : Number = (_this._F - _this._lastF)/delta_t;
+				
+				_this._lastF = _this._F;
+				_this._lastTime = currTime;
+				
+				if (_this._showFPS != null) 
+					_this._showFPS.call(_this, Math.round(fps));
+			}
+			// create all our stages
+			if (null!= this._root_stage){
+				this._stages[0] = new StageValue(this._root_stage);
+				
+				for (var j : Number =1; j<this._N; j++) {
+					this._stages[j] = this._stages[0].clone();
+				}
+			}
+			else{
+				for (var i:Number =0; i< this._N; i++){
+					var tempImage:Image = this._stages[i] as Image;
+					tempImage.visible = true;
+					tempImage.alpha = 0.5;
+					this._stages[i] = tempImage;
+					this._stages[i] = new StageValue(this._stages[i]);
+				}
+			}
+			
+			this._frameTimer = new Timer(5);
+			this._frameTimer.addEventListener(TimerEvent.TIMER, moveStages,false,0,true);
+			
+			this._fpsTimer = new Timer(3000);
+			this._fpsTimer.addEventListener(TimerEvent.TIMER, showFps,false,0,true);
+			
+			this._frameTimer.start();
+			this._fpsTimer.start();
+			
+		}
+		
+		public function stop() : Boolean{
+			if (!this._isRunning) return false;
+			this._isRunning = false;
+			this._frameTimer.stop();
+			this._fpsTimer.stop();
+			
+			for (var i : Number=1; i<this._N; i++) {
+				this._stages[i].remove();
+				delete this._stages[i];
+			}
+			delete this._stages[0];
+
+			return true;
+		}
+	}
+}

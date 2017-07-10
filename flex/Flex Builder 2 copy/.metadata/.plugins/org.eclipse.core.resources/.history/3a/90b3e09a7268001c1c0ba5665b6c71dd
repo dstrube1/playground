@@ -1,0 +1,175 @@
+package base.util
+{
+	import mx.binding.utils.BindingUtils;
+	import mx.controls.ComboBase;
+	import mx.controls.ComboBox;
+	import mx.controls.Alert;
+	
+	public dynamic class MenuChainer
+	{
+		
+		private var _menuName:Array = [];
+		private var _menuBox:Array = [];
+		
+		public function MenuChainer( pMenuName:Array, pMenuBox:Array ):void {
+
+			// initialize the menu array properties, and bind the comboBoxes to them.
+
+			for (var i:int = 0; i < pMenuName.length; i++) {
+				
+				var name:String = pMenuName[i];
+				
+				this[name] = [];
+				
+				BindingUtils.bindProperty(pMenuBox[i], "dataProvider", this, name);
+				
+			}
+			
+
+			_menuName = pMenuName;
+			_menuBox = pMenuBox;
+			
+		}
+
+		
+		public function addBranch( menuName:String, menuLabel:String, menuValue:String=null):void {
+				
+			var key:String = getInternalKey(menuName);
+						
+			addItem(this, key, menuLabel, menuValue);				
+				
+				
+		}
+			
+			
+		public function addLeaf( parentId:String, menuName:String, menuLabel:String, menuValue:String=null):void {
+			
+			var key:String = getInternalKey( parentId, menuName);
+			
+			addItem(this, key, menuLabel, menuValue);
+			
+		}
+			
+
+
+
+		public function initialize():void {
+			
+			//  set up the top array property with the top-level menu
+			
+			var top:String = _menuName[0];
+			
+			copyFromTo( this[ getInternalKey(top)], this[top]);
+			
+			var arr:Array = this[top] as Array;
+
+
+			_menuBox[0].selectedIndex = 0;
+			
+		}
+
+
+		public function update( level:String, box:ComboBox ):void {
+
+
+		
+			// what level did the user select...  
+			
+			var index:int = _menuName.indexOf( level );
+			
+			if (index == -1) {
+				Alert.show("Unknown menu level: "+level);
+				return;
+			}
+			
+			// figure out which level is below it in the hierarchy
+			
+			var subIndex:int = index+1;
+			
+			
+			if (_menuName.length <= subIndex) {
+				// done
+				return;
+			}
+			
+			var subMenu:String = _menuName[subIndex];
+			
+			
+			var subBox:ComboBox = _menuBox[subIndex]
+			
+			if (subMenu == null) {
+				Alert.show("No subMenu at level: "+subIndex);
+				return;					
+			}
+			
+			var label:String = box.selectedLabel;
+			
+			var key:String = getInternalKey( label, subMenu );
+					
+			// update the submenu for the level below
+		
+			var comboMenu:Array = this[subMenu];
+			
+			var masterComboMenu:Array = this[key];
+
+			subBox.dataProvider = null;
+			copyFromTo( masterComboMenu, comboMenu);
+			subBox.dataProvider = comboMenu;
+		
+			subBox.selectedIndex = 0;
+								
+		}
+
+
+
+
+
+
+			
+			
+		private function addItem( obj:Object, key:String, menuLabel:String, menuValue:String=null):void {
+			if (obj[key] == null) {
+				obj[key] = [];	
+			}
+			
+			if (menuValue == null) {
+				menuValue = menuLabel;
+			}
+			
+			var item:Object = { label: menuLabel,  data: menuValue };
+			
+			(obj[key] as Array).push( item );
+			
+		}
+		
+
+		private function getInternalKey( parentMenuName:String, subMenuName:String=null):String {
+			
+			var key:String = "masterData_"+parentMenuName;
+			
+			if (subMenuName != null) {
+				key += "_"+subMenuName;
+			}
+			
+			return key;
+			
+		}
+
+			
+			
+			
+		private function copyFromTo( a:Array, b:Array):void {
+			
+			while (b.length > 0) {
+				b.pop();
+			}
+			
+			for each ( var o:Object in a) {
+				b.push(o);
+			}
+			
+		}
+		
+				
+	}
+}

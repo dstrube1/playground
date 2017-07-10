@@ -1,0 +1,21 @@
+package base.util
+{ 
+	public class AssertException
+	{
+				
+		private var message:String = "";
+		
+		public function AssertException( msg:String ):void {
+			message = msg;
+			
+		}
+		
+		
+		public function toString():String {
+			
+			return ('AssertException: '+ this.message);
+			
+		}
+		
+	}
+}

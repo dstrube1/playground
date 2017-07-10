@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:DataGrid xmlns:mx="http://www.adobe.com/2006/mxml"
+	implements="test.SmarterDataGrid">
+	
+	<mx:String id="rolloverText" />
+	<mx:String id="columnHeader" />
+	<mx:String id="columnFieldName" />
+	<mx:String id="columnId" /> 
+	
+	<mx:Script>
+		<![CDATA[
+		import mx.controls.DataGrid;
+			public function setRollover(rolloverText:String):void{
+				this.rolloverText = rolloverText;
+			}
+			public function getRollover():String{
+				return(rolloverText);
+			}
+			public function getContent():DataGrid{
+				Alert.show("Don't be calling this function from the base class.");
+				return(null);
+			}
+			public function setColumn(header:String, field:String, id:int):void{
+				columnId = id.toString();
+				columnHeader = header;
+				columnFieldName = field;
+			}
+			public function getHeader():String{
+				return columnHeader;
+			}
+			public function getField():String{
+				return columnFieldName;
+			}
+				]]>
+	</mx:Script>
+</mx:DataGrid>

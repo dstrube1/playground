@@ -1,0 +1,59 @@
+package base.services
+{ 
+	import base.util.text.TextCodec;
+	
+	public class MapArrayHelper
+	{
+		private var encodedTypes:Array = null;
+		private var codec:TextCodec = null;
+		
+		public function MapArrayHelper( codec:TextCodec, encodedTypes:Array):void {
+			
+			this.codec = codec;
+			this.encodedTypes = encodedTypes;
+			
+		}
+		
+		
+		public function decode(m:MapArray):MapArray {
+
+
+			return(handle( m, codec.decode));
+
+						
+		}
+		
+		
+		public function encode(m:MapArray):MapArray {
+			
+			return(handle( m, codec.encode));			
+			
+		}
+		
+		
+		private function handle( m:MapArray, translate:Function ):MapArray {
+			
+			for (var i:int = 0; i < m.Key.length; i++) {				
+				if (isEncodedType(m.Type[i])) {
+					var tmp:String = translate(m.Value[i]);
+					m.Value[i] = tmp;
+				}
+				
+			}
+
+			return(m);
+
+		}
+		
+		
+		public function isEncodedType( type:String):Boolean {
+			
+			
+			return(encodedTypes.some( function( element:*, i:int, a:Array):Boolean { return(element == type); } ));
+			
+		}
+		
+		
+		
+	}
+}

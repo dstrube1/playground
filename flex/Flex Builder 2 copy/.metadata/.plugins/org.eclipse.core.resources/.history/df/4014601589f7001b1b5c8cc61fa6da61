@@ -1,0 +1,42 @@
+package lenz.main.welcome
+{
+	import base.lenz.Lenz;
+	import base.Context;
+	import base.lenz.BaseLenz;
+	import lenz.main.welcome.panel.WelcomeLenzPanel;
+	import lenz.main.welcome.panel.MainScreenPanel;
+	import base.lenz.panel.PanelBuilder;
+ 
+	public class WelcomeLenz extends BaseLenz implements Lenz
+	{
+		
+		public static const LENZ_ID:String = "WelcomeLenz";
+		
+		
+		
+		public function WelcomeLenz():void {			
+			
+			super();
+			
+			lenzCreationComplete();
+			
+		}
+		
+		
+		public override function getLenzId():String {
+			return LENZ_ID;
+		}
+		
+		
+		public override function activate():void {
+			
+			//setPanel(PanelBuilder.build( WelcomeLenzPanel, this ));
+			setPanel(PanelBuilder.build( MainScreenPanel, this ));
+			super.activate();
+			
+		}
+		
+		
+		
+	}
+}

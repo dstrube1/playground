@@ -1,0 +1,74 @@
+package base.log
+{
+	import mx.controls.TextArea;
+	import mx.formatters.DateFormatter;
+	
+	public class Logger
+	{ 
+		
+		
+		protected static var _logger:Logger = null;
+		protected var _log:TextArea = null;		
+		protected var df:DateFormatter = null;
+		
+		public static function initialize( writingArea:TextArea):void {
+
+			if (_logger == null) {
+				_logger = new Logger();
+			}
+			
+			_logger._log = writingArea;
+						
+		}
+
+
+		public function Logger():void {
+			
+			if (_logger != null) {
+				throw Error("Only one logger allowed at a time");
+			}
+			
+			df = new DateFormatter();
+			df.formatString = "MM/DD/YYYY HH:NN:SS";
+			
+		}
+		
+		
+		public static function getLogger(name:String):Logger {
+			
+			if (_logger == null) {
+				initialize(null);
+			}
+			return _logger;
+		}
+		
+
+		public function error(msg:String):void {
+			log("ERROR", msg);
+		}
+
+		
+		public function debug(msg:String):void {
+
+			log("DEBUG", msg);
+			
+		}
+		
+		private function log(tag:String, msg:String):void {
+			
+			if (_log != null) {		
+				_log.text += getFormattedDate()+":"+tag+": "+ msg + "\n";			
+			}
+		}
+		
+		private function getFormattedDate():String {
+			
+			var d:Date = new Date();				
+			return df.format(d) + "."+d.milliseconds;
+						
+		}
+		
+		
+		
+	}
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+
+	<mx:Model id="myusers">
+      <users>
+        <user label="prios" data="prios"/>
+        <user label="achang" data="achang"/>
+        <user label="jmcaffrey" data="jmcaffrey"/>
+      </users>
+    </mx:Model>
+	<mx:Canvas height="500" width="500">
+		<mx:List x="169" y="122" dataProvider="{myusers.user}" id="source"></mx:List>
+		
+	</mx:Canvas>
+</mx:Application>

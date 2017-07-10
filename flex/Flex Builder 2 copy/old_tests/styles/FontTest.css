@@ -1,0 +1,53 @@
+/* CSS file */
+		/* Regular */
+		@font-face {
+			src:url("/fonts/Interstate.ttf");
+			fontFamily: interstate;
+			flashType: true;
+		}
+
+		/* Bold */
+		@font-face {
+			src:url("/fonts/InterstateBold_4.ttf");
+			fontFamily: interstateBold;
+			fontWeight: bold;
+			flashType: true;
+			
+		}
+		 
+		/* Italic */
+		@font-face {
+			src:url("/fonts/InterstateItalic.ttf");
+			fontFamily: interstate;
+			fontStyle: italic;
+			flashType: true;
+		}
+
+		/* Bold Italic */
+		@font-face {
+			src:url("/fonts/InterstateBoldItalic.ttf");
+			fontFamily: interstate;
+			fontStyle: italic;
+			fontWeight: bold;
+			flashType: true;
+		}
+
+
+		Application {
+		   	backgroundColor: #006000;
+		   	backgroundGradientColors: #006000, #001000;
+			color: #ffffff;
+			fontFamily: interstate;
+			fontSize: 12;
+		   	themeColor: #008000;		
+		}
+		/*
+		.Panel {
+		   	backgroundColor: #006000;
+		   	backgroundGradientColors: #006000, #001000;
+			color: #000000;
+			fontFamily: interstate;
+			fontSize: 12;
+		   	themeColor: #008000;		
+		}
+		*/

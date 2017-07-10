@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:Script>
+        <![CDATA[
+            // Define a property for returning the new value to the cell.
+            public var result:String="";
+            
+            [Bindable]
+            private var options:Array = [ 
+                { label:"High", data:"High" },
+                { label:"Medium", data:"Medium"},
+                { label:"Low", data:"Low"}];
+            
+        
+            // Override the set method for the data property.
+            override public function set data(value:Object):void 
+            {
+                super.data = value;
+                if (value != null) 
+                {
+                    var currentValue:String = value.size;
+                    var len:int = options.length;
+                    for (var i:int = 0; i < len; i++) 
+                    {
+                        if (options[i].data == currentValue) 
+                        {
+                            editor.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+            } 
+            
+            public function onChange():void 
+            {
+                var index:int = editor.selectedIndex;
+                result = options[index].data;
+            }          
+        ]]>
+    </mx:Script>
+     <mx:ComboBox id="editor" dataProvider="{options}" width="130" change="onChange()"/>
+</mx:VBox>

@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SuperPanel xmlns="nl.wv.extenders.panel.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:com="com.*"
+	endMaximize="onEndMaximize()" endRestore="onEndRestore()">
+<mx:Script>
+<![CDATA[
+
+			import mx.core.Application;
+			import mx.events.ItemClickEvent;
+			import mx.controls.Alert;
+			import mx.charts.HitData;
+			import mx.collections.ArrayCollection;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.collections.XMLListCollection;
+			import mx.collections.ListCollectionView;
+			import mx.utils.ArrayUtil;
+			import mx.controls.dataGridClasses.DataGridItemRenderer;
+			import mx.managers.CursorManager;
+			import mx.formatters.DateFormatter;
+			import mx.rpc.events.ResultEvent;
+			import mx.utils.ObjectUtil;
+			import mx.utils.ObjectProxy;								
+	import com.GradientCanvas;
+			
+			[Bindable] private var listChartHotel:XMLListCollection;
+			[Bindable] private var listChartCompany:XMLListCollection;
+			[Bindable] private var listChartSystem:XMLListCollection;
+			
+			private var AlertMsgSuccess:String;
+			private var AlertMsgSuccessTitle:String;
+			private var AlertMsgFail:String = "Statistical data could not be loaded.  Please click the 'Refresh' button to try again.";
+			private var AlertMsgFailTitle:String = "Load Problem";
+			
+			private var waitCursorSymbol:Class;			
+			
+			public function resultHandlerChartHotel(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listChartHotel = new XMLListCollection(xmlList);
+				}
+			}
+			
+			public function resultHandlerChartCompany(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listChartCompany = new XMLListCollection(xmlList);
+				}
+			}
+			
+			public function resultHandlerChartSystem(event:ResultEvent):void {
+				var result:XML = XML(event.result);  
+			    var xmlList:XMLList = result.items.children();	
+				var code:String;
+				var error:String;
+				var sql:String;
+				
+				code = result.items.item[0].code.toString();
+				error = result.items.item[0].error.toString();
+				sql = result.items.item[0].sql.toString();
+				
+				if (String(code) != "0"){
+					Alert.show(AlertMsgFail + "\n\n" + "Error Code: " + code + "\n" + "Error Description: " + error, AlertMsgFailTitle);
+				}else{
+					listChartSystem = new XMLListCollection(xmlList);
+				}
+			}
+			
+			public function faultHandler():void {
+				this.datChartHotel.showBusyCursor = false;
+				this.datChartCompany.showBusyCursor = false;
+				this.datChartSystem.showBusyCursor = false;
+			}
+			
+			
+			public function fill():void {
+				datChartHotel.url="http://www.revparsuite.com/leadgine/myStatsEXE.asp?myType=hotel&userid=" + Application.application.userID + "&refhotel=" + Application.application.hotel;
+				datChartHotel.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				datChartHotel.addEventListener(ResultEvent.RESULT,resultHandlerChartHotel);
+				datChartHotel.method = "POST";
+				datChartHotel.cancel();
+				datChartHotel.send(); 
+				
+				datChartCompany.url="http://www.revparsuite.com/leadgine/myStatsEXE.asp?myType=company&userid=" + Application.application.userID + "&refhotel=" + Application.application.hotel + "&clientID=" + Application.application.clientID;
+				datChartCompany.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				datChartCompany.addEventListener(ResultEvent.RESULT,resultHandlerChartCompany);
+				datChartCompany.method = "POST";
+				datChartCompany.cancel();
+				datChartCompany.send(); 
+				
+				datChartSystem.url="http://www.revparsuite.com/leadgine/myStatsEXE.asp?myType=system&userid=" + Application.application.userID + "&refhotel=" + Application.application.hotel;
+				datChartSystem.removeEventListener(ResultEvent.RESULT,insertItemHandler);
+				datChartSystem.addEventListener(ResultEvent.RESULT,resultHandlerChartSystem);
+				datChartSystem.method = "POST";
+				datChartSystem.cancel();
+				datChartSystem.send(); 
+
+			}
+
+			public function insertItemHandler(event:ResultEvent):void {	
+				//fill();
+			}						
+			
+	private function onEndMaximize():void{
+		fill();
+		vsIncentives.selectedIndex = 1;
+	}
+	private function onEndRestore():void{
+		vsIncentives.selectedIndex = 0;
+	}
+
+	public function dtFunc(hd:HitData):String {
+        return "<B>" + hd.item.myMonth + "</B>:  " +
+            hd.item.myCount + " referral(s)";
+     }
+
+]]>
+</mx:Script>
+
+<mx:SeriesSlide id="slideIn" duration="1000" direction="up"/>
+
+
+
+<mx:HTTPService id="datChartHotel" url="http://www.revparsuite.com/leadgine/myStatsEXE.asp?myType=hotel&amp;userid={ Application.application.userID }&amp;refhotel={ Application.application.hotel }" 
+	result="resultHandlerChartHotel(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:HTTPService id="datChartCompany" url="http://www.revparsuite.com/leadgine/myStatsEXE.asp?myType=company&amp;userid={ Application.application.userID }&amp;refhotel={ Application.application.hotel }&amp;clientID={ Application.application.clientID }" 
+	result="resultHandlerChartCompany(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+<mx:HTTPService id="datChartSystem" url="http://www.revparsuite.com/leadgine/myStatsEXE.asp?myType=system&amp;userid={ Application.application.userID }&amp;refhotel={ Application.application.hotel }" 
+	result="resultHandlerChartSystem(event)"
+	fault="faultHandler()"
+	resultFormat="e4x"
+    useProxy="false" 
+    showBusyCursor="true"/>
+
+
+<mx:ViewStack id="vsIncentives" width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+<com:GradientCanvas 
+	width="100%" height="100%" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.myFillColors3 }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="0"
+		click="{this.normalMaxClickHandler(null)}">
+
+		<mx:Canvas borderStyle="solid" borderColor="#666666" cornerRadius="20" backgroundColor="#FFFFFF" borderThickness="1" alpha="0.8" left="130" right="10" top="10" bottom="10">
+				<mx:Text text="How do you size up to your coworkers?  Company-wide?  System-wide?" left="20" right="20" top="20" bottom="20" styleName="myPanelCaption">
+					<mx:filters>
+				        <mx:DropShadowFilter color="#666666" distance="3" angle="45"/>
+				    </mx:filters>
+				</mx:Text>
+		</mx:Canvas>
+		<mx:Image source="assets/img/icons/grey_circle/chart_up.png" verticalCenter="0" left="30"/>
+
+</com:GradientCanvas>
+
+
+<com:GradientCanvas label="Results" width="100%" height="100%" 
+		paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off"
+		colorsConfiguration = "[2]"
+		fillColors = "{ Application.application.topGradientColor }"
+		fillAlphas = "[1,1]"
+		gradientRatio = "[0,255]"
+		angle = "90"
+		interpolationMethod = "linearRGB" borderAlphas="100">
+
+	<mx:VBox width="100%" height="100%" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10">
+	
+		<mx:TabNavigator id="tabSearch" backgroundColor="#ffffff" backgroundAlpha=".5" horizontalAlign="left" tabOffset="30" width="100%" height="100%" 
+			paddingBottom="10" paddingRight="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+		
+			<mx:Canvas label="vs. hotel" width="100%" height="100%" 
+				icon="@Embed('assets/img/icons/home.png')"
+				paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+				
+				<mx:VBox width="100%" height="100%">
+					
+				<mx:Text text="Your referral activity vs. average user at your hotel:" width="100%" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+						<mx:ColumnChart id="myChartHotel" dataProvider="{listChartHotel}" showDataTips="true"  dataTipFunction="dtFunc" width="100%" height="100%">
+							<mx:filters>
+					           <mx:DropShadowFilter 
+					                distance="10" 
+					                color="0x666666"
+					                alpha=".8"
+					           />
+							</mx:filters>
+					        <mx:horizontalAxis>
+					           <mx:CategoryAxis 
+					           		id="hAxisHotel"
+					                dataProvider="{listChartHotel}" 
+					                categoryField="myMonth"
+					           />
+					        </mx:horizontalAxis>
+					        <mx:verticalAxis>
+					           <mx:LinearAxis 
+					           		id="vAxisHotel"
+					           />
+					        </mx:verticalAxis>
+					        
+					        <mx:horizontalAxisRenderers>
+					       		<mx:AxisRenderer axis="{hAxisHotel}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:horizontalAxisRenderers>
+					        
+					        <mx:verticalAxisRenderers>
+					       		<mx:AxisRenderer axis="{vAxisHotel}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:verticalAxisRenderers>
+					        
+					        <mx:series>
+					           <mx:ColumnSeries 
+					                xField="myMonth" 
+					                yField="myCount" 
+					                displayName="Me"
+					                showDataEffect="{slideIn}">
+									<mx:filters>
+							           <mx:BevelFilter shadowAlpha=".1" angle="45" distance="5" strength="1" quality="50" highlightColor="#B2DC32" />
+							           <!--<mx:GlowFilter color="#a2d0fb" strength="3" alpha=".5" quality="50" />-->
+									</mx:filters>
+									<mx:fill>
+							           <mx:LinearGradient>
+							            <mx:entries>
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio="0" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#B2DC32" 
+							                    ratio=".33" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio=".80" 
+							                    alpha="1"
+							                />
+							            </mx:entries>
+							           </mx:LinearGradient>
+							        </mx:fill>
+								</mx:ColumnSeries>
+								
+					           <mx:ColumnSeries 
+					                xField="myMonth" 
+					                yField="avg" 
+					                displayName="Hotel Avg"
+					                showDataEffect="{slideIn}">
+									<mx:filters>
+							           <mx:BevelFilter shadowAlpha=".1" angle="45" distance="5" strength="1" quality="50" highlightColor="#d7d7d7" />
+									</mx:filters>
+									<mx:fill>
+							           <mx:LinearGradient>
+							            <mx:entries>
+							                <mx:GradientEntry 
+							                    color="#363636" 
+							                    ratio="0" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#d7d7d7" 
+							                    ratio=".33" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#363636" 
+							                    ratio=".80" 
+							                    alpha="1"
+							                />
+							            </mx:entries>
+							           </mx:LinearGradient>
+							        </mx:fill>
+								</mx:ColumnSeries>
+								
+								
+					        </mx:series>
+					     </mx:ColumnChart>
+					     <mx:Legend dataProvider="{myChartHotel}"/>
+				</mx:VBox>
+			</mx:Canvas>
+			<mx:Canvas label="vs. company" width="100%" height="100%"
+				icon="@Embed('assets/img/icons/company.png')">
+				<mx:VBox width="100%" height="100%">
+				<mx:Text text="Your referral activity vs. average user within your hotel company:" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+						<mx:ColumnChart id="myChartCompany" dataProvider="{listChartCompany}" showDataTips="true"  dataTipFunction="dtFunc" width="100%" height="100%">
+							<mx:filters>
+					           <mx:DropShadowFilter 
+					                distance="10" 
+					                color="0x666666"
+					                alpha=".8"
+					           />
+							</mx:filters>
+					        <mx:horizontalAxis>
+					           <mx:CategoryAxis 
+					           		id="hAxisCompany"
+					                dataProvider="{listChartCompany}" 
+					                categoryField="myMonth"
+					           />
+					        </mx:horizontalAxis>
+					        <mx:verticalAxis>
+					           <mx:LinearAxis 
+					           		id="vAxisCompany"
+					           />
+					        </mx:verticalAxis>
+					        
+					        <mx:horizontalAxisRenderers>
+					       		<mx:AxisRenderer axis="{hAxisCompany}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:horizontalAxisRenderers>
+					        
+					        <mx:verticalAxisRenderers>
+					       		<mx:AxisRenderer axis="{vAxisCompany}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:verticalAxisRenderers>
+					        
+					        <mx:series>
+					           <mx:ColumnSeries 
+					                xField="myMonth" 
+					                yField="myCount" 
+					                displayName="Me"
+					                showDataEffect="{slideIn}">
+									<mx:filters>
+							           <mx:BevelFilter shadowAlpha=".1" angle="45" distance="5" strength="1" quality="50" highlightColor="#B2DC32" />
+							           <!--<mx:GlowFilter color="#a2d0fb" strength="3" alpha=".5" quality="50" />-->
+									</mx:filters>
+									<mx:fill>
+							           <mx:LinearGradient>
+							            <mx:entries>
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio="0" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#B2DC32" 
+							                    ratio=".33" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio=".80" 
+							                    alpha="1"
+							                />
+							            </mx:entries>
+							           </mx:LinearGradient>
+							        </mx:fill>
+								</mx:ColumnSeries>
+								
+					           <mx:ColumnSeries 
+					                xField="myMonth" 
+					                yField="avg" 
+					                displayName="Company Avg"
+					                showDataEffect="{slideIn}">
+									<mx:filters>
+							           <mx:BevelFilter shadowAlpha=".1" angle="45" distance="5" strength="1" quality="50" highlightColor="#d7d7d7" />
+									</mx:filters>
+									<mx:fill>
+							           <mx:LinearGradient>
+							            <mx:entries>
+							                <mx:GradientEntry 
+							                    color="#363636" 
+							                    ratio="0" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#d7d7d7" 
+							                    ratio=".33" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#363636" 
+							                    ratio=".80" 
+							                    alpha="1"
+							                />
+							            </mx:entries>
+							           </mx:LinearGradient>
+							        </mx:fill>
+								</mx:ColumnSeries>
+								
+								
+					        </mx:series>
+					     </mx:ColumnChart>
+					     <mx:Legend dataProvider="{myChartCompany}"/>
+				</mx:VBox>
+			</mx:Canvas>
+			<mx:Canvas label="vs. system" width="100%" height="100%"
+				icon="@Embed('assets/img/icons/globe.png')">
+				<mx:VBox width="100%" height="100%">
+				<mx:Text text="Your referral activity vs. average Leadgine user:" styleName="myFormHeader">
+									<mx:filters>
+								        <mx:DropShadowFilter color="#999999" distance="3" angle="45"/>
+								    </mx:filters>
+								</mx:Text>
+						<mx:ColumnChart id="myChartSystem" dataProvider="{listChartSystem}" showDataTips="true"  dataTipFunction="dtFunc" width="100%" height="100%">
+							<mx:filters>
+					           <mx:DropShadowFilter 
+					                distance="10" 
+					                color="0x666666"
+					                alpha=".8"
+					           />
+							</mx:filters>
+					        <mx:horizontalAxis>
+					           <mx:CategoryAxis 
+					           		id="hAxisSystem"
+					                dataProvider="{listChartSystem}" 
+					                categoryField="myMonth"
+					           />
+					        </mx:horizontalAxis>
+					        <mx:verticalAxis>
+					           <mx:LinearAxis 
+					           		id="vAxisSystem"
+					           />
+					        </mx:verticalAxis>
+					        
+					        <mx:horizontalAxisRenderers>
+					       		<mx:AxisRenderer axis="{hAxisSystem}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:horizontalAxisRenderers>
+					        
+					        <mx:verticalAxisRenderers>
+					       		<mx:AxisRenderer axis="{vAxisSystem}">
+					           		<mx:axisStroke>
+					           			<mx:Stroke color="#B2DC32" weight="8"/>
+					           		</mx:axisStroke>
+					           </mx:AxisRenderer>
+					        </mx:verticalAxisRenderers>
+					        
+					        <mx:series>
+					           <mx:ColumnSeries 
+					                xField="myMonth" 
+					                yField="myCount" 
+					                displayName="Me"
+					                showDataEffect="{slideIn}">
+									<mx:filters>
+							           <mx:BevelFilter shadowAlpha=".1" angle="45" distance="5" strength="1" quality="50" highlightColor="#B2DC32" />
+							           <!--<mx:GlowFilter color="#a2d0fb" strength="3" alpha=".5" quality="50" />-->
+									</mx:filters>
+									<mx:fill>
+							           <mx:LinearGradient>
+							            <mx:entries>
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio="0" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#B2DC32" 
+							                    ratio=".33" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#446f00" 
+							                    ratio=".80" 
+							                    alpha="1"
+							                />
+							            </mx:entries>
+							           </mx:LinearGradient>
+							        </mx:fill>
+								</mx:ColumnSeries>
+								
+					           <mx:ColumnSeries 
+					                xField="myMonth" 
+					                yField="avg" 
+					                displayName="System Avg"
+					                showDataEffect="{slideIn}">
+									<mx:filters>
+							           <mx:BevelFilter shadowAlpha=".1" angle="45" distance="5" strength="1" quality="50" highlightColor="#d7d7d7" />
+									</mx:filters>
+									<mx:fill>
+							           <mx:LinearGradient>
+							            <mx:entries>
+							                <mx:GradientEntry 
+							                    color="#363636" 
+							                    ratio="0" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#d7d7d7" 
+							                    ratio=".33" 
+							                    alpha="1"
+							                />
+							                <mx:GradientEntry 
+							                    color="#363636" 
+							                    ratio=".80" 
+							                    alpha="1"
+							                />
+							            </mx:entries>
+							           </mx:LinearGradient>
+							        </mx:fill>
+								</mx:ColumnSeries>
+								
+								
+					        </mx:series>
+					     </mx:ColumnChart>
+					     <mx:Legend dataProvider="{myChartSystem}"/>
+				</mx:VBox>
+			</mx:Canvas>
+		</mx:TabNavigator>
+	</mx:VBox>
+</com:GradientCanvas>
+</mx:ViewStack>
+</SuperPanel>
