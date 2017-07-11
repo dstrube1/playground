@@ -1,0 +1,55 @@
+johndbro1: hey, if we sell my product, I may have some work for you
+ChainsawLove: sweet! i was just remarking last nite how much incanta going under sucked since i was so looking forward to 
+working there again- who's we?
+johndbro1: This guy named Ron Johnson and I
+johndbro1: It won't be like Incanta - we'll only be able to spend money as we get it from the customers
+johndbro1: but I think you would be great to help out with testing and coding
+johndbro1: it will mean it will only be a part time job, unfortunately, until we get some serious traction
+
+ChainsawLove: also, i was walking around erlier this week, wondering how one make an executable for installing programs 
+that knows where to put everything and how make entries in the windows registry
+johndbro1: ok.. make your window bigger, and I will tell you
+ChainsawLove: done
+johndbro1: Go to www.nullsoft.com and download NSIS (the nullsoft installer).  It is free, and it is functional
+johndbro1: Not the easiest thing in the world to use, but then again, you get what you pay for.  The examples are pretty  helpful.
+johndbro1: Now, on the registry, there are a set of Windows system calls that you use to get information out, and put information int
+johndbro1: Um.  What compiler do you have?
+johndbro1: Yeah.. you want a visual C++ or equivalent
+johndbro1: If you ask nicely, I can burn you copies of my compiler
+johndbro1: and the MSDN disks that come along with it
+johndbro1: (2 years old, unfortunately, but functional)
+johndbro1: Microsoft Developers Network
+johndbro1: it has some pretty good advice, but it isn't the easiest thing in the world to use
+johndbro1: Check out www.codeguru.com - they have some good advice
+johndbro1: and they are better about newbies
+johndbro1: It's the compiler and the development environemnt - all sorts of tools to help build GUIs
+johndbro1: Once you get the hang of it, it is pretty easy to use.
+johndbro1: Stop by the house sometime (call first) and I'll show it to you.
+johndbro1: I have a toolkit for using the registry that I wrote, but it is pretty undocumented
+
+johndbro1: First - nothing is Completely reliable, nor is anything perfectly safe
+johndbro1: I don't understand why the UD software will keep the computer from locking up
+johndbro1: and it sounds like you have to write a program, but you haven't really described at all what that program is, or what technology you need to write it
+ChainsawLove: it wont, other software written by ksu's software dept to prevent useless and annoying progs from showing up in the systray at startup will
+johndbro1: But you haven't written that software yet - and how do you propose to keep other programs from using the systray?
+ChainsawLove: it'd be pretty simple really- ive located lots of typical registry entries that cuz these things to show up in the systray- delete the registry entries, problem solved; ive talked to a couple frends in the sw dept, and they sed itd be fairly strateforward
+johndbro1: Yes, you can remove Startup registry keys
+johndbro1: That won't stop people from using software they like, however.  But I digress
+ChainsawLove: thats all i propose; i dont propose blocking the programs altogether- thatd be just evil 
+johndbro1: You haven't factored in the costs of tech support - people are going to have problems with their computers, and they are going to blame it on UD
+johndbro1: I don't know how many people are in your tech support group, but they'll have to know about it (be trained)
+johndbro1: it would have been better if you had presented the costs in a tabular format, with estimated costs per hour and totals
+johndbro1: None of the problems are killers.  It will really depend on your CTO.  If he is a paranoid, operational type, he'll be unlikely to pursue this without a professor backing you up
+johndbro1: If he's somewhat visionary, or at least tolerant of change, he'll be intriuged(sp?) and want to know more.  
+ChainsawLove: ive offered to help train the tech support and even be the lead support specialist (for a negotiable fee); that parts not an extemely selling, but i think the biotech and notoriety hooks will help
+johndbro1: Don't get me wrong - it isn't a bad idea, and schools are for learning, so it isn't a ridiculous proposal
+ChainsawLove: however- very important to point out- they have installed software campus wide without testing before- hard to believe, but it might help my case; then again, that could mean theyre very wary about new stuff now
+johndbro1: Oh, and you kept commenting on things like 'such and such is across I-75, but is still part of the campus - if you say those things and he knows them, you look like a dumb kid.  If he doesn't know, you're showing off
+johndbro1: best to not mention it at all, and bring it up if he asks about it
+johndbro1: I can't think of anything else.  You would have been better off to get a prof or 2 or 3 to back you up on this.  It would help with red tape
+johndbro1: I sent you the registry manager class, enjoy
+ChainsawLove: yeah, it just occured to me on thursday to ask my sys analysis and design teach for her opinion; maybe i can ask some other profs who i dont have class with right now, but kno fairly well..
+johndbro1: do you have a biology/medical department?
+ChainsawLove: yeah, altho i dont kno anyone in it; good idea tho
+johndbro1: One of your profs probably does
+johndbro1: and they'll have the knowledge to back you up (UD is important and valuable)

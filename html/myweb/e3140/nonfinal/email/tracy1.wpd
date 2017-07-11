@@ -1,0 +1,160 @@
+From tjordan@kennesaw.edu Mon Apr 29 12:24:34 2002Received: from kennesaw.edu (GreatOwl.Kennesaw.EDU [130.218.101.55])
+	by Pigseye.Kennesaw.edu (8.11.6/8.11.6) with ESMTP id g3TGOYV09630
+	for <drussel1@pigseye.kennesaw.edu>; Mon, 29 Apr 2002 12:24:34 -0400 (EDT)
+Received: from INTERNET-MTA by kennesaw.edu
+	with Novell_GroupWise; Mon, 29 Apr 2002 12:24:19 -0400
+Message-Id: <sccd3b73.045@kennesaw.edu>
+X-Mailer: Novell GroupWise Internet Agent 6.0.1
+Date: Mon, 29 Apr 2002 12:24:16 -0400
+From: "Tracy Jordan" <tjordan@kennesaw.edu>
+To: <drussel1@Pigseye.Kennesaw.edu>
+Subject: Fwd: Re: Questions from a lab assistant
+Mime-Version: 1.0
+Content-Type: message/rfc822
+Content-Length: 5807
+Status: RO
+
+Date: Mon, 29 Apr 2002 12:09:07 -0400
+From: "Tony Tellez" <ttellez@kennesaw.edu>
+To: "Tracy Jordan" <tjordan@kennesaw.edu>
+Subject: Re: Questions from a lab assistant
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_4914B5A3.D0B1F4B6"
+
+--=_4914B5A3.D0B1F4B6
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+
+Tracy,
+=20
+Here are the answers:
+=20
+(1).  Software installations are done by primarily by Software, but =
+Service can reinstall software, and Hardware installs images on new =
+systems based on Software Section recommendations.  Networking installs =
+server software on their servers.  Yes, it can depend on the software.
+=20
+(2).  It depends on the operation environment NetWare, NT, Unix.  Each has =
+their own way of performing automated software installs.  Microsoft =
+handles this using global and local policies with Windows 2000 Active =
+Directory Server.  Novell (NetWare) has similar capabilities using =
+Zenworks.  I and not sure how Unix servers would/could do this.  There are =
+different identifiers that could be used.  Login name, workstation id, MAC =
+address, it all depends on the operating system.
+We have done any specific cost analysis.  If you stop and consider how =
+long it could take one technical to reinstall software for one user =
+manually as opposed to some automated method the cost is substantial.
+Yes, it is possible to perform an automatic (non-manual) install from the =
+network to a specific room.
+=20
+If a more technical response is needed please let me know.
+=20
+Tony=20
+=20
+>>> Tracy Jordan 04/29/02 11:14AM >>>=20
+
+Tony,=20
+
+One of my student assistants are working on presentation for a technical =
+writing class.=20
+He asked the following questions:=20
+
+Who does the software installations? software dept or networking?=20
+does it depend on the software?=20
+
+How is it done?=20
+specifically, how is an automatic installation of an application across a =
+network from a single installing exe done?=20
+imagine each computer having the software installed on it would require a =
+user name (which may be repeated on all computers) and a unique location =
+identifier (ex, the computr login/workstation number, e.g., BB46620). how =
+would that be done?=20
+is there ever any calculation done for the cost of a sucessful installation=
+? for an unsuccessful installation?=20
+is it possible to perform an automatic (non-manual) network install to a =
+particular room?=20
+
+Tony, he would like to have the answers by 5pm Tuesday night if possible =
+can you help him out?.=20
+Thanks=20
+Tracy=20
+
+
+
+--=_4914B5A3.D0B1F4B6
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+Content-Description: HTML
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; charset=3Diso-8859-1"=
+>
+<META content=3D"MSHTML 5.50.4807.2300" name=3DGENERATOR></HEAD>
+<BODY style=3D"MARGIN-TOP: 2px; FONT: 8pt MS Sans Serif; MARGIN-LEFT: =
+2px">
+<DIV><FONT size=3D1>Tracy,</FONT></DIV>
+<DIV><FONT size=3D1></FONT>&nbsp;</DIV>
+<DIV><FONT size=3D1>Here are the answers:</FONT></DIV>
+<DIV><FONT size=3D1></FONT>&nbsp;</DIV>
+<DIV><FONT size=3D1>(1).&nbsp; Software installations are done by =
+primarily by=20
+Software, but Service can reinstall software, and Hardware installs images =
+on=20
+new systems based on Software Section recommendations.&nbsp; Networking =
+installs=20
+server software on their servers.&nbsp; Yes, it can depend on the=20
+software.</FONT></DIV>
+<DIV><FONT size=3D1></FONT>&nbsp;</DIV>
+<DIV>(2).&nbsp; It depends on the operation environment NetWare, NT, =
+Unix.&nbsp;=20
+Each has their own way of performing automated software installs.&nbsp;=20
+Microsoft handles this using global and local policies with Windows 2000 =
+Active=20
+Directory Server.&nbsp; Novell (NetWare) has similar capabilities using=20
+Zenworks.&nbsp; I and not sure how Unix servers would/could do this.&nbsp; =
+There=20
+are different identifiers that could be used.&nbsp; Login name, workstation=
+ id,=20
+MAC address, it all depends on the operating system.</DIV>
+<DIV>We have done any specific cost analysis.&nbsp; If you stop and =
+consider how=20
+long it could take one technical to reinstall software for one user =
+manually as=20
+opposed to some automated method the cost is substantial.</DIV>
+<DIV>Yes, it is possible to perform an automatic (non-manual) install from =
+the=20
+network to a specific room.</DIV>
+<DIV>&nbsp;</DIV>
+<DIV>If a more technical response is needed please let me know.</DIV>
+<DIV>&nbsp;</DIV>
+<DIV>Tony&nbsp;</DIV>
+<DIV><FONT size=3D1>&nbsp;</FONT><BR>&gt;&gt;&gt; Tracy Jordan 04/29/02 =
+11:14AM=20
+&gt;&gt;&gt; <BR><BR>Tony, <BR><BR>One of my student assistants are =
+working on=20
+presentation for a technical writing class. <BR>He asked the following=20
+questions: <BR><BR>Who does the software installations? software dept =
+or=20
+networking? <BR>does it depend on the software? <BR><BR>How is it done?=20
+<BR>specifically, how is an automatic installation of an application =
+across a=20
+network from a single installing exe done? <BR>imagine each computer =
+having the=20
+software installed on it would require a user name (which may be repeated =
+on all=20
+computers) and a unique location identifier (ex, the computr login/workstat=
+ion=20
+number, e.g., BB46620). how would that be done? <BR>is there ever any=20
+calculation done for the cost of a sucessful installation? for an =
+unsuccessful=20
+installation? <BR>is it possible to perform an automatic (non-manual) =
+network=20
+install to a particular room? <BR><BR>Tony, he would like to have the =
+answers by=20
+5pm Tuesday night if possible can you help him out?. <BR>Thanks =
+<BR>Tracy=20
+<BR></DIV></BODY></HTML>
+
+--=_4914B5A3.D0B1F4B6--
+

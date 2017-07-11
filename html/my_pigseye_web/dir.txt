@@ -1,0 +1,68 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 2020-1763
+
+ Directory of C:\david\ideas\my_pigseye_web
+
+[.]         [..]        [billbords] dir.txt     [images]    
+               1 File(s)              0 bytes
+
+ Directory of C:\david\ideas\my_pigseye_web\billbords
+
+[.]               [..]              abuse.jpg         ace.jpg
+balls.jpg         belly-shirt.jpg   canada.jpg        chop.jpg
+corvette.jpg      dick.jpg          dude.jpg          face.jpg
+farmerjohn.jpg    fedex.jpg         fertilizer.jpg    finger.jpg
+flip.jpg          gym.jpg           hallmark.jpg      ikea.jpg
+jack.jpg          k-mart.jpg        lard.jpg          men.jpg
+organs.jpg        planters.jpg      shave.jpg         speedo.jpg
+survivor2.jpg     water.jpg         zirconia.jpg      
+              29 File(s)        529,735 bytes
+
+ Directory of C:\david\ideas\my_pigseye_web\images
+
+[.]                       [..]                      a_temp.bmp
+clickable_index.cpp       clickable_index.htm       index.htm
+s_n_iraq01.jpg            s_n_iraq02.jpg            s_n_iraq03.jpg
+s_n_iraq04.jpg            s_n_iraq05.jpg            s_n_iraq06.jpg
+s_n_iraq07.jpg            s_n_iraq08.jpg            s_n_iraq09.jpg
+s_n_iraq10.jpg            s_n_iraq11.jpg            s_n_iraq12.jpg
+s_n_iraq13.jpg            s_n_iraq14.jpg            s_n_iraq15.jpg
+s_n_iraq16.jpg            s_n_iraq17.jpg            s_n_iraq18.jpg
+s_n_iraq19.jpg            s_n_iraq20.jpg            s_n_iraq21.jpg
+s_n_iraq22.jpg            s_n_iraq23.jpg            s_n_iraq24.jpg
+s_n_iraq25.jpg            s_n_iraq26.jpg            s_n_iraq27.jpg
+s_n_iraq28.jpg            s_n_iraq29.jpg            s_n_iraq30.jpg
+s_n_iraq31.jpg            s_n_iraq32.jpg            s_n_iraq33.jpg
+s_n_iraq34.jpg            s_n_iraq35.jpg            s_n_iraq36.jpg
+s_n_iraq37.jpg            s_n_iraq38.jpg            s_n_iraq39.jpg
+s_n_iraq40.jpg            s_n_iraq41.jpg            s_n_iraq42.jpg
+s_n_iraq43.jpg            s_n_iraq44.jpg            s_n_iraq45.jpg
+s_n_iraq46.jpg            s_n_iraq47.jpg            s_n_iraq48.jpg
+s_n_iraq49.jpg            s_n_iraq50.jpg            s_n_iraq51.jpg
+s_n_iraq52a.jpg           s_n_iraq52b.jpg           s_n_iraq53.jpg
+s_n_iraq54.jpg            s_n_iraq55.jpg            s_n_iraq56.jpg
+[thum]                    whole_schmear_index.cpp   whole_schmear_index.htm
+              63 File(s)      2,845,571 bytes
+
+ Directory of C:\david\ideas\my_pigseye_web\images\thum
+
+[.]               [..]              s_n_iraq01.jpg    s_n_iraq02.jpg
+s_n_iraq03.jpg    s_n_iraq04.jpg    s_n_iraq05.jpg    s_n_iraq06.jpg
+s_n_iraq07.jpg    s_n_iraq08.jpg    s_n_iraq09.jpg    s_n_iraq10.jpg
+s_n_iraq11.jpg    s_n_iraq12.jpg    s_n_iraq13.jpg    s_n_iraq14.jpg
+s_n_iraq15.jpg    s_n_iraq16.jpg    s_n_iraq17.jpg    s_n_iraq18.jpg
+s_n_iraq19.jpg    s_n_iraq20.jpg    s_n_iraq21.jpg    s_n_iraq22.jpg
+s_n_iraq23.jpg    s_n_iraq24.jpg    s_n_iraq25.jpg    s_n_iraq26.jpg
+s_n_iraq27.jpg    s_n_iraq28.jpg    s_n_iraq29.jpg    s_n_iraq30.jpg
+s_n_iraq31.jpg    s_n_iraq32.jpg    s_n_iraq33.jpg    s_n_iraq34.jpg
+s_n_iraq35.jpg    s_n_iraq36.jpg    s_n_iraq37.jpg    s_n_iraq38.jpg
+s_n_iraq39.jpg    s_n_iraq40.jpg    s_n_iraq41.jpg    s_n_iraq42.jpg
+s_n_iraq43.jpg    s_n_iraq44.jpg    s_n_iraq45.jpg    s_n_iraq46.jpg
+s_n_iraq47.jpg    s_n_iraq48.jpg    s_n_iraq49.jpg    s_n_iraq50.jpg
+s_n_iraq51.jpg    s_n_iraq52a.jpg   s_n_iraq52b.jpg   s_n_iraq53.jpg
+s_n_iraq54.jpg    s_n_iraq55.jpg    s_n_iraq56.jpg    
+              57 File(s)        133,977 bytes
+
+     Total Files Listed:
+             150 File(s)      3,509,283 bytes
+              11 Dir(s)   2,580,303,872 bytes free

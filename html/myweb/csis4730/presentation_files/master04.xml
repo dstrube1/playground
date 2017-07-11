@@ -1,0 +1,153 @@
+<xml xmlns:v="urn:schemas-microsoft-com:vml"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:p="urn:schemas-microsoft-com:office:powerpoint">
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="15"/>
+ </o:shapelayout><p:colorscheme
+  colors="#00007A,#EAEAEA,#000054,#EBD189,#FCAB40,#555BAD,#B97C01,#CCFF33"/>
+ <v:background id="_x0000_s15361" o:bwmode="white" fillcolor="#00007a [0]"
+  o:targetscreensize="800,600">
+  <v:fill color2="#000054 [2]" focus="-50%" type="gradient"/>
+ </v:background><p:shaperange id="_x0000_s15362">
+  <v:shape id="_x0000_s15362" style='position:absolute;left:-.875pt;top:144.625pt;
+   width:178.625pt;height:213.375pt;mso-wrap-style:none;v-text-anchor:middle'
+   coordsize="1429,1707" o:bwmode="undrawn" path="m808,283l673,252,654,,488,13,476,252,365,290,206,86,95,148,200,376,126,450,,423,,1273,101,1226,181,1306,70,1509,175,1596,365,1411,476,1448,501,1700,667,1707,685,1442,826,1405,993,1590,1103,1522,993,1300,1067,1207,1288,1312,1355,1196,1153,1047,1177,918,1429,894,1423,764,1171,727,1146,629,1349,487,1282,370,1054,462,980,388,1097,173,986,105,808,283xe"
+   fillcolor="#00007a [0]" stroked="f" strokecolor="#eaeaea [1]">
+   <v:fill color2="#555bad [5]" angle="-90" type="gradient"/>
+   <v:shadow color="#000054 [2]"/>
+   <v:path arrowok="t"/>
+  </v:shape><v:shape id="_x0000_s15363" style='position:absolute;left:8.5pt;
+   top:1.25pt;width:66pt;height:62pt;mso-wrap-style:none;v-text-anchor:middle'
+   coordsize="528,496" o:bwmode="undrawn" path="m335,56l293,46,288,,238,,232,46,198,58,146,,114,14,147,84,124,107,50,81,32,109,90,159,80,197,2,202,,244,80,256,88,292,29,345,50,378,116,347,141,372,107,435,139,462,198,404,232,416,240,494,292,496,297,414,341,403,393,460,427,439,393,370,416,341,484,374,505,338,442,292,450,252,528,244,526,204,448,193,440,162,503,119,482,82,412,111,389,88,425,21,391,,335,56xe"
+   fillcolor="#00007a [0]" stroked="f" strokecolor="#eaeaea [1]">
+   <v:fill color2="#fcab40 [4]" angle="-135" type="gradient"/>
+   <v:shadow color="#000054 [2]"/>
+   <v:path arrowok="t"/>
+  </v:shape><v:shape id="_x0000_s15364" style='position:absolute;left:93.875pt;
+   top:27.875pt;width:178.5pt;height:178.75pt;mso-wrap-style:none;
+   v-text-anchor:middle' coordsize="2312,2313" o:bwmode="undrawn" path="m1469,384l1285,342,1260,,1035,17,1018,342,868,393,651,117,501,201,643,509,543,610,217,493,142,618,392,835,351,1002,8,1027,,1211,351,1261,384,1419,125,1653,217,1795,509,1661,618,1770,467,2045,609,2162,868,1912,1018,1962,1052,2304,1277,2313,1302,1954,1494,1904,1720,2154,1870,2062,1720,1762,1820,1636,2120,1778,2212,1620,1937,1419,1970,1244,2312,1211,2304,1035,1962,985,1928,852,2204,660,2112,501,1803,626,1703,526,1861,234,1711,142,1469,384xe"
+   fillcolor="#00007a [0]" stroked="f" strokecolor="#eaeaea [1]">
+   <v:fill color2="#000054 [2]" angle="-45" type="gradient"/>
+   <v:shadow color="#000054 [2]"/>
+   <v:path arrowok="t"/>
+  </v:shape><v:shape id="_x0000_s15365" style='position:absolute;left:199.375pt;
+   top:100pt;width:289pt;height:289.125pt;mso-wrap-style:none;v-text-anchor:middle'
+   coordsize="2312,2313" o:bwmode="undrawn" path="m1469,384l1285,342,1260,,1035,17,1018,342,868,393,651,117,501,201,643,509,543,610,217,493,142,618,392,835,351,1002,8,1027,,1211,351,1261,384,1419,125,1653,217,1795,509,1661,618,1770,467,2045,609,2162,868,1912,1018,1962,1052,2304,1277,2313,1302,1954,1494,1904,1720,2154,1870,2062,1720,1762,1820,1636,2120,1778,2212,1620,1937,1419,1970,1244,2312,1211,2304,1035,1962,985,1928,852,2204,660,2112,501,1803,626,1703,526,1861,234,1711,142,1469,384xe"
+   fillcolor="#00007a [0]" stroked="f" strokecolor="#eaeaea [1]">
+   <v:fill color2="#000054 [2]" angle="-135" focus="100%" type="gradient"/>
+   <v:shadow color="#000054 [2]"/>
+   <v:path arrowok="t"/>
+  </v:shape><v:shape id="_x0000_s15366" style='position:absolute;left:.25pt;
+   top:377.75pt;width:269.125pt;height:165.125pt;mso-wrap-style:none;
+   v-text-anchor:middle' coordsize="2153,1321" o:bwmode="undrawn" path="m1368,358l1197,318,1173,,964,16,948,318,808,366,606,109,467,187,599,474,506,568,202,459,132,576,365,778,327,933,7,956,,1128,327,1174,358,1321,1804,1321,1835,1158,2153,1128,2146,964,1827,917,1795,793,2052,615,1967,467,1679,583,1586,490,1733,218,1593,132,1368,358xe"
+   fillcolor="#00007a [0]" stroked="f" strokecolor="#eaeaea [1]">
+   <v:fill opacity=".5"/>
+   <v:shadow color="#000054 [2]"/>
+   <v:path arrowok="t"/>
+  </v:shape><v:shape id="_x0000_s15367" style='position:absolute;left:353.875pt;
+   top:348.5pt;width:178.25pt;height:178.25pt;mso-wrap-style:none;
+   v-text-anchor:middle' coordsize="2312,2313" o:bwmode="undrawn" path="m1469,384l1285,342,1260,,1035,17,1018,342,868,393,651,117,501,201,643,509,543,610,217,493,142,618,392,835,351,1002,8,1027,,1211,351,1261,384,1419,125,1653,217,1795,509,1661,618,1770,467,2045,609,2162,868,1912,1018,1962,1052,2304,1277,2313,1302,1954,1494,1904,1720,2154,1870,2062,1720,1762,1820,1636,2120,1778,2212,1620,1937,1419,1970,1244,2312,1211,2304,1035,1962,985,1928,852,2204,660,2112,501,1803,626,1703,526,1861,234,1711,142,1469,384xe"
+   fillcolor="#00007a [0]" stroked="f" strokecolor="#eaeaea [1]">
+   <v:fill color2="#000054 [2]" angle="-135" type="gradient"/>
+   <v:shadow color="#000054 [2]"/>
+   <v:path arrowok="t"/>
+  </v:shape><v:shape id="_x0000_s15368" style='position:absolute;left:444.625pt;
+   top:38.375pt;width:230.625pt;height:230.75pt;mso-wrap-style:none;
+   v-text-anchor:middle' coordsize="2312,2313" o:bwmode="undrawn" path="m1469,384l1285,342,1260,,1035,17,1018,342,868,393,651,117,501,201,643,509,543,610,217,493,142,618,392,835,351,1002,8,1027,,1211,351,1261,384,1419,125,1653,217,1795,509,1661,618,1770,467,2045,609,2162,868,1912,1018,1962,1052,2304,1277,2313,1302,1954,1494,1904,1720,2154,1870,2062,1720,1762,1820,1636,2120,1778,2212,1620,1937,1419,1970,1244,2312,1211,2304,1035,1962,985,1928,852,2204,660,2112,501,1803,626,1703,526,1861,234,1711,142,1469,384xe"
+   fillcolor="#00007a [0]" stroked="f" strokecolor="#eaeaea [1]">
+   <v:fill color2="#000054 [2]" angle="-135" focus="100%" type="gradient"/>
+   <v:shadow color="#000054 [2]"/>
+   <v:path arrowok="t"/>
+  </v:shape><v:shape id="_x0000_s15369" style='position:absolute;left:562.75pt;
+   top:201.25pt;width:158.125pt;height:314.75pt;mso-wrap-style:none;
+   v-text-anchor:middle' coordsize="1265,2518" o:bwmode="undrawn" path="m1265,0l1128,18,1110,372,946,428,710,127,546,219,701,555,592,665,237,537,155,674,427,911,383,1093,9,1121,,1322,383,1376,419,1549,136,1804,237,1959,555,1813,674,1932,509,2232,664,2360,946,2087,1110,2142,1147,2515,1265,2518,1265,0xe"
+   fillcolor="#00007a [0]" stroked="f" strokecolor="#eaeaea [1]">
+   <v:fill color2="#555bad [5]" angle="-90" focus="100%" type="gradient"/>
+   <v:shadow color="#000054 [2]"/>
+   <v:path arrowok="t"/>
+  </v:shape></p:shaperange>
+ <p:shaperange id="_x0000_s15370">
+  <v:shapetype id="_x0000_t75" coordsize="21600,21600" o:spt="75"
+   o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+   <v:stroke joinstyle="miter"/>
+   <v:formulas>
+    <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+    <v:f eqn="sum @0 1 0"/>
+    <v:f eqn="sum 0 0 @1"/>
+    <v:f eqn="prod @2 1 2"/>
+    <v:f eqn="prod @3 21600 pixelWidth"/>
+    <v:f eqn="prod @3 21600 pixelHeight"/>
+    <v:f eqn="sum @0 0 1"/>
+    <v:f eqn="prod @6 1 2"/>
+    <v:f eqn="prod @7 21600 pixelWidth"/>
+    <v:f eqn="sum @8 21600 0"/>
+    <v:f eqn="prod @7 21600 pixelHeight"/>
+    <v:f eqn="sum @10 21600 0"/>
+   </v:formulas>
+   <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" aspectratio="t"/>
+  </v:shapetype><v:shape id="_x0000_s15370" type="#_x0000_t75" style='position:absolute;
+   left:.25pt;top:-.25pt;width:63.25pt;height:540pt' o:bwmode="inverseGray">
+   <v:imagedata src="master04_image001.png" o:title="Facbanna"/>
+  </v:shape></p:shaperange>
+ <p:shaperange id="_x0000_m15371">
+  <v:shapetype id="_x0000_m15371" style='position:absolute;left:84pt;top:24pt;
+   width:612pt;height:90pt;v-text-anchor:bottom' coordsize="21600,21600"
+   o:master="" o:spt="1" path="m0,0l0,21600,21600,21600,21600,0xe" filled="f"
+   fillcolor="#fcab40 [4]" stroked="f" strokecolor="#eaeaea [1]">
+   <v:fill color2="#00007a [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#000054 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="title"/>
+  </v:shapetype></p:shaperange>
+ <p:shaperange id="_x0000_m15372">
+  <v:shapetype id="_x0000_m15372" style='position:absolute;left:84pt;top:132pt;
+   width:612pt;height:324pt' coordsize="21600,21600" o:master="" o:spt="1"
+   path="m0,0l0,21600,21600,21600,21600,0xe" filled="f" fillcolor="#fcab40 [4]"
+   stroked="f" strokecolor="#eaeaea [1]">
+   <v:fill color2="#00007a [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#000054 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="body" position="1"/>
+  </v:shapetype></p:shaperange>
+ <p:shaperange id="_x0000_s15373">
+  <v:shapetype id="_x0000_s15373" style='position:absolute;left:84pt;top:498pt;
+   width:150pt;height:36pt;v-text-anchor:bottom' coordsize="21600,21600"
+   o:master="" o:spt="1" path="m0,0l0,21600,21600,21600,21600,0xe" filled="f"
+   fillcolor="#fcab40 [4]" stroked="f" strokecolor="#eaeaea [1]">
+   <v:fill color2="#00007a [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#000054 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="dateTime" position="2" size="half"/>
+  </v:shapetype></p:shaperange>
+ <p:shaperange id="_x0000_s15374">
+  <v:shapetype id="_x0000_s15374" style='position:absolute;left:276pt;top:498pt;
+   width:228pt;height:36pt;v-text-anchor:bottom' coordsize="21600,21600"
+   o:master="" o:spt="1" path="m0,0l0,21600,21600,21600,21600,0xe" filled="f"
+   fillcolor="#fcab40 [4]" stroked="f" strokecolor="#eaeaea [1]">
+   <v:fill color2="#00007a [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#000054 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="footer" position="3" size="quarter"/>
+  </v:shapetype></p:shaperange>
+ <p:shaperange id="_x0000_s15375">
+  <v:shapetype id="_x0000_s15375" style='position:absolute;left:546pt;top:498pt;
+   width:150pt;height:36pt;v-text-anchor:bottom' coordsize="21600,21600"
+   o:master="" o:spt="1" path="m0,0l0,21600,21600,21600,21600,0xe" filled="f"
+   fillcolor="#fcab40 [4]" stroked="f" strokecolor="#eaeaea [1]">
+   <v:fill color2="#00007a [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#000054 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="slideNumber" position="4" size="quarter"/>
+  </v:shapetype></p:shaperange>
+</xml>

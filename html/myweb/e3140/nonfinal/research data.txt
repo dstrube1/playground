@@ -1,0 +1,35 @@
+good intel quote:
+computer world apr 3 2001:
+http://www.computerworld.com/cwi/story/0,1199,NAV63_STO59202,00.html?RCKEY=
+
+History of Distributed Computing 
+http://www.ud.com/company/dc/history.htm
+
+Corporate Information
+http://www.ud.com/company/facts.htm
+
+http://www.ud.com/company/dc/seti@home.htm
+http://www.ud.com/company/dc/dnet.htm
+articles:
+http://www.cnn.com/2002/TECH/internet/03/11/anthrax.project.reut/index.html
+http://www.wired.com/news/business/0,1367,47013,00.html
+http://www.the-scientist.com/yr2001/may/hand_p1_010514.html
+
+chart source:
+http://www.ud.com/products/mp_power_calc/mp_power_calc.htm?udwin=true
+
+molecule defs:
+http://members.ud.com/projects/cancer/about_proj.htm
+
+distr comp def:
+http://www.ud.com/company/dc/
+
+inventor of THINK:
+http://www.chem.ox.ac.uk/cancer/keithdavies.html
+
+search for posts by chainsawlove
+ud17182  - 16519 
+davy17182 - 3850 
+check administratorpsa134
+
+sun 10000 server: 446 MHz X 64 = 28544 MHz = 27.875 GHz

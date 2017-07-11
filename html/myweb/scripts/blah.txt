@@ -1,0 +1,84 @@
+this is where i'll put javascripts: 
+note- name is where its used, not where its located
+
+index: date and time in status bar
+frends: auto background color change
+sched: new Window rise up intro
+trails: Whee in misc
+teacher: teachr password verify
+aboot: linked background echo
+
+Load checker in status bar:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12744_73081,00.html
+
+Four cool effects move background:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12753_66561,00.html
+
+tabs:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12753_44081,00.html
+
+mouseover bground color change:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12753_31291,00.html
+50 colors:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12753_25771,00.html
+
+fairy dust for lauren:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12744_71651,00.html
+
+nonresizeable window:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12753_29541,00.html
+
+window pops up with color changing boxs:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12753_25601,00.html
+
+customized mouseover pics- images Everything you need to know about CSS and Tables :
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12753_23731,00.html
+
+input word, hex, or RGB code of a color. then posts a small window of that color:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12753_20301,00.html
+
+lightswitch:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12753_20311,00.html
+
+random background onload:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12753_20291,00.html
+
+drop down menu maker- doesnt work, but still educational:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12744_71971,00.html
+
+lightsout, aka annoy-the-piss-out-of-me game:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12744_71631,00.html
+
+Name Prompt:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12744_71421,00.html
+
+Tigra Menu- cool, free, requires registration:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12744_71071,00.html
+
+Boolean truth table generator:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12745_29591,00.html
+
+window open fx:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12744_66941,00.html
+
+Reactive Cartoon Face :
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12744_69171,00.html
+
+Mouse Movements Recording:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12744_66761,00.html
+
+neat games:
+
+math stuff:
+http://webdeveloper.earthweb.com/webjs/jsmath/0,3602,_8,00.html
+
+drop down menu:
+http://webdeveloper.earthweb.com/webjs/item/0,3602,12744_66601,00.html
+
+rot13?:
+http://webdeveloper.earthweb.com/repository/javascripts/2001/11/64671/java.htm
+
+zen advice:
+http://webdeveloper.earthweb.com/repository/javascripts/2001/09/60621/advice.html
+quotes:
+http://webdeveloper.earthweb.com/repository/webdev/content/software/2000/07/19/JS_29382/script29382.html

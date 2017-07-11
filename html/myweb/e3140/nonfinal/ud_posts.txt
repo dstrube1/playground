@@ -1,0 +1,54 @@
+may members homepage:
+Congratulations! We recently crossed a significant milestone. The Global MetaProcessor has logged over one billion (1,000,000,000) hours since it was launched a little over a year and a half ago. This achievement has been made possible by the overwhelming worldwide response to the Intel-United Devices Cancer Research Project. Thank you for making this possible. 
+
+Many of you are asking when the Cancer Research Project will end. We are both excited and encouraged by the tremendous success of the Cancer Research Project and wish to continue our efforts in this area of life sciences research. Our intent is to continue with this project, in partnership with Oxford University, for the foreseeable future. To learn more about what has been found, visit www.chem.ox.ac.uk/curecancer.html.
+
+Another question we get quite often has to do with the security of our system. We have gained quite a bit of experience over the last five years building and maintaining similar systems (via distributed.net and SETI@home), we've leveraged this experience to build, run and maintain our public Internet Grid. Below are some things we do to ensure the security of the UD Grid and maintain the integrity of our member’s PCs on our network:
+
+ UD has passed intense security audits from our corporate sponsors. 
+ UD maintains its own data center to ensure secure access…complete with
+ biometric locks for personnel to gain access to the secure facility. 
+ UD encrypts the communications between your PC and our servers. 
+ UD uses public/private key encryption, where the private key is kept in a vault
+ room (6-sides concrete & steel door) that requires three mechanisms to gain
+ access to (1 x biometric, 1 x electronic key, 1 x physical key) between two
+ separate people. This means no single person can enter the vault, sign code
+ and distribute a malicious application across the network. 
+ UD encrypts the data stored on your hard drive. 
+ UD has filed its privacy & security policy with TRUSTe 
+
+
+Thank you for supporting all our projects, and with your help we are well on our way to completing the next billion hours!
+
+Best Regards,
+Ed Hubbard
+CEO & Founder
+United Devices
+===
+dead ends?:
+http://forum.ud.com/ubbcgi/ultimatebb.cgi?ubb=get_topic;f=5;t=001681
+http://forum.ud.com/ubbcgi/ultimatebb.cgi?ubb=get_topic;f=5;t=001748
+http://forum.ud.com/ubbcgi/ultimatebb.cgi?ubb=get_topic;f=6;t=003113
+http://forum.ud.com/ubbcgi/ultimatebb.cgi?ubb=get_topic;f=6;t=004029
+http://forum.ud.com/ubbcgi/ultimatebb.cgi?ubb=get_topic;f=7;t=000374
+
+ud mass install successes:
+http://forum.ud.com/ubbcgi/ultimatebb.cgi?ubb=get_topic;f=6;t=004858
+http://forum.ud.com/ubbcgi/ultimatebb.cgi?ubb=get_topic;f=5;t=002032
+http://forum.ud.com/ubbcgi/ultimatebb.cgi?ubb=get_topic;f=6;t=004746
+	Dave Clark, Member # 13407 
+search for mass install
+
+
+more infor on THINK and linux compatibility:
+http://forum.ud.com/ubbcgi/ultimatebb.cgi?ubb=get_topic&f=22&t=000012
+
+===
+https://www.ud.com/company/contact/support_installer.htm
+are all our computers located behind a common firewall?
+if so, what are the Proxy Type, Proxy Server Name and Proxy Port 
+
+dave clark:
+d.j.clark@ncl.ac.uk
+mass installer
+dear dave clark, mr mass installer celebrity sir 8-D,

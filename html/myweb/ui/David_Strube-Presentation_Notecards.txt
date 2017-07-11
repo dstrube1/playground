@@ -1,0 +1,32 @@
+slide 3: Fitt's Law: "Efficiency is relative to key size and mapping between movement of fingers over the keyboard"
+	Conventional keyboard efficiency: 1 or 2 gestures per character (g/ch), each is a selection of 1 of 80 keys = capacity to read about log2(80) bits/g = 6.3b/g; Entropy of the English language is about 1b/g, so the keyboard is inefficient by a factor of 6.
+===================
+slide 4: Fitt's Law: proposed as a predictor of information rate of the human motor system.
+===================
+slide 5: 1/2 Qwerty: 34.7 wpm;
+	Fitaly & T9- palm pilots
+	[mathematically optimised hexagonal grid- proposed 43.7 wpm, no empirical testing]
+	[large keyboard: 248 mm wide = 32.5 wpm; small: 68 mm = 21.1 wpm]
+	TCK- ternary chorded keyboard: 16 wpm
+	Unistrokes: estimated 40.8 wpm
+	FOCL: 10 wpm
+===================
+slide 6: Benefits of Continuous Gestures and Languages Modeling: keyboard: 1 ch/1or2g; Dasher: n ch/g = potential to convey information at a higher rate; forces user to write coherent text, harder to make spelling mistakes.
+	Language Model: design depended on how well the model compresses text & time taken to compute the probability of a character; Dasher's model was based on a popular text compression algorithm called Prediction by Partial Match (PPM), but Dasher used a similar variant called PPM5D+
+===================
+slide 8: Empirical Evaluation: Power Law of Practice: logarithm of reaction time T (tau) for a specific task decreases linearly with the log of number of trials N; In other words: log (T (sub W)) = A - B*log(N) (where A and B are balancing constants).
+	Approach: Dictated text because Dasher requires uninterupted visual contact
+	Pilot: Synthesized speech; not continued because it was stressful and hard to follow.
+	Method: 10 subjects: students and staff of Cavendish Laboratory; all had vision corrected, spoke English as their first language, and used the mouse with their preferred hand. None had had previous experience with Dasher before
+	Task: 18 random excerpts from Jane Austen's Emma were used in the dictations. Emma is total 883 kb; the remaining 866kb not used in excerpts were used for the language model.
+	Apparatus: Passages were recorded in audio files of phrases; as the penultimate word in each phrase was entered, the next phrase was played; a synchronization algorithm compensated for mispelt words
+	Procedure: 6 experimental sessions, 1/2 hr each: 3 exercises per session: 1-Dasher (5 min), 2- QWERTY(2min), 3-Dasher (5min); approxiamtely 1 session per day; while entering text, subjects could correct current words, but not go back to correct previous words
+	Configuration [see article]
+	Analysis: control software counted number of characters per period (ch/p) and errors ch/p and number of insertions and deletions or a word per period
+===================
+slide 9: Attention to Demand: is the tradeoff
+	Current Information Rate of Dasher: experts go as fast as 34 wpm
+	Measuring Potential Rate of Dasher Interface: searching detracts from user efficiency; in an experiment in which only the correct string of letters could be chosen (thus elimnating the need for searching), a rate of data entry was 228 ch/m: about 1.3 times faster than dictation
+	Potential Writing Speed: performance of Dasher depends on :
+1- how well the language model compresses the text entered and 
+2- the user interface (with multiple parameters- see article)

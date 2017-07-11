@@ -1,0 +1,49 @@
+
+Date: Thu, 10 Oct 2002 08:50:09 -0400 
+From: "Ken Hoganson" <khoganso@kennesaw.edu> | This is Spam | Add to Address Book 
+To: drussel1@Pigseye.Kennesaw.edu 
+Subject: Re: Proposal for Research Using Distributed Computing 
+         
+ 
+
+
+David,
+
+I made a quick pass through your proposal.  Nicely written organized, and thought out!
+
+Two issues:  We are forming a bioinformatics program at KSU, who would be the most likely users of 
+this technology.  [Comp Sci may use it for teaching/demonstrations, but less likely for research, 
+since it is no longer a new idea from the computing point of view, but has been around for quite a 
+few years].  My suggestion is that we establish a clear need for the technology before taking the 
+next step.  I suggest that you speak with the person heading up the bioinformatics program (start 
+with the biology dept chair) to see if they see a need for the technology, and are willing to push 
+for it.  If biology/bioinformatics sees a need, I will also support the project, which will then 
+need to be walked up the chain-of-command and over to Dr Randy Hinds, CIO at KSU.
+
+Second issue:  we would need to include a thorough testing/monitoring phase on a subset of KSU's 
+computers.  Dr Hinds has many responsibilities and demands on his shoulders.  It must be 
+demonstrated, that adding this SW to the standard KSU installation, will not cause compatibility problems, 
+or increase the maintenance effort.  I understand that it should not do either of those, but he 
+will need a test on our own machines, in our own enviroment, before he could discuss any further 
+roll-out.
+
+Again, nice work!
+Regards,
+Dr. Hoganson
+
+--------------------------------------------------------------------------------------------------------------------------------
+Ken Hoganson, Ph.D,  Associate Professor,   Director: M.S. Applied Comp Sci
+Department of Computer Science and Information Systems           770-499-3402
+Kennesaw State University                                                                Fax: 
+770-423-6731
+1000 Chastain Road                                                          khoganso@kennesaw.edu
+Kennesaw, GA  30144                         http://science.kennesaw.edu/~khoganso/
+
+>>> "David Russell" <drussel1@Pigseye.Kennesaw.edu> 10/09/02 08:49PM >>>
+Here is the proposal I told you about in class:
+http://pigseye.kennesaw.edu/~drussel1/e3140/Text-Bio.doc 
+Lemme know what you think.
+Thanks 
+-David Strube                        
+
+

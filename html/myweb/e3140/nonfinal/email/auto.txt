@@ -1,0 +1,25 @@
+automated repsonse to bulk installer request:
+===
+Subject: Re: Your email to United Devices 
+Date: Mon, 29 Apr 2002 18:49:41 -0500 
+From: support@ud.com 
+
+Hello,
+
+Thank you for submitting your request to United Devices' Automated Support. This support system 
+identifies frequently asked questions which are then added to our FAQ database which is available on 
+our website at:
+http://members.ud.com/support/
+
+This is the only e-mail response that you will receive. To get immediate responses to your 
+question, please post a message to our Member Forum at:
+http://forum.ud.com/
+
+Note: To post a message, the message boards require a separate registration than the UD Agent does 
+because it is on a different database. Ensure that cookies are enabled and that no Internet 
+security software is blocking cookies, as the forum software requires cookies to allow you to post. You 
+do not need to register with the message boards to read or search through posted messages.
+
+Sincerely,
+United Devices Support
+http://forum.ud.com/

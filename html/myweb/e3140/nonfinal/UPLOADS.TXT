@@ -1,0 +1,23 @@
+login: KSU
+time: 252pm 5-15-2
+size: 765685
+
+744pm 5-20-2
+19741
+
+1051am 5-22-2
+19816
+
+ud: 157am-5-27-02: 19346 B
+1117pm-5-27-02:    20063 B
+846,644 = cable me
+846,674B t1 w2K 5-3-2 ps 134
+
+868,789 bytes dled on 56k w/xp 
+
+new member: KennesawStateUniversity - kuthix0
+team: Team Kennesaw State University - UD17182
+
+===
+hide in/from systray
+turn off screensaver

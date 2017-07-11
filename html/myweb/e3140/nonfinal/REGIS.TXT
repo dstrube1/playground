@@ -1,0 +1,23 @@
+key		name				data
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+		MSMSGS				C:\Program Files\Messenger\msmsgs.exe /background
+		Yahoo! Pager			C:\Program Files\Yahoo!\Messenger\ypager.exe -quiet
+		RealTray			C:\Program Files\Real\RealPlayer\RealPlay.exe SYSTEMBOOTHIDEPLAYER
+		AIM				C:\PROGRAM FILES\AIM95\aim.exe -cnetwait.odl
+		QuickTime Task			"C:\Windows\System\QTTASK.EXE" -atboottime
+		DownloadAccelerator		C:\Progra~1\DAP\DAP.exe /Startup
+		Excite Private Messenger Pipe	C:\Program Files\Excite\PrvtMsgr\bin\x8IMPipe.exe
+		Popup Ad Filter			C:\Program Files\Meaya\Popup Ad Filter\PopFilter.exe
+		Mirabilis ICQ			C:\Program Files\ICQ\NDetect.exe
+		Bearshare			C:\PROGRAM FILES\BEARSHARE\BEARSHARE.EXE /mwinamp
+		WinampAgent			c:\PROGRAM FILES\Winamp\Winampa.exe
+		Indiatimes Messenger		C:\Program Files\Indiatimes Messenger\MMClient.exe
+WinMX 
+eDonkey 
+Xolox 
+morpheus
+icq
+trillian
+njstar
+aimster
+

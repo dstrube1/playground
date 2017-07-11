@@ -1,0 +1,9 @@
+H1 { font-weight: bold; }
+H2 { font-weight: italic; }
+H3 { font-weight: underlined; }
+H4 { font-weight: bold, italic, underlined; }
+
+BODY { background: http://students.kennesaw.edu/~dstrube/images/bgsky9.jpg;}
+
+A:link, A:visited
+	{ text-decoration: none; }

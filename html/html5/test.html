@@ -1,0 +1,65 @@
+<html>
+<head>
+</head>
+<body>
+<script type='text/javascript'>
+var s = "this is: some: text";
+var t = s.split(":");
+var u = "";
+for (x in t){
+	u += t[x] + "<br>";
+	if (x < s.length-1){
+		u += ":";
+	}
+	//document.write("t[x]='"+t[x]+"'\n<br>");
+}
+document.write("u = "+u + "<br>");
+</script>
+<pre>
+what it is:
+html2
+w3c
+WHAT working group
+backward compatibility
+open process
+implementation wins
+retro-spec
+
+what we'll cover:
+doctype
+elements / tags
+gradients
+rounded corners
+drop shadows
+rgba colors
+media queries
+web fonts
+
+techniques:
+do nothing
+graceful degradation
+progressive enhancement (opposite of graceful degradation)
+polyfills
+
+not covering:
+css frameworks
+frameworks at all
+css preprocessors
+
+http://handsonhtml5.tobyho.com/
+http://onslyde.com/html5/
+
+modernizer.js
+html5shiv
+google.com/webfonts
+subtlepatterns.com
+
+html5please.com
+diveintohtml5.info
+slides.html5rocks.com
+</pre>
+
+
+
+</body>
+</html>

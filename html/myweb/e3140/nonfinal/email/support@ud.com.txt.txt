@@ -1,0 +1,44 @@
+Subject: RE: Bulk UD Agent Installer Request 
+ 
+Date: Tue, 7 May 2002 16:35:53 -0500 
+ 
+From: support@ud.com | Block Address  
+ 
+To: aeolus@mindspring.com 
+ 
+
+-----Original Message-----
+From: aeolus@mindspring.com [mailto:aeolus@mindspring.com]
+Sent: Monday, April 29, 2002 6:50 PM
+To: support@ud.com
+Subject: Bulk UD Agent Installer Request
+
+
+TO:   support@ud.com 
+FROM:   aeolus@mindspring.com 
+SUBJECT:   Bulk UD Agent Installer Request 
+  
+
+--------------------------------------------------------------------------------
+ 
+  
+MEMBER NAME:   davy17182 
+REAL NAME:   N/A N/A 
+NUMBER OF MACHINES   30 
+PLATFORM:   Win98,NT,ME,XP 
+FIREWALL:   NO 
+PROXY TYPE:   N/A 
+PROXY NAME:   N/A 
+PROXY PORT:   N/A 
+PROXY LOGIN:   N/A 
+PROXY PASSWORD:   N/A 
+COMMENTS:   N/A
+ 
+
+
+--------------------------------------------------------------------------------
+
+Attachment  
+ udagent_setup.exe
+Type .exe : Scanning recommended  
+ 

@@ -1,0 +1,16 @@
+dimensions: 
+the project will basically be a proposal to the university's administration stating the UD software's basic purpose and specs. the proposal will also propose the design of program and describe a planned implementation.
+aspects to consider and possibly mention in the proposal: 
+1- notice of installation plan to the network dept.
+2- request from the software dept for a script to disable non essential programs that will slow down the UD software. (in particular, this removes programs running in the background whose presences are superfluous (real player), inconsequential (instant messengers like AIM, yahoo, icq, msn, etc), overall security risks (gator) and detrimental to the network's bandwidth (file sharers like kazaa, napster, bearshare, winmx, etc).)
+3- memo of plan to educate curious staff and faculty to inform them of the ease with which one can pause, exit or remove the program. this memo will also allay any fears that the UD software will result in a hassle, inconvenience, or loss of control of one's computer(s).
+
+option to opt out
+suspicious of loss of control
+inconvience?
+
+anusha:
+with our infrastructure, can we implement this?
+maintenance cost? support cost?
+hinds should want to convince his people
+alp: background, fix dates, explain basics

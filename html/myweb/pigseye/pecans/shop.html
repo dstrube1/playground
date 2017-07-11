@@ -1,0 +1,37 @@
+<html>
+<head> <title> Shop </title> </head>
+<body>
+<center><h1>Shop </h1><br> </center>
+<br>
+<br><br>
+<form method=post action="http://pigseye.kennesaw.edu/cgi-bin/drussel1/FormMail.cgi"> 
+
+<input type=hidden name="recipient" value="aeolus@mindspring.com"> 
+<input type=hidden name="subject" value="Divine Pecans">
+<input type=hidden name="redirect" value="http://pigseye.kennesaw.edu/~drussel1/pecans/done.html">
+<input type=hidden name="env_report" value="REMOTE_HOST, REMOTE_ADDR,  REMOTE_USER, HTTP_USER_AGENT">
+<!-- <input type=hidden name="sort" value="order:name1,name2,name3,etc...">  -->
+
+<center><table>
+<tr> <td> Quarter pound tin</td><td> <select name="quarter_lb_quantity" id="qpq"> <script language=javascript src="../scripts/select1-20.js"></script> @ $8 ea</td> </tr>
+<tr> <td> Half pound tin</td><td> <select name="half_lb_quantity" id="hpq"> <script language=javascript src="../scripts/select1-20.js"></script> @ $10.50 ea</td> </tr>
+<tr> <td> One pound tin</td><td> <select name="one_lb_quantity" id=opq"> <script language=javascript src="../scripts/select1-20.js"></script> @ $19 ea</td> </tr>
+</center><tr></tr>
+
+<td> First name: </td><td> <input name="fname" size="17" value=""> </td><tr>
+<td>  Last name: </td><td> <input name="lname" size="17" value=""> </td><tr>
+<td>  Address: </td><td> <input name="address" size="17" value=""> </td><tr>
+<td>  City: </td><td> <input name="city" size="17" value=""> </td><tr>
+<td>  State: </td><td> <script LANGUAGE="Javascript" SRC="../scripts/select_shortstates.js"></script> </td><tr>
+<td>  Zip: </td><td> <input name="zip" size="5" value=""> </td><tr>
+<td> Email: </td><td> <input type=text name="email" size="17" value=""> </td><tr>
+<td> Comments: </td><tr>
+<td></td><td>  <textarea rows=10 cols=50 name="comments"> </textarea></td><tr>
+<td> <input type=submit name="Submit" value="Checkout"></td><tr>
+
+</table>
+</form>
+
+<script language=javascript src="../scripts/pecan_navbar.js"></script>
+</body>
+</html>

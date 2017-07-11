@@ -1,0 +1,17 @@
+From drussel1@Pigseye.Kennesaw.edu Sat Apr 27 16:52:01 2002From: "David Russell" <drussel1@Pigseye.Kennesaw.edu>
+To: "Tracy Marie Jordan" <tjordan1@Pigseye.Kennesaw.edu>
+Date: Sat, 27 Apr 2002 20:52:01 +0000 (GMT)
+Organization: Kennesaw State University
+X-Mailer: ObsidianSystems-OcsEmail1-0-30 brewed at www.obsidian.co.za
+Reply-to: drussel1@Pigseye.Kennesaw.edu
+Message-ID: <10199407217769-2716527769drussel1@Pigseye.Kennesaw.edu>
+Priority: Normal
+Subject: question about software installation on the network
+
+how is it done?
+specifically, how is an automatic installation of an application across a network from a single installing exe done?
+imagine each computer having the software installed on it would require a user name (which may be repeated on all computers) and a unique location identifier (ex, the computr login/workstation number, e.g., BB46620). how would that be done?
+is there ever any calculation done for the cost of a sucessful installation? for an unsuccessful installation?
+is it possible to perform an automatic (non-manual) network install to a particular room?
+how does the software installations? software dept or networking?
+does it depend on the software?              

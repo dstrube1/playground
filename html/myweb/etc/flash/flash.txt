@@ -1,0 +1,15 @@
+http://www.macromedia.com
+window,common libraries,sound
+window,panels,sound
+symbols: movie, graphic, button
+movie: can be its own animation with its own timeline
+
+forms:
+text fields: text tool (A): text option: input text with border/bg checked
+set var name for each box
+
+shift+click= multiple select
+window,panel,align- align and distribute
+window,movie explorer: ctrl+alt+M
+ctrl+enter= preview; view,bandwidth profiler
+file,publish settings
