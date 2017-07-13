@@ -1,0 +1,111 @@
+<html>
+<meta charset="UTF-8">
+<head>
+<script>
+//Fibonacci: http://simple.wikipedia.org/wiki/Fibonacci_number
+var fib = function(n){return n<2 ? n : fib(n-1) + fib(n-2);}
+
+var fibA = function(){ //works
+	var memo= [0,1];
+	var fibA1 = function(n){
+		var result = memo[n];
+		if (typeof result != "number"){
+			result = fibA1(n-1) + fibA1(n - 2);
+			memo[n] = result;
+		}
+		return result;
+	};
+	return fibA1;
+}();
+
+var fibB = function(){ //returns undefined
+	var memo= [0,1];
+	var fibB1 = function(n){
+		var result = memo[n];
+		if (typeof result != "number"){
+			result = fibB1(n-1) + fibB1(n-2);
+			memo[n] = result;
+		}
+	};
+	return fibB1;
+}();
+
+var fibC = function(){ //breaks
+	var memo = [0,1];
+	var fibC1 = function(){
+		var result = memo[n];
+		if (typeof result != "number"){
+			result = fibB1(n-1) + fibB1(n-2);
+			memo[n] = result;
+		}
+		return result;
+	};
+	return fibC1;
+}();
+
+var fibD = (function(){ //returns wrong answer
+	var cache = [1,1];
+	var fibD1 = function (n){
+		if (n >=cache.length){
+			for (var i = cache.length; i<= n; i++){
+				cache[i] = cache[i-2]+cache[i-1];
+			}
+		}
+		return cache[n];
+	}
+	return fibD1;
+})(); 
+
+var fibE = (function(){ //returns function code as string - wtf?!
+	var cache = [1,1];
+	var fibE1 = function (n){
+		if (n >=cache.length){
+			for (var i= cache.length; i <= n; i++){
+				cache[i] = cache[i-2] + cache[i-1];
+			}
+		}
+		return cache[n];
+	}
+	return fibE1;
+});
+
+document.write("fib(1) : ");
+document.write(fib(1));
+document.write("<br>fib(2) : ");
+document.write(fib(2));
+document.write("<br>fib(3) : ");
+document.write(fib(3));
+document.write("<br>fib(4) : ");
+document.write(fib(4));
+document.write("<br>fib(5) : ");
+document.write(fib(5));
+document.write("<br>fib(6) : ");
+document.write(fib(6));
+document.write("<br>fib(7) : ");
+document.write(fib(7));
+document.write("<br>fib(8) : ");
+document.write(fib(8));
+document.write("<br>fib(9) : ");
+document.write(fib(9));
+document.write("<br>fib(10) : ");
+document.write(fib(10));
+document.write("<br>fib(11) : ");
+document.write(fib(11));
+document.write("<br>fib(12) : ");
+document.write(fib(12));
+document.write("<br>fibA(12) : ");
+document.write(fibA(12));
+document.write("<br>fibB(12) : ");
+document.write(fibB(12));
+document.write("<br>fibC(12) : breaks");
+//document.write(fibC(12));
+document.write("<br>fibD(12) : ");
+document.write(fibD(12));
+document.write("<br>fibE(12) : ");
+document.write(fibE(12));
+
+</script>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<meta charset="UTF-8">
+<head>
+<script>
+window.onload=function(){ 									//1
+	var links = document.querySelectorAll("a"); 			//2
+	for (var i = 0; i < links.length; i++){ 				//3
+		var parent = links[i].parentNode; 					//4
+		var children = links[i].childNodes; 				//5
+		//Choice D:
+		//for (var j=0; j < parent.length; j++){ 	//does nothing, apparently
+		for (var j=0; j < children.length; j++){ 			//6
+			var newChild = children[j].cloneNode(true); 	//7
+			//Choice E:
+			//parent.insertBefore(newChild, links[i]); //adds just the text, but leaves the links
+			//Choice C:
+			//newChild = links[i]; //does nothing, apparently
+		} 													//8
+		//Choice B:
+		//parent.insertBefore(newChild,links[i]); //adds just the text, but leaves the links
+		var li = document.createElement("li"); 				//9
+		//Choice A:
+		//li.appendChild(links[i]); //this removes the link(s), or breaks
+	} 														//10
+	document.getElementsByTagName("body")[0]; 				//11
+}
+</script>
+<body>
+<a href="http://www.google.com" target=_blank> blah</a><br>
+<a href="http://www.google.com" target=_blank>foo</a><br>
+<a href="http://www.cnn.com" target=_blank>bar</a><br>
+</body>
+</html>

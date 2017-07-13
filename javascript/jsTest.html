@@ -1,0 +1,166 @@
+<html>
+<meta charset="UTF-8">
+<head>
+<script>
+document.write("blah");
+//alert("foo");
+for (var i = 0; i < 10; i++) {
+        document.write(i + "<br>");
+}
+var foo0 = 8888888888888888888
+document.write(foo0 + "<br>");
+var bar = 'hello'
+document.write(bar + "<br>");
+foo0 = bar = {};
+document.write("{} = " + foo0 + "<br>");
+foo0 = null;
+document.write("null = " + foo0 + "<br>");
+foo0 = undefined
+document.write("undefined = " + foo0 + "<br>");
+document.write("8 == \"8\" = " + (8 == "8") + "<br>");
+document.write("===========================================================================" + "<br>");
+document.write("\"" + "<br>");
+document.write("null == undefined = " + (null == undefined )
+//null == undefined  //true
+ + "<br>");
+ 
+ document.write("false == undefined = " + (false == undefined) 
+//false == undefined //false
+ + "<br>");
+ 
+ document.write("true == undefined = " + (true == undefined) 
+//true == undefined //false
+ + "<br>");
+ 
+document.write("false == \"false\" = " + (false == "false") 
+//false == "false"   //false
+ + "<br>");
+
+document.write("'' == '0' = " + ('' == '0') 
+//'' == '0'          //false
+ + "<br>");
+ 
+document.write("'' == 0 = " + ('' == 0) 
+//'' == 0          //true
+ + "<br>");
+ 
+document.write("0 == '' = " + (0 == '') 
+//0 == ''            //true
+ + "<br>");
+ 
+document.write("0 == '0'  = " + (0 == '0' ) 
+//0 == '0' 
+ + "<br>");
+//document.write(nonspecialthing + "<br>");
+document.write("0.1 + 0.2 == 0.3 = " + (0.1 + 0.2 == 0.3) + "<br>");
+document.write("0.1 + 0.2 = " + (0.1 + 0.2) + "<br>")
+
+document.write("===========================================================================" + "<br>");
+
+var dog = {
+    name: 'Rover',
+    noise: 'bark'
+};				
+for (var prop in dog) {
+    document.write("Property: " + prop + "<br>");
+    document.write("Value: ", dog[prop] + "<br>");
+}
+
+Object.prototype.foo1 = function() {};
+
+var anObject = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+
+for (var prop in anObject) {
+    document.write(prop + " = " + anObject[prop] + "<br>");
+}
+document.write("===========================================================================" + "<br>");
+var array1 = new Array(3);
+array1[0]  =1;
+array1[1]=2;
+array1[2]=3;
+var array2 = new Array(3);
+array2[0]  =1;
+array2[1]=2;
+array2[2]=3;
+document.writeln("1:"+ "<br>")
+document.writeln(array1.toString() +"<br>");
+document.writeln("2:"+ "<br>")
+document.writeln(array1.toString() == array2.toString());
+document.writeln("<br>3:"+ "<br>")
+document.writeln("breaks: array1.equals(array2)" ); //breaks
+document.writeln("<br>4:"+ "<br>")
+document.writeln(array1 == array2 );
+document.writeln("<br>");
+document.write("===========================================================================" + "<br>");
+var a1 = ["H","W"];
+var a2 = ["C", "D"];
+var a3 = ["R","B"];
+var str = a2.concat(a1,a3).join(" ");
+document.write("str = " +str+ "<br>");
+var x1 = new Number(16);
+var y1 = x1.toString(10);//base 10
+document.writeln(y1);
+document.writeln("<br>");
+newBolObj = new Boolean(); //new boolean defaults to false
+document.write("newBolObj = " +newBolObj+ "<br>");
+var testDate = new Date(); //new date objects defaults to now
+document.writeln(testDate);
+document.writeln("<br>");
+var x=0;
+var y=0;
+var z=0;
+x=1;
+x = (-x + y++) * ++z;
+document.write("x = " +x+ "<br>");
+var sample = "test";
+var result = sample.big();
+document.write(result);
+document.writeln("<br>");
+document.write("===========================================================================" + "<br>");
+var x2 = Math.random();
+var tdy = new Date();
+document.write("random between 1 & 4, inclusive: " );
+document.write(Math.round(x2 * 3) + 1); //1-4
+document.writeln("<br>");
+document.write("random between 0 & 4, inclusive: "); 
+document.write(Math.round(x2 * 4)); // 0-4
+document.writeln("<br>");
+var bigN = tdy.getSeconds() * tdy.getTime();
+bigN *= Math.sqrt(tdy.getMinutes());
+var randN = (bigN % 3 ) + 1;
+document.write("random between 1 & 4, inclusive: " ); 
+document.write(Math.ceil(randN));//1-4
+document.writeln("<br>");
+document.write("===========================================================================" + "<br>");
+var b;
+function modifyV(a){
+var c = 5;
+a +=2;
+b += a+ c;
+}
+var a = 1;
+var b = 2;
+var c=3;
+modifyV(a);
+document.writeln(a);
+document.writeln("<br>");
+document.writeln(b);
+document.writeln("<br>");
+document.writeln(c);
+document.writeln("<br>");
+document.write("===========================================================================" + "<br>");
+document.write('hello!<br>\n');
+document.write('document.location.protocol: '+document.location.protocol);
+
+
+
+
+
+</script>
+<body>
+</body>
+</html>

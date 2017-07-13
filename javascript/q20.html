@@ -1,0 +1,51 @@
+<html>
+<meta charset="UTF-8">
+<head>
+<script>
+
+function xSwitch (xs_1, switchObj){
+	var cases = switchObj.cases
+	var xs_k = 0;
+	var xs_flag = true
+	var response = ""
+	for (xs_k = 0; (xs_k < cases.length); xs_k++){
+		if (xs_1 == cases[xs_k].xs_2){
+			response = cases[xs_k].code
+			xs_flag = false
+		}else
+			xs_flag=true
+	}
+	if (xs_flag){
+		response = switchObj.def
+	}
+	return response
+}
+function xswitchObj(){
+	function xaddCase(xs_2, code){
+		this.cases[this.cases.length] = new Object()
+		this.cases[this.cases.length - 1].xs_2 = xs_2
+		this.cases[this.cases.length - 1].code = code
+	}
+	function xdefCase(code){
+		this.def = code
+	}
+	this.cases = []
+	this.addCase = xaddCase
+	this.defCase = xdefCase
+}
+
+myCases = new xswitchObj()
+myCases.defCase("alert(' default case')")
+myCases.addCase(1,"alert(' one ')")
+myCases.addCase(2,"alert(' two ')")
+myCases.addCase(3,"alert(' three ')")
+myCases.addCase(4,"alert(' four ')")
+myCases.addCase(6,"alert(' six ')")
+eval(xSwitch(2,myCases))
+</script>
+<body>
+</body>
+2014-03-04 09:32:<br>
+Took the test yesterday<br>
+Answer still unknown <br>
+</html>
