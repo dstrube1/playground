@@ -1,0 +1,17 @@
+while (<>)  {
+}
+
+Replacing tabs with spaces
+perl -0011 -pi -e '/\011/&apm;&($_="$'")' filename
+
+
+perl -e  'print "Internet Time @",
+  int (((time + 3600) % 86400)/86.4), "\n";'
+
+Tracking the progress of a file as it downloads:
+perl -e 'BEGIN{$|=1;$f=$ARGV[0];$s=(stat$f)[7];$t=time}
+	    while(sleep 1){printf"\r$f %s bytes at %.2f Kb/s   ",
+        $_=(stat$f)[7],($_-$s)/1024/(time-$t)}' filename
+
+#here is an edit added 200506221450 to see what happens when a new version of a file 
+#is sent to an ftp dir with an older version of the file

@@ -1,0 +1,8 @@
+REM Not useful without an append option in sox
+REM Otherwise, pretty cool, and good to know
+FOR %X IN (*.wav) DO sox %X out\out.wav
+
+REM in the meantime, this works:
+sox 001.wav 002.wav (... n.wav) out.wav
+
+REM Must be wav cuz sox can't concatenate mp3 files
