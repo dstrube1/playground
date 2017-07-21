@@ -1,0 +1,16 @@
+
+HTTPeep Copyright Notice
+---------------------------
+
+Copyright 2005 Ashley van Gerven
+
+This code is provided as is, and without any explicit or implied 
+warranty. Use it at your own risk (but more likely to your benefit!).
+
+Feel free to modify the code and create non-commercial derivative 
+works. If you publish the result, please credit me appropriately.
+
+I don't give permission for this software or entire source code to 
+be sold or included as part of a commercial product. However if you 
+take a small portion of the code, that is different, and can be used 
+in a commercial product's source.

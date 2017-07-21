@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTTPeep", "HTTPeep.csproj", "{18998C32-3308-4C13-A053-A40AB0152506}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{18998C32-3308-4C13-A053-A40AB0152506}.Debug.ActiveCfg = Debug|.NET
+		{18998C32-3308-4C13-A053-A40AB0152506}.Debug.Build.0 = Debug|.NET
+		{18998C32-3308-4C13-A053-A40AB0152506}.Release.ActiveCfg = Release|.NET
+		{18998C32-3308-4C13-A053-A40AB0152506}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
