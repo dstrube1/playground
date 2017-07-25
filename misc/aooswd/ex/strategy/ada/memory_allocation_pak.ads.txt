@@ -1,0 +1,31 @@
+with Memory_Block_Pak, Ordered_List_Pak_Gen;
+
+generic
+  with package Memory_Pak is new Memory_Block_Pak (<>);
+  with package Free_List_Pak is new Ordered_List_Pak_Gen (Memory_Pak.Memory_Block,
+    Memory_Pak.Memory_Block_Access, Memory_Pak.Put, Memory_Pak. ">");
+  
+package Memory_Allocation_Pak is
+
+  use Memory_Pak, Free_List_Pak;
+  
+  type Memory_Allocation is abstract tagged limited private;
+  type Memory_Allocation_Access is access all Memory_Allocation'Class;
+   
+  procedure Allocate (M: in Memory_Allocation; L: in out Ordered_List; 
+    Size: in Block_Size; Success: out Boolean; Block: out Memory_Block) 
+    is abstract;
+  -- pre: none
+  -- post: Success is true if memory can be allocated & Block is that memory
+  --         ow Success is false
+    
+  private
+    type Memory_Allocation is abstract tagged limited null record;
+    
+    procedure Allocate_Block (L: in out Ordered_List; P: in out Position;
+      Size: in Block_Size; Block: out Memory_Block);
+    -- pre: P donotes the block of memory from which memory will be allocated
+    --          this block of memory is sufficiently large
+    -- post: Block has been allocate & L has been adjusted for the allocation
+    
+end Memory_Allocation_Pak;

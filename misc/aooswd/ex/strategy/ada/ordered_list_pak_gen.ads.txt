@@ -1,0 +1,129 @@
+with List_Pak_Gen, Ada.Text_IO;
+use Ada.Text_IO;
+
+generic
+  type Item is private;
+  type Item_Access is access all Item;
+  with procedure Put (F: in File_Type; Datum: in Item);
+  with function "<" (Datum1, Datum2: in Item) return Boolean;
+  
+package Ordered_List_Pak_Gen is
+
+  type Ordered_List is limited private;
+  type Ordered_List_Access is access all Ordered_List;
+  type Position is private;
+  
+  Empty: exception;
+  Off_List: exception;
+  Out_Of_Memory: exception;
+  Out_Of_Order: exception;
+  
+  generic
+    with function "=" (Datum1, Datum2: in Item) return Boolean;
+  procedure Search (L: in Ordered_List; Datum: in Item; Found: out Boolean;
+    Location: out Position);
+  -- pre: none
+  -- post: Found is true if Datum is in L, false otherwise
+  --         if Found is true, Location is the location of the first
+  --           occurrence of Datum
+    
+  procedure Copy (Source: in Ordered_List; Dest: in out Ordered_List);
+  -- pre: none
+  -- post: Dest is a copy of Source
+
+  procedure Delete (L: in out Ordered_List; P: in out Position);
+  -- pre: L is not empty & P is a valid location in L
+  -- post: Item at position L has been deleted
+  -- exceptions: Empty is raised if L is empty
+  --             Off_List is raised if P is not a valid location in L
+
+  procedure Delete_At_End (L: in out Ordered_List);
+  -- pre: L is not empty
+  -- post: Item at end of L has been deleted
+  -- exceptions: Empty is raised if L is empty
+
+  function Current_Item (L: in Ordered_List; P: in Position) return Item;
+  -- pre: L is not empty & P is a valid location in L
+  -- post: copy of Item at location P is returned  
+  -- exceptions: Empty is raised if L is empty
+  --             Off_List is raised if P is not a valid location in L
+
+  procedure Modify_Current_Item (L: in out Ordered_List; P: in Position;
+    New_Item: in Item);
+  -- pre: L is not empty & P is a valid location in L
+  -- post: Item at position P has been modified to New_Item
+  -- exceptions: Empty is raised if L is empty
+  --             Off_List is raised if P is not a valid location in L
+  --             Out_Of_Order is raised if the modification would not leave
+  --               L ordered
+  
+  procedure Prev (L: in Ordered_List; P: in out Position);
+  -- pre: L is not empty & P is a valid location in L
+  -- post: P has been modified to access the previous item in L
+  -- exceptions: Empty is raised if L is empty
+  --             Off_List is raised if P is not a valid location in L
+  
+  procedure Next (L: in Ordered_List; P: in out Position);
+  -- pre: L is not empty & P is a valid location in L
+  -- post: P has been modified to access the succeeding item in L
+  -- exceptions: Empty is raised if L is empty
+  --             Off_List is raised if P is not a valid location in L
+  
+  function Last (L: in Ordered_List) return Position;
+  -- pre: L is not empty
+  -- post: returns access to the last Item in L
+  -- exceptions: raise Empty if L is empty
+  
+  function First (L: in Ordered_List) return Position;
+  -- pre: L is not empty
+  -- post: returns access to the first Item in L
+  -- exceptions: raise Empty if L is empty
+  
+  procedure Delete_At_Front (L: in out Ordered_List);
+  -- pre: L is not empty
+  -- post: Item at beginning of L has been removed
+  -- exceptions: raise Empty if L is empty
+  
+  procedure Insert (L: in out Ordered_List; Datum: in Item);
+  -- pre: none
+  -- post: Datum has been added to L preserving the ordering
+  -- exceptions: Out_Of_Memory is raised there is not enough memory to add Datum
+    
+  procedure Initialize (L: in out Ordered_List);
+  -- pre: none
+  -- post: L is empty - any previous elements of L have been removed
+  
+  function Is_Off_List (L: in Ordered_List; P: in Position) return Boolean;
+  -- pre: none
+  -- post true is returned if P does not access an Item on L - false otherwise
+  
+  function Is_Last (L: in Ordered_List; P: in Position) return Boolean;
+  -- pre: none
+  -- post: true is returned if P access the last Item in L - false otherwise
+  
+  function Is_Empty (L: in Ordered_List) return Boolean;
+  -- pre: none
+  -- post: true is returned if L is empty - false otherwise
+  
+  function Is_First (L: in Ordered_List; P: in Position) return Boolean;
+  -- pre: none
+  -- post: true is returned if P access the first Item in L - false otherwise
+  
+  procedure Print (F: in File_Type; L: in Ordered_List);
+  -- pre: F is ready to be written to
+  -- post: Items in L have been printed on F where each element is on
+  --         a different line
+
+  pragma Inline (Initialize, Is_Empty, Is_First, Is_Last, Is_Off_List);
+  
+  private
+    package List_Pak is new List_Pak_Gen (Item, Item_Access, Put);
+   
+    type Ordered_List is
+      record
+        L: List_Pak.List;
+      end record;
+    
+    type Position is new List_Pak.Position;
+    
+end Ordered_List_Pak_Gen;
