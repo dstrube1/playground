@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AndroidTabLayout</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_photos">PhotosActivity</string>
+    <string name="title_activity_songs">SongsActivity</string>
+    <string name="title_activity_videos">VideosActivity</string>
+
+</resources>
