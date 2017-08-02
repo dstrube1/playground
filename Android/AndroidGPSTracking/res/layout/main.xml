@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+<!-- 
+com.google.android.gms.maps.MapFragment 
+com.example.gpstracking.FragmentA
+-->
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    />
+    
+    <!-- 
+	        android:layout_alignLeft="@+id/linearLayout3"
+        android:layout_below="@+id/linearLayout3"
+    <Button android:id="@+id/btnShowLocation" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Location"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="Click" 
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dip"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="5dip"
+            android:text="Latitude: "
+            android:textSize="20dip" 
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/latText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="unknown"
+            android:textSize="20dip" 
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/TextView03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="5dip"
+            android:text="Longitude: "
+            android:textSize="20dip" 
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/lonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="unknown"
+            android:textSize="20dip" 
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="5dip" >
+
+        <TextView
+            android:id="@+id/addressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="unknown"
+            android:textSize="20sp" 
+            android:visibility="gone"/>
+    </LinearLayout>
+
+     -->
+</RelativeLayout>
