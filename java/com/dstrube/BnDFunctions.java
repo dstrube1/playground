@@ -1,3 +1,13 @@
+/*
+Coding tests for Black & Decker
+
+From ~/java:
+
+javac -d bin com/dstrube/BnDFunctions.java
+java -cp bin com.dstrube.BnDFunctions
+
+*/
+
 package com.dstrube;
 
 import java.util.Hashtable;
