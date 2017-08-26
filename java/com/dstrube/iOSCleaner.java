@@ -18,9 +18,12 @@ public class iOSCleaner{
     public static void main(String[] args)
     {
         try{
-            //TODO test windows dir print out before deleting
-            //C:\Users\N95607\Desktop\temp\...
-            searchDir("/Users/dstrube/Documents/LM/Communicator/iOS"); //C:\Users\N95607\Documents\Projects\Communicator\iOS
+            //DONE: test windows dir print out before deleting
+			//DONE: test deletes in a temp dir 
+            //C:\\Users\\N95607\\Desktop\\temp\\...
+            searchDir("C:\\Users\\N95607\\Documents\\Projects\\Communicator\\iOS");
+			//"/Users/admin/Projects/iOS"); 
+			//
         }
         catch (Exception e){
             System.out.println("Exception: " + e);
@@ -35,8 +38,7 @@ public class iOSCleaner{
             if (files[i].isDirectory()){
                 searchDir(files[i].toString());
             }
-            else if (files[i].getName().equals(".DS_Store")){
-                //TODO delete file - test in a temporary copied dir first
+            else if (files[i].getName().equals(".DS_Store") || files[i].getName().equals("._.DS_Store") ){
                 System.out.println("Deleting " + files[i]);
                 try{
 	                if (files[i].delete()){
