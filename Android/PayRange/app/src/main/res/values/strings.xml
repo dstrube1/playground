@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PayRange</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="vending_machine">Vending machine</string>
+    <string name="signal_readings">Signal readings: </string>
+    <string name="average">Average: </string>
+</resources>

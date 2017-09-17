@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="imgs">
+        <item>@drawable/vm1</item>
+        <item>@drawable/vm2</item>
+        <item>@drawable/vm3</item>
+        <item>@drawable/vm4</item>
+        <item>@drawable/vm5</item>
+        <item>@drawable/vm6</item>
+        <item>@drawable/vm7</item>
+        <item>@drawable/vm8</item>
+        <item>@drawable/vm9</item>
+        <item>@drawable/vm10</item>
+    </string-array>
+    <string-array name="desecriptions">
+        <item>Vending machine #1</item>
+        <item>Vending machine #2</item>
+        <item>Vending machine #3</item>
+        <item>Vending machine #4</item>
+        <item>Vending machine #5</item>
+        <item>Vending machine #6</item>
+        <item>Vending machine #7</item>
+        <item>Vending machine #8</item>
+        <item>Vending machine #9</item>
+        <item>Vending machine #10</item>
+    </string-array>
+</resources>
