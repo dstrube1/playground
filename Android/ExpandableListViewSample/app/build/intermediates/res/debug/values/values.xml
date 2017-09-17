@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/C:/Users/unbounded/AndroidStudioProjects/ExpandableListViewSample/app/src/main/res/values/dimens.xml -->
+    <eat-comment />
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- From: file:/C:/Users/unbounded/AndroidStudioProjects/ExpandableListViewSample/app/src/main/res/values/drawables.xml -->
+    <eat-comment />
+
+    <drawable name="transparent">#00000000</drawable>
+    <!-- From: file:/C:/Users/unbounded/AndroidStudioProjects/ExpandableListViewSample/app/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="action_settings">Settings</string>
+    <string name="app_name">ExpandableListViewSample</string>
+    <string name="hello_world">Hello world!</string>
+    <!-- From: file:/C:/Users/unbounded/AndroidStudioProjects/ExpandableListViewSample/app/src/main/res/values/styles.xml -->
+    <eat-comment />
+
+    <style name="AppTheme" parent="android:Theme.Holo">
+        <item name="android:background">@drawable/main_bg</item>
+    </style>
+
+    <style name="title_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">-2dip</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:text">ExpandableListView Sample</item>
+        <item name="android:textColor">#FFF38585</item>
+        <item name="android:textSize">18dip</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

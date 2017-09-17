@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_empty="true" android:drawable="@drawable/add"></item>
+    <item android:state_expanded="true" android:drawable="@drawable/minus"></item>
+    <item android:drawable="@drawable/add"></item>
+</selector><!-- From: file:/C:/Users/unbounded/AndroidStudioProjects/ExpandableListView/app/src/main/res/drawable/group_indicator.xml -->
