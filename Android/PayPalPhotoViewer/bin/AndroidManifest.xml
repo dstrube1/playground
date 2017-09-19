@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dstrube.paypalphotoviewer"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 
+    According to this:
+    http://developer.android.com/reference/android/Manifest.permission.html#READ_EXTERNAL_STORAGE
+    APIs prior to 19 "require" this. BUT upon compilation and running, there was no complaint from the emulator running in 18.
+    Moreover, without this permission, running this on my API 19 phone failed quietly EXCEPT for 13 system images accessible from root
+    (potential security risk on Moto G?)
+    -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.dstrube.paypalphotoviewer.controller.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
