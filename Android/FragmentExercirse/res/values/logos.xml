@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="logo_names">
+        <item>Google</item>
+        <item>Yahoo</item>
+        <item>Facebook</item>
+        <item>Twitter</item>
+        <item>Linkedin</item>
+        <item>Bing</item>
+    </string-array>
+
+    <array name="logo_drawables">
+        <item>@drawable/google</item>
+        <item>@drawable/yahoo</item>
+        <item>@drawable/facebook</item>
+        <item>@drawable/twitter</item>
+        <item>@drawable/linkedin</item>
+        <item>@drawable/bing</item>
+    </array>
+
+</resources>
