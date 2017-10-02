@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="albumImages">
+        <item>@drawable/album1</item><!-- cracker -->
+        <item>@drawable/album1</item><!-- cracker -->
+        <item>@drawable/album1</item><!-- cracker -->
+        <item>@drawable/album3</item><!-- waits -->
+        <item>@drawable/album2</item><!-- pj -->
+        <item>@drawable/album1</item><!-- cracker -->
+        <item>@drawable/album2</item><!-- pj -->
+    </array>
+
+    <string-array name="albumNames">
+        <item>Kerosene Hat</item>
+        <item>Kerosene Hat</item>
+        <item>Kerosene Hat</item>
+        <item>Big Time</item>
+        <item>To Bring You My Love</item>
+        <item>Kerosene Hat</item>
+        <item>To Bring You My Love</item>
+    </string-array>
+    
+    <string-array name="songNames">
+        <item>Lonesome Johnny Blues</item>
+        <item>Take Me Down</item>
+        <item>Low</item>
+        <item>Train Song</item>
+        <item>Teclo</item>
+        <item>Eurotrash Girl</item>
+        <item>C\'mon Billy</item>
+    </string-array>
+    
+</resources>
