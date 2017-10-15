@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:descendantFocusability="blocksDescendants" >
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/photo"
+        android:textColor="#FFFF00"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/itemDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_toRightOf="@id/photo" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/itemDescription"
+        android:layout_toRightOf="@id/photo"
+        android:textColor="#32cd32"
+        android:textSize="19sp"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/price"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false" 
+        android:clickable="false"/>
+<!--  hints for focusableInTouchMode & focusable from here:
+http://xjaphx.wordpress.com/2011/07/14/listview-doesnt-respond-to-onitemclicklistener/ 
+this said also clickable=false:
+http://stackoverflow.com/questions/5417339/android-listview-with-checkbox-and-all-clickable
+-->
+</RelativeLayout>
