@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="face_icons">
+        <item>@drawable/face1</item>
+        <item>@drawable/face2</item>
+    </array>
+
+</resources>
