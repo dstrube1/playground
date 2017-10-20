@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/C:/Users/unbounded/AndroidStudioProjects/GuestureTest/app/src/main/res/values/dimens.xml -->
+    <eat-comment />
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- From: file:/C:/Users/unbounded/AndroidStudioProjects/GuestureTest/app/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="app_info">This is a sample application to demonstrate the use of Android Gestures. When a gesture is drawn, the recognized gesture(s) are displayed below. To get gestures availabe click the button \'Gesture List\'</string>
+    <string name="app_name">Guesture Test</string>
+    <string name="button_gestures_label">Gesture List</string>
+    <string name="gesture_list">gesture list</string>
+    <!-- From: file:/C:/Users/unbounded/AndroidStudioProjects/GuestureTest/app/src/main/res/values/styles.xml -->
+    <eat-comment />
+
+    <style name="AppTheme" parent="android:Theme.Holo">
+        <!-- Customize your theme here. -->
+    </style>
+
+</resources>
