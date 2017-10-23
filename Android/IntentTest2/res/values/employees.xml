@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- copied from ListView2 -->
+    <string-array name="employee_names">
+        <item>John Smith</item>
+        <item>Bob Smith</item>
+        <item>Smith Bob</item>
+        <item>Smith John</item>
+        <item>John John</item>
+        <item>Bob Bob</item>
+        <item>John Bob</item>
+        <item>Bob John</item>
+        <item>Smith Smith</item>
+        <item>David Strube</item>
+    </string-array>
+    
+     <string-array name="employee_email_addresses">
+        <item>a@a.com</item>
+        <item>b@b.com</item>
+        <item>c@c.com</item>
+        <item>d@d.com</item>
+        <item>e@e.com</item>
+        <item>f@f.com</item>
+        <item>g@g.com</item>
+        <item>h@h.com</item>
+        <item>i@i.com</item>
+        <item>j@j.com</item>
+    </string-array>
+    <string-array name="employee_phone_numbers">
+        <item>770–770–7770</item>
+        <item>771–771–7770</item>
+        <item>772–772–7770</item>
+        <item>773–773–7770</item>
+        <item>774–774–7770</item>
+        <item>775–775–7770</item>
+        <item>776–776–7770</item>
+        <item>777–777–7770</item>
+        <item>778–778–7770</item>
+        <item>779–779–7770</item>
+        
+    </string-array>
+</resources>
