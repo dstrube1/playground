@@ -1,1 +1,0 @@
-move ud.lnk "C:\dirpath\"

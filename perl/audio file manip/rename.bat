@@ -1,1 +1,0 @@
-dir /w | perl rename.pl > out.bat

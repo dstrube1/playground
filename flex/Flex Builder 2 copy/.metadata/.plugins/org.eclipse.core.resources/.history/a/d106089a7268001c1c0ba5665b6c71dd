@@ -1,9 +1,0 @@
-package base.error
-{
-	public class LenzError extends Error
-	{
-		public function LenzError(message:String):void{
-		super(message);
-		}
-	}
-}

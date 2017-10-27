@@ -1,1 +1,0 @@
-A text replacement program to aid in common text replacements done when programming.

@@ -1,1 +1,0 @@
-mysqld-nt.exe --console

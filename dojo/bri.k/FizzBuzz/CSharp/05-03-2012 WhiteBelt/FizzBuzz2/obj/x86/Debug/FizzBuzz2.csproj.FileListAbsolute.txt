@@ -1,7 +1,0 @@
-C:\The lab\CSharp\FizzBuzz2\FizzBuzz2\obj\x86\Debug\FizzBuzz2.csprojResolveAssemblyReference.cache
-C:\The lab\CSharp\FizzBuzz2\FizzBuzz2\bin\Debug\FizzBuzz2.exe
-C:\The lab\CSharp\FizzBuzz2\FizzBuzz2\bin\Debug\FizzBuzz2.pdb
-C:\The lab\CSharp\FizzBuzz2\FizzBuzz2\bin\Debug\nunit.framework.dll
-C:\The lab\CSharp\FizzBuzz2\FizzBuzz2\bin\Debug\nunit.framework.xml
-C:\The lab\CSharp\FizzBuzz2\FizzBuzz2\obj\x86\Debug\FizzBuzz2.exe
-C:\The lab\CSharp\FizzBuzz2\FizzBuzz2\obj\x86\Debug\FizzBuzz2.pdb

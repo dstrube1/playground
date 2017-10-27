@@ -1,7 +1,0 @@
-order of documents :
-LetterofTransHinds.doc
-ExecSum.doc
-Title.doc
-Pretext.doc
-Text.doc
-David Russell.ppt

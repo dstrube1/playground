@@ -1,1 +1,0 @@
-template<class T> T GetAverage(T num1, T num2, T num3); 

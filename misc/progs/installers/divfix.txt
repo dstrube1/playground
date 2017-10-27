@@ -1,5 +1,0 @@
-divfix is a program that strips and rebuilds the index files on DIVX movies.
-first strip the index then rebuild it. it'll sometimes fix movies that are otherwise messed up
-it can also truncate a movie you didn't complete the download of.
-THIS PROCESS REDUCES IMAGE QUALITY A TON.
-good luck

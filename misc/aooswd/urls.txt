@@ -1,3 +1,0 @@
-eiffel: http://tunes.org/Review/Languages.html
-http://www.scriptol.org/eiffel.html
-ftp://ftp.loria.fr/pub/loria/genielog/SmallEiffel/
