@@ -1,0 +1,47 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/dstrube/AndroidStudioProjects/WidgetDemo/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/WidgetDemo/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "6,15",
+                        "startColumns": "4,4",
+                        "startOffsets": "186,510",
+                        "endLines": "12,17",
+                        "endColumns": "12,12",
+                        "endOffsets": "472,665"
+                    },
+                    "to": {
+                        "startLines": "23,30",
+                        "startColumns": "4,4",
+                        "startOffsets": "923,1214",
+                        "endLines": "29,32",
+                        "endColumns": "12,12",
+                        "endOffsets": "1209,1369"
+                    }
+                },
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/WidgetDemo/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "4,2",
+                        "startColumns": "4,4",
+                        "startOffsets": "70,19",
+                        "endLines": "23,2",
+                        "endColumns": "19,47",
+                        "endOffsets": "903,62"
+                    },
+                    "to": {
+                        "startLines": "2,22",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,875",
+                        "endLines": "21,22",
+                        "endColumns": "19,47",
+                        "endOffsets": "870,918"
+                    }
+                }
+            ]
+        }
+    ]
+}
