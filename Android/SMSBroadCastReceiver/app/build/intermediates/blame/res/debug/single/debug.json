@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SMSBroadCastReceiver/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SMSBroadCastReceiver/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SMSBroadCastReceiver/app/build/intermediates/res/merged/debug/layout_list_row.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SMSBroadCastReceiver/app/src/main/res/layout/list_row.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SMSBroadCastReceiver/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SMSBroadCastReceiver/app/src/main/res/drawable-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SMSBroadCastReceiver/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SMSBroadCastReceiver/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SMSBroadCastReceiver/app/build/intermediates/res/merged/debug/layout_activity_sms_receiver_list.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SMSBroadCastReceiver/app/src/main/res/layout/activity_sms_receiver_list.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SMSBroadCastReceiver/app/build/intermediates/res/merged/debug/menu_sms_receiver_list.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SMSBroadCastReceiver/app/src/main/res/menu/sms_receiver_list.xml"
+    }
+]
