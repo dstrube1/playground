@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">AudibleCards</string>
+    <string name="create_empty_deck">New Empty Deck</string>
+    <string name="create_full_deck">New Full Deck</string>
+    <string name="draw_bottom">Draw Bottom</string>
+    <string name="draw_random">Draw Random</string>
+    <string name="draw_top">Draw Top</string>
+    <string name="shuffle_deck">Shuffle Deck</string>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+</resources>

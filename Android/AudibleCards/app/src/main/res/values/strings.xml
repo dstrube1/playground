@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AudibleCards</string>
+    <string name="create_empty_deck">New Empty Deck</string>
+    <string name="create_full_deck">New Full Deck</string>
+    <string name="draw_top">Draw Top</string>
+    <string name="draw_bottom">Draw Bottom</string>
+    <string name="draw_random">Draw Random</string>
+    <string name="shuffle_deck">Shuffle Deck</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.dstrube.audiblecards.MainActivity$PlaceholderFragment" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="createEmptyDeck"
+            android:text="@string/create_empty_deck" 
+            style="@android:attr/buttonBarButtonStyle"/>
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="createFullDeck"
+            android:text="@string/create_full_deck" 
+            style="@android:attr/buttonBarButtonStyle"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="drawTop"
+            android:text="@string/draw_top" 
+            style="@android:attr/buttonBarButtonStyle"/>
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="drawBottom"
+            android:text="@string/draw_bottom" 
+            style="@android:attr/buttonBarButtonStyle"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="drawRandom"
+            android:text="@string/draw_random" 
+            style="@android:attr/buttonBarButtonStyle"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="shuffleDeck"
+            android:text="@string/shuffle_deck" 
+            style="@android:attr/buttonBarButtonStyle"/>
+    </LinearLayout>
+<!-- 
+Started off with a TextView, but then figured we may want this to be scrollable.
+Better would be to do this with a list view, but this is good enough for now.
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+     <requestFocus />
+    -->
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:editable="false"
+    />
+    <!-- Too bad editable doesn't do anything :( -->
+
+</LinearLayout>
