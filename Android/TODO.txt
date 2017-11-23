@@ -6,3 +6,8 @@ SimpleNotification
 SkewedBitmap
 TabBarTest
 TestAutoComplete
+
+failed import into Android Studio; must recreate manually:
+SavedInstanceStateTest
+SendEmail
+SendSMS
