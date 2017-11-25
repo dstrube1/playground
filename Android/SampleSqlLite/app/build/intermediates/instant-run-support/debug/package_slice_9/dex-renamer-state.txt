@@ -1,0 +1,4 @@
+#Wed Nov 22 10:48:27 EST 2017
+base.0=/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/build/intermediates/transforms/dexMerger/debug/9
+renamed.0=classes.dex
+file.0=/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/build/intermediates/transforms/dexMerger/debug/9/classes.dex

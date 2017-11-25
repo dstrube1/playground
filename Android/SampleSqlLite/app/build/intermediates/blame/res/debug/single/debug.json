@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/build/intermediates/res/merged/debug/layout_activity_edit_animal.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/src/main/res/layout/activity_edit_animal.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/build/intermediates/res/merged/debug/layout_add_new_animal.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/src/main/res/layout/add_new_animal.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/build/intermediates/res/merged/debug/layout_view_animal_entry.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/src/main/res/layout/view_animal_entry.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/build/intermediates/res/merged/debug/menu_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/SampleSqlLite/app/src/main/res/drawable-mdpi/ic_launcher.png"
+    }
+]
