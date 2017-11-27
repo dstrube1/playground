@@ -8,6 +8,27 @@ TabBarTest
 TestAutoComplete
 
 failed import into Android Studio; must recreate manually:
+[probably:
+AdmobTest
+AdmobTest_0
+AndroidGPSTracking
+ButtonToggler
+CameraApp
+CustomDialog
+FragmentExercirse
+FragmentOrientation
+GoogleMapsV2
+GooglePlacesTest
+HelloVolley
+instagram
+IntentTest1
+IntentTest2
+JokeWidget
+MusicSelection
+NavigationDrawerTest
+PhoneRecord
+]
+RadioTest
 SavedInstanceStateTest
 SendEmail
 SendSMS
