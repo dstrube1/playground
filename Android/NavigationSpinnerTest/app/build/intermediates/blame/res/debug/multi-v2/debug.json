@@ -1,0 +1,149 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/dstrube/AndroidStudioProjects/NavigationSpinnerTest/app/build/intermediates/res/merged/debug/values-w820dp-v13_values-w820dp-v13.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/NavigationSpinnerTest/app/src/main/res/values-w820dp/dimens.xml",
+                    "from": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "310",
+                        "endColumns": "57",
+                        "endOffsets": "363"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "57",
+                        "endOffsets": "108"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/dstrube/AndroidStudioProjects/NavigationSpinnerTest/app/build/intermediates/res/merged/debug/values-v14_values-v14.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/NavigationSpinnerTest/app/src/main/res/values-v14/styles.xml",
+                    "from": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "225",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "373"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "201"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/dstrube/AndroidStudioProjects/NavigationSpinnerTest/app/build/intermediates/res/merged/debug/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/NavigationSpinnerTest/app/src/main/res/values/integers.xml",
+                    "from": {
+                        "startLines": "3,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "59,112",
+                        "endColumns": "51,51",
+                        "endOffsets": "106,159"
+                    },
+                    "to": {
+                        "startLines": "4,5",
+                        "startColumns": "4,4",
+                        "startOffsets": "169,221",
+                        "endColumns": "51,51",
+                        "endOffsets": "216,268"
+                    }
+                },
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/NavigationSpinnerTest/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "6,15",
+                        "startColumns": "4,4",
+                        "startOffsets": "191,522",
+                        "endLines": "12,17",
+                        "endColumns": "12,12",
+                        "endOffsets": "481,679"
+                    },
+                    "to": {
+                        "startLines": "12,19",
+                        "startColumns": "4,4",
+                        "startOffsets": "597,888",
+                        "endLines": "18,21",
+                        "endColumns": "12,12",
+                        "endOffsets": "883,1043"
+                    }
+                },
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/NavigationSpinnerTest/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "8,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "332,58,118,172,226,279",
+                        "endColumns": "52,58,52,52,52,52",
+                        "endOffsets": "380,112,166,220,274,327"
+                    },
+                    "to": {
+                        "startLines": "6,7,8,9,10,11",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "273,326,385,438,491,544",
+                        "endColumns": "52,58,52,52,52,52",
+                        "endOffsets": "321,380,433,486,539,592"
+                    }
+                },
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/NavigationSpinnerTest/app/src/main/res/values/dimens.xml",
+                    "from": {
+                        "startLines": "3,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "92,151",
+                        "endColumns": "57,55",
+                        "endOffsets": "145,202"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,113",
+                        "endColumns": "57,55",
+                        "endOffsets": "108,164"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/dstrube/AndroidStudioProjects/NavigationSpinnerTest/app/build/intermediates/res/merged/debug/values-v11_values-v11.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/NavigationSpinnerTest/app/src/main/res/values-v11/styles.xml",
+                    "from": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "182",
+                        "endLines": "8",
+                        "endColumns": "12",
+                        "endOffsets": "316"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "187"
+                    }
+                }
+            ]
+        }
+    ]
+}
