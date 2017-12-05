@@ -1,0 +1,132 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/dstrube/AndroidStudioProjects/MyCalc/app/build/intermediates/res/merged/debug/values-w820dp-v13_values-w820dp-v13.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/MyCalc/app/src/main/res/values-w820dp/dimens.xml",
+                    "from": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "310",
+                        "endColumns": "57",
+                        "endOffsets": "363"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "57",
+                        "endOffsets": "108"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/dstrube/AndroidStudioProjects/MyCalc/app/build/intermediates/res/merged/debug/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/MyCalc/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "4,3,18,9,15,14,6,19,11,8,5,17,16,13,7,12,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "103,58,614,298,509,474,191,650,370,263,156,578,544,438,227,404,335",
+                        "endColumns": "52,43,35,36,34,34,35,34,33,34,34,35,33,35,35,33,34",
+                        "endOffsets": "151,97,645,330,539,504,222,680,399,293,186,609,573,469,258,433,365"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "169,222,266,302,339,374,409,445,480,514,549,584,620,654,690,726,760",
+                        "endColumns": "52,43,35,36,34,34,35,34,33,34,34,35,33,35,35,33,34",
+                        "endOffsets": "217,261,297,334,369,404,440,475,509,544,579,615,649,685,721,755,790"
+                    }
+                },
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/MyCalc/app/src/main/res/values/dimens.xml",
+                    "from": {
+                        "startLines": "3,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "92,151",
+                        "endColumns": "57,55",
+                        "endOffsets": "145,202"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,113",
+                        "endColumns": "57,55",
+                        "endOffsets": "108,164"
+                    }
+                },
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/MyCalc/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "6,15",
+                        "startColumns": "4,4",
+                        "startOffsets": "191,522",
+                        "endLines": "12,17",
+                        "endColumns": "12,12",
+                        "endOffsets": "481,679"
+                    },
+                    "to": {
+                        "startLines": "21,28",
+                        "startColumns": "4,4",
+                        "startOffsets": "795,1086",
+                        "endLines": "27,30",
+                        "endColumns": "12,12",
+                        "endOffsets": "1081,1241"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/dstrube/AndroidStudioProjects/MyCalc/app/build/intermediates/res/merged/debug/values-v11_values-v11.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/MyCalc/app/src/main/res/values-v11/styles.xml",
+                    "from": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "182",
+                        "endLines": "8",
+                        "endColumns": "12",
+                        "endOffsets": "316"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "187"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/dstrube/AndroidStudioProjects/MyCalc/app/build/intermediates/res/merged/debug/values-v14_values-v14.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/MyCalc/app/src/main/res/values-v14/styles.xml",
+                    "from": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "225",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "373"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "201"
+                    }
+                }
+            ]
+        }
+    ]
+}
