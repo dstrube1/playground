@@ -1,0 +1,58 @@
+[
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/drawable-hdpi_kazakhstan.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/drawable-hdpi/kazakhstan.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/drawable-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/drawable-hdpi_icon.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/drawable-hdpi/icon.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/drawable-hdpi_jamaica.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/drawable-hdpi/jamaica.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/drawable-hdpi_kenya.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/drawable-hdpi/kenya.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/layout_simplerow.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/layout/simplerow.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/layout_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/layout/main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/layout_fragment_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/layout/fragment_main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/drawable-hdpi_colombia.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/drawable-hdpi/colombia.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/menu_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/drawable-hdpi_italy.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/drawable-hdpi/italy.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/ListView2/app/build/intermediates/res/merged/debug/drawable-hdpi_bhutan.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/ListView2/app/src/main/res/drawable-hdpi/bhutan.png"
+    }
+]
