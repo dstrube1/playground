@@ -1,0 +1,45 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/dstrube/AndroidStudioProjects/internalstorage/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/internalstorage/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "3,4,5",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "58,112,166",
+                        "endColumns": "52,52,50",
+                        "endOffsets": "106,160,212"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,108,161",
+                        "endColumns": "52,52,50",
+                        "endOffsets": "103,156,207"
+                    }
+                },
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/internalstorage/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "6,15",
+                        "startColumns": "4,4",
+                        "startOffsets": "191,522",
+                        "endLines": "12,17",
+                        "endColumns": "12,12",
+                        "endOffsets": "481,679"
+                    },
+                    "to": {
+                        "startLines": "5,12",
+                        "startColumns": "4,4",
+                        "startOffsets": "212,503",
+                        "endLines": "11,14",
+                        "endColumns": "12,12",
+                        "endOffsets": "498,658"
+                    }
+                }
+            ]
+        }
+    ]
+}
