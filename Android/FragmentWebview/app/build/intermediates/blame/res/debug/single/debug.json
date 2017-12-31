@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/build/intermediates/res/merged/debug/layout_linklist_layout.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/src/main/res/layout/linklist_layout.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/build/intermediates/res/merged/debug/layout-land_activity_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/src/main/res/layout-land/activity_main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/build/intermediates/res/merged/debug/menu_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/build/intermediates/res/merged/debug/layout_row_layout.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/src/main/res/layout/row_layout.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/src/main/res/drawable-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/build/intermediates/res/merged/debug/layout_web_layout.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/src/main/res/layout/web_layout.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentWebview/app/src/main/res/layout/activity_main.xml"
+    }
+]
