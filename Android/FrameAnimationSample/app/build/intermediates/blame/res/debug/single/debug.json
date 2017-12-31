@@ -1,0 +1,86 @@
+[
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_frame10a.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/frame10a.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_frame6a.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/frame6a.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_frame4a.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/frame4a.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_frame12a.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/frame12a.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_frame1a.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/frame1a.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_frame2a.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/frame2a.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_frame8a.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/frame8a.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/menu_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_logo_animation.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/logo_animation.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_frame5a.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/frame5a.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_frame3a.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/frame3a.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_frame11a.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/frame11a.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_frame0a.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/frame0a.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_frame9a.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/frame9a.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/res/merged/debug/drawable_frame7a.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/src/main/res/drawable/frame7a.png"
+    }
+]

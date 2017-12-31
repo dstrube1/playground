@@ -1,0 +1,4 @@
+#Thu Dec 28 00:19:21 EST 2017
+base.0=/Users/dstrube/AndroidStudioProjects/FrameAnimationSample/app/build/intermediates/transforms/dexMerger/debug/3
+path.0=classes.dex
+renamed.0=classes.dex
