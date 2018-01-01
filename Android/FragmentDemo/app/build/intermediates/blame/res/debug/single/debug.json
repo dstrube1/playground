@@ -1,0 +1,74 @@
+[
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/layout-land_activity_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/layout-land/activity_main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/drawable-hdpi_bb.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/drawable-hdpi/bb.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/drawable-hdpi_linux.jpg.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/drawable-hdpi/linux.jpg"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/drawable-hdpi_palm.jpg.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/drawable-hdpi/palm.jpg"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/drawable-hdpi_apple.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/drawable-hdpi/apple.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/drawable-hdpi_android.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/drawable-hdpi/android.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/layout_fragment_a.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/layout/fragment_a.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/drawable-hdpi_ostwo.jpg.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/drawable-hdpi/ostwo.jpg"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/drawable-hdpi_window7.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/drawable-hdpi/window7.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/drawable-hdpi_window.jpg.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/drawable-hdpi/window.jpg"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/menu_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/drawable-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/layout_fragment_b.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/layout/fragment_b.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/drawable-hdpi_macos.jpg.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/drawable-hdpi/macos.jpg"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/build/intermediates/res/merged/debug/drawable-hdpi_ubanto.jpg.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/FragmentDemo/app/src/main/res/drawable-hdpi/ubanto.jpg"
+    }
+]
