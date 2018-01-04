@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/dstrube/AndroidStudioProjects/FileUtilTests/fileUtil/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/dstrube/AndroidStudioProjects/FileUtilTests/fileUtil/build/intermediates/bundles/debug/res/values/values.xml",
+                    "from": {
+                        "startLines": "2,3,10",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,101,392",
+                        "endLines": "2,9,12",
+                        "endColumns": "45,12,12",
+                        "endOffsets": "96,387,547"
+                    }
+                }
+            ]
+        }
+    ]
+}
