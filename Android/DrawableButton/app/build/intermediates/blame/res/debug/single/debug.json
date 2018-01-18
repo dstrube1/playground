@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/build/intermediates/res/merged/debug/drawable-hdpi_button_menu_blog_pressed.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/src/main/res/drawable-hdpi/button_menu_blog_pressed.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/build/intermediates/res/merged/debug/drawable-hdpi_button_customize2.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/src/main/res/drawable-hdpi/button_customize2.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/build/intermediates/res/merged/debug/layout_drawable_button.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/src/main/res/layout/drawable_button.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher2.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/src/main/res/drawable-hdpi/ic_launcher2.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/build/intermediates/res/merged/debug/drawable-hdpi_button_menu.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/src/main/res/drawable-hdpi/button_menu.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/build/intermediates/res/merged/debug/drawable-hdpi_button_menu_blog_selected.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/src/main/res/drawable-hdpi/button_menu_blog_selected.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/src/main/res/drawable-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/build/intermediates/res/merged/debug/drawable-hdpi_button_menu_disabled_n.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/src/main/res/drawable-hdpi/button_menu_disabled_n.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/build/intermediates/res/merged/debug/menu_drawable_button.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/src/main/res/menu/drawable_button.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/build/intermediates/res/merged/debug/drawable-hdpi_button_customize.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/src/main/res/drawable-hdpi/button_customize.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/build/intermediates/res/merged/debug/drawable-hdpi_button_menu_blog_normal.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/DrawableButton/app/src/main/res/drawable-hdpi/button_menu_blog_normal.png"
+    }
+]
