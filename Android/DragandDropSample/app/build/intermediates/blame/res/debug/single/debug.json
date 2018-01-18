@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/build/intermediates/res/merged/debug/menu_main.xml.flat",
+        "source": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/build/intermediates/res/merged/debug/drawable-hdpi_bb.png.flat",
+        "source": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/src/main/res/drawable-hdpi/bb.png"
+    },
+    {
+        "merged": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/build/intermediates/res/merged/debug/drawable_shape.xml.flat",
+        "source": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/src/main/res/drawable/shape.xml"
+    },
+    {
+        "merged": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/build/intermediates/res/merged/debug/drawable-hdpi_apple.png.flat",
+        "source": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/src/main/res/drawable-hdpi/apple.png"
+    },
+    {
+        "merged": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/build/intermediates/res/merged/debug/drawable-hdpi_mac.jpg.flat",
+        "source": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/src/main/res/drawable-hdpi/mac.jpg"
+    },
+    {
+        "merged": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/src/main/res/drawable-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/build/intermediates/res/merged/debug/drawable_shape_droptarget.xml.flat",
+        "source": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/src/main/res/drawable/shape_droptarget.xml"
+    },
+    {
+        "merged": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/Projects/github/playground/Android/DragandDropSample/app/src/main/res/drawable-mdpi/ic_launcher.png"
+    }
+]
