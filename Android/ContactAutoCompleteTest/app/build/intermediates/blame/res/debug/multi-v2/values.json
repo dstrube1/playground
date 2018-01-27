@@ -1,0 +1,62 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/dstrube/Projects/github/playground/Android/ContactAutoCompleteTest/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/dstrube/Projects/github/playground/Android/ContactAutoCompleteTest/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "5,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "174,58,120",
+                        "endColumns": "52,60,52",
+                        "endOffsets": "222,114,168"
+                    },
+                    "to": {
+                        "startLines": "4,5,6",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "169,222,283",
+                        "endColumns": "52,60,52",
+                        "endOffsets": "217,278,331"
+                    }
+                },
+                {
+                    "source": "/Users/dstrube/Projects/github/playground/Android/ContactAutoCompleteTest/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "54",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "182"
+                    },
+                    "to": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "336",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "464"
+                    }
+                },
+                {
+                    "source": "/Users/dstrube/Projects/github/playground/Android/ContactAutoCompleteTest/app/src/main/res/values/dimens.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "88,146",
+                        "endColumns": "57,55",
+                        "endOffsets": "141,197"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,113",
+                        "endColumns": "57,55",
+                        "endOffsets": "108,164"
+                    }
+                }
+            ]
+        }
+    ]
+}

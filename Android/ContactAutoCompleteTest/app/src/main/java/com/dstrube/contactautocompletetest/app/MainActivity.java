@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
         if (cur.getCount() <= 0) {
             // we're done here.
             Toast.makeText(getApplicationContext(), "No contacts found",
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_LONG).show();
             cur.close();
             return;
         }
