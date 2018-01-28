@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/drawable-xhdpi_capture2.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/drawable-xhdpi/capture2.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/drawable-mdpi_capture3.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/drawable-mdpi/capture3.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/drawable-xhdpi_capture3.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/drawable-xhdpi/capture3.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/drawable-mdpi_capture1.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/drawable-mdpi/capture1.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/drawable-hdpi_capture1.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/drawable-hdpi/capture1.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/drawable-hdpi_capture2.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/drawable-hdpi/capture2.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/drawable-mdpi_capture2.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/drawable-mdpi/capture2.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/drawable-xhdpi_capture1.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/drawable-xhdpi/capture1.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/layout_hero_info.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/layout/hero_info.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/drawable-hdpi_capture3.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/drawable-hdpi/capture3.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/menu_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/drawable-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CompoundView/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+    }
+]
