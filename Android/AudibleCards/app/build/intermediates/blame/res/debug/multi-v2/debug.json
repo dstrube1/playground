@@ -1,51 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/dstrube/Projects/git/playground/Android/AudibleCards/app/build/intermediates/res/merged/debug/values-v11_values-v11.arsc.flat",
+            "outputFile": "/Users/dstrube/Projects/github/playground/Android/AudibleCards/app/build/intermediates/res/merged/debug/values_values.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/dstrube/Projects/git/playground/Android/AudibleCards/app/src/main/res/values-v11/styles.xml",
-                    "from": {
-                        "startLines": "6",
-                        "startColumns": "4",
-                        "startOffsets": "182",
-                        "endLines": "8",
-                        "endColumns": "12",
-                        "endOffsets": "316"
-                    },
-                    "to": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "4",
-                        "endColumns": "12",
-                        "endOffsets": "187"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/Users/dstrube/Projects/git/playground/Android/AudibleCards/app/build/intermediates/res/merged/debug/values_values.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/dstrube/Projects/git/playground/Android/AudibleCards/app/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "10,3,4,5,7,8,6,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "433,58,109,170,275,327,229,379",
-                        "endColumns": "52,49,60,58,51,51,45,53",
-                        "endOffsets": "481,103,165,224,322,374,270,428"
-                    },
-                    "to": {
-                        "startLines": "4,5,6,7,8,9,10,11",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "169,222,272,333,392,444,496,542",
-                        "endColumns": "52,49,60,58,51,51,45,53",
-                        "endOffsets": "217,267,328,387,439,491,537,591"
-                    }
-                },
-                {
-                    "source": "/Users/dstrube/Projects/git/playground/Android/AudibleCards/app/src/main/res/values/dimens.xml",
+                    "source": "/Users/dstrube/Projects/github/playground/Android/AudibleCards/app/src/main/res/values/dimens.xml",
                     "from": {
                         "startLines": "3,4",
                         "startColumns": "4,4",
@@ -62,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "/Users/dstrube/Projects/git/playground/Android/AudibleCards/app/src/main/res/values/styles.xml",
+                    "source": "/Users/dstrube/Projects/github/playground/Android/AudibleCards/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "10,3,4,5,7,8,6,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "433,58,109,170,275,327,229,379",
+                        "endColumns": "52,49,60,58,51,51,45,53",
+                        "endOffsets": "481,103,165,224,322,374,270,428"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7,8,9,10,11",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "169,222,272,333,392,444,496,542",
+                        "endColumns": "52,49,60,58,51,51,45,53",
+                        "endOffsets": "217,267,328,387,439,491,537,591"
+                    }
+                },
+                {
+                    "source": "/Users/dstrube/Projects/github/playground/Android/AudibleCards/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "6,15",
                         "startColumns": "4,4",
@@ -83,10 +59,32 @@
             ]
         },
         {
-            "outputFile": "/Users/dstrube/Projects/git/playground/Android/AudibleCards/app/build/intermediates/res/merged/debug/values-v14_values-v14.arsc.flat",
+            "outputFile": "/Users/dstrube/Projects/github/playground/Android/AudibleCards/app/build/intermediates/res/merged/debug/values-w820dp-v13_values-w820dp-v13.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/dstrube/Projects/git/playground/Android/AudibleCards/app/src/main/res/values-v14/styles.xml",
+                    "source": "/Users/dstrube/Projects/github/playground/Android/AudibleCards/app/src/main/res/values-w820dp/dimens.xml",
+                    "from": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "310",
+                        "endColumns": "57",
+                        "endOffsets": "363"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "57",
+                        "endOffsets": "108"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/dstrube/Projects/github/playground/Android/AudibleCards/app/build/intermediates/res/merged/debug/values-v14_values-v14.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/dstrube/Projects/github/playground/Android/AudibleCards/app/src/main/res/values-v14/styles.xml",
                     "from": {
                         "startLines": "7",
                         "startColumns": "4",
@@ -107,23 +105,25 @@
             ]
         },
         {
-            "outputFile": "/Users/dstrube/Projects/git/playground/Android/AudibleCards/app/build/intermediates/res/merged/debug/values-w820dp-v13_values-w820dp-v13.arsc.flat",
+            "outputFile": "/Users/dstrube/Projects/github/playground/Android/AudibleCards/app/build/intermediates/res/merged/debug/values-v11_values-v11.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/dstrube/Projects/git/playground/Android/AudibleCards/app/src/main/res/values-w820dp/dimens.xml",
+                    "source": "/Users/dstrube/Projects/github/playground/Android/AudibleCards/app/src/main/res/values-v11/styles.xml",
                     "from": {
-                        "startLines": "7",
+                        "startLines": "6",
                         "startColumns": "4",
-                        "startOffsets": "310",
-                        "endColumns": "57",
-                        "endOffsets": "363"
+                        "startOffsets": "182",
+                        "endLines": "8",
+                        "endColumns": "12",
+                        "endOffsets": "316"
                     },
                     "to": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",
-                        "endColumns": "57",
-                        "endOffsets": "108"
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "187"
                     }
                 }
             ]
