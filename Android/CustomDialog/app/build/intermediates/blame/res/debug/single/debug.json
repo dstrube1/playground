@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/build/intermediates/res/merged/debug/layout_main.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/src/main/res/layout/main.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/build/intermediates/res/merged/debug/drawable_bgdialog.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/src/main/res/drawable/bgdialog.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/build/intermediates/res/merged/debug/drawable_spring09_logo.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/src/main/res/drawable/spring09_logo.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/src/main/res/drawable-ldpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/build/intermediates/res/merged/debug/layout_dialog.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/src/main/res/layout/dialog.xml"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/src/main/res/drawable-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/build/intermediates/res/merged/debug/layout_dialog_signin.xml.flat",
+        "source": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/src/main/res/layout/dialog_signin.xml"
+    }
+]
