@@ -1,3 +1,5 @@
+package com.dstrube.codeForAtlanta.GeorgiaElectionResultsScraper;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.FileOutputStream;
@@ -33,13 +35,13 @@ dstrube@gmail.com
 
 Compile:
 Mac:
-javac -cp bin:bin/jsoup-1.11.1.jar -d bin GeorgiaElectionResultsScraper.java
+javac -cp bin:bin/jsoup-1.11.1.jar -d bin com/dstrube/codeForAtlanta/GeorgiaElectionResultsScraper/GeorgiaElectionResultsScraper.java
 Windows [unverified]:
 javac -cp bin;bin\jsoup-1.11.1.jar; -d bin GeorgiaElectionResultsScraper.java
 
 Run:
 Mac:
-java -cp bin:bin/jsoup-1.11.1.jar GeorgiaElectionResultsScraper
+java -cp bin:bin/jsoup-1.11.1.jar com.dstrube.codeForAtlanta.GeorgiaElectionResultsScraper.GeorgiaElectionResultsScraper
 Windows [unverified]:
 java -cp bin;bin\jsoup-1.11.1.jar; GeorgiaElectionResultsScraper
 
@@ -68,6 +70,8 @@ public class GeorgiaElectionResultsScraper {
 	private static final String URL0 = "http://results.enr.clarityelections.com/GA";
 	private static final String URL1 = "/63991/184321/en/select-county.html";
 	private static final int JSOUP_TIMEOUT = 8000;
+	
+	private static final boolean readyToRun = false;
 	
 	public static void main(String[] args) {
 		//Get the counties
@@ -163,18 +167,20 @@ public class GeorgiaElectionResultsScraper {
 					URL url = new URL(URL0 + value.substring(0, value.indexOf("/index.html")) + scriptSrc + "/reports/"+filename);
 					//TODO This has only been tested on a Mac. Is a different directory separator needed in Windows?
 					final String directory = "./downloads/" + countyName;
-					try{
-						if (!createDir(directory)){
+					if (readyToRun){
+						try{
+							if (!createDir(directory)){
+								//TODO Do we want to stop here or skip?
+								System.out.println("Error creating directory " + countyName + ". Stopping.");
+								return;
+							}
+							downloadFromUrl(url, directory + "/" + filename);
+						}
+						catch(IOException e){
 							//TODO Do we want to stop here or skip?
-							System.out.println("Error creating directory " + countyName + ". Stopping.");
+							System.out.println("Caught IOException at " + countyName + ". Stopping.");
 							return;
 						}
-						downloadFromUrl(url, directory + "/" + filename);
-					}
-					catch(IOException e){
-						//TODO Do we want to stop here or skip?
-						System.out.println("Caught IOException at " + countyName + ". Stopping.");
-						return;
 					}
 				}
 				//If you want to run thru this for only the first county, uncomment this line:

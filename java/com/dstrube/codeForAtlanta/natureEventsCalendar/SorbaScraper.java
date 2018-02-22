@@ -1,4 +1,4 @@
-package com.dstrube;
+package com.dstrube.codeForAtlanta.natureEventsCalendar;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -46,17 +46,17 @@ dstrube@gmail.com
 
 Compile:
 Mac:
-javac -cp bin/joda-time-2.9.9.jar -d bin IScraperRow.java 
-javac -cp bin:bin/joda-time-2.9.9.jar:bin/jsoup-1.11.1.jar -d bin SorbaScraper.java
+javac -cp bin/joda-time-2.9.9.jar -d bin com/dstrube/codeForAtlanta/natureEventsCalendar/IScraperRow.java 
+javac -cp bin:bin/joda-time-2.9.9.jar:bin/jsoup-1.11.1.jar -d bin com/dstrube/codeForAtlanta/natureEventsCalendar/SorbaScraper.java
 Windows [unverified]:
 javac -cp bin\joda-time-2.9.9.jar -d bin IScraperRow.java 
 javac -cp bin;bin\joda-time-2.9.9.jar;bin\jsoup-1.11.1.jar; -d bin SorbaScraper.java
 
 Run:
 Mac:
-java -cp bin:bin/joda-time-2.9.9.jar:bin/jsoup-1.11.1.jar SorbaScraper
+java -cp bin:bin/joda-time-2.9.9.jar:bin/jsoup-1.11.1.jar com.dstrube.codeForAtlanta.natureEventsCalendar.SorbaScraper
 Windows [unverified]:
-java -cp bin;bin\joda-time-2.9.9.jar;bin\jsoup-1.11.1.jar; SorbaScraper
+java -cp bin;bin\joda-time-2.9.9.jar;bin\jsoup-1.11.1.jar; com.dstrube.codeForAtlanta.natureEventsCalendar.SorbaScraper
 
 TODO: Update above commands for new package / path
 
