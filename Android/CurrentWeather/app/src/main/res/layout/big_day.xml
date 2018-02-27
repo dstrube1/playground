@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="#2BAAF3">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/big_day_left"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/big_day_date"
+                android:textColor="#FFF"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/big_day_temp_high"
+                android:textColor="#FFF"
+                android:textSize="40sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/big_day_temp_low"
+                android:textColor="#FFF"
+                android:textSize="20sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/big_day_right"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/big_day_image"
+                android:textAlignment="viewEnd"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/big_day_description"
+                android:textAlignment="center"
+                android:textColor="#FFF"
+                android:textSize="20sp"
+                />
+        </LinearLayout>
+
+        <!--
+        hidden variables go here
+        -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/big_day_humidity"
+            android:visibility="gone"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/big_day_wind"
+            android:visibility="gone"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/big_day_degree"
+            android:visibility="gone"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/big_day_pressure"
+            android:visibility="gone"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/big_day_icon"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
