@@ -6,6 +6,12 @@ import android.os.Bundle;
 import android.view.Display;
 import android.widget.GridView;
 
+/*
+* TODO: FIX THIS:
+* Error:Execution failed for task ':app:transformDexArchiveWithExternalLibsDexMergerForDebug'.
+> com.android.builder.dexing.DexArchiveMergerException: Unable to merge dex
+* */
+
 public class MainActivity extends AppCompatActivity {
     InstagramDataSource instagramDataSource;
     InstagramAdapter instagramAdapter;
