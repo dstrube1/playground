@@ -1,0 +1,19 @@
+<resources>
+    <string-array name="column_names">
+        <item>callId</item>
+        <item>phoneNumber</item>
+        <item>callerName</item>
+        <item>callDateTime</item>
+        <item>latitude</item>
+        <item>longitude</item>
+    </string-array>
+    <string-array name="column_types">
+        <item>INTEGER PRIMARY KEY</item>
+        <item>TEXT</item>
+        <item>TEXT</item>
+        <item>TEXT</item>
+        <item>TEXT</item>
+        <item>TEXT</item>
+    </string-array>
+    <string name="app_name">PhoneRecord</string>
+</resources>
