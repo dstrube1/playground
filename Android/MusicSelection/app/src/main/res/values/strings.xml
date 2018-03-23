@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MusicSelection</string>
+    <string name="albumImage">Album image</string>
+    <string name="albumName">Album name</string>
+    <string name="songName">Song name</string>
+    <string name="action_settings">Settings</string>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dstrube.musicselection.MainActivity"
+    android:orientation="vertical">
+
+    <com.dstrube.musicselection.AlbumView
+        android:id="@+id/albumview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        >
+    </com.dstrube.musicselection.AlbumView>
+    <!--
+             dstrube:albumName="BLAH!"
+     -->
+    <com.dstrube.musicselection.AlbumView
+        android:id="@+id/albumview2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    </com.dstrube.musicselection.AlbumView>
+    <com.dstrube.musicselection.AlbumView
+        android:id="@+id/albumview3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    </com.dstrube.musicselection.AlbumView>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+    </ListView>
+
+</LinearLayout>
