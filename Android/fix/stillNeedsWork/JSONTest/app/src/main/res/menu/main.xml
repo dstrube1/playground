@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.dstrube.jsontest.MainActivity" >
+
+    <item
+        android:id="@+id/refresh"
+        android:icon="@drawable/ic_menu_refresh"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="@string/refresh"/>
+    <!-- C:\Program Files\adt-bundle-windows-x86_64-20140321\sdk\docs\images\icon_design -->
+    
+    <item
+        android:id="@+id/cleanSlate"
+        android:icon="@drawable/ic_menu_delete"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="@string/cleanSlate"/>
+    
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="@string/action_settings"/>
+
+</menu>
