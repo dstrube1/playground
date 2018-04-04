@@ -1,0 +1,18 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="title_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">-2dip</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:text">ExpandableListView Sample</item>
+        <item name="android:textColor">#FFF38585</item>
+        <item name="android:textSize">18dip</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>
