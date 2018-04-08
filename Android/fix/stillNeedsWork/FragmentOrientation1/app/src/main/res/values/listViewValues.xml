@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="names">
+        <item>Harry Potter</item>
+        <item>Spider-Man</item>
+        <item>Superman</item>
+        <item>Batman</item>
+        <item>Sherlock Holmes</item>
+    </string-array>
+    <string-array name="descriptions">
+        <item>London</item>
+        <item>New York</item>
+        <item>Metropolis</item>
+        <item>Gotham</item>
+        <item>London</item>
+    </string-array>
+
+</resources>
