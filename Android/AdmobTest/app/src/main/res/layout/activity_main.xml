@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <!--     xmlns:ads="http://schemas.android.com/apk/lib/com.google.android.gms.ads"
+    if using a layout-land folder with a LinearLayout, use this:
+    android:orientation="vertical"
+
+    -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hello_world" />
+
+    <!--
+        com.google.android.gms.ads.AdView
+        or
+        com.google.ads.AdView
+        @string/ad_unit_id
+    -->
+    <!--       we keep getting an error: Required XML attribute "adSize" was missing; let's try adding this from MainActivity.java...
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/ad"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-7125904154800713/3493958989" />
+        -->
+    <!--
+    "loadAdOnCreate" and "testDevices" XML attributes are no longer available:
+
+    http://stackoverflow.com/questions/20153270/android-adview-missing-required-xml-attribute-adsize
+
+    ads:loadOnCreate="true"
+            ads:testDevices="TEST_EMULATOR"
+     -->
+</RelativeLayout>
