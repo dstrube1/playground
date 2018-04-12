@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <!-- These all come from com.dstrube.MyApplication,
+    not com.dstrube.MyApplication0
+    For these to work, may need to re-register this app
+    -->
+    <!-- from here:
+https://developers.google.com/mobile-ads-sdk/docs/admob/android/quick-start
+only for testing : -->
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <!--
+    Reporting view: MyApplication | Android > Default view
+App tracking ID: UA-52303187-5
+Ad unit ID: ca-app-pub-7125904154800713/2293272589
+Ad unit name: Bottom Banner
+
+    upload 32/64 app to here, signed in as affamto:
+    https://play.google.com/apps/publish
+
+    then go here as dstrube:
+    https://apps.admob.com/#monetize/adunit:create
+App tracking ID: UA-52303187-4
+Ad unit ID: ca-app-pub-7125904154800713/8339806186
+Ad unit name: Bottom Banner
+    -->
+
+</resources>
