@@ -7,13 +7,13 @@
         <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
         <uses-permission android:name="android.permission.BLUETOOTH" />
         <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-        <!- required for mint / splunk / bugsense, and ads->
-        <uses-permission android:name="android.permission.INTERNET" />
         <!- required to flush mint only over Wifi ->
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
         -->
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- required for mint / splunk / bugsense, and ads-->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"

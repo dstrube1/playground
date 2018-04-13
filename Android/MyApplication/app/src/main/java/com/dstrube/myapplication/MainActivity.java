@@ -1,14 +1,13 @@
 package com.dstrube.myapplication;
 
-//import android.app.PendingIntent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-//import java.io.File;
-
+import android.app.PendingIntent;
+import java.io.File;
 
 import java.io.IOException;
 //import java.nio.charset.Charset;
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        testBugSenseStart();
+        testBugSenseStart();
         text = "blah";
 
         // Example of a call to a native method
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         }
         tv.setText(stringFromJNI());
     }
+
 //https://atlantabeltline.checkfront.com/reserve/?inline=1&provider=wordpress&pipe=https%3A%2F%2Fbeltline.org%2Fwp-content%2Fplugins%2Fcheckfront-wp-booking%2Fpipe.html&ssl=1&src=https%3A%2F%2Fbeltline.org&1510641802977#D20171117
     //https://atlantabeltline.checkfront.com/reserve/?1510641802977#D20171117
     private static final String URL = "https://atlantabeltline.checkfront.com/reserve/?#D20171117";
@@ -107,6 +107,10 @@ public class MainActivity extends AppCompatActivity {
 //
             Document doc = res.parse();
             Element ele = doc.select("div[class=cf-item-list]").first();
+            if (ele == null){
+                Log.e(TAG, "Null jsoup element");
+                return;
+            }
             Elements lines = ele.select("div");
             for (Element elt : lines) {
                 System.out.println(elt.text());
@@ -164,9 +168,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-//        testBugSenseEnd();
-//        File file = new File("");
-//        File[] files = file.listFiles();
+        testBugSenseEnd();
+        File file = new File("");
+        File[] files = file.listFiles();
 
     }
 
