@@ -2,11 +2,9 @@ package com.dstrube.listviewtest
 
 import android.app.Activity
 import android.os.Bundle
-import android.view.View
 import android.widget.ListView
 import android.widget.ArrayAdapter
 import java.util.*
-import java.util.Arrays.asList
 
 
 
