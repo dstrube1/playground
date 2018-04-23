@@ -37,6 +37,10 @@ class MainActivity : Activity() {
         myText += "t.equals(v) (==) = ${t == v}\n"
         myText += "t === v = ${t === v}\n"
         myText += "v.hashCode() = ${v.hashCode()}\n"
+        myText += defaultParam(0)
+        myText += defaultParam(1, "y")
+        myText += defaultParam(y="params can be out of order",x=2)
+        myText += "single expression function (plus implicit toString()): sum(1,2) = " + sum(1,2)
 
         tv?.text = myText
 
@@ -45,6 +49,12 @@ class MainActivity : Activity() {
         //leftoff about 8 min in to here:
         //https://www.youtube.com/watch?v=X1RVYt2QKQE
     }
+
+    fun defaultParam(x:Int, y:String="default value"):String{
+        return "in defaultParam: x = $x, y=$y\n"
+    }
+
+    fun sum(x:Int, y:Int) = x + y
 }
 
 data class test(val param1 :Int, val param2:String)
