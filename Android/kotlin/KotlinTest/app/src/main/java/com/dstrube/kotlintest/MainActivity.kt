@@ -3,6 +3,7 @@ package com.dstrube.kotlintest
 import android.app.Activity
 import android.os.Bundle
 import android.widget.TextView
+import java.math.BigDecimal
 
 class MainActivity : Activity() {
 
@@ -51,11 +52,17 @@ class MainActivity : Activity() {
         myText += caseEx1(true)
         myText += caseEx1(5)
 
+        val bd1 = BigDecimal(50)
+        myText += "50% of 50?: ${bd1.percent(50)}\n"
+
+        myText += "7.times(2) = ${7.times(2)}\n"
+        myText += "7 times 3 = ${7 times 3}\n"
+
         tv?.text = myText
 
         println("println is also good for debugging")
 
-        //leftoff about 10 min in to here:
+        //leftoff about 16 min in to here:
         //https://www.youtube.com/watch?v=X1RVYt2QKQE
     }
 
@@ -70,7 +77,7 @@ class MainActivity : Activity() {
             1 -> return "1\n"
             in 1..4 -> return "in 1..4: $x\n"
             !in 1..4 -> return "!in 1..4: $x\n"
-            else -> return "else: $x\n"
+            else -> throw IllegalArgumentException("Impossible: $x")
         }
     }
 
@@ -81,6 +88,16 @@ class MainActivity : Activity() {
                 else -> "else: $x\n"
             }
 
+    //extension function - extending a type
+    private fun BigDecimal.percent(percentage: Int) = this.multiply(BigDecimal(percentage)).divide(BigDecimal(100))
+
+    //extension function with infix:
+    private infix fun Int.times(x: Int) = x * this
+
+    //extension property
+    private val Int.bd: BigDecimal
+        get() = BigDecimal(this)
+        //usage: val bd1 = 100.bd
 }
 
 data class test(val param1: Int, val param2: String)
