@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.TextView
 import java.math.BigDecimal
 
-class MainActivity : Activity() {
+sealed /*as opposed to `open`, ie, inheritable / extendable */class MainActivity : Activity() {
 
     var tv: TextView? = null
 
@@ -23,8 +23,9 @@ class MainActivity : Activity() {
 
         var myText: String? = null
 
-        val t: test = test(1, "x")
-
+        val t: DataClassTest = DataClassTest(1, "x")
+/*
+Cool old stuff:
         myText = "t = ${t.param1} + ${t.param2} \n"
         myText += "t.toString() = ${t.toString()}\n"
         myText += "t.equals(t) = ${t.equals(t)}\n"
@@ -58,11 +59,39 @@ class MainActivity : Activity() {
         myText += "7.times(2) = ${7.times(2)}\n"
         myText += "7 times 3 = ${7 times 3}\n"
 
+        val bd2 = 1.bd
+        myText += "bd2.type = ${bd2.javaClass}\n"
+
+        val t0:DataClassTest = DataClassTest(2, "x")
+        val t1:DataClassTest = DataClassTest(2, "y")
+
+        myText += "t plus t0 = ${t.plus(t0)}\n"
+        myText += "t plus t1 = ...\n"
+        try{
+            myText += "t plus t0 = ${t.plus(t1)}\n"
+
+        }catch (e:IllegalArgumentException){
+            myText += "caught IllegalArgumentException\n"
+        }
+
+        var nullableInt : Int? = null
+        myText += "nullableInt = $nullableInt\n"
+*/
+
+        //incomplete, but good enough for illustration
+//        myText += "higherOrderFunction: ${higherOrderFunction({value -> value.isNotEmpty()})}\n"
+//        //alternate syntax:
+//        myText += "higherOrderFunction: ${higherOrderFunction({it.isNotEmpty()})}\n"
+//        //another alternate syntax:
+//        myText += "higherOrderFunction: ${higherOrderFunction(){it.isNotEmpty()}}\n" //() behind higherOrderFunction only necessary if there is another param
+
+
+
         tv?.text = myText
 
         println("println is also good for debugging")
 
-        //leftoff about 16 min in to here:
+        //leftoff about 27 min in to here:
         //https://www.youtube.com/watch?v=X1RVYt2QKQE
     }
 
@@ -98,6 +127,22 @@ class MainActivity : Activity() {
     private val Int.bd: BigDecimal
         get() = BigDecimal(this)
         //usage: val bd1 = 100.bd
+
+    operator fun DataClassTest.plus(test1: DataClassTest) =
+            if (param2 == test1.param2){
+                DataClassTest(param1 + test1.param1, param2)
+            } else{
+                throw IllegalArgumentException("Invalid use of plus")
+            }
+
+    //higher order function takes in 1 parameter (a function that takes in a string and returns a boolean) and returns a list of strings
+    fun higherOrderFunction(predicate : (String) -> (Boolean)) : List<String>{
+        TODO("Later")
+    }
+    fun lowerOrderFunction(param:String):Boolean{
+        if (param.length > 0) return true
+        return false
+    }
 }
 
-data class test(val param1: Int, val param2: String)
+data class DataClassTest(val param1: Int, val param2: String)
