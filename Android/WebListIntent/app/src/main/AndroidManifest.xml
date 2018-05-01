@@ -3,10 +3,10 @@
     package="com.dstrube.weblistintent"
     android:versionCode="1"
     android:versionName="1.0" >
-
+<!--
     <uses-sdk
-        android:minSdkVersion="18"
-        android:targetSdkVersion="19" />
+        android:minSdkVersion="24"
+        android:targetSdkVersion="24" />-->
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.dstrube.weblistintent.controller.ContentFragmentActivity"></activity>
+        <activity android:name="com.dstrube.weblistintent.controller.ContentFragmentActivity"/>
     </application>
 
 </manifest>
