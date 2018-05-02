@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="domains">
+        <item>google</item>
+        <item>yahoo</item>
+        <item>aol</item>
+        <item>msn</item>
+        <item>xkcd</item>
+    </string-array>
+</resources>
