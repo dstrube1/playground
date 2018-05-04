@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: /Users/dstrube/AndroidStudioProjects/TestBinder/app/src/main/aidl/com/example/testbinder/IMather.aidl
+ * Original file: /Users/dstrube/Projects/github/playground/Android/TestBinder/app/src/main/aidl/com/example/testbinder/IMather.aidl
  */
 package com.example.testbinder;
 public interface IMather extends android.os.IInterface
