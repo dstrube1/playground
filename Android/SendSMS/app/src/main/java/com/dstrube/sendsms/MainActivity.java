@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             //great
         }
         else {
-            Toast.makeText(this, "SEND_SMS permission required", Toast.LENGTH_LONG);
+            Toast.makeText(this, "SEND_SMS permission required", Toast.LENGTH_LONG).show();
         }
     }
 
