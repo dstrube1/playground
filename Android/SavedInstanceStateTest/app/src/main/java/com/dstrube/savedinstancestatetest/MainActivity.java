@@ -22,9 +22,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Click(View v){
-        String role = roleText.getText().toString();
-        String text = editText.getText().toString();
-        role = "Role: "+text;
+        final String text = editText.getText().toString();
+        final String role = "Role: " + text;
         roleText.setText(role);
     }
 
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        String role = savedInstanceState.getString("role");
+        final String role = savedInstanceState.getString("role");
         //Comment out this line and the magic breaks:
         roleText.setText(role);
         Toast.makeText(getApplicationContext(), "Role restored", Toast.LENGTH_SHORT).show();
