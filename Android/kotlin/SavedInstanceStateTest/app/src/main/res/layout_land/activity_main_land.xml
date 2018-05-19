@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <!--
+    Error: URL is not registered
+    None of these suggestions help:
+    https://stackoverflow.com/questions/16883427/why-is-android-studio-reporting-uri-is-not-registered
+    but still, it runs
+    -->
+    <TextView
+        android:id="@+id/roleTextLand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="Role, fool: " />
+
+    <EditText
+        android:id="@+id/editText1Land"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:ems="10"
+        android:hint="enter role, fool!" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/button1Land"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:text="Update Role, fool!"
+        android:onClick="Click" />
+    
+
+</LinearLayout>

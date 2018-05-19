@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SavedInstanceStateTest</string>
+    <string name="android_url">http://schemas.android.com/apk/res/android</string>
+</resources>
