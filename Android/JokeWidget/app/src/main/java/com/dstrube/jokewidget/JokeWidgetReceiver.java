@@ -33,9 +33,9 @@ public class JokeWidgetReceiver extends BroadcastReceiver {
 
 		// re-registering for click listener
 		remoteViews.setOnClickPendingIntent(R.id.sync_button,
-				JokeWidgetProvider.buildButtonPendingIntent(context));
+				NewAppWidget.buildButtonPendingIntent(context));
 
-		JokeWidgetProvider.pushWidgetUpdate(context.getApplicationContext(),
+		NewAppWidget.pushWidgetUpdate(context.getApplicationContext(),
 				remoteViews);
 //		Toast.makeText(context, "end updateWidgetPictureAndButtonListener", Toast.LENGTH_SHORT).show();
 	}

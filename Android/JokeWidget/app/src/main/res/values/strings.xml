@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">JokeWidget</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
     <string-array name="jokes">
         <item>Did you hear the one about the letter A?</item>
         <item>Did you hear the one about the letter B?</item>
@@ -8,4 +11,5 @@
         <item>Did you hear the one about the letter E?</item>
         <item>Did you hear the one about the letter F?</item>
     </string-array>
+
 </resources>
