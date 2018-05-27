@@ -24,7 +24,7 @@ namespace ConsoleApplication1
 
         private void evPass_StringValueChanged(object sender, EventArgs e)
         {
-
+            Console.WriteLine("evPass_StringValueChanged");
         }
 
     }
