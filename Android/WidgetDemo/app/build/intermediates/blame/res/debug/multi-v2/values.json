@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/dstrube/AndroidStudioProjects/WidgetDemo/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/Users/dstrube/Projects/github/playground/Android/WidgetDemo/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
-                    "source": "/Users/dstrube/AndroidStudioProjects/WidgetDemo/app/src/main/res/values/styles.xml",
+                    "source": "/Users/dstrube/Projects/github/playground/Android/WidgetDemo/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "6,15",
                         "startColumns": "4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/dstrube/AndroidStudioProjects/WidgetDemo/app/src/main/res/values/strings.xml",
+                    "source": "/Users/dstrube/Projects/github/playground/Android/WidgetDemo/app/src/main/res/values/strings.xml",
                     "from": {
                         "startLines": "4,2",
                         "startColumns": "4,4",
