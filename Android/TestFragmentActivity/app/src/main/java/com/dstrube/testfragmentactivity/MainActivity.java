@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.dstrube.testfragmentactivity.Utils.Utils;
 
@@ -13,6 +15,7 @@ public class MainActivity extends AppCompatActivity
 implements BlankFragment.OnFragmentInteractionListener{
 
     private final static String TAG = MainActivity.class.getName();
+    private static  int clickCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,8 @@ implements BlankFragment.OnFragmentInteractionListener{
         Log.i(TAG, Utils.methodLogString(new Object(){}.getClass().getEnclosingMethod()));
     }
 
-    //TODO Add this to Utils
+    public void buttonClick(View view) {
+        Toast.makeText(this, "button click " + clickCount++, Toast.LENGTH_SHORT).show();
+    }
 
 }
