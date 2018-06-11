@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TestAutoComplete</string>
+    <string name="hint">Try something beginning with N&#8230;</string>
 </resources>
