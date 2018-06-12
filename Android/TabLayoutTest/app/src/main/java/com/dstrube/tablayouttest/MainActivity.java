@@ -13,7 +13,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TabHost tabHost = new TabHost(getBaseContext()//this//getApplicationContext()
+        TabHost tabHost = new TabHost(
+                //getBaseContext()
+                //this
+                getApplicationContext()
         );
 
         // Tab for Photos
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Intent videosIntent = new Intent(this, VideosActivity.class);
         videospec.setContent(videosIntent);
 
+        //TODO keeps breaking here:
         // Adding all TabSpec to TabHost
         tabHost.addTab(photospec); // Adding photos tab
         tabHost.addTab(songspec); // Adding songs tab
