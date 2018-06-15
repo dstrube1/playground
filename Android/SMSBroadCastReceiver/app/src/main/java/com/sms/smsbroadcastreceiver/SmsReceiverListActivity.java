@@ -11,15 +11,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 public class SmsReceiverListActivity extends ListActivity {
 
 	private BroadcastReceiver mIntentReceiver;
-	private ListView listView;
 	private SimpleAdapter listAdapter ;
-	private ArrayList<Map<String, String>> list = new ArrayList<Map<String,String>>() ;
+	private ArrayList<Map<String, String>> list = new ArrayList<>() ;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class SmsReceiverListActivity extends ListActivity {
 		setContentView(R.layout.activity_sms_receiver_list);
 		   //setContentView(R.layout.main);
 	       // setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, DayOfWeek));
-		 	Map<String, String> hm = new HashMap<String, String>();
+		 	Map<String, String> hm = new HashMap<>();
 		 	hm.put("number", "908XXXX");
 		 	hm.put("msg", "A Test Message");
 		 	list.add(hm);
@@ -35,11 +35,10 @@ public class SmsReceiverListActivity extends ListActivity {
 		 
 		    // Create and populate a List of planet names.
 		    String[] planets = new String[] { "Mercury"};  
-		    ArrayList<String> planetList = new ArrayList<String>();
-		    planetList.addAll( Arrays.asList(planets) );
-		    
+		    ArrayList<String> planetList = new ArrayList<>(Arrays.asList(planets));
+
 		    // Create ArrayAdapter using the planet list.
-		    //listAdapter = new ArrayAdapter<String>(this, R.layout.list_row, planetList);
+//		    listAdapter = new ArrayAdapter<>(this, R.layout.list_row, planetList);
 		    
 		    
 		    final String[] fromMapKey = new String[] {"number", "msg"};
@@ -50,10 +49,9 @@ public class SmsReceiverListActivity extends ListActivity {
 		    listAdapter =  new SimpleAdapter(this, list,
 		                             android.R.layout.simple_list_item_2,
 		                             fromMapKey, toLayoutId);
-		    
-		    
-	    
-		    listView = getListView();
+
+
+		ListView listView = getListView();
 		 	listView.setAdapter(listAdapter);
 	}
 
