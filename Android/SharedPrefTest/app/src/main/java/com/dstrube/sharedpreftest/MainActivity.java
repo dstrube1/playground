@@ -1,7 +1,6 @@
 package com.dstrube.sharedpreftest;
 
 import android.app.Activity;
-//import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-//import android.os.Build;
 
 public class MainActivity extends Activity {
 
@@ -35,13 +33,13 @@ public class MainActivity extends Activity {
     protected void onResume() {
     	super.onResume();
     	
-    	et = (EditText)findViewById(R.id.editText1);
+    	et = findViewById(R.id.editText1);
     	
     	prefs = getSharedPreferences("myPref", Context.MODE_PRIVATE);
     	
     	String storedPref = prefs.getString("myPref", "");
     	
-    	if (storedPref == null || storedPref.equals("")){return;}
+    	if (storedPref.equals("")){return;}
     	
     	et.setText(storedPref);
     }
@@ -49,7 +47,7 @@ public class MainActivity extends Activity {
     public void Clear(View v){
     	SharedPreferences.Editor editor = prefs.edit();
     	editor.putString("myPref", "");
-    	editor.commit();
+    	editor.apply();
     	et.setText("");
     	
     }
@@ -60,7 +58,7 @@ public class MainActivity extends Activity {
     	}
     	SharedPreferences.Editor editor = prefs.edit();
     	editor.putString("myPref", text);
-    	editor.commit();
+    	editor.apply();
     	
     }
 
@@ -78,10 +76,7 @@ public class MainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 
     /**
