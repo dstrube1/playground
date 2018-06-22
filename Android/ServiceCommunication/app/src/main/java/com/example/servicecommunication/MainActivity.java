@@ -25,8 +25,8 @@ public class MainActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		wordList = new ArrayList<String>();
-		adapter = new ArrayAdapter<String>(this,
+		wordList = new ArrayList<>();
+		adapter = new ArrayAdapter<>(this,
 				android.R.layout.simple_list_item_1, android.R.id.text1,
 				wordList);
 		setListAdapter(adapter);
@@ -35,7 +35,7 @@ public class MainActivity extends ListActivity {
 
 	@Override
 	protected void onResume() {
-		super.onPause();
+		super.onResume();
 		Intent i = new Intent (this, LocalWordService.class);
 		bindService(i, mConnection,Context.BIND_AUTO_CREATE);
 		

@@ -13,7 +13,7 @@ import android.os.IBinder;
 
 public class LocalWordService extends Service {
   private final IBinder mBinder = new MyBinder();
-  private ArrayList<String> list = new ArrayList<String>();
+  private ArrayList<String> list = new ArrayList<>();
 
   @Override
   public int onStartCommand(Intent intent, int flags, int startId) {
