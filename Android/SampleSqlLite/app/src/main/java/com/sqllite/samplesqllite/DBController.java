@@ -15,12 +15,13 @@ public class DBController  extends SQLiteOpenHelper {
 //  private static final String LOGCAT = null;
  
   private static final int DB_VERSION = 2;
-  
+
   private static final String TABLE_NAME = "animals";
-  
+  private static final String TAG = DBController.class.getName();
+
   public DBController(Context applicationcontext) {
     super(applicationcontext, "androidsqlite.db", null, DB_VERSION);
-    Log.d("DBController constructor","Created");
+    Log.d(TAG,"Created");
   }
  
   @Override
@@ -35,16 +36,16 @@ public class DBController  extends SQLiteOpenHelper {
   
   @Override
   public void onUpgrade(SQLiteDatabase database, int version_old, int current_version) {
-	  Log.d("DBController - onUpgrade", "at beginning of onUpgrade");
+	  Log.d(TAG, "at beginning of onUpgrade");
     String query;
     query = "DROP TABLE IF EXISTS animals";
     database.execSQL(query);
     onCreate(database);
-    Log.d("DBController - onUpgrade", "at end of onUpgrade");
+    Log.d(TAG, "at end of onUpgrade");
   }
  
   public void insertAnimal(HashMap<String, String> queryValues) {
-	  Log.d("DBController - insertRow", "at beginning of insertRow");
+	  Log.d(TAG, "at beginning of insertRow");
     SQLiteDatabase database = this.getWritableDatabase();
     ContentValues values = new ContentValues();
     values.put("animalName", queryValues.get("animalName"));
@@ -57,36 +58,36 @@ public class DBController  extends SQLiteOpenHelper {
     }
     
     database.close();
-    Log.d("DBController - insertRow", "at end of insertRow");
+    Log.d(TAG, "at end of insertRow");
   }
  
   public int updateAnimal(HashMap<String, String> queryValues) {
-	  Log.d("DBController - updateRow", "at beginning of updateRow");
+	  Log.d(TAG, "at beginning of updateRow");
     SQLiteDatabase database = this.getWritableDatabase();  
     ContentValues values = new ContentValues();
     values.put("animalName", queryValues.get("animalName"));
     values.put("animalTallness", queryValues.get("animalTallness"));
     
-    Log.d("DBController - updateRow", "at end of updateRow");
+    Log.d(TAG, "at end of updateRow");
     
     return database.update(TABLE_NAME, values, "animalId" + " = ?", new String[] {"1" });
   }
  
   public void deleteAnimal(String id) {
 //    Log.d(LOGCAT,"delete");
-	  Log.d("DBController - deleteAnimal", "at beginning of deleteAnimal");
+	  Log.d(TAG, "at beginning of deleteAnimal");
     SQLiteDatabase database = this.getWritableDatabase();  
     String deleteQuery = "DELETE FROM  animals where animalId='"+ id +"'";
 //    Log.d("query",deleteQuery);   
     database.execSQL(deleteQuery);
     
-    Log.d("DBController - deleteAnimal", "at end of deleteAnimal");
+    Log.d(TAG, "at end of deleteAnimal");
   }
  
   public ArrayList<HashMap<String, String>> getAllAnimals() {
-	  Log.d("DBController", "at beginning of getAllRows");
+	  Log.d(TAG, "at beginning of getAllRows");
     ArrayList<HashMap<String, String>> wordList;
-    wordList = new ArrayList<HashMap<String, String>>();
+    wordList = new ArrayList<>();
     String selectQuery = "SELECT  * FROM animals";
     SQLiteDatabase database = this.getWritableDatabase();
     Cursor cursor = database.rawQuery(selectQuery, null);
@@ -100,12 +101,12 @@ public class DBController  extends SQLiteOpenHelper {
         wordList.add(map);
       } while (cursor.moveToNext());
     }
-    Log.d("DBController", "at end of getAllRows");
+    Log.d(TAG, "at end of getAllRows");
     return wordList;
   }
  
   public HashMap<String, String> getAnimalInfo(String id) {
-	  Log.d("DBController", "at beginning of getRowById");
+	  Log.d(TAG, "at beginning of getRowById");
     HashMap<String, String> wordList = new HashMap<String, String>();
     SQLiteDatabase database = this.getReadableDatabase();
     String selectQuery = "SELECT * FROM animals where animalId='"+id+"'";
@@ -117,7 +118,7 @@ public class DBController  extends SQLiteOpenHelper {
         
       } while (cursor.moveToNext());
     }           
-    Log.d("DBController", "at end of getRowById");
+    Log.d(TAG, "at end of getRowById");
     return wordList;
   } 
 }
