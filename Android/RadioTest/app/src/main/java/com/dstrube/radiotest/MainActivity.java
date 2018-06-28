@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+//import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -12,9 +12,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private RadioGroup radioGroup;
-    private RadioButton radioButton;
+//    private RadioButton radioButton;
     private Button button;
-    private ImageButton imageButton;
+//    private ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
     public void ImageClick(View v){
         //image button source:
         //http://www.clker.com/cliparts/5/9/c/2/1194984395619889880earth_globe_dan_gerhrads_01.svg.med.png
-        int selected = radioGroup.getCheckedRadioButtonId();
-        radioButton = findViewById(selected);
+        final int selected = radioGroup.getCheckedRadioButtonId();
+        final RadioButton radioButton = findViewById(selected);
         Toast.makeText(getApplicationContext(), radioButton.getText(), Toast.LENGTH_LONG).show();
     }
 }
