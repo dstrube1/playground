@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
-//import android.os.Message;
+import android.util.Log;
 import android.view.View;
 
 //////////////////
@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
 					// Let the progress ring for 10 seconds...
 					Thread.sleep(10000);
 				} catch (Exception e) {
-
+					Log.e("launchRingDialog Thread", "Caught exception: " + e);
 				}
 				ringProgressDialog.dismiss();
 			}
@@ -85,6 +85,7 @@ public class MainActivity extends Activity {
 						}
 					}
 				} catch (Exception e) {
+					Log.e("launchBarDialog Thread", "Caught exception: " + e);
 				}
 			}
 		}).start();
