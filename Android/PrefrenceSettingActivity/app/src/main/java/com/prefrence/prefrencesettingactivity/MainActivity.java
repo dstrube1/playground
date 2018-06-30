@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
         builder.append("\n Ringtone: "
         		+sharedPrefs.getString("pref_other", "NULL"));
  
-        TextView settingsTextView = (TextView) findViewById(R.id.textUserSettings);
+        TextView settingsTextView = findViewById(R.id.textUserSettings);
  
         settingsTextView.setText(builder.toString());
     }
