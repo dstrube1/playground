@@ -1,6 +1,7 @@
 package com.dstrube.phonerecord.service;
 
 import java.io.IOException;
+import java.security.Permission;
 import java.util.List;
 import java.util.Locale;
 
@@ -19,6 +20,9 @@ import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
+
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 //TODO This is all interesting, but what is it doing in this project?
 
@@ -95,6 +99,10 @@ public class GPSTracker extends Service implements LocationListener {
 			} else {
 				this.canGetLocation = true;
 				if (isNetworkEnabled) {
+					if (checkSelfPermission(ACCESS_COARSE_LOCATION) != PERMISSION_GRANTED){
+						Toast.makeText(mContext, "Missing permission: ACCESS_COARSE_LOCATION" , Toast.LENGTH_LONG).show();
+						return null;
+					}
 					locationManager.requestLocationUpdates(
 							LocationManager.NETWORK_PROVIDER,
 							MIN_TIME_BW_UPDATES,

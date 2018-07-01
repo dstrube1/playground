@@ -21,7 +21,7 @@ public class MyPhoneReceiver extends BroadcastReceiver {
 		Bundle extras = intent.getExtras();
 		if (extras != null) {
 			String state = extras.getString(TelephonyManager.EXTRA_STATE);
-			if (state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
+			if (state != null && state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
 
 				String phoneNumber = extras
 						.getString(TelephonyManager.EXTRA_INCOMING_NUMBER);
@@ -33,7 +33,7 @@ public class MyPhoneReceiver extends BroadcastReceiver {
 				String[] columns = context.getResources().getStringArray(
 						R.array.column_names);
 
-				HashMap<String, String> datum = new HashMap<String, String>();
+				HashMap<String, String> datum = new HashMap<>();
 
 				Random rand = new Random();
 
