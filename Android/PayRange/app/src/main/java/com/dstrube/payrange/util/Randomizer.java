@@ -1,5 +1,6 @@
 package com.dstrube.payrange.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -23,6 +24,7 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -35,7 +37,10 @@ import javax.net.ssl.HttpsURLConnection;
  */
 public class Randomizer {
 
-    private static Context mContext;
+    //static context = memory leak
+//    private static Context mContext;
+    // Weak references will still allow the Activity to be garbage-collected
+    private static WeakReference<Activity> weakActivity;
 
     private static final String RANDOMS_URL_BEGIN = "https://www.random.org/integers/?num=";
     private static final String RANDOMS_URL_END = "&min=30&max=100&col=1&base=10&format=plain&rnd=new";
@@ -45,8 +50,8 @@ public class Randomizer {
     private Randomizer() {
     }
 
-    public static void randomize(final Context context) {
-        mContext = context;
+    public static void randomize(Activity myActivity){
+        weakActivity = new WeakReference<>(myActivity);
         mRandoms = new ArrayList<>();
         new GetRandomTask().execute();
     }
@@ -60,13 +65,21 @@ public class Randomizer {
             Random random = new Random();
             final int backgroundGetRandom = random.nextInt(5) + 5;
 
+            final Activity activity = weakActivity.get();
+            if (activity == null
+                    || activity.isFinishing()
+                    || activity.isDestroyed()) {
+                // activity is no longer valid, don't do anything!
+                return null;
+            }
+
             //Make sure we have connectivity
             ConnectivityManager connMgr =
-                    (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+                    (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo activeInfo = connMgr.getActiveNetworkInfo();
             if (activeInfo != null && activeInfo.isConnected()) {
 
-                RequestQueue queue = Volley.newRequestQueue(mContext);
+                RequestQueue queue = Volley.newRequestQueue(activity);
                 // Request a string response from the provided URL.
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, RANDOMS_URL_BEGIN +
                         (MainActivity.NUMBER_OF_BLE_SIGNALS * backgroundGetRandom) + RANDOMS_URL_END,
@@ -83,7 +96,7 @@ public class Randomizer {
                                     mRandoms.add(Integer.parseInt(inputLine));
                                 }
                                 Log.i(TAG, "First int = " + firstInt);
-//                                Toast.makeText(mContext, "First int = " + firstInt, Toast.LENGTH_LONG).show();
+                                Toast.makeText(activity, "First int = " + firstInt, Toast.LENGTH_LONG).show();
                                 MainActivity.setMachines(backgroundGetRandom, mRandoms);
 
                             }
@@ -91,6 +104,7 @@ public class Randomizer {
                     @Override
                     public void onErrorResponse(final VolleyError error) {
                         Log.e(TAG, "VolleyError");
+                        Toast.makeText(activity, "VolleyError", Toast.LENGTH_SHORT).show();
                     }
                 });
                 // Add the request to the RequestQueue.
@@ -144,7 +158,7 @@ public class Randomizer {
                 if (responseCode == HttpsURLConnection.HTTP_OK) {
                     BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
                     String inputLine;
-                    StringBuffer response = new StringBuffer();
+                    StringBuilder response = new StringBuilder();
 
                     while ((inputLine = in.readLine()) != null) {
                         response.append(inputLine);
@@ -221,7 +235,16 @@ public class Randomizer {
         protected void onPostExecute(final Integer postExecuteRandom) {
             if (postExecuteRandom <= 0) {
                 Log.e(TAG, "Invalid random value");
-                Toast.makeText(mContext, "Invalid random value", Toast.LENGTH_LONG).show();
+
+                final Activity activity = weakActivity.get();
+                if (activity == null
+                        || activity.isFinishing()
+                        || activity.isDestroyed()) {
+                    // activity is no longer valid, don't do anything!
+                    return;
+                }
+
+                Toast.makeText(activity, "Invalid random value: " + postExecuteRandom, Toast.LENGTH_LONG).show();
             }
         }
     }

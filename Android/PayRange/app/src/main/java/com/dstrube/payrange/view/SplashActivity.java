@@ -30,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
         progressDialog.show();
 
         Log.i(TAG, "Randomizing...");
-        Randomizer.randomize(getApplicationContext());
+        Randomizer.randomize(getParent());
 
         new Handler().postDelayed(new Runnable() {
 

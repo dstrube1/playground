@@ -2,6 +2,7 @@ package com.dstrube.payrange.controller;
 
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,13 +14,12 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-//import android.view.Menu;
-//import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dstrube.payrange.R;
 import com.dstrube.payrange.model.VendingMachine;
@@ -65,16 +65,16 @@ public class MainActivity extends AppCompatActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSectionsPagerAdapter.isDataSetChanged = true;
 
-                Randomizer.randomize(getApplicationContext());
+                Randomizer.randomize(getParent());
                 Snackbar.make(view, "Randomizing...", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
@@ -126,29 +126,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Uncomment these if we want menu options
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -179,37 +156,53 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
+        public View onCreateView(@NonNull final LayoutInflater inflater, final ViewGroup container,
                                  final Bundle savedInstanceState) {
             Log.i(TAG, "onCreateView");
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
+            if (getArguments() == null){
+                final String error = "Null arguments";
+                Log.e(TAG, error);
+                Toast.makeText(rootView.getContext(), error, Toast.LENGTH_LONG).show();
+                return null;
+            }
+
             final int element = getArguments().getInt(ARG_SECTION_NUMBER) - 1;
             if (machines.size() > element) {
+                StringBuilder stringBuilder;
                 final VendingMachine vendingMachine = machines.get(element);
                 String strengthsText = "";
 
-                final ImageView imageView = (ImageView) rootView.findViewById(R.id.image);
+                final ImageView imageView = rootView.findViewById(R.id.image);
 //            imageView.setImageResource(vendingMachine.getImageId());
                 imageView.setImageResource(images.getResourceId(element, -1));
 
                 if (vendingMachine != null) {
                     for (int i = 0; i < vendingMachine.getBleStrengths().length; i++) {
-                        strengthsText += vendingMachine.getBleStrengths()[i];
-                        if (i < vendingMachine.getBleStrengths().length - 1) strengthsText += " - ";
+                        strengthsText += vendingMachine.getBleStrengths()[i];//todo find a better way of concatenating this
+                        if (i < vendingMachine.getBleStrengths().length - 1) {
+                            strengthsText += " - ";
+                        }
                     }
                 }
 
-                TextView descriptionTextView = (TextView) rootView.findViewById(R.id.section_label);
+                TextView descriptionTextView = rootView.findViewById(R.id.section_label);
 //            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
 //            descriptionTextView.setText(vendingMachine.getDescription());
                 descriptionTextView.setText(descriptions.getText(element));
 
-                TextView strengthsTextView = (TextView) rootView.findViewById(R.id.strengths);
-                strengthsTextView.setText(strengthsTextView.getText() + strengthsText);
+                TextView strengthsTextView = rootView.findViewById(R.id.strengths);
+                stringBuilder = new StringBuilder();
+                stringBuilder.append(strengthsTextView.getText());
+                stringBuilder.append(strengthsText);
+                strengthsTextView.setText(stringBuilder.toString());
 
-                TextView averageStrengthsTextView = (TextView) rootView.findViewById(R.id.average_strength);
-                averageStrengthsTextView.setText(averageStrengthsTextView.getText() + "" + vendingMachine.getAverageBleStrength());
+                TextView averageStrengthsTextView = rootView.findViewById(R.id.average_strength);
+                stringBuilder = new StringBuilder();
+                stringBuilder.append(averageStrengthsTextView.getText());
+                stringBuilder.append(vendingMachine.getAverageBleStrength());
+                averageStrengthsTextView.setText(stringBuilder.toString());
                 if (vendingMachine.getAverageBleStrength() < POOR_SIGNAL_THRESHOLD)
                     averageStrengthsTextView.setBackgroundColor(Color.RED);
                 else if (vendingMachine.getAverageBleStrength() >= POOR_SIGNAL_THRESHOLD
