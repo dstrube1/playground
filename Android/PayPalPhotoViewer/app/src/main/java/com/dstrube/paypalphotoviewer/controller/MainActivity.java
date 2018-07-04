@@ -1,20 +1,15 @@
 package com.dstrube.paypalphotoviewer.controller;
 
 import java.io.File;
-//import java.io.FileFilter;
 import java.util.ArrayList;
 
 import com.dstrube.paypalphotoviewer.R;
-//import com.dstrube.paypalphotoviewer.R.id;
-//import com.dstrube.paypalphotoviewer.R.layout;
-//import com.dstrube.paypalphotoviewer.R.menu;
 import com.dstrube.paypalphotoviewer.view.CustomAdapter;
 import com.dstrube.paypalphotoviewer.view.PhotoRowObject;
 import com.dstrube.paypalphotomodel.Photo;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-//import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Environment;
@@ -24,10 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-//import android.widget.ListView;
 import android.widget.TextView;
-//import android.widget.Toast;
-//import android.os.Build;
 
 public class MainActivity extends Activity {
 
@@ -35,9 +27,6 @@ public class MainActivity extends Activity {
 	private ArrayList<Photo> externalPhotos;
 	private ArrayList<Photo> webPhotos;
 	private ArrayList<PhotoRowObject> allImages;
-	private TextView tv;
-//	private ListView listView;
-	private GridView gridView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,16 +38,16 @@ public class MainActivity extends Activity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 		if (internalPhotos == null) {
-			internalPhotos = new ArrayList<Photo>();
+			internalPhotos = new ArrayList<>();
 		}
 		if (externalPhotos == null) {
-			externalPhotos = new ArrayList<Photo>();
+			externalPhotos = new ArrayList<>();
 		}
 		if (webPhotos == null) {
-			webPhotos = new ArrayList<Photo>();
+			webPhotos = new ArrayList<>();
 		}
 		if (allImages == null) {
-			allImages = new ArrayList<PhotoRowObject>();
+			allImages = new ArrayList<>();
 		}
 	}
 
@@ -68,30 +57,27 @@ public class MainActivity extends Activity {
 		try {
 			// System.out.println("testing "+path);
 			File dir = new File(path);
-			// if it's null, this won't be a happy ride.
-			if (dir != null) {
-				// if it wants to be left alone, leave it alone
-				if (!dir.isHidden()) {
-					for (File file : dir.listFiles()) {
-						if (file.isDirectory()) {
-							// get what all is inside this folder
-							getPhotos(file.getPath(), list);
-							// then move on, so as to not risk adding this
-							// folder to the list of photos.
-							// (I've seen folders in the Android filesystem with
-							// names like "blah.jpg".)
-							continue;
-						}
-						String fileName = file.getName().toLowerCase();
-						if (fileName.endsWith(".jpg")
-								|| fileName.endsWith(".png")) {
-							// maybe other file types, but this is good enough
-							// for now
-							Photo myPhoto = new Photo(file.getName(),
-									file.getAbsolutePath(), "location", "lat",
-									"lng", "dateTaken");
-							list.add(myPhoto);
-						}
+			// if it wants to be left alone, leave it alone
+			if (!dir.isHidden()) {
+				for (File file : dir.listFiles()) {
+					if (file.isDirectory()) {
+						// get what all is inside this folder
+						getPhotos(file.getPath(), list);
+						// then move on, so as to not risk adding this
+						// folder to the list of photos.
+						// (I've seen folders in the Android filesystem with
+						// names like "blah.jpg".)
+						continue;
+					}
+					String fileName = file.getName().toLowerCase();
+					if (fileName.endsWith(".jpg")
+							|| fileName.endsWith(".png")) {
+						// maybe other file types, but this is good enough
+						// for now
+						Photo myPhoto = new Photo(file.getName(),
+								file.getAbsolutePath(), "location", "lat",
+								"lng", "dateTaken");
+						list.add(myPhoto);
 					}
 				}
 			}
@@ -128,9 +114,9 @@ public class MainActivity extends Activity {
 		// list internal, list external, list web
 		// handle click to go to the view of one photo
 
-		tv = (TextView) findViewById(R.id.textView1);
+		TextView tv = findViewById(R.id.textView1);
 //		listView = (ListView)findViewById(R.id.listView);
-		gridView = (GridView)findViewById(R.id.gridview);
+		GridView gridView = findViewById(R.id.gridview);
 		
 		if (internalPhotos.size() > 0) {
 //			for (Photo photo : internalPhotos) {

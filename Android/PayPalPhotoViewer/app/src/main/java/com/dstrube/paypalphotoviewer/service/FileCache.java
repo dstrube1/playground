@@ -22,14 +22,20 @@ public class FileCache {
 	public FileCache(Context context) {
 		// Find the dir to save cached images
 		if (android.os.Environment.getExternalStorageState().equals(
-				android.os.Environment.MEDIA_MOUNTED))
+				android.os.Environment.MEDIA_MOUNTED)) {
 			cacheDir = new File(
 					android.os.Environment.getExternalStorageDirectory(),
 					"LazyList");
-		else
+		}
+		else {
 			cacheDir = context.getCacheDir();
-		if (!cacheDir.exists())
-			cacheDir.mkdirs();
+		}
+		if (!cacheDir.exists()) {
+			if (!cacheDir.mkdirs()){
+				System.out.println("Make dirs failed");
+			}
+
+		}
 	}
 
 	/**
@@ -43,9 +49,7 @@ public class FileCache {
 		String filename = String.valueOf(url.hashCode());
 		// Another possible solution (thanks to grantland)
 		// String filename = URLEncoder.encode(url);
-		File f = new File(cacheDir, filename);
-		return f;
-
+		return new File(cacheDir, filename);
 	}
 
 	/**
@@ -53,9 +57,13 @@ public class FileCache {
 	 */
 	public void clear() {
 		File[] files = cacheDir.listFiles();
-		if (files == null)
-			return;
-		for (File f : files)
-			f.delete();
+		if (files == null) {
+            return;
+        }
+		for (File f : files) {
+            if (!f.delete()){
+                System.out.println("Failed to delete " + f.getAbsolutePath());
+            }
+        }
 	}
 }

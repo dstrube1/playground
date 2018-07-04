@@ -26,12 +26,10 @@ public class CustomAdapter extends BaseAdapter {
 
 	private ArrayList<PhotoRowObject> images;
 	private LayoutInflater inflater;
-//	private Context ctx;
 
 	public CustomAdapter(Context context, ArrayList<PhotoRowObject> images) {
 		this.images = images;
 		inflater = LayoutInflater.from(context);
-//		ctx = context;
 	}
 
 	@Override
@@ -62,7 +60,7 @@ public class CustomAdapter extends BaseAdapter {
         	convertView = inflater.inflate(R.layout.photo_row, null);
 			holder = new ViewHolder();
 
-			holder.image1 = (ImageView) convertView.findViewById(R.id.image1);
+			holder.image1 = convertView.findViewById(R.id.image1);
 			
 			convertView.setTag(holder);
 			Bitmap bitmap = BitmapFactory.decodeFile(images.get(position).getPath());
