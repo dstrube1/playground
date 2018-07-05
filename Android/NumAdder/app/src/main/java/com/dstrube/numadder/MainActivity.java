@@ -1,16 +1,15 @@
 package com.dstrube.numadder;
 
 import android.app.Activity;
-//import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-//import android.os.Build;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
@@ -25,8 +24,8 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
 	private EditText edText1, edText2, edText3;
-	private Button btnSum;
-	
+	private static final String TAG = MainActivity.class.getName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,11 +52,11 @@ public class MainActivity extends Activity {
     	Toast.makeText(getApplicationContext(), "Hooray! Using XML specified button listener.", Toast.LENGTH_LONG).show();
     }
     private void addListenerOnButton() {
-		edText1 = (EditText)findViewById(R.id.editText1);
-		edText2 = (EditText)findViewById(R.id.editText2);
-		edText3 = (EditText)findViewById(R.id.editText3);
-		
-		btnSum = (Button)findViewById(R.id.button1);
+		edText1 = findViewById(R.id.editText1);
+		edText2 = findViewById(R.id.editText2);
+		edText3 = findViewById(R.id.editText3);
+
+        Button btnSum = findViewById(R.id.button1);
 		btnSum.setOnClickListener(new OnClickListener(){
 			
 			@Override
@@ -76,7 +75,7 @@ public class MainActivity extends Activity {
 					edText3.setText(t3);
 				}
 				catch(Exception e){
-					
+					Log.e(TAG, e.getLocalizedMessage());
 				}
 			}
 		}
