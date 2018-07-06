@@ -1,4 +1,0 @@
-#Sun Dec 03 20:15:46 EST 2017
-base.0=/Users/dstrube/AndroidStudioProjects/NavigationSpinnerTest/app/build/intermediates/transforms/dexMerger/debug/10
-path.0=classes.dex
-renamed.0=classes.dex
