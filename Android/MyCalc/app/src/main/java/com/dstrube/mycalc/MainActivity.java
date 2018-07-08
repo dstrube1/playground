@@ -46,12 +46,11 @@ import android.widget.Toast;
     @Override
     protected void onResume() {
     	super.onResume();
-    	window = (EditText)findViewById(R.id.editText1);
+    	window = findViewById(R.id.editText1);
     }
 
     public void ClickClear(View V){
-    	String t1 = window.getText().toString();
-    	t1 = "";
+    	String t1 = "";
     	window.setText(t1);
     }
     
@@ -224,7 +223,7 @@ import android.widget.Toast;
     public void ClickEquals(View v){
     	try{
 	    	String t1 = window.getText().toString();
-	    	if (t1.contains("=") || t1.indexOf(" ")==-1 || t1.lastIndexOf(" ")==t1.length()-1){
+	    	if (t1.contains("=") || !t1.contains(" ") || t1.lastIndexOf(" ")==t1.length()-1){
 	    		Toast.makeText(getApplicationContext(), INVALID_OPERATION, Toast.LENGTH_SHORT).show();
 	    		return;
 	    	}
