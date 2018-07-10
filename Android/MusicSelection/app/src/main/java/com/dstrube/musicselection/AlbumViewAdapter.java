@@ -10,15 +10,15 @@ import android.widget.BaseAdapter;
 public class AlbumViewAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
-    private TypedArray albumImages;
-    private String[] albumNames;
-    private String[] songNames;
+//    private TypedArray albumImages;
+//    private String[] albumNames;
+//    private String[] songNames;
 
     public AlbumViewAdapter(Context context, int viewResourceId, TypedArray albumImages, String[] albumNames, String[] songNames) {
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.albumImages = albumImages;
-        this.albumNames = albumNames;
-        this.songNames = songNames;
+//        this.albumImages = albumImages;
+//        this.albumNames = albumNames;
+//        this.songNames = songNames;
     }
 
     @Override

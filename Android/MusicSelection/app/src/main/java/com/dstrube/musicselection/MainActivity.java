@@ -24,8 +24,8 @@ import android.widget.ListView;
 //////////////////
 public class MainActivity extends AppCompatActivity {
 
-    private AlbumView av1, av2, av3;
-    private ListView listView ;
+//    private AlbumView av1, av2, av3;
+//    private ListView listView ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        listView = findViewById(R.id.list);
-    	av1 = new AlbumView(getApplicationContext());//may need attribute set
-    	av2 = new AlbumView(getApplicationContext());
-    	av3 = new AlbumView(getApplicationContext());
+		final ListView listView = findViewById(R.id.list);
+		final AlbumView av1;// = new AlbumView(getApplicationContext());//may need attribute set
+		final AlbumView av2;// = new AlbumView(getApplicationContext());
+		final AlbumView av3;// = new AlbumView(getApplicationContext());
     	av1 = findViewById(R.id.albumview1);
     	av1.setAlbumImage("album1");
     	av1.setAlbumName("Kerosene Hat");
@@ -53,17 +53,17 @@ public class MainActivity extends AppCompatActivity {
     	av3.setAlbumImage("album3");
     	av3.setAlbumName("Big Time");
     	av3.setSongName("Train Song");
-    	AlbumView[] values = new AlbumView[]{av1,av2,av3};
-    	ArrayAdapter<AlbumView> adapter = new ArrayAdapter<>(this,
+		final AlbumView[] values = new AlbumView[]{av1,av2,av3};
+		final ArrayAdapter<AlbumView> adapter = new ArrayAdapter<>(this,
     	        android.R.layout.simple_list_item_1, //R.layout.album_view, <- breaks, but seems like on the right track
     	        values);
     	listView.setAdapter(adapter);
 
-        Context ctx= getApplicationContext();
-        Resources res = ctx.getResources();
-        TypedArray albumImages = res.obtainTypedArray(R.array.albumImages);
-        String[] albumNames = res.getStringArray(R.array.albumNames);
-        String[] songNames = res.getStringArray(R.array.songNames);
+		final Context ctx = getApplicationContext();
+		final Resources res = ctx.getResources();
+		final TypedArray albumImages = res.obtainTypedArray(R.array.albumImages);
+		final String[] albumNames = res.getStringArray(R.array.albumNames);
+		final String[] songNames = res.getStringArray(R.array.songNames);
         listView.setAdapter(new AlbumViewAdapter(ctx,
                 R.layout.album_view, albumImages, albumNames,songNames));
 

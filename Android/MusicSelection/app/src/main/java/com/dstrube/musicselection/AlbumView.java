@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class AlbumView extends LinearLayout {
     private TextView albumNameText,songNameText;
-    private ImageButton albumImageButton;
+
     //	private String albumImage="", albumName="",songName="";
     public AlbumView(Context context) {
         super(context);
@@ -20,16 +20,16 @@ public class AlbumView extends LinearLayout {
 
     public AlbumView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        finishContruction(context, attrs);
+        finishConstruction(context, attrs);
     }
 
     //@SuppressLint("NewApi")
     public AlbumView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        finishContruction(context, attrs);
+        finishConstruction(context, attrs);
     }
 
-    private void finishContruction(Context context, AttributeSet attrs){
+    private void finishConstruction(Context context, AttributeSet attrs){
 
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.album_view, this);
@@ -53,16 +53,15 @@ public class AlbumView extends LinearLayout {
     }
 
     public void setAlbumImage(String albumImage){
-        albumImageButton = findViewById(R.id.albumImage);
+        ImageButton albumImageButton = findViewById(R.id.albumImage);
         //in ListView
         if (albumImageButton == null){
             albumImageButton = new ImageButton(getContext());
         }
 //		this.albumImage = albumImage;
-        Resources res = getResources();
-        String mDrawableName = albumImage;
-        int resID = res.getIdentifier(mDrawableName , "drawable","com.dstrube.musicselection");
-        Drawable drawable = res.getDrawable(resID );
+        final Resources res = getResources();
+        final int resID = res.getIdentifier(albumImage , "drawable","com.dstrube.musicselection");
+        final Drawable drawable = res.getDrawable(resID );
         albumImageButton.setImageDrawable(drawable );
     }
     public void setAlbumName(String albumName){
