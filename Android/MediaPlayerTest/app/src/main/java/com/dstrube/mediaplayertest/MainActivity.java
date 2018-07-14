@@ -1,7 +1,6 @@
 package com.dstrube.mediaplayertest;
 
 import android.app.Activity;
-//import android.app.ActionBar;
 import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
-//import android.os.Build;
 
 public class MainActivity extends Activity {
 
@@ -28,14 +26,14 @@ public class MainActivity extends Activity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-        video = (VideoView) findViewById(R.id.videoView1);
+        video = findViewById(R.id.videoView1);
     }
     
     @Override
     protected void onResume() {
     	super.onResume();
     	if (video == null){
-    		video = (VideoView) findViewById(R.id.videoView1);
+    		video = findViewById(R.id.videoView1);
     		if (video == null){
     			Toast.makeText(getApplicationContext(), "Video uninitializable.", Toast.LENGTH_LONG).show();
     			return;
