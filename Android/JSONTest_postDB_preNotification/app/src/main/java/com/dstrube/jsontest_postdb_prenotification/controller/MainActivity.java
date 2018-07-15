@@ -57,7 +57,7 @@ public class MainActivity extends ListActivity {
         setContentView(R.layout.activity_main);
 
         // ArrayList of Hashmaps for ListView
-        contactList = new ArrayList<HashMap<String, String>>();
+        contactList = new ArrayList<>();
 
         // Creating JSON Parser instance
         parser = new JSONParser();

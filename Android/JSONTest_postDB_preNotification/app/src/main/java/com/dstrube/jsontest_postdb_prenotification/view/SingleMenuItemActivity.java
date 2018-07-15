@@ -37,9 +37,9 @@ public class SingleMenuItemActivity extends Activity {
         String title = intent.getStringExtra(TAG_TITLE);
         
         // Displaying all values on the screen
-        TextView lblName = (TextView) findViewById(R.id.name_label);
-        TextView lblEmail = (TextView) findViewById(R.id.email_label);
-        TextView lblTitle = (TextView) findViewById(R.id.title_label);
+        TextView lblName = findViewById(R.id.name_label);
+        TextView lblEmail = findViewById(R.id.email_label);
+        TextView lblTitle = findViewById(R.id.title_label);
         
         lblName.setText(name);
         lblEmail.setText(email);
