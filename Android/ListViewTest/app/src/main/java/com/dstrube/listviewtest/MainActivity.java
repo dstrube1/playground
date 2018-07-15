@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import android.app.Activity;
-//import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,8 +14,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-//import android.os.Build;
-
 //////////////////
 /* 
 * ListViewTest
@@ -24,8 +21,6 @@ import android.widget.ListView;
 */
 //////////////////
 public class MainActivity extends Activity {
-
-	private ListView mainListView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +38,16 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		mainListView = (ListView) findViewById(R.id.mainListView);
+		ListView mainListView = findViewById(R.id.mainListView);
 		
 		String[] planets = new String[] { "Mercury", "Venus", "Earth", "Mars",
 				"Jupiter", "Saturn", "Uranus", "Neptune" };
 		
-		ArrayList<String> planetList = new ArrayList<String>();
+		ArrayList<String> planetList = new ArrayList<>(Arrays.asList(planets));
 		
-		planetList.addAll(Arrays.asList(planets));
+//		planetList.addAll(Arrays.asList(planets));
 		
-		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
+		ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this,
 				R.layout.simplerow, planetList);
 		listAdapter.add("Ceres");
 		listAdapter.add("Pluto");
