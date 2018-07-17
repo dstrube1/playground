@@ -48,7 +48,7 @@ public class MainActivity extends ListActivity {
 		setContentView(R.layout.activity_main);
 		
 		// Hashmap for ListView
-		contactList = new ArrayList<HashMap<String, String>>();
+		contactList = new ArrayList<>();
 
 		// Creating JSON Parser instance
 		jParser = new JSONParser();
@@ -82,7 +82,7 @@ public class MainActivity extends ListActivity {
 //				String office = phone.getString(TAG_PHONE_OFFICE);
 				
 				// creating new HashMap
-				HashMap<String, String> map = new HashMap<String, String>();
+				HashMap<String, String> map = new HashMap<>();
 				
 				// adding each child node to HashMap key => value
 				map.put(TAG_ID, id);
