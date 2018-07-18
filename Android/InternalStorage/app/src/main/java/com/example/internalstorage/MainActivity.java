@@ -1,8 +1,6 @@
 package com.example.internalstorage;
 
 import java.io.BufferedReader;
-//import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,71 +16,74 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-	EditText editTextFileName,editTextData;
-	Button saveButton,readButton;
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		
-		editTextFileName=(EditText)findViewById(R.id.editText1);
-		editTextData=(EditText)findViewById(R.id.editText2);
-		saveButton=(Button)findViewById(R.id.button1);
-		readButton=(Button)findViewById(R.id.button2);
-		
-		saveButton.setOnClickListener(new OnClickListener(){
+    EditText editTextFileName, editTextData;
+    Button saveButton, readButton;
 
-			@Override
-			public void onClick(View arg0) {
-				String filename=editTextFileName.getText().toString();
-				String data=editTextData.getText().toString();
-				
-				FileOutputStream fos;
-				   try {
-				    fos = openFileOutput(filename, Context.MODE_PRIVATE);
-				    fos.write(data.getBytes());
-				    fos.close();
-				   
-				    Toast.makeText(getApplicationContext(),filename + " saved",Toast.LENGTH_LONG).show();
-				    
-				   
-				   } catch (FileNotFoundException e) {e.printStackTrace();}
-				   catch (IOException e) {e.printStackTrace();}
-				
-			}
-			
-		});
-		
-		readButton.setOnClickListener(new OnClickListener(){
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-			@Override
-			public void onClick(View arg0) {
-				String filename=editTextFileName.getText().toString();
-				StringBuffer stringBuffer = new StringBuffer();  
-				try {
-				    BufferedReader inputReader = new BufferedReader(new InputStreamReader(
-				            openFileInput(filename)));
-				    String inputString;
-				                  
-				    while ((inputString = inputReader.readLine()) != null) {
-				        stringBuffer.append(inputString + "\n");
-				    }
-				    
-				} catch (IOException e) {
-				    e.printStackTrace();
-				}
-				Toast.makeText(getApplicationContext(),stringBuffer.toString(),Toast.LENGTH_LONG).show();
-			    
-			}
-			
-		});
-	}
+        editTextFileName = findViewById(R.id.editText1);
+        editTextData = findViewById(R.id.editText2);
+        saveButton = findViewById(R.id.button1);
+        readButton = findViewById(R.id.button2);
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_main, menu);
-		return true;
-	}
+        saveButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                String filename = editTextFileName.getText().toString();
+                String data = editTextData.getText().toString();
+
+                FileOutputStream fos;
+                try {
+                    fos = openFileOutput(filename, Context.MODE_PRIVATE);
+                    fos.write(data.getBytes());
+                    fos.close();
+
+                    Toast.makeText(getApplicationContext(), filename + " saved", Toast.LENGTH_LONG).show();
+
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        });
+
+        readButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                String filename = editTextFileName.getText().toString();
+                StringBuilder stringBuffer = new StringBuilder();
+                try {
+                    BufferedReader inputReader = new BufferedReader(new InputStreamReader(
+                            openFileInput(filename)));
+                    String inputString;
+
+                    while ((inputString = inputReader.readLine()) != null) {
+                        stringBuffer.append(inputString);
+                        stringBuffer.append("\n");
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Toast.makeText(getApplicationContext(), stringBuffer.toString(), Toast.LENGTH_LONG).show();
+
+            }
+
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
+    }
 
 }

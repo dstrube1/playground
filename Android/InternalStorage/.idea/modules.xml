@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/InternalStorage.iml" filepath="$PROJECT_DIR$/InternalStorage.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/internalstorage.iml" filepath="$PROJECT_DIR$/internalstorage.iml" />
     </modules>
   </component>
 </project>
