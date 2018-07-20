@@ -22,102 +22,102 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-	// private MyBroadcastReceiver receiver;
-	private TextView textView;
+    // private MyBroadcastReceiver receiver;
+    private TextView textView;
 
-	private BroadcastReceiver receiver = new BroadcastReceiver() {
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
 
-		@Override
-		public void onReceive(Context context, Intent intent) {
+        @Override
+        public void onReceive(Context context, Intent intent) {
 
-			int result = intent.getIntExtra("result", 0);
+            int result = intent.getIntExtra("result", 0);
 //			if (textView == null) {
 //				textView = (TextView) findViewById(R.id.textView1);
 //			}
 
-			textView.setText(Integer.toString(result));
+            textView.setText(Integer.toString(result));
 
-		}
-	};
+        }
+    };
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
-	}
+        if (savedInstanceState == null) {
+            getFragmentManager().beginTransaction()
+                    .add(R.id.container, new PlaceholderFragment()).commit();
+        }
+    }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		// IntentFilter filter = new
-		// IntentFilter(MyIntentService.MESSAGE_PROCESSED);
-		// filter.addCategory(Intent.CATEGORY_DEFAULT);
-		// receiver = new MyBroadcastReceiver();
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // IntentFilter filter = new
+        // IntentFilter(MyIntentService.MESSAGE_PROCESSED);
+        // filter.addCategory(Intent.CATEGORY_DEFAULT);
+        // receiver = new MyBroadcastReceiver();
 
-		textView = (TextView) findViewById(R.id.textView1);
-		
-		registerReceiver(receiver, new IntentFilter(
-				MyIntentService.MESSAGE_PROCESSED));
-	}
+        textView = (TextView) findViewById(R.id.textView1);
 
-	public void Click(View v) {
-		EditText t1 = (EditText) findViewById(R.id.editText1);
-		EditText t2 = (EditText) findViewById(R.id.editText2);
-		String text1 = t1.getText().toString();
-		String text2 = t2.getText().toString();
-		Intent intent = new Intent(this, MyIntentService.class);
-		intent.putExtra("text1", text1);
-		intent.putExtra("text2", text2);
-		startService(intent);
-	}
+        registerReceiver(receiver, new IntentFilter(
+                MyIntentService.MESSAGE_PROCESSED));
+    }
 
-	// private Handler handler = new Handler(){
-	// public void handleMessage(Message message){
-	// Toast.makeText(getApplicationContext(), message.toString(),
-	// Toast.LENGTH_LONG).show();
-	// };
-	// };
+    public void Click(View v) {
+        EditText t1 = findViewById(R.id.editText1);
+        EditText t2 = findViewById(R.id.editText2);
+        String text1 = t1.getText().toString();
+        String text2 = t2.getText().toString();
+        Intent intent = new Intent(this, MyIntentService.class);
+        intent.putExtra("text1", text1);
+        intent.putExtra("text2", text2);
+        startService(intent);
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+    // private Handler handler = new Handler(){
+    // public void handleMessage(Message message){
+    // Toast.makeText(getApplicationContext(), message.toString(),
+    // Toast.LENGTH_LONG).show();
+    // };
+    // };
 
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
-		public PlaceholderFragment() {
-		}
+    /**
+     * A placeholder fragment containing a simple view.
+     */
+    public static class PlaceholderFragment extends Fragment {
 
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
-			return rootView;
-		}
-	}
+        public PlaceholderFragment() {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_main, container,
+                    false);
+            return rootView;
+        }
+    }
 
 }
