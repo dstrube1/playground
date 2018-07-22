@@ -51,7 +51,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		image = (ImageView) findViewById(R.id.imageView1);
+		image = findViewById(R.id.imageView1);
 		registerReceiver(receiver, new IntentFilter(
 				DownloadService.NOTIFICATION));
 		updateBarHandler = new Handler();
@@ -138,15 +138,15 @@ public class MainActivity extends Activity {
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			Bundle bundle = intent.getExtras();
+			final Bundle bundle = intent.getExtras();
 			if (bundle != null) {
-				String filePath = bundle.getString(DownloadService.FILEPATH);
-				Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+				final String filePath = bundle.getString(DownloadService.FILEPATH);
+				final Bitmap bitmap = BitmapFactory.decodeFile(filePath);
 				//not doing either of these ways:
 				// File file = new File(filePath);
 				// Bitmap bitmap = (Bitmap) bundle.get("bitmap");
 
-				int resultCode = bundle.getInt(DownloadService.RESULT);
+				final int resultCode = bundle.getInt(DownloadService.RESULT);
 				if (resultCode == RESULT_OK) {
 					// Toast.makeText(MainActivity.this,
 					// "Download complete. Download URI: " + filePath,
@@ -204,7 +204,7 @@ public class MainActivity extends Activity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
+			final View rootView = inflater.inflate(R.layout.fragment_main, container,
 					false);
 			return rootView;
 		}

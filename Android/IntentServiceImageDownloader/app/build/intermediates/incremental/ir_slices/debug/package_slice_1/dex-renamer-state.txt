@@ -1,0 +1,4 @@
+#Fri Jul 20 00:54:47 EDT 2018
+base.0=/Users/dstrube/Projects/github/playground/Android/IntentServiceImageDownloader/app/build/intermediates/transforms/dexMerger/debug/1
+path.0=classes.dex
+renamed.0=classes.dex

@@ -31,9 +31,9 @@ public class DownloadService extends IntentService {
 	public static final String NOTIFICATION = "com.dstrube.intentserviceimagedownloader";
 	public static final int UPDATE_PROGRESS = 1;
 
-	public DownloadService(String name) {
-		super("DownloadService");
-	}
+//	public DownloadService(String name) {
+//		super("DownloadService");
+//	}
 
 	public DownloadService() {
 		super("DownloadService");
@@ -41,22 +41,22 @@ public class DownloadService extends IntentService {
 
 	@Override
 	protected void onHandleIntent(Intent intent) {
-		String urlPath = intent.getStringExtra(URL);
-		String fileName = intent.getStringExtra(FILENAME);
-		File output = new File(Environment.getExternalStorageDirectory(),
+		final String urlPath = intent.getStringExtra(URL);
+		final String fileName = intent.getStringExtra(FILENAME);
+		final File output = new File(Environment.getExternalStorageDirectory(),
 				fileName);
 		if (output.exists()) {
 			output.delete();
 		}
-		ResultReceiver receiver = (ResultReceiver) intent.getParcelableExtra("receiver");
+		final ResultReceiver receiver = intent.getParcelableExtra("receiver");
 		
 		//Bundle bundle = intent.getExtras();
 
 		InputStream inStream = null;
 		FileOutputStream outStream = null;
 		try {
-			URL url = new URL(urlPath);
-			URLConnection connection = url.openConnection();
+			final URL url = new URL(urlPath);
+			final URLConnection connection = url.openConnection();
 			final int lengthOfFile = connection.getContentLength();
 
 				inStream = url.openConnection().getInputStream();
@@ -74,7 +74,7 @@ public class DownloadService extends IntentService {
 				// -1) {
 				// outStream.write(next);
 
-				byte[] buffer = new byte[1024];
+			final byte[] buffer = new byte[1024];
 
 				int total = 0;
 
@@ -128,7 +128,7 @@ public class DownloadService extends IntentService {
 
 	private void publishResults(// Bitmap bitmap,
 			String outputPath, int result) {
-		Intent intent = new Intent(NOTIFICATION);
+		final Intent intent = new Intent(NOTIFICATION);
 		intent.putExtra(FILEPATH, outputPath);
 		// intent.putExtra("bitmap", bitmap);
 		intent.putExtra(RESULT, result);
