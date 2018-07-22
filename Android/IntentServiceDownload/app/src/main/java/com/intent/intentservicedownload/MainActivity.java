@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 	  public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_main);
-	    textView = (TextView) findViewById(R.id.status);
+	    textView = findViewById(R.id.status);
 	  }
 
 	  @Override

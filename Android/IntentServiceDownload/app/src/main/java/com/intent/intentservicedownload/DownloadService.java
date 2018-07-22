@@ -12,10 +12,12 @@ import android.app.IntentService;
 import android.content.Intent;
 //import android.net.Uri;
 import android.os.Environment;
+import android.util.Log;
 
 
 public class DownloadService extends IntentService {
 
+  private static final String TAG = DownloadService.class.getName();
   private int result = Activity.RESULT_CANCELED;
   public static final String URL = "urlpath";
   public static final String FILENAME = "filename";
@@ -35,7 +37,9 @@ public class DownloadService extends IntentService {
     File output = new File(Environment.getExternalStorageDirectory(),
         fileName);
     if (output.exists()) {
-      output.delete();
+      if (!output.delete()){
+        Log.e(TAG, "Output delete failed");
+      }
     }
 
     InputStream stream = null;
@@ -46,7 +50,7 @@ public class DownloadService extends IntentService {
       stream = url.openConnection().getInputStream();
       InputStreamReader reader = new InputStreamReader(stream);
       fos = new FileOutputStream(output.getPath());
-      int next = -1;
+      int next;
       while ((next = reader.read()) != -1) {
         fos.write(next);
       }
