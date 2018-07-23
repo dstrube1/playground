@@ -29,8 +29,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         Uri web = Uri.parse("http://www.google.com");
-        Intent i = new Intent(Intent.ACTION_VIEW,web);
-        startActivity( Intent.createChooser(i, "Choose Program"));
+        Intent i = new Intent(Intent.ACTION_VIEW, web);
+        startActivity(Intent.createChooser(i, "Choose Program"));
 
         // To keep this example simple, we allow network access
         // in the user interface thread
@@ -52,13 +52,12 @@ public class MainActivity extends Activity {
         // To get the action of the intent use
         String action = intent.getAction();
         try {
-            if (!action.equals(Intent.ACTION_VIEW) && !action.equals(Intent.ACTION_MAIN)) {
+            if (action != null && !action.equals(Intent.ACTION_VIEW) && !action.equals(Intent.ACTION_MAIN)) {
                 throw new RuntimeException("Should not happen - intent action not equals(Intent.ACTION_VIEW); instead it is: " + action);
             }
             // To get the data use
             Uri data = intent.getData();
-            if (data == null)
-            {
+            if (data == null) {
                 final String error = "Null data";
                 text.setText(error);
                 Log.e(TAG, error);
@@ -67,7 +66,7 @@ public class MainActivity extends Activity {
             URL url;
             url = new URL(data.getScheme(), data.getHost(), data.getPath());
             BufferedReader rd = new BufferedReader(new InputStreamReader(url.openStream()));
-            String line = "";
+            String line;
             while ((line = rd.readLine()) != null) {
                 text.append(line);
             }
