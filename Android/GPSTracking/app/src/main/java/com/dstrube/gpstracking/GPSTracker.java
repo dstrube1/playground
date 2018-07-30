@@ -93,6 +93,8 @@ public class GPSTracker extends Service implements LocationListener {
 			} else {
 				this.canGetLocation = true;
 				if (isNetworkEnabled) {
+				    final String permission = "android.permission.ACCESS_COARSE_LOCATION";
+					enforcePermission(permission, 0, 0, "Missing permission: " + permission);
 					locationManager.requestLocationUpdates(
 							LocationManager.NETWORK_PROVIDER,
 							MIN_TIME_BW_UPDATES,
