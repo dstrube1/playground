@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
             // assuming that this means the EditTexts are also not null
             globalClass = // (GlobalClass) getApplicationContext();
                     savedInstanceState.getParcelable("globalClass");
+            if (globalClass == null){
+                Toast.makeText(this, "Null globalClass", Toast.LENGTH_LONG).show();
+                return;
+            }
             nameText.setText(globalClass.getName());
             emailText.setText(globalClass.getEmail());
         } else {

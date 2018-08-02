@@ -3,13 +3,14 @@ package com.dstrube.globalvariabletest;
 import android.app.Application;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 //Must implement parcelable if we want this to persist across activity restore / save
 
 public class GlobalClass extends Application implements Parcelable {
     private String name="";
     private String email="";
-    private int data;
+    private static final String TAG = GlobalClass.class.getName();
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
@@ -53,6 +54,7 @@ public class GlobalClass extends Application implements Parcelable {
     public GlobalClass(){}
 
     private GlobalClass(Parcel in){
-        data = in.readInt();
+        int data = in.readInt();
+        Log.d(TAG, "Data = " + data);
     }
 }
