@@ -14,15 +14,15 @@ public class MainActivity extends Activity {
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_main);
-	       TextView tv=(TextView)findViewById(R.id.txtView);
-	       ImageView iv=(ImageView)findViewById(R.id.imgView);
+	       TextView tv=findViewById(R.id.txtView);
+	       ImageView iv=findViewById(R.id.imgView);
 	        tv.setOnClickListener(new View.OnClickListener() {
 	        	
 				
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 				
-					ImageView iv=(ImageView)findViewById(R.id.imgView);
+					ImageView iv=findViewById(R.id.imgView);
 					iv.setVisibility(View.VISIBLE);
 					v.setVisibility(View.GONE);
 						
@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
 				
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					TextView tv=(TextView)findViewById(R.id.txtView);
+					TextView tv=findViewById(R.id.txtView);
 					tv.setVisibility(View.VISIBLE);
 					v.setVisibility(View.GONE);
 				}
