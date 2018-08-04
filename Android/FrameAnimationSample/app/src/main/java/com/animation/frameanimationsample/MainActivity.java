@@ -7,27 +7,25 @@ import android.graphics.drawable.AnimationDrawable;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
-public class MainActivity  extends Activity {
+public class MainActivity extends Activity {
     AnimationDrawable logoAnimation;
 
-	@Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
-        ImageView logoImage=(ImageView) findViewById(R.id.iv1);
+
+        ImageView logoImage = findViewById(R.id.iv1);
         logoImage.setBackgroundResource(R.drawable.logo_animation);
-        logoAnimation=(AnimationDrawable) logoImage.getBackground();
-        }
-		
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		if(event.getAction()==MotionEvent.ACTION_DOWN)
-		{
-			logoAnimation.start();
-			return true;
-			
-		}
-		else return super.onTouchEvent(event);
-	}
+        logoAnimation = (AnimationDrawable) logoImage.getBackground();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            logoAnimation.start();
+            return true;
+
+        } else return super.onTouchEvent(event);
+    }
 }
