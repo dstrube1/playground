@@ -1,8 +1,5 @@
 package com.webview.fragmentwebview;
 
-
-
-
 import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,7 +48,7 @@ public class WebViewFragment extends Fragment {
                 Log.d("SwA", "Update URL ["+url+"] - View ["+getView()+"]");
                 currentURL = url;
 
-                WebView wv = (WebView) getView().findViewById(R.id.webPage);
+                WebView wv = getView().findViewById(R.id.webPage);
                 wv.getSettings().setJavaScriptEnabled(true);
             wv.loadUrl(url);
 
