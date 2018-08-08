@@ -28,7 +28,7 @@ public class DemoActivity extends Activity implements DemoInterface {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
-        _countdownText = (TextView) findViewById(R.id.countdownText);
+        _countdownText = findViewById(R.id.countdownText);
     }
 
 
