@@ -12,7 +12,7 @@ public class GroupEntity {
 
     public GroupEntity()
     {
-        GroupItemCollection = new ArrayList<GroupItemEntity>();
+        GroupItemCollection = new ArrayList<>();
     }
 
     public class GroupItemEntity

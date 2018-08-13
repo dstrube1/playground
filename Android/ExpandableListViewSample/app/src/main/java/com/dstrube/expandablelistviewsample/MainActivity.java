@@ -12,7 +12,7 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-    private ExpandableListView mExpandableListView;
+//    private  mExpandableListView;
     private List<GroupEntity> mGroupCollection;
 
     @Override
@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
 
     private void prepareResource() {
 
-        mGroupCollection = new ArrayList<GroupEntity>();
+        mGroupCollection = new ArrayList<>();
 
         for (int i = 1; i < 6; i++) {
             GroupEntity ge = new GroupEntity();
@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
     }
 
     private void initPage() {
-        mExpandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+        final ExpandableListView mExpandableListView = findViewById(R.id.expandableListView);
         //MyExpandableListAdapter is my local concrete class, ExpandableListAdapter is an abstract class
         //if this app doesn't work, this line may be why
         ExpandableListAdapter adapter = new MyExpandableListAdapter(this,mExpandableListView, mGroupCollection);

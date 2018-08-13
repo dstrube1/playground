@@ -75,7 +75,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 
             childHolder = new ChildHolder();
 
-            childHolder.title = (TextView) arg3.findViewById(R.id.item_title);
+            childHolder.title = arg3.findViewById(R.id.item_title);
             arg3.setTag(childHolder);
         } else {
             childHolder = (ChildHolder) arg3.getTag();
@@ -113,8 +113,8 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             arg2 = LayoutInflater.from(mContext).inflate(R.layout.list_group,
                     null);
             groupHolder = new GroupHolder();
-            groupHolder.img = (ImageView) arg2.findViewById(R.id.tag_img);
-            groupHolder.title = (TextView) arg2.findViewById(R.id.group_title);
+            groupHolder.img = arg2.findViewById(R.id.tag_img);
+            groupHolder.title = arg2.findViewById(R.id.group_title);
             arg2.setTag(groupHolder);
         } else {
             groupHolder = (GroupHolder) arg2.getTag();
