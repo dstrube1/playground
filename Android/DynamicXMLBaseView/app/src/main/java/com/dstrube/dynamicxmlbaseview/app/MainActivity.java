@@ -3,8 +3,6 @@ package com.dstrube.dynamicxmlbaseview.app;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,7 +17,7 @@ public class MainActivity extends Activity {
 
 
         // Parent layout
-        LinearLayout parentLayout = (LinearLayout)findViewById(R.id.layout);
+        LinearLayout parentLayout = findViewById(R.id.layout);
 
         // Layout inflater
         LayoutInflater layoutInflater = getLayoutInflater();
@@ -31,7 +29,7 @@ public class MainActivity extends Activity {
             view = layoutInflater.inflate(R.layout.newitem, parentLayout, false);
 
             // In order to get the view we have to use the new view with text_layout in it
-            TextView textView = (TextView)view.findViewById(R.id.text);
+            TextView textView = view.findViewById(R.id.text);
             textView.setText("Row " + i);
             textView.setPadding(10, 10, 10, 10);
             // Add the text view to the parent layout
