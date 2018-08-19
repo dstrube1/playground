@@ -20,9 +20,11 @@
             android:id="@+id/myimage1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher" />
+<!--
             android:layout_column="0"
             android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
+-->
     </LinearLayout>
 
     <LinearLayout
@@ -37,9 +39,11 @@
             android:id="@+id/myimage2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
             android:src="@drawable/apple" />
+        <!--
+                    android:layout_column="0"
+                    android:layout_row="0"
+        -->
     </LinearLayout>
 
     <LinearLayout
@@ -69,9 +73,12 @@
             android:id="@+id/myimage4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/mac" />
+        <!--
             android:layout_column="0"
             android:layout_row="0"
-            android:src="@drawable/mac" />
+-->
+
     </LinearLayout>
 
 </GridLayout> 

@@ -5,8 +5,6 @@ import android.content.ClipData;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.DragEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +35,7 @@ public class MainActivity extends Activity {
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 ClipData data = ClipData.newPlainText("", "");
-                // Generaing Moving Shadow on selecting icon and moving
+                // Generating Moving Shadow on selecting icon and moving
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
                 view.startDrag(data, shadowBuilder, view, 0);
                 // Since it is moving now, it should be invisible from it current positin
@@ -61,7 +59,7 @@ public class MainActivity extends Activity {
                     // do nothing
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
-                    // Setting the boder color to RED as to put on focus
+                    // Setting the border color to RED as to put on focus
                     v.setBackgroundDrawable(enterShape);
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
