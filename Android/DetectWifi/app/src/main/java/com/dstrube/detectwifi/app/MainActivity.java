@@ -8,8 +8,6 @@ import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -33,7 +31,7 @@ public class MainActivity extends Activity {
 //				spinnerList.add(wifiList.get(i).toString());
                 spinnerList.add(wifiList.get(i).SSID);
             }
-            adapter = new ArrayAdapter<String>(MainActivity.this,
+            adapter = new ArrayAdapter<>(MainActivity.this,
                     android.R.layout.simple_spinner_item, spinnerList);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
@@ -65,8 +63,8 @@ public class MainActivity extends Activity {
         // for (NetworkInfo info : infos){
         // list.add(info.toString());
         // }
-        wifiList = new ArrayList<ScanResult>();
-        spinnerList = new ArrayList<String>();
+        wifiList = new ArrayList<>();
+        spinnerList = new ArrayList<>();
 
         wifiReceiver = new WifiReceiver();
         registerReceiver(wifiReceiver, new IntentFilter(
@@ -75,7 +73,7 @@ public class MainActivity extends Activity {
         wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         wifiManager.startScan();
 
-        spinner = (Spinner) findViewById(R.id.spinner1);
+        spinner = findViewById(R.id.spinner1);
     }
 
 
