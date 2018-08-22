@@ -18,14 +18,14 @@ public class MusicListActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.music_list_activity);
-		ListView list = (ListView) findViewById(R.id.list);
+		ListView list =  findViewById(R.id.list);
 
 		Bundle extras = getIntent().getExtras();
-		ArrayList<MusicVO> arraylist = extras.getParcelableArrayList("arraylist");
+		ArrayList<MusicVO> arrayList = extras.getParcelableArrayList("arraylist");
 
-		if (arraylist != null) {
+		if (arrayList != null) {
 
-			LazyAdapter adapter = new LazyAdapter(this, arraylist);
+			LazyAdapter adapter = new LazyAdapter(this, arrayList);
 			
 			list.setAdapter(adapter);
 

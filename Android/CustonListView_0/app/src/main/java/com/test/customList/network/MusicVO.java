@@ -11,7 +11,6 @@ public class MusicVO implements Parcelable {
 	private String duration;
 	private String thumb_Url;
 	
-	
 	 public MusicVO(String id, String title, String artist, String duration,String thumb_Url) {
 		this.id = id;
 		this.title = title;
@@ -20,100 +19,45 @@ public class MusicVO implements Parcelable {
 		this.thumb_Url = thumb_Url;
 	}
 
-
-	 
-	 
-
-
 	public String getId() {
 		return id;
 	}
-
-
-
-
-
 
 	public void setId(String id) {
 		this.id = id;
 	}
 
-
-
-
-
-
 	public String getTitle() {
 		return title;
 	}
-
-
-
-
-
 
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-
-
-
-
-
 	public String getArtist() {
 		return artist;
 	}
-
-
-
-
-
 
 	public void setArtist(String artist) {
 		this.artist = artist;
 	}
 
-
-
-
-
-
 	public String getDuration() {
 		return duration;
 	}
-
-
-
-
-
 
 	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
-
-
-
-
-
 	public String getThumb_Url() {
 		return thumb_Url;
 	}
 
-
-
-
-
-
 	public void setThumb_Url(String thumb_Url) {
 		this.thumb_Url = thumb_Url;
 	}
-
-
-
-
-
 
 	public void readFromParcel(Parcel in) {
 		id = in.readString();
@@ -126,6 +70,7 @@ public class MusicVO implements Parcelable {
 	public int describeContents() {
 		return 0;
 	}
+
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeString(id);
 		dest.writeString(title);
@@ -142,8 +87,6 @@ public class MusicVO implements Parcelable {
     public MusicVO(String none) {
 
     }
-
-
 
     public static final Parcelable.Creator<MusicVO> CREATOR = new Parcelable.Creator<MusicVO>() {
         public MusicVO createFromParcel(Parcel in) {

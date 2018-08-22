@@ -8,14 +8,14 @@ import com.test.customList.network.MusicVO;
 
 
 public class MusicXMLParser extends DefaultHandler {
-	public ArrayList<MusicVO> list = new ArrayList<MusicVO>();  
+	public ArrayList<MusicVO> list = new ArrayList<>();
 	//String builder acts as a buffer
 
 	StringBuilder builder;
 	MusicVO musicVO = null;
 	@Override
 	public void startDocument() throws SAXException {
-		list = new ArrayList<MusicVO>();
+		list = new ArrayList<>();
 	}
 
 	@Override

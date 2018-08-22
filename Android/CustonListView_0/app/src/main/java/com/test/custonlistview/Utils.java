@@ -1,11 +1,15 @@
 package com.test.custonlistview;
 
+import android.util.Log;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 
 public class Utils {
+    private static final String TAG = Utils.class.getName();
     public static void CopyStream(InputStream is, OutputStream os)
     {
+
         final int buffer_size=1024;
         try
         {
@@ -18,6 +22,8 @@ public class Utils {
               os.write(bytes, 0, count);
             }
         }
-        catch(Exception ex){}
+        catch(Exception ex){
+            Log.e(TAG, ex.getMessage());
+        }
     }
 }

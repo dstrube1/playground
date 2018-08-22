@@ -47,7 +47,7 @@ public class HttpConnectionManager extends HttpConnection {
 
 				StringBuilder stringBuilder = new StringBuilder();
 
-				String bufferedStrChunk = null;
+				String bufferedStrChunk;
 
 				while ((bufferedStrChunk = bufferedReader.readLine()) != null) {
 					stringBuilder.append(bufferedStrChunk);

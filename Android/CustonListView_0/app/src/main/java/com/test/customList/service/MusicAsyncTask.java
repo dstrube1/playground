@@ -45,7 +45,7 @@ public class MusicAsyncTask extends AsyncTask<String, String, String> {
 		System.out.println("In Background" + params.length);
 		System.out.println("Params " + params[0]);
 
-		HashMap<String, String> postParam = new HashMap<String, String>();
+		HashMap<String, String> postParam = new HashMap<>();
 		String resp = HttpConnectionManager.getMusicList(postParam);
 
 		return resp;

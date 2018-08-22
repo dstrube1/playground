@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import com.test.customList.service.MusicAsyncTask;
 
-
-
 public class MainActivity extends Activity {
 
 	@Override
