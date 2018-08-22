@@ -330,7 +330,7 @@ public class Utils extends SQLiteOpenHelper {
 			throws UtilsException {
 		Log.d("DBUtil", "at beginning of getAllRows");
 		ArrayList<Hashtable<String, String>> wordList;
-		wordList = new ArrayList<Hashtable<String, String>>();
+		wordList = new ArrayList<>();
 		try {
 			final ArrayList<String> columnNamesForTable = getColumnNamesForTable(tableName);
 			final String[] columns = columnNamesForTable
@@ -344,7 +344,7 @@ public class Utils extends SQLiteOpenHelper {
 			}
 			if (cursor != null && cursor.moveToFirst()) {
 				do {
-					Hashtable<String, String> map = new Hashtable<String, String>();
+					Hashtable<String, String> map = new Hashtable<>();
 					for (int i = 0; i < columnNamesForTable.size(); i++) {
 						map.put(columnNamesForTable.get(i), cursor.getString(i));
 					}
