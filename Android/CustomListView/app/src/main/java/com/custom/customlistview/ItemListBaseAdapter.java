@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ItemListBaseAdapter extends BaseAdapter {
-	private static ArrayList<ItemDetails> itemDetailsrrayList;
+	private static ArrayList<ItemDetails> itemDetailsArrayList;
 	
 	private Integer[] imgid = {
 			R.drawable.p1,  //pizza1
@@ -28,16 +28,16 @@ public class ItemListBaseAdapter extends BaseAdapter {
 	private LayoutInflater l_Inflater;
 
 	public ItemListBaseAdapter(Context context, ArrayList<ItemDetails> results) {
-		itemDetailsrrayList = results;
+		itemDetailsArrayList = results;
 		l_Inflater = LayoutInflater.from(context);
 	}
 
 	public int getCount() {
-		return itemDetailsrrayList.size();
+		return itemDetailsArrayList.size();
 	}
 
 	public Object getItem(int position) {
-		return itemDetailsrrayList.get(position);
+		return itemDetailsArrayList.get(position);
 	}
 
 	public long getItemId(int position) {
@@ -58,22 +58,22 @@ public class ItemListBaseAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = l_Inflater.inflate(R.layout.item_details_view, null);
 			holder = new ViewHolder();
-			holder.txt_itemName = (TextView) convertView.findViewById(R.id.name);
-			holder.txt_itemDescription = (TextView) convertView.findViewById(R.id.itemDescription);
-			holder.txt_itemPrice = (TextView) convertView.findViewById(R.id.price);
-			holder.itemImage = (ImageView) convertView.findViewById(R.id.photo);
-			holder.checkBox = (CheckBox)convertView.findViewById(R.id.checkBox);
+			holder.txt_itemName = convertView.findViewById(R.id.name);
+			holder.txt_itemDescription = convertView.findViewById(R.id.itemDescription);
+			holder.txt_itemPrice = convertView.findViewById(R.id.price);
+			holder.itemImage = convertView.findViewById(R.id.photo);
+			holder.checkBox = convertView.findViewById(R.id.checkBox);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		
-		holder.txt_itemName.setText(itemDetailsrrayList.get(position).getName());
-		holder.txt_itemDescription.setText(itemDetailsrrayList.get(position).getItemDescription());
-		holder.txt_itemPrice.setText(itemDetailsrrayList.get(position).getPrice());
-		holder.itemImage.setImageResource(imgid[itemDetailsrrayList.get(position).getImageNumber() - 1]);
+		holder.txt_itemName.setText(itemDetailsArrayList.get(position).getName());
+		holder.txt_itemDescription.setText(itemDetailsArrayList.get(position).getItemDescription());
+		holder.txt_itemPrice.setText(itemDetailsArrayList.get(position).getPrice());
+		holder.itemImage.setImageResource(imgid[itemDetailsArrayList.get(position).getImageNumber() - 1]);
 //		imageLoader.DisplayImage("http://192.168.1.28:8082/ANDROID/images/BEVE.jpeg", holder.itemImage);
-		holder.checkBox.setChecked(itemDetailsrrayList.get(position).getChecked());
+		holder.checkBox.setChecked(itemDetailsArrayList.get(position).getChecked());
 
 		return convertView;
 	}

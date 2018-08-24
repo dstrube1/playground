@@ -32,7 +32,7 @@ public class ListViewImagesActivity extends Activity {
 
 		image_details = GetSearchResults();
 
-		final ListView lv1 = (ListView) findViewById(R.id.listV_main);
+		final ListView lv1 = findViewById(R.id.listV_main);
 
 		final ItemListBaseAdapter adapter = new ItemListBaseAdapter(this, image_details);
 		lv1.setAdapter(adapter);
@@ -62,13 +62,17 @@ public class ListViewImagesActivity extends Activity {
 	}
 
 	public void buttonClick(View v) {
-		
-		String result="Checked items:\n";
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("Checked items:\n");
 		for (int i=0; i<image_details.size(); i++){
 			ItemDetails item = (ItemDetails)adapter0.getItem(i);
-			if (item.getChecked()) result+=item.getName()+";\n";
+			if (item.getChecked()) {
+                stringBuilder.append(item.getName());
+                stringBuilder.append(";\n");
+			}
 //			else result+="item "+item.getName()+" unchecked;\n";;
 		}
+		final String result = stringBuilder.toString();
 		Toast.makeText(ListViewImagesActivity.this, result, Toast.LENGTH_LONG)
 				.show();
 	}
