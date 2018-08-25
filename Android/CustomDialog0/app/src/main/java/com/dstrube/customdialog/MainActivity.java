@@ -14,12 +14,12 @@ import android.widget.Toast;
 
 //////////////////
 /*
-* Custom dialog
-* click the Custom Dialog button- pops up the username and password fields; password may or may not be *s
-* OK and Cancel I made, not default
-* OK = Toast with username and password - clear text both
-* Cancel makes the pop up disappear
-*/
+ * Custom dialog
+ * click the Custom Dialog button- pops up the username and password fields; password may or may not be *s
+ * OK and Cancel I made, not default
+ * OK = Toast with username and password - clear text both
+ * Cancel makes the pop up disappear
+ */
 //////////////////
 public class MainActivity extends AppCompatActivity {
 
@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         //okButton = (ImageButton) dialog.findViewById(R.id.okButton);
-        //cancelButton = (ImageButton) dialog.findViewById(R.id.cancelButton);
-        dialog = new Dialog(MainActivity.this,android.R.style.Theme_Translucent);
+        //cancelButton = dialog.findViewById(R.id.cancelButton);
+        dialog = new Dialog(MainActivity.this, android.R.style.Theme_Translucent);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.mydialog);
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, ToneGenerator.MAX_VOLUME);
     }
 
-    public void imageClick(View v){
+    public void imageClick(View v) {
         tg.startTone(ToneGenerator.TONE_PROP_BEEP);
 
         //doesn't work:
@@ -62,10 +62,11 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = MainActivity.this.getLayoutInflater();
         builder.setView(inflater.inflate(R.layout.mydialog, null));
 
-        dialog =  builder.create();
+        dialog = builder.create();
         dialog.show();
     }
-    public void okClick(View v){
+
+    public void okClick(View v) {
 //    	mediaPlayer.start();
 //    	if (!v.isSoundEffectsEnabled()){
 //    		v.setSoundEffectsEnabled(true);
@@ -84,27 +85,26 @@ public class MainActivity extends AppCompatActivity {
         String output;// = "";
 
         //these values were always blank if the instantiations were in onResume
-        usernameText = (EditText)dialog.findViewById(R.id.usernameText1);
-        passwordText = (EditText)dialog.findViewById(R.id.passwordText);
+        usernameText = dialog.findViewById(R.id.usernameText1);
+        passwordText = dialog.findViewById(R.id.passwordText);
 
-        String username=usernameText.getText().toString();
-        String password=passwordText.getText().toString();
-        if (username.equals("")){
+        String username = usernameText.getText().toString();
+        String password = passwordText.getText().toString();
+        if (username.equals("")) {
             output = "Blank username";
-        }
-        else {
+        } else {
             output = "Username: " + username;
         }
-        if (password.equals("")){
+        if (password.equals("")) {
             output += "\nBlank password";
-        }
-        else{
+        } else {
             output += "\nPassword: " + password;
         }
         Toast.makeText(MainActivity.this, output, Toast.LENGTH_LONG).show();
         dialog.dismiss();
     }
-    public void cancelClick(View v){
+
+    public void cancelClick(View v) {
 //    	if (!v.isSoundEffectsEnabled()){
 //    		v.setSoundEffectsEnabled(true);
 //    	}
@@ -121,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
 //    	tg.stopTone();
 
         if (usernameText == null)
-            usernameText = (EditText)dialog.findViewById(R.id.usernameText1);
+            usernameText = dialog.findViewById(R.id.usernameText1);
         if (passwordText == null)
-            passwordText = (EditText)dialog.findViewById(R.id.passwordText);
+            passwordText = dialog.findViewById(R.id.passwordText);
 
         usernameText.setText("");
         passwordText.setText("");
