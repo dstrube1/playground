@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 18
-    buildToolsVersion "27.0.1"
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.samir"
-        minSdkVersion 11
-        targetSdkVersion 18
+        minSdkVersion 24
+        targetSdkVersion 27
     }
 
     buildTypes {

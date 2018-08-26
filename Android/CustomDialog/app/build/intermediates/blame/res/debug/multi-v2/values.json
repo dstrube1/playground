@@ -21,28 +21,6 @@
                     }
                 }
             ]
-        },
-        {
-            "outputFile": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
-            "map": [
-                {
-                    "source": "/Users/dstrube/AndroidStudioProjects/CustomDialog/app/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "4,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "129,59",
-                        "endColumns": "49,68",
-                        "endOffsets": "174,123"
-                    },
-                    "to": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,105",
-                        "endColumns": "49,68",
-                        "endOffsets": "100,169"
-                    }
-                }
-            ]
         }
     ]
 }
