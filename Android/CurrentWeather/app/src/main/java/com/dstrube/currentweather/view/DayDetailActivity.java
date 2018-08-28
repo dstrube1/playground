@@ -20,14 +20,14 @@ public class DayDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        TextView day = (TextView) findViewById(R.id.day_detail_day);
-        TextView date = (TextView) findViewById(R.id.day_detail_date);
-        TextView high = (TextView) findViewById(R.id.day_detail_high);
-        TextView low = (TextView) findViewById(R.id.day_detail_low);
-        TextView description = (TextView) findViewById(R.id.day_detail_description);
-        TextView humidity = (TextView) findViewById(R.id.day_detail_humidity);
-        TextView wind = (TextView) findViewById(R.id.day_detail_wind);
-        TextView pressure = (TextView) findViewById(R.id.day_detail_pressure);
+        TextView day = findViewById(R.id.day_detail_day);
+        TextView date = findViewById(R.id.day_detail_date);
+        TextView high = findViewById(R.id.day_detail_high);
+        TextView low = findViewById(R.id.day_detail_low);
+        TextView description = findViewById(R.id.day_detail_description);
+        TextView humidity = findViewById(R.id.day_detail_humidity);
+        TextView wind = findViewById(R.id.day_detail_wind);
+        TextView pressure = findViewById(R.id.day_detail_pressure);
 
         day.setText(intent.getStringExtra(MainActivity.TAG_DAY));
         date.setText(intent.getStringExtra(MainActivity.TAG_DATE));
@@ -39,7 +39,7 @@ public class DayDetailActivity extends AppCompatActivity {
 
         final Drawable drawable = getDrawable(MainActivity.getImage(
                 intent.getStringExtra(MainActivity.TAG_IMAGE)));
-        final ImageView imageView = (ImageView) findViewById(R.id.day_detail_image);
+        final ImageView imageView = findViewById(R.id.day_detail_image);
         imageView.setImageDrawable(drawable);
 
         humidity.setText("Humidity: " + intent.getStringExtra(WeatherDay.TAG_HUMIDITY) + "%");

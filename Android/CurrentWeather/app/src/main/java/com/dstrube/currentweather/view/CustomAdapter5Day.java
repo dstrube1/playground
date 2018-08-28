@@ -59,17 +59,17 @@ public class CustomAdapter5Day extends SimpleAdapter {
 
         final Map<String, String> map = (HashMap<String, String>) getItem(position);
 
-        final ImageView imageView = (ImageView) view.findViewById(R.id.little_day_image);
-        final TextView day = (TextView) view.findViewById(R.id.little_day_day);
-        final TextView description = (TextView) view.findViewById(R.id.little_day_description);
-        final TextView high = (TextView) view.findViewById(R.id.little_day_high);
-        final TextView low = (TextView) view.findViewById(R.id.little_day_low);
-        final TextView date = (TextView) view.findViewById(R.id.little_day_date);
-        final TextView humidity = (TextView) view.findViewById(R.id.little_day_humidity);
-        final TextView pressure = (TextView) view.findViewById(R.id.little_day_pressure);
-        final TextView wind = (TextView) view.findViewById(R.id.little_day_wind);
-        final TextView degree = (TextView) view.findViewById(R.id.little_day_degree);
-        final TextView icon = (TextView) view.findViewById(R.id.little_day_icon);
+        final ImageView imageView = view.findViewById(R.id.little_day_image);
+        final TextView day = view.findViewById(R.id.little_day_day);
+        final TextView description = view.findViewById(R.id.little_day_description);
+        final TextView high = view.findViewById(R.id.little_day_high);
+        final TextView low = view.findViewById(R.id.little_day_low);
+        final TextView date = view.findViewById(R.id.little_day_date);
+        final TextView humidity = view.findViewById(R.id.little_day_humidity);
+        final TextView pressure = view.findViewById(R.id.little_day_pressure);
+        final TextView wind = view.findViewById(R.id.little_day_wind);
+        final TextView degree = view.findViewById(R.id.little_day_degree);
+        final TextView icon = view.findViewById(R.id.little_day_icon);
 
         final Drawable drawable = context.getDrawable(MainActivity.getImage(map.get(MainActivity.TAG_IMAGE)));
         imageView.setImageDrawable(drawable);

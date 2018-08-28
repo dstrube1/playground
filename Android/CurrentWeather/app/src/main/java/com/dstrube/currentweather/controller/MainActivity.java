@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            final ListView listView = (ListView) findViewById(R.id.listViewToday);
+            final ListView listView = findViewById(R.id.listViewToday);
 
             try {
                 listView.setAdapter(adapterToday);
@@ -287,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
                     }
             );
 
-            ListView listView = (ListView) findViewById(R.id.listView5Day);
+            ListView listView = findViewById(R.id.listView5Day);
             listView.setAdapter(adapter5Day);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

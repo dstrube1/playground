@@ -22,7 +22,8 @@ public class JSONParser {
     private static final String TAG = JSONParser.class.getName();
 
     //Constructor
-    public JSONParser() {}
+    public JSONParser() {
+    }
 
     //Input: a URL
     //Output: JSONObject
@@ -35,9 +36,15 @@ public class JSONParser {
 
         final ConnectivityManager connMgr = (ConnectivityManager)
                 context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        final NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo == null || !networkInfo.isConnected()) {
-            Log.e(TAG, methodName + ": No network connectivity");
+        final NetworkInfo networkInfo;
+        if (connMgr != null) {
+            networkInfo = connMgr.getActiveNetworkInfo();
+            if (networkInfo == null || !networkInfo.isConnected()) {
+                Log.e(TAG, methodName + ": No network connectivity");
+                return null;
+            }
+        }else {
+            Log.e(TAG, methodName + ": Null ConnectivityManager");
             return null;
         }
 
