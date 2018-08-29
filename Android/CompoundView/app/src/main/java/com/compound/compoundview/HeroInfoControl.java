@@ -30,9 +30,9 @@ public class HeroInfoControl extends LinearLayout {
     }
  
     private void loadViews() {
-        mHeroIcon = (ImageView)findViewById(R.id.ivIcon);
-        mHeroTitle = (ImageView)findViewById(R.id.ivTitle);
-        mHeroName = (TextView)findViewById(R.id.tvName);
+        mHeroIcon = findViewById(R.id.ivIcon);
+        mHeroTitle = findViewById(R.id.ivTitle);
+        mHeroName = findViewById(R.id.tvName);
     }
  
     public void setHeroIcon(Drawable icon) {

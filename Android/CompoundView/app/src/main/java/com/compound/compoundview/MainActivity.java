@@ -22,17 +22,17 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        heroLuna = (HeroInfoControl)findViewById(R.id.heroLuna);
+        heroLuna = findViewById(R.id.heroLuna);
         heroLuna.setHeroIcon(getResources().getDrawable(R.drawable.ic_launcher));
         heroLuna.setHeroTitle(getResources().getDrawable(R.drawable.capture1));
         heroLuna.setHeroName("Luna Moonfang");
  
-        heroTiny = (HeroInfoControl)findViewById(R.id.heroTiny);
+        heroTiny = findViewById(R.id.heroTiny);
         heroTiny.setHeroIcon(getResources().getDrawable(R.drawable.ic_launcher));
         heroTiny.setHeroTitle(getResources().getDrawable(R.drawable.capture2));
         heroTiny.setHeroName("Tiny");
  
-        heroKael = (HeroInfoControl)findViewById(R.id.heroKael);
+        heroKael = findViewById(R.id.heroKael);
         heroKael.setHeroIcon(getResources().getDrawable(R.drawable.ic_launcher));
         heroKael.setHeroTitle(getResources().getDrawable(R.drawable.capture3));
         heroKael.setHeroName("Kael");
