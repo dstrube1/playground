@@ -1,7 +1,6 @@
 package com.dstrube.clipboardtest;
 
 import android.app.Activity;
-//import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -13,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-//import android.os.Build;
 
 //////////////////
 /* 
@@ -44,8 +42,8 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		copyText = (EditText)findViewById(R.id.copyText);
-		pasteText = (EditText)findViewById(R.id.pasteText);
+		copyText = findViewById(R.id.copyText);
+		pasteText = findViewById(R.id.pasteText);
 		man = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 	}
 	
