@@ -66,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        imgPreview = (ImageView) findViewById(R.id.imgPreview);
-        videoPreview = (VideoView) findViewById(R.id.videoPreview);
-        previewText = (TextView) findViewById(R.id.previewText);
+        imgPreview = findViewById(R.id.imgPreview);
+        videoPreview = findViewById(R.id.videoPreview);
+        previewText = findViewById(R.id.previewText);
     }
 
     /**
@@ -88,13 +88,13 @@ public class MainActivity extends AppCompatActivity {
      */
     private File getOutputMediaFile(int type) {
         // External sdcard location
-        File mediaStorageDir = null;
-        if (MODE == Environment.DIRECTORY_PICTURES){
+        File mediaStorageDir;
+        if (MODE.equals(Environment.DIRECTORY_PICTURES)){
             mediaStorageDir = new File(
                     Environment
                             .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                     FILE_DIRECTORY_NAME);
-        }else if (MODE == Environment.DIRECTORY_MOVIES){
+        }else if (MODE.equals(Environment.DIRECTORY_MOVIES)){
             mediaStorageDir = new File(
                     Environment
                             .getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES),
