@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addListenerOnButton() {
-        toggleButton1 = (ToggleButton)findViewById(R.id.toggleButton1);
+        toggleButton1 = findViewById(R.id.toggleButton1);
         toggleButton1.setOnClickListener(new View.OnClickListener(){
             @SuppressLint("NewApi") @Override
             public void onClick(View view){
