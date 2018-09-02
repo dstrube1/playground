@@ -4,15 +4,11 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="19" />
-
     <!-- required by bugsense -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- if we want bugsense to have access to Logcat -->
     <uses-permission android:name="android.permission.READ_LOGS" />
-    
+    <!-- ^ only granted to system apps? -->
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
