@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 
-		textView = (EditText) findViewById(R.id.editText1);
+		textView = findViewById(R.id.editText1);
 		
 		deck = new Deck();
 	}

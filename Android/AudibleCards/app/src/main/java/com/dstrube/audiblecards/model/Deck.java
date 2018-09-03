@@ -21,7 +21,7 @@ public class Deck {
 	 * Empty constructor
 	 */
 	public Deck() {
-		this.cards = new ArrayList<Card>();
+		this.cards = new ArrayList<>();
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class Deck {
 	 * @throws InvalidDeckOperationException
 	 */
 	public Deck(ArrayList<Card> cards) throws InvalidDeckOperationException {
-		this.cards = new ArrayList<Card>();
+		this.cards = new ArrayList<>();
 		//We could just set it and forget it, but I want to make sure all the cards getting added are valid
 		for (Card input : cards) {
 			addCard(input);
@@ -72,7 +72,7 @@ public class Deck {
 	 */
 	public void addCard(Card input) throws InvalidDeckOperationException {
 		if (cards == null) {
-			cards = new ArrayList<Card>();
+			cards = new ArrayList<>();
 		}
 
 		if (getSize() >= MAX_DECK_SIZE) {
