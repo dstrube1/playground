@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends Activity {
 
@@ -57,9 +58,7 @@ public class MainActivity extends Activity {
 
             list = new ArrayList<>();
 
-            for (int i = 0; i < days.length; i++) {
-                list.add(days[i]);
-            }
+            list.addAll(Arrays.asList(days));
 
             return list;
         }
