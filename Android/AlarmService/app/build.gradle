@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 10
-    buildToolsVersion "27.0.1"
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.exercise.AndroidAlarmService"
-        minSdkVersion 4
-        targetSdkVersion 4
+        minSdkVersion 24
+        targetSdkVersion 27
     }
 
     buildTypes {

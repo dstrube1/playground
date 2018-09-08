@@ -38,13 +38,17 @@ public class AndroidAlarmService extends Activity {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTimeInMillis(System.currentTimeMillis());
 		calendar.add(Calendar.SECOND, 10);
-		alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), pendingIntent);
+		if (alarmManager != null) {
+			alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), pendingIntent);
+		}
 		Toast.makeText(AndroidAlarmService.this, "Start Alarm",Toast.LENGTH_LONG).show();
 	}
 
 	public void CancelAlarm(View arg0) {
 		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-		alarmManager.cancel(pendingIntent);
+		if (alarmManager != null) {
+			alarmManager.cancel(pendingIntent);
+		}
 
 		// Tell the user about what we did.
 		Toast.makeText(AndroidAlarmService.this, "Cancel!",

@@ -34,7 +34,9 @@ public class MyAlarmService extends Service {
 		super.onStart(intent, startId);
 		Toast.makeText(this, "MyAlarmService.onStart()", Toast.LENGTH_LONG).show();
 		Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-		vibrator.vibrate(500);
+		if (vibrator != null) {
+			vibrator.vibrate(500);
+		}
 	}
 
 	@Override
@@ -43,7 +45,9 @@ public class MyAlarmService extends Service {
 		Toast.makeText(this, "Starting Vibrate", Toast.LENGTH_LONG)
 				.show();
 		Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-		vibrator.vibrate(500);
+		if (vibrator != null) {
+			vibrator.vibrate(500);
+		}
 
 		return START_STICKY;
 
