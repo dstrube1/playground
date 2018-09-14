@@ -3,6 +3,7 @@ package com.dstrube.filelistertest.controller;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.dstrube.filelistertest.R;
@@ -13,6 +14,8 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
+
+    private static final String TAG = MainActivity.class.getName();
 
     ArrayList<MyFile> myFiles;
     ListView listView;
@@ -26,30 +29,37 @@ public class MainActivity extends Activity {
     private void populateMyFiles(String path) {
         try {
             File dir = new File(path);
-            if (!dir.isHidden()) { // if it wants to be left alone, leave it
-                // alone
-                for (File file : dir.listFiles()) {
+            if (!dir.isHidden()) { // if it wants to be left alone, leave it alone
+                File[] files = dir.listFiles();
+                if (files == null) {
+                    Log.e(TAG, "List of files is null");
+                    return;
+                }
+                for (File file : files) {
                     if (file.isDirectory()) {
                         populateMyFiles(file.getPath());
                     }
-//                        if (file.isDirectory()){
-//                            continue;
-//                        }
-//                        if (file.getPath().endsWith(".apk") || file.getPath().endsWith(".odex") ){
-//                            continue;
-//                        }
-                    if (file.getPath().endsWith(".jpg") || file.getPath().endsWith(".png")) {
+                        if (file.isDirectory()){
+                            continue;
+                        }
+                        if (file.getPath().endsWith(".apk")
+                                || file.getPath().endsWith(".odex")
+                                || file.getPath().endsWith(".so")
+                                || !file.getPath().contains(".")){
+                            continue;
+                        }
+//                    if (file.getPath().endsWith(".jpg") || file.getPath().endsWith(".png")) {
 
-                        System.out.println("file: " + file.getPath());
+                        Log.d(TAG, "file: " + file.getPath());
                         MyFile myFile = new MyFile(file.getName(),
                                 file.getAbsolutePath(), file.isDirectory(),
                                 file.lastModified());
                         myFiles.add(myFile);
-                    }
+//                    }
                 }
             }
         } catch (NullPointerException e) {
-            System.out.println("NullPointerException at " + path);
+            Log.e(TAG, "NullPointerException at " + path);
         }
     }
 
@@ -57,7 +67,13 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
-        String root = Environment.getExternalStorageDirectory().toString();
+        final String[] roots = {
+                Environment.getExternalStorageDirectory().toString(),
+                Environment.getDataDirectory().toString(),
+                Environment.getDownloadCacheDirectory().toString(),
+                Environment.getRootDirectory().toString(),
+//                Environment.getExternalStoragePublicDirectory("type?").toString()
+        };
 
         // String state = Environment.getExternalStorageState();
         // Environment.MEDIA_MOUNTED_READ_ONLY or Environment.MEDIA_MOUNTED
@@ -66,12 +82,8 @@ public class MainActivity extends Activity {
         // Toast.LENGTH_LONG).show();
 
         myFiles = new ArrayList<>();
-        populateMyFiles(root);
-        if (myFiles.size() == 0) {
-            populateMyFiles(Environment.getDataDirectory().toString());
-        }
-        if (myFiles.size() == 0) {
-            populateMyFiles(Environment.getRootDirectory().toString());
+        for (String root : roots) {
+            populateMyFiles(root);
         }
         listView = findViewById(R.id.listView);
         CustomAdapter adapter = new CustomAdapter(this, myFiles);
