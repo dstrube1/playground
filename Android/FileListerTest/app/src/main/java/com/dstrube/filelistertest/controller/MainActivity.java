@@ -10,6 +10,8 @@ import com.dstrube.filelistertest.R;
 import com.dstrube.filelistertest.model.MyFile;
 import com.dstrube.filelistertest.view.CustomAdapter;
 
+import com.dstrube.fileutil.*;
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -39,9 +41,9 @@ public class MainActivity extends Activity {
                     if (file.isDirectory()) {
                         populateMyFiles(file.getPath());
                     }
-                        if (file.isDirectory()){
-                            continue;
-                        }
+//                        if (file.isDirectory()){
+//                            continue;
+//                        }
                         if (file.getPath().endsWith(".apk")
                                 || file.getPath().endsWith(".odex")
                                 || file.getPath().endsWith(".so")
@@ -53,8 +55,10 @@ public class MainActivity extends Activity {
                         Log.d(TAG, "file: " + file.getPath());
                         MyFile myFile = new MyFile(file.getName(),
                                 file.getAbsolutePath(), file.isDirectory(),
-                                file.lastModified());
+                                file.lastModified(),0);
+//                                FileUtil.Utils.);
                         myFiles.add(myFile);
+//                        file.length();
 //                    }
                 }
             }
@@ -68,12 +72,16 @@ public class MainActivity extends Activity {
         super.onResume();
 
         final String[] roots = {
-                Environment.getExternalStorageDirectory().toString(),
-                Environment.getDataDirectory().toString(),
-                Environment.getDownloadCacheDirectory().toString(),
+                Environment.getExternalStorageDirectory().toString(),   //list = null
+                Environment.getDataDirectory().toString(),              //list = null
+                Environment.getDownloadCacheDirectory().toString(),     //list = null
                 Environment.getRootDirectory().toString(),
 //                Environment.getExternalStoragePublicDirectory("type?").toString()
         };
+        final ArrayList<String>extensions = new ArrayList<>();
+        extensions.add(".sh");
+        final ArrayList<String> rootsExt = Utils.allExternal(extensions);
+        final ArrayList<String> rootsInt = Utils.allInternal(extensions);
 
         // String state = Environment.getExternalStorageState();
         // Environment.MEDIA_MOUNTED_READ_ONLY or Environment.MEDIA_MOUNTED

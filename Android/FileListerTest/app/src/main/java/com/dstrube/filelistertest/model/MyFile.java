@@ -11,18 +11,23 @@ public class MyFile {
     private boolean isDir;
     private String modifiedDate;
 
+    //FileUtil fields
+    private long size;
+
     public MyFile() {
         name = "";
         path = "";
         isDir = false;
         modifiedDate = "";
+        size = 0;
     }
 
-    public MyFile(String name, String path, boolean isDir, long modifiedDate) {
+    public MyFile(String name, String path, boolean isDir, long modifiedDate, long size) {
         this.name = name;
         this.path = path;
         this.isDir = isDir;
         setModifiedDate(modifiedDate);
+        this.size = size;
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -44,5 +49,21 @@ public class MyFile {
     }
     public String getModifiedDate(){
         return modifiedDate;
+    }
+    public String getSize(){
+        return "";
+        //TODO
+        /*
+        private static string GetFileSize(double byteCount)
+        {
+            if (byteCount >= 1073741824.0)
+                return $"{byteCount / 1073741824.0:##.##} GB";
+            if (byteCount >= 1048576.0)
+                return $"{byteCount / 1048576.0:##.##} MB";
+            if (byteCount >= 1024.0)
+                return $"{byteCount / 1024.0:##.##} KB";
+            return $"{byteCount:##.##} bytes";
+        }
+        */
     }
 }
