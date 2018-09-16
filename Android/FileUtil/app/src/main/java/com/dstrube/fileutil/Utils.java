@@ -80,4 +80,25 @@ public class Utils {
         }
         return list;
     }
+
+    public static String getFileSize(String path) {
+        if (path == null || path.length() == 0) {
+            return "-";
+        }
+
+        final double bytesPerKB = 1024.0;
+        final double bytesPerMB = bytesPerKB * bytesPerKB;
+        final double bytesPerGB = bytesPerKB * bytesPerKB * bytesPerKB;
+
+        File file = new File(path);
+
+        double byteCount = file.length();
+        if (byteCount >= bytesPerGB)
+            return "" + (byteCount / bytesPerGB) + " GB";
+        if (byteCount >= bytesPerMB)
+            return "" + (byteCount / bytesPerMB) + " MB";
+        if (byteCount >= bytesPerKB)
+            return "" + (byteCount / bytesPerKB) + " KB";
+        return "" + byteCount + " bytes";
+    }
 }
