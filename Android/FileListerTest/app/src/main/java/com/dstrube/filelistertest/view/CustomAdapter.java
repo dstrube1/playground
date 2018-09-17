@@ -55,6 +55,8 @@ public class CustomAdapter extends BaseAdapter {
                     .findViewById(R.id.fileIsDir);
             holder.txt_fileModifiedDate = convertView
                     .findViewById(R.id.fileModifiedDate);
+            holder.txt_fileSize = convertView
+                    .findViewById(R.id.fileSize);
             convertView.setTag(holder);
         }
 
@@ -68,6 +70,7 @@ public class CustomAdapter extends BaseAdapter {
             holder.txt_fileIsDir.setTextColor(Color.GREEN);
         }
         holder.txt_fileModifiedDate.setText(list.get(position).getModifiedDate());
+        holder.txt_fileSize.setText(list.get(position).getSize());
 
         return convertView;
     }
@@ -79,5 +82,6 @@ public class CustomAdapter extends BaseAdapter {
         TextView txt_filePath;
         TextView txt_fileIsDir;
         TextView txt_fileModifiedDate;
+        TextView txt_fileSize;
     }
 }

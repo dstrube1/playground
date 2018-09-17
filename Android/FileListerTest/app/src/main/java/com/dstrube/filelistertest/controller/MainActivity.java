@@ -55,10 +55,8 @@ public class MainActivity extends Activity {
                         Log.d(TAG, "file: " + file.getPath());
                         MyFile myFile = new MyFile(file.getName(),
                                 file.getAbsolutePath(), file.isDirectory(),
-                                file.lastModified(),0);
-//                                FileUtil.Utils.);
+                                file.lastModified(),file.length());
                         myFiles.add(myFile);
-//                        file.length();
 //                    }
                 }
             }

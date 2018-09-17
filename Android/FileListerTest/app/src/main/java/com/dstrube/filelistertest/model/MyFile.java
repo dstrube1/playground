@@ -2,6 +2,8 @@ package com.dstrube.filelistertest.model;
 
 import android.annotation.SuppressLint;
 
+import java.io.File;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -51,19 +53,28 @@ public class MyFile {
         return modifiedDate;
     }
     public String getSize(){
-        return "";
-        //TODO
-        /*
-        private static string GetFileSize(double byteCount)
-        {
-            if (byteCount >= 1073741824.0)
-                return $"{byteCount / 1073741824.0:##.##} GB";
-            if (byteCount >= 1048576.0)
-                return $"{byteCount / 1048576.0:##.##} MB";
-            if (byteCount >= 1024.0)
-                return $"{byteCount / 1024.0:##.##} KB";
-            return $"{byteCount:##.##} bytes";
+        //TODO - this function has been added to FileUtils,
+        //TODO but, for some unknown reason, the function is not available after re-compiling and
+        //TODO re-adding the FileUtil.aar to this project
+
+        final double bytesPerKB = 1024.0;
+        final double bytesPerMB = bytesPerKB * bytesPerKB;
+        final double bytesPerGB = bytesPerKB * bytesPerKB * bytesPerKB;
+
+        final File file = new File(path);
+
+        final double byteCount = file.length();
+        final DecimalFormat df2 = new DecimalFormat(".##");
+        final DecimalFormat df0 = new DecimalFormat("");
+        if (byteCount >= bytesPerGB) {
+            return "" + df2.format(byteCount / bytesPerGB) + " GB";
         }
-        */
+        if (byteCount >= bytesPerMB) {
+            return "" + df2.format(byteCount / bytesPerMB) + " MB";
+        }
+        if (byteCount >= bytesPerKB) {
+            return "" + df2.format(byteCount / bytesPerKB) + " KB";
+        }
+        return "" + df0.format(byteCount) + " bytes";
     }
 }
