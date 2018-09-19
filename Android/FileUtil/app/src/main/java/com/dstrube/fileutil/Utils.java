@@ -1,11 +1,16 @@
 package com.dstrube.fileutil;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import android.os.Environment;
+import android.util.Log;
 
 public class Utils {
+    private static final String TAG = "FileUtil";
     public static ArrayList<String> allInternal(ArrayList<String> extensions)
             throws NullPointerException {
         return allInternal(-1, extensions);
@@ -101,4 +106,33 @@ public class Utils {
             return "" + (byteCount / bytesPerKB) + " KB";
         return "" + byteCount + " bytes";
     }
+
+    public static boolean doesFileExist(String path) {
+        //check for file in Downloads
+        //check for file in assets
+        //check for file on network
+        File file = new File(path);
+        return file.exists();
+    }
+
+    public boolean isFileReadable(String path) {
+        File file = new File(path);
+        return file.canRead();
+    }
+
+    public char[] getFirst10Chars(String path) {
+        File file = new File(path);
+        char[] chars = new char[10];
+        try {
+            FileReader fileReader = new FileReader(file);
+            int readInt = fileReader.read(chars,0,10);
+        }catch (FileNotFoundException fnfe){
+            Log.e(TAG,"FileNotFoundException in getFirst10Bytes");
+        }catch (IOException ioe){
+            Log.e(TAG,"IOException in getFirst10Bytes");
+        }
+        return chars;
+    }
+
+
 }
