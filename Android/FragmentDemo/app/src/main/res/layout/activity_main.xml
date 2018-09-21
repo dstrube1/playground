@@ -13,7 +13,7 @@
         android:name="com.example.fragmentdemo.FragmentA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
 
     <fragment
@@ -22,9 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fragment1"
-        android:layout_marginLeft="10dp"     
-        android:layout_alignParentLeft="true"        
-        android:layout_alignLeft="@+id/fragment1"    
+        android:layout_marginStart="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignStart="@+id/fragment1"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

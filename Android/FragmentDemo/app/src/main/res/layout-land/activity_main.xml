@@ -9,7 +9,7 @@
         android:name="com.example.fragmentdemo.FragmentA"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="left|center_vertical"
+        android:layout_gravity="start|center_vertical"
         android:layout_weight="1" />
 
     <fragment
@@ -17,7 +17,7 @@
         android:name="com.example.fragmentdemo.FragmentB"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="left|center_vertical"
+        android:layout_gravity="start|center_vertical"
         android:layout_weight="1" />
 
 </LinearLayout>

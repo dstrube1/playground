@@ -5,6 +5,7 @@ import java.util.Map;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 public class FragmentB extends Fragment {
 
     static Map<String, Integer> map;
+    private static final String TAG = FragmentB.class.getName();
 
     static {
         map = new HashMap<>();
@@ -43,6 +45,7 @@ public class FragmentB extends Fragment {
     }
 
     public void changeText(String selection) {
+        Log.i(TAG, "changeText");
         imageView.setImageResource(map.get(selection));
     }
 }

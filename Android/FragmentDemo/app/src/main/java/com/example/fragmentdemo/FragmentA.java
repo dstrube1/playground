@@ -50,6 +50,7 @@ public class FragmentA extends Fragment {
         this.communicator = comm;
     }
 
+    //TODO Why did I define Communicator here but implement it in MainActivity?
     public interface Communicator {
         void changeText(String itemSelect);
     }
