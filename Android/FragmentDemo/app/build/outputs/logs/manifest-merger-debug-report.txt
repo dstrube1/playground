@@ -4,16 +4,16 @@ ADDED from /Users/dstrube/Projects/github/playground/Android/FragmentDemo/app/sr
 INJECTED from /Users/dstrube/Projects/github/playground/Android/FragmentDemo/app/src/main/AndroidManifest.xml:2:1-22:12
 INJECTED from /Users/dstrube/Projects/github/playground/Android/FragmentDemo/app/src/main/AndroidManifest.xml:2:1-22:12
 INJECTED from /Users/dstrube/Projects/github/playground/Android/FragmentDemo/app/src/main/AndroidManifest.xml:2:1-22:12
-MERGED from [com.android.support:support-v4:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/c8cbc7ca74317a2b2537aaaa1a6244bb/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-media-compat:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/3e38cfa1a094ab5d3432ff53659577c6/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-fragment:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/048b5a6b3fcebed14dc7f6b661d53995/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/096c712fb4b77feb4430e6f46c94c445/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/32d5391b32c0e008062a983bbb988679/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/7b6ab0ccfbcc6b695850b903b1c7fb0e/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/7f5191e03415be46ceb8cfe9e78852ef/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/d48c02545d2e22d9536036438fcf7b58/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/dfd61e18d9fc3e52f85c3a6a82df56d8/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.core:runtime:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/cdc1b65687120cc5a987b8522d8d87d7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/1fa6aba94fc1a83162d4530db4bbe867/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/66937facdb0bdee55020d352e2a90036/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/c597943acf775a6f9f2a39dddd91f764/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/78bdce72d7eea080faf349bf044f9ff2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/83d45ddfc4c01a62b3666b9c71cb8736/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/ce35a360f1e4599b2d8e9f5d76f287ef/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/bd4c4955088de8d458a7a09135469946/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/2fcc6fee71ade11e6d6533042c1cad37/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/24e4038b145ba9da478b6c7941b33e6f/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/59099f217a4df08675da618f9eb72e98/AndroidManifest.xml:17:1-22:12
 INJECTED from /Users/dstrube/Projects/github/playground/Android/FragmentDemo/app/src/main/AndroidManifest.xml:2:1-22:12
 INJECTED from /Users/dstrube/Projects/github/playground/Android/FragmentDemo/app/src/main/AndroidManifest.xml:2:1-22:12
 INJECTED from /Users/dstrube/Projects/github/playground/Android/FragmentDemo/app/src/main/AndroidManifest.xml:2:1-22:12
@@ -61,26 +61,26 @@ uses-sdk
 INJECTED from /Users/dstrube/Projects/github/playground/Android/FragmentDemo/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/dstrube/Projects/github/playground/Android/FragmentDemo/app/src/main/AndroidManifest.xml
 INJECTED from /Users/dstrube/Projects/github/playground/Android/FragmentDemo/app/src/main/AndroidManifest.xml
-MERGED from [com.android.support:support-v4:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/c8cbc7ca74317a2b2537aaaa1a6244bb/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/c8cbc7ca74317a2b2537aaaa1a6244bb/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/3e38cfa1a094ab5d3432ff53659577c6/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/3e38cfa1a094ab5d3432ff53659577c6/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/048b5a6b3fcebed14dc7f6b661d53995/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/048b5a6b3fcebed14dc7f6b661d53995/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/096c712fb4b77feb4430e6f46c94c445/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/096c712fb4b77feb4430e6f46c94c445/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/32d5391b32c0e008062a983bbb988679/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/32d5391b32c0e008062a983bbb988679/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/7b6ab0ccfbcc6b695850b903b1c7fb0e/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/7b6ab0ccfbcc6b695850b903b1c7fb0e/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/7f5191e03415be46ceb8cfe9e78852ef/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/7f5191e03415be46ceb8cfe9e78852ef/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/d48c02545d2e22d9536036438fcf7b58/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/d48c02545d2e22d9536036438fcf7b58/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/dfd61e18d9fc3e52f85c3a6a82df56d8/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/dfd61e18d9fc3e52f85c3a6a82df56d8/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/cdc1b65687120cc5a987b8522d8d87d7/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/cdc1b65687120cc5a987b8522d8d87d7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/1fa6aba94fc1a83162d4530db4bbe867/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/1fa6aba94fc1a83162d4530db4bbe867/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/66937facdb0bdee55020d352e2a90036/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/66937facdb0bdee55020d352e2a90036/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/c597943acf775a6f9f2a39dddd91f764/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/c597943acf775a6f9f2a39dddd91f764/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/78bdce72d7eea080faf349bf044f9ff2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/78bdce72d7eea080faf349bf044f9ff2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/83d45ddfc4c01a62b3666b9c71cb8736/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/83d45ddfc4c01a62b3666b9c71cb8736/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/ce35a360f1e4599b2d8e9f5d76f287ef/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/ce35a360f1e4599b2d8e9f5d76f287ef/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/bd4c4955088de8d458a7a09135469946/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/bd4c4955088de8d458a7a09135469946/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/2fcc6fee71ade11e6d6533042c1cad37/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/2fcc6fee71ade11e6d6533042c1cad37/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/24e4038b145ba9da478b6c7941b33e6f/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/24e4038b145ba9da478b6c7941b33e6f/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/59099f217a4df08675da618f9eb72e98/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/dstrube/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/59099f217a4df08675da618f9eb72e98/AndroidManifest.xml:20:5-44
 INJECTED from /Users/dstrube/Projects/github/playground/Android/FragmentDemo/app/src/main/AndroidManifest.xml
 INJECTED from /Users/dstrube/Projects/github/playground/Android/FragmentDemo/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
