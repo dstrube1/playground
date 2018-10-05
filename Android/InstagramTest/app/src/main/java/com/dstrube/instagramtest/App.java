@@ -35,7 +35,10 @@ public class App  extends Application {
         return imageLoader;
     }
     public static RequestQueue getRequestQueue() {
-        if (requestQueue == null) requestQueue = Volley.newRequestQueue(instance.getApplicationContext());
+        if (requestQueue == null) {
+            //TODO fails here because instance is null; must re-research the proper way to extend the Application class
+            requestQueue = Volley.newRequestQueue(instance.getApplicationContext());
+        }
         return requestQueue;
     }
 
