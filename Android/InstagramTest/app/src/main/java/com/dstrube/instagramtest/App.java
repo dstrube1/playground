@@ -1,6 +1,7 @@
 package com.dstrube.instagramtest;
 
 import android.app.Application;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
 
@@ -36,10 +37,12 @@ public class App  extends Application {
     }
     public static RequestQueue getRequestQueue() {
         if (requestQueue == null) {
-            //TODO fails here because instance is null; must re-research the proper way to extend the Application class
             requestQueue = Volley.newRequestQueue(instance.getApplicationContext());
         }
         return requestQueue;
+    }
+    public static Context getContext(){
+        return instance.getApplicationContext();
     }
 
     //This class is the cache for the images
