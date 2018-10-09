@@ -1,6 +1,8 @@
 package com.dstrube.instagramtest;
 
+import android.util.Base64;
 import android.util.Log;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -23,21 +25,21 @@ public class InstagramLogin implements Response.ErrorListener, Response.Listener
     //
     //Singleton and construct section
     //
-    public static InstagramLogin getInstance() {
+    public static InstagramLogin getInstance(final WebView myWebView) {
         if (singleton == null) {
-            singleton = new InstagramLogin("http://colorofblah.blogspot.com/");
+            singleton = new InstagramLogin("http://colorofblah.blogspot.com/", myWebView);
         }
         return singleton;
     }
 
-    private InstagramLogin(final String redirect_uri) {//finalString tag){
+    private InstagramLogin(final String redirect_uri, final WebView myWebView) {//finalString tag){
         loading = true;
         retries = 0;
         requestQueue = App.getRequestQueue();
-        login(redirect_uri);
+        login(redirect_uri, myWebView);
     }
 
-    private void login(final String redirect_uri) {
+    private void login(final String redirect_uri, final WebView myWebView) {
         final String client_id = "e7ce3f1a709543c7a03313e7f2e02bb4";
 
         urlString = "https://api.instagram.com/oauth/authorize/?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code";
@@ -52,6 +54,10 @@ public class InstagramLogin implements Response.ErrorListener, Response.Listener
                         // Display the first 50 characters of the response string.
                         Log.i(TAG, "Got response : " + response.substring(0, 50));
                         Toast.makeText(App.getContext(), "Got response from login request", Toast.LENGTH_SHORT).show();
+                        String encodedHtml = Base64.encodeToString(response.getBytes(),
+                                Base64.NO_PADDING);
+                        myWebView.loadData(encodedHtml, "text/html", "base64");
+
                     }
                 }, new Response.ErrorListener() {
             @Override
