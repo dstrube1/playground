@@ -1,7 +1,6 @@
 package com.dstrube.helloaumazondible;
 
 import android.app.Application;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.LruCache;
 
@@ -29,15 +28,15 @@ public class MyApplication  extends Application {
     public static ImageLoader getImageLoader() {
         if (imageLoader == null){
             imageCache = new BitmapLruCache();
-            imageLoader = new ImageLoader(getRequestQueue(instance.getApplicationContext()), imageCache);
+            imageLoader = new ImageLoader(getRequestQueue(), imageCache);
         }
         return imageLoader;
     }
 
     //Rolling our own request queue. Sure using the default is easier, but this is better
-    public static RequestQueue getRequestQueue(Context context) {
+    public static RequestQueue getRequestQueue() {
         if (requestQueue == null) {
-            requestQueue = Volley.newRequestQueue(context);
+            requestQueue = Volley.newRequestQueue(instance.getApplicationContext());
         }
         return requestQueue;
     }

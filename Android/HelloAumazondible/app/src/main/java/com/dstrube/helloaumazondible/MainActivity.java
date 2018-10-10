@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
 
         //singleton initialization of my data source
         //we don't want more than one of these running around
-        dataSource = MyDataSource.getInstance(getApplicationContext());
+        dataSource = MyDataSource.getInstance();
         //get the data
         dataSource.getMoreData();
 

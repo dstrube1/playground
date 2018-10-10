@@ -28,18 +28,18 @@ public class MyDataSource implements Response.ErrorListener,
 
 
     //TODO: perhaps use of volatile here for threading concerns?
-    public static MyDataSource getInstance(Context context) {
+    public static MyDataSource getInstance() {
         if (singleton == null)
-            singleton = new MyDataSource(context);
+            singleton = new MyDataSource();
         return singleton;
     }
 
     // Singleton pattern requires private constructor
-    private MyDataSource(Context context) {
+    private MyDataSource() {
         imagesUrls = new ArrayList<>();
         loading = true;
         retries = 0;
-        requestQueue = MyApplication.getRequestQueue(context);
+        requestQueue = MyApplication.getRequestQueue();
         prepareUrlString();
     }
 
