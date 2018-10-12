@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
         //the adapter used for the gridview
         adapter = new MyAdapter(this, dataSource, getWindowXSize());
         //the gridview
-        GridView gridView = (GridView) findViewById(R.id.gridView);
+        GridView gridView = findViewById(R.id.gridView);
         gridView.setOnScrollListener(adapter);
         gridView.setAdapter(adapter);
     }
