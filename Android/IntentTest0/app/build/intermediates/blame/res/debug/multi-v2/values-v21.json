@@ -4,7 +4,7 @@
             "outputFile": "/Users/dstrube/Projects/github/playground/Android/IntentTest0/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "/Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/a23e4513cf70a40b6147b6779a675c8e/res/values-v21/values-v21.xml",
+                    "source": "/Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/b5ecba60e47d013d0e99885637357054/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,5,8,11",
                         "startColumns": "4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/4d0e81b49e1d205b7c166577c3029272/res/values-v21/values-v21.xml",
+                    "source": "/Users/dstrube/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/7571c8150ef272ec1d8f70b3f02f7d6e/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
