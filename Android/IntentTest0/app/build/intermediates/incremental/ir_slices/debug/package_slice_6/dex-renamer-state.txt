@@ -1,4 +1,0 @@
-#Sat Oct 13 09:36:12 CDT 2018
-base.0=/Users/dstrube/Projects/github/playground/Android/IntentTest0/app/build/intermediates/transforms/dexMerger/debug/6
-path.0=classes.dex
-renamed.0=classes.dex
