@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">IntentTest</string>
     <string name="report_label">Report</string>
+    <string name="col_0_h">ID</string> <!--"Column 0 Header" doesn't fit -->
+    <string name="col_1_h">Column 1 Header</string>
+    <string name="col_2_h">Column 2 Header</string>
+    <string name="col_3_h">Column 3 Header</string>
 </resources>

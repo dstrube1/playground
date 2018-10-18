@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
-    ArrayList<Employee> emp;
+    ArrayList<Employee> employees;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,36 +18,36 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
 
-        Button startBtn = findViewById(R.id.button1);
-        emp = new ArrayList<>();
-        Employee fred = new Employee("Peter Parker", "PP@gmail.com", "5551234567");
-        emp.add(fred);
+        final Button startBtn = findViewById(R.id.button1);
+        employees = new ArrayList<>();
+        Employee employee = new Employee("Peter Parker", "PP@gmail.com", "5551234567");
+        employees.add(employee);
 
-        fred = new Employee("Sam Spade", "SS@gmail.com", "555-123-7890");
-        emp.add(fred);
-        fred = new Employee("Clark Kent", "CK@gmail.com", "555-124-1230");
-        emp.add(fred);
-        fred = new Employee("Nancy Drew", "ND@gmail.com", "555-124-7891");
-        emp.add(fred);
-        fred = new Employee("Fenton Hardy", "FH@gmail.com", "555-124-1235");
-        emp.add(fred);
-        fred = new Employee("Diane Prince", "DP@gmail.com", "555-124-5896");
-        emp.add(fred);
-        fred = new Employee("Burce Wayne", "BW@gmail.com", "555-124-1287");
-        emp.add(fred);
-        fred = new Employee("Dick Tracy", "DT@gmail.com", "555-124-8521");
-        emp.add(fred);
-        fred = new Employee("Sherlock Holmes", "SH@gmail.com", "555-129-1111");
-        emp.add(fred);
-        fred = new Employee("Hal Jorden", "HJ@gmail.com", "555-129-2222");
-        emp.add(fred);
+        employee = new Employee("Sam Spade", "SS@gmail.com", "555-123-7890");
+        employees.add(employee);
+        employee = new Employee("Clark Kent", "CK@gmail.com", "555-124-1230");
+        employees.add(employee);
+        employee = new Employee("Nancy Drew", "ND@gmail.com", "555-124-7891");
+        employees.add(employee);
+        employee = new Employee("Fenton Hardy", "FH@gmail.com", "555-124-1235");
+        employees.add(employee);
+        employee = new Employee("Diane Prince", "DP@gmail.com", "555-124-5896");
+        employees.add(employee);
+        employee = new Employee("Burce Wayne", "BW@gmail.com", "555-124-1287");
+        employees.add(employee);
+        employee = new Employee("Dick Tracy", "DT@gmail.com", "555-124-8521");
+        employees.add(employee);
+        employee = new Employee("Sherlock Holmes", "SH@gmail.com", "555-129-1111");
+        employees.add(employee);
+        employee = new Employee("Hal Jordan", "HJ@gmail.com", "555-129-2222");
+        employees.add(employee);
         startBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent i = new Intent(MainActivity.this, ReportActivity.class);
-                i.putExtra("james", emp);
+                i.putExtra("james", employees);
                 startActivity(i);
             }
         });
