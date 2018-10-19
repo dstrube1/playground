@@ -1,7 +1,10 @@
 package com.dstrube.intenttest;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -37,6 +40,18 @@ public class ReportActivity extends Activity {
         // fill in the grid_item layout
         SimpleAdapter adapter = new SimpleAdapter(this, fillMaps, R.layout.grid_view, from, to);
         lv.setAdapter(adapter);
+
+        final Button nextBtn = findViewById(R.id.button2);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                final Intent intent = new Intent(ReportActivity.this, ButtonsActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 }

@@ -12,6 +12,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp"
-        android:text="Click to View Report" />
+        android:text="@string/button_1_label" />
 
 </RelativeLayout>

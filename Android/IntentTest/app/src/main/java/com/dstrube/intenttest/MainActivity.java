@@ -17,8 +17,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        final Button startBtn = findViewById(R.id.button1);
         employees = new ArrayList<>();
         Employee employee = new Employee("Peter Parker", "PP@gmail.com", "5551234567");
         employees.add(employee);
@@ -41,14 +39,16 @@ public class MainActivity extends Activity {
         employees.add(employee);
         employee = new Employee("Hal Jordan", "HJ@gmail.com", "555-129-2222");
         employees.add(employee);
+
+        final Button startBtn = findViewById(R.id.button1);
         startBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(MainActivity.this, ReportActivity.class);
-                i.putExtra("james", employees);
-                startActivity(i);
+                Intent intent = new Intent(MainActivity.this, ReportActivity.class);
+                intent.putExtra("james", employees);
+                startActivity(intent);
             }
         });
     }

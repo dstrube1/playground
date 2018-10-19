@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dstrube.intenttest">
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <!-- This is surprisingly unuseful:
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+    -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,8 +22,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.dstrube.intenttest.ReportActivity"
-            android:label="@string/report_label"/>
+            android:name=".ReportActivity"
+            android:label="@string/report_label" />
+        <activity android:name=".ButtonsActivity"/>
     </application>
 
 </manifest>
