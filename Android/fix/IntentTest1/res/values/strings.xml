@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <string name="app_name">IntentTest1</string>
-    <string name="title_activity_display_message">from screen 1</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_screen2">Screen2</string>
-
-</resources>
