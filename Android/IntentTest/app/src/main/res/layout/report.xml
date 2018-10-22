@@ -56,10 +56,10 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/goToButtonActivityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="@string/button_2_label" />
+        android:text="@string/goToButtonActivityButton_label" />
 
 </LinearLayout>

@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">IntentTest</string>
     <string name="report_label">Report</string>
-    <string name="button_1_label">Click to View Report</string>
+    <string name="employeesSerializableButton_label">Employees Serializable</string>
+    <string name="employeesParcelableButton_label">Employees Parcelable</string>
     <string name="col_0_h">ID</string> <!--"Column 0 Header" doesn't fit -->
     <string name="col_1_h">Column 1 Header</string>
     <string name="col_2_h">Column 2 Header</string>
     <string name="col_3_h">Column 3 Header</string>
-    <string name="button_2_label">Buttons</string>
+    <string name="goToButtonActivityButton_label">Go To Button Activity</string>
     <string name="button_dial_label">Dial</string>
     <string name="button_rearrange_label">Rearrange</string>
     <string name="button_copy_label">Copy</string>

@@ -9,13 +9,16 @@ public class Employee implements Serializable {
     private String empPhone;
 
     public Employee() {
+        setName("");
+        setEmail("");
+        setPhone("");
     }
 
-    Employee(String name, String mail, String phone) {
+    Employee(String name, String email, String phone) {
 
-        empName = name;
-        empEmail = mail;
-        empPhone = phone;
+        setName(name);
+        setEmail(email);
+        setPhone(phone);
     }
 
     public String getName() {
@@ -28,19 +31,19 @@ public class Employee implements Serializable {
         empName = name;
     }
 
-    public String getMail() {
+    /*package*/ String getMail() {
         return empEmail;
     }
 
-    public void setMail(String mail) {
+    private void setEmail(String mail) {
         empEmail = mail;
     }
 
-    public String getPhone() {
+    /*package*/ String getPhone() {
         return empPhone;
     }
 
-    public void setPhone(String phone) {
+    private void setPhone(String phone) {
         empPhone = phone;
     }
 

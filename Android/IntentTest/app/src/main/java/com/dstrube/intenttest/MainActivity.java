@@ -40,8 +40,8 @@ public class MainActivity extends Activity {
         employee = new Employee("Hal Jordan", "HJ@gmail.com", "555-129-2222");
         employees.add(employee);
 
-        final Button startBtn = findViewById(R.id.button1);
-        startBtn.setOnClickListener(new View.OnClickListener() {
+        final Button employeesSerializableButton = findViewById(R.id.employeesSerializableButton);
+        employeesSerializableButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -51,5 +51,16 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+        final Button employeesParcelableButton = findViewById(R.id.employeesParcelableButton);
+//        employeesSerializableButton.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                Intent intent = new Intent(MainActivity.this, ReportActivity.class);
+//                intent.putExtra("james", employees);
+//                startActivity(intent);
+//            }
+//        });
     }
 }

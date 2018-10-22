@@ -41,8 +41,8 @@ public class ReportActivity extends Activity {
         SimpleAdapter adapter = new SimpleAdapter(this, fillMaps, R.layout.grid_view, from, to);
         lv.setAdapter(adapter);
 
-        final Button nextBtn = findViewById(R.id.button2);
-        nextBtn.setOnClickListener(new View.OnClickListener() {
+        final Button goToButtonActivityButton = findViewById(R.id.goToButtonActivityButton);
+        goToButtonActivityButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
