@@ -17,9 +17,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String[] names = {"Peter Parker", "Sam Spade", "Clark Kent", "Nancy Drew", "Fenton Hardy", "Diane Prince", "Bruce Wayne", "Dick Tracy", "Sherlock Holmes", "Hal Jordan"};
-        String[] emails = {"PP@gmail.com", "SS@gmail.com", "CK@gmail.com", "ND@gmail.com", "FH@gmail.com", "DP@gmail.com", "BW@gmail.com", "DT@gmail.com", "SH@gmail.com", "HJ@gmail.com"};
-        String[] phones = {"5551234567", "555-123-7890", "555-124-1230", "555-124-7891", "555-124-1235", "555-124-5896", "555-124-1287", "555-124-8521", "555-129-1111", "555-129-2222"};
+        String[] names = getResources().getStringArray(R.array.employee_names);
+        //{"Peter Parker", "Sam Spade", "Clark Kent", "Nancy Drew", "Fenton Hardy", "Diane Prince", "Bruce Wayne", "Dick Tracy", "Sherlock Holmes", "Hal Jordan"};
+        String[] emails = getResources().getStringArray(R.array.employee_email_addresses);
+        //{"PP@gmail.com", "SS@gmail.com", "CK@gmail.com", "ND@gmail.com", "FH@gmail.com", "DP@gmail.com", "BW@gmail.com", "DT@gmail.com", "SH@gmail.com", "HJ@gmail.com"};
+        String[] phones = getResources().getStringArray(R.array.employee_phone_numbers);
+        //{"5551234567", "555-123-7890", "555-124-1230", "555-124-7891", "555-124-1235", "555-124-5896", "555-124-1287", "555-124-8521", "555-129-1111", "555-129-2222"};
 
         employees = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
@@ -47,7 +50,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent intent = new Intent(MainActivity.this, ReportParcelableActivity.class);
-                intent.putExtra("james", employee_p);
+                intent.putExtra("james", employees_P);
                 startActivity(intent);
             }
         });
