@@ -1,7 +1,6 @@
 package com.dstrube.intenttest;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.widget.ListView;
@@ -11,15 +10,10 @@ import java.util.ArrayList;
 
 public class ReportParcelableActivity extends Activity {
 
-
-    private Intent intent;
-    private ArrayList<Parcelable> employeeList_P;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_parcelable);
-        intent = getIntent();
     }
 
     @Override
@@ -30,7 +24,7 @@ public class ReportParcelableActivity extends Activity {
         final Bundle extras = getIntent().getExtras();
         ArrayList<Employee_P> arraylist;
         if (extras != null) {
-            arraylist = extras.getParcelableArrayList("employees");
+            arraylist = extras.getParcelableArrayList("james_P");//employees");
         } else {
             Toast.makeText(this, "Null extras", Toast.LENGTH_LONG).show();
             return;

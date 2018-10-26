@@ -44,14 +44,14 @@ public class MyAdapter extends BaseAdapter {
             vi = inflater.inflate(R.layout.activity_report_parcelable, null);
         }
 
-        TextView name = vi.findViewById(R.id.name); // title
-        TextView emailAddress = vi.findViewById(R.id.emailAddress); // artist name
-        TextView phoneNumber = vi.findViewById(R.id.phoneNumber); // duration
+//        TextView name = vi.findViewById(R.id.name); // title
+//        TextView emailAddress = vi.findViewById(R.id.emailAddress); // artist name
+//        TextView phoneNumber = vi.findViewById(R.id.phoneNumber); // duration
 //		View row = inflater.inflate(R.layout.employee_view, parent, false);
-        Employee_P employee = data.get(position);
-        name.setText(employee.getName());
-        emailAddress.setText(employee.getEmailAddress());
-        phoneNumber.setText(employee.getPhoneNumber());
+//        Employee_P employee = data.get(position);
+//        name.setText(employee.getName());
+//        emailAddress.setText(employee.getEmailAddress());
+//        phoneNumber.setText(employee.getPhoneNumber());
         return vi;
 
     }

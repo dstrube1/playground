@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
         //{"5551234567", "555-123-7890", "555-124-1230", "555-124-7891", "555-124-1235", "555-124-5896", "555-124-1287", "555-124-8521", "555-129-1111", "555-129-2222"};
 
         employees = new ArrayList<>();
+        employees_P = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
             Employee employee = new Employee(names[i], emails[i], phones[i]);
             employees.add(employee);
@@ -37,7 +38,6 @@ public class MainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 Intent intent = new Intent(MainActivity.this, ReportActivity.class);
                 intent.putExtra("james", employees);
                 startActivity(intent);
@@ -48,9 +48,8 @@ public class MainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 Intent intent = new Intent(MainActivity.this, ReportParcelableActivity.class);
-                intent.putExtra("james", employees_P);
+                intent.putExtra("james_P", employees_P);
                 startActivity(intent);
             }
         });
