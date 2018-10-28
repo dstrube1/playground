@@ -1,0 +1,15 @@
+
+all: Fibonacci.exe Sort.exe Sort2.exe power.exe
+
+Fibonacci.exe: Fibonacci.cpp
+	g++ -o Fibonacci Fibonacci.cpp
+
+Sort.exe: Sort.cpp
+	g++ -o Sort Sort.cpp
+
+Sort2.exe: Sort2.cpp
+	g++ -o Sort2 Sort2.cpp
+
+power.exe: power.cpp
+	g++ -o power power.cpp
+
