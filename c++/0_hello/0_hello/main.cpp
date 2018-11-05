@@ -117,6 +117,7 @@ signed short int signed_short_int;
 signed int short signed_int_short;
 unsigned short int unsigned_short_int;
 unsigned int short unsigned_int_short;
+uint64_t uint64;
 
 //modulus values for printing progress of data type ranges
 //const int CHAR_MOD = 10;
@@ -145,7 +146,7 @@ int main(int argc, const char * argv[]) {
     //    mathsTest();
 //        sizes();
 //        initialValues();
-    maximums();
+    maximums();//TODO
     
 //    pointerTest();
 //    referenceTest();
@@ -185,25 +186,25 @@ void sizes(){
     /////////////////////////////////////////////////////////////////////////////////
     //tests of type Sizes
     /////////////////////////////////////////////////////////////////////////////////
-    cout << "sizeof(bool): " << sizeof(boolean) << "\n\n";                          //1
-    cout << "sizeof(char): " << sizeof(character) << "\n";                          //1
-    cout << "sizeof(signed char): " << sizeof(signed_char) << "\n";                 //1
-    cout << "sizeof(unsigned char): " << sizeof(unsigned_char) << "\n\n";           //1
-    cout << "sizeof(short): " << sizeof(shorty) << "\n";                            //2
-    cout << "sizeof(signed short): " << sizeof(signed_short) << "\n";               //2
-    cout << "sizeof(unsigned short): " << sizeof(unsigned_short) << "\n\n";         //2
+//    cout << "sizeof(bool): " << sizeof(boolean) << "\n\n";                          //1
+//    cout << "sizeof(char): " << sizeof(character) << "\n";                          //1
+//    cout << "sizeof(signed char): " << sizeof(signed_char) << "\n";                 //1
+//    cout << "sizeof(unsigned char): " << sizeof(unsigned_char) << "\n\n";           //1
+//    cout << "sizeof(short): " << sizeof(shorty) << "\n";                            //2
+//    cout << "sizeof(signed short): " << sizeof(signed_short) << "\n";               //2
+//    cout << "sizeof(unsigned short): " << sizeof(unsigned_short) << "\n\n";         //2
     cout << "sizeof(int): " << sizeof(integer) << "\n";                             //4
-    cout << "sizeof(signed int): " << sizeof(signed_int) << "\n";                   //4
-    cout << "sizeof(unsigned int): " << sizeof(unsigned_int) << "\n\n";             //4
+//    cout << "sizeof(signed int): " << sizeof(signed_int) << "\n";                   //4
+//    cout << "sizeof(unsigned int): " << sizeof(unsigned_int) << "\n\n";             //4
     cout << "sizeof(long): " << sizeof(loong) << "\n";                              //8
-    cout << "sizeof(signed long): " << sizeof(signed_long) << "\n";                 //8
-    cout << "sizeof(unsigned long): " << sizeof(unsigned_long) << "\n\n";           //8
-    cout << "sizeof(float): " << sizeof(floaty) << "\n\n";                          //4
-    cout << "sizeof(double): " << sizeof(dooble) << "\n";                           //8
-    cout << "sizeof(long double): " << sizeof(long_double) << "\n\n";               //16
-    cout << "sizeof(wchar_t): " << sizeof(wchar) << "\n";                           //4
-    cout << "sizeof(signed wchar_t): " << sizeof(signed_wchar) << "\n";             //4
-    cout << "sizeof(unsigned wchar_t): " << sizeof(unsigned_wchar) << "\n\n";       //4
+//    cout << "sizeof(signed long): " << sizeof(signed_long) << "\n";                 //8
+//    cout << "sizeof(unsigned long): " << sizeof(unsigned_long) << "\n\n";           //8
+//    cout << "sizeof(float): " << sizeof(floaty) << "\n\n";                          //4
+//    cout << "sizeof(double): " << sizeof(dooble) << "\n";                           //8
+//    cout << "sizeof(long double): " << sizeof(long_double) << "\n\n";               //16
+//    cout << "sizeof(wchar_t): " << sizeof(wchar) << "\n";                           //4
+//    cout << "sizeof(signed wchar_t): " << sizeof(signed_wchar) << "\n";             //4
+//    cout << "sizeof(unsigned wchar_t): " << sizeof(unsigned_wchar) << "\n\n";       //4
     cout << "sizeof(long long): " << sizeof(long_long) << "\n";                     //8
     cout << "sizeof(int long): " << sizeof(int_long) << "\n";                       //8
     cout << "sizeof(long int): " << sizeof(long_int) << "\n";                       //8
@@ -213,12 +214,14 @@ void sizes(){
     cout << "sizeof(unsigned long long): " << sizeof(unsigned_long_long) << "\n";   //8
     cout << "sizeof(unsigned int long): " << sizeof(unsigned_int_long) << "\n";     //8
     cout << "sizeof(unsigned long int): " << sizeof(unsigned_long_int) << "\n\n";   //8
-    cout << "sizeof(short int): " << sizeof(short_int) << "\n";                     //2
-    cout << "sizeof(int short): " << sizeof(int_short) << "\n";                     //2
-    cout << "sizeof(signed short int): " << sizeof(signed_short_int) << "\n";       //2
-    cout << "sizeof(signed int short): " << sizeof(signed_int_short) << "\n";       //2
-    cout << "sizeof(unsigned short int): " << sizeof(unsigned_short_int) << "\n";   //2
-    cout << "sizeof(unsigned int short): " << sizeof(unsigned_int_short) << "\n\n"; //2
+//    cout << "sizeof(short int): " << sizeof(short_int) << "\n";                     //2
+//    cout << "sizeof(int short): " << sizeof(int_short) << "\n";                     //2
+//    cout << "sizeof(signed short int): " << sizeof(signed_short_int) << "\n";       //2
+//    cout << "sizeof(signed int short): " << sizeof(signed_int_short) << "\n";       //2
+//    cout << "sizeof(unsigned short int): " << sizeof(unsigned_short_int) << "\n";   //2
+//    cout << "sizeof(unsigned int short): " << sizeof(unsigned_int_short) << "\n\n"; //2
+    cout << "sizeof(uint64): " << sizeof(uint64) << "\n";                           //8
+    
     cout << "/////////////////////////////////////////////////////////////////////////////////\n\n";
 }
 
@@ -231,18 +234,18 @@ void initialValues(){
     
     //be careful about declaring methods (before main) before calling them
     
-    cout << "initial value of bool: " << boolean << "\n\n";                        //0
-    cout << "initial value of char: " << character << "\n";                        //0*
-    cout << "initial value of signed char: " << signed_char << "\n";               //0*
-    cout << "initial value of unsigned char: " << unsigned_char << "\n\n";         //0*
-    cout << "initial value of short: " << shorty << "\n";                          //0
-    cout << "initial value of signed short: " << signed_short << "\n";             //0
-    cout << "initial value of unsigned short: " << unsigned_short << "\n\n";       //0
-    cout << "initial value of int: " << integer << "\n";                           //0
-    cout << "initial value of signed int: " << signed_int << "\n";                 //0
-    cout << "initial value of unsigned int: " << unsigned_int << "\n\n";           //0
-    cout << "initial value of long: " << loong << "\n";                            //0
-    cout << "initial value of signed long: " << signed_long << "\n";               //0
+//    cout << "initial value of bool: " << boolean << "\n\n";                        //0
+//    cout << "initial value of char: " << character << "\n";                        //0*
+//    cout << "initial value of signed char: " << signed_char << "\n";               //0*
+//    cout << "initial value of unsigned char: " << unsigned_char << "\n\n";         //0*
+//    cout << "initial value of short: " << shorty << "\n";                          //0
+//    cout << "initial value of signed short: " << signed_short << "\n";             //0
+//    cout << "initial value of unsigned short: " << unsigned_short << "\n\n";       //0
+//    cout << "initial value of int: " << integer << "\n";                           //0
+//    cout << "initial value of signed int: " << signed_int << "\n";                 //0
+//    cout << "initial value of unsigned int: " << unsigned_int << "\n\n";           //0
+//    cout << "initial value of long: " << loong << "\n";                            //0
+//    cout << "initial value of signed long: " << signed_long << "\n";               //0
     cout << "initial value of unsigned long: " << unsigned_long << "\n\n";         //0*
     cout << "initial value of float: " << floaty << "\n\n";                        //0*
     cout << "initial value of double: " << dooble << "\n\n";                       //0*
@@ -257,7 +260,8 @@ void initialValues(){
     cout << "initial value of signed long int: " << signed_long_int << "\n";       //0*
     cout << "initial value of unsigned long long: " << unsigned_long_long << "\n"; //0*
     cout << "initial value of unsigned int long: " << unsigned_int_long << "\n";   //0*
-    cout << "initial value of unsigned long int: " << unsigned_long_int << "\n\n"; //0*
+    cout << "initial value of unsigned long int: " << unsigned_long_int << "\n"; //0*
+    cout << "initial value of uint64: " << uint64 << "\n\n";                           //8
     cout << "/////////////////////////////////////////////////////////////////////////////////\n\n";
 }
 
@@ -515,11 +519,10 @@ long getLongMaxEstimate(){
     //This method estimates the range of the data type long, and does so with a multiplying loop, and not with brute force
     long myLong = 1;
     long ltemp = myLong;
-    //cout << "loong = " << loong << "\n";
     while (ltemp > 0){
         myLong = ltemp;
         ltemp *= 10;
-        //cout << "long max guess = " << loong << "\n";
+        //cout << "long max guess = " << myLong << "\n";
     }
     return myLong; //1,000,000,000,000,000,000 : 1 quintillion
 }
@@ -580,7 +583,7 @@ unsigned long long getUnsignedLongLongMaxEstimate(){
 //    unsigned long long myLong = getLongMaxEstimate();
 //
 //    unsigned long long ltemp = myLong;
-//    long factor = 10l;
+//    long factor = 10L;
 //    cout << "myLong = " << myLong << "\n";
 //    while (ltemp > 0){
 //        myLong = ltemp;
@@ -588,12 +591,13 @@ unsigned long long getUnsignedLongLongMaxEstimate(){
 //        cout << "long max guess = " << myLong << "\n"; //this gets weird after 10000000000000000000
 //    }
     
-    //weirdness:
+    //more weirdness:
 //    unsigned long long ltemp0 = getLongMaxEstimate();//10000000000000000000L; //1 quintillion- estimated max of long
     //If we set ltemp0 = 10000000000000000000L instead of getLongMaxEstimate(), then we get this warning:
     //`Integer literal is too large to be represented in a signed integer type, interpreting as unsigned`
     //
-    //BUT if setting ltemp0 = getLongMaxEstimate() (obstensibly the same value), then weirdness is avoided. Weird!
+    //BUT if setting ltemp0 = getLongMaxEstimate() (the same value), then warning is avoided. Weird!
+    
 //    unsigned long long ltemp1 = 10;//L;
 //    unsigned long long ltemp2 = ltemp0 * ltemp1;
 //    cout << "ltemp0 * ltemp1 = " << ltemp0 << " * " << ltemp1 << " = " << ltemp2 << endl;
