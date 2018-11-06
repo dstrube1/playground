@@ -46,6 +46,7 @@ bool recursiveLongMaxFinderAdd(long candidate, long addend);
 unsigned long long getUnsignedLongLongMaxEstimate();
 bool recursiveUnsignedLongLongMaxFinder(unsigned long long ull, int factor);
 bool recursiveUnsignedLongLongMaxFinderAdd(unsigned long long ull, unsigned long long addend);
+uint64_t getUint64MaxEstimate();
 
 //Pointers and references
 void pointerTest();
@@ -64,6 +65,7 @@ void streamTest();
 
 ////////////////////////////////////////////////////////////////////
 //variable declarations
+//https://en.cppreference.com/w/cpp/language/types
 bool boolean;
 //signed bool sb; //invalid
 
@@ -117,7 +119,6 @@ signed short int signed_short_int;
 signed int short signed_int_short;
 unsigned short int unsigned_short_int;
 unsigned int short unsigned_int_short;
-uint64_t uint64;
 
 //modulus values for printing progress of data type ranges
 //const int CHAR_MOD = 10;
@@ -146,9 +147,10 @@ int main(int argc, const char * argv[]) {
     //    mathsTest();
 //        sizes();
 //        initialValues();
-    maximums();//TODO
     
-//    pointerTest();
+//    maximums();
+
+    //    pointerTest();
 //    referenceTest();
 //    timeTest();
 //    streamTest();
@@ -186,6 +188,7 @@ void sizes(){
     /////////////////////////////////////////////////////////////////////////////////
     //tests of type Sizes
     /////////////////////////////////////////////////////////////////////////////////
+    uint64_t uint64;
 //    cout << "sizeof(bool): " << sizeof(boolean) << "\n\n";                          //1
 //    cout << "sizeof(char): " << sizeof(character) << "\n";                          //1
 //    cout << "sizeof(signed char): " << sizeof(signed_char) << "\n";                 //1
@@ -229,6 +232,7 @@ void initialValues(){
     /////////////////////////////////////////////////////////////////////////////////
     //Initial values
     /////////////////////////////////////////////////////////////////////////////////
+    uint64_t uint64;
     //0*: non-zero if declared outside main and called inside main;
     //if declared outside and called from outside main, 0
     
@@ -260,8 +264,8 @@ void initialValues(){
     cout << "initial value of signed long int: " << signed_long_int << "\n";       //0*
     cout << "initial value of unsigned long long: " << unsigned_long_long << "\n"; //0*
     cout << "initial value of unsigned int long: " << unsigned_int_long << "\n";   //0*
-    cout << "initial value of unsigned long int: " << unsigned_long_int << "\n"; //0*
-    cout << "initial value of uint64: " << uint64 << "\n\n";                           //8
+    cout << "initial value of unsigned long int: " << unsigned_long_int << "\n";   //0*
+    cout << "initial value of uint64: " << uint64 << "\n\n";                       //0 -- warning because not initialized
     cout << "/////////////////////////////////////////////////////////////////////////////////\n\n";
 }
 
@@ -269,18 +273,15 @@ void maximums(){
     
     //for char, '',"", and 0 all print as blank
     
-    /*
-     
-     //    unsigned long long count;
-
      charMaximums();
     
      shortMaximums();
      
      intMaximums();
 
-    */
     longMaximums();
+    
+    getUint64MaxEstimate();
 }
 
 void charMaximums(){
@@ -431,6 +432,18 @@ void intLongOverflow(){
     lproduct = limax * ifactor;     //long * int
     cout << "lproduct = long limax * int ifactor = " << lproduct << endl; //21474836470, good
     
+    //Overflow illustrated:
+    unsigned int uint = 4294967295;
+    cout << "uint: " << uint << endl;
+    uint++;
+    cout << "uint: " << uint << endl;
+    
+    unsigned long long ull = 18446744073709551615ULL; //ULL suffix required for unsigned long long literal
+    cout << "ull: " << ull << endl;
+    ull++;
+    cout << "ull: " << ull << endl;
+    cout << "Done"<< endl;
+
 }
 
 void multiThreadedIntMax(){
@@ -453,6 +466,7 @@ void multiThreadedIntMax(){
     }
     
     count = 0;
+    cout << "Calculating a maximum with multithreading." << endl;
     cout << "(# is the main thread waiting)" << endl;
     while(waiting){
         count++;
@@ -506,20 +520,22 @@ void *threadedPrintDots(void *threadid) {
 }
 
 void longMaximums(){
-//        cout << "long max approximately = " << getLongMaxEstimate() << "\n";
+    cout << "long max approximately = " << getLongMaxEstimate() << "\n";
+
+    cout << "Recursively calculating long range...\n";
+    recursiveLongMaxFinder(1,10);
     
-//        cout << "Recursively calculating long range...\n";
-//        recursiveLongMaxFinder(1,10);
-    
-    cout << "calculating unsigned long long max estimate : \n"; // << getUnsignedLongLongMaxEstimate() << endl;
-    getUnsignedLongLongMaxEstimate();
+    cout << "calculating unsigned long long max estimate : \n";
+    recursiveUnsignedLongLongMaxFinder(1,10);
 }
 
 long getLongMaxEstimate(){
-    //This method estimates the range of the data type long, and does so with a multiplying loop, and not with brute force
+    //Brute force counting one increment at a time is acceptable for determining the maximum of ints and shorts, but not longs.
+    //This method estimates the range of the data type long, and does so with a multiplying loop, and not with brute force.
+    //This won't get us the exact number, but it will get us in the ballpark with the order of magnitude, assuming overflow behaves as expected.
     long myLong = 1;
     long ltemp = myLong;
-    while (ltemp > 0){
+    while (ltemp > 0){ //when ltemp exceeds the maximum, it loops around to a negative
         myLong = ltemp;
         ltemp *= 10;
         //cout << "long max guess = " << myLong << "\n";
@@ -576,46 +592,94 @@ bool recursiveLongMaxFinderAdd(long candidate, long addend){
     }
 }
 
-//Left off
 unsigned long long getUnsignedLongLongMaxEstimate(){
-    //This method estimates the range of the data type long, and does so with a multiplying loop, and not with brute force
+    //This method estimates the range of the data type unsigned long long, and does so with a multiplying loop, and not with brute force.
+    //Note, since it's unsigned, it must be done a little differently from getLongMaxEstimate()
     
-    unsigned long long myLong = getLongMaxEstimate();
-    cout << "long max guess = " << myLong << "\n";
-//
-//    unsigned long long ltemp = myLong;
-//    long factor = 10L;
-//    cout << "myLong = " << myLong << "\n";
-//    while (ltemp > 0){
-//        myLong = ltemp;
-//        ltemp *= factor;
-//        cout << "long max guess = " << myLong << "\n"; //this gets weird after 10000000000000000000
-//    }
+    unsigned long long myULL = 1;
+    unsigned long long factor = 10L;
+    unsigned long long uLLtemp = myULL * factor;
     
-    //more weirdness:
-//    unsigned long long ltemp0 = getLongMaxEstimate();//10000000000000000000L; //1 quintillion- estimated max of long
-    //If we set ltemp0 = 10000000000000000000L instead of getLongMaxEstimate(), then we get this warning:
-    //`Integer literal is too large to be represented in a signed integer type, interpreting as unsigned`
-    //
-    //BUT if setting ltemp0 = getLongMaxEstimate() (the same value), then warning is avoided. Weird!
+    while (uLLtemp > myULL){
+        myULL = uLLtemp;
+        uLLtemp *= factor;
+//        cout << "long max guess = " << myULL << "\n";
+    }
     
-//    unsigned long long ltemp1 = 10;//L;
-//    unsigned long long ltemp2 = ltemp0 * ltemp1;
-//    cout << "ltemp0 * ltemp1 = " << ltemp0 << " * " << ltemp1 << " = " << ltemp2 << endl;
-
-    return 0;//myLong;
+    return myULL;
+    //              10,000,000,000,000,000,000: 10 quintillion
 }
 
-bool recursiveUnsignedLongLongMaxFinder(unsigned long long ull, int factor){
-    //TODO- resume work on this after resolving the weirdness in getUnsignedLongLongMaxEstimate()
-    return true;
+bool recursiveUnsignedLongLongMaxFinder(unsigned long long candidate, int factor){
+    //This method finds the range of the data type unsigned long long, and does so recursively, and not with brute force
+    //    because calculating with brute force would take too *long* (ha!)
+    //Because the data type is unsigned, overflow won't go negative, so this must be done a little differently from recursiveLongMaxFinder()
+    if (factor < 2){
+        unsigned long long estimate = getUnsignedLongLongMaxEstimate();
+        if (candidate < estimate){
+            cout << "something went wrong; candidate is " << candidate << endl;
+            return false;
+        }else{
+//            cout << "Narrowed down to factor " << factor << " and candidate is " << candidate << endl;
+            return recursiveUnsignedLongLongMaxFinderAdd(candidate, estimate);
+        }
+    }
+    unsigned long long product = candidate * factor;
+    if (product > candidate){
+        return recursiveUnsignedLongLongMaxFinder(product, factor);
+    }
+    else{
+        return recursiveUnsignedLongLongMaxFinder(candidate, factor-1);
+    }
 }
 
-bool recursiveUnsignedLongLongMaxFinderAdd(unsigned long long ull, unsigned long long addend){
-    //TODO- resume work on this after resolving the weirdness in getUnsignedLongLongMaxEstimate()
-    return true;
+bool recursiveUnsignedLongLongMaxFinderAdd(unsigned long long candidate, unsigned long long addend){
+    if (addend == 1){
+        unsigned long long estimate = getUnsignedLongLongMaxEstimate();
+        if (candidate < estimate){
+            cout << "something went wrong; candidate is " << candidate << endl;
+            return false;
+        }else{
+            unsigned long long count = 0;
+            unsigned long long ltemp = candidate+1;
+//            cout << "candidate is " << candidate << " and ltemp is" << ltemp << endl;
+            while (ltemp > candidate){
+                candidate = ltemp;
+                ltemp++;
+                count++;
+//                if (count % INT_MOD == 0) cerr << ".";
+//                cout << "candidate is " << candidate << " and ltemp is" << ltemp << endl;
+            }
+            cout << "unsigned long long max found: " << candidate << endl;
+            //18,446,744,073,709,551,615 - about 18 quintillion
+            return true;
+        }
+    }
+    unsigned long long sum = candidate + addend;
+    if (sum > candidate){
+//        cout << candidate << " + " << addend << " is < " << sum << endl;
+        return recursiveUnsignedLongLongMaxFinderAdd(sum, addend);
+    }
+    else{
+//        cout << candidate << " + " << addend << " is too much ("<<sum<<"); trying " << candidate << " + " << (addend / 2) << endl;
+        return recursiveUnsignedLongLongMaxFinderAdd(candidate, addend / 2);
+    }
 }
-//End usages of class vairables
+
+uint64_t getUint64MaxEstimate(){
+    
+    uint64_t uint64 = 1;
+    uint64_t factor = 10L;
+    uint64_t uint64temp = uint64 * factor;
+    
+    while (uint64temp > uint64){
+        uint64 = uint64temp;
+        uint64temp *= factor;
+        cout << "uint64 max guess = " << uint64 << "\n";
+    }
+    
+    return uint64;//10,000,000,000,000,000,000 - 10 quintillion, just like UnsignedLongLong
+}
 
 void pointerTest(){
     //with non-array:
