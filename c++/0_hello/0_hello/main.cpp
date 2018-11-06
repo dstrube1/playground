@@ -580,7 +580,8 @@ bool recursiveLongMaxFinderAdd(long candidate, long addend){
 unsigned long long getUnsignedLongLongMaxEstimate(){
     //This method estimates the range of the data type long, and does so with a multiplying loop, and not with brute force
     
-//    unsigned long long myLong = getLongMaxEstimate();
+    unsigned long long myLong = getLongMaxEstimate();
+    cout << "long max guess = " << myLong << "\n";
 //
 //    unsigned long long ltemp = myLong;
 //    long factor = 10L;
