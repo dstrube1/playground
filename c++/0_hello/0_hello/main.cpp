@@ -1,13 +1,13 @@
 /*
-  main.cpp
-  0_hello
+ file:  main.cpp
+ project:  0_hello
 
   Created by David Strube on 2018-11-01.
   Copyright © 2018 David Strube. All rights reserved.
 
  If opening without Xcode:
  
- g++ 0_hello.cpp
+ g++ main.cpp
  ./a.out
  or (if using cin)
  ./a.out < in.txt
@@ -22,6 +22,10 @@
 //#include <cstdlib>
 #include <cmath>
 #include <ctime>
+#include "classA.hpp"
+#include "DataTypeSizes.hpp"
+#include "DataTypeInitialValues.hpp"
+#include "Maximums.hpp"
 
 using namespace std;
 
@@ -29,16 +33,8 @@ using namespace std;
 //method declarations
 //Maths and datatypes:
 void mathsTest();
-void sizes();
-void initialValues();
-
-void maximums();
-void charMaximums();
-void shortMaximums();
-void intMaximums();
 void intLongOverflow();
-void multiThreadedIntMax();
-void *threadedPrintDots(void *threadid);
+
 void longMaximums();
 long getLongMaxEstimate();
 bool recursiveLongMaxFinder(long candidate, int factor);
@@ -62,100 +58,21 @@ void timeTest();
 void streamTest();
 ////////////////////////////////////////////////////////////////////
 
-
-////////////////////////////////////////////////////////////////////
-//variable declarations
-//https://en.cppreference.com/w/cpp/language/types
-bool boolean;
-//signed bool sb; //invalid
-
-char character;
-signed char signed_char;
-unsigned char unsigned_char;
-
-short shorty;
-signed short signed_short;
-unsigned short unsigned_short;
-
-int integer;
-signed int signed_int;
-unsigned int unsigned_int;
-
-long loong;
-signed long signed_long;
-unsigned long unsigned_long;
-
-float floaty;
-//signed float sf;//invalid
-//unsigned float uf;//invalid
-
-double dooble;
-//signed double sd;//invalid
-//unsigned double ud;//invalid
-long double long_double;
-
-//void v; //error: variable has incomplete type 'void'
-
-wchar_t wchar;
-signed wchar_t signed_wchar;
-unsigned wchar_t unsigned_wchar;
-
-long long long_long;
-int long int_long;
-long int long_int;
-//long long long lll;//invalid
-signed long long signed_long_long;
-signed int long signed_int_long;
-signed long int signed_long_int;
-unsigned long long unsigned_long_long;
-unsigned int long unsigned_int_long;
-unsigned long int unsigned_long_int;
-
-//short long shl;//invalid
-//long short lsh;//invalid
-short int short_int;
-int short int_short;
-signed short int signed_short_int;
-signed int short signed_int_short;
-unsigned short int unsigned_short_int;
-unsigned int short unsigned_int_short;
-
-//modulus values for printing progress of data type ranges
-//const int CHAR_MOD = 10;
-//const int SHORT_MOD = 1000;
-//const int INT_MOD = 10000000;
-//preprocessor, no specific type
-#define CHAR_MOD 10
-#define SHORT_MOD 1000 //1,000
 #define INT_MOD 100000000 //100,000,000
-//TODO #define LONG_MOD 1000000000 //1,000,000,000
 
 #define NUM_THREADS 1
 volatile bool waiting;
 ////////////////////////////////////////////////////////////////////
 
 int main(int argc, const char * argv[]) {
-//    std::cout << "Hello, World!\n";
-    //int a = 0;
-    //int _1 = 1;
-    //cin >> a;
-    //cout << "Hello " << a << "!\n";
-    
-    //cout << "??="; //this outputs: warning: trigraph ignored [-Wtrigraphs]
-    
-    //more info: https://www.tutorialspoint.com/cplusplus/cpp_data_types.htm
-    //    mathsTest();
-//        sizes();
-//        initialValues();
-    
-//    maximums();
-
-    //    pointerTest();
+//    pointerTest();
 //    referenceTest();
 //    timeTest();
 //    streamTest();
     
     /* MISC:
+     //cout << "??="; //this outputs: warning: trigraph ignored [-Wtrigraphs]
+
      //print alarm
      for (a = 0; a < 2; a++){
      cout << '\a';
@@ -165,7 +82,26 @@ int main(int argc, const char * argv[]) {
      typeof(myLong) x = 0;
      cout << "typeof(myLong) x : " << x << endl;
 
-     */
+     //for char, '',"", and 0 all print as blank
+     
+     //END MISC */
+    cout<<"running from main" << endl;
+//    classA myClassA;
+//    myClassA.myMethod();
+
+//    DataTypeSizes sizes;
+//    sizes.run();
+    
+//    DataTypeInitialValues values;
+//    values.run();
+    
+    Maximums maximums;
+//    maximums.charMaximums();
+//    maximums.shortMaximums();
+//    maximums.intMaximums(false);
+//    maximums.intMaximums(true); //TODO
+    maximums.multiThreadedIntMax();
+    
     return 0;
 }
 
@@ -182,225 +118,6 @@ void mathsTest(){
     srand( (unsigned)time( NULL ) );
     cout<< "rand(): " << rand() << "\n";
     
-}
-
-void sizes(){
-    /////////////////////////////////////////////////////////////////////////////////
-    //tests of type Sizes
-    /////////////////////////////////////////////////////////////////////////////////
-    uint64_t uint64;
-//    cout << "sizeof(bool): " << sizeof(boolean) << "\n\n";                          //1
-//    cout << "sizeof(char): " << sizeof(character) << "\n";                          //1
-//    cout << "sizeof(signed char): " << sizeof(signed_char) << "\n";                 //1
-//    cout << "sizeof(unsigned char): " << sizeof(unsigned_char) << "\n\n";           //1
-//    cout << "sizeof(short): " << sizeof(shorty) << "\n";                            //2
-//    cout << "sizeof(signed short): " << sizeof(signed_short) << "\n";               //2
-//    cout << "sizeof(unsigned short): " << sizeof(unsigned_short) << "\n\n";         //2
-    cout << "sizeof(int): " << sizeof(integer) << "\n";                             //4
-//    cout << "sizeof(signed int): " << sizeof(signed_int) << "\n";                   //4
-//    cout << "sizeof(unsigned int): " << sizeof(unsigned_int) << "\n\n";             //4
-    cout << "sizeof(long): " << sizeof(loong) << "\n";                              //8
-//    cout << "sizeof(signed long): " << sizeof(signed_long) << "\n";                 //8
-//    cout << "sizeof(unsigned long): " << sizeof(unsigned_long) << "\n\n";           //8
-//    cout << "sizeof(float): " << sizeof(floaty) << "\n\n";                          //4
-//    cout << "sizeof(double): " << sizeof(dooble) << "\n";                           //8
-//    cout << "sizeof(long double): " << sizeof(long_double) << "\n\n";               //16
-//    cout << "sizeof(wchar_t): " << sizeof(wchar) << "\n";                           //4
-//    cout << "sizeof(signed wchar_t): " << sizeof(signed_wchar) << "\n";             //4
-//    cout << "sizeof(unsigned wchar_t): " << sizeof(unsigned_wchar) << "\n\n";       //4
-    cout << "sizeof(long long): " << sizeof(long_long) << "\n";                     //8
-    cout << "sizeof(int long): " << sizeof(int_long) << "\n";                       //8
-    cout << "sizeof(long int): " << sizeof(long_int) << "\n";                       //8
-    cout << "sizeof(signed long long): " << sizeof(signed_long_long) << "\n";       //8
-    cout << "sizeof(signed int long): " << sizeof(signed_int_long) << "\n";         //8
-    cout << "sizeof(signed long int): " << sizeof(signed_long_int) << "\n";         //8
-    cout << "sizeof(unsigned long long): " << sizeof(unsigned_long_long) << "\n";   //8
-    cout << "sizeof(unsigned int long): " << sizeof(unsigned_int_long) << "\n";     //8
-    cout << "sizeof(unsigned long int): " << sizeof(unsigned_long_int) << "\n\n";   //8
-//    cout << "sizeof(short int): " << sizeof(short_int) << "\n";                     //2
-//    cout << "sizeof(int short): " << sizeof(int_short) << "\n";                     //2
-//    cout << "sizeof(signed short int): " << sizeof(signed_short_int) << "\n";       //2
-//    cout << "sizeof(signed int short): " << sizeof(signed_int_short) << "\n";       //2
-//    cout << "sizeof(unsigned short int): " << sizeof(unsigned_short_int) << "\n";   //2
-//    cout << "sizeof(unsigned int short): " << sizeof(unsigned_int_short) << "\n\n"; //2
-    cout << "sizeof(uint64): " << sizeof(uint64) << "\n";                           //8
-    
-    cout << "/////////////////////////////////////////////////////////////////////////////////\n\n";
-}
-
-void initialValues(){
-    /////////////////////////////////////////////////////////////////////////////////
-    //Initial values
-    /////////////////////////////////////////////////////////////////////////////////
-    uint64_t uint64;
-    //0*: non-zero if declared outside main and called inside main;
-    //if declared outside and called from outside main, 0
-    
-    //be careful about declaring methods (before main) before calling them
-    
-//    cout << "initial value of bool: " << boolean << "\n\n";                        //0
-//    cout << "initial value of char: " << character << "\n";                        //0*
-//    cout << "initial value of signed char: " << signed_char << "\n";               //0*
-//    cout << "initial value of unsigned char: " << unsigned_char << "\n\n";         //0*
-//    cout << "initial value of short: " << shorty << "\n";                          //0
-//    cout << "initial value of signed short: " << signed_short << "\n";             //0
-//    cout << "initial value of unsigned short: " << unsigned_short << "\n\n";       //0
-//    cout << "initial value of int: " << integer << "\n";                           //0
-//    cout << "initial value of signed int: " << signed_int << "\n";                 //0
-//    cout << "initial value of unsigned int: " << unsigned_int << "\n\n";           //0
-//    cout << "initial value of long: " << loong << "\n";                            //0
-//    cout << "initial value of signed long: " << signed_long << "\n";               //0
-    cout << "initial value of unsigned long: " << unsigned_long << "\n\n";         //0*
-    cout << "initial value of float: " << floaty << "\n\n";                        //0*
-    cout << "initial value of double: " << dooble << "\n\n";                       //0*
-    cout << "initial value of wchar_t: " << wchar << "\n";                         //0*
-    cout << "initial value of signed wchar_t: " << signed_wchar << "\n";           //0*
-    cout << "initial value of unsigned wchar_t: " << unsigned_wchar << "\n\n";     //0*
-    cout << "initial value of long long: " << long_long << "\n";                   //0*
-    cout << "initial value of int long: " << int_long << "\n";                     //0*
-    cout << "initial value of long int: " << long_int << "\n";                     //0*
-    cout << "initial value of signed long long: " << signed_long_long << "\n";     //0*
-    cout << "initial value of signed int long: " << signed_int_long << "\n";       //0*
-    cout << "initial value of signed long int: " << signed_long_int << "\n";       //0*
-    cout << "initial value of unsigned long long: " << unsigned_long_long << "\n"; //0*
-    cout << "initial value of unsigned int long: " << unsigned_int_long << "\n";   //0*
-    cout << "initial value of unsigned long int: " << unsigned_long_int << "\n";   //0*
-    cout << "initial value of uint64: " << uint64 << "\n\n";                       //0 -- warning because not initialized
-    cout << "/////////////////////////////////////////////////////////////////////////////////\n\n";
-}
-
-void maximums(){
-    
-    //for char, '',"", and 0 all print as blank
-    
-     charMaximums();
-    
-     shortMaximums();
-     
-     intMaximums();
-
-    longMaximums();
-    
-    getUint64MaxEstimate();
-}
-
-void charMaximums(){
-    char c_p = character;
-    signed char sc_p = signed_char;
-    unsigned char uc_p = unsigned_char;
-    
-    int count = 0;
-    character++;
-    while (c_p < character){
-        c_p++;
-        character++;
-        count++;
-        if (count % CHAR_MOD == 0) cout << ".";
-    }
-    cout << "\nEnd of char range. count = " << count << "\n"; //127
-    
-    count = 0;
-    signed_char++;
-    while (sc_p < signed_char){
-        sc_p++;
-        signed_char++;
-        count++;
-        if (count % CHAR_MOD == 0) cout << ".";
-    }
-    cout << "\nEnd of signed char range. count = " << count << "\n"; //127
-    
-    count = 0;
-    unsigned_char++;
-    while (uc_p < unsigned_char){
-        uc_p++;
-        unsigned_char++;
-        count++;
-        if (count % CHAR_MOD == 0) cout << ".";
-    }
-    cout << "\nEnd of unsigned char range. count = " << count << "\n"; //255
-}
-
-void shortMaximums(){
-    short s_p = shorty;
-    signed short ss_p = signed_short;
-    unsigned short us_p = unsigned_short;
-    
-    int count = 0;
-    shorty++;
-    while (s_p < shorty){
-        s_p++;
-        shorty++;
-        count++;
-        if (count % SHORT_MOD == 0) cout << ".";
-    }
-    cout << "\nEnd of short range. count = " << count << "\n"; //32,767
-    
-    count = 0;
-    signed_short++;
-    while (ss_p < signed_short){
-        ss_p++;
-        signed_short++;
-        count++;
-        if (count % SHORT_MOD == 0) cout << ".";
-    }
-    cout << "\nEnd of signed short range. count = " << count << "\n"; //32,767
-    
-    count = 0;
-    unsigned_short++;
-    while (us_p < unsigned_short){
-        us_p++;
-        unsigned_short++;
-        count++;
-        if (count % SHORT_MOD == 0) cout << ".";
-    }
-    cout << "\nEnd of unsigned short range. count = " << count << "\n"; //65,535
-}
-
-void intMaximums(){
-    long count = 0;
-    
-    int i_p = integer;
-    
-    cout << "Calculating int range";
-    integer++;
-    while (i_p < integer){
-        i_p++;
-        integer++;
-        count++;
-        //this should update the program in realtime, but instead
-        //this halts the program until the while loop is done.
-        //        if (count % INT_MOD == 0) cout << ".";
-        //that's because cout is buffered;
-        //solution: cerr is not buffered:
-        if (count % INT_MOD == 0) cerr << ".";
-    }
-    cout << "\nEnd of int range. count = " << count << "\n"; //2,147,483,647
-    
-    cout << "Calculating signed int range";
-    count = 0;
-    signed int si_p = signed_int;
-    signed_int++;
-    while (si_p < signed_int){
-        si_p++;
-        signed_int++;
-        count++;
-        if (count % INT_MOD == 0) cout << ".";
-    }
-    cout << "End of signed int range. count = " << count << "\n"; //2,147,483,647 - about 2 billion
-    
-    cout << "Calculating unsigned int range";
-    count = 0;
-    unsigned int ui_p = unsigned_int;
-    unsigned_int++;
-    while (ui_p < unsigned_int){
-        ui_p++;
-        unsigned_int++;
-        count++;
-        if (count % INT_MOD == 0) cout << ".";
-    }
-    cout << "End of unsigned int range. count = " << count << "\n\n"; //4,294,967,295 - about 4 billion
-    
-    multiThreadedIntMax();
 }
 
 void intLongOverflow(){
@@ -443,81 +160,8 @@ void intLongOverflow(){
     ull++;
     cout << "ull: " << ull << endl;
     cout << "Done"<< endl;
-
 }
 
-void multiThreadedIntMax(){
-    //https://www.tutorialspoint.com/cplusplus/cpp_multithreading.htm
-    unsigned long long count;
-    waiting = true;
-    pthread_t threads[NUM_THREADS];
-    pthread_attr_t attr;
-    void *status;
-    
-    // Initialize and set thread joinable
-    pthread_attr_init(&attr);
-    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
-    
-    int rc = pthread_create(&threads[0], &attr, threadedPrintDots, (void *)0);
-    
-    if (rc){
-        cout << "Error:unable to create thread," << rc << endl;
-        exit(-1);
-    }
-    
-    count = 0;
-    cout << "Calculating a maximum with multithreading." << endl;
-    cout << "(# is the main thread waiting)" << endl;
-    while(waiting){
-        count++;
-        if (count % INT_MOD == 0) cerr << "#";
-    }
-    
-    // free attribute and wait for the other threads
-    pthread_attr_destroy(&attr);
-    
-    rc = pthread_join(threads[0], &status);
-    
-    if (rc){
-        cout << "Error:unable to join," << rc << endl;
-        exit(-1);
-    }
-    
-    cout << "Joined thread." << endl;
-    //Forgot what this is supposed to do:
-    //pthread_exit(NULL);
-}
-
-void *threadedPrintDots(void *threadid) {
-    long threadID = (long)threadid;
-    cout << "Beginning thread " << threadID << endl;
-    
-    unsigned long long count = 0;
-    
-    int i_p = integer;
-//    signed int si_p = signed_int;
-//    unsigned int ui_p = unsigned_int;
-    
-    integer++;
-    while (i_p < integer){
-        i_p++;
-        integer++;
-        count++;
-        //this should update the program in realtime, but instead
-        //this halts the program until the while loop is done.
-        //        if (count % INT_MOD == 0) cout << ".";
-        //that's because cout is buffered;
-        //solution: cerr is not buffered:
-        if (count % INT_MOD == 0) cerr << ".";
-    }
-    cout << "\nEnd of int range. count = " << count << "\n"; //2,147,483,647
-    
-    waiting = false;
-    
-    cout << "Exiting thread " << threadID << endl;
-    pthread_exit(NULL);
-//    cout << "Exited thread " << threadID << endl; //this doesn't print; thread's dead, baby
-}
 
 void longMaximums(){
     cout << "long max approximately = " << getLongMaxEstimate() << "\n";
