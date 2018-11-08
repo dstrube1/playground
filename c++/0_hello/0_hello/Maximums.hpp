@@ -10,6 +10,7 @@
 #define Maximums_hpp
 
 //#include <stdio.h>
+#include <iostream> //required for uint64_t
 
 class Maximums{
 public:
@@ -17,6 +18,7 @@ public:
     void shortMaximums();
     void intMaximums(bool isFast);
     void multiThreadedIntMax();
+    void longMaximums();
 private:
     char character;
     signed char signed_char;
@@ -49,10 +51,19 @@ private:
     //Man!, this was tricky to find the right way to declare and implement this :(
     static void *threadedPrintDots(void *threadid);
     
-    //TODO :
-    //void slowIntMax();
-    //void fastIntMax();
-    //longMaxs
+    void slowIntMax();
+    void fastIntMax();
+    bool intMaxRecursive(int candidate, int factor);
+    bool intMaxRecursiveAdd(int candidate, int addend);
+    int getIntMaxEstimate();
+    
+    long getLongMaxEstimate();
+    bool recursiveLongMaxFinder(long candidate, int factor);
+    bool recursiveLongMaxFinderAdd(long candidate, long addend);
+    unsigned long long getUnsignedLongLongMaxEstimate();
+    bool recursiveUnsignedLongLongMaxFinder(unsigned long long candidate, int factor);
+    bool recursiveUnsignedLongLongMaxFinderAdd(unsigned long long candidate, unsigned long long addend);
+    uint64_t getUint64MaxEstimate();
 };
 
 #endif /* Maximums_hpp */
