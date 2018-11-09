@@ -12,6 +12,7 @@
 		C725E11121925CAF0091B33C /* DataTypeInitialValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C725E10F21925CAF0091B33C /* DataTypeInitialValues.cpp */; };
 		C725E1142192698F0091B33C /* Maximums.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C725E1122192698F0091B33C /* Maximums.cpp */; };
 		C7350821218BEB4100438023 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7350820218BEB4100438023 /* main.cpp */; };
+		C7EEF5F121951B8100B68398 /* Maths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7EEF5EF21951B8100B68398 /* Maths.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,8 @@
 		C725E1132192698F0091B33C /* Maximums.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Maximums.hpp; sourceTree = "<group>"; };
 		C735081D218BEB4100438023 /* 0_hello */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 0_hello; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7350820218BEB4100438023 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C7EEF5EF21951B8100B68398 /* Maths.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Maths.cpp; sourceTree = "<group>"; };
+		C7EEF5F021951B8100B68398 /* Maths.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Maths.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 				C725E11021925CAF0091B33C /* DataTypeInitialValues.hpp */,
 				C725E1122192698F0091B33C /* Maximums.cpp */,
 				C725E1132192698F0091B33C /* Maximums.hpp */,
+				C7EEF5EF21951B8100B68398 /* Maths.cpp */,
+				C7EEF5F021951B8100B68398 /* Maths.hpp */,
 			);
 			path = 0_hello;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C725E1142192698F0091B33C /* Maximums.cpp in Sources */,
+				C7EEF5F121951B8100B68398 /* Maths.cpp in Sources */,
 				C725E11121925CAF0091B33C /* DataTypeInitialValues.cpp in Sources */,
 				C725E10B2192544B0091B33C /* classA.cpp in Sources */,
 				C725E10E21925C8A0091B33C /* DataTypeSizes.cpp in Sources */,

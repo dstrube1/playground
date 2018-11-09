@@ -11,7 +11,7 @@
 
 void classA::myMethod(){
     myInt = 1;
-    std::cout<<"myInt is " << myInt << "\n"; //endl is not an option here
+    std::cout<<"myInt is " << myInt << "\n"; //endl is not an option here (without std namespace?)
 }
 
 int classA::getConst() const{
