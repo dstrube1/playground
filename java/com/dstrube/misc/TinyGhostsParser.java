@@ -1,5 +1,17 @@
 package com.dstrube;
 
+/*
+commands to compile and run:
+
+from mac ~/java:
+compile:
+javac -cp bin:bin/jsoup-1.11.1.jar -d bin com/dstrube/misc/TinyGhostsParser.java
+run:
+java -cp bin:bin/jsoup-1.11.1.jar com.dstrube.TinyGhostsParser
+
+note, currently located in com/dstrube/misc, but the package is just com.dstrube
+*/
+
 import java.io.IOException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.*;
