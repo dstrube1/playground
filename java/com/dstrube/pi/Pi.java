@@ -1,18 +1,18 @@
 package com.dstrube.pi;
 
 /*
-commands to compile and run:
-from /Users/dstrubex/Projects/java
-javac -d /Users/dstrubex/Projects/java/bin com/dstrube/pi/Pi.java
-java -cp /Users/dstrubex/Projects/java/bin com.dstrube.pi.Pi
+compile:
+javac -d bin com/dstrube/pi/Pi.java
+run:
+java -cp bin com.dstrube.pi.Pi
 */
 
 public class Pi{
 	private static float piF = 4.0f;
 	private static double piD = 4.0;
-	private static int denominator;
+	private static long denominator;
 	private static boolean minus;
-	private static int count;
+	private static long count;
 	
 	public static void main(String[] args){
 //		System.out.println("Pi: " + pi);
@@ -25,9 +25,29 @@ public class Pi{
 		//Google says pi =~ 					  3.14159265359
 		System.out.println("Float pi: " + piF); //3.1415968
 		
-		calcDoublePi();
-		System.out.println("Double pi: " + piD);
-		
+		//calcDoublePi(); //This won't end anytime soon
+		//System.out.println("Double pi: " + piD);
+		//System.out.println("Double.MAX_VALUE = " + Double.MAX_VALUE);//1.7976931348623157E308
+		//getLongMaxEstimate();
+	}
+	
+	private static long getLongMaxEstimate(){
+		long myLong = 1;
+	    long ltemp = myLong;
+    	while (ltemp > 0){ //when ltemp exceeds the maximum, it loops around to a negative
+	        myLong = ltemp;
+    	    ltemp *= 10;
+	        System.out.println("long max guess = " + myLong + "\n");
+	    }
+    	return myLong; //1000000000000000000
+	}
+	
+	private static boolean recursiveLongMaxFinder(long candidate, int factor){
+		return true;
+	}
+	
+	private static boolean recursiveLongMaxFinderAdd(long candidate, long addend){
+		return true;
 	}
 	
 	//https://en.wikipedia.org/wiki/Pi
@@ -54,16 +74,21 @@ public class Pi{
 	}
 
 /*
-LEFTOFF: this is never true: piB4 != piD
+PROBLEM: this is never true: piB4 != piD
 printing out progress once every 1000000000 shows that at some point there is an overflow or some other error
 that makes pi have an invalid valid, starting with 9.xxx...
+
+SOLUTION: problem was that denominator was an int, and getting incremented led to an overflow before long;
+changing it -and count- to a long made the overflow something that one needn't worry about as soon;
+by the time count is very big (790800000000), the calculation is pretty close (3.1415926535872503)
+note: 1000000000000000000 is a few orders of magnitude bigger than 790800000000
 */
 	public static void calcDoublePi() {
 		double piB4 = 0.0;
 		denominator = 1;
 		minus = true;
-		count = 0;
-		while (piB4 != piD) {//count < 100000000){//
+		count = 1;
+		while (count > 0){//piB4 != piD) {//
 			piB4 = piD;
 			denominator += 2;
 			if (minus){
@@ -74,11 +99,11 @@ that makes pi have an invalid valid, starting with 9.xxx...
 				piD += (double)4 / denominator;
 			}
 			count++;
-			if (count % 1000000000 == 0){
-				System.out.println("Double pi progress: " + piD);
+			if (count % 100000000 == 0){
+				System.out.println("count: "+count+"; Double pi progress: " + piD);
 			}
 		}
-		System.out.println("Double pi stopped changing after this many cycles: " + count);
+		System.out.println("Double pi stopped calculating after this many cycles: " + count);
 	}
 
 }
