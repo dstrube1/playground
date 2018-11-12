@@ -20,37 +20,38 @@ import org.jsoup.select.Elements;
 
 public class TinyGhostsParser {
 
-	public static final String PAGE_ROOT = "http://www.tinyghosts.com/archive/";
-	//public static final String END_PAGE = PAGE_ROOT + "tinyghosts436.html";
-	//public static final String BEGIN_PAGE = PAGE_ROOT + "tinyghosts001.html";
-	public static final String BEGIN_BEGIN_PAGE = PAGE_ROOT + "tinyghosts000.html";
+	private static final String PAGE_ROOT = "http://www.tinyghosts.com/archive/";
+	private static final String BEGIN_BEGIN_PAGE = PAGE_ROOT + "tinyghosts000.html";
 	
 	public static void main(String[] args) {
-		int i=0;
+		int index = 0;
 		String page = BEGIN_BEGIN_PAGE;
-		while (parsePage(page,i) ){
-			
-			i++;
-			if (i< 10){
-				page = BEGIN_BEGIN_PAGE.replace("000", "00"+i);
+		System.out.println("Testing each page for a back and next");
+		while (parsePage(page,index) ){
+			index++;
+			if (index < 10){
+				page = BEGIN_BEGIN_PAGE.replace("000", "00"+index);
 			}
-			else if (i>=10 && i < 100){
-				page = BEGIN_BEGIN_PAGE.replace("000", "0"+i);
+			else if (index >= 10 && index < 100){
+				page = BEGIN_BEGIN_PAGE.replace("000", "0"+index);
 			}
-			else if (i >= 100){
-				page = BEGIN_BEGIN_PAGE.replace("000", ""+i);
+			else if (index >= 100){
+				page = BEGIN_BEGIN_PAGE.replace("000", ""+index);
 			}
 			//break;
 		}
-		
-			
-		
+		System.out.println("Done");		
 	}
 
-	public static boolean parsePage(String page, int pageNum){
+	private static boolean parsePage(String page, int pageNum){
 		try{
 			Document doc = Jsoup.connect(page).get();
-			System.out.print(".");
+			if (pageNum > 0 && pageNum % 100 == 0){
+				System.out.println(pageNum);
+			}
+			else{
+				System.out.print(".");
+			}
 			//System.out.print(page+"; ");
 			//System.out.print(doc.title());
 			Element el = doc.body();
@@ -71,18 +72,17 @@ public class TinyGhostsParser {
 				}
 				if (td.toString().contains("next")){
 					//all pages have a Next
-					String nextPage = td.toString().substring(td.toString().indexOf(prefix),td.toString().indexOf(suffix)+suffix.length());
+					String nextPage = td.toString().substring(td.toString().indexOf(prefix), td.toString().indexOf(suffix)+suffix.length());
 					//System.out.println("; nextPage: " + nextPage);
 					int nextPageNum = Integer.parseInt(nextPage.replace(prefix, "").replace(suffix, ""));
-					if (nextPageNum != pageNum+1){
-						System.out.println("\n************ERROR with next page here: "+doc.title() + "************");
+					if (nextPageNum != pageNum+1 && nextPageNum != 1){
+						System.out.println("\n************ERROR with next page here: "+doc.title() + "************"); 
 					}
 				}
-				
 			}
 
 		}catch (IOException e){
-			System.out.println("\nstopping here: " + page + " because " + e.toString());
+			//System.out.println("\nstopping here: " + page + " because " + e.toString());
 			return false;
 		}
 		return true;
