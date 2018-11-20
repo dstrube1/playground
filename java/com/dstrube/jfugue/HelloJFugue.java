@@ -38,7 +38,14 @@ public class HelloJFugue {
 //		Player player = new Player();
 //	    player.play("C D E F G A B");		
 //		player.play("V0 I[Piano] Eq Ch. | Eq Ch. | Dq Eq Dq Cq   V1 I[Flute] Rw | Rw | GmajQQQ CmajQ");
-		MusicStrings();
+//		MusicStrings();
+		try{
+			SeeMidi();
+		}catch(IOException e0){
+			System.out.println("Caught exception: " + e0);
+		}catch(InvalidMidiDataException e1){
+			System.out.println("Caught exception: " + e1);
+		}
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////	
@@ -117,9 +124,16 @@ public class HelloJFugue {
     private static void OneLiner(){
         new Player().play(new ChordProgression("I IV vi V").eachChordAs("$!i $!i Ri $!i"), new Rhythm().addLayer("..X...X...X...XO"));
     }
-    private static void SeeMidi()throws IOException, InvalidMidiDataException{//TODO
-    	Pattern pattern = MidiFileManager.loadPatternFromMidi(new File("PUT YOUR MIDI FILENAME HERE"));
-        System.out.println(pattern);
+    private static void SeeMidi()throws IOException, InvalidMidiDataException{
+	    final String folder = "com"+ File.separator +"dstrube"+ File.separator +"jfugue"+ File.separator +"midis" + File.separator;
+    	final String fileName = "Michael_Jackson_-_Beat_It.mid";
+    	//"Movie_Themes_-_Addams_Family.mid";
+    	//"Guns_n_Roses_-_Knockin_On_Heaven's_Door.mid";
+    	Pattern pattern = MidiFileManager.loadPatternFromMidi(new File(folder + fileName));
+    	Player player = new Player();
+    	System.out.println("Playing " + fileName);
+    	player.play(pattern);
+        //System.out.println(pattern);
     }
     private static void RealtimeExample()throws MidiUnavailableException{
     	RealtimePlayer player = new RealtimePlayer();
