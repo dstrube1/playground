@@ -22,8 +22,8 @@
 //#include "classA.hpp"
 //#include "DataTypeSizes.hpp"
 //#include "DataTypeInitialValues.hpp"
-//#include "Maximums.hpp"
-#include "Maths.hpp"
+#include "Maximums.hpp"
+//#include "Maths.hpp"
 
 using namespace std;
 
@@ -79,7 +79,7 @@ int main(int argc, const char * argv[]) {
 //    DataTypeInitialValues values;
 //    values.run();
     
-//    Maximums maximums;
+    Maximums maximums;
 //    maximums.charMaximums();
 //    maximums.shortMaximums();
 //    bool isFast = true;
@@ -104,6 +104,8 @@ int main(int argc, const char * argv[]) {
 //        }
 //    }
 //    cout<<"Stranger Things, S2 ^"<<endl;
+    
+    maximums.getFloatMaxEstimate();
     return 0;
 }
 

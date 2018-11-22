@@ -170,6 +170,19 @@ using namespace std;
     cout << "uint64 max estimate: " << getUint64MaxEstimate() << "\n";
 }
 
+/*public*/ float Maximums::getFloatMaxEstimate(){
+    float myFloat = 1.0f;
+    float fTemp = myFloat;
+    //https://en.cppreference.com/w/cpp/types/numeric_limits/infinity
+    while (fTemp != numeric_limits<float>::infinity()){
+        myFloat = fTemp;
+        fTemp *= 10;
+        //cout<<"float max guess: " << myFloat << endl;
+    }
+    //cout<<"float max estimate: " << myFloat << endl;;
+    return myFloat;
+}
+
 ////////////////////////////////////////////////////////////////////
 //PRIVATES
 ////////////////////////////////////////////////////////////////////
@@ -468,4 +481,6 @@ using namespace std;
     
     return uint64;//10,000,000,000,000,000,000 - 10 quintillion, just like UnsignedLongLong
 }
+
+
 

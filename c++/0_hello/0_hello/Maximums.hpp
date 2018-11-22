@@ -19,6 +19,7 @@ public:
     void intMaximums(bool isFast);
     void multiThreadedIntMax();
     void longMaximums();
+    float getFloatMaxEstimate();
 private:
     char character;
     signed char signed_char;
