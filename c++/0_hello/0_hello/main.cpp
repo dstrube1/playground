@@ -89,9 +89,21 @@ int main(int argc, const char * argv[]) {
 //    maximums.multiThreadedIntMax();
 //    maximums.longMaximums();
     
-    Maths maths;
-    maths.tests();
-    maths.intLongOverflows();
+//    Maths maths;
+//    maths.tests();
+//    maths.intLongOverflows();
+
+//    cout<<"Stranger Things, S2: "<<endl;
+//    for (int i = 0; i <= 9; i++){
+//        for (int j = 0; j <= 9; j++){
+//            for (int k = 0; k <= 9; k++){
+//                for (int k0 = 0; k0 <= 9; k0++){
+//                    cout<<i<<j<<k<<k0<<endl;
+//                }
+//            }
+//        }
+//    }
+//    cout<<"Stranger Things, S2 ^"<<endl;
     return 0;
 }
 
