@@ -161,7 +161,7 @@ using namespace std;
 /*public*/ void Maximums::longMaximums(){
     cout << "long max approximately = " << getLongMaxEstimate() << "\n";
     
-    cout << "Recursively calculating long range...\n";
+    cout << "Recursively calculating long maximum...\n";
     recursiveLongMaxFinder(1,10);
     
     cout << "calculating unsigned long long max estimate... \n";
@@ -170,17 +170,12 @@ using namespace std;
     cout << "uint64 max estimate: " << getUint64MaxEstimate() << "\n";
 }
 
-/*public*/ float Maximums::getFloatMaxEstimate(){
-    float myFloat = 1.0f;
-    float fTemp = myFloat;
-    //https://en.cppreference.com/w/cpp/types/numeric_limits/infinity
-    while (fTemp != numeric_limits<float>::infinity()){
-        myFloat = fTemp;
-        fTemp *= 10;
-        //cout<<"float max guess: " << myFloat << endl;
-    }
-    //cout<<"float max estimate: " << myFloat << endl;;
-    return myFloat;
+/*public*/ void Maximums::floatMaximums(){
+    cout << "float max approximately = " << getFloatMaxEstimate() << "\n";
+    
+    cout << "Recursively calculating float maximum...\n";
+    recursiveFloatMaxFinder(1.0f,10.0f);
+
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -482,5 +477,82 @@ using namespace std;
     return uint64;//10,000,000,000,000,000,000 - 10 quintillion, just like UnsignedLongLong
 }
 
+/*private*/ float Maximums::getFloatMaxEstimate(){
+    float myFloat = 1.0f;
+    float fTemp = myFloat;
+    //https://en.cppreference.com/w/cpp/types/numeric_limits/infinity
+    while (fTemp != numeric_limits<float>::infinity()){
+        myFloat = fTemp;
+        fTemp *= 10;
+        //cout<<"float max guess: " << myFloat << endl;
+    }
+    //cout<<"float max estimate: " << myFloat << endl;;
+    return myFloat; //1e+38
+}
+
+/*private*/ bool Maximums::recursiveFloatMaxFinder(float candidate, float factor){
+    if (factor <= 1){
+    
+        float estimate = getFloatMaxEstimate();
+        
+        if (candidate < estimate){
+            cout << "something went wrong; candidate: " << candidate << "; estimate: " << estimate << endl;
+            return false;
+        }else{
+            return recursiveFloatMaxFinderAdd(candidate, estimate);
+        }
+    }
+    
+    float product = candidate * factor;
+    
+    if (product > candidate){
+        cout << "using product; candidate: " << candidate << "; product: " << product << "; factor: " << factor << endl;
+        return recursiveFloatMaxFinder(product, factor);
+    }else if (product == numeric_limits<float>::infinity() || product < candidate){
+        cout << "halving factor; candidate: " << candidate << "; product: " << product << "; factor: " << factor << endl;
+        return recursiveFloatMaxFinder(candidate, factor / 2);
+    }else{
+        cout << "something went wrong; candidate: " << candidate << "; product: " << product << "; factor: " << factor << endl;
+        return false;
+    }
+}
+
+/*private*/ bool Maximums::recursiveFloatMaxFinderAdd(float candidate, float addend){
+    if (addend == 1){
+        
+        float estimate = getFloatMaxEstimate();
+        
+        if (candidate < estimate){
+            cout << "something went wrong; candidate: " << candidate << "; estimate: " << estimate << endl;
+            return false;
+        }else{
+            unsigned long long count = 0;
+            float fTemp = candidate + 1;
+            //            cout << "candidate is " << candidate << " and ltemp is" << ltemp << endl;
+            while (fTemp > candidate){
+                candidate = fTemp;
+                fTemp++;
+                count++;
+                //                if (count % INT_MOD == 0) cerr << ".";
+                //                cout << "candidate is " << candidate << " and ltemp is" << ltemp << endl;
+                if (fTemp == fTemp - 1){
+                    cout << "something went wrong; incrementig fTemp doesn't work at fTemp: " << fTemp << endl;
+                    return false;
+                }
+            }
+            cout << "float max found: " << candidate << endl;
+            return true;
+        }
+    }
+    unsigned long long sum = candidate + addend;
+    if (sum > candidate){
+        //        cout << candidate << " + " << addend << " is < " << sum << endl;
+        return recursiveUnsignedLongLongMaxFinderAdd(sum, addend);
+    }
+    else{
+        //        cout << candidate << " + " << addend << " is too much ("<<sum<<"); trying " << candidate << " + " << (addend / 2) << endl;
+        return recursiveUnsignedLongLongMaxFinderAdd(candidate, addend / 2);
+    }
+}
 
 

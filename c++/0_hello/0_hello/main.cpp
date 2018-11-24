@@ -29,7 +29,7 @@ using namespace std;
 
 ////////////////////////////////////////////////////////////////////
 //method declarations
-
+void strangerThingsS2();
 //Pointers and references
 void pointerTest();
 void passPtrs(int *ptr1, int *ptr2, int *ptrA[], int a[], int size);
@@ -88,25 +88,27 @@ int main(int argc, const char * argv[]) {
 //    maximums.intMaximums(isFast);
 //    maximums.multiThreadedIntMax();
 //    maximums.longMaximums();
-    
+    maximums.floatMaximums();
+
 //    Maths maths;
 //    maths.tests();
 //    maths.intLongOverflows();
 
-//    cout<<"Stranger Things, S2: "<<endl;
-//    for (int i = 0; i <= 9; i++){
-//        for (int j = 0; j <= 9; j++){
-//            for (int k = 0; k <= 9; k++){
-//                for (int k0 = 0; k0 <= 9; k0++){
-//                    cout<<i<<j<<k<<k0<<endl;
-//                }
-//            }
-//        }
-//    }
-//    cout<<"Stranger Things, S2 ^"<<endl;
-    
-    maximums.getFloatMaxEstimate();
     return 0;
+}
+
+void strangerThingsS2(){
+        cout<<"Stranger Things, S2: "<<endl;
+        for (int i = 0; i <= 9; i++){
+            for (int j = 0; j <= 9; j++){
+                for (int k = 0; k <= 9; k++){
+                    for (int k0 = 0; k0 <= 9; k0++){
+                        cout<<i<<j<<k<<k0<<endl;
+                    }
+                }
+            }
+        }
+        cout<<"Stranger Things, S2 ^"<<endl;
 }
 
 void pointerTest(){

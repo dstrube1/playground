@@ -19,8 +19,11 @@ public:
     void intMaximums(bool isFast);
     void multiThreadedIntMax();
     void longMaximums();
-    float getFloatMaxEstimate();
+    void floatMaximums();
 private:
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //VARIABLES
+    ///////////////////////////////////////////////////////////////////////////////////////
     char character;
     signed char signed_char;
     unsigned char unsigned_char;
@@ -47,17 +50,23 @@ private:
     unsigned long long count;
     
     //TODO Find the right way to do this
-//    static /*volatile*/ bool waiting;//https://stackoverflow.com/questions/4557979/when-to-use-volatile-with-multi-threading
+//    static /*volatile*/ bool waiting;
+    //https://stackoverflow.com/questions/4557979/when-to-use-volatile-with-multi-threading
     
-    //Man!, this was tricky to find the right way to declare and implement this :(
-    static void *threadedPrintDots(void *threadid);
-    
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //METHODS
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    //INTS
     void slowIntMax();
     void fastIntMax();
     bool intMaxRecursive(int candidate, int factor);
     bool intMaxRecursiveAdd(int candidate, int addend);
     int getIntMaxEstimate();
+    //Man!, this was tricky to find the right way to declare and implement this :(
+    static void *threadedPrintDots(void *threadid);
     
+    //LONGS
     long getLongMaxEstimate();
     bool recursiveLongMaxFinder(long candidate, int factor);
     bool recursiveLongMaxFinderAdd(long candidate, long addend);
@@ -65,6 +74,11 @@ private:
     bool recursiveUnsignedLongLongMaxFinder(unsigned long long candidate, int factor);
     bool recursiveUnsignedLongLongMaxFinderAdd(unsigned long long candidate, unsigned long long addend);
     uint64_t getUint64MaxEstimate();
+    
+    //FLOATS
+    float getFloatMaxEstimate();
+    bool recursiveFloatMaxFinder(float candidate, float factor);
+    bool recursiveFloatMaxFinderAdd(float candidate, float addend);
 };
 
 #endif /* Maximums_hpp */
