@@ -20,6 +20,7 @@ public:
     void multiThreadedIntMax();
     void longMaximums();
     void floatMaximums();
+    void doubleMaximums();
 private:
     ///////////////////////////////////////////////////////////////////////////////////////
     //VARIABLES
@@ -78,6 +79,8 @@ private:
     //FLOATS
     float getFloatMaxEstimate();
     bool recursiveFloatMaxFinder(float candidate, float addend);
+    double getDoubleMaxEstimate();
+    bool recursiveDoubleMaxFinder(double candidate, double addend);
 };
 
 #endif /* Maximums_hpp */

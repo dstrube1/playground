@@ -180,6 +180,17 @@ using namespace std;
     recursiveFloatMaxFinder(estimate, estimate / 10); //3.40282e+38
 }
 
+/*public*/ void Maximums::doubleMaximums(){
+    cout << "authoritative double max " << numeric_limits<double>::max() << endl; //
+    
+    cout << "double max approximately = " << getDoubleMaxEstimate() << "\n"; //
+    
+    cout << "Recursively calculating double maximum...\n";
+    double estimate = getDoubleMaxEstimate();
+    recursiveDoubleMaxFinder(estimate, estimate / 10); //
+
+}
+
 ////////////////////////////////////////////////////////////////////
 //PRIVATES
 ////////////////////////////////////////////////////////////////////
@@ -534,4 +545,57 @@ using namespace std;
     }
 }
 
+/*private*/ double Maximums::getDoubleMaxEstimate(){
+    double myDouble = 1.0f;
+    double dTemp = myDouble;
+    //https://en.cppreference.com/w/cpp/types/numeric_limits/infinity
+    while (dTemp != numeric_limits<double>::infinity()){
+        myDouble = dTemp;
+        dTemp *= 10;
+        //cout<<"float max guess: " << myDouble << endl;
+    }
+//    cout<<"double max estimate: " << myDouble << endl;;
+    return myDouble; //
+}
 
+/*private*/ bool Maximums::recursiveDoubleMaxFinder(double candidate, double addend){
+    if (addend <= 1){
+        
+        double estimate = getDoubleMaxEstimate();
+        
+        if (candidate < estimate){
+            cout << "something went wrong; candidate: " << candidate << "; estimate: " << estimate << endl;
+            return false;
+        }else{
+            unsigned long long count = 0;
+            double dTemp = candidate + 1;
+//            cout << "candidate is " << candidate << " and dTemp is " << dTemp << endl;
+            while (dTemp > candidate){
+                candidate = dTemp;
+                dTemp++;
+                count++;
+                if (count % INT_MOD == 0) cerr << ".";
+//                cout << "candidate is " << candidate << " and dTemp is" << dTemp << endl;
+                if (dTemp == dTemp - 1){
+                    cout << "something went wrong; incrementig fTemp doesn't work at fTemp: " << dTemp << endl;
+                    return false;
+                }
+            }
+            cout << "double max found: " << candidate << endl; //
+            return true;
+        }
+    }
+    
+    double sum = candidate + addend;
+    
+//    cout << "sum: " << sum << " = " << candidate << " + " << addend << endl;
+    
+    if (sum != numeric_limits<double>::infinity() && sum > candidate){
+//        cout << candidate << " + " << addend << " is < " << sum << endl;
+        return recursiveDoubleMaxFinder(sum, addend);
+    }
+    else{
+//        cout << candidate << " + " << addend << " is too much (" << sum << "); trying " << candidate << " + " << (addend / 2) << endl;
+        return recursiveDoubleMaxFinder(candidate, addend / 2);
+    }
+}

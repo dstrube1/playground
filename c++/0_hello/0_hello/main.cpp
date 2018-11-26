@@ -88,7 +88,8 @@ int main(int argc, const char * argv[]) {
 //    maximums.intMaximums(isFast);
 //    maximums.multiThreadedIntMax();
 //    maximums.longMaximums();
-    maximums.floatMaximums();
+//    maximums.floatMaximums();
+    maximums.doubleMaximums();
 
 //    Maths maths;
 //    maths.tests();
