@@ -77,8 +77,7 @@ private:
     
     //FLOATS
     float getFloatMaxEstimate();
-    bool recursiveFloatMaxFinder(float candidate, float factor);
-    bool recursiveFloatMaxFinderAdd(float candidate, float addend);
+    bool recursiveFloatMaxFinder(float candidate, float addend);
 };
 
 #endif /* Maximums_hpp */

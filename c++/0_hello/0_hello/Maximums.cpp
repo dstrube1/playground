@@ -171,11 +171,13 @@ using namespace std;
 }
 
 /*public*/ void Maximums::floatMaximums(){
-    cout << "float max approximately = " << getFloatMaxEstimate() << "\n";
+    cout << "authoritative float max " << numeric_limits<float>::max() << endl; //3.40282e+38
+    
+    cout << "float max approximately = " << getFloatMaxEstimate() << "\n"; //1e+38
     
     cout << "Recursively calculating float maximum...\n";
-    recursiveFloatMaxFinder(1.0f,10.0f);
-
+    float estimate = getFloatMaxEstimate();
+    recursiveFloatMaxFinder(estimate, estimate / 10); //3.40282e+38
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -490,35 +492,8 @@ using namespace std;
     return myFloat; //1e+38
 }
 
-/*private*/ bool Maximums::recursiveFloatMaxFinder(float candidate, float factor){
-    if (factor <= 1){
-    
-        float estimate = getFloatMaxEstimate();
-        
-        if (candidate < estimate){
-            cout << "something went wrong; candidate: " << candidate << "; estimate: " << estimate << endl;
-            return false;
-        }else{
-            return recursiveFloatMaxFinderAdd(candidate, estimate);
-        }
-    }
-    
-    float product = candidate * factor;
-    
-    if (product > candidate){
-        cout << "using product; candidate: " << candidate << "; product: " << product << "; factor: " << factor << endl;
-        return recursiveFloatMaxFinder(product, factor);
-    }else if (product == numeric_limits<float>::infinity() || product < candidate){
-        cout << "halving factor; candidate: " << candidate << "; product: " << product << "; factor: " << factor << endl;
-        return recursiveFloatMaxFinder(candidate, factor / 2);
-    }else{
-        cout << "something went wrong; candidate: " << candidate << "; product: " << product << "; factor: " << factor << endl;
-        return false;
-    }
-}
-
-/*private*/ bool Maximums::recursiveFloatMaxFinderAdd(float candidate, float addend){
-    if (addend == 1){
+/*private*/ bool Maximums::recursiveFloatMaxFinder(float candidate, float addend){
+    if (addend <= 1){
         
         float estimate = getFloatMaxEstimate();
         
@@ -540,18 +515,22 @@ using namespace std;
                     return false;
                 }
             }
-            cout << "float max found: " << candidate << endl;
+            cout << "float max found: " << candidate << endl; ////3.40282e+38
             return true;
         }
     }
-    unsigned long long sum = candidate + addend;
-    if (sum > candidate){
-        //        cout << candidate << " + " << addend << " is < " << sum << endl;
-        return recursiveUnsignedLongLongMaxFinderAdd(sum, addend);
+    
+    float sum = candidate + addend;
+    
+    //cout << "sum: " << sum << " = " << candidate << " + " << addend << endl;
+    
+    if (sum != numeric_limits<float>::infinity() && sum > candidate){
+//        cout << candidate << " + " << addend << " is < " << sum << endl;
+        return recursiveFloatMaxFinder(sum, addend);
     }
     else{
-        //        cout << candidate << " + " << addend << " is too much ("<<sum<<"); trying " << candidate << " + " << (addend / 2) << endl;
-        return recursiveUnsignedLongLongMaxFinderAdd(candidate, addend / 2);
+//        cout << candidate << " + " << addend << " is too much ("<<sum<<"); trying " << candidate << " + " << (addend / 2) << endl;
+        return recursiveFloatMaxFinder(candidate, addend / 2);
     }
 }
 
