@@ -181,13 +181,13 @@ using namespace std;
 }
 
 /*public*/ void Maximums::doubleMaximums(){
-    cout << "authoritative double max " << numeric_limits<double>::max() << endl; //
+    cout << "authoritative double max " << numeric_limits<double>::max() << endl; //1.79769e+308
     
-    cout << "double max approximately = " << getDoubleMaxEstimate() << "\n"; //
+    cout << "double max approximately = " << getDoubleMaxEstimate() << "\n"; //1e+308
     
     cout << "Recursively calculating double maximum...\n";
     double estimate = getDoubleMaxEstimate();
-    recursiveDoubleMaxFinder(estimate, estimate / 10); //
+    recursiveDoubleMaxFinder(estimate, estimate / 10); //1.79769e+308
 
 }
 
@@ -452,7 +452,7 @@ using namespace std;
         }else{
             unsigned long long count = 0;
             unsigned long long ltemp = candidate+1;
-            //            cout << "candidate is " << candidate << " and ltemp is" << ltemp << endl;
+//            cout << "candidate is " << candidate << " and ltemp is" << ltemp << endl;
             while (ltemp > candidate){
                 candidate = ltemp;
                 ltemp++;
@@ -467,11 +467,11 @@ using namespace std;
     }
     unsigned long long sum = candidate + addend;
     if (sum > candidate){
-        //        cout << candidate << " + " << addend << " is < " << sum << endl;
+//        cout << candidate << " + " << addend << " is < " << sum << endl;
         return recursiveUnsignedLongLongMaxFinderAdd(sum, addend);
     }
     else{
-        //        cout << candidate << " + " << addend << " is too much ("<<sum<<"); trying " << candidate << " + " << (addend / 2) << endl;
+//        cout << candidate << " + " << addend << " is too much ("<<sum<<"); trying " << candidate << " + " << (addend / 2) << endl;
         return recursiveUnsignedLongLongMaxFinderAdd(candidate, addend / 2);
     }
 }
@@ -514,13 +514,13 @@ using namespace std;
         }else{
             unsigned long long count = 0;
             float fTemp = candidate + 1;
-            //            cout << "candidate is " << candidate << " and ltemp is" << ltemp << endl;
+            //            cout << "candidate is " << candidate << " and fTemp is" << fTemp << endl;
             while (fTemp > candidate){
                 candidate = fTemp;
                 fTemp++;
                 count++;
-                //                if (count % INT_MOD == 0) cerr << ".";
-                //                cout << "candidate is " << candidate << " and ltemp is" << ltemp << endl;
+//                if (count % INT_MOD == 0) cerr << ".";
+//                cout << "candidate is " << candidate << " and fTemp is" << fTemp << endl;
                 if (fTemp == fTemp - 1){
                     cout << "something went wrong; incrementig fTemp doesn't work at fTemp: " << fTemp << endl;
                     return false;
@@ -552,7 +552,7 @@ using namespace std;
     while (dTemp != numeric_limits<double>::infinity()){
         myDouble = dTemp;
         dTemp *= 10;
-        //cout<<"float max guess: " << myDouble << endl;
+        //cout<<"double max guess: " << myDouble << endl;
     }
 //    cout<<"double max estimate: " << myDouble << endl;;
     return myDouble; //
