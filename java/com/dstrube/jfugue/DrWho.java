@@ -13,6 +13,8 @@ java -cp bin:bin/jfugue-5.0.9.jar com.dstrube.jfugue.DrWho
 
 import org.jfugue.player.Player;
 
+import java.util.Scanner;
+
 public class DrWho {
 
 /*
@@ -42,12 +44,5 @@ one-twenty-eighth o
 	
 	//1- Figure out what instruments to use
 	private static void Instruments(){
-		final int[] instruments = new int[128];
-		final Player player = new Player();
-		for (int i=0; i< instruments.length; i++){
-			instruments[i] = i;
-			System.out.println("i = "+i);
-			player.play("I"+instruments[i]+" " +P1M1_5);
-		}
 	}
 }

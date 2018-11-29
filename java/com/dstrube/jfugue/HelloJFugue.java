@@ -16,36 +16,40 @@ import org.jfugue.theory.Chord;
 import org.jfugue.theory.ChordProgression;
 import org.jfugue.theory.Note;
 import org.jfugue.rhythm.Rhythm;
-
-import java.io.File;
-import java.io.IOException;
-
-import javax.sound.midi.InvalidMidiDataException;
-
 import org.jfugue.midi.MidiFileManager;
 import org.jfugue.realtime.RealtimePlayer;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;
 
+import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;
-import java.util.Random;
+
 
 //http://www.jfugue.org/doc/index.html
 
 public class HelloJFugue {
 	
+	private static final String CtoB = "C D E F G A B";
+		private static final int sizeOfSames = 22;
+		private static final int[][] sames = new int[sizeOfSames][];
+
 	public static void main(String[] args) throws MidiUnavailableException{
 //		Player player = new Player();
 //	    player.play("C D E F G A B");		
 //		player.play("V0 I[Piano] Eq Ch. | Eq Ch. | Dq Eq Dq Cq   V1 I[Flute] Rw | Rw | GmajQQQ CmajQ");
 //		MusicStrings();
+			PlayUniqueInstruments();
+		/*
 		try{
 			SeeMidi();
 		}catch(IOException e0){
 			System.out.println("Caught exception: " + e0);
 		}catch(InvalidMidiDataException e1){
 			System.out.println("Caught exception: " + e1);
-		}
+		}*/
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////	
@@ -197,6 +201,120 @@ public class HelloJFugue {
     		System.out.println("Playing " + string);
     		player.play(string);
     	}
+    }
+    private static void PlayAllInstruments(){
+		final int[] instruments = new int[128];
+		final Player player = new Player();
+		for (int i = 0; i < instruments.length; i++){
+			instruments[i] = i;
+			System.out.println("i = " + i);
+			player.play("I" + instruments[i] + " " + CtoB);
+		}
+    }
+    private static void setSames(){
+/*
+	sound same:
+0,1
+4,5
+6,7
+9-14
+15-18,20-23
+24-28,31
+29,30
+32-34
+35-37
+38,39
+40-44
+48-51
+52-54
+56-59
+61-63
+64-67
+72-79
+80,81,83,84,86,87,89, 93-97,99-101
+102,104-107
+112,114
+113,115-117,124
+118,119
+
+*/
+		sames[0] = new int[]{0,1};
+		sames[1] = new int[]{4,5};
+		sames[2] = new int[]{6,7};
+		sames[3] = new int[]{9,10,11,12,13,14};
+		sames[4] = new int[]{15,16,17,18,20,21,22,23};
+		sames[5] = new int[]{24,25,26,27,28,31};
+		sames[6] = new int[]{29,30};
+		sames[7] = new int[]{32,33,34};
+		sames[8] = new int[]{35,36,37};
+		sames[9] = new int[]{38,39};
+		sames[10] = new int[]{40,41,42,43,44};
+		sames[11] = new int[]{48,49,50,51};
+		sames[12] = new int[]{52,53,54};
+		sames[13] = new int[]{56,57,58,59};
+		sames[14] = new int[]{61,62,63};
+		sames[15] = new int[]{64,65,66,67};
+		sames[16] = new int[]{72,73,74,75,76,77,78,79};
+		sames[17] = new int[]{80,81,83,84,86,87,89,93,94,95,96,97,99,100,101};
+		sames[18] = new int[]{102,104,105,106,107};
+		sames[19] = new int[]{112,114};
+		sames[20] = new int[]{113,115,116,117,124};
+		sames[21] = new int[]{118,119};
+    }
+    private static void PlaySameInstruments(){
+
+		final Scanner scanner = new Scanner(System.in);
+		setSames();
+		
+		final Player player = new Player();
+		for (int j = 18; j < sizeOfSames; j++){
+			int[] same = sames[j];
+			System.out.print("Sames at " + j + " : ");
+			for (int s : same){
+				System.out.print(s + " ");
+				player.play("I" + s + " " + CtoB);
+			}
+			System.out.println("? (y/n)");
+			String entry = scanner.next();
+			if (entry.startsWith("y")) {
+				continue;
+			}
+			else{
+				System.out.println("Breaking at " + j);
+				break;
+			}
+		}
+		
+		scanner.close();
+    }
+    private static void PlayUniqueInstruments(){
+    	setSames();
+    	final int[] instruments = new int[128];
+		final Player player = new Player();
+		for (int i = 0; i < instruments.length; i++){
+			boolean foundInSames = false;
+			instruments[i] = i;
+			for (int[] same : sames){
+				for (int j = 1; j < same.length; j++){
+					if (same[j] == i){
+						System.out.println("Skipping duplicate sounding " + i + ".");
+						foundInSames = true;
+						break;
+					}
+				}
+				if (foundInSames){
+					break;
+				}
+			}
+			if (foundInSames){
+				continue;
+			}
+			else{
+				System.out.println("i = " + i);
+				player.play("I" + instruments[i] + " " + CtoB);
+			}
+		}
+
     }
     private static void XXXXXXXXXXXXXX(){
     }
