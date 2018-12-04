@@ -21,6 +21,7 @@ public:
     void longMaximums();
     void floatMaximums();
     void doubleMaximums();
+    void longDoubleMaximums();
 private:
     ///////////////////////////////////////////////////////////////////////////////////////
     //VARIABLES
@@ -81,6 +82,8 @@ private:
     bool recursiveFloatMaxFinder(float candidate, float addend);
     double getDoubleMaxEstimate();
     bool recursiveDoubleMaxFinder(double candidate, double addend);
+    long double getLongDoubleMaxEstimate();
+    bool recursiveLongDoubleMaxFinder(long double candidate, long double addend);
 };
 
 #endif /* Maximums_hpp */

@@ -191,6 +191,15 @@ using namespace std;
 
 }
 
+/*public*/ void Maximums::longDoubleMaximums(){
+    cout << "authoritative long double max " << numeric_limits<long double>::max() << endl; //1.18973e+4932
+
+    cout << "long double max approximately = " << getLongDoubleMaxEstimate() << "\n"; //1e+4932
+    
+    cout << "Recursively calculating double maximum...\n";
+    long double estimate = getLongDoubleMaxEstimate();
+    recursiveLongDoubleMaxFinder(estimate, estimate / 10); //1.18973e+4932
+}
 ////////////////////////////////////////////////////////////////////
 //PRIVATES
 ////////////////////////////////////////////////////////////////////
@@ -577,7 +586,7 @@ using namespace std;
                 if (count % INT_MOD == 0) cerr << ".";
 //                cout << "candidate is " << candidate << " and dTemp is" << dTemp << endl;
                 if (dTemp == dTemp - 1){
-                    cout << "something went wrong; incrementig fTemp doesn't work at fTemp: " << dTemp << endl;
+                    cout << "something went wrong; incrementing dTemp doesn't work at dTemp: " << dTemp << endl;
                     return false;
                 }
             }
@@ -597,5 +606,60 @@ using namespace std;
     else{
 //        cout << candidate << " + " << addend << " is too much (" << sum << "); trying " << candidate << " + " << (addend / 2) << endl;
         return recursiveDoubleMaxFinder(candidate, addend / 2);
+    }
+}
+
+/*private*/ long double Maximums::getLongDoubleMaxEstimate(){
+    long double myLDouble = 1.0f;
+    long double dTemp = myLDouble;
+    //https://en.cppreference.com/w/cpp/types/numeric_limits/infinity
+    while (dTemp != numeric_limits<long double>::infinity()){
+        myLDouble = dTemp;
+        dTemp *= 10;
+        //cout<<"double max guess: " << myLDouble << endl;
+    }
+    //    cout<<"double max estimate: " << myLDouble << endl;;
+    return myLDouble; //
+}
+
+/*private*/ bool Maximums::recursiveLongDoubleMaxFinder(long double candidate, long double addend){
+    if (addend <= 1){
+        
+        long double estimate = getLongDoubleMaxEstimate();
+        
+        if (candidate < estimate){
+            cout << "something went wrong; candidate: " << candidate << "; estimate: " << estimate << endl;
+            return false;
+        }else{
+            unsigned long long count = 0;
+            long double dTemp = candidate + 1;
+            //            cout << "candidate is " << candidate << " and dTemp is " << dTemp << endl;
+            while (dTemp > candidate){
+                candidate = dTemp;
+                dTemp++;
+                count++;
+                if (count % INT_MOD == 0) cerr << ".";
+                //                cout << "candidate is " << candidate << " and dTemp is" << dTemp << endl;
+                if (dTemp == dTemp - 1){
+                    cout << "something went wrong; incrementing dTemp doesn't work at dTemp: " << dTemp << endl;
+                    return false;
+                }
+            }
+            cout << "long double max found: " << candidate << endl; //
+            return true;
+        }
+    }
+    
+    long double sum = candidate + addend;
+    
+    //    cout << "sum: " << sum << " = " << candidate << " + " << addend << endl;
+    
+    if (sum != numeric_limits<long double>::infinity() && sum > candidate){
+        //        cout << candidate << " + " << addend << " is < " << sum << endl;
+        return recursiveLongDoubleMaxFinder(sum, addend);
+    }
+    else{
+        //        cout << candidate << " + " << addend << " is too much (" << sum << "); trying " << candidate << " + " << (addend / 2) << endl;
+        return recursiveLongDoubleMaxFinder(candidate, addend / 2);
     }
 }
