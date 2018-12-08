@@ -87,6 +87,7 @@ public class NewAppWidget extends AppWidgetProvider {
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) {
         // When the user deletes the widget, delete the preference associated with it.
+//		super.onDeleted(context, appWidgetIds);
         for (int appWidgetId : appWidgetIds) {
             NewAppWidgetConfigureActivity.deleteTitlePref(context, appWidgetId);
         }
@@ -95,13 +96,25 @@ public class NewAppWidget extends AppWidgetProvider {
     @Override
     public void onEnabled(Context context) {
         Log.i(TAG, "onEnabled");
+//		super.onEnabled(context);
         // Enter relevant functionality for when the first widget is created
     }
 
     @Override
     public void onDisabled(Context context) {
         Log.i(TAG, "onDisabled");
+//		super.onDisabled(context);
         // Enter relevant functionality for when the last widget is disabled
     }
+    //requires API 16 or better
+//	@Override
+//	public void onAppWidgetOptionsChanged(Context context,
+//			AppWidgetManager appWidgetManager, int appWidgetId,
+//			Bundle newOptions) {
+//		System.out.println("JokeWidgetProvider : onUpdate begin");
+//		super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId,
+//				newOptions);
+//		System.out.println("onUpdate end");
+//	}
 }
 
