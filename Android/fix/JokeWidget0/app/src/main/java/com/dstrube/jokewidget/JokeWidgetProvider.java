@@ -64,29 +64,16 @@ public class JokeWidgetProvider extends AppWidgetProvider {
 //	@Override
 //	public void onDeleted(Context context, int[] appWidgetIds) {
 //		System.out.println("JokeWidgetProvider : onDeleted begin");
-//		super.onDeleted(context, appWidgetIds);
 //		System.out.println("onDeleted end");
 //	}
 //	@Override
 //	public void onDisabled(Context context) {
 //		System.out.println("JokeWidgetProvider : onDisabled begin");
-//		super.onDisabled(context);
 //		System.out.println("onDisabled end");
 //	}
 //	@Override
 //	public void onEnabled(Context context) {
 //		System.out.println("JokeWidgetProvider : onEnabled begin");
-//		super.onEnabled(context);
 //		System.out.println("onEnabled end");
-//	}
-	//requires API 16 or better
-//	@Override
-//	public void onAppWidgetOptionsChanged(Context context,
-//			AppWidgetManager appWidgetManager, int appWidgetId,
-//			Bundle newOptions) {
-//		System.out.println("JokeWidgetProvider : onUpdate begin");
-//		super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId,
-//				newOptions);
-//		System.out.println("onUpdate end");
 //	}
 }
