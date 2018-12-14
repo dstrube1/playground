@@ -11,8 +11,22 @@ package com.dstrube;
 public class Maths {
 	
 	public static void main(String[] args) {
-//		CharMax(); //65535
-//		IntMax(); //2147483647
+//		ShortMax(); //32767
+//		CharMax(); 	//65535
+//		IntMax(); 	//2,147,483,647
+	}
+	
+	private static void ShortMax(){
+		short s = 1;
+		short s_p = 0;
+		long count = 0;
+		while (s_p < s){
+			s++;
+			s_p++;
+			count++;
+		}
+		System.out.println();
+		System.out.println("Max of short found : " + count);
 	}
 	
 	private static void CharMax(){
@@ -31,11 +45,9 @@ public class Maths {
 			c++;
 			c_p++;
 			count++;
-			if (count % 100000000 == 0)
-				System.out.print(".");
 		}
 		System.out.println();
-		System.out.println("Max of int found : " + count);
+		System.out.println("Max of char found : " + count);
 	}
 	
 	private static void IntMax(){
@@ -52,4 +64,5 @@ public class Maths {
 		System.out.println();
 		System.out.println("Max of int found : " + count);
 	}	
+	
 }
