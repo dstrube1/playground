@@ -14,6 +14,7 @@ public class Maths {
 //		ShortMax(); //32767
 //		CharMax(); 	//65535
 //		IntMax(); 	//2,147,483,647
+		LongMax();	//9,223,372,036,854,775,807
 	}
 	
 	private static void ShortMax(){
@@ -65,4 +66,71 @@ public class Maths {
 		System.out.println("Max of int found : " + count);
 	}	
 	
+	private static void LongMax(){
+		System.out.println("long max is about " + getLongMaxEstimate());
+		//1,000,000,000,000,000,000 - 1 quintillion, same as in c++
+		
+		System.out.println("Recursively calculating long maximum...");
+		recursiveLongMaxFinder(1,10);
+		//9,223,372,036,854,775,807 - about 9 quintillion, same as in c++
+	}
+	
+	private static long getLongMaxEstimate(){
+		long myLong = 1;
+	    long ltemp = myLong;
+    	while (ltemp > 0){ //when ltemp exceeds the maximum, it loops around to a negative
+        	myLong = ltemp;
+	        ltemp *= 10;
+    	    //System.out.println("long max guess = " + myLong + "\n");
+	    }
+	    return myLong;
+	}
+	
+	private static boolean recursiveLongMaxFinder(long candidate, int factor){
+	    if (factor < 2){
+    	    if (candidate < 0){
+        	    System.out.println("something went wrong; candidate is " + candidate);;
+            	return false;
+	        }else{
+    	        //System.out.println("Narrowed down to factor " + factor + " and candidate is " + candidate);
+        	    long estimate = getLongMaxEstimate();
+            	return recursiveLongMaxFinderAdd(candidate, estimate);
+	        }
+    	}
+	    long product = candidate * factor;
+    	if (product > 0){
+        	return recursiveLongMaxFinder(product, factor);
+	    }
+    	else{
+        	return recursiveLongMaxFinder(candidate, factor-1);
+	    }
+	}
+	
+	private static boolean recursiveLongMaxFinderAdd(long candidate, long addend){
+		    if (addend == 1){
+	        if (candidate < 0){
+    	        System.out.println("something went wrong; candidate is " + candidate);
+        	    return false;
+	        }else{
+    	        long count = 0;
+        	    long ltemp = candidate;
+            	while (ltemp > 0){
+                	candidate = ltemp;
+	                ltemp++;
+    	            count++;
+        	    }
+            	System.out.println("long max found: " + candidate);
+	            return true;
+    	    }
+	    }
+    	long sum = candidate + addend;
+	    if (sum > 0){
+    	    return recursiveLongMaxFinderAdd(sum, addend);
+	    }
+    	else{
+        	//System.out.println(candidate + " + " + addend + " is too much; trying " + candidate + " + " + (addend / 2));
+	        return recursiveLongMaxFinderAdd(candidate, addend / 2);
+    	}
+	}
+
 }
