@@ -14,7 +14,8 @@ public class Maths {
 //		ShortMax(); //32767
 //		CharMax(); 	//65535
 //		IntMax(); 	//2,147,483,647
-		LongMax();	//9,223,372,036,854,775,807
+//		LongMax();	//9,223,372,036,854,775,807
+		FloatMax();
 	}
 	
 	private static void ShortMax(){
@@ -133,4 +134,66 @@ public class Maths {
     	}
 	}
 
+	private static void FloatMax(){
+		System.out.println("authoritative float max: " + Float.MAX_VALUE);//3.4028235E38
+		System.out.println("float max approximately = "+getFloatMaxEstimate());//1e38
+	    System.out.println("Recursively calculating float maximum...");//3.4028235E38
+    	float estimate = getFloatMaxEstimate();
+    	recursiveFloatMaxFinder(estimate, estimate / 10); //3.40282e+38
+	}
+	
+	private static float getFloatMaxEstimate(){
+	    float myFloat = 1.0f;
+	    float fTemp = myFloat;
+	    int count = 0;
+	    while (fTemp != Float.POSITIVE_INFINITY){
+	        myFloat = fTemp;
+	        fTemp *= 10;
+//	        System.out.println("float max guess: "+ myFloat);
+	        count++;
+	    }
+	    return myFloat; //1e+38
+	}
+	
+	private static boolean recursiveFloatMaxFinder(float candidate, float addend){
+		if (addend <= 1){
+        
+	        float estimate = getFloatMaxEstimate();
+        
+    	    if (candidate < estimate){
+        	    System.out.println("something went wrong; candidate: " + candidate + "; estimate: " + estimate);
+            	return false;
+	        }else{
+    	        long count = 0;
+        	    float fTemp = candidate + 1;
+            	//            System.out.println("candidate is " << candidate << " and fTemp is" << fTemp << endl;
+            	while (fTemp > candidate){
+                	candidate = fTemp;
+                	fTemp++;
+                	count++;
+//                	if (count % INT_MOD == 0) cerr << ".";
+//                	System.out.println("candidate is " << candidate << " and fTemp is" << fTemp << endl;
+	                if (fTemp == fTemp - 1){
+    	                System.out.println("something went wrong; incrementig fTemp doesn't work at fTemp: " + fTemp);
+        	            return false;
+            	    }
+            	}
+            	System.out.println("float max found: " + candidate); ////3.40282e+38
+            	return true;
+        	}
+	    }
+    
+    	float sum = candidate + addend;
+    
+    //System.out.println("sum: " << sum << " = " << candidate << " + " << addend << endl;
+    
+	    if (sum != Float.POSITIVE_INFINITY && sum > candidate){
+//        System.out.println(candidate << " + " << addend << " is < " << sum << endl;
+	        return recursiveFloatMaxFinder(sum, addend);
+    	}
+    	else{
+//        System.out.println(candidate << " + " << addend << " is too much ("<<sum<<"); trying " << candidate << " + " << (addend / 2) << endl;
+        	return recursiveFloatMaxFinder(candidate, addend / 2);
+	    }
+	} 
 }
