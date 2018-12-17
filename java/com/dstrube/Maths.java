@@ -166,13 +166,13 @@ public class Maths {
 	        }else{
     	        long count = 0;
         	    float fTemp = candidate + 1;
-            	//            System.out.println("candidate is " << candidate << " and fTemp is" << fTemp << endl;
+            	//            System.out.println("candidate is " + candidate + " and fTemp is" + fTemp);
             	while (fTemp > candidate){
                 	candidate = fTemp;
                 	fTemp++;
                 	count++;
-//                	if (count % INT_MOD == 0) cerr << ".";
-//                	System.out.println("candidate is " << candidate << " and fTemp is" << fTemp << endl;
+//                	if (count % INT_MOD == 0) cerr + ".";
+//                	System.out.println("candidate is " + candidate + " and fTemp is" + fTemp);
 	                if (fTemp == fTemp - 1){
     	                System.out.println("something went wrong; incrementig fTemp doesn't work at fTemp: " + fTemp);
         	            return false;
@@ -185,14 +185,14 @@ public class Maths {
     
     	float sum = candidate + addend;
     
-    //System.out.println("sum: " << sum << " = " << candidate << " + " << addend << endl;
+    //System.out.println("sum: " + sum + " = " + candidate + " + " + addend);
     
 	    if (sum != Float.POSITIVE_INFINITY && sum > candidate){
-//        System.out.println(candidate << " + " << addend << " is < " << sum << endl;
+//        System.out.println(candidate + " + " + addend + " is < " + sum);
 	        return recursiveFloatMaxFinder(sum, addend);
     	}
     	else{
-//        System.out.println(candidate << " + " << addend << " is too much ("<<sum<<"); trying " << candidate << " + " << (addend / 2) << endl;
+//        System.out.println(candidate + " + " + addend + " is too much (" + sum + "); trying " + candidate + " + " + (addend / 2));
         	return recursiveFloatMaxFinder(candidate, addend / 2);
 	    }
 	} 
