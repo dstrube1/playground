@@ -15,7 +15,8 @@ public class Maths {
 //		CharMax(); 	//65535
 //		IntMax(); 	//2,147,483,647
 //		LongMax();	//9,223,372,036,854,775,807
-		FloatMax();
+//		FloatMax(); //3.4028235E38
+//		DoubleMax(); //1.7976931348623157E308
 	}
 	
 	private static void ShortMax(){
@@ -196,4 +197,69 @@ public class Maths {
         	return recursiveFloatMaxFinder(candidate, addend / 2);
 	    }
 	} 
+	
+	private static void DoubleMax(){
+		System.out.println("authoritative double max: " + Double.MAX_VALUE);//
+		System.out.println("double max approximately = "+getDoubleMaxEstimate());//
+	    System.out.println("Recursively calculating double maximum...");//
+    	double estimate = getDoubleMaxEstimate();
+    	recursiveDoubleMaxFinder(estimate, estimate / 10); //
+	}
+	
+	private static double getDoubleMaxEstimate(){
+	    double myDouble = 1.0f;
+	    double dTemp = myDouble;
+	    int count = 0;
+	    while (dTemp != Double.POSITIVE_INFINITY){
+	        myDouble = dTemp;
+	        dTemp *= 10;
+//	        System.out.println("double max guess: " + myDouble);
+	        count++;
+	    }
+	    return myDouble; //
+	}
+	
+	//TODO If this takes too long, go to Xcode and see how we did it in c++
+	private static boolean recursiveDoubleMaxFinder(double candidate, double addend){
+		if (addend <= 1){
+        
+	        double estimate = getDoubleMaxEstimate();
+        
+    	    if (candidate < estimate){
+        	    System.out.println("something went wrong; candidate: " + candidate + "; estimate: " + estimate);
+            	return false;
+	        }else{
+    	        long count = 0;
+        	    double dTemp = candidate + 1;
+            	//System.out.println("candidate is " + candidate + " and dTemp is" + dTemp);
+            	while (dTemp > candidate){
+                	candidate = dTemp;
+                	dTemp++;
+                	count++;
+//                	if (count % INT_MOD == 0) cerr + ".";
+//                	System.out.println("candidate is " + candidate + " and dTemp is" + dTemp);
+	                if (dTemp == dTemp - 1){
+    	                System.out.println("something went wrong; incrementig dTemp doesn't work at dTemp: " + dTemp);
+        	            return false;
+            	    }
+            	}
+            	System.out.println("double max found: " + candidate); ////
+            	return true;
+        	}
+	    }
+    
+    	double sum = candidate + addend;
+    
+    //System.out.println("sum: " + sum + " = " + candidate + " + " + addend);
+    
+	    if (sum != Double.POSITIVE_INFINITY && sum > candidate){
+//        System.out.println(candidate + " + " + addend + " is < " + sum);
+	        return recursiveDoubleMaxFinder(sum, addend);
+    	}
+    	else{
+//        System.out.println(candidate + " + " + addend + " is too much (" + sum + "); trying " + candidate + " + " + (addend / 2));
+        	return recursiveDoubleMaxFinder(candidate, addend / 2);
+	    }
+	} 
+
 }
