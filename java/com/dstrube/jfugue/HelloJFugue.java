@@ -316,6 +316,10 @@ public class HelloJFugue {
 		}
 
     }
+    private static void ChordStuff(){
+    	//TODO: 
+		//https://www.youtube.com/watch?v=62tIvfP9A2w&t=358
+    }
     private static void XXXXXXXXXXXXXX(){
     }
 }
