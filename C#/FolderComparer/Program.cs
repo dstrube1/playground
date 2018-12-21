@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Net;
 
 namespace FolderComparer
 {
@@ -37,26 +33,6 @@ namespace FolderComparer
             //Console.WriteLine("Phase 2 passed. ");
 
             #endregion
-
-            #region Misc
-
-            //how to handle null array:
-            //string[] strings = null;
-            //foreach (var s in strings ?? new string[0])
-            //{
-            //    Console.WriteLine("x");
-            //}
-
-            //string s = null;
-            //Console.WriteLine("safely calling method on null object?: " + s?.Substring(0));
-
-            //var r = "1111111111111111111111111111";
-            //var message = $"Error gathering disclaimers.\r {r}"; //carriage return
-            //Console.WriteLine("Done: " + message);
-
-            #endregion
-
-            linqXample();
 
             Console.WriteLine("Done");
 
@@ -99,180 +75,6 @@ namespace FolderComparer
                     Console.WriteLine(i);
                 }
             }
-        }
-
-        private static void splitTest()
-        {
-            var s = "1|2|3";
-            var s0 = s.Split('|');
-            foreach (var s1 in s0)
-            {
-                Console.WriteLine($"s1 = {s1}");
-            }
-        }
-        private static void substringLength()
-        {
-            var test = "1";
-            var caughtException = true;
-            while (caughtException)
-            {
-                try
-                {
-                    Console.WriteLine($"test.Length = {test.Length}; test.Substring(7): {test.Substring(7)}");
-                    caughtException = false;
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                    caughtException = true;
-                    test += "1";
-                }
-            }
-        }
-
-        private static void fileDownloader()
-        {
-            using (var client = new WebClient())
-            {
-                for (var i = 2; i <= 25; i++)
-                {
-                    var filename = "0";
-                    if (i < 10)
-                    {
-                        filename += $"{i}.mp3";
-                    }
-                    else
-                    {
-                        filename = $"{i}.mp3";
-                    }
-                    Console.WriteLine($"Downloading {filename}...");
-                    //These files have already been downloaded
-                    //client.DownloadFile("http://noliesplease.com/LonggameTech/mindtech/0001_to_0025/LonggameTech_mindtech_00" + filename, filename);
-                    Console.WriteLine($"client.BaseAddress: {client.BaseAddress}");
-                    break;
-                }
-            }
-
-        }
-
-        private static void memoryManagement()
-        {
-            //TODO Memory management
-            var currentProcess = Process.GetCurrentProcess();
-            var array = new ArrayList();
-            var s = "string";
-            var i = 0;
-            int index;
-            var array1 = new ArrayList();
-            for (index = 0; index < 100000; index++)
-            {
-                array.Add(s);
-                array.Add(i);
-                array.Add(array1);
-            }
-            var totalBytesOfMemoryUsed = currentProcess.WorkingSet64;
-
-            Console.WriteLine($"Os in the a: {array.Count}; memUsage: {totalBytesOfMemoryUsed}");
-
-            for (index = 0; index < array.Count; index++)
-            {
-                var o = array[index];
-                //Console.WriteLine($"o in the a: {o}");
-                array[index] = null;
-                index++;
-            }
-
-            array = null;
-
-            Console.WriteLine($"array is null; memUsage: {totalBytesOfMemoryUsed}");
-        }
-
-        private static void fractionToDouble()
-        {
-            const string s = "1/2";
-            var s0 = s.Substring(0, s.IndexOf("/", StringComparison.Ordinal));
-            var s1 = s.Substring(1 + s.IndexOf("/", StringComparison.Ordinal));
-            var d0 = double.Parse(s0);
-            var d1 = double.Parse(s1);
-            var d = d0 / d1;
-
-            Console.WriteLine($"s: {s} = d: {d}");
-
-        }
-
-        private static void TrailingZeroes()
-        {
-            decimal? zero = new decimal(0.00);
-            var d = 0.010;
-            var d0 = "0.010";
-            var d1 = double.Parse(d0);
-            if ((double.Parse(d.ToString(CultureInfo.InvariantCulture)) % 1).Equals(0))
-            {
-                Console.WriteLine("It's not, but just in case");
-            }
-            else if (d.ToString(CultureInfo.InvariantCulture).Contains("."))
-            {
-                Console.WriteLine($"d: {d}; zero: {zero}; d0: {d0}; d1: {d1}");
-            }
-            else
-            {
-                Console.WriteLine("Huh?");
-            }
-        }
-
-        private static void NullOrEmptyList()
-            {
-            IList list = null;
-            if (list == null || list.Count == 0)
-            {
-                Console.WriteLine("Empty list");
-            }
-        }
-
-        private static bool IsWholeNumber(string s)
-        {
-            /*
-             * Test:
-             *                                      //14 zeroes - false     15 zeroes - trues
-               string[] s1 = {"1.0","1.1","1.001", "1.000000000000001", "1.0000000000000001" };
-               foreach (var s in s1)
-               {
-               Console.WriteLine($"isWholeNumber({s}) : {IsWholeNumber(s)} ");
-               }
-
-            //currency parsing
-               const string s = "xxxxxxxxxxxx $100.000. ";
-               var begin = s.IndexOf("$", StringComparison.Ordinal);
-               var length = s.LastIndexOf(".", StringComparison.Ordinal) - begin;
-               var s1 = s.Substring(begin, length);
-               var s2 = s1.Substring(0, s1.IndexOf(".", StringComparison.Ordinal) + 3);
-               Console.WriteLine($"s2: '{s2}'");
-             */
-            var d = double.Parse(s);
-
-            var d1 = d % 1;
-            if (d1 > 0)
-                return false;
-            return true;
-        }
-
-        private static void RandomBytes()
-        {
-            var ticks = (int)DateTime.Now.Ticks;
-
-            var bytes = new byte[1];
-            var random = new Random(ticks);
-            random.NextBytes(bytes);
-            Console.WriteLine("ticks : " + ticks);
-            Console.WriteLine("1: bytes[0] : " + bytes[0]);
-            random.NextBytes(bytes);
-            Console.WriteLine("2: bytes[0] : " + bytes[0]);
-            ticks = (int)DateTime.Now.Ticks;
-            random = new Random(ticks);
-            random.NextBytes(bytes);
-            Console.WriteLine("ticks : " + ticks);
-            Console.WriteLine("3: bytes[0] : " + bytes[0]);
-            random.NextBytes(bytes);
-            Console.WriteLine("4: bytes[0] : " + bytes[0]);
         }
 
         private static bool BaseChecks(string path1, string path2)
