@@ -16,69 +16,14 @@ namespace ConsoleApplication1
 {
     class Program
     {
-        private static EvClass evRaise;
-
-        #region ackerman recursion
-        static Hashtable hash;
-
-        //Investigating stackoverflow handling:
-        //https://stackoverflow.com/questions/1599219/c-sharp-catch-a-stack-overflow-exception
-        //static int nOther;
-        //static int topOfStack;
-        //const int stackSize = 1000000; // Default?
-
-        //// The func is 76 bytes, but we need space to unwind the exception.
-        //const int spaceRequired = 18 * 1024;
-        #endregion
 
         public static void Main(string[] args)
         {
-            #region mem leak
-            //evRaise = new EvClass();
-
-            //const int limit = 50000;
-            //for (int i = 0; i <= limit; i++)
-            //{
-            //    GenLeak(i, limit);
-            //    //System.Threading.Thread.Sleep(2000);
-            //}
-            #endregion
-
-            #region ackerman recursion
-            //https://www.youtube.com/watch?v=i7sm9dzFtEI
-            //Console.WriteLine("Phase 2 passed. ");
-            hash = new Hashtable();
-
-            const int maxStackSize = 10000000;
-            var newThread = new Thread(() => ackermanHash(4, 1), maxStackSize);
-            //10000000 works for 4,1; crashes with 10,000,000 for 4,2 at about 38,832k, works with 100,000,000
-            newThread.Start();
-
-            #endregion
-
-            #region Misc
-
-            //how to handle null array:
-            //string[] strings = null;
-            //foreach (var s in strings ?? new string[0])
-            //{
-            //    Console.WriteLine("x");
-            //}
-
-            //string s = null;
-            //Console.WriteLine("safely calling method on null object?: " + s?.Substring(0));
-
-            //var r = "1111111111111111111111111111";
-            //var message = $"Error gathering disclaimers.\r {r}"; //carriage return
-            //Console.WriteLine("Done: " + message);
-
-            #endregion
-
             linqXample();
 
             Console.WriteLine("Done");
 
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
         private static void GenLeak(int index, int limit)
@@ -203,6 +148,70 @@ namespace ConsoleApplication1
         }
 
         #region old
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //Before main:
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        private static EvClass evRaise = null;
+
+        #region ackerman recursion
+        static Hashtable hash;
+
+        //Investigating stackoverflow handling:
+        //https://stackoverflow.com/questions/1599219/c-sharp-catch-a-stack-overflow-exception
+        //static int nOther;
+        //static int topOfStack;
+        //const int stackSize = 1000000; // Default?
+
+        //// The func is 76 bytes, but we need space to unwind the exception.
+        //const int spaceRequired = 18 * 1024;
+        #endregion
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //From within main:
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        #region mem leak
+        //evRaise = new EvClass();
+
+        //const int limit = 50000;
+        //for (int i = 0; i <= limit; i++)
+        //{
+        //    GenLeak(i, limit);
+        //    //System.Threading.Thread.Sleep(2000);
+        //}
+        #endregion
+
+        #region ackerman recursion
+        //https://www.youtube.com/watch?v=i7sm9dzFtEI
+        //hash = new Hashtable();
+
+        //const int maxStackSize = 10000000;
+        //var newThread = new Thread(() => ackermanHash(4, 1), maxStackSize);
+        //10000000 works for 4,1; crashes with 10,000,000 for 4,2 at about 38,832k, works with 100,000,000
+        //newThread.Start();
+
+        #endregion
+
+        #region Misc
+
+        //how to handle null array:
+        //string[] strings = null;
+        //foreach (var s in strings ?? new string[0])
+        //{
+        //    Console.WriteLine("x");
+        //}
+
+        //string s = null;
+        //Console.WriteLine("safely calling method on null object?: " + s?.Substring(0));
+
+        //var r = "1111111111111111111111111111";
+        //var message = $"Error gathering disclaimers.\r {r}"; //carriage return
+        //Console.WriteLine("Done: " + message);
+
+        #endregion
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //everything else:
+        //////////////////////////////////////////////////////////////////////////////////////////////
 
         private static void splitTest()
         {
@@ -252,7 +261,7 @@ namespace ConsoleApplication1
                     //These files have already been downloaded
                     //client.DownloadFile("http://noliesplease.com/LonggameTech/mindtech/0001_to_0025/LonggameTech_mindtech_00" + filename, filename);
                     Console.WriteLine($"client.BaseAddress: {client.BaseAddress}");
-                    break;
+                    //break;
                 }
             }
 
