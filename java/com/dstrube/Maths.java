@@ -17,6 +17,7 @@ public class Maths {
 //		LongMax();	//9,223,372,036,854,775,807
 //		FloatMax(); //3.4028235E38
 //		DoubleMax(); //1.7976931348623157E308
+//TODO ByteMax
 	}
 	
 	private static void ShortMax(){
@@ -28,7 +29,6 @@ public class Maths {
 			s_p++;
 			count++;
 		}
-		System.out.println();
 		System.out.println("Max of short found : " + count);
 	}
 	
@@ -49,7 +49,6 @@ public class Maths {
 			c_p++;
 			count++;
 		}
-		System.out.println();
 		System.out.println("Max of char found : " + count);
 	}
 	
@@ -199,11 +198,11 @@ public class Maths {
 	} 
 	
 	private static void DoubleMax(){
-		System.out.println("authoritative double max: " + Double.MAX_VALUE);//
-		System.out.println("double max approximately = "+getDoubleMaxEstimate());//
-	    System.out.println("Recursively calculating double maximum...");//
+		System.out.println("authoritative double max: " + Double.MAX_VALUE);		//1.7976931348623157E308
+		System.out.println("double max approximately = "+getDoubleMaxEstimate());	//9.999999999999998E307
+	    System.out.println("Recursively calculating double maximum...");
     	double estimate = getDoubleMaxEstimate();
-    	recursiveDoubleMaxFinder(estimate, estimate / 10); //
+    	recursiveDoubleMaxFinder(estimate, estimate / 10); 							//1.7976931348623157E308
 	}
 	
 	private static double getDoubleMaxEstimate(){
