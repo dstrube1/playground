@@ -11,15 +11,29 @@ package com.dstrube;
 public class Maths {
 	
 	public static void main(String[] args) {
+//		ByteMax(); //127
 //		ShortMax(); //32767
 //		CharMax(); 	//65535
 //		IntMax(); 	//2,147,483,647
 //		LongMax();	//9,223,372,036,854,775,807
 //		FloatMax(); //3.4028235E38
 //		DoubleMax(); //1.7976931348623157E308
-//TODO ByteMax
 	}
 	
+    private static void ByteMax() 
+    {
+        byte c = 1;
+        byte c_p = 0;
+        long count = 0;
+        while (c_p < c)
+        {
+            c++;
+            c_p++;
+            count++;
+        }
+        System.out.println("Max of byte found: " + count);
+    }
+
 	private static void ShortMax(){
 		short s = 1;
 		short s_p = 0;
