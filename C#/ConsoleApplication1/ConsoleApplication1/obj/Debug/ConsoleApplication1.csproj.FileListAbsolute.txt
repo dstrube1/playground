@@ -10,3 +10,4 @@ C:/Backup/Projects/ConsoleApplication1/ConsoleApplication1/obj/Debug/ConsoleAppl
 /Users/dstrube/Projects/github/playground/C#/ConsoleApplication1/ConsoleApplication1/obj/Debug/ConsoleApplication1.csproj.CoreCompileInputs.cache
 /Users/dstrube/Projects/github/playground/C#/ConsoleApplication1/ConsoleApplication1/obj/Debug/ConsoleApplication1.exe
 /Users/dstrube/Projects/github/playground/C#/ConsoleApplication1/ConsoleApplication1/obj/Debug/ConsoleApplication1.pdb
+/Users/dstrube/Projects/github/playground/C#/ConsoleApplication1/ConsoleApplication1/obj/Debug/ConsoleApplication1.csprojAssemblyReference.cache

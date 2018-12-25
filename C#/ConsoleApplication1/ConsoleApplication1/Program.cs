@@ -19,95 +19,13 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
-            linqXample();
+            //linqXample();
+            ByteMax();
 
             Console.WriteLine("Done");
 
             //Console.ReadLine();
         }
-
-        private static void GenLeak(int index, int limit)
-        {
-            var memoryLeak = new MemLeak(evRaise);
-            memoryLeak = null;
-            GC.Collect();
-            long memory = GC.GetTotalMemory(true);
-            float percent = (float)index / (float)limit;
-            Console.WriteLine("Mem: {0:0,0}, {1} out of {2}, {3}% done ", memory, index, limit, (percent * 100));
-        }
-
-        #region ackerman recursion
-        private static int ackerman(int m, int n)
-        {
-            int ans;
-            if (m == 0)
-            {
-                var key = "m = 0; n = " + n;
-                ans = n + 1;
-                Console.WriteLine(key);
-            }
-            else if (n == 0)
-            {
-                var key = "m = " + m + "; n = 0";
-                ans = ackerman(m - 1, 1);
-                Console.WriteLine(key);
-            }
-            else
-            {
-                var key = "m = " + m + "; n = " + n;
-                ans = ackerman(m - 1, ackerman(m, n - 1));
-                Console.WriteLine(key);
-            }
-            return ans;
-        }
-
-        //solve this with a hashtable
-        public static int ackermanHash(int m, int n)
-        {
-            var ans = 0;
-            if (m == 0)
-            {
-                var key = "m = 0; n = " + n;
-                //Console.WriteLine(key);
-                if (hash.Contains(key))
-                    ans = (int) hash[key];
-                else
-                {
-                    ans = n + 1;
-                    hash.Add(key, ans);
-                }
-            }
-            else if (n == 0)
-            {
-                var key = "m = " + m + "; n = 0";
-                //Console.WriteLine(key);
-                if (hash.Contains(key))
-                    ans = (int) hash[key];
-                else
-                {
-                    ans = ackermanHash(m - 1, 1);
-                    hash.Add(key, ans);
-                }
-            }
-            else
-            {
-                var key = "m = " + m + "; n = " + n;
-                Console.WriteLine(key);
-                if (hash.Contains(key))
-                    ans = (int) hash[key];
-                else
-                {
-                    ans = ackermanHash(m - 1, ackermanHash(m, n - 1));
-                    hash.Add(key, ans);
-                }
-
-            }
-
-            Console.WriteLine(ans);
-            return ans;
-        }
-
-        #endregion
 
         private static void linqXample()
         {
@@ -145,6 +63,21 @@ namespace ConsoleApplication1
                     Console.WriteLine(i);
                 }
             }
+        }
+
+        private static void ByteMax() 
+        {
+            //Was going to do chars here, but chars aren't numbers in C# (?!)
+            byte c = 1;
+            byte c_p = 0;
+            long count = 0;
+            while (c_p < c)
+            {
+                c++;
+                c_p++;
+                count++;
+            }
+            Console.WriteLine($"Max of byte found: {count}");
         }
 
         #region old
@@ -212,6 +145,89 @@ namespace ConsoleApplication1
         //////////////////////////////////////////////////////////////////////////////////////////////
         //everything else:
         //////////////////////////////////////////////////////////////////////////////////////////////
+
+        private static void GenLeak(int index, int limit)
+        {
+            var memoryLeak = new MemLeak(evRaise);
+            memoryLeak = null;
+            GC.Collect();
+            long memory = GC.GetTotalMemory(true);
+            float percent = (float)index / (float)limit;
+            Console.WriteLine("Mem: {0:0,0}, {1} out of {2}, {3}% done ", memory, index, limit, (percent * 100));
+        }
+
+        #region ackerman recursion
+        private static int ackerman(int m, int n)
+        {
+            int ans;
+            if (m == 0)
+            {
+                var key = "m = 0; n = " + n;
+                ans = n + 1;
+                Console.WriteLine(key);
+            }
+            else if (n == 0)
+            {
+                var key = "m = " + m + "; n = 0";
+                ans = ackerman(m - 1, 1);
+                Console.WriteLine(key);
+            }
+            else
+            {
+                var key = "m = " + m + "; n = " + n;
+                ans = ackerman(m - 1, ackerman(m, n - 1));
+                Console.WriteLine(key);
+            }
+            return ans;
+        }
+
+        //solve this with a hashtable
+        public static int ackermanHash(int m, int n)
+        {
+            var ans = 0;
+            if (m == 0)
+            {
+                var key = "m = 0; n = " + n;
+                //Console.WriteLine(key);
+                if (hash.Contains(key))
+                    ans = (int)hash[key];
+                else
+                {
+                    ans = n + 1;
+                    hash.Add(key, ans);
+                }
+            }
+            else if (n == 0)
+            {
+                var key = "m = " + m + "; n = 0";
+                //Console.WriteLine(key);
+                if (hash.Contains(key))
+                    ans = (int)hash[key];
+                else
+                {
+                    ans = ackermanHash(m - 1, 1);
+                    hash.Add(key, ans);
+                }
+            }
+            else
+            {
+                var key = "m = " + m + "; n = " + n;
+                Console.WriteLine(key);
+                if (hash.Contains(key))
+                    ans = (int)hash[key];
+                else
+                {
+                    ans = ackermanHash(m - 1, ackermanHash(m, n - 1));
+                    hash.Add(key, ans);
+                }
+
+            }
+
+            Console.WriteLine(ans);
+            return ans;
+        }
+
+        #endregion
 
         private static void splitTest()
         {
