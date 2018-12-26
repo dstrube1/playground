@@ -20,7 +20,15 @@ namespace ConsoleApplication1
         public static void Main(string[] args)
         {
             //linqXample();
-            ByteMax();
+
+            ShortMax();
+            //TODO 
+            //IntMax();
+            //LongMax();
+            //FloatMax();
+            //DoubleMax();
+            //DecimalMax();?
+            //java: BigIntegerMax();?
 
             Console.WriteLine("Done");
 
@@ -65,6 +73,8 @@ namespace ConsoleApplication1
             }
         }
 
+        #region Maximums
+
         private static void ByteMax() 
         {
             //Was going to do chars here, but chars aren't numbers in C# (?!)
@@ -77,8 +87,27 @@ namespace ConsoleApplication1
                 c_p++;
                 count++;
             }
-            Console.WriteLine($"Max of byte found: {count}");
+            Console.WriteLine($"Max of byte found: {count}");//255
+            Console.WriteLine($"See also: {byte.MaxValue}");//255
+
         }
+
+        private static void ShortMax() 
+        {
+            short s = 1;
+            short s_p = 0;
+            long count = 0;
+            while (s_p < s)
+            {
+                s++;
+                s_p++;
+                count++;
+            }
+            Console.WriteLine($"Max of short found: {count}");//32767
+            Console.WriteLine($"See also: {short.MaxValue}");//32767
+        }
+
+        #endregion
 
         #region old
         //////////////////////////////////////////////////////////////////////////////////////////////
