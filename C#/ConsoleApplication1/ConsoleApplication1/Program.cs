@@ -21,9 +21,8 @@ namespace ConsoleApplication1
         {
             //linqXample();
 
-            ShortMax();
+            IntMax(true);
             //TODO 
-            //IntMax();
             //LongMax();
             //FloatMax();
             //DoubleMax();
@@ -107,6 +106,103 @@ namespace ConsoleApplication1
             Console.WriteLine($"See also: {short.MaxValue}");//32767
         }
 
+        private static void IntMax(bool isFast)
+        {
+            if (!isFast)
+            {
+                //Damn slow
+                int i = 1;
+                int i_p = 0;
+                long count = 0;
+                while (i_p < i)
+                {
+                    i++;
+                    i_p++;
+                    count++;
+                    if (count % 100000000 == 0)
+                        Console.Write(".");
+                }
+                Console.WriteLine("\nMax of int found : " + count);//2147483647
+            }
+            else
+            {
+                Console.WriteLine("Authoritative max of int : " + int.MaxValue);//2147483647
+                intMaxRecursive(1, 10);
+            }
+        }
+
+        private static bool intMaxRecursive(int candidate, int factor) 
+        {
+            if (factor < 2)
+            {
+                if (candidate < 0)
+                {
+                    Console.WriteLine("something went wrong; candidate is " + candidate);
+                    return false;
+                }
+                else
+                {
+                    //Console.WriteLine("Narrowed down to factor " + factor + " and candidate is " + candidate);
+                    int estimate = getIntMaxEstimate();
+                    return intMaxRecursiveAdd(candidate, estimate);
+                }
+            }
+            int product = candidate * factor;
+            if (product > 0)
+            {
+                return intMaxRecursive(product, factor);
+            }
+            else
+            {
+                return intMaxRecursive(candidate, factor - 1);
+            }
+        }
+
+        private static bool intMaxRecursiveAdd(int candidate, int addend) 
+        {
+            if (addend == 1)
+            {
+                if (candidate < 0)
+                {
+                    Console.WriteLine("something went wrong; candidate is " + candidate);
+                    return false;
+                }
+                else
+                {
+                    int ltemp = candidate;
+                    while (ltemp > 0)
+                    {
+                        candidate = ltemp;
+                        ltemp++;
+                    }
+                    Console.WriteLine("int max found (quickly): " + candidate);
+                    return true;
+                }
+            }
+            int sum = candidate + addend;
+            if (sum > 0)
+            {
+                return intMaxRecursiveAdd(sum, addend);
+            }
+            else
+            {
+                //Console.WriteLine(candidate + " + " + addend + " is too much; trying " + candidate + " + " + (addend / 2));
+                return intMaxRecursiveAdd(candidate, addend / 2);
+            }
+        }
+
+        private static int getIntMaxEstimate()
+        {
+            int myInt = 1;
+            int iTemp = myInt;
+            while (iTemp > 0)
+            { //when iTemp exceeds the maximum, it loops around to a negative
+                myInt = iTemp;
+                iTemp *= 10;
+                //Console.WriteLine("int max guess = " + myInt);
+            }
+            return myInt;
+        }
         #endregion
 
         #region old
