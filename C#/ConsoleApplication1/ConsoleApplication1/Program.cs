@@ -21,7 +21,6 @@ namespace ConsoleApplication1
         {
             //linqXample();
 
-            IntMax(true);
             //TODO 
             //LongMax();
             //FloatMax();
@@ -122,43 +121,18 @@ namespace ConsoleApplication1
                     if (count % 100000000 == 0)
                         Console.Write(".");
                 }
-                Console.WriteLine("\nMax of int found : " + count);//2147483647
+                Console.WriteLine("\nMax of int found: " + count);//2147483647
             }
             else
             {
                 Console.WriteLine("Authoritative max of int : " + int.MaxValue);//2147483647
-                intMaxRecursive(1, 10);
+                int candidate = getIntMaxEstimate();
+                int addend = getIntMaxEstimate();
+                intMaxRecursiveAdd(candidate, addend);
             }
         }
 
-        private static bool intMaxRecursive(int candidate, int factor) 
-        {
-            if (factor < 2)
-            {
-                if (candidate < 0)
-                {
-                    Console.WriteLine("something went wrong; candidate is " + candidate);
-                    return false;
-                }
-                else
-                {
-                    //Console.WriteLine("Narrowed down to factor " + factor + " and candidate is " + candidate);
-                    int estimate = getIntMaxEstimate();
-                    return intMaxRecursiveAdd(candidate, estimate);
-                }
-            }
-            int product = candidate * factor;
-            if (product > 0)
-            {
-                return intMaxRecursive(product, factor);
-            }
-            else
-            {
-                return intMaxRecursive(candidate, factor - 1);
-            }
-        }
-
-        private static bool intMaxRecursiveAdd(int candidate, int addend) 
+        private static bool intMaxRecursiveAdd(int candidate, int addend)
         {
             if (addend == 1)
             {
@@ -203,6 +177,7 @@ namespace ConsoleApplication1
             }
             return myInt;
         }
+
         #endregion
 
         #region old
