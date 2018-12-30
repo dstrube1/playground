@@ -22,7 +22,6 @@ namespace ConsoleApplication1
             //linqXample();
 
             //TODO 
-            //LongMax();
             //FloatMax();
             //DoubleMax();
             //DecimalMax();?
@@ -176,6 +175,60 @@ namespace ConsoleApplication1
                 //Console.WriteLine("int max guess = " + myInt);
             }
             return myInt;
+        }
+
+        private static void LongMax()
+        {
+            Console.WriteLine("Authoritative max of long: " + long.MaxValue);   //9223372036854775807
+            long candidate = getLongMaxEstimate();
+            long addend = getLongMaxEstimate();
+            longMaxRecursiveAdd(candidate, addend);                             //9223372036854775807
+        }
+
+        private static bool longMaxRecursiveAdd(long candidate, long addend)
+        {
+            if (addend == 1)
+            {
+                if (candidate < 0)
+                {
+                    Console.WriteLine("something went wrong; candidate is " + candidate);
+                    return false;
+                }
+                else
+                {
+                    long ltemp = candidate;
+                    while (ltemp > 0)
+                    {
+                        candidate = ltemp;
+                        ltemp++;
+                    }
+                    Console.WriteLine("long max found: " + candidate);
+                    return true;
+                }
+            }
+            long sum = candidate + addend;
+            if (sum > 0)
+            {
+                return longMaxRecursiveAdd(sum, addend);
+            }
+            else
+            {
+                //Console.WriteLine(candidate + " + " + addend + " is too much; trying " + candidate + " + " + (addend / 2));
+                return longMaxRecursiveAdd(candidate, addend / 2);
+            }
+        }
+
+        private static long getLongMaxEstimate()
+        {
+            long myLong = 1;
+            long LTemp = myLong;
+            while (LTemp > 0)
+            { //when LTemp exceeds the maximum, it loops around to a negative
+                myLong = LTemp;
+                LTemp *= 10;
+                //Console.WriteLine("long max guess = " + myLong);
+            }
+            return myLong;
         }
 
         #endregion
