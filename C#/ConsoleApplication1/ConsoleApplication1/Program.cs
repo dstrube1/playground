@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Threading;
 
 //
 // a place to test stuff
@@ -22,7 +20,6 @@ namespace ConsoleApplication1
             //linqXample();
 
             //TODO 
-            //FloatMax();
             //DoubleMax();
             //DecimalMax();?
             //java: BigIntegerMax();?
@@ -71,6 +68,8 @@ namespace ConsoleApplication1
         }
 
         #region Maximums
+
+        #region old
 
         private static void ByteMax() 
         {
@@ -229,6 +228,71 @@ namespace ConsoleApplication1
                 //Console.WriteLine("long max guess = " + myLong);
             }
             return myLong;
+        }
+
+        #endregion
+
+        private static void FloatMax()
+        {
+            Console.WriteLine("Authoritative max of float: " + float.MaxValue);   //3.402823E+38
+            float candidate = getFloatMaxEstimate();
+            float addend = getFloatMaxEstimate();
+            floatMaxRecursiveAdd(candidate, addend);                             //3.402823E+38
+        }
+
+        private static bool floatMaxRecursiveAdd(float candidate, float addend)
+        {
+            //This is not as clean as it is in C++ or Java. There is probably a better way, but this seems to be good enough for now
+            if (addend < 1.0f)
+            {
+                //Console.WriteLine("addend is 1.0");
+                if (candidate < 0)
+                {
+                    Console.WriteLine("something went wrong; candidate is " + candidate);
+                    return false;
+                }
+                else
+                {
+                    //float ltemp = candidate;
+                    //while (ltemp > 0)
+                    //{
+                    //    candidate = ltemp;
+                    //    ltemp++;
+                    //}
+                    Console.WriteLine("float max found: " + candidate);
+                    return true;
+                }
+            }
+            else
+            {
+                //Console.WriteLine($"addend = {addend}");
+            }
+
+            float sum = candidate + addend;
+            if (!float.IsInfinity(sum) && !(sum - candidate).Equals(0))
+            {
+                //Console.WriteLine(candidate + " + " + addend + " is " + sum);
+                return floatMaxRecursiveAdd(sum, addend);
+            }
+            else
+            {
+                //Console.WriteLine($"sum - candidate = {sum} - {candidate} = {sum - candidate}");
+                //Console.WriteLine(candidate + " + " + addend + " is too much; trying " + candidate + " + " + (addend / 2));
+                return floatMaxRecursiveAdd(candidate, addend / 2);
+            }
+        }
+
+        private static float getFloatMaxEstimate()
+        {
+            float myFloat = 1;
+            float fTemp = myFloat;
+            while (!float.IsInfinity(fTemp)) //interesting that IsPositiveInfinity didn't catch before a stackoverflow, but IsInfinity did
+            { //when fTemp exceeds the maximum, it loops around to a negative
+                myFloat = fTemp;
+                fTemp *= 10;
+                //Console.WriteLine("float max guess = " + myFloat);
+            }
+            return myFloat;
         }
 
         #endregion
