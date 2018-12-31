@@ -19,8 +19,8 @@ namespace ConsoleApplication1
         {
             //linqXample();
 
+            DoubleMax();
             //TODO 
-            //DoubleMax();
             //DecimalMax();?
             //java: BigIntegerMax();?
 
@@ -230,8 +230,6 @@ namespace ConsoleApplication1
             return myLong;
         }
 
-        #endregion
-
         private static void FloatMax()
         {
             Console.WriteLine("Authoritative max of float: " + float.MaxValue);   //3.402823E+38
@@ -253,11 +251,11 @@ namespace ConsoleApplication1
                 }
                 else
                 {
-                    //float ltemp = candidate;
-                    //while (ltemp > 0)
+                    //float ftemp = candidate;
+                    //while (ftemp > 0)
                     //{
-                    //    candidate = ltemp;
-                    //    ltemp++;
+                    //    candidate = ftemp;
+                    //    ftemp++;
                     //}
                     Console.WriteLine("float max found: " + candidate);
                     return true;
@@ -293,6 +291,70 @@ namespace ConsoleApplication1
                 //Console.WriteLine("float max guess = " + myFloat);
             }
             return myFloat;
+        }
+
+        #endregion
+
+        private static void DoubleMax()
+        {
+            Console.WriteLine("Authoritative max of float: " + double.MaxValue); // 1.79769313486232E+308
+            double candidate = getDoubleMaxEstimate();
+            double addend = getDoubleMaxEstimate();
+            doubleMaxRecursiveAdd(candidate, addend);                            // 1.79769313486232E+308
+        }
+
+        private static bool doubleMaxRecursiveAdd(double candidate, double addend)
+        {
+            if (addend < 1.0f)
+            {
+                //Console.WriteLine("addend is 1.0");
+                if (candidate < 0)
+                {
+                    Console.WriteLine("something went wrong; candidate is " + candidate);
+                    return false;
+                }
+                else
+                {
+                    //double dtemp = candidate;
+                    //while (dtemp > 0)
+                    //{
+                    //    candidate = dtemp;
+                    //    dtemp++;
+                    //}
+                    Console.WriteLine("double max found: " + candidate);
+                    return true;
+                }
+            }
+            else
+            {
+                //Console.WriteLine($"addend = {addend}");
+            }
+
+            double sum = candidate + addend;
+            if (!double.IsInfinity(sum) && !(sum - candidate).Equals(0))
+            {
+                //Console.WriteLine(candidate + " + " + addend + " is " + sum);
+                return doubleMaxRecursiveAdd(sum, addend);
+            }
+            else
+            {
+                //Console.WriteLine($"sum - candidate = {sum} - {candidate} = {sum - candidate}");
+                //Console.WriteLine(candidate + " + " + addend + " is too much; trying " + candidate + " + " + (addend / 2));
+                return doubleMaxRecursiveAdd(candidate, addend / 2);
+            }
+        }
+
+        private static double getDoubleMaxEstimate()
+        {
+            double myDouble = 1;
+            double dTemp = myDouble;
+            while (!double.IsInfinity(dTemp)) 
+            {
+                myDouble = dTemp;
+                dTemp *= 10;
+                //Console.WriteLine("double max guess = " + myFloat);
+            }
+            return myDouble;
         }
 
         #endregion
