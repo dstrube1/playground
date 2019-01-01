@@ -19,10 +19,7 @@ namespace ConsoleApplication1
         {
             //linqXample();
 
-            DoubleMax();
-            //TODO 
-            //DecimalMax();?
-            //java: BigIntegerMax();?
+            DecimalMax();
 
             Console.WriteLine("Done");
 
@@ -293,11 +290,9 @@ namespace ConsoleApplication1
             return myFloat;
         }
 
-        #endregion
-
         private static void DoubleMax()
         {
-            Console.WriteLine("Authoritative max of float: " + double.MaxValue); // 1.79769313486232E+308
+            Console.WriteLine("Authoritative max of double: " + double.MaxValue); // 1.79769313486232E+308
             double candidate = getDoubleMaxEstimate();
             double addend = getDoubleMaxEstimate();
             doubleMaxRecursiveAdd(candidate, addend);                            // 1.79769313486232E+308
@@ -348,14 +343,64 @@ namespace ConsoleApplication1
         {
             double myDouble = 1;
             double dTemp = myDouble;
-            while (!double.IsInfinity(dTemp)) 
+            while (!double.IsInfinity(dTemp))
             {
                 myDouble = dTemp;
                 dTemp *= 10;
-                //Console.WriteLine("double max guess = " + myFloat);
+                //Console.WriteLine("double max guess = " + myDouble);
             }
             return myDouble;
         }
+
+        #endregion
+
+        private static void DecimalMax() 
+        {
+            Console.WriteLine("Authoritative max of decimal: " + decimal.MaxValue); //79228162514264337593543950335
+            decimal candidate = getDecimalMaxEstimate();                            //1000000000000000000000000000
+            decimal addend = getDecimalMaxEstimate();
+            decimalMaxRecursiveAdd(candidate, addend);                              //79228162514264337593543950335
+        }
+
+        private static bool decimalMaxRecursiveAdd(decimal candidate, decimal addend) 
+        {
+            decimal sum;
+            try
+            {
+                sum = candidate + addend;
+                if (sum == candidate)
+                {
+                    Console.WriteLine($"Found decimal max: {sum}");
+                    return true;
+                }
+                //Console.WriteLine($"sum is not too big: {sum}");
+                return decimalMaxRecursiveAdd(sum, addend);
+            }
+            catch (OverflowException) 
+            {
+                //Console.WriteLine($"sum is too big; trying with addend {addend/2}");
+                return decimalMaxRecursiveAdd(candidate, addend / 2);
+            }
+        }
+
+        private static decimal getDecimalMaxEstimate()
+        {
+            decimal myDecimal = 1;
+
+            decimal dTemp = myDecimal;
+            try
+            {
+                while (true)
+                {
+                    myDecimal = dTemp;
+                    dTemp *= 10;
+                    //Console.WriteLine("decimal max guess = " + myDecimal);
+                }
+            }
+            catch (OverflowException) { }
+            return myDecimal;
+        }
+
 
         #endregion
 
