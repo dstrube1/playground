@@ -8,6 +8,8 @@ java -cp bin com.dstrube.Maths
 
 package com.dstrube;
 
+import java.math.BigInteger;
+
 public class Maths {
 	
 	public static void main(String[] args) {
@@ -18,10 +20,10 @@ public class Maths {
 //		LongMax();	//9,223,372,036,854,775,807
 //		FloatMax(); //3.4028235E38
 //		DoubleMax(); //1.7976931348623157E308
+//		BigIntegerMax(); //complicated
 	}
 	
-    private static void ByteMax() 
-    {
+    private static void ByteMax() {
         byte c = 1;
         byte c_p = 0;
         long count = 0;
@@ -232,7 +234,6 @@ public class Maths {
 	    return myDouble; //
 	}
 	
-	//TODO If this takes too long, go to Xcode and see how we did it in c++
 	private static boolean recursiveDoubleMaxFinder(double candidate, double addend){
 		if (addend <= 1){
         
@@ -275,4 +276,54 @@ public class Maths {
 	    }
 	} 
 
+	private static void BigIntegerMax(){
+		//https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html
+		BigInteger bi = new BigInteger("1");
+		System.out.println("BigInteger 1 = " + bi.toString());	//1
+		bi = bi.multiply(BigInteger.TEN);
+		System.out.println("BigInteger 10 = " + bi.toString());	//10
+		
+		//This seems to have no bottom, limited only by the amount of memory one has
+//		while(true){
+//			bi = bi.multiply(BigInteger.TEN);
+//			System.out.println("BigInteger 10 = " + bi.toString());	
+//		}
+
+		bi = bi.pow(100);
+		System.out.println("BigInteger 10^100 = " + bi.toString());		//[10^100]
+		
+		//This is weird:
+//		System.out.println("BigInteger intValue() = " + bi.intValue());	//0 ???
+//		System.out.println("BigInteger toString() = " + bi.toString());	//still [10^100]
+		//But kind of makes sense: bottom 32 bits of a googol is 0
+	
+		//Go big
+		//Reset to ten
+		bi = new BigInteger("1");
+		bi = bi.multiply(BigInteger.TEN);
+		//This doesn't break, but it also seems stuck; maybe try on a bigger machine
+		//System.out.println("BigInteger 10^IntMax... = ");		
+		//bi = bi.pow(Integer.MAX_VALUE);
+		//System.out.println(bi.toString());		
+		
+		//Let's try smaller numbers...
+//		bi = bi.pow(100000); //10 ^ 100,000
+//		System.out.println("BigInteger 10^100k = " + bi.toString());
+		//^Fills the screen with zeroes, but completes just fine
+
+		//This is too much:
+//		bi = bi.pow(100000000); //10 ^ 100,000,000
+//		System.out.println("BigInteger 10^100M = " + bi.toString());
+
+		//Takes a second, but it finishes
+//		bi = bi.pow(1000000); //10 ^ 1,000,000
+//		System.out.println("BigInteger 10^1M = " + bi.toString());
+
+		//Takes a few seconds, but finishes
+		System.out.println("BigInteger 10^10M...(takes a few seconds) = ");		
+		bi = bi.pow(10000000); //10 ^ 10,000,000
+		System.out.println(bi.toString());
+		//TODO Is there a way to indicate its progress?
+		//probably not, but next best thing: timer with a separate thread printing out while counting to long max?
+	}
 }
