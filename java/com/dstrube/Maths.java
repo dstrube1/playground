@@ -33,6 +33,7 @@ public class Maths {
             c_p++;
             count++;
         }
+        System.out.println("Authoritative max of byte: " + Byte.MAX_VALUE);
         System.out.println("Max of byte found: " + count);
     }
 
@@ -45,6 +46,7 @@ public class Maths {
 			s_p++;
 			count++;
 		}
+        System.out.println("Authoritative max of short: " + Short.MAX_VALUE);
 		System.out.println("Max of short found : " + count);
 	}
 	
@@ -65,6 +67,7 @@ public class Maths {
 			c_p++;
 			count++;
 		}
+        System.out.println("Authoritative max of char: " + Character.MAX_VALUE);//question mark box
 		System.out.println("Max of char found : " + count);
 	}
 	
@@ -72,6 +75,7 @@ public class Maths {
 		int i = 1;
 		int i_p = 0;
 		long count = 0;
+        System.out.println("Authoritative max of int: " + Integer.MAX_VALUE);
 		while (i_p < i){
 			i++;
 			i_p++;
@@ -84,6 +88,7 @@ public class Maths {
 	}	
 	
 	private static void LongMax(){
+        System.out.println("Authoritative max of long: " + Long.MAX_VALUE);
 		System.out.println("long max is about " + getLongMaxEstimate());
 		//1,000,000,000,000,000,000 - 1 quintillion, same as in c++
 		
