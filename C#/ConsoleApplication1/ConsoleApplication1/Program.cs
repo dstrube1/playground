@@ -17,9 +17,7 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
-            //linqXample();
-
-            DecimalMax();
+            linqXample();
 
             Console.WriteLine("Done");
 
@@ -64,11 +62,77 @@ namespace ConsoleApplication1
             }
         }
 
-        #region Maximums
+
 
         #region old
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //Before main:
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        private static EvClass evRaise = null;
 
-        private static void ByteMax() 
+        #region ackerman recursion
+        static Hashtable hash;
+
+        //Investigating stackoverflow handling:
+        //https://stackoverflow.com/questions/1599219/c-sharp-catch-a-stack-overflow-exception
+        //static int nOther;
+        //static int topOfStack;
+        //const int stackSize = 1000000; // Default?
+
+        //// The func is 76 bytes, but we need space to unwind the exception.
+        //const int spaceRequired = 18 * 1024;
+        #endregion
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //From within main:
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        #region mem leak
+        //evRaise = new EvClass();
+
+        //const int limit = 50000;
+        //for (int i = 0; i <= limit; i++)
+        //{
+        //    GenLeak(i, limit);
+        //    //System.Threading.Thread.Sleep(2000);
+        //}
+        #endregion
+
+        #region ackerman recursion
+        //https://www.youtube.com/watch?v=i7sm9dzFtEI
+        //hash = new Hashtable();
+
+        //const int maxStackSize = 10000000;
+        //var newThread = new Thread(() => ackermanHash(4, 1), maxStackSize);
+        //10000000 works for 4,1; crashes with 10,000,000 for 4,2 at about 38,832k, works with 100,000,000
+        //newThread.Start();
+
+        #endregion
+
+        #region Misc
+
+        //how to handle null array:
+        //string[] strings = null;
+        //foreach (var s in strings ?? new string[0])
+        //{
+        //    Console.WriteLine("x");
+        //}
+
+        //string s = null;
+        //Console.WriteLine("safely calling method on null object?: " + s?.Substring(0));
+
+        //var r = "1111111111111111111111111111";
+        //var message = $"Error gathering disclaimers.\r {r}"; //carriage return
+        //Console.WriteLine("Done: " + message);
+
+        #endregion
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //everything else:
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        #region Maximums
+
+        private static void ByteMax()
         {
             //Was going to do chars here, but chars aren't numbers in C# (?!)
             byte c = 1;
@@ -85,7 +149,7 @@ namespace ConsoleApplication1
 
         }
 
-        private static void ShortMax() 
+        private static void ShortMax()
         {
             short s = 1;
             short s_p = 0;
@@ -352,9 +416,7 @@ namespace ConsoleApplication1
             return myDouble;
         }
 
-        #endregion
-
-        private static void DecimalMax() 
+        private static void DecimalMax()
         {
             Console.WriteLine("Authoritative max of decimal: " + decimal.MaxValue); //79228162514264337593543950335
             decimal candidate = getDecimalMaxEstimate();                            //1000000000000000000000000000
@@ -362,7 +424,7 @@ namespace ConsoleApplication1
             decimalMaxRecursiveAdd(candidate, addend);                              //79228162514264337593543950335
         }
 
-        private static bool decimalMaxRecursiveAdd(decimal candidate, decimal addend) 
+        private static bool decimalMaxRecursiveAdd(decimal candidate, decimal addend)
         {
             decimal sum;
             try
@@ -376,7 +438,7 @@ namespace ConsoleApplication1
                 //Console.WriteLine($"sum is not too big: {sum}");
                 return decimalMaxRecursiveAdd(sum, addend);
             }
-            catch (OverflowException) 
+            catch (OverflowException)
             {
                 //Console.WriteLine($"sum is too big; trying with addend {addend/2}");
                 return decimalMaxRecursiveAdd(candidate, addend / 2);
@@ -401,74 +463,7 @@ namespace ConsoleApplication1
             return myDecimal;
         }
 
-
         #endregion
-
-        #region old
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        //Before main:
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        private static EvClass evRaise = null;
-
-        #region ackerman recursion
-        static Hashtable hash;
-
-        //Investigating stackoverflow handling:
-        //https://stackoverflow.com/questions/1599219/c-sharp-catch-a-stack-overflow-exception
-        //static int nOther;
-        //static int topOfStack;
-        //const int stackSize = 1000000; // Default?
-
-        //// The func is 76 bytes, but we need space to unwind the exception.
-        //const int spaceRequired = 18 * 1024;
-        #endregion
-
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        //From within main:
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        #region mem leak
-        //evRaise = new EvClass();
-
-        //const int limit = 50000;
-        //for (int i = 0; i <= limit; i++)
-        //{
-        //    GenLeak(i, limit);
-        //    //System.Threading.Thread.Sleep(2000);
-        //}
-        #endregion
-
-        #region ackerman recursion
-        //https://www.youtube.com/watch?v=i7sm9dzFtEI
-        //hash = new Hashtable();
-
-        //const int maxStackSize = 10000000;
-        //var newThread = new Thread(() => ackermanHash(4, 1), maxStackSize);
-        //10000000 works for 4,1; crashes with 10,000,000 for 4,2 at about 38,832k, works with 100,000,000
-        //newThread.Start();
-
-        #endregion
-
-        #region Misc
-
-        //how to handle null array:
-        //string[] strings = null;
-        //foreach (var s in strings ?? new string[0])
-        //{
-        //    Console.WriteLine("x");
-        //}
-
-        //string s = null;
-        //Console.WriteLine("safely calling method on null object?: " + s?.Substring(0));
-
-        //var r = "1111111111111111111111111111";
-        //var message = $"Error gathering disclaimers.\r {r}"; //carriage return
-        //Console.WriteLine("Done: " + message);
-
-        #endregion
-
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        //everything else:
-        //////////////////////////////////////////////////////////////////////////////////////////////
 
         private static void GenLeak(int index, int limit)
         {
