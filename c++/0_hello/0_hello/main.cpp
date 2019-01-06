@@ -52,7 +52,7 @@ int main(int argc, const char * argv[]) {
 //    pointerTest();
 //    referenceTest();
 //    timeTest();
-//    streamTest();
+    streamTest();
     
     /* MISC:
      //cout << "??="; //this outputs: warning: trigraph ignored [-Wtrigraphs]
@@ -69,7 +69,7 @@ int main(int argc, const char * argv[]) {
      //for char, '',"", and 0 all print as blank
      
      //END MISC */
-    cout<<"running from main" << endl;
+    //cout<<"running from main" << endl;
 //    classA myClassA;
 //    myClassA.myMethod();
 
@@ -79,7 +79,7 @@ int main(int argc, const char * argv[]) {
 //    DataTypeInitialValues values;
 //    values.run();
     
-    Maximums maximums;
+    //Maximums maximums;
 //    maximums.charMaximums();
 //    maximums.shortMaximums();
 //    bool isFast = true;
@@ -90,7 +90,7 @@ int main(int argc, const char * argv[]) {
 //    maximums.longMaximums();
 //    maximums.floatMaximums();
 //    maximums.doubleMaximums();
-    maximums.longDoubleMaximums();
+    //maximums.longDoubleMaximums();
 
 //    Maths maths;
 //    maths.tests();
@@ -301,5 +301,6 @@ void streamTest(){
     cout << "Enter some text: " ;
     cin >> input; //this will expand larger as needed
     cout << "You entered: " << input << "." << endl;
+    
     //TODO: fstream
 }
