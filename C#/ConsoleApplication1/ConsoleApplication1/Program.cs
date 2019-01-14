@@ -17,6 +17,8 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
+            testEnum();
+
             linqXample();
 
             Console.WriteLine("Done");
@@ -70,6 +72,15 @@ namespace ConsoleApplication1
         //////////////////////////////////////////////////////////////////////////////////////////////
         private static EvClass evRaise = null;
 
+        public enum TestEnum
+        {
+            C, D
+        }
+
+        //[Obsolete("blah", true)]
+        //static void old(){}
+
+
         #region ackerman recursion
         static Hashtable hash;
 
@@ -86,6 +97,8 @@ namespace ConsoleApplication1
         //////////////////////////////////////////////////////////////////////////////////////////////
         //From within main:
         //////////////////////////////////////////////////////////////////////////////////////////////
+        //testEnum();
+
         #region mem leak
         //evRaise = new EvClass();
 
@@ -109,6 +122,21 @@ namespace ConsoleApplication1
         #endregion
 
         #region Misc
+
+        static void testEnum()
+        {
+            Console.WriteLine("Testing enum parsing");
+            string enumTest = "C";
+            TestEnum m;
+            if (!Enum.TryParse(enumTest, out m))
+            {
+                Console.WriteLine("enum not set; error while parsing");
+            }
+            else
+            {
+                Console.WriteLine("enum parsed: " + m);
+            }
+        }
 
         //how to handle null array:
         //string[] strings = null;
