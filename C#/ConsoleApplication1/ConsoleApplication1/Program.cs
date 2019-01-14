@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Text;
 
 //
 // a place to test stuff
@@ -17,9 +18,8 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
-            testEnum();
 
-            linqXample();
+            //linqXample();
 
             Console.WriteLine("Done");
 
@@ -99,6 +99,8 @@ namespace ConsoleApplication1
         //////////////////////////////////////////////////////////////////////////////////////////////
         //testEnum();
 
+        //testTextAdder();
+
         #region mem leak
         //evRaise = new EvClass();
 
@@ -123,6 +125,7 @@ namespace ConsoleApplication1
 
         #region Misc
 
+        #region testEnum
         static void testEnum()
         {
             Console.WriteLine("Testing enum parsing");
@@ -137,6 +140,8 @@ namespace ConsoleApplication1
                 Console.WriteLine("enum parsed: " + m);
             }
         }
+        #endregion testEnum
+
 
         //how to handle null array:
         //string[] strings = null;
@@ -157,6 +162,27 @@ namespace ConsoleApplication1
         //////////////////////////////////////////////////////////////////////////////////////////////
         //everything else:
         //////////////////////////////////////////////////////////////////////////////////////////////
+
+        #region TextAdder
+        static void testTextAdder()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Testing text adder");
+            try
+            {
+                StringBuilder sb1 = new StringBuilder("x");
+                StringBuilder sb2 = new TextAdder().addText(sb1);
+                Console.WriteLine("sb2: " + sb2); //xy, as expected
+                Console.WriteLine("sb1: " + sb1); //xy - wth?
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("exception: " + e.GetType());
+            }
+        }
+
+        //see also class TextAdder below
+        #endregion TextAdder
 
         #region Maximums
 
@@ -754,4 +780,17 @@ namespace ConsoleApplication1
         #endregion //old
 
     }
+
+    class TextAdder
+    {
+        public StringBuilder addText(StringBuilder input)
+        {
+            input.Append("y");
+            StringBuilder result = new StringBuilder(input.ToString());
+            input = null;
+            return result;
+        }
+    }
+
+
 }
