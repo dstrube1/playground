@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 
 //
 // a place to test stuff
@@ -18,9 +19,7 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
-
             //linqXample();
-
             Console.WriteLine("Done");
 
             //Console.ReadLine();
@@ -97,9 +96,6 @@ namespace ConsoleApplication1
         //////////////////////////////////////////////////////////////////////////////////////////////
         //From within main:
         //////////////////////////////////////////////////////////////////////////////////////////////
-        //testEnum();
-
-        //testTextAdder();
 
         #region mem leak
         //evRaise = new EvClass();
@@ -162,6 +158,51 @@ namespace ConsoleApplication1
         //////////////////////////////////////////////////////////////////////////////////////////////
         //everything else:
         //////////////////////////////////////////////////////////////////////////////////////////////
+
+        #region async task
+
+        static void testAsyncTask()
+        {
+            Task.Run(async () => await Download());
+            Console.WriteLine();
+            Console.WriteLine("Testing async task");
+            //Task t = Download();
+            //t.Start(); //InvalidOperationException: 
+            //Start may not be called on a promise-style task
+
+            //Download(); //If method signature is static async Task Download() :
+            //Warning: Because this call is not awaited,
+            //execution of the current method continues before the call is completed. 
+            //Consider applying the 'await' operator to the result of the call
+
+            //This hides the warning:
+            //var result = Download();
+
+        }
+
+        //[MethodImpl(MethodImplOptions.Synchronized)]
+        static async Task Download()
+        { //if return type is void:
+          //Asynchronous method should not return void
+            Console.WriteLine(await GetUrlContents("http://www.google.com"));
+        }
+
+        static async Task<string> GetUrlContents(string url)
+        {
+            try
+            {
+                var wc = new WebClient();
+                string contents = await wc.DownloadStringTaskAsync(url);
+                return contents;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Caught exception: " + e.Message);
+                throw;
+            }
+        }
+
+        #endregion async task
 
         #region TextAdder
         static void testTextAdder()
