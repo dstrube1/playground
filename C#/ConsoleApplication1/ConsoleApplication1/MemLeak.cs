@@ -13,9 +13,9 @@ namespace ConsoleApplication1
     class MemLeak
     {
         private byte[] allocatedMemory;
-        private EvClass evEvent;
+        private EventClass evEvent;
 
-        public MemLeak(EvClass evPass)
+        public MemLeak(EventClass evPass)
         {
             this.evEvent = evPass;
             this.allocatedMemory = new byte[10000];
