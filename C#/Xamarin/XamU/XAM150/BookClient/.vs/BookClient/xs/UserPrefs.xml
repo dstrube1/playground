@@ -1,0 +1,18 @@
+﻿<Properties StartupConfiguration="{7B5D3FC3-A251-4D60-A21B-34C3FFDB665F}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BookClient/Data/BookManager.cs">
+    <Files>
+      <File FileName="BookClient/Data/BookManager.cs" Line="69" Column="14" />
+      <File FileName="BookClient/App.xaml.cs" Line="43" Column="44" />
+      <File FileName="BookClient/MainPage.xaml.cs" Line="24" Column="36" />
+      <File FileName="BookClient/MainPage.xaml" Line="37" Column="15" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.BookClient.Android PreferredExecutionTarget="Android.ZY2256HC74" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.BookClient.iOS automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.42CBFEE6-DC17-4C07-A509-B6C5D08D6480" />
+</Properties>

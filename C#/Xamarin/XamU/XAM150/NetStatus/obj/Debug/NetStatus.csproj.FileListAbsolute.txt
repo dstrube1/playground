@@ -1,8 +1,0 @@
-/Users/dstrube/Downloads/XAM150-master/Exercise 1/Completed/NetStatus/bin/Debug/NetStatus.dll
-/Users/dstrube/Downloads/XAM150-master/Exercise 1/Completed/NetStatus/bin/Debug/NetStatus.pdb
-/Users/dstrube/Downloads/XAM150-master/Exercise 1/Completed/NetStatus/obj/Debug/NetworkViewPage.xaml.g.cs
-/Users/dstrube/Downloads/XAM150-master/Exercise 1/Completed/NetStatus/obj/Debug/NetStatus.csproj.CoreCompileInputs.cache
-/Users/dstrube/Downloads/XAM150-master/Exercise 1/Completed/NetStatus/obj/Debug/XamlC.stamp
-/Users/dstrube/Downloads/XAM150-master/Exercise 1/Completed/NetStatus/obj/Debug/NetStatus.dll
-/Users/dstrube/Downloads/XAM150-master/Exercise 1/Completed/NetStatus/obj/Debug/NetStatus.pdb
-/Users/dstrube/Downloads/XAM150-master/Exercise 1/Completed/NetStatus/obj/Debug/NetStatus.csprojAssemblyReference.cache
