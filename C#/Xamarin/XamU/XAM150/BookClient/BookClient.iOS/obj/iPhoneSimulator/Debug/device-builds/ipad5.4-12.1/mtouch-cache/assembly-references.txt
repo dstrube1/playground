@@ -1,0 +1,35 @@
+/Users/dstrube/Downloads/XAM150-master/Exercise 3/Completed/BookClient.iOS/bin/iPhoneSimulator/Debug/BookClientiOS.exe
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/mscorlib.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/../../64bits/Xamarin.iOS.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/Mono.Security.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.Xml.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.Core.dll
+/Users/dstrube/Downloads/XAM150-master/Exercise 3/Completed/packages/Xamarin.Forms.3.4.0.1009999/lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll
+/Users/dstrube/Downloads/XAM150-master/Exercise 3/Completed/packages/Xamarin.Forms.3.4.0.1009999/lib/Xamarin.iOS10/Xamarin.Forms.Core.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/Facades/netstandard.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.Data.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.Numerics.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.Transactions.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/OpenTK-1.0.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.IO.Compression.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.IO.Compression.FileSystem.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.ComponentModel.Composition.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.Net.Http.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.Runtime.Serialization.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.ServiceModel.Internals.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.Web.Services.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/System.Xml.Linq.dll
+/Users/dstrube/Downloads/XAM150-master/Exercise 3/Completed/packages/Xamarin.Forms.3.4.0.1009999/lib/Xamarin.iOS10/Xamarin.Forms.Platform.dll
+/Users/dstrube/Downloads/XAM150-master/Exercise 3/Completed/BookClient/bin/Debug/BookClient.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/Facades/System.Runtime.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/Facades/System.Resources.ResourceManager.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/Facades/System.Diagnostics.Debug.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/Facades/System.Threading.Tasks.dll
+/Users/dstrube/Downloads/XAM150-master/Exercise 3/Completed/packages/Xamarin.Forms.3.4.0.1009999/lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/Facades/System.Diagnostics.Tools.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/Facades/System.Collections.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/Facades/System.Linq.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/Facades/System.ObjectModel.dll
+/Users/dstrube/Downloads/XAM150-master/Exercise 3/Completed/packages/Newtonsoft.Json.12.0.1/lib/netstandard2.0/Newtonsoft.Json.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/12.2.1.13/lib/mono/Xamarin.iOS/Facades/System.Text.Encoding.dll
