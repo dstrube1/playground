@@ -19,6 +19,8 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
+            testLock();
+
             //linqXample();
             Console.WriteLine("Done");
 
@@ -158,6 +160,39 @@ namespace ConsoleApplication1
         //////////////////////////////////////////////////////////////////////////////////////////////
         //everything else:
         //////////////////////////////////////////////////////////////////////////////////////////////
+
+        #region testLock
+        static void testLock()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Testing LockTest where locker is null...");
+            try
+            {
+                LockTest();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("exception: " + e.GetType());
+            }
+            locker = new object();
+            Console.WriteLine("Testing LockTest where locker is not null...");
+            LockTest();
+        }
+
+        static object locker;
+        static bool w = false;
+        static void LockTest()
+        {
+            lock (locker)
+            {
+                if (!w)
+                {
+                    Console.WriteLine("LockTest done");
+                    w = true;
+                }
+            }
+        }
+        #endregion testLock
 
         #region async task
 
