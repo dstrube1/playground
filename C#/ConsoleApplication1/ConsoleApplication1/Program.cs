@@ -19,7 +19,7 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
-            testLock();
+            testConvert();
 
             //linqXample();
             Console.WriteLine("Done");
@@ -64,8 +64,6 @@ namespace ConsoleApplication1
                 }
             }
         }
-
-
 
         #region old
         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -160,6 +158,33 @@ namespace ConsoleApplication1
         //////////////////////////////////////////////////////////////////////////////////////////////
         //everything else:
         //////////////////////////////////////////////////////////////////////////////////////////////
+
+        #region Convert
+        static void testConvert()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Testing convert. Enter a couple numbers: ");
+            string line = Console.ReadLine();
+            if (line != null)
+            {
+                handleLine(line);
+            }
+            else
+            {
+                Console.WriteLine("line is null");
+                line = "1 2";
+                handleLine(line);
+            }
+        }
+
+        static void handleLine(string line)
+        {
+            int x = Convert.ToInt32(line.Substring(0, line.IndexOf(" ")));
+            line = line.Substring(line.IndexOf(" ") + 1);
+            int y = Convert.ToInt32(line);
+            Console.WriteLine("x: {0}, y: {1}", x, y);
+        }
+        #endregion Convert
 
         #region testLock
         static void testLock()
@@ -867,6 +892,5 @@ namespace ConsoleApplication1
             return result;
         }
     }
-
 
 }
