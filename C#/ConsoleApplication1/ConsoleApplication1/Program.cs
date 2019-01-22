@@ -19,7 +19,7 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
-            testConvert();
+            testLock();
 
             //linqXample();
             Console.WriteLine("Done");
@@ -195,9 +195,9 @@ namespace ConsoleApplication1
             {
                 LockTest();
             }
-            catch (Exception e)
+            catch (ArgumentNullException)
             {
-                Console.WriteLine("exception: " + e.GetType());
+                Console.WriteLine("Caught ArgumentNullException");
             }
             locker = new object();
             Console.WriteLine("Testing LockTest where locker is not null...");
