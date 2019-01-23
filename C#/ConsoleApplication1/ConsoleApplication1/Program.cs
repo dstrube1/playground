@@ -19,9 +19,24 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
-            testLock();
+            int i = 1;
+            Int32 i2 = 2;
+            String s3 = "3";
+            String s4 = "4";
+            refTest(ref i, i2, ref s3, s4);//i2 and s4 are objects, but not passed in by reference, so not affected
+            Console.WriteLine($"i: {i}, i2: {i2}, s3: {s3}, s4: {s4}");
+            var myObject = new MyObject
+            {
+                i = 1,
+                s = "2"
+            };
+            refTest0(myObject);//automatically passed in by reference
+            Console.WriteLine($"myObject.i: {myObject.i}; myObject.s: {myObject.s}");
+            refTest1(ref myObject); //same as passing in without reference; no error or warning
+            Console.WriteLine($"myObject.i: {myObject.i}; myObject.s: {myObject.s}");
 
             //linqXample();
+
             Console.WriteLine("Done");
 
             //Console.ReadLine();
@@ -119,6 +134,9 @@ namespace ConsoleApplication1
 
         #endregion
 
+        #region refTests
+        #endregion
+
         #region Misc
 
         #region testEnum
@@ -158,6 +176,30 @@ namespace ConsoleApplication1
         //////////////////////////////////////////////////////////////////////////////////////////////
         //everything else:
         //////////////////////////////////////////////////////////////////////////////////////////////
+
+        #region refTests
+
+        static void refTest(ref int i, Int32 i2, ref String s3, String s4)
+        {
+            i = 100;
+            i2 = 200;
+            s3 = "300";
+            s4 = "400";
+        }
+
+        static void refTest0(MyObject myObject)
+        {
+            myObject.i = 100;
+            myObject.s = "200";
+        }
+
+        static void refTest1(ref MyObject myObject)
+        {
+            myObject.i = 200;
+            myObject.s = "300";
+        }
+
+        #endregion
 
         #region Convert
         static void testConvert()
