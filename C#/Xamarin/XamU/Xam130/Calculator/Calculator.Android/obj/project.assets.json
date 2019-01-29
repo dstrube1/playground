@@ -927,11 +927,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dstrube/Projects/Calculator/Calculator.Android/Calculator.Android.csproj",
+      "projectUniqueName": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM130/Calculator/Calculator.Android/Calculator.Android.csproj",
       "projectName": "Calculator.Android",
-      "projectPath": "/Users/dstrube/Projects/Calculator/Calculator.Android/Calculator.Android.csproj",
+      "projectPath": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM130/Calculator/Calculator.Android/Calculator.Android.csproj",
       "packagesPath": "/Users/dstrube/.nuget/packages/",
-      "outputPath": "/Users/dstrube/Projects/Calculator/Calculator.Android/obj",
+      "outputPath": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM130/Calculator/Calculator.Android/obj",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/dstrube/.config/NuGet/NuGet.Config"
@@ -946,8 +946,8 @@
       "frameworks": {
         "monoandroid81": {
           "projectReferences": {
-            "/Users/dstrube/Projects/Calculator/Calculator/Calculator.csproj": {
-              "projectPath": "/Users/dstrube/Projects/Calculator/Calculator/Calculator.csproj"
+            "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM130/Calculator/Calculator/Calculator.csproj": {
+              "projectPath": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM130/Calculator/Calculator/Calculator.csproj"
             }
           }
         }

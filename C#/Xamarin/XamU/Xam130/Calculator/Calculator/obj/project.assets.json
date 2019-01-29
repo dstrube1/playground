@@ -346,11 +346,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dstrube/Projects/Calculator/Calculator/Calculator.csproj",
+      "projectUniqueName": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM130/Calculator/Calculator/Calculator.csproj",
       "projectName": "Calculator",
-      "projectPath": "/Users/dstrube/Projects/Calculator/Calculator/Calculator.csproj",
+      "projectPath": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM130/Calculator/Calculator/Calculator.csproj",
       "packagesPath": "/Users/dstrube/.nuget/packages/",
-      "outputPath": "/Users/dstrube/Projects/Calculator/Calculator/obj",
+      "outputPath": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM130/Calculator/Calculator/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
