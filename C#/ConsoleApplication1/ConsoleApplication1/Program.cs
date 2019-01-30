@@ -19,21 +19,6 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
-            int i = 1;
-            Int32 i2 = 2;
-            String s3 = "3";
-            String s4 = "4";
-            refTest(ref i, i2, ref s3, s4);//i2 and s4 are objects, but not passed in by reference, so not affected
-            Console.WriteLine($"i: {i}, i2: {i2}, s3: {s3}, s4: {s4}");
-            var myObject = new MyObject
-            {
-                i = 1,
-                s = "2"
-            };
-            refTest0(myObject);//automatically passed in by reference
-            Console.WriteLine($"myObject.i: {myObject.i}; myObject.s: {myObject.s}");
-            refTest1(ref myObject); //same as passing in without reference; no error or warning
-            Console.WriteLine($"myObject.i: {myObject.i}; myObject.s: {myObject.s}");
 
             //linqXample();
 
@@ -81,8 +66,8 @@ namespace ConsoleApplication1
         }
 
         #region old
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        //Before main:
+
+        #region Before main
         //////////////////////////////////////////////////////////////////////////////////////////////
         private static EventClass evRaise = null;
 
@@ -108,9 +93,9 @@ namespace ConsoleApplication1
         //const int spaceRequired = 18 * 1024;
         #endregion
 
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        //From within main:
-        //////////////////////////////////////////////////////////////////////////////////////////////
+        #endregion
+
+        #region From within main
 
         #region mem leak
         //evRaise = new EvClass();
@@ -135,6 +120,22 @@ namespace ConsoleApplication1
         #endregion
 
         #region refTests
+        //int i = 1;
+        //Int32 i2 = 2;
+        //String s3 = "3";
+        //String s4 = "4";
+        //refTest(ref i, i2, ref s3, s4);//i2 and s4 are objects, but not passed in by reference, so not affected
+        //Console.WriteLine($"i: {i}, i2: {i2}, s3: {s3}, s4: {s4}");
+        //    var myObject = new MyObject
+        //    {
+        //        i = 1,
+        //        s = "2"
+        //    };
+        //refTest0(myObject);//automatically passed in by reference
+        //Console.WriteLine($"myObject.i: {myObject.i}; myObject.s: {myObject.s}");
+        //    refTest1(ref myObject); //same as passing in without reference; no error or warning
+        //Console.WriteLine($"myObject.i: {myObject.i}; myObject.s: {myObject.s}");
+
         #endregion
 
         #region Misc
@@ -173,9 +174,9 @@ namespace ConsoleApplication1
 
         #endregion
 
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        //everything else:
-        //////////////////////////////////////////////////////////////////////////////////////////////
+        #endregion
+
+        #region everything else
 
         #region refTests
 
@@ -919,6 +920,8 @@ namespace ConsoleApplication1
             random.NextBytes(bytes);
             Console.WriteLine("4: bytes[0] : " + bytes[0]);
         }
+
+        #endregion
 
         #endregion //old
 
