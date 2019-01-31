@@ -1,0 +1,6 @@
+/Users/dstrube/Downloads/XAM250-master/Exercise 1/Start/GreatQuotes.Data/bin/Debug/GreatQuotes.Data.dll
+/Users/dstrube/Downloads/XAM250-master/Exercise 1/Start/GreatQuotes.Data/bin/Debug/GreatQuotes.Data.pdb
+/Users/dstrube/Downloads/XAM250-master/Exercise 1/Start/GreatQuotes.Data/obj/Debug/GreatQuotes.Data.csproj.CoreCompileInputs.cache
+/Users/dstrube/Downloads/XAM250-master/Exercise 1/Start/GreatQuotes.Data/obj/Debug/GreatQuotes.Data.dll
+/Users/dstrube/Downloads/XAM250-master/Exercise 1/Start/GreatQuotes.Data/obj/Debug/GreatQuotes.Data.pdb
+/Users/dstrube/Downloads/XAM250-master/Exercise 1/Start/GreatQuotes.Data/obj/Debug/GreatQuotes.Data.csprojAssemblyReference.cache
