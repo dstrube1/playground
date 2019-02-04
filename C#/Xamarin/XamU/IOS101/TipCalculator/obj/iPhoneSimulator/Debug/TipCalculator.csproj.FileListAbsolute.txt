@@ -1,0 +1,13 @@
+/Users/dstrube/Downloads/IOS101-master/Exercise 1/Completed/TipCalculator/bin/iPhoneSimulator/Debug/TipCalculator.exe
+/Users/dstrube/Downloads/IOS101-master/Exercise 1/Completed/TipCalculator/bin/iPhoneSimulator/Debug/TipCalculator.pdb
+/Users/dstrube/Downloads/IOS101-master/Exercise 1/Completed/TipCalculator/obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/_BundleResourceWithLogicalName.items
+/Users/dstrube/Downloads/IOS101-master/Exercise 1/Completed/TipCalculator/obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/actool/_PartialAppManifest.items
+/Users/dstrube/Downloads/IOS101-master/Exercise 1/Completed/TipCalculator/obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/actool/_BundleResourceWithLogicalName.items
+/Users/dstrube/Downloads/IOS101-master/Exercise 1/Completed/TipCalculator/obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/coremlc/_PartialAppManifest.items
+/Users/dstrube/Downloads/IOS101-master/Exercise 1/Completed/TipCalculator/obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/coremlc/_BundleResourceWithLogicalName.items
+/Users/dstrube/Downloads/IOS101-master/Exercise 1/Completed/TipCalculator/obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/optimized/Entitlements.plist
+/Users/dstrube/Downloads/IOS101-master/Exercise 1/Completed/TipCalculator/obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/optimized/
+/Users/dstrube/Downloads/IOS101-master/Exercise 1/Completed/TipCalculator/obj/iPhoneSimulator/Debug/TipCalculator.csprojAssemblyReference.cache
+/Users/dstrube/Downloads/IOS101-master/Exercise 1/Completed/TipCalculator/obj/iPhoneSimulator/Debug/TipCalculator.csproj.CoreCompileInputs.cache
+/Users/dstrube/Downloads/IOS101-master/Exercise 1/Completed/TipCalculator/obj/iPhoneSimulator/Debug/TipCalculator.exe
+/Users/dstrube/Downloads/IOS101-master/Exercise 1/Completed/TipCalculator/obj/iPhoneSimulator/Debug/TipCalculator.pdb
