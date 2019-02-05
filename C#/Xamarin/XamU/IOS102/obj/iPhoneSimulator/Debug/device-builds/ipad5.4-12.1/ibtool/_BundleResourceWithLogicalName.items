@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/LaunchScreen.nib">
+      <LogicalName>LaunchScreen.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc/1445-view-1446.nib">
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <LogicalName>Main.storyboardc/1445-view-1446.nib</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc/2184-view-2185.nib">
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <LogicalName>Main.storyboardc/2184-view-2185.nib</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc/About1ViewController.nib">
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <LogicalName>Main.storyboardc/About1ViewController.nib</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc/AboutViewController.nib">
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <LogicalName>Main.storyboardc/AboutViewController.nib</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib">
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <LogicalName>Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc/Info.plist">
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <LogicalName>Main.storyboardc/Info.plist</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc/UIViewController-BYZ-38-t0r.nib">
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <LogicalName>Main.storyboardc/UIViewController-BYZ-38-t0r.nib</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/ipad5.4-12.1/ibtool/Main.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+  </ItemGroup>
+</Project>
