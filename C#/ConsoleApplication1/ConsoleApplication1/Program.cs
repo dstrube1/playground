@@ -20,9 +20,9 @@ namespace ConsoleApplication1
         public static void Main(string[] args)
         {
 
-            //linqXample();
-
             Console.WriteLine("Done");
+
+            //linqXample();
 
             //Console.ReadLine();
         }
@@ -171,6 +171,12 @@ namespace ConsoleApplication1
         //var r = "1111111111111111111111111111";
         //var message = $"Error gathering disclaimers.\r {r}"; //carriage return
         //Console.WriteLine("Done: " + message);
+
+        //int a = 1, b = 2;
+        //if (++a == 1)
+        //  Console.WriteLine("x");
+        //else
+        //  Console.WriteLine(a-- * b); //4
 
         #endregion
 
