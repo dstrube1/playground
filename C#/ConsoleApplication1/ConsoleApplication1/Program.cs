@@ -140,24 +140,6 @@ namespace ConsoleApplication1
 
         #region Misc
 
-        #region testEnum
-        static void testEnum()
-        {
-            Console.WriteLine("Testing enum parsing");
-            string enumTest = "C";
-            TestEnum m;
-            if (!Enum.TryParse(enumTest, out m))
-            {
-                Console.WriteLine("enum not set; error while parsing");
-            }
-            else
-            {
-                Console.WriteLine("enum parsed: " + m);
-            }
-        }
-        #endregion testEnum
-
-
         //how to handle null array:
         //string[] strings = null;
         //foreach (var s in strings ?? new string[0])
@@ -178,11 +160,47 @@ namespace ConsoleApplication1
         //else
         //  Console.WriteLine(a-- * b); //4
 
+        //foo();//[year]
+        //object x = "x";//object
+        //foo(x);
+        //dynamic y = "y";//string
+        //foo(y);
+
         #endregion
 
         #endregion
 
         #region everything else
+
+        #region foos
+
+        static void foo(string s) { Console.WriteLine("string"); }
+        static void foo(object o) { Console.WriteLine("object"); }
+        static void foo(int i = 0)
+        {
+            if (i == 0)
+                Console.WriteLine(DateTime.Now.Year);
+            else Console.WriteLine(i);
+        }
+
+        #endregion
+
+        #region testEnum
+        static void testEnum()
+        {
+            Console.WriteLine("Testing enum parsing");
+            string enumTest = "C";
+            TestEnum m;
+            if (!Enum.TryParse(enumTest, out m))
+            {
+                Console.WriteLine("enum not set; error while parsing");
+            }
+            else
+            {
+                Console.WriteLine("enum parsed: " + m);
+            }
+        }
+        #endregion testEnum
 
         #region refTests
 
