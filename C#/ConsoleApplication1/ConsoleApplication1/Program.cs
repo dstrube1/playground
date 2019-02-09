@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 //
@@ -19,8 +20,6 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
-
-            Console.WriteLine("Done");
 
             //linqXample();
 
@@ -138,6 +137,35 @@ namespace ConsoleApplication1
 
         #endregion
 
+
+        #region async task 1
+
+        //https://blogs.msdn.microsoft.com/pfxteam/2012/02/08/potential-pitfalls-to-avoid-when-passing-around-async-lambdas/
+        //const int iterations = 5;
+        //Console.WriteLine("After " + iterations + " iterations...");
+        //    double secs = Time(() =>
+        //    {
+        //        Thread.Sleep(1000);
+        //    }, iterations);
+        //Console.WriteLine("Average Seconds: {0:F7}", secs);
+
+        //    Console.WriteLine("With async (default iterations, " + defaultIterations + "), done incorrectly...");
+        //    secs = Time(async () =>
+        //    {
+        //    await Task.Delay(1000);
+        //});
+        //    Console.WriteLine("Average Seconds: {0:F7}", secs);
+        //    Console.WriteLine("With async (iterations = " + iterations + "), done correctly...");
+        //    secs = Time1(async () =>
+        //    {
+        //    await Task.Delay(1000);
+        //}, iterations);
+            //Console.WriteLine("Average Seconds: {0:F7}", secs);
+
+            //Console.WriteLine("Done");
+
+        #endregion async task 1
+
         #region Misc
 
         //how to handle null array:
@@ -165,6 +193,7 @@ namespace ConsoleApplication1
         //foo(x);
         //dynamic y = "y";//string
         //foo(y);
+
 
         #endregion
 
@@ -330,6 +359,34 @@ namespace ConsoleApplication1
         }
 
         #endregion async task
+
+        #region async task 1
+        const int defaultIterations = 10;
+
+        //This works without async; doesn't work with async
+        public static double Time(Action action, int iters = defaultIterations)
+        {
+            var sw = Stopwatch.StartNew();
+            for (int i = 0; i < iters; i++)
+            {
+                Console.Write(".");
+                action();
+            }
+            return sw.Elapsed.TotalSeconds / iters;
+        }
+
+        //This works with async
+        public static double Time1(Func<Task> func, int iters = defaultIterations)
+        {
+            var sw = Stopwatch.StartNew();
+            for (int i = 0; i < iters; i++)
+            {
+                Console.Write(".");
+                func().Wait();
+            }
+            return sw.Elapsed.TotalSeconds / iters;
+        }
+        #endregion async task 1
 
         #region TextAdder
         static void testTextAdder()
