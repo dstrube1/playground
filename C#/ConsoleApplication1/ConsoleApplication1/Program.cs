@@ -160,13 +160,15 @@ namespace ConsoleApplication1
         //    {
         //    await Task.Delay(1000);
         //}, iterations);
-            //Console.WriteLine("Average Seconds: {0:F7}", secs);
+        //Console.WriteLine("Average Seconds: {0:F7}", secs);
 
-            //Console.WriteLine("Done");
+        //Console.WriteLine("Done");
 
         #endregion async task 1
 
         #region Misc
+
+        //Console.WriteLine(AddN("1", "Two"));
 
         //how to handle null array:
         //string[] strings = null;
@@ -200,6 +202,21 @@ namespace ConsoleApplication1
         #endregion
 
         #region everything else
+
+        static String AddN(String f, String s)
+        {
+            int sI = 0;
+            try
+            {
+                return Int32.TryParse(f, out sI).ToString(); // return of TryParse is a bool; output: True
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("E:+ " + e);
+            }
+            return sI.ToString();
+        }
+
 
         #region foos
 
