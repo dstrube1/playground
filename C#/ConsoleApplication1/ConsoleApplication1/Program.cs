@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,6 +21,15 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
+            var method = MethodBase.GetCurrentMethod();
+            Console.WriteLine($"method name: {method.Name}");
+            Console.WriteLine($"method parameters: ");
+            var parameters = method.GetParameters();
+            foreach(var param in parameters)
+            {
+                Console.WriteLine(param.ParameterType + " " + param.Name);
+            }
+
 
             //linqXample();
 
