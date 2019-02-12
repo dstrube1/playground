@@ -21,15 +21,7 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
-            var method = MethodBase.GetCurrentMethod();
-            Console.WriteLine($"method name: {method.Name}");
-            Console.WriteLine($"method parameters: ");
-            var parameters = method.GetParameters();
-            foreach(var param in parameters)
-            {
-                Console.WriteLine(param.ParameterType + " " + param.Name);
-            }
-
+            outTest();
 
             //linqXample();
 
@@ -212,6 +204,34 @@ namespace ConsoleApplication1
         #endregion
 
         #region everything else
+
+        static void outTest()
+        {
+
+            int a = 0;
+            int b = 0;
+            Console.WriteLine("a = {0}, b = {1}", a, b);
+            twoReturns(out a, out b);
+            Console.WriteLine("a = {0}, b = {1}", a, b);
+        }
+
+        static void twoReturns(out int A, out int B)
+        {
+            A = 1;
+            B = 2;
+        }
+
+        static void methodBaseTest() 
+        {
+            var method = MethodBase.GetCurrentMethod();
+            Console.WriteLine($"method name: {method.Name}");
+            Console.WriteLine($"method parameters: ");
+            var parameters = method.GetParameters();
+            foreach (var param in parameters)
+            {
+                Console.WriteLine(param.ParameterType + " " + param.Name);
+            }
+        }
 
         static String AddN(String f, String s)
         {
