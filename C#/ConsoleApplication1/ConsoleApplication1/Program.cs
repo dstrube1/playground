@@ -21,14 +21,13 @@ namespace ConsoleApplication1
 
         public static void Main(string[] args)
         {
-            outTest();
 
-            //linqXample();
+        //linqXample();
 
-            //Console.ReadLine();
-        }
+        //Console.ReadLine();
+    }
 
-        private static void linqXample()
+    private static void linqXample()
         {
             //1 - where 
             //string[] words = { "hello", "wonderful", "LINQ", "beautiful", "world" };
@@ -198,6 +197,18 @@ namespace ConsoleApplication1
         //dynamic y = "y";//string
         //foo(y);
 
+        /*
+                    try
+        {
+            Console.WriteLine(MyClass.MyMethod());
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.GetType()); //TypeInitializationException
+        }
+
+
+        */
 
         #endregion
 
@@ -1055,7 +1066,7 @@ namespace ConsoleApplication1
 
     }
 
-    class TextAdder
+/*    class TextAdder
     {
         public StringBuilder addText(StringBuilder input)
         {
@@ -1064,6 +1075,17 @@ namespace ConsoleApplication1
             input = null;
             return result;
         }
-    }
+    }*/
+    /*static class MyClass
+    {
+        static MyClass()
+        {
+            throw new Exception();
+        }
 
+        public static string MyMethod()
+        {
+            return "My Method";
+        }
+    }*/
 }
