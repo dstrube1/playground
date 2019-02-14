@@ -19,6 +19,10 @@ import java.util.Scanner;
 public class FolderComparer{
 
 	private static FilenameFilter fileNameFilter;
+	private static final String[] ignoreFolders = {"/obj/","/bin","/.vs/"};
+	private static final String[] ignoreFiles = {".DS_Store",".csproj",".vs"};//TODO: this doesn't seem to really work
+	private static int dirCount = 0;
+	private static int progressCount = 0;
 
 	public static void main(String[] args){
 		if (args.length == 0){
@@ -43,9 +47,23 @@ public class FolderComparer{
             	@Override
 	            public boolean accept(File dir, String name) {
 	            	if (dir.isDirectory()){
+	            		for (String ignoreFolder : ignoreFolders) {
+	            			if (dir.getPath().contains(ignoreFolder)){
+	            				return false;
+	            			}
+	            		}
 	            		return true;
 	            	}
     	           if(name.lastIndexOf('.') > 0) {
+		            	for (String ignoreFile : ignoreFiles) {
+		            		if(name.endsWith(ignoreFile)){
+	    	        			return false;
+	        	    		}
+	            			//else{
+	            			//Can't print from within FilenameFilter :(
+	            			//System.out.println("dir.getPath() " + dir.getPath() + "NOT endsWith(ignoreFile) " + ignoreFile);
+	            			//}
+		            	}
                
         	          // get last index for '.' char
             	      int lastIndex = name.lastIndexOf('.');
@@ -70,9 +88,12 @@ public class FolderComparer{
 				//System.out.println("Phase 1 failed.");
 				return;
 			}
+			
+			getDirCount(dir1);
 	
 			if (phase2(dir1,dir2)){
 				System.out.println("Phase 2 passed.");
+				//System.out.println("dirCount =? " + dirCount);//332?
 			} else {
 				//System.out.println("Phase 2 failed.");
 				return;
@@ -192,6 +213,16 @@ public class FolderComparer{
 
 		return true;
 	}
+	
+	private static void getDirCount(File dir){
+		dirCount++;
+		File[] dirList = dir.listFiles(fileNameFilter);
+		for (File dir0 : dirList){
+			if (dir0.isDirectory()){
+				getDirCount(dir0);
+			}
+		}
+	}
 
 	//Verify the file contents are the same
 	private static boolean phase2(File dir1, File dir2){
@@ -213,6 +244,11 @@ public class FolderComparer{
 				
 				//recurse
 				if (dir1List[i].isDirectory() && dir2List[i].isDirectory()){
+					//System.out.println("Comparing " + dir1List[i] + " & " + dir2List[i]);
+					//System.out.print(".");
+					progressCount++;
+					double percentDone = ((1.0 * progressCount) / dirCount) * 100;
+					System.out.println(String.format("%.1f", percentDone) + "% done");
 					if (!phase2(dir1List[i], dir2List[i])){
 						return false;
 					}
