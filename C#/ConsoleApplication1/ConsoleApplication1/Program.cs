@@ -19,15 +19,14 @@ namespace ConsoleApplication1
     class Program
     {
 
-        public static void Main(string[] args)
-        {
+    public static void Main(string[] args)
+    {
+            //linqXample();
 
-        //linqXample();
+            //Console.ReadLine();
+        }
 
-        //Console.ReadLine();
-    }
-
-    private static void linqXample()
+        private static void linqXample()
         {
             //1 - where 
             //string[] words = { "hello", "wonderful", "LINQ", "beautiful", "world" };
@@ -198,7 +197,7 @@ namespace ConsoleApplication1
         //foo(y);
 
         /*
-                    try
+        try
         {
             Console.WriteLine(MyClass.MyMethod());
         }
@@ -207,6 +206,20 @@ namespace ConsoleApplication1
             Console.WriteLine(e.GetType()); //TypeInitializationException
         }
 
+
+        */
+
+        /*
+
+        try
+        {
+            object[] array = new String[10];
+            array[0] = 10; //runtime: ArrayTypeMismatchException
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e.GetType());
+        }
 
         */
 
@@ -447,6 +460,7 @@ namespace ConsoleApplication1
         #endregion async task 1
 
         #region TextAdder
+        /*
         static void testTextAdder()
         {
             Console.WriteLine();
@@ -465,6 +479,7 @@ namespace ConsoleApplication1
         }
 
         //see also class TextAdder below
+        */
         #endregion TextAdder
 
         #region Maximums
