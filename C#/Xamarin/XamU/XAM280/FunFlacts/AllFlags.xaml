@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="FunFlacts.AllFlags"
+    Title="Fun with Flags">
+<!--    moved to App.xaml:
+    xmlns:data="clr-namespace:FlagData;assembly=FlagData"
+    xmlns:cvt="clr-namespace:FunFlacts.Converters"-->    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ToolbarItem x:Key="cancelEditButton" Text="Cancel"
+                  Clicked="OnEdit" Icon="ic_cancel.png" /><!-- x:Name="cancelEditButton" -->
+            <!--moved to App.xaml:
+            <cvt:EmbeddedImageConverter x:Key="irConverter" 
+                    ResolvingAssemblyType="{x:Type data:Flag}" />-->
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="editButton" Text="Edit" Clicked="OnEdit" Icon="ic_edit.png" IsDestructive="true" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ListView x:Name="flags" ItemsSource="{Binding Flags}"
+                  SelectedItem="{Binding CurrentFlag, Mode=TwoWay}"
+                  IsPullToRefreshEnabled="true"
+                  Refreshing="OnRefreshing" 
+                  >
+            <!--
+            https://elearning.xamarin.com/forms/xam280/3-customize-rows/exercise5/1-add-a-datatemplate-to-the-listview
+            -->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell ImageSource="{Binding ImageUrl, Mode=OneWay, Converter={StaticResource irConverter}}" 
+                               DetailColor="Gray" 
+                               Text="{Binding Country}" 
+                               Detail="{Binding DateAdopted, StringFormat='Adopted on {0:d}'}">
+                        <ImageCell.ContextActions>
+                            <MenuItem Clicked="OnDelete" Text="Exterminate!" IsDestructive="true"/>
+                        </ImageCell.ContextActions>
+                    </ImageCell>
+                    <!-- 
+                    Notice how the flags are different sizes? You'll look at ways to fix this problem in XAM312 - Customizing ListView
+                    -->
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <!--
+            IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+            RefreshCommand="{Binding RefreshCommand}"
+            -->
+            <!--cool:
+            https://elearning.xamarin.com/forms/xam280/1-display-collection/exercise2/3-bind-to-selecteditem
+            -->
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
