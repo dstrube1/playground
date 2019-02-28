@@ -1,0 +1,12 @@
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/bin/Debug/netstandard1.1/QuickFlicks.ViewModels.deps.json
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/bin/Debug/netstandard1.1/QuickFlicks.ViewModels.dll
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/bin/Debug/netstandard1.1/QuickFlicks.ViewModels.pdb
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/bin/Debug/netstandard1.1/QuickFlicks.Data.dll
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/bin/Debug/netstandard1.1/QuickFlicks.Data.pdb
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/obj/Debug/netstandard1.1/QuickFlicks.ViewModels.csprojAssemblyReference.cache
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/obj/Debug/netstandard1.1/QuickFlicks.ViewModels.csproj.CoreCompileInputs.cache
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/obj/Debug/netstandard1.1/QuickFlicks.ViewModels.AssemblyInfoInputs.cache
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/obj/Debug/netstandard1.1/QuickFlicks.ViewModels.AssemblyInfo.cs
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/obj/Debug/netstandard1.1/QuickFlicks.ViewModels.csproj.CopyComplete
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/obj/Debug/netstandard1.1/QuickFlicks.ViewModels.dll
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/obj/Debug/netstandard1.1/QuickFlicks.ViewModels.pdb

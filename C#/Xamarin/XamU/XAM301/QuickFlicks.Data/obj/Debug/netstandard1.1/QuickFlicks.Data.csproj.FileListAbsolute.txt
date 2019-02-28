@@ -1,0 +1,9 @@
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/QuickFlicks.Data/bin/Debug/netstandard1.1/QuickFlicks.Data.deps.json
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/QuickFlicks.Data/bin/Debug/netstandard1.1/QuickFlicks.Data.dll
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/QuickFlicks.Data/bin/Debug/netstandard1.1/QuickFlicks.Data.pdb
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/QuickFlicks.Data/obj/Debug/netstandard1.1/QuickFlicks.Data.csprojAssemblyReference.cache
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/QuickFlicks.Data/obj/Debug/netstandard1.1/QuickFlicks.Data.csproj.CoreCompileInputs.cache
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/QuickFlicks.Data/obj/Debug/netstandard1.1/QuickFlicks.Data.AssemblyInfoInputs.cache
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/QuickFlicks.Data/obj/Debug/netstandard1.1/QuickFlicks.Data.AssemblyInfo.cs
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/QuickFlicks.Data/obj/Debug/netstandard1.1/QuickFlicks.Data.dll
+/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/QuickFlicks.Data/obj/Debug/netstandard1.1/QuickFlicks.Data.pdb
