@@ -1,0 +1,58 @@
+<project>
+
+    <target name="clean">
+        <delete dir="bin/com"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="bin/com"/>
+        <javac srcdir="com" destdir="bin"/>
+    </target>
+
+    <target name="runWithoutArgs">
+        <java classname="com.dstrube.gtri.Question1" classpath="bin"/>
+    </target>
+
+    <target name="runEmpty">
+        <java classname="com.dstrube.gtri.Question1" classpath="bin">
+			<arg value="files/empty.txt" />
+		</java>
+    </target>
+
+    <target name="runInvalid1">
+        <java classname="com.dstrube.gtri.Question1" classpath="bin">
+			<arg value="files/invalid1.txt" />
+		</java>
+    </target>
+
+    <target name="runInvalid2">
+        <java classname="com.dstrube.gtri.Question1" classpath="bin">
+			<arg value="files/invalid2.txt" />
+		</java>
+    </target>
+
+    <target name="runX1">
+        <java classname="com.dstrube.gtri.Question1" classpath="bin">
+			<arg value="files/x1.txt" />
+		</java>
+    </target>
+
+    <target name="runX2">
+        <java classname="com.dstrube.gtri.Question1" classpath="bin">
+			<arg value="files/x2.txt" />
+		</java>
+    </target>
+
+    <target name="runX3">
+        <java classname="com.dstrube.gtri.Question1" classpath="bin">
+			<arg value="files/x3.txt" />
+		</java>
+    </target>
+
+    <target name="runX4">
+        <java classname="com.dstrube.gtri.Question1" classpath="bin">
+			<arg value="files/x4.txt" />
+		</java>
+    </target>
+
+</project>
