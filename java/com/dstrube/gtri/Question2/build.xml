@@ -1,0 +1,16 @@
+<project>
+
+    <target name="clean">
+        <delete dir="bin/com"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="bin/com"/>
+        <javac srcdir="com" destdir="bin"/>
+    </target>
+
+    <target name="run">
+        <java classname="com.dstrube.gtri.Question2" classpath="bin"/>
+    </target>
+
+</project>
