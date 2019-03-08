@@ -1,0 +1,2 @@
+DO NOT UPDATE PAKAGES IN THIS SOLUTION
+Updating packages in any project in this solution can break the Android portion.
