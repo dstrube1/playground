@@ -122,21 +122,6 @@ def stringF3():
 	end_link = page.find(end_atag, start_link + len(atag))
 	url = page[start_link + len(atag) : end_link]
 	return
-
-def loops():
-	for letter in 'abc':
-		print "for letter in 'abc': " + letter
-	for i in range(3):
-		print "for i in range(3): ", i
-	for i in range(5,8): #we can reusing variables
-		print "for i in range(5,8): ", i
-	print "can we reuse a variable outside its loop? yes: ",i 
-	count = 0
-	while (count < 4):
-		print 'while (count<4): ', count # oh hey, another way to concatenate a string and int
-		count = count + 1
-	return
-#loops()
 	
 dictionary = {
         'a': 1,
