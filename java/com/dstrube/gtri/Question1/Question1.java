@@ -3,7 +3,7 @@ Author: David Strube
 Date: 2019-03-02
 
 Compile:
-javac -d bin com/dstrube/gtri/Question1.java
+javac -d bin com/dstrube/gtri/Question1/Question1.java
 Run:
 java -cp bin com.dstrube.gtri.Question1 [file]
 
@@ -198,6 +198,10 @@ public class Question1
 				{
 					return true;
 				}
+				//Interestingly, this handles arithmetic overflow correctly:
+				//Int.MAX (2147483647) + Int.MAX = -2
+				//(Int.MAX) + (Int.MAX - 1) = -3
+				//(Int.MAX) + (Int.MAX + 1) = NumberFormatException
 			}
 			
 		}
