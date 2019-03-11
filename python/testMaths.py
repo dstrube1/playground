@@ -1,7 +1,7 @@
 #test.py
 #Author: David Strube
 #Date: 2019-03-08
-#What is: testing python maths stuffs
+#What is: testing python maths stuffs 
 
 #function doing math stuffs, pt 0
 def mathF0():
