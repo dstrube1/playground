@@ -2963,11 +2963,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/QuickFlicks.ViewModels.csproj",
+      "projectUniqueName": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM301/XForms/QuickFlicks.ViewModels/QuickFlicks.ViewModels.csproj",
       "projectName": "QuickFlicks.ViewModels",
-      "projectPath": "/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/QuickFlicks.ViewModels.csproj",
+      "projectPath": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM301/XForms/QuickFlicks.ViewModels/QuickFlicks.ViewModels.csproj",
       "packagesPath": "/Users/dstrube/.nuget/packages/",
-      "outputPath": "/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks.ViewModels/obj/",
+      "outputPath": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM301/XForms/QuickFlicks.ViewModels/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -2985,8 +2985,8 @@
       "frameworks": {
         "netstandard1.1": {
           "projectReferences": {
-            "/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/QuickFlicks.Data/QuickFlicks.Data.csproj": {
-              "projectPath": "/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/QuickFlicks.Data/QuickFlicks.Data.csproj"
+            "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM301/QuickFlicks.Data/QuickFlicks.Data.csproj": {
+              "projectPath": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM301/QuickFlicks.Data/QuickFlicks.Data.csproj"
             }
           }
         }

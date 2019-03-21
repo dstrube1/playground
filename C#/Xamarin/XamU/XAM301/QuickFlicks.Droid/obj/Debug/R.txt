@@ -1,4 +1,0 @@
-int id movieList 0x7f040001
-int id searchView 0x7f040000
-int layout main 0x7f020000
-int string app_name 0x7f030000

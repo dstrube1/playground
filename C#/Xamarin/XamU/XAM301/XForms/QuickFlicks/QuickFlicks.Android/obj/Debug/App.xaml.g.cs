@@ -13,8 +13,8 @@
 namespace QuickFlicks {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("/Users/dstrube/Downloads/XAM301-master/Exercise 3/Completed/XForms/QuickFlicks/Qu" +
-        "ickFlicks/App.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM301/XForms/QuickFlic" +
+        "ks/QuickFlicks/App.xaml")]
     public partial class App : global::Xamarin.Forms.Application {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
