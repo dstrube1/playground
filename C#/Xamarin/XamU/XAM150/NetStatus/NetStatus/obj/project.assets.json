@@ -477,11 +477,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dstrube/Projects/NetStatus/NetStatus/NetStatus.csproj",
+      "projectUniqueName": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM150/NetStatus/NetStatus/NetStatus.csproj",
       "projectName": "NetStatus",
-      "projectPath": "/Users/dstrube/Projects/NetStatus/NetStatus/NetStatus.csproj",
+      "projectPath": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM150/NetStatus/NetStatus/NetStatus.csproj",
       "packagesPath": "/Users/dstrube/.nuget/packages/",
-      "outputPath": "/Users/dstrube/Projects/NetStatus/NetStatus/obj",
+      "outputPath": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM150/NetStatus/NetStatus/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

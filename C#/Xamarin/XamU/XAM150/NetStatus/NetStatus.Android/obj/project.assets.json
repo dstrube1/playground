@@ -1056,12 +1056,13 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dstrube/Projects/NetStatus/NetStatus.Android/NetStatus.Android.csproj",
+      "projectUniqueName": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM150/NetStatus/NetStatus.Android/NetStatus.Android.csproj",
       "projectName": "NetStatus.Android",
-      "projectPath": "/Users/dstrube/Projects/NetStatus/NetStatus.Android/NetStatus.Android.csproj",
+      "projectPath": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM150/NetStatus/NetStatus.Android/NetStatus.Android.csproj",
       "packagesPath": "/Users/dstrube/.nuget/packages/",
-      "outputPath": "/Users/dstrube/Projects/NetStatus/NetStatus.Android/obj",
+      "outputPath": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM150/NetStatus/NetStatus.Android/obj/",
       "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
       "configFilePaths": [
         "/Users/dstrube/.config/NuGet/NuGet.Config"
       ],
@@ -1075,8 +1076,8 @@
       "frameworks": {
         "monoandroid81": {
           "projectReferences": {
-            "/Users/dstrube/Projects/NetStatus/NetStatus/NetStatus.csproj": {
-              "projectPath": "/Users/dstrube/Projects/NetStatus/NetStatus/NetStatus.csproj"
+            "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM150/NetStatus/NetStatus/NetStatus.csproj": {
+              "projectPath": "/Users/dstrube/Projects/github/playground/C#/Xamarin/XamU/XAM150/NetStatus/NetStatus/NetStatus.csproj"
             }
           }
         }
