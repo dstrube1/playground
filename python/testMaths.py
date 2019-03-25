@@ -1,4 +1,4 @@
-#test.py
+#testMaths.py
 #Author: David Strube
 #Date: 2019-03-08
 #What is: testing python maths stuffs 
