@@ -51,7 +51,9 @@ import java.nio.channels.OverlappingFileLockException;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MultiplicativePersistence {
 //According to Maths.java:
@@ -66,6 +68,7 @@ public class MultiplicativePersistence {
 	private static final long PER_THREAD_LIMIT_MULTIPLIER = 10000000000000L;//10 TRILLION
 	private static final BigInteger PER_THREAD_LIMIT = new BigInteger(String.valueOf(PER_THREAD_LIMIT_MULTIPLIER));
 	private static volatile boolean isAnotherThreadWritingToFile = false;
+	private static final ConcurrentHashMap<String,String> threadStatuses = new ConcurrentHashMap<>();
 	
 	public static void main(String[] args) {
 		//2019-03-25:
@@ -306,14 +309,28 @@ public class MultiplicativePersistence {
 					limit = limit.subtract(BigInteger.ONE);
 					final BigInteger mod = limit.mod(PROGRESS_MOD);
 					if (mod.compareTo(BigInteger.ZERO) == 0){
-						System.out.print("\r " + name + " : " + progressCount + " / " + limit.toString());// + "; testing " + pos);
+						final String status = "" + progressCount + " / " + limit.toString();
+						if (!threadStatuses.containsKey(name)){
+							threadStatuses.put(name, status);
+						}else{
+							threadStatuses.replace(name, status);
+						}
+						final StringBuilder threadStatus = new StringBuilder();
+						final Set<String> keys = threadStatuses.keySet();
+						for (final String key : keys){
+							threadStatus.append(key);
+							threadStatus.append(":");
+							threadStatus.append(threadStatuses.get(key));
+							threadStatus.append("; ");
+						} 
+						System.out.print("\r " + threadStatus.toString());// + "; testing " + pos);
 						progressCount++;
 						if (name.equals("thread0")){
 							final Date slaveDate = new Date();
 							final long diff = slaveDate.getTime() - masterDate.getTime();
 							final long diffHours = TimeUnit.MILLISECONDS.toHours(diff);
 							if (diffHours != lastHourCount){
-								System.out.println(diffHours + " hours have passed, as of " + slaveDate);
+								System.out.println("\n"+diffHours + " hours have passed, as of " + slaveDate);
 								lastHourCount = diffHours;
 							}
 						}
