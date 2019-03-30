@@ -3,8 +3,8 @@ package com.dstrube.dataStructures;
 /*
 commands to compile and run:
 from ~/Projects/java
-javac -d ~/Projects/java/bin com/dstrube/dataStructures/DataStructures.java 
-java -cp ~/Projects/java/bin com.dstrube.dataStructures.DataStructures
+javac -d bin com/dstrube/dataStructures/DataStructures.java 
+java -cp bin com.dstrube.dataStructures.DataStructures
 */
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.LinkedTransferQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
-
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DataStructures {
 
@@ -35,7 +35,10 @@ public class DataStructures {
 //		System.out.println("");
 //		doHashtable();
 //		doStack();
-		doQueue();
+//		doQueue();
+		doConcurrentHashMap();
+		//the only reason to use Hashtable is when a legacy API (from ca. 1996) requires it.
+		//https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable
 		System.out.println("done");
 		
 	}
@@ -45,8 +48,9 @@ public class DataStructures {
         try {
             List list = new ArrayList<>();
             //mixing data types is fine; be careful with datatypes when getting data out
-            list.add(1);
-            list.add("2");
+            //Commenting these out for now, just to get quiet compilations; feel free to uncomment later
+            //list.add(1);
+            //list.add("2");
             for (int i = 0; i < list.size(); i++) {
                 System.out.println("list[" + i + "] = " + list.get(i));
             }
@@ -59,9 +63,10 @@ public class DataStructures {
     private static void doHashtable(){
         System.out.println("Hashtable:");
         try {
-            Hashtable hashtable = new Hashtable();
+            Hashtable hashtable = new Hashtable<>();
             //Adding duplicates will quietly fail
-            hashtable.put(1, "one");
+            //Commenting these out for now, just to get quiet compilations; feel free to uncomment later
+            /*hashtable.put(1, "one");
             hashtable.put(2, "two");
             hashtable.put(1, "one");
             hashtable.put(2, "two");
@@ -76,7 +81,7 @@ public class DataStructures {
             hashtable.put("8", 1);
             hashtable.put("7", 2);
             hashtable.put(5, 1);
-            hashtable.put(9, 2);
+            hashtable.put(9, 2);*/
             //objects go in / print out randomly; there's no built in sort
             for (Object o : hashtable.keySet()){
                 System.out.println("hashtable[" + o.toString() + "] = " + hashtable.get(o));
@@ -89,7 +94,7 @@ public class DataStructures {
     private static void doStack(){
         System.out.println("Stack:");
         try{
-            Stack<Integer> stack = new Stack();
+            Stack<Integer> stack = new Stack<>();
             for (int i = 0; i < 5; i++) {
                 System.out.println("Pushing to stack: " + i);
                 stack.push(i);
@@ -120,7 +125,8 @@ public class DataStructures {
 	    Queue priorityBlockingQueue	 = new PriorityBlockingQueue();
 	    
 	    List list = new ArrayList<>();
-	    list.add(arrayBlockingQueue); 	//0
+	    //Commenting these out for now, just to get quiet compilations; feel free to uncomment later
+	    /*list.add(arrayBlockingQueue); 	//0
 	    list.add(arrayDeque);			//1
 	    list.add(priorityQueue);		//2
 	    list.add(linkedList);			//3
@@ -131,7 +137,7 @@ public class DataStructures {
 	    list.add(linkedBlockingQueue);	//8
 	    list.add(linkedTransferQueue);	//9
 	    list.add(synchronousQueue);		//10
-	    list.add(priorityBlockingQueue);//11
+	    list.add(priorityBlockingQueue);//11*/
 	    String[] queueNames = {
 	    	"arrayBlockingQueue",	//0
 	    	"arrayDeque",			//1
@@ -149,7 +155,8 @@ public class DataStructures {
 	    
 	    for (int i=0; i< list.size(); i++){
 	    	System.out.println("adding stuff to " + queueNames[i]);
-	    	list.set(i, forEachQueue((Queue)list.get(i)));
+	    	//Commenting these out for now, just to get quiet compilations; feel free to uncomment later
+	    	//list.set(i, forEachQueue((Queue)list.get(i)));
 	    }
 	    for (int i=0; i< list.size()-1; i++){
 	    	System.out.println("removing stuff from " + queueNames[i]);
@@ -181,16 +188,17 @@ public class DataStructures {
 	
 	private static Queue forEachQueue(Queue queue){
 		try{
-			queue.add(1);
+			//Commenting these out for now, just to get quiet compilations; feel free to uncomment later
+			//queue.add(1);
 			try{
-				queue.add(1);
-				queue.add(2);
-				queue.add(3);
-				queue.add(5);
+				//queue.add(1);
+				//queue.add(2);
+				//queue.add(3);
+				//queue.add(5);
 			} catch (IllegalStateException illegalStateException){
 				//otherwise ArrayBlockingQueue complains that queue is full on second add
 			}
-			queue.offer(8);
+			//queue.offer(8);
 		} catch (ClassCastException classCastException){
 			//otherwise DelayQueue complains "Integer cannot be cast to java.util.concurrent.Delayed" on first add
 		} catch (IllegalStateException illegalStateException){
@@ -264,5 +272,9 @@ public class DataStructures {
     	consumer.start(); // starting consumer thread
 	}
 	
-	
+	private static void doConcurrentHashMap(){
+		final ConcurrentHashMap<String,String> concurrentHashMap = new ConcurrentHashMap<>();
+		concurrentHashMap.put("thread0","blahblahblah");
+		//For a more complete example, see MultiplicativePersistence.java
+	}
 }
