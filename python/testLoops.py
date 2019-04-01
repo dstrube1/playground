@@ -14,7 +14,7 @@ def loops():
 	count = 0
 	while (count < 4):
 		print 'while (count<4): ', count # oh hey, another way to concatenate a string and int
-		count = count + 1
+		count += 1
 	return
 
 loops()
