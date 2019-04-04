@@ -4,6 +4,7 @@
 #What is: Having a go at multiplicative persistence
 
 import sys
+import multiprocessing
 
 #According to this:
 #https://www.youtube.com/watch?v=Wim9WJeDTHQ
@@ -53,69 +54,82 @@ def testDumb():
 #A little smarter
 #from 10:47 here:
 #https://www.youtube.com/watch?v=Wim9WJeDTHQ
-#1- Leave out anything with a 5
-#2- keep track of what's been tested; compare what is being tested to what has been tested; if digits (regardless of order) match, skip it
-tested = []
+#1- Leave out anything with a 1, 0, (5 and an even), two 2s, two 3s, (2 and 3), or (2 and 4)
+#2- if digits aren't in ascending order skip it
 def smartPersistence(n, steps=0, start=0):
 	if start == 0:
 		start = n
-	if "5" in str(start):
-		#print "contains 5: " + str(n)
-		sys.stderr.write('5')
+	if "0" in str(start) or "1" in str(start) or contains2Twos(start) or contains2Threes(start):
 		return
-	if hasBeenTested(start):
-		#print "already tested similar combination of digits: " + str(n)
-		sys.stderr.write('X')
+	if "2" in str(start) and "3" in str(start):
+		return
+	if "2" in str(start) and "4" in str(start):
+		return
+	if "5" in str(start) and containsEven(start):
+		return
+	if not areDigitsAscending(start):
 		return
 	if len(str(n)) == 1:
-		#print "Total steps " + str(steps)
 		if steps > 8:
 			print "start was " + str(start) + "; steps = " + str(steps)
-		else:
-			if start % 1000 == 0:
-				sys.stderr.write('.')
 		return
-		
 	steps += 1
 	digits = [int(i) for i in str(n)]
 	result = 1
 	for j in digits:
 		result *= j
-	#print result
 	smartPersistence(result, steps, start)
 
-def hasBeenTested(n):
-#	if n in tested:
-#		return True
-#	lengthFound = False
-#	for i in tested:
-#		if len(str(n)) == len(str(i)):
-#			lengthFound = True
-#	if not lengthFound:
-#		return False
-	for j in tested:
-		if hasSameDigits(j,n):
-			return True
+def containsEven(n):
+	if "2" in str(n) or "4" in str(n) or "6" in str(n) or "8" in str(n):
+		return True
 	return False
 
-def hasSameDigits(j,n):
-	if sorted(str(j)) == sorted(str(n)):
+def contains2Twos(n):
+	count = str(n).count('2') 
+	if count >= 2:
+		return True
+	return False
+	
+def contains2Threes(n):
+	count = str(n).count('3') 
+	if count >= 2:
+		return True
+	return False
+	
+def areDigitsAscending(n):
+	if ''.join(sorted(str(n))) == str(n):
 		return True
 	return False
 
 #smartPersistence(277777788888899)
 
-def testSmart():
-	#limit = 10000000
-	pos = 277777788936677
-	while True:#pos < limit:
+#starting at lowest possible 233 digit candidate
+def testSmart(pos,threadNum,limit):
+	posOrigin = pos
+	while limit > 0:
 		smartPersistence(pos)
-		tested.append(pos)
 		pos += 1
-	print "Done"
-testSmart()
+		limit -= 1
+		if limit % 1000000 == 0:
+			sys.stderr.write(str(threadNum) + '(' + str(limit).translate(None, '0') + '); ')
+	print "Thread " + str(threadNum) + " is done, checked from " + str(posOrigin) + " to " + str(pos)
+#testSmart()
 
+if __name__ == "__main__":
+	processArray = []
+	startPos = 26666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
+	startPosOrigin = startPos
+	perThreadLimit = 1000000000
+for i in range(9):
+	startPos += (i * perThreadLimit)
+	p = multiprocessing.Process(target=testSmart, args=(startPos,i,perThreadLimit,))
+	p.start()
+	processArray.append(p)
+	startPos = startPosOrigin
 
+for j in range(9):
+	processArray[j].join()
 
 
 
