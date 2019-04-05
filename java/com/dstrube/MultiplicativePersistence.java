@@ -65,7 +65,7 @@ public class MultiplicativePersistence {
 //https://www.youtube.com/watch?v=Wim9WJeDTHQ
 //"The current search has gone as far as 233 digits." -_-
 	
-	private static final long PER_THREAD_LIMIT_MULTIPLIER = 10000000000000L;//10 TRILLION
+	private static final long PER_THREAD_LIMIT_MULTIPLIER = 10000000000L;//10 BILLION
 	private static final BigInteger PER_THREAD_LIMIT = new BigInteger(String.valueOf(PER_THREAD_LIMIT_MULTIPLIER));
 	private static volatile boolean isAnotherThreadWritingToFile = false;
 	private static final ConcurrentHashMap<String,String> threadStatuses = new ConcurrentHashMap<>();
