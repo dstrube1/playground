@@ -1,13 +1,13 @@
-package com.dstrube.fibonacci;
+package com.dstrube;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /*
 commands to compile and run:
-from /Users/dstrubex/Projects/java
-javac -d /Users/dstrubex/Projects/java/bin com/dstrube/fibonacci/Fibonacci.java
-java -cp /Users/dstrubex/Projects/java/bin com.dstrube.fibonacci.Fibonacci
+from ~java
+javac -d bin com/dstrube/Fibonacci.java
+java -cp bin com.dstrube.Fibonacci
 */
 
 public class Fibonacci{
