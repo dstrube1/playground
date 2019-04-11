@@ -2,12 +2,15 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.3"
 
     defaultConfig {
         applicationId "com.json.jsonparsing"
         minSdkVersion 24
         targetSdkVersion 27
+    }
+
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
     }
 
     useLibrary 'org.apache.http.legacy'

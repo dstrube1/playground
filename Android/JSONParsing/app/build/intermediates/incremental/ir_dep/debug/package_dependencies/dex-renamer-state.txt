@@ -1,0 +1,4 @@
+#Tue Apr 09 16:04:22 EDT 2019
+base.0=/Users/dstrube/Projects/github/playground/Android/JSONParsing/app/build/intermediates/transforms/dexMerger/debug/10
+path.0=classes.dex
+renamed.0=classes.dex
