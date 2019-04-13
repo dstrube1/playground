@@ -1,10 +1,10 @@
-package com.dstrube.rotatedArraySearch;
+package com.dstrube;
 
 /*
 commands to compile and run:
 from ~/Projects/java
-javac -d ~/Projects/java/bin com/dstrube/rotatedArraySearch/RotatedArraySearch.java
-java -cp ~/Projects/java/bin com.dstrube.rotatedArraySearch.RotatedArraySearch
+javac -d bin com/dstrube/RotatedArraySearch.java
+java -cp bin com.dstrube.RotatedArraySearch
 */
 
 public class RotatedArraySearch{

@@ -1,10 +1,10 @@
-package com.dstrube.pi;
+package com.dstrube;
 
 /*
 compile:
-javac -d bin com/dstrube/pi/Pi.java
+javac -d bin com/dstrube/Pi.java
 run:
-java -cp bin com.dstrube.pi.Pi
+java -cp bin com.dstrube.Pi
 */
 
 public class Pi{
@@ -28,26 +28,6 @@ public class Pi{
 		//calcDoublePi(); //This won't end anytime soon
 		//System.out.println("Double pi: " + piD);
 		//System.out.println("Double.MAX_VALUE = " + Double.MAX_VALUE);//1.7976931348623157E308
-		//getLongMaxEstimate();
-	}
-	
-	private static long getLongMaxEstimate(){
-		long myLong = 1;
-	    long ltemp = myLong;
-    	while (ltemp > 0){ //when ltemp exceeds the maximum, it loops around to a negative
-	        myLong = ltemp;
-    	    ltemp *= 10;
-	        System.out.println("long max guess = " + myLong + "\n");
-	    }
-    	return myLong; //1000000000000000000
-	}
-	
-	private static boolean recursiveLongMaxFinder(long candidate, int factor){
-		return true;
-	}
-	
-	private static boolean recursiveLongMaxFinderAdd(long candidate, long addend){
-		return true;
 	}
 	
 	//https://en.wikipedia.org/wiki/Pi
