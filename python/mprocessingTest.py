@@ -46,3 +46,10 @@ for i in range(9):
 
 for j in range(9):
 	processArray[j].join()
+	
+print "\nmultiprocessing.cpu_count(): "
+print multiprocessing.cpu_count()
+
+import os
+print "\nos.cpu_count(): "
+print multiprocessing.cpu_count()
