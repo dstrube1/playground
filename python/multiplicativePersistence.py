@@ -70,8 +70,11 @@ def smartPersistence(n, steps=0, start=0):
 	if not areDigitsAscending(start):
 		return
 	if len(str(n)) == 1:
-		if steps > 8:
-			print "start was " + str(start) + "; steps = " + str(steps)
+		if steps > 11:
+			output = "start was " + str(start) + "; steps = " + str(steps)
+			with open('output.txt', 'w') as file:
+				file.write(output)
+			print output
 		return
 	steps += 1
 	digits = [int(i) for i in str(n)]
@@ -117,18 +120,19 @@ def testSmart(pos,threadNum,limit):
 #testSmart()
 
 if __name__ == "__main__":
+	threadLimit = multiprocessing.cpu_count()
 	processArray = []
 	startPos = 26666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
 	startPosOrigin = startPos
 	perThreadLimit = 1000000000
-for i in range(9):
+for i in range(threadLimit):
 	startPos += (i * perThreadLimit)
 	p = multiprocessing.Process(target=testSmart, args=(startPos,i,perThreadLimit,))
 	p.start()
 	processArray.append(p)
 	startPos = startPosOrigin
 
-for j in range(9):
+for j in range(threadLimit):
 	processArray[j].join()
 
 
