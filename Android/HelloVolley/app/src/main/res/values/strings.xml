@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HelloVolley</string>
+    <string name="get_data">Get Data</string>
+
 </resources>
