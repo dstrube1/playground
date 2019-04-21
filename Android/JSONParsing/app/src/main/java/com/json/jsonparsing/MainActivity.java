@@ -22,7 +22,7 @@ import android.widget.TextView;
 public class MainActivity extends ListActivity {
 
 	// url to make request
-	private static String url = "http://api.androidhive.info/contacts/";
+	private static String url = "https://api.androidhive.info/contacts/";
 	
 	// JSON Node names
 	private static final String TAG_CONTACTS = "contacts";
@@ -33,14 +33,15 @@ public class MainActivity extends ListActivity {
 //	private static final String TAG_GENDER = "gender";
 	private static final String TAG_PHONE = "phone";
 	private static final String TAG_PHONE_MOBILE = "mobile";
-//	private static final String TAG_PHONE_HOME = "home";
-//	private static final String TAG_PHONE_OFFICE = "office";
+	private static final String TAG_PHONE_HOME = "home";
+	private static final String TAG_PHONE_OFFICE = "office";
 
 	// contacts JSONArray
 	JSONArray contacts = null;
 	JSONObject json;
 	JSONParser jParser;
 	ArrayList<HashMap<String, String>> contactList;
+    ArrayList<Contact> contactList0;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -75,11 +76,11 @@ public class MainActivity extends ListActivity {
 //				String address = c.getString(TAG_ADDRESS);
 //				String gender = c.getString(TAG_GENDER);
 				
-				// Phone number is agin JSON Object
+				// Phone number is a in JSON Object
 				JSONObject phone = c.getJSONObject(TAG_PHONE);
 				String mobile = phone.getString(TAG_PHONE_MOBILE);
-//				String home = phone.getString(TAG_PHONE_HOME);
-//				String office = phone.getString(TAG_PHONE_OFFICE);
+				String home = phone.getString(TAG_PHONE_HOME);
+				String office = phone.getString(TAG_PHONE_OFFICE);
 				
 				// creating new HashMap
 				HashMap<String, String> map = new HashMap<>();
@@ -92,13 +93,23 @@ public class MainActivity extends ListActivity {
 
 				// adding HashList to ArrayList
 				contactList.add(map);
+
+				Contact contact = new Contact();
+				contact.id = id;
+				contact.name = name;
+				contact.email = email;
+				contact.phones = new HashMap<>();
+				contact.phones.put(TAG_PHONE_MOBILE, mobile);
+                contact.phones.put(TAG_PHONE_HOME, home);
+                contact.phones.put(TAG_PHONE_OFFICE, office);
+                contactList0.add(contact);
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+
 		
-		
-		/**
+		/*
 		 * Updating parsed JSON data into ListView
 		 * */
 		ListAdapter adapter = new SimpleAdapter(this, contactList,
@@ -128,8 +139,6 @@ public class MainActivity extends ListActivity {
 				startActivity(in);
 			}
 		});
-
-		
 	}
 
 	private class NetworkJSONCall extends AsyncTask<Void, Void, Void>{

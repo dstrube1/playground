@@ -22,8 +22,8 @@ public class SingleMenuItemActivity extends Activity {
 
         // Get JSON values from previous intent
         String name = in.getStringExtra(TAG_NAME);
-        String cost = in.getStringExtra(TAG_EMAIL);
-        String description = in.getStringExtra(TAG_PHONE_MOBILE);
+        String email = in.getStringExtra(TAG_EMAIL);
+        String mobile = in.getStringExtra(TAG_PHONE_MOBILE);
 
         // Displaying all values on the screen
         TextView lblName = findViewById(R.id.name_label);
@@ -31,7 +31,7 @@ public class SingleMenuItemActivity extends Activity {
         TextView lblDesc = findViewById(R.id.mobile_label);
 
         lblName.setText(name);
-        lblCost.setText(cost);
-        lblDesc.setText(description);
+        lblCost.setText(email);
+        lblDesc.setText(mobile);
     }
 }
