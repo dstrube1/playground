@@ -1,5 +1,0 @@
-bin\Debug\GaStateSenInfoCrawl.exe
-bin\Debug\GaStateSenInfoCrawl.pdb
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\GaStateSenInfoCrawl.exe
-obj\Debug\GaStateSenInfoCrawl.pdb

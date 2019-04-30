@@ -1,3 +1,0 @@
-int drawable ic_action_new 0x7f020000
-int drawable ic_autorenew 0x7f020001
-int drawable icon 0x7f020002

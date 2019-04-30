@@ -1,5 +1,0 @@
-obj\Debug\ResolveAssemblyReference.cache
-bin\Debug\getFromBadCD.exe
-bin\Debug\getFromBadCD.pdb
-obj\Debug\getFromBadCD.exe
-obj\Debug\getFromBadCD.pdb

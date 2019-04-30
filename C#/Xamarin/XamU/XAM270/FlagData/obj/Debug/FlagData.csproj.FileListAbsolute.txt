@@ -1,5 +1,0 @@
-/Users/dstrube/Projects/xamarin/XAM270/FlagData/bin/Debug/FlagData.dll
-/Users/dstrube/Projects/xamarin/XAM270/FlagData/bin/Debug/FlagData.pdb
-/Users/dstrube/Projects/xamarin/XAM270/FlagData/obj/Debug/FlagData.csproj.CoreCompileInputs.cache
-/Users/dstrube/Projects/xamarin/XAM270/FlagData/obj/Debug/FlagData.dll
-/Users/dstrube/Projects/xamarin/XAM270/FlagData/obj/Debug/FlagData.pdb
