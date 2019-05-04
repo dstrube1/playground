@@ -2,12 +2,16 @@ package com.dstrube;
 
 /*
 commands to compile and run:
-from ~/Projects/java
+from ~/java
 javac -d bin com/dstrube/Basics.java 
 java -cp bin com.dstrube.Basics
 
 Some java basics for quick reference
 */
+import java.math.BigInteger;
+//https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html
+
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -49,7 +53,18 @@ public class Basics{
 		}
 		*/
 		
-			
+		/*
+		BigInteger pos = new BigInteger("2789");
+		final BigInteger limit = new BigInteger("19999");
+		while (limit.compareTo(pos) > 0){
+			System.out.println("pos " + pos + " => " + getNext(pos));
+			pos = getNext(pos);
+		}
+		System.out.println("limit is " + limit.toString() + " and pos is " + pos.toString());
+		*/
+		
+		
+		
 	}
 	
 	private static void manipList(List<Integer> list){
@@ -79,4 +94,123 @@ public class Basics{
     	        return 0;*/
 	    } 
 	} 
+	
+	//Objective: Efficiently find the next number with digits in ascending order
+	private static BigInteger getNext(final BigInteger pos){
+		String posStr = pos.toString();
+		posStr = reverse(posStr);
+		
+		for (int index = 0; index < posStr.length(); index++){
+			char charAtIndex = posStr.charAt(index);
+			if (charAtIndex == '9'){
+				if (index == posStr.length() -1){
+					//special
+					break;
+				}
+				char nextChar = posStr.charAt(index+1);
+				if (nextChar == '9'){
+					continue;
+				}
+				int nextCharAsInt = Character.digit(nextChar, 10);
+				nextCharAsInt++;
+				final StringBuilder posStrB0 = new StringBuilder(posStr);
+				for (int index0 = 0; index0 <= index + 1; index0++){
+					posStrB0.setCharAt(index0, Character.forDigit(nextCharAsInt, 10));
+				}
+				posStr = posStrB0.toString();
+				break;
+			}
+			int charAsInt = Character.digit(charAtIndex, 10);
+			charAsInt++;
+			final StringBuilder posStrB = new StringBuilder(posStr);
+			posStrB.setCharAt(index, Character.forDigit(charAsInt, 10));
+			posStr = posStrB.toString();
+			break;
+		}
+		
+		posStr = reverse(posStr);
+		BigInteger nextPos = new BigInteger(posStr);
+		if (nextPos.compareTo(pos) == 0){		
+			int charAtStartAsInt = 2;
+			final StringBuilder posStrB1 = new StringBuilder();
+			posStrB1.append(charAtStartAsInt);
+			charAtStartAsInt = 6;
+			for (int i = 0; i < posStr.length(); i++){
+				posStrB1.append(charAtStartAsInt);
+			}
+			nextPos = new BigInteger(posStrB1.toString());
+		}
+
+		return nextPos;
+	}
+	private static String reverse(String input){
+		String reverse = "";
+        for(int i = input.length() - 1; i >= 0; i--)
+        {
+            reverse = reverse + input.charAt(i);
+        }
+        return reverse;
+	}
+	/*
+	private static boolean areDigitsAscending(final String testStr){
+		final String candidateStr = testStr;
+		final char[] chars0 = testStr.toCharArray();
+		final char[] chars1 = candidateStr.toCharArray();
+        Arrays.sort(chars0);
+        final String sorted = new String(chars0);
+        final String unsorted = new String(chars1);
+        if (sorted.equals(unsorted)){
+        	//System.out.println(candidate + " digits are ascending");
+        	return true;
+        }
+        //System.out.println(candidate + " digits are NOT ascending");
+        return false;
+	}
+	
+	private static BigInteger getNext0(final BigInteger pos){
+		String posStr = pos.toString();
+		for (int index = posStr.length() - 1; index > 0; index--){
+			char charAtIndex = posStr.charAt(index);
+			if (charAtIndex == '9'){
+				continue;
+			}
+			int charAsInt = Character.digit(charAtIndex, 10);
+			boolean incrementedWithin = false;
+			for (int index0 = index - 1; index0 >= 0; index0--){
+				char charAtIndex0 = posStr.charAt(index0);
+				int charAsInt0 = Character.digit(charAtIndex0, 10);
+				if (charAsInt0 == charAsInt){
+					continue;
+				}
+				charAsInt0++;
+				if (index0 == 0){
+					final StringBuilder posStrB0 = new StringBuilder();
+					for (int i = 0; i < posStr.length(); i++){
+						posStrB0.append(charAsInt0);
+					}
+					posStr = posStrB0.toString();
+				}else{
+					final StringBuilder posStrB0 = new StringBuilder(posStr);
+					posStrB0.setCharAt(index0, Character.forDigit(charAsInt0, 10));
+					posStr = posStrB0.toString();
+				}
+				incrementedWithin = true;
+				break;
+			}
+			if (incrementedWithin){
+				break;
+			}
+			charAsInt++;
+			final StringBuilder posStrB = new StringBuilder(posStr);
+			posStrB.setCharAt(index, Character.forDigit(charAsInt, 10));
+			posStr = posStrB.toString();
+			break;
+		}
+		BigInteger nextPos = new BigInteger(posStr);
+		if (nextPos.compareTo(pos) == 0){
+			nextPos = new BigInteger("1" + posStr);
+		}
+		return nextPos;
+	}
+	*/
 }
