@@ -14,9 +14,14 @@ import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.List;
+import java.util.Set;
 
 public class Basics{
+	private static final ConcurrentHashMap<String,String> startingTemplates = new ConcurrentHashMap<>();
+	private static final ConcurrentHashMap<String,String> currentThreadPoolTemplates = new ConcurrentHashMap<>();
+	
 	public static void main(String[] args){
 	/*
 		String string = "string";
@@ -53,18 +58,34 @@ public class Basics{
 		}
 		*/
 		
-		/*
-		BigInteger pos = new BigInteger("2789");
-		final BigInteger limit = new BigInteger("19999");
+		BigInteger pos = new BigInteger("1");
+		final BigInteger limit = new BigInteger("11");
 		while (limit.compareTo(pos) > 0){
 			System.out.println("pos " + pos + " => " + getNext(pos));
 			pos = getNext(pos);
 		}
 		System.out.println("limit is " + limit.toString() + " and pos is " + pos.toString());
-		*/
-		
-		
-		
+		//when creating a new thread, do so by removing a key from the currentThreadPoolTemplates until it's empty, 
+		//then refill it from startingTemplates, tacking on the last digit
+		/*if (currentThreadPoolTemplates.isEmpty()){
+			for (final String key : keys){
+				String newKey = key;
+				//TODO Use StringBuilder
+				for (int i = 0; i < numOfTrailingDigits; i++){
+					newKey += key.substring(1);
+				}
+				String newValue = startingTemplates.get(key);
+				//TODO Use StringBuilder
+				for (int i = 0; i < numOfTrailingDigits; i++){
+					newValue += startingTemplates.get(key).substring(1);
+				}
+				currentThreadPoolTemplates.put(newKey, newValue);
+			} 
+			numOfTrailingDigits++;
+		}
+		else{
+			//
+		}*/
 	}
 	
 	private static void manipList(List<Integer> list){
