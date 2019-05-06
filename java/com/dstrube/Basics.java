@@ -65,27 +65,6 @@ public class Basics{
 			pos = getNext(pos);
 		}
 		System.out.println("limit is " + limit.toString() + " and pos is " + pos.toString());
-		//when creating a new thread, do so by removing a key from the currentThreadPoolTemplates until it's empty, 
-		//then refill it from startingTemplates, tacking on the last digit
-		/*if (currentThreadPoolTemplates.isEmpty()){
-			for (final String key : keys){
-				String newKey = key;
-				//TODO Use StringBuilder
-				for (int i = 0; i < numOfTrailingDigits; i++){
-					newKey += key.substring(1);
-				}
-				String newValue = startingTemplates.get(key);
-				//TODO Use StringBuilder
-				for (int i = 0; i < numOfTrailingDigits; i++){
-					newValue += startingTemplates.get(key).substring(1);
-				}
-				currentThreadPoolTemplates.put(newKey, newValue);
-			} 
-			numOfTrailingDigits++;
-		}
-		else{
-			//
-		}*/
 	}
 	
 	private static void manipList(List<Integer> list){
