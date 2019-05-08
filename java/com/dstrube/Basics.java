@@ -10,6 +10,8 @@ Some java basics for quick reference
 */
 import java.math.BigInteger;
 //https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html
+import java.math.BigDecimal;
+import java.math.RoundingMode;//MathContext;
 
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -58,13 +60,44 @@ public class Basics{
 		}
 		*/
 		
-		BigInteger pos = new BigInteger("1");
+		/*BigInteger pos = new BigInteger("1");
 		final BigInteger limit = new BigInteger("11");
 		while (limit.compareTo(pos) > 0){
 			System.out.println("pos " + pos + " => " + getNext(pos));
 			pos = getNext(pos);
 		}
-		System.out.println("limit is " + limit.toString() + " and pos is " + pos.toString());
+		System.out.println("limit is " + limit.toString() + " and pos is " + pos.toString());*/
+
+		//These work fine		
+		//BigInteger start = new BigInteger(   "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+		//BigInteger end = new BigInteger(     "200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+		//BigInteger progress = new BigInteger("150000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+		//This does not:
+		BigInteger start = new BigInteger(   "7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777");
+		BigInteger end = new BigInteger(	 "8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888");
+		BigInteger progress = new BigInteger("7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777788888888889999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999");
+		//Method 1:
+/*		BigDecimal endMinusStart = new BigDecimal(end.subtract(start)); //100
+		System.out.println("endMinusStart: " + endMinusStart);
+		BigDecimal endMinusProgress = new BigDecimal(end.subtract(progress)); //50
+		System.out.println("endMinusProgress: " + endMinusProgress);
+		BigDecimal percentDone = endMinusProgress.divide(endMinusStart, 2, RoundingMode.HALF_DOWN).multiply(new BigDecimal(100));
+		System.out.println("digits: " + start.toString().length() + "; percentDone: " + percentDone);
+		
+		//Better way of calculating, but still not great:
+		BigDecimal progressMinusStart = new BigDecimal(progress.subtract(start)); //50
+		BigDecimal percentDoneStage1 = progressMinusStart.divide(endMinusProgress, 200, RoundingMode.HALF_DOWN).multiply(new BigDecimal(100));
+		System.out.println("percentDoneStage1: " + percentDoneStage1);
+*/
+		//Even better:
+		//1: Get count of all same digits after 1st digit in start
+		//2: Get count of that digit in progress  
+		//3: % changed = % done
+		char c = start.toString().charAt(1);
+		double startCount = start.toString().chars().filter(ch -> ch == c).count();
+		double progressCount = progress.toString().chars().filter(ch -> ch == c).count();
+		double percentDone = 100 * (progressCount / startCount);
+		System.out.println("percentDone: " + percentDone);
 	}
 	
 	private static void manipList(List<Integer> list){
