@@ -1,0 +1,21 @@
+//FizzBuzz in java
+//DS 2014-02-02
+//with Unit Testing
+
+package com.dstrube;
+
+public class FizzBuzz {
+
+	public static void main(String[] args) {
+
+	}
+	
+	public static boolean isFizz(int i, boolean isStage2) {
+
+	}
+	
+	public static boolean isBuzz(int i, boolean isStage2) {
+	}
+
+
+}
