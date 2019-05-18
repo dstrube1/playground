@@ -1,0 +1,66 @@
+http://viral.lycos.co.uk/attachments/1555/Womendrivers.mov
+http://science.kennesaw.edu/~dgayler/csis4650/docs/final.html
+
+Please email your responses to me by 10:00 am on Wednesday, May 7th.
+
+All answers need to be in complete sentences and grammatically correct!
+
+Discuss the similarities and differences between the following design patterns:
+
+visitor pattern
+
+iterator pattern
+
+composite pattern
+
+interpreter pattern
+
+state pattern
+
+Discuss the similarities and differences between the following design patterns:
+
+flyweight pattern
+
+singleton pattern
+
+Discuss the similarities and differences between the following design patterns:
+
+adaptor pattern
+
+broker pattern
+
+Discuss the similarities and differences between the following design patterns:
+
+builder pattern
+
+prototype pattern
+
+Describe the potential usage of the design patterns that we have studied in the construction of a middleware system to handle program distribution on the Grid (The Grid is a wide area network whose nodes are the supercomputers at various government research labs and research universities). This middleware has the following specifications:
+
+The Grid is transparent to the user.
+
+Not all the resources on the web are identical.
+
+The middleware will perform dynamic load balancing to optimize the usage of the resources on the Grid.
+
+The data needed by any application could be anywhere on the Grid.
+
+Describe the potential usage of the design patterns that we have studied so far in the construction of a system to handle high volume web traffic. This system has the following specifications:
+
+The system will have a proxy server that handles all incoming and outgoing messages. This proxy server will delegate all requests to a server in a server farm.
+
+This web site is the front end for a company like Yahoo that supplies computer services to people.
+
+Each user has a customized interface based upon the user's interests previous activities at this web site.
+
+This web site provides the following services:
+
+email
+
+chat
+
+newsgroups
+
+search
+
+various commercial channels (like ESPN, CNN, ...)

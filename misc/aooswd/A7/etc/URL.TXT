@@ -1,0 +1,5 @@
+http://science.kennesaw.edu/~dgayler/csis4650/assignments/visitor_assn.html
+http://appsrv.cse.cuhk.edu.hk/~csc4510/cxx/tutorial.1b/11.htm
+http://www.josuttis.com/libbook/idx.html
+http://www.dgp.toronto.edu/people/JamesStewart/270/9697f/notes/Nov04-tut.html
+http://66.176.248.167:81/c_plusplus/classes/JStack/

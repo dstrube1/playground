@@ -1,0 +1,3 @@
+C:\dl\ksu-csis\mingw\include\g++-3
+
+or C:\ksu-csis\egcs\include\g++-3 ?

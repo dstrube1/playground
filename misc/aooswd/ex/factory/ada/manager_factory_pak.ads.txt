@@ -1,0 +1,13 @@
+with Employee_Factory_Pak;
+with Employee_Pak;
+
+package Manager_Factory_Pak is
+   
+   type Manager_Factory is new Employee_Factory_Pak.Employee_Factory with private;
+   
+   function Create (M: in Manager_Factory) return Employee_Pak.Employee_Access;
+   
+private
+   type Manager_Factory is new Employee_Factory_Pak.Employee_Factory with null record;
+   
+end Manager_Factory_Pak;

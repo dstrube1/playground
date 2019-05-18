@@ -1,0 +1,12 @@
+CVisitor::eval(){
+myTree.accept(this);
+return mystack.top();
+}
+
+numNode::accept(CVisitor* c){
+visitNumNode(this));
+}
+
+visitNumNode(numNode* n){
+mystack.push(n->getValue());
+}

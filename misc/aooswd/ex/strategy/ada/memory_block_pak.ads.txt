@@ -1,0 +1,50 @@
+with Ada.Text_IO; use Ada.Text_IO;
+
+generic
+  Memory_Size: in Positive;
+  
+package Memory_Block_Pak is
+
+  Address_Order_Error: exception;
+  
+  subtype Block_Size is Natural range 0 .. Memory_Size;
+  subtype Address is Block_Size range 0 .. Memory_Size - 1;
+  
+  type Memory_Block is private;
+  type Memory_Block_Access is access all Memory_Block;
+  
+  function Create (Lower, Upper: in Address) return Memory_Block;
+  -- pre: Lower <= Upper
+  -- post: Memory block representing memory from Lower to Upper is returned
+  -- exceptions: Address_Order_Error raised if Lower > Upper
+  
+  function Lower_Limit (B: in Memory_Block) return Address;
+  -- pre: none
+  -- post: lower limit of B is returned
+  
+  function Upper_Limit (B: in Memory_Block) return Address;
+  -- pre: none
+  -- post: upper limit of B is returned
+  
+  function Size (B: in Memory_Block) return Block_Size;
+  -- pre: none
+  -- post: size of B is returned
+  
+  procedure Put (File: in File_Type; B: in Memory_Block);
+  -- pre: File is ready to be written to
+  -- post: B has been written to File
+  
+  function ">" (B1, B2: in Memory_Block) return Boolean;
+  -- pre: none
+  -- post: true is returned if B1 comes after B2 - false ow
+  
+  pragma Inline (Lower_Limit, Upper_Limit, Size);
+  
+  private
+    type Memory_Block is
+      record
+        Lower: Address;
+        Upper: Address;
+      end record;
+      
+end Memory_Block_Pak;
