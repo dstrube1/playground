@@ -1,0 +1,8 @@
+c:\users\thorne.melcher\documents\visual studio 2012\Projects\Roman Calculator Try 2\Roman Calculator Try 2\bin\Debug\Roman Calculator Try 2.exe.config
+C:\Users\thorne.melcher\Documents\Visual Studio 2012\Projects\Roman Calculator Try 2\Roman Calculator Try 2\bin\Debug\Roman Calculator Try 2.exe
+C:\Users\thorne.melcher\Documents\Visual Studio 2012\Projects\Roman Calculator Try 2\Roman Calculator Try 2\bin\Debug\Roman Calculator Try 2.pdb
+C:\Users\thorne.melcher\Documents\Visual Studio 2012\Projects\Roman Calculator Try 2\Roman Calculator Try 2\obj\Debug\Roman Calculator Try 2.csprojResolveAssemblyReference.cache
+C:\Users\thorne.melcher\Documents\Visual Studio 2012\Projects\Roman Calculator Try 2\Roman Calculator Try 2\obj\Debug\Roman Calculator Try 2.exe
+C:\Users\thorne.melcher\Documents\Visual Studio 2012\Projects\Roman Calculator Try 2\Roman Calculator Try 2\obj\Debug\Roman Calculator Try 2.pdb
+C:\Users\thorne.melcher\Documents\Visual Studio 2012\Projects\Roman Calculator Try 2\Roman Calculator Try 2\bin\Debug\nunit.framework.dll
+C:\Users\thorne.melcher\Documents\Visual Studio 2012\Projects\Roman Calculator Try 2\Roman Calculator Try 2\bin\Debug\nunit.framework.xml

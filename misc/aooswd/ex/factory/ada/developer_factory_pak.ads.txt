@@ -1,0 +1,13 @@
+with Employee_Factory_Pak;
+with Employee_Pak;
+
+package Developer_Factory_Pak is
+   
+   type Developer_Factory is new Employee_Factory_Pak.Employee_Factory with private;
+   
+   function Create (F: in Developer_Factory) return Employee_Pak.Employee_Access;
+   
+private
+   type Developer_Factory is new Employee_Factory_Pak.Employee_Factory with null record;
+   
+end Developer_Factory_Pak;

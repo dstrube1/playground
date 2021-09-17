@@ -1,0 +1,26 @@
+context.o : context.cpp
+	g++ -c -g context.cpp
+
+constant.o : constant.cpp
+	g++ -c -g constant.cpp
+
+variable_exp.o : variable_exp.cpp
+	g++ -c -g variable_exp.cpp
+
+and_exp.o : and_exp.cpp
+	g++ -c -g and_exp.cpp
+
+or_exp.o : or_exp.cpp
+	g++ -c -g or_exp.cpp
+
+not_exp.o : not_exp.cpp
+	g++ -c -g not_exp.cpp
+
+symbol_table.o : symbol_table.cpp
+	g++ -c -g symbol_table.cpp
+
+test_bool_exp.o : test_bool_exp.cpp
+	g++ -c -g test_bool_exp.cpp
+
+try : context.o variable_exp.o symbol_table.o test_bool_exp.o constant.o and_exp.o or_exp.o not_exp.o
+	g++ -o try test_bool_exp.o context.o variable_exp.o symbol_table.o constant.o and_exp.o or_exp.o not_exp.o

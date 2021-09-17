@@ -1,0 +1,13 @@
+with Employee_Pak;
+
+package Developer_Pak is
+
+   type Developer is new Employee_Pak.Employee with private;
+
+   procedure Wisdom (D : in Developer ); 
+
+private
+
+   type Developer is new Employee_Pak.Employee with null record; 
+   
+end Developer_Pak;

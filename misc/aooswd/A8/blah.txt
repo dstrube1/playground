@@ -1,0 +1,37 @@
+http://science.kennesaw.edu/~dgayler/csis4650/assignments/state_assn.html
+http://java.sun.com/j2se/1.4.1/docs/api/
+
+int i
+String x
+Character(x.charAt(i)).isDigit()
+else if Character.equals(obj)
+or Character.comparTo(char)
+
+public class StringReader{
+private ReaderState rstate;
+public StringReader(){
+	rstate = BeginState.instance(); //why not new BeginState()?
+
+Pattern p = Pattern.compile("a*b");
+Matcher m = p.matcher("aaaaab");
+boolean b = m.matches();
+
+[\deE.\-\$]*
+
+SuperState
+isDigit
+isNextDecimal
+isNextPlusMinus
+isNextDollar(&last)
+isNextE
+String original
+boolean valid = false;
+
+StartState: digit=1 
+State1: digit=1 E=3 decimal=2 dollar=success
+State2: digit=4
+State3: digit=6 plusminus=5
+State4: digit=4 E=3 dollar=success
+State5: digit=6 
+State6: digit=6 dollar=success
+SuccessState

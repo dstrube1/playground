@@ -1,0 +1,16 @@
+generic
+
+package Memory_Allocation_Pak.Worst_Fit is
+
+  type Worst_Fit_Allocation is new Memory_Allocation with private;
+  
+  procedure Allocate (M: in Worst_Fit_Allocation; L: in out Ordered_List; 
+    Size: in Block_Size; Success: out Boolean; Block: out Memory_Block);
+  -- pre: none
+  -- post: Success is true if memory can be allocated & Block is that memory
+  --         ow Success is false
+ 
+ private
+    type Worst_Fit_Allocation is new Memory_Allocation with null record;
+    
+end Memory_Allocation_Pak.Worst_Fit;

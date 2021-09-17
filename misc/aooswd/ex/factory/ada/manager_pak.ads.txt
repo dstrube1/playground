@@ -1,0 +1,13 @@
+with Employee_Pak;
+
+package Manager_Pak is
+
+   type Manager is new Employee_Pak.Employee with private;
+
+   procedure Wisdom (M : in Manager); 
+
+private
+
+   type Manager is new Employee_Pak.Employee with null record; 
+
+end Manager_Pak;

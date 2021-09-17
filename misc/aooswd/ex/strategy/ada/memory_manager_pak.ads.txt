@@ -1,0 +1,50 @@
+with Memory_Block_Pak, Ordered_List_Pak_Gen, Memory_Allocation_Pak.First_Fit,
+  Memory_Allocation_Pak.Worst_Fit, Memory_Allocation_Pak.Best_Fit,
+  Memory_Allocation_Pak.Random_Fit;
+
+generic
+  with package Memory_Pak is new Memory_Block_Pak (<>);
+  with package Free_List_Pak is new Ordered_List_Pak_Gen (Memory_Pak.Memory_Block,
+    Memory_Pak.Memory_Block_Access, Memory_Pak.Put, Memory_Pak. ">");
+  with package Mem_Allocation_Pak is new Memory_Allocation_Pak (Memory_Pak, Free_List_Pak);
+  with package First_Fit_Allocation_Pak is new Mem_Allocation_Pak.First_Fit;
+  with package Worst_Fit_Allocation_Pak is new Mem_Allocation_Pak.Worst_Fit;
+  with package Best_Fit_Allocation_Pak is new Mem_Allocation_Pak.Best_Fit;
+  with package Random_Fit_Allocation_Pak is new Mem_Allocation_Pak.Random_Fit;
+  
+package Memory_Manager_Pak is
+
+  use Memory_Pak;
+
+  type Memory_Manager is tagged limited private;
+  
+  type Allocation_Type is (First, Best, Worst, Random);
+  
+  procedure Allocate (M: in out Memory_Manager; Size: in Block_Size;
+    Success: out Boolean; Block: out Memory_Block);
+  -- pre: none
+  -- post: Success is true if memory can be allocated & Block is that memory
+  --         ow Success is false
+   
+  procedure DeAllocate (M: in out Memory_Manager; Block: in Memory_Block);
+  -- pre: none
+  -- post Block has been deallocated
+  
+  procedure Display_Memory (M: in Memory_Manager);
+  -- pre: none
+  -- post: free memory has been displayed to standard output
+  
+  procedure Allocation_Choice (M: in out Memory_Manager; Choice: in Allocation_Type);
+  -- pre: none
+  -- post: memory allocation algorithm has been changed to Choice
+ 
+  private
+    use Free_List_Pak, Mem_Allocation_Pak;
+    
+    type Memory_Manager is tagged limited
+      record
+        L: Ordered_List_Access := new Ordered_List;
+        A: Memory_Allocation_Access := null;
+      end record;
+
+end Memory_Manager_Pak;

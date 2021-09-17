@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<script type="text/javascript" src="lib/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="src/Calculator.js"></script>
+		<script type="text/javascript">
+            var calculator;
+            
+			$(document).ready(function() {
+				calculator = new Calculator();                
+                $('#calculateButton').click(calculate);
+			});
+            
+            function calculate() {
+                var num1 = $('#input1').val();
+                var num2 = $('#input2').val();
+                var sum = calculator.add(num1, num2);
+                $('#result').html(sum);
+            }
+		</script>
+	</head>
+	<body>
+        <input id="input1" type="text" />
+        + 
+        <input id="input2" type="text" />
+        =
+        <span id="result"></span>
+        <br />
+        <input id="calculateButton" type="button" value="Calculate!" />
+	</body>
+</html>

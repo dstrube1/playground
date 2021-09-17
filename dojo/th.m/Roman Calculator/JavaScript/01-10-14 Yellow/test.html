@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.13.0.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="http://code.jquery.com/qunit/qunit-1.13.0.js"></script>
+  <script src="calc.js"></script>
+  <script>
+	test("Sort", function() {
+		ok("XXXVVVII", sort("XVIIXXVV"));
+		ok("MMDCXX", sort("XXMMDC"));
+		ok("VVIII", sort("VIVIV"));
+	});
+	
+	test("Expand Subtractive", function() {
+		ok("XIIII", expandSubtractive("XIV"));
+		ok("CCCCXXVI", expandSubtractive("CDXXVI"));
+		ok("XXXXVIIII", expandSubtractive("XLIX"));
+	});
+	
+	test("Collapse Extras", function() {
+		ok("XXXXXVV", collapseExtras("LX"));
+		ok("DXXV", collapseExtras("CCCCCXXIIIII"));
+		ok("MMMXVI", collapseExtras("MMDDXVI"));
+	});
+	
+	test("Collapse To Subtractive", function() {
+		ok("XLI", collapseToSubtractive("XXXXI"));
+		ok("CDXXIV", collapseToSubtractive("CCCCXXIIII"));
+		ok("CM", collapseToSubtractive("DCCCC"));
+	});
+	
+	test("Sum", function() {
+		ok("V", sum("II", "III"));
+		ok("CVI", sum("XLII", "LXIII"));
+		ok("MXIX", sum("CCCV", "DCCIV"));
+		ok("XIV", sum("VII", "VII"));
+	});
+  </script>
+</body>
+</html>

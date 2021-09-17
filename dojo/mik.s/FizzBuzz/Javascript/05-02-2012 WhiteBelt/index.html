@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<script type="text/javascript" src="lib/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="src/LinePrinter.js"></script>
+		<script type="text/javascript" src="src/Printer.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var printer = new Printer(new LinePrinter());
+				var lines = printer.printLines(100);
+				
+				for (var i=0; i<lines.length; i++) {
+					$('body').append(lines[i] + '<br />');
+				}
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

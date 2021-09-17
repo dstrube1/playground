@@ -1,0 +1,14 @@
+{
+  jurisdiction(name: "Georgia") {
+    id
+    name
+    url
+  }
+  people(first: 3) {
+    edges {
+      node {
+        name
+      }
+    }
+  }
+}

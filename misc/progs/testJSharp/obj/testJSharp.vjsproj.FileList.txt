@@ -1,0 +1,5 @@
+bin\Debug\testJSharp.exe
+bin\Debug\testJSharp.pdb
+obj\x86\Debug\ResolveAssemblyReference.cache
+obj\x86\Debug\testJSharp.exe
+obj\x86\Debug\testJSharp.pdb

@@ -1,0 +1,145 @@
+with Ada.Text_IO; use Ada.Text_IO;
+
+generic
+  type Item is private;
+  type Item_Access is access all Item;
+  with procedure Put (File: in Ada.Text_IO.File_Type; Datum: in Item);
+
+package List_Pak_Gen is
+
+  type List is limited private;
+  type Position is private;
+  
+  Empty: exception;
+  Off_List: exception;
+  Out_Of_Memory: exception;
+  
+  generic
+    with function "=" (Datum1, Datum2: in Item) return Boolean;
+  procedure Search (L: in List; Datum: in Item; Found: out Boolean;
+    Location: out Position);
+  -- pre: none
+  -- post: Found is true if Datum is in L, false otherwise
+  --         if Found is true, Location is the location of the first
+  --           occurrence of Datum
+    
+  procedure Copy (Source: in List; Dest: in out List);
+  -- pre: none
+  -- post: Dest is a copy of Source
+  -- exceptions: Out_Of_Memory is raised if there is not enough memory
+  --               to copy the list
+  
+  procedure Delete (L: in out List; P: in out Position);
+  -- pre: L is not empty & P is a valid location in L
+  -- post: Item at position L has been deleted
+  -- exceptions: Empty is raised if L is empty
+  --             Off_List is raised if P is not a valid location in L
+
+  procedure Delete_At_End (L: in out List);
+  -- pre: L is not empty
+  -- post: Item at end of L has been deleted
+  -- exceptions: Empty is raised if L is empty
+
+  function Current_Item (L: in List; P: in Position) return Item;
+  -- pre: L is not empty & P is a valid location in L
+  -- post: copy of Item at location P is returned  
+  -- exceptions: Empty is raised if L is empty
+  --             Off_List is raised if P is not a valid location in L
+
+  function Current_Item (L: in List; P: in Position) return Item_Access;
+  -- pre: L is not empty & P is a valid location in L
+  -- post: access to Item at location P is returned  
+  -- exceptions: Empty is raised if L is empty
+  --             Off_List is raised if P is not a valid location in L
+  
+  procedure Prev (L: in List; P: in out Position);
+  -- pre: L is not empty & P is a valid location in L
+  -- post: P has been modified to access the previous item in L
+  -- exceptions: Empty is raised if L is empty
+  --             Off_List is raised if P is not a valid location in L
+  
+  procedure Next (L: in List; P: in out Position);
+  -- pre: L is not empty & P is a valid location in L
+  -- post: P has been modified to access the succeeding item in L
+  -- exceptions: Empty is raised if L is empty
+  --             Off_List is raised if P is not a valid location in L
+  
+  function Last (L: in List) return Position;
+  -- pre: L is not empty
+  -- post: returns access to the last Item in L
+  -- exceptions: raise Empty if L is empty
+  
+  function First (L: in List) return Position;
+  -- pre: L is not empty
+  -- post: returns access to the first Item in L
+  -- exceptions: raise Empty if L is empty
+  
+  procedure Delete_At_Front (L: in out List);
+  -- pre: L is not empty
+  -- post: Item at beginning of L has been removed
+  -- exceptions: raise Empty if L is empty
+  
+  procedure Insert (L: in out List; P: in Position; Datum: in Item);
+  -- pre: L is not empty & P is a valid location in L
+  -- post: Datum has been added immediately after Item accessed by P
+  -- exceptions: Empty is raised if L is empty
+  --             Off_List is raised if P is not a valid location in L
+  --             Out_Of_Memory is raised if there is not enough memory
+  --               to create another node
+  
+  procedure Insert_At_End (L: in out List; Datum: in Item);
+  -- pre: L is not empty
+  -- post: Datum has been inserted at end of L
+  -- exceptions: raise Empty if L is empty
+  --             Out_Of_Memory is raised if there is not enough memory
+  --               to create another node
+
+  procedure Insert_At_Front (L: in out List; Datum: in Item);
+  -- pre: L is not empty
+  -- post: Datum has been inserted at front of L
+  -- exceptions: raise Empty if L is empty
+  --             Out_Of_Memory is raised if there is not enough memory
+  --               to create another node
+  
+  procedure Initialize (L: in out List);
+  -- pre: none
+  -- post: L is empty - any previous elements of L have been removed
+  
+  function Is_Off_List (L: in List; P: in Position) return Boolean;
+  -- pre: none
+  -- post true is returned if P does not access an Item on L - false otherwise
+  
+  function Is_Last (L: in List; P: in Position) return Boolean;
+  -- pre: none
+  -- post: true is returned if P access the last Item in L - false otherwise
+  
+  function Is_Empty (L: in List) return Boolean;
+  -- pre: none
+  -- post: true is returned if L is empty - false otherwise
+  
+  function Is_First (L: in List; P: in Position) return Boolean;
+  -- pre: none
+  -- post: true is returned if P access the first Item in L - false otherwise
+  
+  procedure Print (F: in File_Type; L: in List);
+  -- pre: F is ready to be written to
+  -- post: Items in L have been printed on F where each element is on
+  --         a different line
+ 
+  private
+    type Node;
+    
+    type Position is access Node;
+    
+    type Node is
+      record
+        Datum: aliased Item;
+        Link: Position := null;
+      end record;
+      
+    type List is
+      record
+        Head: Position := null;
+      end record;
+      
+end List_Pak_Gen;

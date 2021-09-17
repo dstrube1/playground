@@ -1,0 +1,5 @@
+package com.dstrube;
+
+public class FootballRow extends GenericDataRow {
+
+}

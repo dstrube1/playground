@@ -1,0 +1,584 @@
+//DataMunging in java
+//DS 2013-00-00
+
+package com.dstrube;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class DataMunging {
+
+	public static final String WEATHER_FILE="C:\\repo\\dojo\\david.strube\\Data Munging\\Java\\2014-02-02 OrangeBelt\\bin\\com\\dstrube\\weather.dat";
+	public static final String FOOTBALL_FILE="C:\\repo\\dojo\\david.strube\\Data Munging\\Java\\2014-02-02 OrangeBelt\\bin\\com\\dstrube\\football.dat";
+	public static final String WEATHER_HEADER="Dy MxT   MnT   AvT   HDDay  AvDP 1HrP TPcpn WxType PDir AvSp Dir MxS SkyC MxR MnR AvSLP";
+	public static final String FOOTBALL_HEADER="       Team            P     W    L   D    F      A     Pts";
+	public static final String FOOTER = "</pre>";
+	public static final int GenericDataColumnCount = 9;
+	
+	public static void main(String[] args) {
+
+		//PART ONE:
+		System.out.println("Part one:");
+		partOne();
+		
+		//PART TWO:
+		System.out.println("Part two:");
+		partTwo();
+		
+		//PART THREE:
+		System.out.println("Part three:");
+		partThree(WEATHER_FILE);
+		partThree(FOOTBALL_FILE);
+	}
+	
+	private static void partOne(){
+		// write a program to output the day number (column one) 
+		//with the smallest temperature spread (the maximum temperature is the second column, the minimum the third column).
+		File f = new File(WEATHER_FILE);
+		String input = "";
+		FileReader fr = null;
+		BufferedReader br = null;
+		StringBuilder sb = new StringBuilder();
+		final String header = WEATHER_HEADER;
+		
+		boolean passedHeader = false;
+		boolean beforeFooter = true;
+		ArrayList<WeatherRow> rows = new ArrayList<WeatherRow>();
+		String dayWithSmallestSpread = "";
+		int smallestSpread = 1000;
+		//int count = 0;
+		
+		//System.out.println("testing file readability");
+		
+		if (!f.canRead()){
+			System.out.println("File is unreadable");
+			return;
+		}
+		//System.out.println("setting file reader.");
+		try { 
+			fr = new FileReader(f);
+		}catch (FileNotFoundException e){
+			System.out.println("error setting file reader: "+e.getMessage());
+			return;
+		}
+		//System.out.println("setting buffered reader");
+		br = new BufferedReader(fr);
+		
+		try{
+			while ((input = br.readLine()) != null){
+				if (input.contains(FOOTER)){
+					beforeFooter = false;
+				}
+				if (passedHeader){
+					if (beforeFooter){
+						rows = populateWeatherRow(input, rows);
+						sb.append(input+"\n");
+					}
+				}
+				if (input.contains(header)){
+					passedHeader = true;
+				}
+			}
+			br.close();
+			fr.close();
+		} catch (IOException e){
+			System.out.println(e.getMessage());
+			return;
+		}
+
+		//System.out.println(sb.toString());
+		
+		if (rows == null || rows.size() == 0){
+			System.out.println("WeatherRows size = 0");
+			return;
+		}
+		
+		for (int i=0; i< rows.size(); i++){
+			WeatherRow row = rows.get(i);
+			if (dayWithSmallestSpread == "" || row.tempDiff < smallestSpread){
+				dayWithSmallestSpread = row.day;
+				smallestSpread = row.tempDiff;
+			}
+		}
+		
+		System.out.println("Day with smallest spread: " + dayWithSmallestSpread);
+		System.out.println("Smallest spread: " + smallestSpread + "\n");
+	}
+	public static ArrayList<WeatherRow> populateWeatherRow(String input, ArrayList<WeatherRow> rows) {
+//		int firstSpace = 0;
+//		int secondSpace = 0;
+//		int thirdSpace = 0;
+		int nextSpace = 0;
+		String day = "";
+		String maxTempString = "";
+		String minTempString = "";
+		int maxTemp = -1000; //0 is a reasonable value to expect here, so we set this default value = something unreasonable.
+		int minTemp = -1000; //0 is reasonable
+		
+		if (input == null || rows == null){
+			//System.out.println("populateWeatherRow: invalid input1:" + input);
+			return null;
+		}
+		input = input.trim();
+		
+		if(input.length() == 0){
+			//System.out.println("populateWeatherRow: invalid input2:" + input);
+			return rows;
+		}
+		//System.out.println("populateWeatherRow: input:" + input);
+		
+		nextSpace = input.indexOf(' '); //starting at one because each line begins with a space
+		if (nextSpace < 1){
+			//System.out.println("populateWeatherRow: invalid firstSpace: "+ nextSpace);
+			return null;
+		}
+		//System.out.println("populateWeatherRow: firstSpace: "+ nextSpace);
+		day = input.substring(0, nextSpace);
+		input = input.substring(nextSpace).trim();
+		
+		
+		nextSpace = input.indexOf(' ');//, firstSpace
+		if (nextSpace < 1){
+			//System.out.println("populateWeatherRow: invalid secondSpace: "+ nextSpace);
+			return null;
+		}
+		//System.out.println("populateWeatherRow: secondSpace: "+ nextSpace);
+		maxTempString = input.substring(0, nextSpace);
+		input = input.substring(nextSpace).trim();
+		
+		nextSpace = input.indexOf(' ');//secondSpace
+		if (nextSpace < 1){
+			//System.out.println("populateWeatherRow: invalid thirdSpace: "+ nextSpace);
+			return null;
+		}
+		//System.out.println("populateWeatherRow: thirdSpace: "+ nextSpace);
+		minTempString = input.substring(0, nextSpace);
+		input = input.substring(nextSpace).trim();
+
+		maxTempString = trimOffNonNumerics(maxTempString);
+		minTempString = trimOffNonNumerics(minTempString);
+		try {
+			maxTemp= Integer.parseInt(maxTempString); 
+		}
+		catch (NumberFormatException e){
+			//System.out.println("populateWeatherRow: invalid maxTempString: "+ maxTempString);
+			return null;
+		}
+		//System.out.println("populateWeatherRow: maxTempString: "+ maxTempString);
+		
+		try {
+			minTemp= Integer.parseInt(minTempString); 
+		}
+		catch (NumberFormatException e){
+			//System.out.println("populateWeatherRow: invalid minTempString: "+ minTempString);
+			return null;
+		}
+		//System.out.println("populateWeatherRow: minTempString: "+ minTempString);
+		
+		if (maxTemp == -1000 || minTemp == -1000){
+			//System.out.println("populateWeatherRow: maxTemp: "+ maxTemp + "; minTemp: "+ minTemp);
+			return null;
+		}
+
+		//we're all jiggy, so let's proceed with some of the magic
+		WeatherRow row = new WeatherRow();
+		row.day = day;
+		row.minTemp = minTemp;
+		row.maxTemp = maxTemp;
+		row.tempDiff = maxTemp - minTemp;
+		
+		//System.out.println("day " +day+ ": maxTemp: "+ maxTemp + "; minTemp:" +minTemp+"; tempDiff: "+ row.tempDiff);
+		rows.add(row);
+		
+		return rows;		
+	}
+
+	public static String trimOffNonNumerics(String input) {
+		if (input == null){
+			//System.out.println("trimOffNonNumerics: invalid input1:" + input);
+			return null;
+		}
+		if(input.length() == 0){
+			//System.out.println("trimOffNonNumerics: invalid input2:" + input);
+			return null;
+		}
+
+		input = input.replaceAll("[^0-9]+","");
+		return input;
+	}
+
+	private static void partTwo(){
+		File f = new File(FOOTBALL_FILE);
+		String input = "";
+		FileReader fr = null;
+		BufferedReader br = null;
+		StringBuilder sb = new StringBuilder();
+		final String header = FOOTBALL_HEADER;
+		final String ignoreMiddle = "   -------------------------------------------------------";
+		boolean passedHeader = false;
+		boolean beforeFooter = true;
+		ArrayList<FootballRow> rows = new ArrayList<FootballRow>();
+		String teamWithSmallestSpread = "";
+		int smallestSpread = 1000;
+		
+		if (!f.canRead()){
+			System.out.println("File is unreadable");
+			return;
+		}
+		//System.out.println("setting file reader.");
+		try { 
+			fr = new FileReader(f);
+		}catch (FileNotFoundException e){
+			System.out.println("error setting file reader: "+e.getMessage());
+			return;
+		}
+		//System.out.println("setting buffered reader");
+		br = new BufferedReader(fr);
+		
+		try{
+			while ((input = br.readLine()) != null){
+				if (input.contains(FOOTER)){
+					beforeFooter = false;
+				}
+				if (passedHeader){
+					if (beforeFooter){
+						if (! input.equals(ignoreMiddle)){
+							rows = populateFootballRow(input, rows);
+							sb.append(input+"\n");
+						}
+					}
+				}
+				if (input.contains(header)){
+					passedHeader = true;
+				}
+			}
+			br.close();
+			fr.close();
+		} catch (IOException e){
+			System.out.println(e.getMessage());
+			return;
+		}
+		
+		if (rows.size() == 0){
+			System.out.println("FootballRows size = 0");
+			return;
+		}
+		
+		for (int i=0; i< rows.size(); i++){
+			FootballRow row = rows.get(i);
+			if (teamWithSmallestSpread == "" || row.forAgainstDiff < smallestSpread){
+				teamWithSmallestSpread = row.team;
+				smallestSpread = row.forAgainstDiff;
+			}
+		}
+		
+		System.out.println("Team with smallest spread: " + teamWithSmallestSpread);
+		System.out.println("Smallest spread: " + smallestSpread + "\n");
+	}
+
+	public static ArrayList<FootballRow> populateFootballRow(String input,
+			ArrayList<FootballRow> rows) {
+		int nextSpace = 0;
+		String team = "";
+		String forGoalsString = "";
+		String againstGoalsString = "";
+		int forGoals = -1000; //0 is a reasonable value to expect here, so we set this default value = something unreasonable.
+		int againstGoals = -1000;
+		
+		if (input == null || rows == null){
+			//System.out.println("populateFootballRow: invalid input1:" + input);
+			return null;
+		}
+		input = input.trim();
+		input = input.replaceAll("  ", " ");
+		
+		if(input.length() == 0){
+			//System.out.println("populateFootballRow: invalid input2:" + input);
+			return null;
+		}
+		
+		input = getAndThrowAwayNextWord(input); //team number
+		if (input.length()==0 ){
+			//System.out.println("populateFootballRow: invalid input: "+ input);
+			return null;
+		}
+		
+		nextSpace = input.indexOf(' ');
+		team = input.substring(0, nextSpace); 
+		input = getAndThrowAwayNextWord(input);
+		
+		for (int i=0; i < 4; i++){
+			input = getAndThrowAwayNextWord(input); //P,W,L,D
+			if (input.length()==0 ){
+				//System.out.println("populateFootballRow: invalid input: "+ input);
+				return null;
+			}
+		}
+		
+		nextSpace = input.indexOf(' ');
+		if (nextSpace < 1 ){
+			//System.out.println("populateFootballRow: invalid input: "+ input);
+			return null;
+		}
+		//System.out.println("populateFootballRow: secondSpace: "+ nextSpace);
+		forGoalsString = input.substring(0, nextSpace);
+
+		input = getAndThrowAwayNextWord(input); //throw away forGoals
+		input = getAndThrowAwayNextWord(input); // "-" b/n f & a
+		if (input.length()==0 ){
+			//System.out.println("populateFootballRow: invalid input: "+ input);
+			return null;
+		}
+		
+		nextSpace = input.indexOf(' ');
+		if (nextSpace < 1 ){
+			//System.out.println("populateFootballRow: invalid input: "+ input);
+			return null;
+		}
+		//System.out.println("populateFootballRow: secondSpace: "+ nextSpace);
+		againstGoalsString = input.substring(0, nextSpace);
+		
+		try {
+			forGoals= Integer.parseInt(forGoalsString); 
+		}
+		catch (NumberFormatException e){
+			//System.out.println("populateFootballRow: invalid maxTempString: "+ forGoalsString);
+			return null;
+		}
+		//System.out.println("populateFootballRow: forGoalsString: "+ forGoalsString);
+		
+		try {
+			againstGoals= Integer.parseInt(againstGoalsString); 
+		}
+		catch (NumberFormatException e){
+			//System.out.println("populateFootballRow: invalid againstGoalsString: "+ againstGoalsString);
+			return null;
+		}
+		if (forGoals == -1000 || againstGoals == -1000){
+			//System.out.println("populateFootballRow: forGoals: "+ forGoals + "; againstGoals: "+ againstGoals);
+			return null;
+		}
+		
+		FootballRow row = new FootballRow();
+		row.team = team;
+		row.forGoals = forGoals;
+		row.againstGoals = againstGoals;
+		row.forAgainstDiff = Math.abs(forGoals - againstGoals);
+		
+		rows.add(row);
+		return rows;
+	}
+
+	public static String getAndThrowAwayNextWord(String input) {
+		if (input == null){
+			//System.out.println("getAndThrowAwayNextWord: invalid input1:" + input);
+			return null;
+		}
+		if(input.length() == 0){
+			//System.out.println("getAndThrowAwayNextWord: invalid input2:" + input);
+			return null;
+		}
+		
+		int nextSpace = input.indexOf(' ');
+		if (nextSpace < 1 ){
+			//System.out.println("getNextWordAndThrowAway: invalid input: "+ input);
+			return "";
+		}
+		//String temp = input.substring(0, nextSpace); 
+		input = input.substring(nextSpace).trim();
+
+		//System.out.println("Throwing away "+ temp);
+		return input;
+	}
+
+	private static void partThree(String filepath){
+		File f = new File(filepath);
+		String input = "";
+		FileReader fr = null;
+		BufferedReader br = null;
+		StringBuilder sb = new StringBuilder();
+		//HEADER to be used can be derived from the filepath;
+		//ignoreMiddle can maybe be left out and swallowed by clever error handling
+		boolean passedHeader = false;
+		boolean beforeFooter = true;
+		ArrayList<GenericDataRow> rows = new ArrayList<GenericDataRow>();
+		int rowsCount = 0;
+		String identifierWithSmallestSpread = "";
+		int smallestSpread = 1000;
+		boolean usingWeather = filepath.equals(WEATHER_FILE);
+		final String header;
+		if (usingWeather){
+			header = WEATHER_HEADER;
+		}else{
+			header = FOOTBALL_HEADER;
+		}
+		final String identifier;
+		if (usingWeather){
+			identifier = "Weather";
+		}else{
+			identifier = "Football";
+		}
+
+		if (!f.canRead()){
+			System.out.println("File is unreadable");
+			return;
+		}
+		//System.out.println("setting file reader.");
+		try { 
+			fr = new FileReader(f);
+		}catch (FileNotFoundException e){
+			System.out.println("error setting file reader: "+e.getMessage());
+			return;
+		}
+		//System.out.println("setting buffered reader");
+		br = new BufferedReader(fr);
+		
+		
+		try{
+			while ((input = br.readLine()) != null){
+				if (input.contains(FOOTER)){
+					beforeFooter = false;
+				}
+				if (passedHeader){
+					if (beforeFooter){
+//						if (input == ""){
+//							continue;
+//						}
+						rows = populateGenericDataRow(input, rows, usingWeather);
+						if (rows == null){
+							System.out.println("Null GenericDataRows");
+							return;
+						}
+						if (rowsCount < rows.size()){
+							sb.append(input+"\n");
+						}
+						rowsCount = rows.size();
+					}
+				}
+				if (input.contains(header)){
+					passedHeader = true;
+				}
+			}
+			br.close();
+			fr.close();
+		} catch (IOException e){
+			System.out.println(e.getMessage());
+			return;
+		}
+		
+		if (rows.size() == 0){
+			System.out.println("GenericDataRows size = 0");
+			return;
+		}
+		
+		for (int i=0; i< rows.size(); i++){
+			GenericDataRow row = rows.get(i);
+			if (identifierWithSmallestSpread == "" || row.dataDiff < smallestSpread){
+				identifierWithSmallestSpread = row.identifier;
+				smallestSpread = row.dataDiff;
+			}
+		}
+		
+		System.out.println(identifier+ " identifier with smallest spread: " + identifierWithSmallestSpread);
+		System.out.println("Smallest spread: " + smallestSpread);
+	}
+
+	public static ArrayList<GenericDataRow> populateGenericDataRow(
+			String input, ArrayList<GenericDataRow> rows, boolean usingWeather) {
+		
+		int nextSpace = 0;
+		String[] columnsString = new String[GenericDataColumnCount];
+		int[] columns = new int[GenericDataColumnCount];
+		
+		if (input == null || rows == null){
+			//System.out.println("populateGenericDataRow: invalid input1:" + input);
+			return null;
+		}
+		input = input.trim();
+		
+		if(input.length() == 0){
+			//System.out.println("populateGenericDataRow: invalid input2:" + input);
+			return rows;
+		}
+		//System.out.println("populateGenericDataRow: input:" + input);
+		
+		for (int i=0; i < columns.length; i++){
+			nextSpace = input.indexOf(' '); //starting at one because each line begins with a space
+			if (nextSpace < 1){
+				//System.out.println("populateGenericDataRow: invalid spacing: "+ input);
+				return rows;
+			}
+			columnsString[i] = input.substring(0, nextSpace);
+			input = input.substring(nextSpace).trim();
+		}
+		
+		//now that we've put all the data from the file into an array of strings,...
+		if (usingWeather){
+			rows = processWeatherData(columnsString, rows);
+		}
+		else {
+			rows = processFootballData(columnsString, rows);
+		}
+		
+		return rows;
+	}
+
+	public static ArrayList<GenericDataRow> processWeatherData(
+			String[] columnsString, ArrayList<GenericDataRow> rows) {
+		
+		if (columnsString == null || rows == null || columnsString.length==0){
+			return null;
+		}
+		GenericDataRow row = new GenericDataRow();
+		int column = 0;
+		
+		for (int i=0; i< columnsString.length; i++){
+			columnsString[i] = trimOffNonNumerics(columnsString[i]);
+			try {
+				column= Integer.parseInt(columnsString[i]); 
+			}
+			catch (NumberFormatException e){
+				//fail quietly
+			}
+			if (i==0){
+				row.identifier = columnsString[i]; 
+			}
+			row.columns[i] =column;
+		}
+		
+		row.dataDiff = Math.abs(row.columns[1] - row.columns[2]);
+		
+		rows.add(row);
+
+		return rows;
+	}
+
+	public static ArrayList<GenericDataRow> processFootballData(
+			String[] columnsString, ArrayList<GenericDataRow> rows) {
+		
+		GenericDataRow row = new GenericDataRow();
+		int column = 0;
+		
+		for (int i=0; i< columnsString.length; i++){
+			try {
+				column= Integer.parseInt(columnsString[i]); 
+			}
+			catch (NumberFormatException e){
+				//fail quietly
+			}
+			if (i==1){
+				row.identifier = columnsString[i]; 
+			}
+			row.columns[i] =column;
+		}
+		
+		row.dataDiff = Math.abs(row.columns[7] - row.columns[8]);
+		rows.add(row);
+		return rows;
+	}
+
+}

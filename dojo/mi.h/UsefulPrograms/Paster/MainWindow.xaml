@@ -1,0 +1,94 @@
+﻿<Window x:Class="Paster.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Paster" Height="667.224" Width="960.452">
+    <!--<Window.Resources>
+        <ContextMenu x:Key="TreeNodeMenu">
+            <MenuItem Header="Add Entity..." IsEnabled="{Binding AllowAddEntity}" Click="AddEntity_Click" />
+        </ContextMenu>
+    </Window.Resources>-->
+    <Grid>
+        <Label Content="Paste the code into the lower left textbox to prepare it for copy and paste." HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
+
+        <Button Content="Prepare the Code" HorizontalAlignment="Left" Margin="750,10,0,0" VerticalAlignment="Top" Width="150" Click="Go_OnClick" />
+        <Button Content="Prepare the Code W/ Quotes" HorizontalAlignment="Left" Margin="750,30,0,0" VerticalAlignment="Top" Width="150" Click="Go2_OnClick" />
+        <Button Content="Prepare the Code W/ Escapes" HorizontalAlignment="Left" Margin="590,30,0,0" VerticalAlignment="Top" Width="150" Click="Go3_OnClick" />
+        <Button Content="Replace \n with ____(R)" HorizontalAlignment="Left" Margin="590,10,0,0" VerticalAlignment="Top" Width="150" Click="Go4_OnClick" />
+        <Button Content="Replace ____(L) with \n" HorizontalAlignment="Left" Margin="430,10,0,0" VerticalAlignment="Top" Width="150" Click="Go5_OnClick" />
+        <Button Content="Replace" HorizontalAlignment="Left" Margin="430,30,0,0" VerticalAlignment="Top" Width="150" Click="Go6_OnClick" />
+        <Button Content="Copy Right Textbox to Left" HorizontalAlignment="Left" Margin="270,30,0,0" VerticalAlignment="Top" Width="150" Click="Go7_OnClick" />
+        <Button Content="Nothing Yet" HorizontalAlignment="Left" Margin="270,10,0,0" VerticalAlignment="Top" Width="150" Click="Go8_OnClick" />
+
+        <Grid Margin="0,50,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="200" Width="250"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Name="leftPreview" Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="1" Text="Code to be Prepared:" Margin="10, -5, 0, 0"/>
+            
+            <TextBox Name="leftTextBox"
+                         Grid.Column="0" 
+                         Grid.ColumnSpan="1" 
+                         Grid.Row="1" 
+                         Width="Auto" 
+                         TextWrapping="NoWrap" 
+                         AcceptsReturn="True" 
+                         VerticalScrollBarVisibility="Auto" 
+                         Height="Auto"
+                         Margin="10" />
+
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="8" ShowsPreview="True" />
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Left Text:" Margin="10"/>
+                <TextBox Grid.Column="1" Grid.Row="0" Width="150" HorizontalAlignment="Left" Margin="10" MaxLines="1" MinLines="1" Name="leftText"
+                         Text="sb.append(&quot;" />
+
+                <!--<TextBlock Grid.Column="2" Grid.Row="0" Text="Field 2" Margin="10"/>-->
+                <!--<ComboBox Grid.Column="3" Grid.Row="0" Width="150" HorizontalAlignment="Left" Margin="10" />-->
+
+                <TextBlock Grid.Column="4" Grid.Row="0" Text="Right Text:" Margin="10" />
+                <TextBox Grid.Column="5" Grid.Row="0" Width="150" HorizontalAlignment="Left" Margin="10" MaxLines="1" MinLines="1" Name ="rightText"
+                         Text="&quot;);" />
+
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Replace" Margin="10"/>
+                <TextBox Grid.Column="1" Grid.Row="1" Width="150" HorizontalAlignment="Left" Margin="10" Name="replaceText" />
+
+                <TextBlock Grid.Column="2" Grid.Row="1" Text="with" Margin="10"/>
+                <TextBox Grid.Column="3" Grid.Row="1" Width="150" HorizontalAlignment="Left" Margin="10" MaxLines="1" MinLines="1" Name="replacedText" />
+
+                <!--<TextBlock Grid.Column="4" Grid.Row="1" Text="Field 6" Margin="10"/>-->
+                <!--<ComboBox Grid.Column="5" Grid.Row="1" Width="150" HorizontalAlignment="Left" Margin="10" />-->
+
+                <TextBlock Name="TbPreview" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Text="Preview" Margin="10, 0, 0, 0"/>
+
+                <TextBox Name="bigTextBox"
+                         Text="{Binding Path=leftTextBox, UpdateSourceTrigger=Explicit}"
+                         Grid.Column="0" 
+                         Grid.ColumnSpan="6" 
+                         Grid.Row="3" 
+                         Width="Auto" 
+                         TextWrapping="Wrap" 
+                         AcceptsReturn="True" 
+                         VerticalScrollBarVisibility="Auto" 
+                         Height="Auto"
+                         Margin="10" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

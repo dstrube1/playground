@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+hg=C\:\\Program Files (x86)\\eclipse\\plugins\\com.intland.hgbinary.win32_1.9.3\\os\\win32\\hg.exe
+hg.batchsize.status=10
+repo_=d33 http\://hgdev.ignitionone.com/dojo 0  0  7 default|
+repo_C\:\\repo\\dojo=d33 http\://hgdev.ignitionone.com/dojo 0  0  7 default|
