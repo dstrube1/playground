@@ -1,3 +1,19 @@
+//https://www.rust-lang.org/learn/get-started
+
+//to build, from hello-rust dir:
+//cargo build
+
+//to run:
+//cargo run
+
+//https://www.youtube.com/watch?v=pTMvh6VzDls
+//17:21
+/**/
+// 17:54 "And then if I was to compile this func_1 now, it would compile absolutely fine. No issues." 
+//False
+
+//Solution: ask ChatGPT to debug, and it gave the answer!
+
 struct Bob{
 	n: Vec<i32>
 }
@@ -37,18 +53,3 @@ fn main() {
 }
 
 
-//https://www.rust-lang.org/learn/get-started
-
-//to build, from hello-rust dir:
-//cargo build
-
-//to run:
-//cargo run
-
-//https://www.youtube.com/watch?v=pTMvh6VzDls
-//17:21
-/**/
-// 17:54 "And then if I was to compile this func_1 now, it would compile absolutely fine. No issues." 
-//False
-
-//Solution: ask ChatGPT to debug, and it gave the answer!
