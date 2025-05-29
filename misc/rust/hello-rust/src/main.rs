@@ -1,5 +1,8 @@
 //https://www.rust-lang.org/learn/get-started
 
+//to create this:
+//cargo new hello-rust
+
 //to build, from hello-rust dir:
 //cargo build
 
