@@ -47,18 +47,16 @@ func main() {
 	
 	
 	fmt.Print("i: ")
-	fmt.Println(i)/*
-	fmt.Print("b: ")
-	fmt.Print("f: ")
-	*/
+	fmt.Println(i)
+	//concatenate string with +
 	//arguments to Print separated by ,
 	fmt.Print("s: " + s, "\n")
-	//if neither argument is string, then Print will insert a space between each
+	//if not all arguments are string, then Print will insert a space between each
 	fmt.Print("Default values of bool and float32: ")
 	fmt.Print(b,f)
 	//neither Print nor Println require an argument:
-	fmt.Print()
-	fmt.Println()
+	fmt.Println() //good
+	fmt.Print() //weird
 	
 	//constant:
 	//const PI = 3.14
@@ -75,10 +73,34 @@ func main() {
 	
 	//more Numerics:
 	var u uint64 = 18446744073709551615 //18,446,744,073,709,551,615 =~ 18 quintillion
-	fmt.Println("u: ", u)
+	fmt.Println("u:", u)
 	
-	//Next, arrays...
+	//Arrays
+	//with var / =
+	var arr0 = [3]int{0,1,2}
+	var arr1 = [...]int{1,2,3}
+	//with :=
+	arr2 := [3]int{2,3,4}
+	arr3 := [...]int{3,4,5}
+	fmt.Println("arr0:", arr0)
+	fmt.Println("arr1:", arr1)
+	fmt.Println("arr2:", arr2)
+	fmt.Println("arr3:", arr3)
+	//element access:
+	i = arr1[0]
+	fmt.Println("arr1[0]:", i)
+	fmt.Println("Length of arr2:", len(arr2))
+	
+	//Slice, like array, but flexible size
+	myslice := []int{} //values are optional; size mustn't be specified
+	fmt.Println("Length of myslice:", len(myslice)) //0
+	fmt.Println("Capacity of myslice:", cap(myslice)) //0
+	
+	//LEFTOFF:
+	//https://www.w3schools.com/go/go_slices.php
+	
 }
+
 /*
 
 
