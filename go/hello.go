@@ -14,13 +14,12 @@ import (
 	"time"
 )
 
-func main() {
-	//statements are separaated by newlines or ;
-	//line cannot begin with {; eg, try commenting out the one above and uncommenting this:
-	//{
-	fmt.Println("Hello, 世界") //Chinese for "world"
-	fmt.Println("The time is", time.Now())
-	
+func unused(){
+	//Does Go complain if a func isn't used, like it does with variables?
+	//No
+}
+
+func variablesAndPrinting(){	
 	//variables:
 	var i int //default: 0
 	//Go really doesn't like variables that are declared and not used
@@ -74,7 +73,9 @@ func main() {
 	//more Numerics:
 	var u uint64 = 18446744073709551615 //18,446,744,073,709,551,615 =~ 18 quintillion
 	fmt.Println("u:", u)
-	
+}
+
+func arraysAndSlices(){
 	//Arrays
 	//with var / =
 	var arr0 = [3]int{0,1,2}
@@ -87,7 +88,7 @@ func main() {
 	fmt.Println("arr2:", arr2)
 	fmt.Println("arr3:", arr3)
 	//element access:
-	i = arr1[0]
+	var i = arr1[0]
 	fmt.Println("arr1[0]:", i)
 	fmt.Println("Length of arr2:", len(arr2))
 	
@@ -98,7 +99,28 @@ func main() {
 	
 	//LEFTOFF:
 	//https://www.w3schools.com/go/go_slices.php
+}
+
+func main() {
+	//statements are separaated by newlines or ;
 	
+	//weird quirk: a line cannot begin with an open bracket, ie, { 
+	//eg, try commenting out the one above and uncommenting this:
+	//{
+	
+	fmt.Println("Hello, 世界") //Chinese for "world"
+	fmt.Println("The time is", time.Now())
+	
+	variablesAndPrinting()
+	
+	arraysAndSlices()	
+	
+	definedAfterMain()
+}
+
+func definedAfterMain(){
+	//What if a function is defined after it's called
+	fmt.Println("definedAfterMain - this is fine.")
 }
 
 /*
