@@ -167,6 +167,13 @@ func operators(){
   var s1 = "s1"
   var s2 = s0 + s1
   fmt.Println("What about string +?: " + s2)
+  
+  //Bitwise operator- seems very different from what it does / means in other languages like C++
+  var i = 1
+  fmt.Println("i before bitwise shift (<<2): ", i)
+  i = i << 2
+  fmt.Println("i after bitwise shift: ", i)
+  //Nope, no different. W3Schools is misleading on this -_-
 }
 
 func timeStuff(){
