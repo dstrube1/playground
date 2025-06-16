@@ -161,19 +161,93 @@ func operators(){
 		sum1 = 100 + 50 // 150 (100 + 50)
 		sum2 = sum1 + 250 // 400 (150 + 250)
 		sum3 = sum2 + sum2 // 800 (400 + 400)
-  )*/
-  
-  var s0 = "s0"
-  var s1 = "s1"
-  var s2 = s0 + s1
-  fmt.Println("What about string +?: " + s2)
-  
-  //Bitwise operator- seems very different from what it does / means in other languages like C++
-  var i = 1
-  fmt.Println("i before bitwise shift (<<2): ", i)
-  i = i << 2
-  fmt.Println("i after bitwise shift: ", i)
-  //Nope, no different. W3Schools is misleading on this -_-
+	)*/
+	
+	var s0 = "s0"
+	var s1 = "s1"
+	var s2 = s0 + s1
+	fmt.Println("What about string +?: " + s2)
+	
+	//Bitwise operator
+	var i = 1
+	fmt.Println("i before bitwise shift (<<2): ", i)
+	i = i << 2
+	fmt.Println("i after bitwise shift: ", i)
+	fmt.Printf("i after bitwise shift in binary: %b \n", i)
+}
+
+func conditionsAndLoops(){
+	//If / else if / else
+	time := 22
+	//Can a one line clause go without {}s? Nope
+	//Also, can't have a close bracket on its own line
+	if time < 10 {
+		fmt.Println("Good morning.")
+	} else if time < 20 {
+		fmt.Println("Good day.")
+	} else {
+		fmt.Println("Good evening.")
+	}
+	
+	//Switch case 
+	//Only executes one case, so break not required / is ignored
+	day := 0
+	switch day {
+	/*
+	Multiple case, executes if either value is true; 
+	invalid if values are in some other case
+	case 1,2:
+		fmt.Println("Monday or Tuesday")*/
+	case 1:
+		fmt.Println("Monday")
+	case 2:
+		fmt.Println("Tuesday")
+	case 3:
+		fmt.Println("Wednesday")
+	case 4:
+		fmt.Println("Thursday")
+	case 5:
+		fmt.Println("Friday")
+	case 6:
+		fmt.Println("Saturday")
+		break
+	default:
+		fmt.Println("Sunday")
+	}
+	
+	//For
+	//increment with continue
+	for i:=0; i < 5; i++{
+		if i >= 3 {
+			continue
+		}
+		fmt.Print(i, " ")
+	}
+	fmt.Println()
+	//decrement with break
+	for i:=5; i >=0; i--{
+		fmt.Print(i, " ")
+		if i <= 3 {
+			break
+		}
+	}
+	fmt.Println()
+	
+	//Foreach index and value in array/slice/map:
+	arr := [3]string{"a","b","c"}
+	for index,value := range arr{ //to ignore index or value, replace it with _
+		fmt.Printf("index: %v \t value: %v \n", index, value)
+	}
+	
+	//no while (!?)
+	//https://golangdocs.com/while-loop-in-golang
+	//for-loop is the while-loop (and while-true and do-while):
+	i := 0
+	for i < 5{
+		i++
+		fmt.Print(i, " ")
+	}
+	fmt.Println()
 }
 
 func timeStuff(){
@@ -186,11 +260,15 @@ func main() {
 	//weird quirk: a line cannot begin with an open bracket, ie, { 
 	//eg, try commenting out the one above and uncommenting this:
 	//{
+	//=>
+	//./hello.go:[line number]:[column number]: syntax error: unexpected semicolon or newline before {
+
 	
 	//definedAfterMain()
 	//variablesAndPrinting()
 	//arraysAndSlices()	
-	operators()
+	//operators()
+	conditionsAndLoops()
 	//timeStuff()
 	
 }
