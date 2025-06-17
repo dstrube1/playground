@@ -250,6 +250,201 @@ func conditionsAndLoops(){
 	fmt.Println()
 }
 
+func functionTests(){
+	//Functions (defined below this one):
+	i0f0 := 1
+	i1f0 := 2
+	i2f0 := function0(i0f0, i1f0)
+	fmt.Println("i2f0:", i2f0)
+	
+	//Polymorphism:
+	//same name (as another unused one) but different signatures
+	i0f1 := 1
+	i1f1 := 2
+	i2f1 := 3
+	i3f1 := function1(i0f1, i1f1, i2f1)
+	fmt.Println("i3f1:", i3f1)
+	
+	//Multiple returns
+	i4f2, i5f2 := function2(i0f0, i1f0) //returns can be ignored by replacing with _
+	fmt.Println("i4f2:", i4f2, "i5f2:", i5f2)
+	
+	//Recursion
+	recurse(1)
+	//Why does this start breaking at 21?
+	var i uint64
+	for i = 1; i < 22; i++{
+		fmt.Println(i,"factorial =", factorial(i))
+	}
+}
+
+func function0(param0 int, param1 int) int {
+	return param0 + param1
+}
+
+/*func function1(param0 int, param1 int) (result int) { //named return 
+	result = param0 + param1
+	return
+}*/
+
+//What if same name but different signatures? Error(!) No polymorphism?!
+func function1(param0 int, param1 int, param2 int) (result int) { 
+	result = param0 + param1 + param2
+	return
+}
+
+//If same name but different number of returns, 
+//then "assignment mismatch: 2 variables but function1 returns 1 value"
+//So, no polymorphism here
+func function2(param0 int, param1 int) (result int, msg string) { //multiple named returns 
+	//values don't have to be set in the same order as their declarations
+	msg = "Hey"
+	result = param0 + param1
+	return //what if return is commented out? error: missing return
+}
+
+func recurse(x int) int {
+	if x >= 11{
+		fmt.Println()
+		return 0
+	}
+	fmt.Print(x," ")
+	return recurse(x + 1)
+}
+
+func factorial(u uint64) (v uint64){
+	if u > 0 {
+		v = u * factorial(u-1)
+	}else{
+		v = 1
+	}
+	return
+}
+
+func structs(){
+	type class struct{
+		member1 int
+		member2 string
+	}
+	var obj class
+	obj.member1 = 1
+	obj.member2 = "member2"
+	
+	fmt.Println("obj.member1:",obj.member1)
+	fmt.Println("obj.member2:",obj.member2)
+}
+
+func maps(){
+	//A map is an unordered and changeable collection that does not allow duplicates.
+	//The length of a map is the number of its elements. You can find it using the len() function.
+	//The default value of a map is nil.
+	
+	//Create Maps Using var or :=
+	var a = map[int]string{0:"a", 1:"b"}
+	b := map[string]int{"a":0, "b":1}
+	
+	//Using the make() Function:
+	var c = make(map[int]string) //these are empty until something is added
+	d := make(map[string]int)
+	c[0] = "a"
+	d["a"] = 0
+	
+	//does it still throw an error if nothing is done to them? yes
+	fmt.Println("a:",a)
+	fmt.Println("a[0]:",a[0])
+	fmt.Println("b:",b)
+	fmt.Println("b[a]:",b["a"])
+	
+	//the only other way to create an empty map:
+	var e map[int]string
+	fmt.Println("len(e):",len(e))
+	//Note: The make()function is the right way to create an empty map. 
+	//If you make an empty map in a different way and write to it, it will causes a runtime panic.
+	//e[0] = "a"
+	//=>
+	//panic: assignment to entry in nil map ...
+	
+	//difference between declaring an empty map using with the make()function and without it:
+	var f = make(map[string]string)
+	fmt.Println("e == nil:",e == nil) //true
+	fmt.Println("f == nil:",f == nil) //false
+	
+	/*
+	Allowed Key Types:
+	any data type for which the equality operator (==) is defined. These include:
+Booleans
+Numbers
+Strings
+Arrays
+Pointers
+Structs
+Interfaces (as long as the dynamic type supports equality)
+
+	Invalid key types are:
+Slices
+Maps
+Functions
+*/
+	//(The map values can be any type.)
+	
+	//delete element from map:
+	delete(a,1)
+	fmt.Println("a after delete(a,1):",a)
+	
+	//check map for value by key:
+	value, exists := b["a"]
+	fmt.Println("value, exists = b[a]:", value, ",", exists)
+	
+	//Maps are references to hash tables.
+	//If two map variables refer to the same hash table, 
+	//changing the content of one variable affect the content of the other.
+	
+	//Iterate over maps using range:
+	fmt.Println("Iterating over b:")
+	for k, v := range b {
+		fmt.Printf("%v, %v \n", k, v)
+	}
+	
+	//Iterate Over Maps in a Specific Order:
+	//must have a separate data structure that specifies the order
+	/*
+	Hmm, this doesn't illustrate the point as well as it does on w3schools.
+	Maybe I need a bigger map...
+	numbers := map[string]int{"one": 1, "two": 2, "three": 3, "four": 4}
+	var order[]string
+	order = append(order,"one", "two", "three", "four")
+	//loop with no order:
+	fmt.Println("Looping over a map unordered:")
+	for k,v := range numbers{
+		fmt.Printf("%v, %v, ", k, v)
+	}
+	fmt.Println()
+	fmt.Println("Looping over a map ordered:")
+	for _,v := range order{
+		fmt.Printf("%v, %v, ", v, numbers[v])
+	}
+	fmt.Println()
+	*/
+	var numbers = make(map[int]int)
+	var order[]int
+	for i:=0; i <= 10; i++{
+		numbers[i] = i * 2
+		order = append(order,i)
+	}
+	fmt.Println("numbers:", numbers)
+	fmt.Println("Looping over a map unordered:")
+	for k,v := range numbers{
+		fmt.Printf("[%v:%v] ", k, v)
+	}
+	fmt.Println()
+	fmt.Println("Looping over a map ordered:")
+	for _,v := range order{
+		fmt.Printf("[%v:%v] ", v, numbers[v])
+	}
+	fmt.Println()
+
+}
+
 func timeStuff(){
 	fmt.Println("The time is", time.Now())
 }
@@ -268,9 +463,11 @@ func main() {
 	//variablesAndPrinting()
 	//arraysAndSlices()	
 	//operators()
-	conditionsAndLoops()
+	//conditionsAndLoops()
+	//functionTests()
+	//structs()
+	maps()
 	//timeStuff()
-	
 }
 
 func definedAfterMain(){
