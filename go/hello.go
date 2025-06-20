@@ -189,6 +189,24 @@ func conditionsAndLoops(){
 		fmt.Println("Good evening.")
 	}
 	
+	/**
+	//Can primitives be nil? 
+	var i = 0
+	var b bool //default: false
+	var f float32 //default: 0
+	var s string = "s" //must use ", not '; default: ""
+	if i == nil || b == nil || f == nil || s == nil{
+		fmt.Println("Something is nil")
+	}else{
+		fmt.Println("None of the vars is nil")
+	}
+	//Apparently no:
+	./hello.go:198:10: invalid operation: i == nil (mismatched types int and untyped nil)
+	./hello.go:198:22: invalid operation: b == nil (mismatched types bool and untyped nil)
+	./hello.go:198:34: invalid operation: f == nil (mismatched types float32 and untyped nil)
+	./hello.go:198:46: invalid operation: s == nil (mismatched types string and untyped nil)
+	**/
+	
 	//Switch case 
 	//Only executes one case, so break not required / is ignored
 	day := 0
@@ -459,15 +477,31 @@ func main() {
 	//./hello.go:[line number]:[column number]: syntax error: unexpected semicolon or newline before {
 
 	
-	//definedAfterMain()
-	//variablesAndPrinting()
-	//arraysAndSlices()	
-	//operators()
-	//conditionsAndLoops()
-	//functionTests()
-	//structs()
-	maps()
-	//timeStuff()
+	//0-definedAfterMain()
+	
+	//1-7: https://www.w3schools.com/go/
+	//1-variablesAndPrinting()
+	//2-arraysAndSlices()	
+	//3-operators()
+	//4-
+	conditionsAndLoops()
+	//5-functionTests()
+	//6-structs()
+	//7-maps()
+	
+	//8-timeStuff()
+	
+	//https://go.dev/doc/tutorial/getting-started
+	//Enable dependency tracking for your code:
+	//go mod init example/hello
+	//output:
+	//go: creating new go.mod: module example/hello
+	//go: to add module requirements and sums:
+	//go mod tidy
+	
+	//2025-06-17
+	//TBH, after my latest Go job rejection, I'm a little too bummed and burnt out on Go right now
+	//I hope come back to this someday refreshed and excited to learn more again
 }
 
 func definedAfterMain(){
