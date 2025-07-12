@@ -124,7 +124,7 @@ fn basics(){
 		"Good day."
 	} else {
 		"Good evening."
-	};
+	}; //must end with ;
 	//Note, can't just do println!(greeting);
 	println!("{}", greeting);
 	
@@ -144,18 +144,63 @@ fn basics(){
 	    _ => println!("Invalid day"),
 	}
 	
-	//Like if, match can also return a value:
+	//Similar to `if`, match can also return a value:
 	let result = match day {
 	    1 => "Monday",
 	    2 => "Tuesday",
 	    3 => "Wednesday",
-    _ => "Invalid day.",
+	    _ => "Invalid day.",
 	};
 	println!("{}", result);
 	 
-	//leftoff:
-	//https://www.w3schools.com/rust/rust_loops.php
+	//Loops:
+	loop{ //loops forever until broken or Ctrl+C
+		if day == 1 {
+			continue;//does continue work in a loop? yes
+		}
+		println!("day : {}", day);
+		if day >= 4{ break; }
+	}
+	
+	//loop can also return a value:
+	b = loop{
+		if day >= 4 {
+			break day;
+		}
+	};
+	println!("b after loop : {}", b);
+	
+	while b >= 0{
+		println!("b in while loop : {}", b);
+		b -= 1; //no -- or ++
+	}
+	println!("b after while loop : {}", b); //-1
+	
+	for b in 1..5{
+		println!("b in for loop : {}", b);
+	}
+	println!("b after for loop : {}", b); //still -1 ?! 
+	//explanation: this b is not the same as the b in the for loop
+	
+	//no need to declare counter for a for loop
+	for i in 1..=4{ //`..=` : inclusive
+		println!("i in for inclusive loop : {}", i);
+	}
+	
+	println!("function_with_params_and_return0(1,2): {}", function_with_params_and_return0(1,2));
+	println!("function_with_params_and_return1(2,3): {}", function_with_params_and_return1(2,3));
 }
+
+//Rust prefers snake case, not like this: functionWithParamsAndReturn0
+fn function_with_params_and_return0(a: i32, b: i32) -> i32{
+	return a + b;
+}
+
+fn function_with_params_and_return1(a: i32, b: i32) -> i32{
+	a + b //alternative to using return: no return and no semicolon will return the value of the last line
+}
+
+//leftoff: https://www.w3schools.com/rust/rust_strings.php
 
 /*
 
