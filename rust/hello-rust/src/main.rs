@@ -189,6 +189,52 @@ fn basics(){
 	
 	println!("function_with_params_and_return0(1,2): {}", function_with_params_and_return0(1,2));
 	println!("function_with_params_and_return1(2,3): {}", function_with_params_and_return1(2,3));
+	
+	//Strings
+	let mut s0: &str = "created from s0";
+	let mut s1: String = s0.to_string();
+	let mut _s2: String = String::from(s0);
+	
+	s0 = "test";
+	
+	//this will append to s0
+	s1.push_str(": s1"); 
+	_s2.push_str(": s");
+	
+	//append a char
+	_s2.push('2'); 
+	
+	//format!() macro concatenates `String`s and `&str`s
+	let _s3 = format!("{} {}", s0, "s3"); 
+	
+	//Can also concatenate with +, but must use & prefix for any String var; eg:
+	//let _s4 = s1 + &_s2;
+	/*Note, this line^ gives this error:
+	error[E0382]: borrow of moved value: `s1`
+	move occurs because `s1` has type `String`, which does not implement the `Copy` trait
+	value moved here: let _s4...
+	note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println`
+	Instead do this:
+	*/
+	let _s4 = s1.clone() + &_s2;
+	//but format!() is generally preferred
+	
+	//putting a _ at the beginning of an unused variable will suppress the warning about it being unused
+	//and the rust compiler won't make a fuss if a used variable starts with _
+	
+	println!("s0: {}", s0);
+	println!("s1: {}", s1);
+	println!("s2: {}", _s2);
+	println!("length of s2: {}", _s2.len());
+	
+	//Ownership
+	let a0 = String::from("Hi");
+	let b0 = a0;
+	//Similar error as above for _s4, because a0 is no longer the owner of the value assigned to it
+	//println!("a0: {}", a0);
+	println!("b0: {}", b0);
+	
+	
 }
 
 //Rust prefers snake case, not like this: functionWithParamsAndReturn0
@@ -200,7 +246,9 @@ fn function_with_params_and_return1(a: i32, b: i32) -> i32{
 	a + b //alternative to using return: no return and no semicolon will return the value of the last line
 }
 
-//leftoff: https://www.w3schools.com/rust/rust_strings.php
+/*leftoff: 
+https://www.w3schools.com/rust/rust_ownership.php
+*/
 
 /*
 
