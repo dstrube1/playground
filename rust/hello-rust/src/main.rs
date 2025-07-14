@@ -233,6 +233,13 @@ fn basics(){
 	//Similar error as above for _s4, because a0 is no longer the owner of the value assigned to it
 	//println!("a0: {}", a0);
 	println!("b0: {}", b0);
+	//This is only true for complex types; simple types like numbers, characters and booleans are copied, not moved:
+	let a1 = 1;
+	let b1 = a1;
+	println!("a1: {}", a1);
+	println!("b1: {}", b1);
+	//This is why the above call to .clone() fixed the problem
+	//Better than cloning is borrowing / reference (&):
 	
 	
 }
@@ -247,7 +254,7 @@ fn function_with_params_and_return1(a: i32, b: i32) -> i32{
 }
 
 /*leftoff: 
-https://www.w3schools.com/rust/rust_ownership.php
+https://www.w3schools.com/rust/rust_borrowing_references.php
 */
 
 /*

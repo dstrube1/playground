@@ -2,3 +2,4 @@
 *.bin
 *.lock
 /rust/hello-rust/target
+*.o
