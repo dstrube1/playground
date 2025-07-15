@@ -230,7 +230,8 @@ fn basics(){
 	//Ownership
 	let a0 = String::from("Hi");
 	let b0 = a0;
-	//Similar error as above for _s4, because a0 is no longer the owner of the value assigned to it
+	//This will give a similar error as above for _s4, 
+	//because a0 is no longer the owner of the value assigned to it:
 	//println!("a0: {}", a0);
 	println!("b0: {}", b0);
 	//This is only true for complex types; simple types like numbers, characters and booleans are copied, not moved:
@@ -238,9 +239,29 @@ fn basics(){
 	let b1 = a1;
 	println!("a1: {}", a1);
 	println!("b1: {}", b1);
-	//This is why the above call to .clone() fixed the problem
+	//This is why there is the above call to .clone() fixed the problem
 	//Better than cloning is borrowing / reference (&):
-	
+	let a2 = String::from("Hi!");
+	let b2 = &a2; //b2 is only borrowing; a2 still owns the value
+	println!("a2: {}", a2);
+	println!("b2: {}", b2);
+	//To change a value thru a reference, must make both the source and reference mutable:
+	let mut a3 = String::from("Hi there!");
+	let b3 = &mut a3;
+	b3.push_str(" Hello");
+	//error: cannot borrow `a3` as immutable because it is also borrowed as mutable :
+	//println!("a3: {}", a3);
+	println!("b3: {}", b3);
+	//Note: You can only have one mutable reference to a value at a time!
+
+/*
+Borrowing helps you reuse values safely, without giving them away.
+
+It lets you use values without taking ownership
+It avoids cloning, which can be slow for large data
+It makes your programs safer and faster
+*/
+
 	
 }
 
@@ -254,7 +275,7 @@ fn function_with_params_and_return1(a: i32, b: i32) -> i32{
 }
 
 /*leftoff: 
-https://www.w3schools.com/rust/rust_borrowing_references.php
+https://www.w3schools.com/rust/rust_data_structures.php
 */
 
 /*
