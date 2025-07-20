@@ -487,7 +487,8 @@ func main() {
 	conditionsAndLoops()
 	//5-functionTests()
 	//6-structs()
-	//7-maps()
+	//7-
+	maps()
 	
 	//8-timeStuff()
 	
@@ -499,9 +500,6 @@ func main() {
 	//go: to add module requirements and sums:
 	//go mod tidy
 	
-	//2025-06-17
-	//TBH, after my latest Go job rejection, I'm a little too bummed and burnt out on Go right now
-	//I hope come back to this someday refreshed and excited to learn more again
 }
 
 func definedAfterMain(){
