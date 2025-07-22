@@ -15,11 +15,11 @@
 // 17:54 "And then if I was to compile this func_1 now, it would compile absolutely fine. No issues." 
 //False
 
-//Solution: ask ChatGPT to debug, and it gave the answer!
+//...Fixed
 
 /*
 Compiler complains / warns about any unused code -_- which is why I comment out unused functions
-
+*/
 struct Bob{
 	n: Vec<i32>
 }
@@ -42,28 +42,35 @@ fn func_1(){
 	
 	//println!(); is a macro
 	//macro is like a function but with a "!" and different rules
-	
-	//println!("{}", bob.n[0]);
-	println!("todo: fix func_1...");
+	if bob.n.len() > 0{
+		println!("{}", bob.n[0]);
+	}else{
+		println!("func_1: bob.n.len()): {}", bob.n.len());
+	}
 }
 
 fn func_2(bob: &Bob){
-	//println!("{}", bob.n[0]);
-	//println!(bob.n.len());
-	println!("todo: fix func_2...");
+	if bob.n.len() > 0{
+		println!("{}", bob.n[0]);
+	}else{
+		println!("func_2: bob.n.len()): {}", bob.n.len());
+	}
 }
 
 fn func_3(bob: &Bob){
-	//println!("{}", bob.n[1]);
-	println!("todo: fix func_3...");
-}*/
+	if bob.n.len() > 1{
+		println!("{}", bob.n[1]);
+	}else{
+		println!("func_3: bob.n.len()): {}", bob.n.len());
+	}
+}/**/
 
 /*fn func_4(bob: &mut Bob){
 	bob.n = Vec::new();
 }*/
 
 fn main() {
-	//func_1();
+	func_1();
 	basics();
 }
 
@@ -74,7 +81,7 @@ fn basics(){
 	//cannot assign twice to immutable variable
 	
 	//variables are constant by default
-	//to make them really *variable*, must use mut
+	//to make them really *variable* and mutable, must use mut
 	let mut b = 1;
 	println!("a: {}, b: {}", a, b); //cannot print / use variable before it is assigned
 	b = 2;
@@ -117,7 +124,7 @@ fn basics(){
 		println!("Grade: F");
 	}
 	
-	//Using if / else as an expression - like ternary operator in other languages (? : );
+	//Using if / else as an expression (e.g., for assignment) - like ternary operator in other languages (? : );
 	//must have an else, and both values must be of the same type:
 	let time = 20;
 	let greeting = if time < 18 {
@@ -125,10 +132,12 @@ fn basics(){
 	} else {
 		"Good evening."
 	}; //must end with ;
+	
 	//Note, can't just do println!(greeting);
 	println!("{}", greeting);
 	
-	//switch / case /default => match / _:
+	//switch / case /default => match / => / _:
+	//no break; only one case executes
 	let day = 4;
 	match day {
     	1 => println!("Monday"),
@@ -292,7 +301,7 @@ dyld[17939]: Symbol not found: (__ZN4llvm10DataLayout5clearEv)
   Expected in: '/usr/local/Cellar/llvm/20.1.6/lib/libLLVM.dylib'
   
 Started trying to upgrade with brew, but that's taking all day (as brew usually does).
-ChatGPT says to uninstall with brew and reinstall with rustup:
+Possible fix: uninstall with brew and reinstall with rustup:
 1-
 brew uninstall rust
 2-
