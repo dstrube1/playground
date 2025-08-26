@@ -1,6 +1,7 @@
 use pyo3::prelude::*;
+//^ Required for: PyResult, pyfunction, pymodule, Bound, & wrap_pyfunction
 
-/// Formats the sum of two numbers as string.
+/// Format the sum of two numbers as string.
 #[pyfunction]
 fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
     Ok((a + b).to_string())
@@ -16,9 +17,9 @@ fn py03_example(m: &Bound<'_, PyModule>) -> PyResult<()> {
 
 //from "Basic Rust library" video
 
-//Computationally or memory intensive logic? Build it in Rust and then export it to Python
+//If you have computationally or memory intensive logic, then build it in Rust and then export it to Python
 
-//Calculates an approximation of Pi using the Leibniz formula.
+//Calculate an approximation of Pi using the Leibniz formula.
 //The more iterations, the more accurate the result
 #[pyfunction]
 fn calculate_pi(iterations: u32) -> PyResult<f64> {
@@ -44,3 +45,30 @@ fn libdigits_pi(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
     Ok(())
 }
 */
+
+/////////////////////////////////////////////////////////////////
+//Data types example, 
+//from "Using Rust with Python" - "Rust to Python"
+// https://www.linkedin.com/learning/using-rust-with-python/rust-to-python
+/////////////////////////////////////////////////////////////////
+use pyo3::types::PyDict;
+
+//Demonstrate conversion between Rust and Python data types
+#[pyfunction]
+fn data_types_example(py: Python<'_>) -> PyResult<PyObject>{
+	let text: &str = "Hello";
+	let integer: i32 = 42;
+	let float: f64 = 3.14;		//In the future, don't name variables after keywords, 
+	let boolean: bool = true;	//even if the keyword is in another language, if possible
+	
+	//Create Python dictionary
+	let python_dict = PyDict::new(py);
+	
+	//Insert ley-value pairs
+	python_dict.set_item("text", text)?;
+	python_dict.set_item("integer", integer)?;
+	python_dict.set_item("float", float)?;
+	python_dict.set_item("boolean", boolean)?;
+	
+	//Leftoff: 0:18
+}
