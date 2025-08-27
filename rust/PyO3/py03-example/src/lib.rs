@@ -12,6 +12,12 @@ fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
 fn py03_example(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(sum_as_string, m)?)?;
     m.add_function(wrap_pyfunction!(calculate_pi, m)?)?;
+    //m.add_function(wrap_pyfunction!(data_types_example, m)?)?;
+    //See below TODO for this function^
+    
+    m.add_class::NumberList<>()?;
+    
+    
     Ok(())
 }
 
@@ -52,8 +58,10 @@ fn libdigits_pi(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
 // https://www.linkedin.com/learning/using-rust-with-python/rust-to-python
 /////////////////////////////////////////////////////////////////
 use pyo3::types::PyDict;
+//use pyo3::wrap_function;
 
 //Demonstrate conversion between Rust and Python data types
+/*
 #[pyfunction]
 fn data_types_example(py: Python<'_>) -> PyResult<PyObject>{
 	let text: &str = "Hello";
@@ -70,5 +78,141 @@ fn data_types_example(py: Python<'_>) -> PyResult<PyObject>{
 	python_dict.set_item("float", float)?;
 	python_dict.set_item("boolean", boolean)?;
 	
-	//Leftoff: 0:18
+	//Return the Python dictionary
+	Ok(python_dict.to_object(py))
+	//error[E0599]: no method named `to_object` found for struct `pyo3::Bound<'_, PyDict>` in the current scope
+
+//USAGE:
+data_types = [library_project_name].data_types_example()}
+print(data_types)
+
+TODO: fix this; maybe it'll build in its own project?
+
+*/
+/////////////////////////////////////////////////////////////////
+//END Data types example, 
+/////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////
+//Ownership example
+//from "Rust ownership modile"
+// https://www.linkedin.com/learning/using-rust-with-python/rust-ownership-model
+/////////////////////////////////////////////////////////////////
+use pyo3::wrap_pyfunction;
+use pyo3::pyclass;
+
+//Pyclass macro:
+#[pyclass]
+struct NumberList{
+	numbers: Vec<i32>,
 }
+
+impl NumberList{
+	fn new() -> Self{
+		NumberList{
+			numbers: Vec::new(),
+		}
+	}
+}
+
+#[pyfunction]
+fn add_number(list: &mut NumberList, num: i32) -> PyResult<()> {
+	list.add_number(num);
+	Ok(())
+}
+
+#[pyfunction]
+fn len(list: &NumberList) -> PyResult<usize> {
+	Ok(list.len())
+}
+
+#[pyfunction]
+fn clear(list: &mut NumberList) -> PyResult<()> {
+	list.clear();
+	Ok(())
+}
+
+#[pymethods]
+impl NumberList{
+	#[new]
+	fn new_obj() -> Self{
+		NumberList::new()
+	}
+	
+	fn add(&mut self, value: i32){
+		self.add_number(value);
+	}
+	
+	fn length(&self) -> usize{
+		self.len()
+	}
+	
+	fn clear_list(&mut self){
+		self.clear();
+	}
+}
+
+#[pyfunction]
+fn ownership(_py: Python, m: &PyModule) -> PyResult<()>{
+	m.add_class::<NumberList>()?;
+	Ok(())
+}
+
+
+
+/////////////////////////////////////////////////////////////////
+//END Ownership example
+/////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
