@@ -15,8 +15,14 @@ fn py03_example(m: &Bound<'_, PyModule>) -> PyResult<()> {
     //m.add_function(wrap_pyfunction!(data_types_example, m)?)?;
     //See below TODO for this function^
     
-    m.add_class::NumberList<>()?;
-    
+    //For Ownership example:
+    //m.add_class::NumberList<>()?;
+    //errors:
+    //error: generic parameters without surrounding angle brackets
+    //error: expected `<`
+    //m.add_wrapped(wrap_pyfunction!(add_number))?;
+    //m.add_wrapped(wrap_pyfunction!(len))?;
+    //m.add_wrapped(wrap_pyfunction!(clear))?;
     
     Ok(())
 }
@@ -96,9 +102,10 @@ TODO: fix this; maybe it'll build in its own project?
 
 /////////////////////////////////////////////////////////////////
 //Ownership example
-//from "Rust ownership modile"
+//from "Rust ownership model"
 // https://www.linkedin.com/learning/using-rust-with-python/rust-ownership-model
 /////////////////////////////////////////////////////////////////
+/*
 use pyo3::wrap_pyfunction;
 use pyo3::pyclass;
 
@@ -108,13 +115,28 @@ struct NumberList{
 	numbers: Vec<i32>,
 }
 
+//Implementation of the struct / Pyclass macro
 impl NumberList{
 	fn new() -> Self{
 		NumberList{
 			numbers: Vec::new(),
 		}
 	}
+	
+	fn add_number(&mut self, num: i32){
+		self.numbers.push(num);
+	}
+	
+	fn len(&self) -> usize {
+		self.numbers.len()
+	}
+	
+	fn clear(&mut self) {
+		self.numbers.clear()
+	}
 }
+
+//In the "Rust ownership model" video, #[pymodule] goes here
 
 #[pyfunction]
 fn add_number(list: &mut NumberList, num: i32) -> PyResult<()> {
@@ -133,6 +155,7 @@ fn clear(list: &mut NumberList) -> PyResult<()> {
 	Ok(())
 }
 
+//Implementation of NumberList (didn't we already do this above?)
 #[pymethods]
 impl NumberList{
 	#[new]
@@ -152,15 +175,37 @@ impl NumberList{
 		self.clear();
 	}
 }
+*/
 
-#[pyfunction]
+//Another pymodule?!
+/*
+#[pymodule]
 fn ownership(_py: Python, m: &PyModule) -> PyResult<()>{
 	m.add_class::<NumberList>()?;
 	Ok(())
 }
+*/
 
+//USAGE:
+/*
+import libownership_pyrust
 
+print("Creating NumberList")
+list_instance = libownership_pyrust.NumberList()
+print("Inserting into NumberList")
+list_instance.add(5)
+list_instance.add(10)
+print("Length of NumberList after inserts: ")
+print(list_instance.length()) # 2
+print("Clearing NumberList")
+list_instance.clear()
+print("Length of NumberList after clearing: ")
+print(list_instance.length()) # 0
 
+*/
+
+//More breakage
+//TODO: maybe works in a separate project?
 /////////////////////////////////////////////////////////////////
 //END Ownership example
 /////////////////////////////////////////////////////////////////
