@@ -47,16 +47,21 @@ python --version
 
 	to create python virtual environment:
 python -m venv ~/.venv
+	
 	to activate the python virtual environment:
 source ~/.venv/bin/activate
 	#alternatively, add this^ to bashrc (or whatever) so it happens automatically every time, but we might not want to do this every time
+	
 	to add the maturin package into the virtual environment:
 pip install maturin
+	
+	= REPEAT THIS PART FOR EACH NEW PROJECT =
 	to initialize a new py03 project (the proper way, not with cargo new...):
 mkdir pyo3-example
 cd pyo3-example
 maturin init
 	[select pyo3 option, this will create (among other things) lib.rs]
+	
 	to build, from pyo3-example dir:
 maturin develop
  	if you get an error like this:

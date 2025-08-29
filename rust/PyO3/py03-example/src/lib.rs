@@ -63,7 +63,7 @@ fn libdigits_pi(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
 //from "Using Rust with Python" - "Rust to Python"
 // https://www.linkedin.com/learning/using-rust-with-python/rust-to-python
 /////////////////////////////////////////////////////////////////
-use pyo3::types::PyDict;
+//use pyo3::types::PyDict;
 //use pyo3::wrap_function;
 
 //Demonstrate conversion between Rust and Python data types
