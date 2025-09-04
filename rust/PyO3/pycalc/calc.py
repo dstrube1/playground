@@ -1,7 +1,13 @@
 # to run:
-# python pi.py
+#python calc.py
 
-import pycalc
+import fire
+from libpycalc_cli import{
+	sum_as_string,
+	diff_as_string,
+	product_as_string,
+	quotient_as_string,
+}
 
 """
 pycalc_sum = pycalc.sum_as_string(5,20)
@@ -20,21 +26,22 @@ print("quotient as string (20,5): " + pycalc_quot_1)
 print("quotient as string (20,0): " + pycalc_quot_2)
 """
 
-def pycalc_add(self, num1, num2):
-	# Add two numbers
-	return sum_as_string(num1, num2)
-
-def subtract(self, num1, num2):
-	# Subtract two numbers
-	return diff_as_string(num1, num2)
-
-def multiply(self, num1, num2):
-	# Multiply two numbers
-	return product_as_string(num1, num2)
-
-def divide(self, num1, num2):
-	# Divide two numbers
-	return quotient_as_string(num1, num2)
+class Calculator(object):
+	def pycalc_add(self, num1, num2):
+		# Add two numbers
+		return sum_as_string(num1, num2)
+	
+	def subtract(self, num1, num2):
+		# Subtract two numbers
+		return diff_as_string(num1, num2)
+	
+	def multiply(self, num1, num2):
+		# Multiply two numbers
+		return product_as_string(num1, num2)
+	
+	def divide(self, num1, num2):
+		# Divide two numbers
+		return quotient_as_string(num1, num2)
 
 if __name__ == "__main__":
 	# Python Fire: a library from Google that automatically generates command line 
@@ -42,5 +49,12 @@ if __name__ == "__main__":
 	# pip install fire
 	#https://python-fire.readthedocs.io/en/latest/
 	#https://google.github.io/python-fire/guide/
-	#fire.Fire(Calculator)
-	pass
+	fire.Fire(Calculator)
+	#pass
+	
+"""
+USAGE:
+./calc.py [operation] [param1] [param2]
+[Example]
+./calc.py add 2 2
+"""
