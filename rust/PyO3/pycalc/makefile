@@ -19,6 +19,8 @@ install:
 build:
 	cargo build --release
 	# TODO: does this still fail?
+	# Yes. WHY?!
+	
 	# Copy .so file from its default output dir to my current working dir
 	#cp target/release/libpycalc_cli.so .
 	#^=> cp: target/release/[...].so: No such file or directory

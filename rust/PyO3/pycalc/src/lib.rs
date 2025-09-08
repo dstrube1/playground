@@ -1,4 +1,5 @@
 use pyo3::prelude::*;
+use pyo3::
 
 /// Formats the sum of two numbers as string.
 #[pyfunction]
@@ -17,8 +18,14 @@ fn product_as_string(a: usize, b: usize) -> PyResult<String> {
 }
 
 #[pyfunction]
-fn quotient_as_string(a: usize, b: usize) -> PyResult<String> {
-	//TODO: What if b == 0?
+fn quotient_as_string(a: f64, b: f64) -> PyResult<String> {
+	// What if b == 0? Raise an error / throw an exception:
+	if b == 0.0 {
+		//https://www.linkedin.com/learning/using-rust-with-python/pyo3-exceptions
+		//Example in the video requires a working pycalc project -_-
+		return Err(PyValueError::new_err("Can't divide by zero'"))
+		// PyErr::new_instance(PyExc_ValueError,("Invalid value",)).unwrap().raise(py)
+	}
     Ok((a / b).to_string())
 }
 
