@@ -1,0 +1,13 @@
+[package]
+name = "python_from_rust"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib] #if file in src folder is named lib.rs, then this node must be [lib];
+# but if the file is named main.rs, this this node breaks; naming it [main] builds, but gives a warning 
+name = "python_from_rust"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = "0.25.0"
