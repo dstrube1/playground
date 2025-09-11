@@ -1,0 +1,12 @@
+[package]
+name = "embedded_python_from_rust"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "embedded_python_from_rust"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = "0.25.0"
