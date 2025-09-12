@@ -9,4 +9,5 @@ name = "embedded_python_from_rust"
 crate-type = ["cdylib"]
 
 [dependencies]
+clap = { version = "4.3.21", features = ["derive"] }
 pyo3 = "0.25.0"
