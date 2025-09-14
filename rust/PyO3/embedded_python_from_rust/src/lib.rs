@@ -8,7 +8,7 @@ Must use the {maturin init} command from the embedded_python_from_rust directory
 
 */
 
-fn marco_python(input: &str) -> PyResult<String>{
+pub fn marco_python(input: &str) -> PyResult<String> {
 	pyo3::prepare_freethreaded_python();
 	Python::with_gil(|py| {
 		let marco = PyModule::from_code(
@@ -27,13 +27,48 @@ def marco(input):
 		let marco_result = marco_func.call1((input,))?;
 		let marco_result: &PyString = marco_result.extract()?;
 		Ok(marco_result.to_string())
+		/*
+error[E0599]: the method `to_string` exists for reference `&PyString`, but its trait bounds were not satisfied
+   --> src/lib.rs:29:19
+    |
+29  |         Ok(marco_result.to_string())
+    |                         ^^^^^^^^^ method cannot be called on `&PyString` due to unsatisfied trait bounds
+    |
+		*/
 	})
 }
 
+// Unit testing:
+//from https://www.linkedin.com/learning/using-rust-with-python/embedded-rust-cli-test
+#[cfg(test)]
+mod tests{
+	use super::*;
+	
+	#[test]
+	fn test_marco_python(){
+		let input = "marco";
+		let expected_output = "python".to_string();
+		let output = marco_python(input).unwrap();
+		assert_eq!(output, expected_output, "Failed for input: {}", input);
+	}
+
+	#[test]
+	fn test_no_python(){
+		let input = "not_marco";
+		let expected_output = "no python".to_string();
+		let output = marco_python(input).unwrap();
+		assert_eq!(output, expected_output, "Failed for input: {}", input);
+	}
+}
+
+/*
+Commenting out after https://www.linkedin.com/learning/using-rust-with-python/embedded-rust-cli
 fn main(){
 	println!("From embedded Python: {}", marco_python("marco").unwrap());
 	println!("From embedded Python: {}", marco_python("polo").unwrap());
 }
+
+*/
 
 /*
 TODO: above doesn't build, much less run
