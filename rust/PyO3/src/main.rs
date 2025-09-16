@@ -57,12 +57,13 @@ pip install maturin
 	
 	= REPEAT THIS PART FOR EACH NEW PROJECT =
 	to initialize a new py03 project (the proper way, not with cargo new...):
-mkdir pyo3-example
-cd pyo3-example
+mkdir pyo3_example
+	note that dir / project name should be snake_case, not camelCase
+cd pyo3_example
 maturin init
 	[select pyo3 option, this will create (among other things) lib.rs]
 	
-	to build, from pyo3-example dir:
+	to build, from pyo3_example dir:
 maturin develop
  	if you get an error like this:
 		💥 maturin failed
