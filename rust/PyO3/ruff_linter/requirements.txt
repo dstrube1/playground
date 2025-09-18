@@ -1,0 +1,6 @@
+#old and busted
+#pylint==2.15.3
+
+#new hotness:
+#rust based linter
+ruff==0.13.0
