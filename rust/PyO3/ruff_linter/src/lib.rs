@@ -1,5 +1,11 @@
 use pyo3::prelude::*;
 
+// https://www.linkedin.com/learning/using-rust-with-python/using-rust-ruff-linter
+// ->
+// https://github.com/astral-sh/ruff?tab=readme-ov-file
+// ->
+// https://play.ruff.rs/
+
 /// Formats the sum of two numbers as string.
 #[pyfunction]
 fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
