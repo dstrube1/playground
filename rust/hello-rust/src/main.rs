@@ -72,6 +72,20 @@ fn func_3(bob: &Bob){
 fn main() {
 	func_1();
 	basics();
+	
+	//misc
+	let print2 = || print!("2");
+	S{f:print2}.f();
+	
+	let _guard = Guard;
+	print!("3");
+	let _ = Guard;
+	print!("2");
+	
+	/*let three = 3;
+	if three{
+		println!("x");
+	}*/
 }
 
 fn basics(){
@@ -281,6 +295,23 @@ fn function_with_params_and_return0(a: i32, b: i32) -> i32{
 
 fn function_with_params_and_return1(a: i32, b: i32) -> i32{
 	a + b //alternative to using return: no return and no semicolon will return the value of the last line
+}
+
+struct S{
+	f: fn(),
+}
+
+impl S{
+	fn f(&self){
+		print!("1");
+	}
+}
+
+struct Guard;
+impl Drop for Guard{
+	fn drop(&mut self){
+		print!("1");
+	}
 }
 
 /*leftoff: 
