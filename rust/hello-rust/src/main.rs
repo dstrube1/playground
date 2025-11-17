@@ -1,21 +1,25 @@
 //https://www.rust-lang.org/learn/get-started
 
+/*
 //to create this:
-//cargo new hello-rust
+cargo new hello-rust
 
 //to build, from hello-rust dir:
-//cargo build
+cargo build
 
 //to run:
 //cargo run
 
 //https://www.youtube.com/watch?v=pTMvh6VzDls
 //17:21
-/**/
+
+/* interesting: nested multi-line comments do NOT uncomment outside their scope */
+
 // 17:54 "And then if I was to compile this func_1 now, it would compile absolutely fine. No issues." 
 //False
 
 //...Fixed
+*/
 
 /*
 Compiler complains / warns about any unused code -_- which is why I comment out unused functions
@@ -294,7 +298,8 @@ fn function_with_params_and_return0(a: i32, b: i32) -> i32{
 }
 
 fn function_with_params_and_return1(a: i32, b: i32) -> i32{
-	a + b //alternative to using return: no return and no semicolon will return the value of the last line
+	//alternative to using return: no return and no semicolon will return the value of the last line
+	a + b 
 }
 
 struct S{
@@ -342,4 +347,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustc --version
 
 Gonna do that later as the brew reinstall seems to have worked for now...
+
+TODO: 
+1- ownership model
+2- borrowing mechanics
+3- lifetimes
+4- concurrency paradigms
 */
