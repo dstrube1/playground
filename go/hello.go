@@ -1,9 +1,31 @@
-package main
+package main //package names should be single word lower case
 
+/*
 //to run:
-//go run hello.go
+go run hello.go
+//or
+go run .
+//^assuming this is the only .go file in the directory? or the only one with a main function?
+
 //to save as executable:
-//go build hello.go
+go build hello.go
+//executables are OS specific
+
+See also :
+https://go.dev/play/
+*/
+
+/*
+Interesting go commands:
+go doc time
+	wall clock is for displaying time; monotonic clock is for measuring time
+go env
+	current version: 1.24.2
+go fix
+go list
+go version
+	go version go1.24.2 darwin/amd64
+*/
 
 //1 import:
 //import "fmt"
@@ -12,6 +34,12 @@ package main
 import (
 	"fmt"
 	"time"
+	"rsc.io/quote" //external package; if running this for the first time, must first run:
+	//go mod tidy
+	//or 
+	//go get rsc.io/quote
+	"sort"
+	"errors"
 )
 
 func unused(){
@@ -65,7 +93,7 @@ func variablesAndPrinting(){
 	/*const PI float32
 	fmt.Print("PI: ")		
 	fmt.Println(PI)*/
-	//no
+	//no, it must be given an initial value
 
 	//using Printf:
 	fmt.Printf("i has value: %v and type: %T\n", i, i)
@@ -75,6 +103,24 @@ func variablesAndPrinting(){
 	//more Numerics:
 	var u uint64 = 18446744073709551615 //18,446,744,073,709,551,615 =~ 18 quintillion
 	fmt.Println("unsigned 64 bit integer:", u)
+	//more:
+	// uint8 uint16 uint32
+	//  int8  int16  int32 int64
+	// aliases: 
+	// byte => 
+	// uint => 32 or 64 bit depending on OS
+	// int => 32 or 64 bit depending on OS
+	// uintptr => 
+	// float64
+	// complex64 complex128
+	var c64 complex64 //= 12.8i
+	fmt.Println("complex64 default value:",c64) //(0+0i)
+	c64 = 12.8i
+	fmt.Println("complex64 assigned value:",c64) //(0+12.8i)
+	var c128 complex128 
+	fmt.Println("complex128 default value:",c128) //(0+0i)
+	
+	fmt.Printf("Value of c64: %v; data type of c64: %T\n", c64, c64)
 }
 
 func arraysAndSlices(){
@@ -465,6 +511,62 @@ Functions
 
 func timeStuff(){
 	fmt.Println("The time is", time.Now())
+	// See also :
+	// go doc time
+}
+
+func extPkg(){
+	//https://pkg.go.dev/rsc.io/quote
+	//from import "rsc.io/quote"
+	fmt.Println(quote.Hello())//Hello returns a greeting.
+	//"Hello, world."
+	fmt.Println(quote.Glass()) //Glass returns a useful phrase for world travelers.
+	//"I can eat glass and it doesn't hurt me."
+	fmt.Println(quote.Go()) //Go returns a Go proverb.
+	//"Don't communicate by sharing memory, share memory by communicating."
+	fmt.Println(quote.Opt())//Opt returns an optimization truth.
+	//"If a program is too slow, it must have a loop."
+}
+
+func largestInt(numbers[]int) int{
+	sort.Ints(numbers)
+	return numbers[len(numbers)-1] //after sorted, largest is last
+}
+
+func testLargestInt(){
+	numbers := []int{2,4,6,66,8}
+	largest := largestInt(numbers)
+	fmt.Println("largest in array:", largest)
+}
+
+func divideWithErrorHandling(numerator float32, denominator float32) (float32, error){
+	if(denominator == 0){
+		err := errors.New("Can't divide by zero")
+		//This will also display the error, but fail out of the program ungracefully
+		//panic(err)
+		//See also recover - manages behavior of a panicking Goroutine / asynchronous processing
+		//https://golang.org/pkg/builtin
+		//=>
+		//https://pkg.go.dev/builtin
+		return 0, err
+	}
+	return (numerator / denominator), nil
+}
+
+func testDivideWithErrorHandling(){
+	quotient, err := divideWithErrorHandling(1,2)
+	if err == nil {
+		fmt.Println("1 / 2:", quotient)
+	}else{
+		fmt.Println("Error",err)
+	}
+	
+	quotient, err = divideWithErrorHandling(1, 0)
+	if err == nil {
+		fmt.Println("1 / 0:", quotient)
+	}else{
+		fmt.Println("Error",err)
+	}
 }
 
 func main() {
@@ -480,17 +582,28 @@ func main() {
 	//0-definedAfterMain()
 	
 	//1-7: https://www.w3schools.com/go/
-	//1-variablesAndPrinting()
-	//2-arraysAndSlices()	
-	//3-operators()
+	//1-
+	variablesAndPrinting()
+	//2-
+	//arraysAndSlices()	
+	//3-
+	//operators()
 	//4-
-	conditionsAndLoops()
-	//5-functionTests()
-	//6-structs()
+	//conditionsAndLoops()
+	//5-
+	//functionTests()
+	//6-
+	//structs()
 	//7-
-	maps()
+	//maps()
 	
-	//8-timeStuff()
+	//8-
+	//timeStuff()
+	//9-Call code in an external package¶
+	//extPkg()
+	
+	//testLargestInt()
+	//testDivideWithErrorHandling()
 	
 	//https://go.dev/doc/tutorial/getting-started
 	//Enable dependency tracking for your code:
@@ -500,6 +613,10 @@ func main() {
 	//go: to add module requirements and sums:
 	//go mod tidy
 	
+	//TODO:
+	//Interface
+	//Channel
+	//Pointer
 }
 
 func definedAfterMain(){
