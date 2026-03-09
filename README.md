@@ -41,6 +41,10 @@ header column 1| hc2
 -|-
 x|y
 
+Table test (with first column ghost):
+-|test hc1|hc2
+-|-|-
+descriptive column:|x1|x2
 
 blockquote: 
 > 404
