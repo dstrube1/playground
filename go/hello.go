@@ -617,6 +617,8 @@ func main() {
 	//Interface
 	//Channel
 	//Pointer
+	
+	fmt.Println("Done.")
 }
 
 func definedAfterMain(){
