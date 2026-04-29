@@ -5,7 +5,7 @@ package main //package names should be single word lower case
 go run hello.go
 //or
 go run .
-//^assuming this is the only .go file in the directory? or the only one with a main function?
+//^given that this is the only .go file in the directory with a main function
 
 //to save as executable:
 go build hello.go
@@ -58,22 +58,27 @@ func variablesAndPrinting(){
 	var s string = "s" //must use ", not '; default: ""
 	
 	//can declare like one of these:
-	//a- var varname type = value
-	//b- var varname type
+	//a- var varname [type] = value
+	//b- var varname [type]
 	//c- var varname = value
 	//d- varname := value 
 	//c & d: go figures out the type
-	
-	//If you use the type keyword, it is only possible to declare one type of variable per line.
-	//If the type keyword is not specified, you can declare different types of variables on the same line:
-	//var w, x = 6, "Hello"
-	//y, z := 7, "World!"
 	
 	/*i0 := 1
 	b0 := true
 	f0 := 2.0
 	s0 := "s0"*/
-	
+		
+	//If you use the keyword for a type (e.g., int), it is only possible to declare one type of variable per line.
+	//If the type is not specified, you can declare different types of variables on the same line:
+	//var w, x = 6, "Hello"
+	//y, z := 7, "World!"
+	//Note, format is var varname1, varname2 = value1, value2
+	//What about
+	//var var1 = 1, var2 = "hey"
+	//^: syntax error: unexpected = at end of statement
+	//var var1 := 1, var2 := "hey"
+	//^: unexpected :=, expected =
 	
 	fmt.Print("i: ")
 	fmt.Println(i)
@@ -121,6 +126,29 @@ func variablesAndPrinting(){
 	fmt.Println("complex128 default value:",c128) //(0+0i)
 	
 	fmt.Printf("Value of c64: %v; data type of c64: %T\n", c64, c64)
+	
+	//The keyword `type` has multiple purposes. One is creating a new named (aka custom) type
+	type MyInt int
+	var mi MyInt = 1
+	fmt.Println("MyInt mi:", mi)
+
+	//Another is Type aliasing:
+	type ID = int
+	var id ID = 2
+	fmt.Println("ID id:", id)
+	//Here, ID is exactly the same as int, not a distinct type
+	
+	//Difference between a type alias and a custom type:
+	i = 5
+	mi = MyInt(i) //custom: conversion needed
+	id = i //alias: no conversion needed
+	/*
+	Custom types let you:
+		Add methods
+		Prevent accidental mixing of values
+		Make code more expressive
+	*/
+
 }
 
 func arraysAndSlices(){
@@ -340,6 +368,11 @@ func functionTests(){
 	for i = 1; i < 22; i++{
 		fmt.Println(i,"factorial =", factorial(i))
 	}
+
+	result0 := compute(add, 2, 3)
+	result1 := compute(multiply, 2, 3)
+	fmt.Println("result0 =", result0)
+	fmt.Println("result1 =", result1)
 }
 
 func function0(param0 int, param1 int) int {
@@ -385,7 +418,21 @@ func factorial(u uint64) (v uint64){
 	return
 }
 
+//Another purpose of `type` is defining custom function types:
+type Operation func(a int, b int) int
+//example usage:
+func add(a,b int) int{
+	return a + b
+}
+func multiply(a,b int) int{
+	return a * b
+}
+func compute(op Operation, a, b int) int{
+	return op(a, b)
+}
+
 func structs(){
+	//The keyword `type` has multiple purposes. One is defining structs:
 	type class struct{
 		member1 int
 		member2 string
@@ -396,6 +443,23 @@ func structs(){
 	
 	fmt.Println("obj.member1:",obj.member1)
 	fmt.Println("obj.member2:",obj.member2)
+	
+	//Another is grouping type declarations
+	type (
+		User struct {
+			Name string
+		}
+		Product struct {
+			Price float64
+		}
+	)
+	//example usage
+	var u User
+	var p Product
+	u.Name = "bob"
+	p.Price = 1.5
+	fmt.Println("User.Name:", u.Name)
+	fmt.Println("Product.Price:", p.Price)
 }
 
 func maps(){
@@ -569,6 +633,24 @@ func testDivideWithErrorHandling(){
 	}
 }
 
+func testInterface(){
+	//The keyword `type` has multiple purposes. One is defining an interface
+	type Speaker interface {
+		Speak() string
+	}
+	//var speaker Speaker
+	/*
+	speaker.Speak()
+	If try to run an unimplemented method:
+	panic: runtime error: invalid memory address or nil pointer dereference
+	[signal SIGSEGV: segmentation violation code=0x2 addr=0x0 pc=0x
+	
+	Just commenting out speaker.Speak() won't fix the problem; must also comment out declaration of unused var speaker
+	
+	TODO: how to implement Speak()...
+	*/
+}
+
 func main() {
 	//statements are separaated by newlines or ;
 	
@@ -583,7 +665,7 @@ func main() {
 	
 	//1-7: https://www.w3schools.com/go/
 	//1-
-	variablesAndPrinting()
+	//variablesAndPrinting()
 	//2-
 	//arraysAndSlices()	
 	//3-
@@ -591,7 +673,7 @@ func main() {
 	//4-
 	//conditionsAndLoops()
 	//5-
-	//functionTests()
+	functionTests()
 	//6-
 	//structs()
 	//7-
@@ -614,7 +696,7 @@ func main() {
 	//go mod tidy
 	
 	//TODO:
-	//Interface
+	//testInterface()
 	//Channel
 	//Pointer
 	
