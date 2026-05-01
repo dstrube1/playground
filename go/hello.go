@@ -460,6 +460,7 @@ func structs(){
 	p.Price = 1.5
 	fmt.Println("User.Name:", u.Name)
 	fmt.Println("Product.Price:", p.Price)
+	
 }
 
 func maps(){
@@ -647,8 +648,16 @@ func testInterface(){
 	
 	Just commenting out speaker.Speak() won't fix the problem; must also comment out declaration of unused var speaker
 	
-	TODO: how to implement Speak()...
 	*/
+	
+	var d Dog;
+	//Call implemented function from Speaker interface:
+	fmt.Println(d.Speak())
+}
+//Example of how to automatically implement an interface:
+type Dog struct{}
+func (d Dog) Speak() string{
+	return "Woof"
 }
 
 func main() {
@@ -673,7 +682,7 @@ func main() {
 	//4-
 	//conditionsAndLoops()
 	//5-
-	functionTests()
+	//functionTests()
 	//6-
 	//structs()
 	//7-
@@ -695,8 +704,9 @@ func main() {
 	//go: to add module requirements and sums:
 	//go mod tidy
 	
+	testInterface()
+
 	//TODO:
-	//testInterface()
 	//Channel
 	//Pointer
 	
