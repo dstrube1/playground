@@ -10,10 +10,24 @@ go run .
 Let's test that assumption
 */
 
-import "fmt"
+import (
+	"fmt"
+	//"test2"
+)
 
 func main() {
 	fmt.Println("Hello from test1")
+	
+	//test2 method callable from test1:
+	nonMain()
+	/*Note: `go run test1.go` only compiles test1.go; nonMain will be undefined
+			`go run .`  compiles all files in the directory
+	need imports if:
+		Files are in different directories
+		Or have different package names
+	Then you'd structure it like:
+		import "yourmodule/test2"
+	*/
 }
 
 /*
@@ -22,3 +36,4 @@ Result:
 ./test2.go:15:6: main redeclared in this block
 	./test1.go:15:6: other declaration of main
 */
+
