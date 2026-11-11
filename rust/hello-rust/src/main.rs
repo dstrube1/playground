@@ -74,12 +74,12 @@ fn func_3(bob: &Bob){
 }*/
 
 fn main() {
-	func_1();
-	basics();
+	//func_1();
+	//basics();
 	
 	//misc
 	let print2 = || print!("2");
-	S{f:print2}.f();
+	my_struct{f:print2}.f();
 	
 	let _guard = Guard;
 	print!("3");
@@ -90,6 +90,8 @@ fn main() {
 	if three{
 		println!("x");
 	}*/
+	
+	ownership_test();
 }
 
 fn basics(){
@@ -150,6 +152,13 @@ fn basics(){
 	} else {
 		"Good evening."
 	}; //must end with ;
+	
+	//obviously, assigning a variable to value via if / else will break if the data type of the value isn't the same:
+	//let x = if time < 1 { "x" } else { 1 };
+	// => error[E0308]: `if` and `else` have incompatible types
+	//but what if the conditions are testing different data types?
+	let x = if time < 1 { "x" } else if greeting == "Good day. "{"y"} else {"z"};
+	println!("x: {}", x); // no problem: x: z
 	
 	//Note, can't just do println!(greeting);
 	println!("{}", greeting);
@@ -302,11 +311,27 @@ fn function_with_params_and_return1(a: i32, b: i32) -> i32{
 	a + b 
 }
 
-struct S{
+fn ownership_test(){
+	let b = 1;
+	let c = b;
+	ownership_test_1(c);
+	// c gave ownership of variable containing 1 to a ownership_test_1, 
+	// after which a was deleted (use of moved value); so the following should fail:
+	ownership_test_1(c);
+	//but it didn't; so maybe I'm misunderstanding what's being said at the 3:30 mark here:
+	// https://www.youtube.com/watch?v=0y6RKiIk6cs
+	
+}
+fn ownership_test_1(a: i32){
+	println!("a: {}",a);
+}
+
+
+struct my_struct{
 	f: fn(),
 }
 
-impl S{
+impl my_struct{
 	fn f(&self){
 		print!("1");
 	}

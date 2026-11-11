@@ -1,0 +1,13 @@
+[package]
+name = "ctbrl"
+version = "0.1.0"
+edition = "2024"
+authors = ["David Strube <dstrube@gmail.com>"]
+
+[dependencies]
+# No external dependencies needed for a standard library implementation.
+# If we decide to add async/Tokio later, dependencies go here:
+# tokio = { version = "1.0", features = ["full"] }
+
+[dev-dependencies]
+# Add any testing or benchmarking utilities here if needed (e.g., criterion)
