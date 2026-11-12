@@ -8,9 +8,9 @@ Design and implement a thread-safe rate limiter library in Rust using the Token 
 
 1. **Core Data Structure**: A `RateLimiter` struct that maintains state for multiple clients.
 2. **Token Bucket Logic**:
-* Each client has a maximum bucket capacity ($C$) and a refill rate ($R$ tokens per second).
-* Every request consumes 1 token. If tokens are available, the request is allowed and 1 token is deducted. If not, it is rejected.
-* Tokens refill continuously (or lazily upon each request evaluation) based on elapsed time.
+* * Each client has a maximum bucket capacity ($C$) and a refill rate ($R$ tokens per second).
+* * Every request consumes 1 token. If tokens are available, the request is allowed and 1 token is deducted. If not, it is rejected.
+* * Tokens refill continuously (or lazily upon each request evaluation) based on elapsed time.
 3. **Thread Safety**: The rate limiter must be safely shareable across multiple threads (`Send` + `Sync`) using appropriate synchronization primitives (`Arc`, `Mutex`, or `RwLock`).
 4. **Configuration**: Allow configuring default capacity and refill rates, as well as client-specific overrides.
 5. **Testing**: Include robust unit tests verifying concurrency safety and rate-limiting accuracy over simulated time.

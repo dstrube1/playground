@@ -5,7 +5,7 @@ package main //package names should be single word lower case
 go run hello.go
 //or
 go run .
-//^given that this is the only .go file in the directory with a main function
+//^if this is the only .go file in the directory with a main function
 
 //to save as executable:
 go build hello.go
